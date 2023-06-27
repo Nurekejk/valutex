@@ -11,9 +11,11 @@ struct Movie {
     
     let title: String
     let hasAwards: [String]
+    var isFavourite = false
     var numberOfAwards: Int {
         hasAwards.count
     }
+    
     func getDescription() -> String {
         if numberOfAwards == 0 {
             let description = "\(title) has no awards. You probably shouldn't watch this movie :("
@@ -23,4 +25,8 @@ struct Movie {
             let description = "\(title) has \(numberOfAwards) awards: \(awards)"
             return description
         }
-    }}
+    }
+    mutating func changeFavourite() {
+        isFavourite = isFavourite ? false : true
+    }
+}
