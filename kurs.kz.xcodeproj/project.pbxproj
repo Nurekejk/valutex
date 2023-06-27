@@ -16,6 +16,7 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9F899D952A4B0232002D1F74 /* IslamFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D942A4B0232002D1F74 /* IslamFile.swift */; };
+		FA09D4CB2A4B331800DBEEB8 /* AdilFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F899D942A4B0232002D1F74 /* IslamFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslamFile.swift; sourceTree = "<group>"; };
+		FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdilFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				9F899D942A4B0232002D1F74 /* IslamFile.swift */,
 				714914122A4B06FC00F13A76 /* AkerkeFile.swift */,
 				612385C52A4B0AAE00A91BED /* NurbolFile.swift */,
+				FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */,
 			);
 			path = kurs.kz;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				612385C62A4B0AAE00A91BED /* NurbolFile.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */,
+				FA09D4CB2A4B331800DBEEB8 /* AdilFile.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 			);
