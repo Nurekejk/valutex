@@ -23,4 +23,6 @@ struct Book {
     func summary() -> String {
         return "\(title) by \(author). \(isRead ? "Finished reading." : "Currently on page \(currentPage).")"
     }
+    
+    let pageCount: Int
 }
