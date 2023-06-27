@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714914122A4B06FC00F13A76 /* AkerkeFile.swift */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
 		9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */; };
 		9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D842A4AFB44002D1F74 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		714914122A4B06FC00F13A76 /* AkerkeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkerkeFile.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D8E2A4AFB46002D1F74 /* Info.plist */,
 				9F899D942A4B0232002D1F74 /* IslamFile.swift */,
+				714914122A4B06FC00F13A76 /* AkerkeFile.swift */,
 			);
 			path = kurs.kz;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				9F899D952A4B0232002D1F74 /* IslamFile.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 			);
