@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  kurs.kz
 //
-//  Created by Nurgul on 27.06.2023.
+//  Created by Islam on 27.06.2023.
 //
 
 import UIKit
