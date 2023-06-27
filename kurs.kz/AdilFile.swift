@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Movie {
+    
+    let title: String
+    let hasAwards: [String]
+    var numberOfAwards: Int {
+        hasAwards.count
+    }
+}
