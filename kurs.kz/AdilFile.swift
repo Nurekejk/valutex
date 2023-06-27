@@ -14,4 +14,9 @@ struct Movie {
     var numberOfAwards: Int {
         hasAwards.count
     }
+    func getDescription() -> String {
+        let awards = hasAwards.joined(separator: ", ")
+        let description = "\(title) has \(numberOfAwards) awards: \(awards)"
+        return description
+    }
 }
