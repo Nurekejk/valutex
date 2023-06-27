@@ -19,4 +19,8 @@ struct Book {
             isRead = true
         }
     }
+    
+    func summary() -> String {
+        return "\(title) by \(author). \(isRead ? "Finished reading." : "Currently on page \(currentPage).")"
+    }
 }
