@@ -15,8 +15,12 @@ struct Movie {
         hasAwards.count
     }
     func getDescription() -> String {
-        let awards = hasAwards.joined(separator: ", ")
-        let description = "\(title) has \(numberOfAwards) awards: \(awards)"
-        return description
-    }
-}
+        if numberOfAwards == 0 {
+            let description = "\(title) has no awards. You probably shouldn't watch this movie :("
+            return description
+        } else {
+            let awards = hasAwards.joined(separator: ", ")
+            let description = "\(title) has \(numberOfAwards) awards: \(awards)"
+            return description
+        }
+    }}
