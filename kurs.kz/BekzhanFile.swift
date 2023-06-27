@@ -12,4 +12,11 @@ struct Book {
     let author: String
     var currentPage: Int
     var isRead: Bool
+    
+    mutating func turnPage() {
+        currentPage += 1
+        if currentPage >= pageCount {
+            isRead = true
+        }
+    }
 }
