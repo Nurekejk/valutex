@@ -11,13 +11,16 @@ struct Currency {
     let currencies: [String]
     let localCurrency: String
     
+    // lists the local currency 
     func getLocalCurrency() -> String {
         return localCurrency
     }
     
+    // lists all currency names
     func listAllCurrencies() {
         for currency in currencies {
             print(currency)
         }
     }
+    
 }
