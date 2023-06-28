@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612385C62A4B0AAE00A91BED /* NurbolFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612385C52A4B0AAE00A91BED /* NurbolFile.swift */; };
 		714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714914122A4B06FC00F13A76 /* AkerkeFile.swift */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
 		9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */; };
@@ -15,9 +16,11 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9F899D952A4B0232002D1F74 /* IslamFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D942A4B0232002D1F74 /* IslamFile.swift */; };
+		FA09D4CB2A4B331800DBEEB8 /* AdilFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		612385C52A4B0AAE00A91BED /* NurbolFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NurbolFile.swift; sourceTree = "<group>"; };
 		714914122A4B06FC00F13A76 /* AkerkeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkerkeFile.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F899D942A4B0232002D1F74 /* IslamFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslamFile.swift; sourceTree = "<group>"; };
+		FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdilFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				9F899D8E2A4AFB46002D1F74 /* Info.plist */,
 				9F899D942A4B0232002D1F74 /* IslamFile.swift */,
 				714914122A4B06FC00F13A76 /* AkerkeFile.swift */,
+				612385C52A4B0AAE00A91BED /* NurbolFile.swift */,
+				FA09D4CA2A4B331800DBEEB8 /* AdilFile.swift */,
 			);
 			path = kurs.kz;
 			sourceTree = "<group>";
@@ -145,8 +151,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F899D952A4B0232002D1F74 /* IslamFile.swift in Sources */,
+				612385C62A4B0AAE00A91BED /* NurbolFile.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */,
+				FA09D4CB2A4B331800DBEEB8 /* AdilFile.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 			);
