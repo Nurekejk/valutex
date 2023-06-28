@@ -7,6 +7,13 @@
 
 import Foundation
 
-struct NurbolFile {
-    
+struct Person {
+    var name: String
+    var age: Int
+
+    func introduce() {
+        print("Меня зовут \(name) и мне \(age) лет.")
+    }
 }
+
+var person1 = Person(name: "Нурбол", age: 19)

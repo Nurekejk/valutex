@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+class DataImporter {
+    var fileName = "info.txt"
+    /*
+     adding comment
+
+     */
+
+}
