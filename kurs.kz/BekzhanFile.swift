@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Book {
     let title: String
