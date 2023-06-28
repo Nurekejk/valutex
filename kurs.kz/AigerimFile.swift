@@ -11,7 +11,7 @@ struct Currency {
     let currencies: [String]
     let localCurrency: String
     
-    // lists the local currency 
+    // lists the local currency
     func getLocalCurrency() -> String {
         return localCurrency
     }
@@ -23,4 +23,8 @@ struct Currency {
         }
     }
     
+    func convertToUSD() -> Double {
+        //convert to usd
+        return 0.0
+    }
 }
