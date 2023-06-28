@@ -15,3 +15,5 @@ struct Person {
         print("Меня зовут \(name) и мне \(age) лет.")
     }
 }
+
+var person1 = Person(name: "Нурбол", age: 19)
