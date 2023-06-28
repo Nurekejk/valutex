@@ -16,12 +16,12 @@ struct Currency {
         return localCurrency
     }
     
-    // lists all currency names
-    func listAllCurrencies() {
-        for currency in currencies {
-            print(currency)
-        }
-    }
+//    // lists all currency names
+//    func listAllCurrencies() {
+//        for currency in currencies {
+//            print(currency)
+//        }
+//    }
     
     func convertToUSD() -> Double {
         //convert to usd
