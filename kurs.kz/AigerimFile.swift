@@ -15,4 +15,9 @@ struct Currency {
         return localCurrency
     }
     
+    func listAllCurrencies() {
+        for currency in currencies {
+            print(currency)
+        }
+    }
 }
