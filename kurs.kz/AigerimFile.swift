@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct Currency {
+    let currencies: [String]
+    let localCurrency: String
+    
+    func getLocalCurrency() -> String {
+        return localCurrency
+    }
+    
+}
