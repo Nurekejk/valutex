@@ -14,4 +14,5 @@ class DataImporter {
     The class is assumed to take a non-trivial amount of time to initialize.
     */
     var fileName = "data.txt"
+    // the DataImporter class would provide data importing functionality here
 }
