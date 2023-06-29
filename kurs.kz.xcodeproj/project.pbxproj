@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		612385C62A4B0AAE00A91BED /* NurbolFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612385C52A4B0AAE00A91BED /* NurbolFile.swift */; };
 		714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714914122A4B06FC00F13A76 /* AkerkeFile.swift */; };
+		8F1393932A4D388A00A36FA3 /* Diar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1393922A4D388A00A36FA3 /* Diar.swift */; };
 		999AE5E52A4C1BAB0053E249 /* AigerimFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999AE5E42A4C1BAB0053E249 /* AigerimFile.swift */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
 		9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		612385C52A4B0AAE00A91BED /* NurbolFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NurbolFile.swift; sourceTree = "<group>"; };
 		714914122A4B06FC00F13A76 /* AkerkeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkerkeFile.swift; sourceTree = "<group>"; };
+		8F1393922A4D388A00A36FA3 /* Diar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diar.swift; sourceTree = "<group>"; };
 		999AE5E42A4C1BAB0053E249 /* AigerimFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AigerimFile.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				9F899D802A4AFB44002D1F74 /* AppDelegate.swift */,
 				9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */,
+				8F1393922A4D388A00A36FA3 /* Diar.swift */,
 				9F899D842A4AFB44002D1F74 /* ViewController.swift */,
 				9F899D862A4AFB44002D1F74 /* Main.storyboard */,
 				9F899D892A4AFB46002D1F74 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 				612385C62A4B0AAE00A91BED /* NurbolFile.swift in Sources */,
 				999AE5E52A4C1BAB0053E249 /* AigerimFile.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				8F1393932A4D388A00A36FA3 /* Diar.swift in Sources */,
 				714914132A4B06FC00F13A76 /* AkerkeFile.swift in Sources */,
 				FA09D4CB2A4B331800DBEEB8 /* AdilFile.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
