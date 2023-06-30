@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         
     }
     
+    //MARK: - Test functions
+    
     //this function returns the string "Hello"
     func returnStringHelloWorld () -> String {
         return "Hello, World!"
