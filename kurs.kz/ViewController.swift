@@ -12,8 +12,9 @@ class ViewController: UIViewController {
     struct MyStruct {
         let name: String
         let age: Int
-        
+        // здесь я создаю структуру
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // здесь будут доп настройки
