@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // здесь будут доп настройки
         
     }
+    
+    //this method does nothing:
+    func adilMethod() {
+
+    }
 }
 
 class MyTableViewController: UITableViewController {
