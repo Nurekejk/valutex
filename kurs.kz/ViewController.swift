@@ -8,6 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    struct MyStruct {
+        let name: String
+        let age: Int
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // здесь будут доп настройки
