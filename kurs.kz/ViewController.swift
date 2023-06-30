@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 class MyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        // здесь тоже будут доп настройки для контроллера
     }
 }
 
