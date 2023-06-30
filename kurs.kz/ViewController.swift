@@ -17,5 +17,9 @@ class ViewController: UIViewController {
     private func testMethod() {
         
     }
+    
+    func adilMethod() {
+        
+    }
 }
 
