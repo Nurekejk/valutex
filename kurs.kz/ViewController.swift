@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
     
     //this function returns the string "Hello"
-    func returnStringHello () -> String {
+    func returnStringHelloWorld () -> String {
         return "Hello, World!"
     }
 }
