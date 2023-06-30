@@ -15,3 +15,9 @@ class ViewController: UIViewController {
     }
 }
 
+class MyTableViewController: UITableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
