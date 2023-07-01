@@ -27,14 +27,14 @@ class SignupViewController: UIViewController {
     let button: UIButton = {
         let button = UIButton()
         button.setTitle("Продолжить", for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(named: "signupButtonColor")
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor= .white
+        view.backgroundColor = .white
         
         setupViews()
         setupConstriants()
