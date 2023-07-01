@@ -19,8 +19,9 @@ class SignupViewController: UIViewController {
     let phoneTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "+7 777 777 00 00"
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
         textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
         return textField
     }()
     
