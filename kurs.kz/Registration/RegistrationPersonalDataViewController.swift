@@ -11,38 +11,93 @@ import SnapKit
 class RegistrationPersonalDataViewController: UIViewController {
     
     let surnameTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 50, y: 100, width: 200, height: 30))
+        let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = "Enter text"
         return textField
     }()
-
+    
+    let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Enter text"
+        return textField
+    }()
+    
+    
+    let patronymicTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Enter text"
+        return textField
+    }()
+    
+    let phoneTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Enter text"
+        return textField
+    }()
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Enter text"
+        return textField
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = .white
         // Do any additional setup after loading the view.
     }
     
     func setupViews() {
         view.addSubview(surnameTextField)
+        view.addSubview(nameTextField)
+        view.addSubview(patronymicTextField)
+        view.addSubview(phoneTextField)
+        view.addSubview(emailTextField)
     }
     
     
     private func setupConstraints() {
-//        NSLayoutConstraint.activate([
-//            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-////            label.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
-////            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//        ])
-//
+
 
         surnameTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
-            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(116)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
 //            make.centerX.equalToSuperview()
+        }
+        
+        nameTextField.snp.makeConstraints { make in
+            make.top.equalTo(surnameTextField.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
+        }
+        
+        patronymicTextField.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
+        }
+        phoneTextField.snp.makeConstraints { make in
+            make.top.equalTo(patronymicTextField.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
+        }
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(phoneTextField.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
         }
 
     }
