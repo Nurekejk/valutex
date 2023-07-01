@@ -8,14 +8,29 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    struct MyStruct {
+        let name: String
+        let age: Int
+        // здесь я создаю структуру
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Nurbol
-    }
-
-    private func testMethod() {
+        // здесь будут доп настройки
         
+    }
+    
+    //this method does nothing:
+    func adilMethod() {
+
+    }
+}
+
+class MyTableViewController: UITableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // здесь тоже будут доп настройки для контроллера
     }
     
     //MARK: - Test functions
