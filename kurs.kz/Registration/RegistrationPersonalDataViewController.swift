@@ -46,6 +46,16 @@ class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
+    let continueButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemCyan
+        button.setTitle("Продолжить", for: .normal)
+        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 12
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -60,6 +70,7 @@ class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(patronymicTextField)
         view.addSubview(phoneTextField)
         view.addSubview(emailTextField)
+        view.addSubview(continueButton)
     }
     
     
@@ -98,6 +109,12 @@ class RegistrationPersonalDataViewController: UIViewController {
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
             make.height.equalTo(56)
+        }
+        continueButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-34-16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(52)
         }
 
     }
