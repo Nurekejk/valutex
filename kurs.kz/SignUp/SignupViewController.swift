@@ -24,7 +24,7 @@ class SignupViewController: UIViewController {
         return textField
     }()
     
-    let button: UIButton = {
+    let continueButton: UIButton = {
         let button = UIButton()
         button.setTitle("Продолжить", for: .normal)
         button.backgroundColor = UIColor(named: "signupButtonColor")
@@ -45,7 +45,7 @@ class SignupViewController: UIViewController {
     private func setupViews() {
         view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
-        view.addSubview(button)
+        view.addSubview(continueButton)
     }
 
     private func setupConstriants() {
@@ -61,8 +61,7 @@ class SignupViewController: UIViewController {
             make.height.equalTo(56)
         }
 
-
-        button.snp.makeConstraints { make in
+        continueButton.snp.makeConstraints { make in
             make.top.equalTo(phoneTextField.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
