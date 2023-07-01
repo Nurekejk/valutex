@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
+		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
+		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
 		9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */; };
 		9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D842A4AFB44002D1F74 /* ViewController.swift */; };
-		9F899D882A4AFB44002D1F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D862A4AFB44002D1F74 /* Main.storyboard */; };
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9F899D842A4AFB44002D1F74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9F899D872A4AFB44002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F899D892A4AFB46002D1F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,12 +33,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
+				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F63DF3F2A50495100EA9060 /* Sigin */ = {
+			isa = PBXGroup;
+			children = (
+				9F63DF402A50497A00EA9060 /* SiginInViewController.swift */,
+			);
+			path = Sigin;
+			sourceTree = "<group>";
+		};
 		9F899D742A4AFB43002D1F74 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +68,12 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				9F63DF3F2A50495100EA9060 /* Sigin */,
+				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D802A4AFB44002D1F74 /* AppDelegate.swift */,
 				9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */,
 				9F899D842A4AFB44002D1F74 /* ViewController.swift */,
-				9F899D862A4AFB44002D1F74 /* Main.storyboard */,
 				9F899D892A4AFB46002D1F74 /* Assets.xcassets */,
-				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D8E2A4AFB46002D1F74 /* Info.plist */,
 			);
 			path = kurs.kz;
@@ -83,6 +95,10 @@
 			dependencies = (
 			);
 			name = kurs.kz;
+			packageProductDependencies = (
+				9F63DF432A504C3200EA9060 /* SnapKit */,
+				9F63DF462A50540F00EA9060 /* Alamofire */,
+			);
 			productName = kurs.kz;
 			productReference = 9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +127,10 @@
 				Base,
 			);
 			mainGroup = 9F899D742A4AFB43002D1F74;
+			packageReferences = (
+				9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +147,6 @@
 			files = (
 				9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */,
 				9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */,
-				9F899D882A4AFB44002D1F74 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +159,7 @@
 			files = (
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +167,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9F899D862A4AFB44002D1F74 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F899D872A4AFB44002D1F74 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +303,7 @@
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +330,7 @@
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -356,6 +368,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F63DF432A504C3200EA9060 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		9F63DF462A50540F00EA9060 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F899D752A4AFB43002D1F74 /* Project object */;
 }
