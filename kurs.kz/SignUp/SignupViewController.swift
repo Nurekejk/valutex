@@ -9,7 +9,7 @@ import UIKit
 
 class SignupViewController: UIViewController {
 
-    let label: UILabel = {
+    let registrationLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = .boldSystemFont(ofSize: 28)
@@ -43,19 +43,19 @@ class SignupViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.addSubview(label)
+        view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
         view.addSubview(button)
     }
 
     private func setupConstriants() {
-        label.snp.makeConstraints { make in
+        registrationLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.centerX.equalToSuperview()
         }
 
         phoneTextField.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(24)
+            make.top.equalTo(registrationLabel.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(56)
