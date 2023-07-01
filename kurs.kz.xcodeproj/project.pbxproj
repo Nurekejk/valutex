@@ -13,6 +13,7 @@
 		9F899D882A4AFB44002D1F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D862A4AFB44002D1F74 /* Main.storyboard */; };
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
+		FAD47F8A2A507B000055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F892A507B000055EDEA /* RegistrationPersonalDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9F899D892A4AFB46002D1F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD47F892A507B000055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				9F899D892A4AFB46002D1F74 /* Assets.xcassets */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D8E2A4AFB46002D1F74 /* Info.plist */,
+				FAD47F892A507B000055EDEA /* RegistrationPersonalDataViewController.swift */,
 			);
 			path = kurs.kz;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				FAD47F8A2A507B000055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
