@@ -32,5 +32,12 @@ class MyTableViewController: UITableViewController {
         super.viewDidLoad()
         // здесь тоже будут доп настройки для контроллера
     }
+    
+    //MARK: - Test functions
+    
+    //this function returns the string "Hello"
+    func returnStringHelloWorld () -> String {
+        return "Hello, World!"
+    }
 }
 
