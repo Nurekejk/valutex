@@ -19,22 +19,32 @@ class RegistrationPersonalDataViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        setupLayout()
+        setupViews()
+        setupConstraints()
         view.backgroundColor = UIColor.red
         // Do any additional setup after loading the view.
     }
     
-    func setup() {
+    func setupViews() {
         view.addSubview(surnameTextField)
     }
     
-    func setupLayout() {
+    
+    private func setupConstraints() {
+//        NSLayoutConstraint.activate([
+//            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+////            label.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+////            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
+//
+
         surnameTextField.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-            make.center.equalTo(self.view)
+            make.top.equalToSuperview().offset(100)
+            make.centerX.equalToSuperview()
+//            make.centerX.equalToSuperview()
         }
-        
+
     }
     
 
