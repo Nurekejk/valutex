@@ -28,6 +28,8 @@ class SignupViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Продолжить", for: .normal)
         button.backgroundColor = UIColor(named: "signupButtonColor")
+        button.tintColor = .white
+        button.layer.cornerRadius = 12
         return button
     }()
     
