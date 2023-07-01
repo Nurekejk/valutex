@@ -34,6 +34,23 @@ class SignupViewController: UIViewController {
         return button
     }()
     
+    let isThereAccountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас есть аккаунт?"
+        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.textColor = UIColor(named: "defaultTextColor")
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let signInButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Войти", for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(UIColor(named: "signupButtonColor"), for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +64,8 @@ class SignupViewController: UIViewController {
         view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
         view.addSubview(continueButton)
+        view.addSubview(isThereAccountLabel)
+        view.addSubview(signInButton)
     }
 
     private func setupConstriants() {
@@ -67,6 +86,20 @@ class SignupViewController: UIViewController {
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
+        }
+        
+        isThereAccountLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(signInButton.snp.top).offset(-8)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(18)
+        }
+        
+        signInButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-60)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(20)
         }
     }
 }
