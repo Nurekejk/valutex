@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 final class SignupViewController: UIViewController {
 
@@ -16,12 +17,16 @@ final class SignupViewController: UIViewController {
         return label
     }()
 
-    private let phoneTextField: UITextField = {
-        let textField = UITextField()
+    private let phoneTextField: SkyFloatingLabelTextField = {
+        let textField = SkyFloatingLabelTextField()
+        textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
+        textField.titleColor = UIColor(named: "selectedTitleColor")!
+        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
         textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
+        textField.keyboardType = .phonePad
         return textField
     }()
     
