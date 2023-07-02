@@ -10,6 +10,7 @@ import SkyFloatingLabelTextField
 
 final class SignupViewController: UIViewController {
 
+    // MARK: - UI
     private let registrationLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
@@ -56,6 +57,7 @@ final class SignupViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +67,7 @@ final class SignupViewController: UIViewController {
         setupConstriants()
     }
 
+    // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
@@ -73,6 +76,7 @@ final class SignupViewController: UIViewController {
         view.addSubview(signInButton)
     }
 
+    // MARK: - Setup Constraints
     private func setupConstriants() {
         registrationLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
