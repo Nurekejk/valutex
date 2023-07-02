@@ -19,7 +19,17 @@ class LanguageSelectViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-
+        
+        setupViews()
+        setupConstraints()
+        
+    }
+    
+    private func setupViews() {
+        view.addSubview(label)
+    }
+    
+    private func setupConstraints() {
         
     }
 
