@@ -27,9 +27,11 @@ class LanguageSelectViewController: UIViewController {
     let kazakhButton: UIButton = {
         let button = UIButton()
         button.setTitle("Қазақша", for: .normal)
-        button.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        button.tintColor = .white
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
     
