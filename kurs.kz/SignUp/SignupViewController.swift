@@ -102,4 +102,10 @@ final class SignupViewController: UIViewController {
             make.height.equalTo(20)
         }
     }
+    
+    // MARK: - Actions
+        
+        @objc private func continueButtonDidPressed() {
+            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+        }
 }
