@@ -24,6 +24,15 @@ class LanguageSelectViewController: UIViewController {
         return label
     }()
     
+    let kazakhButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Қазақша", for: .normal)
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
