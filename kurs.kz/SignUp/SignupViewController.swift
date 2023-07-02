@@ -9,14 +9,14 @@ import UIKit
 
 final class SignupViewController: UIViewController {
 
-    let registrationLabel: UILabel = {
+    private let registrationLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = .boldSystemFont(ofSize: 28)
         return label
     }()
 
-    let phoneTextField: UITextField = {
+    private let phoneTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "+7 777 777 00 00"
         textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
@@ -25,7 +25,7 @@ final class SignupViewController: UIViewController {
         return textField
     }()
     
-    let continueButton: UIButton = {
+    private let continueButton: UIButton = {
         let button = UIButton()
         button.setTitle("Продолжить", for: .normal)
         button.backgroundColor = UIColor(named: "signupButtonColor")
@@ -34,7 +34,7 @@ final class SignupViewController: UIViewController {
         return button
     }()
     
-    let isThereAccountLabel: UILabel = {
+    private let isThereAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
         label.font = UIFont.systemFont(ofSize: 14.0)
@@ -43,7 +43,7 @@ final class SignupViewController: UIViewController {
         return label
     }()
     
-    let signInButton: UIButton = {
+    private let signInButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = .white
