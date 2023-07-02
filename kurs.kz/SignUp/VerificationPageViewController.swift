@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CHIOTPField
 
-class VerificationPageViewController: UIViewController {
+final class VerificationPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
