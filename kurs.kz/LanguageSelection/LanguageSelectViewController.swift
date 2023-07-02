@@ -23,4 +23,17 @@ class LanguageSelectViewController: UIViewController {
         view.backgroundColor = .white
     
     }
+    
+    private func setupViews() {
+        view.addSubview(imageView)
+        
+    }
+    
+    private func setupContraints() {
+        imageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(50)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(300)
+        }
+    }
 }
