@@ -93,5 +93,17 @@ class LanguageSelectViewController: UIViewController {
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
+        
+        kazakhButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
+        russianButton.snp.makeConstraints { make in
+            make.height.equalTo(kazakhButton)
+        }
+        
+        englishButton.snp.makeConstraints { make in
+            make.height.equalTo(kazakhButton)
+        }
     }
 }
