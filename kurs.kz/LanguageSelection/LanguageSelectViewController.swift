@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class LanguageSelectViewController: UIViewController {
     
     let label: UILabel = {
         let label = UILabel()
         label.text = "Выберите язык приложения"
+        label.font = .boldSystemFont(ofSize: 24)
 //        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,6 +39,13 @@ class LanguageSelectViewController: UIViewController {
 //            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 //        ])
+        
+        label.snp.makeConstraints { make in
+//            make.leading.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(292)
+            make.centerX.equalToSuperview()
+            
+            
+        }
     }
-
 }
