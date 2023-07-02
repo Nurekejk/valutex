@@ -17,4 +17,10 @@ class LanguageSelectViewController: UIViewController {
         return imageView
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+    
+    }
 }
