@@ -114,7 +114,7 @@ final class SignupViewController: UIViewController {
     
     // MARK: - Actions
         
-        @objc private func continueButtonDidPressed() {
-            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
-        }
+//        @objc private func continueButtonDidPressed() {
+//            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+//        }
 }
