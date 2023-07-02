@@ -64,7 +64,7 @@ final class SignupViewController: UIViewController {
         view.backgroundColor = .white
         
         setupViews()
-        setupConstriants()
+        setupConstraints()
     }
 
     // MARK: - Setup Views
@@ -77,7 +77,7 @@ final class SignupViewController: UIViewController {
     }
 
     // MARK: - Setup Constraints
-    private func setupConstriants() {
+    private func setupConstraints() {
         registrationLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.centerX.equalToSuperview()
