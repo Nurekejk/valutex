@@ -10,5 +10,11 @@ import SnapKit
 
 class LanguageSelectViewController: UIViewController {
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "selectlanguage")
+        return imageView
+    }()
     
 }
