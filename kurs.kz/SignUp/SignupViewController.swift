@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+final class SignupViewController: UIViewController {
 
     let registrationLabel: UILabel = {
         let label = UILabel()
