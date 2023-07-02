@@ -21,6 +21,9 @@ class LanguageSelectViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        setupViews()
+        setupContraints()
     
     }
     
