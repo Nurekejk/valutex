@@ -37,6 +37,7 @@ class LanguageSelectViewController: UIViewController {
     
     private func setupViews() {
         view.addSubview(imageView)
+        view.addSubview(label)
         
     }
     
