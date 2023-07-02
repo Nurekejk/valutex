@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
        // window?.rootViewController = SiginInViewController()
-        window?.rootViewController = SignupViewController()
+        window?.rootViewController = VerificationPageViewController()
         window?.makeKeyAndVisible()
     }
 }
