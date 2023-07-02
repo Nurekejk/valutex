@@ -46,5 +46,10 @@ class LanguageSelectViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(300)
         }
+        
+        label.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(50)
+            make.centerX.equalToSuperview()
+        }
     }
 }
