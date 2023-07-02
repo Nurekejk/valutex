@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
+		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				990100482A50B99B003EE3C4 /* SignupViewController.swift */,
+				9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
