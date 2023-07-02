@@ -51,6 +51,14 @@ class LanguageSelectViewController: UIViewController {
         return button
     }()
     
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+        return stackView
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
