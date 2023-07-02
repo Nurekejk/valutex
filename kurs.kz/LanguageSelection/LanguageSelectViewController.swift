@@ -73,7 +73,11 @@ class LanguageSelectViewController: UIViewController {
     private func setupViews() {
         view.addSubview(imageView)
         view.addSubview(label)
+        view.addSubview(stackView)
         
+        stackView.addArrangedSubview(kazakhButton)
+        stackView.addArrangedSubview(russianButton)
+        stackView.addArrangedSubview(englishButton)
     }
     
     private func setupContraints() {
