@@ -11,6 +11,22 @@ import SkyFloatingLabelTextField
 
 class RegistrationPersonalDataViewController: UIViewController {
     
+    //MARK: - Colors:
+    
+    private let registrationGrayColor = UIColor (
+        red: 246.0 / 255.0,
+        green: 247.0 / 255.0,
+        blue: 249.0 / 255.0,
+        alpha: 1 )
+    
+    private let registrationBlueColor = UIColor (
+        red: 45.0 / 255.0,
+        green: 156.0 / 255.0,
+        blue: 219.0 / 255.0,
+        alpha: 1 )
+    
+    //MARK: - Elements:
+    
     let surnameTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
