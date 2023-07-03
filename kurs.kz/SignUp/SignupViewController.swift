@@ -41,13 +41,14 @@ final class SignupViewController: UIViewController {
         return textField
     }()
     
-    private let continueButton: UIButton = {
-        let button = UIButton()
+    private lazy var continueButton: UIButton = {
+        let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel!.font = .boldSystemFont(ofSize: 16)
         button.backgroundColor = UIColor(named: "signupButtonColor")
         button.tintColor = .white
         button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -60,11 +61,11 @@ final class SignupViewController: UIViewController {
         return label
     }()
     
-    private let signInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         
         let myAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .medium),
-              .foregroundColor: UIColor(named: "signupButtonColor"),
+            .foregroundColor: UIColor(named: "signupButtonColor")!,
               .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
@@ -73,7 +74,7 @@ final class SignupViewController: UIViewController {
                 attributes: myAttributes
         )
         
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = .white
         button.setAttributedTitle(attributeString, for: .normal)
         
@@ -84,14 +85,13 @@ final class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
         setupViews()
         setupConstraints()
     }
 
     // MARK: - Setup Views
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
         view.addSubview(continueButton)
@@ -135,11 +135,11 @@ final class SignupViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
+     // MARK: - Actions
         
-//        @objc private func continueButtonDidPressed() {
-//            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
-//        }
+    @objc private func continueButtonDidPressed() {
+        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+    }
 }
 
 class CustomSkyFloatingLabelTextField: SkyFloatingLabelTextField {
