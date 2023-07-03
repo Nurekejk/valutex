@@ -9,7 +9,10 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 
-class RegistrationPersonalDataViewController: UIViewController {
+
+//MARK: - UI
+
+final class RegistrationPersonalDataViewController: UIViewController {
     
     //MARK: - Colors:
     
@@ -28,7 +31,7 @@ class RegistrationPersonalDataViewController: UIViewController {
     //MARK: - Elements:
     
     //container views:
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
@@ -41,20 +44,20 @@ class RegistrationPersonalDataViewController: UIViewController {
         return stackView
     }()
     
-    let containerView: UIView = {
+    private let containerView: UIView = {
         let container = UIView()
         container.backgroundColor = .white
         return container
     }()
     
-    let placeholderSwitchView: UIView = {
+    private let placeholderSwitchView: UIView = {
         let placeholderSwitchView = UIView()
         return placeholderSwitchView
     }()
     
 
     //elements put in containers:
-    let surnameTextField: paddedTextField = {
+    private let surnameTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
@@ -72,7 +75,7 @@ class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    let nameTextField: paddedTextField = {
+    private let nameTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
@@ -91,7 +94,7 @@ class RegistrationPersonalDataViewController: UIViewController {
     }()
     
     
-    let patronymicTextField: paddedTextField = {
+    private let patronymicTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
@@ -109,7 +112,7 @@ class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    let phoneTextField: paddedTextField = {
+    private let phoneTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
@@ -127,7 +130,7 @@ class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    let continueButton: UIButton = {
+    private let continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
@@ -136,6 +139,7 @@ class RegistrationPersonalDataViewController: UIViewController {
         return button
     }()
     
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -143,7 +147,8 @@ class RegistrationPersonalDataViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setupViews() {
+    //MARK: - setup views
+    private func setupViews() {
         //putting elements in the stack:
         stackView.addArrangedSubview(placeholderSwitchView)
         stackView.addArrangedSubview(surnameTextField)
