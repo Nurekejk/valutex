@@ -18,8 +18,8 @@ final class SignupViewController: UIViewController {
         return label
     }()
 
-    private let phoneTextField: SkyFloatingLabelTextField = {
-        let textField = SkyFloatingLabelTextField()
+    private let phoneTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
         textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
         textField.titleColor = UIColor(named: "selectedTitleColor")!
@@ -117,4 +117,23 @@ final class SignupViewController: UIViewController {
 //        @objc private func continueButtonDidPressed() {
 //            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
 //        }
+}
+
+class CustomSkyFloatingLabelTextField: SkyFloatingLabelTextField {
+    
+        let padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+
+        override open func textRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
+
+        override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
+
+        override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
+    
+        
 }
