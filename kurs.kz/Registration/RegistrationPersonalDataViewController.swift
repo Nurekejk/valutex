@@ -27,6 +27,7 @@ class RegistrationPersonalDataViewController: UIViewController {
     
     //MARK: - Elements:
     
+    //container views:
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -52,12 +53,20 @@ class RegistrationPersonalDataViewController: UIViewController {
     }()
     
 
-    
+    //elements put in containers:
     let surnameTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
+        textField.titleFormatter = { (text: String) -> String in
+            if #available(iOS 9.0, *) {
+                return text
+            } else {
+                return text
+            }
+        }
+        textField.selectedTitleColor = .gray
         textField.title = "Фамилия"
         textField.placeholder = "Фамилия"
         return textField
@@ -68,6 +77,14 @@ class RegistrationPersonalDataViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
+        textField.titleFormatter = { (text: String) -> String in
+            if #available(iOS 9.0, *) {
+                return text
+            } else {
+                return text
+            }
+        }
+        textField.selectedTitleColor = .gray
         textField.title = "Имя"
         textField.placeholder = "Имя"
         return textField
@@ -79,6 +96,14 @@ class RegistrationPersonalDataViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
+        textField.titleFormatter = { (text: String) -> String in
+            if #available(iOS 9.0, *) {
+                return text
+            } else {
+                return text
+            }
+        }
+        textField.selectedTitleColor = .gray
         textField.title = "Отчество"
         textField.placeholder = "Отчество"
         return textField
@@ -89,6 +114,14 @@ class RegistrationPersonalDataViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
+        textField.titleFormatter = { (text: String) -> String in
+            if #available(iOS 9.0, *) {
+                return text
+            } else {
+                return text
+            }
+        }
+        textField.selectedTitleColor = .gray
         textField.title = "Телефон"
         textField.placeholder = "Телефон"
         return textField
@@ -111,6 +144,7 @@ class RegistrationPersonalDataViewController: UIViewController {
     }
     
     func setupViews() {
+        //putting elements in the stack:
         stackView.addArrangedSubview(placeholderSwitchView)
         stackView.addArrangedSubview(surnameTextField)
         stackView.addArrangedSubview(nameTextField)
@@ -122,48 +156,26 @@ class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(containerView)
         view.addSubview(stackView)
         
+        //changing background colors:
         view.backgroundColor = registrationGrayColor
         placeholderSwitchView.backgroundColor = registrationBlueColor
         continueButton.backgroundColor = registrationBlueColor
 
         
     }
-    
+    //MARK: - Constraints:
     private func setupConstraints() {
-
-
-        surnameTextField.snp.makeConstraints { make in
+        stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-32)
-            make.height.equalTo(56)
-//            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-312)
         }
-        
-        nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(surnameTextField.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-32)
-            make.height.equalTo(56)
-        }
-        
-        patronymicTextField.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-32)
-            make.height.equalTo(56)
-        }
-        phoneTextField.snp.makeConstraints { make in
-            make.top.equalTo(patronymicTextField.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-32)
-            make.height.equalTo(56)
-        }
-        emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(phoneTextField.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-32)
-            make.height.equalTo(56)
+        containerView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(0)
+            make.top.equalTo(stackView.snp.bottom).offset(194)
+            make.leading.equalToSuperview().offset(0)
+            make.trailing.equalToSuperview().offset(0)
         }
         continueButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-34-16)
@@ -171,11 +183,7 @@ class RegistrationPersonalDataViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
-
     }
-    
-
-
 }
 
 //MARK: - Custom Classes:
@@ -192,5 +200,11 @@ class paddedTextField: SkyFloatingLabelTextField {
 
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
+    }
+    override open func titleLabelRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
+        if editing {
+            return CGRect(x: 5, y: 5, width: bounds.size.width, height: titleHeight())
+        }
+        return CGRect(x: 100, y: titleHeight(), width: bounds.size.width, height: titleHeight())
     }
 }
