@@ -21,6 +21,8 @@ class LanguageSelectViewController: UIViewController {
         let label = UILabel()
         label.text = "Выберите язык приложения"
         label.font = .boldSystemFont(ofSize: 24)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
