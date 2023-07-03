@@ -31,12 +31,13 @@ final class SignupViewController: UIViewController {
         return textField
     }()
     
-    private let continueButton: UIButton = {
-        let button = UIButton()
+    private lazy var continueButton: UIButton = {
+        let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.backgroundColor = UIColor(named: "signupButtonColor")
         button.tintColor = .white
         button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -50,7 +51,7 @@ final class SignupViewController: UIViewController {
     }()
     
     private let signInButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(UIColor(named: "signupButtonColor"), for: .normal)
@@ -68,7 +69,7 @@ final class SignupViewController: UIViewController {
     }
 
     // MARK: - Setup Views
-    private func setupViews() {
+    public func setupViews() {
         view.addSubview(registrationLabel)
         view.addSubview(phoneTextField)
         view.addSubview(continueButton)
@@ -114,9 +115,9 @@ final class SignupViewController: UIViewController {
     
     // MARK: - Actions
         
-//        @objc private func continueButtonDidPressed() {
-//            self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
-//        }
+    @objc private func continueButtonDidPressed() {
+        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+    }
 }
 
 class CustomSkyFloatingLabelTextField: SkyFloatingLabelTextField {

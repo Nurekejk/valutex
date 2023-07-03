@@ -94,9 +94,7 @@ final class VerificationPageViewController: UIViewController {
     
     // MARK: - Actions
         
-//        @objc private func verifyButtonDidPressed() {
-//            self.navigationController?.pushViewController(, animated: true)
-//        }
-    
-
+//    @objc private func verifyButtonDidPressed() {
+//        self.navigationController?.pushViewController(, animated: true)
+//    }
 }
