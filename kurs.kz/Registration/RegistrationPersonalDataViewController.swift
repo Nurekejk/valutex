@@ -57,8 +57,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
 
     //elements put in containers:
-    private let surnameTextField: paddedTextField = {
-        let textField = paddedTextField()
+    private let surnameTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
@@ -75,8 +75,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    private let nameTextField: paddedTextField = {
-        let textField = paddedTextField()
+    private let nameTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
@@ -94,8 +94,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }()
     
     
-    private let patronymicTextField: paddedTextField = {
-        let textField = paddedTextField()
+    private let patronymicTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
@@ -112,8 +112,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    private let phoneTextField: paddedTextField = {
-        let textField = paddedTextField()
+    private let phoneTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
@@ -193,7 +193,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
 
 //MARK: - Custom Classes:
 
-class paddedTextField: SkyFloatingLabelTextField {
+class PaddedTextField: SkyFloatingLabelTextField {
 
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
