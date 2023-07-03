@@ -29,6 +29,7 @@ class LanguageSelectViewController: UIViewController {
         button.setTitle("Қазақша", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
@@ -40,6 +41,7 @@ class LanguageSelectViewController: UIViewController {
         button.setTitle("Русский", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
@@ -51,6 +53,7 @@ class LanguageSelectViewController: UIViewController {
         button.setTitle("English", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
@@ -61,7 +64,7 @@ class LanguageSelectViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = 10
+        stackView.spacing = 30
         return stackView
     }()
     
@@ -88,7 +91,7 @@ class LanguageSelectViewController: UIViewController {
     
     private func setupContraints() {
         imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
+            make.top.equalToSuperview().offset(124)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(300)
         }
