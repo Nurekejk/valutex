@@ -20,20 +20,31 @@ final class SignupViewController: UIViewController {
 
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
+        
         textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
         textField.titleColor = UIColor(named: "selectedTitleColor")!
         textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.placeholderColor = UIColor(named: "phoneNumberColor")!
+        
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.font = UIFont.systemFont(ofSize: 16.0)
+        
         textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
+        
         textField.keyboardType = .phonePad
+        textField.setTitleVisible(true)
+        
         return textField
     }()
     
     private let continueButton: UIButton = {
         let button = UIButton()
         button.setTitle("Продолжить", for: .normal)
+        button.titleLabel!.font = .boldSystemFont(ofSize: 16)
         button.backgroundColor = UIColor(named: "signupButtonColor")
         button.tintColor = .white
         button.layer.cornerRadius = 12
@@ -50,10 +61,22 @@ final class SignupViewController: UIViewController {
     }()
     
     private let signInButton: UIButton = {
+        
+        let myAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
+              .foregroundColor: UIColor(named: "signupButtonColor"),
+              .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        let attributeString = NSMutableAttributedString(
+                string: "Войти",
+                attributes: myAttributes
+        )
+        
         let button = UIButton()
-        button.setTitle("Войти", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(UIColor(named: "signupButtonColor"), for: .normal)
+        button.setAttributedTitle(attributeString, for: .normal)
+        
         return button
     }()
     
@@ -121,7 +144,7 @@ final class SignupViewController: UIViewController {
 
 class CustomSkyFloatingLabelTextField: SkyFloatingLabelTextField {
     
-        let padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        let padding = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 0)
 
         override open func textRect(forBounds bounds: CGRect) -> CGRect {
             return bounds.inset(by: padding)
@@ -135,5 +158,11 @@ class CustomSkyFloatingLabelTextField: SkyFloatingLabelTextField {
             return bounds.inset(by: padding)
         }
     
-        
+        override open func titleLabelRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
+            if editing {
+                return CGRect(x: 16, y: 8, width: bounds.size.width, height: titleHeight())
+            }
+            return CGRect(x: 100, y: titleHeight(), width: bounds.size.width, height: titleHeight())
+        }
+
 }
