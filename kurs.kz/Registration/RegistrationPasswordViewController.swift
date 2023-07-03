@@ -17,7 +17,7 @@ class RegistrationPasswordViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         stackView.backgroundColor = .white
@@ -51,26 +51,40 @@ class RegistrationPasswordViewController: UIViewController {
         return placeholderSwitchView
     }()
     
+    private let showHideButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "eye-slash"), for: .normal)
+        
+//        button.frame = CGSize(width: 20, height: 20)
+        return button
+    }()
+    
     private let textLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        //text is being cut off due to wrong font I think
         label.text = "Пароль должен состоять из латинских букв и цифр"
         label.font = .systemFont(ofSize: 14, weight: .init(rawValue: 400))
         return label
     }()
     
-    private let enterPasswordTextField: UITextField = {
-        let textField = UITextField()
+    
+    private let enterPasswordTextField: PasswordTextField = {
+        let textField = PasswordTextField()
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
+        textField.rightViewMode = .always
         textField.placeholder = "Пароль"
+        
         return textField
     }()
     private let repeatPasswordTextField: UITextField = {
-        let textfield = UITextField()
-        textfield.borderStyle = .roundedRect
-        textfield.layer.cornerRadius = 8
-        textfield.placeholder = "Повторите пароль"
-        return textfield
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 8
+        textField.rightViewMode = .always
+        textField.placeholder = "Повторите пароль"
+        return textField
     }()
     
     //MARK: - lifecycle
@@ -79,32 +93,60 @@ class RegistrationPasswordViewController: UIViewController {
         setupViews()
         setupConstraints()
         
-        containerView.backgroundColor = .blue
+        view.backgroundColor = .gray
+        elementsStackView.backgroundColor = .white
+        placeholderSwitchView.backgroundColor = .blue
+        passwordStackView.backgroundColor = .yellow
+        textLabel.backgroundColor = .green
+
+        
+
+
         // Do any additional setup after loading the view.
     }
     
     private func setupViews() {
-        view.addSubview(containerView)
+        view.addSubview(elementsStackView)
+        elementsStackView.addArrangedSubview(placeholderSwitchView)
+        elementsStackView.addArrangedSubview(passwordStackView)
+        elementsStackView.addArrangedSubview(textLabel)
+        passwordStackView.addArrangedSubview(enterPasswordTextField)
+        passwordStackView.addArrangedSubview(repeatPasswordTextField)
+        
+        enterPasswordTextField.rightView = showHideButton
+        repeatPasswordTextField.rightView = showHideButton
     }
 
     private func setupConstraints() {
-        containerView.snp.makeConstraints { make in
+        elementsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-464)
         }
-        enterPasswordTextField.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(16)
+        placeholderSwitchView.snp.makeConstraints { make in
+            make.height.equalTo(24)
         }
+        textLabel.snp.makeConstraints { make in
+            make.height.equalTo(36)
+        }
+
+//        enterPasswordTextField.snp.makeConstraints { make in
+//            make.top.equalTo(containerView.snp.top).offset(16)
+//        }
     }
     
 }
 
 
 
-
-
+class PasswordTextField: UITextField {
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        let padding = 10.0
+        let rightBounds = CGRect(x: bounds.width - bounds.height / 2.0 - padding, y: bounds.height/4, width: bounds.height / 2.0, height: bounds.height / 2.0)
+            return rightBounds
+    }
+}
 
 
 
