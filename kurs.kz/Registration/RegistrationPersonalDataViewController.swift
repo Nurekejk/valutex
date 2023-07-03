@@ -27,45 +27,75 @@ class RegistrationPersonalDataViewController: UIViewController {
     
     //MARK: - Elements:
     
-    let surnameTextField: UITextField = {
-        let textField = UITextField()
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+        stackView.backgroundColor = .white
+        stackView.layer.cornerRadius = 8
+        return stackView
+    }()
+    
+    let containerView: UIView = {
+        let container = UIView()
+        container.backgroundColor = .white
+        return container
+    }()
+    
+    let placeholderSwitchView: UIView = {
+        let placeholderSwitchView = UIView()
+        return placeholderSwitchView
+    }()
+    
+
+    
+    let surnameTextField: paddedTextField = {
+        let textField = paddedTextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text"
+        textField.layer.cornerRadius = 8
+        textField.lineView.isHidden = true
+        textField.title = "Фамилия"
+        textField.placeholder = "Фамилия"
         return textField
     }()
     
-    let nameTextField: UITextField = {
-        let textField = UITextField()
+    let nameTextField: paddedTextField = {
+        let textField = paddedTextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text"
+        textField.layer.cornerRadius = 8
+        textField.lineView.isHidden = true
+        textField.title = "Имя"
+        textField.placeholder = "Имя"
         return textField
     }()
     
     
-    let patronymicTextField: UITextField = {
-        let textField = UITextField()
+    let patronymicTextField: paddedTextField = {
+        let textField = paddedTextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text"
+        textField.layer.cornerRadius = 8
+        textField.lineView.isHidden = true
+        textField.title = "Отчество"
+        textField.placeholder = "Отчество"
         return textField
     }()
     
-    let phoneTextField: UITextField = {
-        let textField = UITextField()
+    let phoneTextField: paddedTextField = {
+        let textField = paddedTextField()
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text"
-        return textField
-    }()
-    
-    let emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text"
+        textField.layer.cornerRadius = 8
+        textField.lineView.isHidden = true
+        textField.title = "Телефон"
+        textField.placeholder = "Телефон"
         return textField
     }()
     
     let continueButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemCyan
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.white, for: .normal)
@@ -77,19 +107,27 @@ class RegistrationPersonalDataViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        view.backgroundColor = .white
         // Do any additional setup after loading the view.
     }
     
     func setupViews() {
-        view.addSubview(surnameTextField)
-        view.addSubview(nameTextField)
-        view.addSubview(patronymicTextField)
-        view.addSubview(phoneTextField)
-        view.addSubview(emailTextField)
-        view.addSubview(continueButton)
+        stackView.addArrangedSubview(placeholderSwitchView)
+        stackView.addArrangedSubview(surnameTextField)
+        stackView.addArrangedSubview(nameTextField)
+        stackView.addArrangedSubview(patronymicTextField)
+        stackView.addArrangedSubview(phoneTextField)
+
+        containerView.addSubview(continueButton)
+        
+        view.addSubview(containerView)
+        view.addSubview(stackView)
+        
+        view.backgroundColor = registrationGrayColor
+        placeholderSwitchView.backgroundColor = registrationBlueColor
+        continueButton.backgroundColor = registrationBlueColor
+
+        
     }
-    
     
     private func setupConstraints() {
 
