@@ -8,15 +8,15 @@ PODS:
   - CHIOTPField/One (0.1.0)
   - CHIOTPField/Three (0.1.0)
   - CHIOTPField/Two (0.1.0)
-  - SkyFloatingLabelTextField (3.8.0)
+  - SkyFloatingLabelTextField (4.0.0)
 
 DEPENDENCIES:
-  - CHIOTPField (~> 0.1)
+  - CHIOTPField
   - CHIOTPField/Four
   - CHIOTPField/One
   - CHIOTPField/Three
   - CHIOTPField/Two
-  - SkyFloatingLabelTextField (~> 3.0)
+  - SkyFloatingLabelTextField
 
 SPEC REPOS:
   trunk:
@@ -25,8 +25,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
-  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
 
-PODFILE CHECKSUM: 4429724fc94853ffbf282f844d0b31f5af6681d3
+PODFILE CHECKSUM: 7fb15718e2d519da33b54dc4102e8acadfef4f96
 
 COCOAPODS: 1.12.1
