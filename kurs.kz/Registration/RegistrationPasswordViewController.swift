@@ -2,7 +2,7 @@
 //  RegistrationPasswordViewController.swift
 //  kurs.kz
 //
-//  Created by MacBook on 03.07.2023.
+//  Created by Adil on 03.07.2023.
 //
 
 
@@ -11,6 +11,7 @@ import SnapKit
 
 class RegistrationPasswordViewController: UIViewController {
     
+    //MARK: - UI
     private let elementsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -57,7 +58,6 @@ class RegistrationPasswordViewController: UIViewController {
     private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        //text is being cut off due to wrong font I think
         label.text = "Пароль должен состоять из латинских букв и цифр"
         label.font = .systemFont(ofSize: 14, weight: .init(rawValue: 400))
         return label
@@ -84,7 +84,7 @@ class RegistrationPasswordViewController: UIViewController {
         return textField
     }()
     
-    //MARK: - lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -93,14 +93,9 @@ class RegistrationPasswordViewController: UIViewController {
         view.backgroundColor = .gray
         elementsStackView.backgroundColor = .white
         placeholderSwitchView.backgroundColor = .blue
-
-
-        
-
-
-        // Do any additional setup after loading the view.
     }
     
+    // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(elementsStackView)
         elementsStackView.addArrangedSubview(placeholderSwitchView)
@@ -113,7 +108,8 @@ class RegistrationPasswordViewController: UIViewController {
         repeatPasswordTextField.rightView = repeatPasswordButton
 
     }
-
+    
+    //MARK: - Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
