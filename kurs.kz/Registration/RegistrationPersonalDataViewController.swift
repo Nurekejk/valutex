@@ -10,11 +10,10 @@ import SnapKit
 import SkyFloatingLabelTextField
 
 
-//MARK: - UI
 
 final class RegistrationPersonalDataViewController: UIViewController {
     
-    //MARK: - Colors:
+    //MARK: - UI
     
     private let registrationGrayColor = UIColor (
         red: 246.0 / 255.0,
@@ -28,9 +27,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
         blue: 219.0 / 255.0,
         alpha: 1 )
     
-    //MARK: - Elements:
     
-    //container views:
+    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -49,14 +47,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         container.backgroundColor = .white
         return container
     }()
-    
-    private let placeholderSwitchView: UIView = {
-        let placeholderSwitchView = UIView()
-        return placeholderSwitchView
-    }()
-    
 
-    //elements put in containers:
     private let surnameTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
@@ -139,18 +130,15 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return button
     }()
     
-    //MARK: - lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        // Do any additional setup after loading the view.
     }
     
-    //MARK: - setup views
+    //MARK: - Setup Views
     private func setupViews() {
-        //putting elements in the stack:
-        stackView.addArrangedSubview(placeholderSwitchView)
         stackView.addArrangedSubview(surnameTextField)
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(patronymicTextField)
@@ -161,9 +149,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(containerView)
         view.addSubview(stackView)
         
-        //changing background colors:
         view.backgroundColor = registrationGrayColor
-        placeholderSwitchView.backgroundColor = registrationBlueColor
         continueButton.backgroundColor = registrationBlueColor
 
         
@@ -191,25 +177,3 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
 }
 
-//MARK: - Custom Classes:
-
-class PaddedTextField: SkyFloatingLabelTextField {
-
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
-    }
-
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
-    }
-
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
-    }
-    override open func titleLabelRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
-        if editing {
-            return CGRect(x: 5, y: 5, width: bounds.size.width, height: titleHeight())
-        }
-        return CGRect(x: 100, y: titleHeight(), width: bounds.size.width, height: titleHeight())
-    }
-}
