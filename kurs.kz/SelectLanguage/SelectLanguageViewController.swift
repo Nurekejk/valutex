@@ -9,14 +9,17 @@ import UIKit
 import SnapKit
 
 final class SelectLanguageViewController: UIViewController {
-    
+    // MARK: - UI
+
+    // private let
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "selectlanguage")
         return imageView
     }()
-    
+
+    // private let
     let label: UILabel = {
         let label = UILabel()
         label.text = "Выберите язык\nприложения"
@@ -25,7 +28,8 @@ final class SelectLanguageViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
+
+    // private let
     let kazakhButton: UIButton = {
         let button = UIButton()
         button.setTitle("Қазақша", for: .normal)
@@ -37,7 +41,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
+
+    // private let
     let russianButton: UIButton = {
         let button = UIButton()
         button.setTitle("Русский", for: .normal)
@@ -49,7 +54,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
+
+    // private let
     let englishButton: UIButton = {
         let button = UIButton()
         button.setTitle("English", for: .normal)
@@ -61,7 +67,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
+
+    // private let
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -69,8 +76,8 @@ final class SelectLanguageViewController: UIViewController {
         stackView.spacing = 30
         return stackView
     }()
-    
-    
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,9 +85,9 @@ final class SelectLanguageViewController: UIViewController {
         
         setupViews()
         setupContraints()
-    
     }
-    
+
+    // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(imageView)
         view.addSubview(label)
@@ -90,7 +97,8 @@ final class SelectLanguageViewController: UIViewController {
         stackView.addArrangedSubview(russianButton)
         stackView.addArrangedSubview(englishButton)
     }
-    
+
+    // MARK: - Setup Constraints
     private func setupContraints() {
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(124)
