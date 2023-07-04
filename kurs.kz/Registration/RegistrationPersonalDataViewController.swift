@@ -157,10 +157,10 @@ final class RegistrationPersonalDataViewController: UIViewController {
     //MARK: - Constraints:
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.height.equalTo(316)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-312)
+            make.bottom.equalToSuperview().offset(-380)
         }
         containerView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(0)
