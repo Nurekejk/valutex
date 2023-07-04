@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SelectLanguageViewController: UIViewController {
+final class SelectLanguageViewController: UIViewController {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
