@@ -51,12 +51,12 @@
 			path = LanguageSelection;
 			sourceTree = "<group>";
 		};
-		9F63DF3F2A50495100EA9060 /* Sigin */ = {
+		9F63DF3F2A50495100EA9060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
 				9F63DF402A50497A00EA9060 /* SiginInViewController.swift */,
 			);
-			path = Sigin;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		9F899D742A4AFB43002D1F74 = {
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				223E43E72A5151040009AC9F /* LanguageSelection */,
-				9F63DF3F2A50495100EA9060 /* Sigin */,
+				9F63DF3F2A50495100EA9060 /* SignIn */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D802A4AFB44002D1F74 /* AppDelegate.swift */,
 				9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */,
