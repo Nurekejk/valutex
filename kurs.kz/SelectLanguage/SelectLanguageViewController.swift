@@ -9,18 +9,17 @@ import UIKit
 import SnapKit
 
 final class SelectLanguageViewController: UIViewController {
+    
     // MARK: - UI
 
-    // private let
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "selectlanguage")
         return imageView
     }()
 
-    // private let
-    let label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
         label.text = "Выберите язык\nприложения"
         label.font = .boldSystemFont(ofSize: 24)
@@ -29,8 +28,7 @@ final class SelectLanguageViewController: UIViewController {
         return label
     }()
 
-    // private let
-    let kazakhButton: UIButton = {
+    private let kazakhButton: UIButton = {
         let button = UIButton()
         button.setTitle("Қазақша", for: .normal)
         button.backgroundColor = .white
@@ -42,8 +40,7 @@ final class SelectLanguageViewController: UIViewController {
         return button
     }()
 
-    // private let
-    let russianButton: UIButton = {
+    private let russianButton: UIButton = {
         let button = UIButton()
         button.setTitle("Русский", for: .normal)
         button.backgroundColor = .white
@@ -55,8 +52,7 @@ final class SelectLanguageViewController: UIViewController {
         return button
     }()
 
-    // private let
-    let englishButton: UIButton = {
+    private let englishButton: UIButton = {
         let button = UIButton()
         button.setTitle("English", for: .normal)
         button.backgroundColor = .white
@@ -68,8 +64,7 @@ final class SelectLanguageViewController: UIViewController {
         return button
     }()
 
-    // private let
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
