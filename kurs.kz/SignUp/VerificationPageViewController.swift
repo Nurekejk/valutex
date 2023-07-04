@@ -41,7 +41,7 @@ final class VerificationPageViewController: UIViewController {
     }()
     
     private let verifyButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "verifyButtonColor")
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -91,12 +91,5 @@ final class VerificationPageViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
-    
-    // MARK: - Actions
-        
-//        @objc private func verifyButtonDidPressed() {
-//            self.navigationController?.pushViewController(, animated: true)
-//        }
-    
 
 }
