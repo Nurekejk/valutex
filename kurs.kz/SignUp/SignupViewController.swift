@@ -92,11 +92,9 @@ final class SignupViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        view.addSubview(registrationLabel)
-        view.addSubview(phoneTextField)
-        view.addSubview(continueButton)
-        view.addSubview(isThereAccountLabel)
-        view.addSubview(signInButton)
+        [registrationLabel, phoneTextField, continueButton, isThereAccountLabel, signInButton].forEach {
+            view.addSubview($0)
+        }
     }
 
     // MARK: - Setup Constraints
