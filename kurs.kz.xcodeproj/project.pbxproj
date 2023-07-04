@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */; };
+		223E43F02A53E8EE0009AC9F /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E43EF2A53E8EE0009AC9F /* SelectLanguageViewController.swift */; };
 		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
+		223E43EF2A53E8EE0009AC9F /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 			path = LanguageSelection;
 			sourceTree = "<group>";
 		};
+		223E43EE2A53E8910009AC9F /* SelectLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				223E43EF2A53E8EE0009AC9F /* SelectLanguageViewController.swift */,
+			);
+			path = SelectLanguage;
+			sourceTree = "<group>";
+		};
 		9F63DF3F2A50495100EA9060 /* Sigin */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				223E43EE2A53E8910009AC9F /* SelectLanguage */,
 				223E43E72A5151040009AC9F /* LanguageSelection */,
 				9F63DF3F2A50495100EA9060 /* Sigin */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
@@ -168,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223E43F02A53E8EE0009AC9F /* SelectLanguageViewController.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
