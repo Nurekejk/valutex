@@ -59,10 +59,9 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        view.addSubview(otpLabel)
-        view.addSubview(otpCodeField)
-        view.addSubview(resendCodeLabel)
-        view.addSubview(verifyButton)
+        [otpLabel,otpCodeField, resendCodeLabel, verifyButton].forEach {
+            view.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
