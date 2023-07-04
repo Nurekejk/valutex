@@ -16,6 +16,8 @@
 		9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D842A4AFB44002D1F74 /* ViewController.swift */; };
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
+		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
+		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		9F899D892A4AFB46002D1F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */,
+				FA1475262A5431C60085AF1E /* PasswordTextField.swift */,
+				FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -181,10 +187,12 @@
 			files = (
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */,
+				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

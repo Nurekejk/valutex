@@ -19,7 +19,6 @@ class RegistrationPasswordViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.isLayoutMarginsRelativeArrangement = true
-        //when using margins, they won't scale depending on device. Should i use container view instead?
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
@@ -54,15 +53,15 @@ class RegistrationPasswordViewController: UIViewController {
         return container
     }()
     
-    private let enterPasswordButton = showHideTextButton()
+    private let enterPasswordButton = ShowHideTextButton()
     
-    private let repeatPasswordButton = showHideTextButton()
+    private let repeatPasswordButton = ShowHideTextButton()
     
     private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.textColor = .systemGray
+        label.textColor = .systemGray3
         label.font = .systemFont(ofSize: 14, weight: .init(rawValue: 400))
         return label
     }()
@@ -91,8 +90,7 @@ class RegistrationPasswordViewController: UIViewController {
         setupViews()
         setupConstraints()
         
-        view.backgroundColor = .white
-        elementsStackView.backgroundColor = .white
+        
     }
     
     // MARK: - Setup Views
@@ -107,6 +105,9 @@ class RegistrationPasswordViewController: UIViewController {
         
         enterPasswordTextField.rightView = enterPasswordButton
         repeatPasswordTextField.rightView = repeatPasswordButton
+        
+        view.backgroundColor = .systemGray5
+        elementsStackView.backgroundColor = .white
 
     }
     
@@ -133,36 +134,5 @@ class RegistrationPasswordViewController: UIViewController {
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
             make.height.equalTo(52)
         }
-    }
-}
-
-
-
-final class PasswordTextField: UITextField {
-    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        let padding = 16.0
-        let iconWidth = 24.0
-        let iconHeight = 24.0
-        let middlePointAdjuster = (bounds.height - iconHeight) / 2.0
-        let rightBounds = CGRect(x: bounds.width - iconWidth - padding, y: middlePointAdjuster, width: iconWidth, height: iconHeight)
-            return rightBounds
-    }
-}
-
-
-final class showHideTextButton: UIButton {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupButton()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupButton()
-    }
-    
-    func setupButton() {
-        setImage(UIImage(named: "eye-slash"), for: .normal)
     }
 }
