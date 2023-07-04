@@ -13,14 +13,16 @@ final class SelectCityViewController: UIViewController {
 
     private let textField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .white
         textField.placeholder = "Поиск"
+        textField.font = .systemFont(ofSize: 14)
+        textField.layer.cornerRadius = 8
         return textField
     }()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
         imageView.image = UIImage(named: "searchCity")
         return imageView
     }()
@@ -37,8 +39,13 @@ final class SelectCityViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(textField)
+        textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         textField.leftView = imageView
+        textField.leftViewMode = .always
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        imageView.heightAnchor.constraint(equalTo: textField.heightAnchor).isActive = true
     }
 
     private func setupConctraints() {
@@ -49,6 +56,5 @@ final class SelectCityViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
-
 
 }
