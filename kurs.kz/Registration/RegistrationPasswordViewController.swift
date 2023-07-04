@@ -54,12 +54,6 @@ class RegistrationPasswordViewController: UIViewController {
         return container
     }()
     
-    private let placeholderSwitchView: UIView = {
-        let placeholderSwitchView = UIView()
-        return placeholderSwitchView
-    }()
-
-    // type .system?
     private let enterPasswordButton = showHideTextButton()
     
     private let repeatPasswordButton = showHideTextButton()
@@ -68,6 +62,7 @@ class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
+        label.textColor = .systemGray
         label.font = .systemFont(ofSize: 14, weight: .init(rawValue: 400))
         return label
     }()
@@ -96,16 +91,14 @@ class RegistrationPasswordViewController: UIViewController {
         setupViews()
         setupConstraints()
         
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         elementsStackView.backgroundColor = .white
-        placeholderSwitchView.backgroundColor = .blue
     }
     
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(elementsStackView)
         view.addSubview(containerView)
-        elementsStackView.addArrangedSubview(placeholderSwitchView)
         elementsStackView.addArrangedSubview(passwordStackView)
         elementsStackView.addArrangedSubview(textLabel)
         passwordStackView.addArrangedSubview(enterPasswordTextField)
@@ -123,10 +116,7 @@ class RegistrationPasswordViewController: UIViewController {
             make.top.equalToSuperview().offset(116)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-464)
-        }
-        placeholderSwitchView.snp.makeConstraints { make in
-            make.height.equalTo(24)
+            make.height.equalTo(232)
         }
         textLabel.snp.makeConstraints { make in
             make.height.equalTo(36)
@@ -151,8 +141,10 @@ class RegistrationPasswordViewController: UIViewController {
 final class PasswordTextField: UITextField {
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let padding = 16.0
-        //24*24
-        let rightBounds = CGRect(x: bounds.width - bounds.height / 2.0 - padding, y: bounds.height/4, width: bounds.height / 2.0, height: bounds.height / 2.0)
+        let iconWidth = 24.0
+        let iconHeight = 24.0
+        let middlePointAdjuster = (bounds.height - iconHeight) / 2.0
+        let rightBounds = CGRect(x: bounds.width - iconWidth - padding, y: middlePointAdjuster, width: iconWidth, height: iconHeight)
             return rightBounds
     }
 }
@@ -174,74 +166,3 @@ final class showHideTextButton: UIButton {
         setImage(UIImage(named: "eye-slash"), for: .normal)
     }
 }
-
-//
-////MARK: - UI
-//
-//final class RegistrationPersonalDataViewController: UIViewController {
-//
-//    //MARK: - Colors:
-//
-//    private let registrationGrayColor = UIColor (
-//        red: 246.0 / 255.0,
-//        green: 247.0 / 255.0,
-//        blue: 249.0 / 255.0,
-//        alpha: 1 )
-//
-//    private let registrationBlueColor = UIColor (
-//        red: 45.0 / 255.0,
-//        green: 156.0 / 255.0,
-//        blue: 219.0 / 255.0,
-//        alpha: 1 )
-//
-//    //MARK: - Elements:
-//
-//    //container views:
-//    private let stackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.spacing = 12
-//        stackView.alignment = .fill
-//        stackView.distribution = .fillEqually
-//        stackView.isLayoutMarginsRelativeArrangement = true
-//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-//        stackView.backgroundColor = .white
-//        stackView.layer.cornerRadius = 8
-//        return stackView
-//    }()
-//
-//    private let containerView: UIView = {
-//        let container = UIView()
-//        container.backgroundColor = .white
-//        return container
-//    }()
-//
-//    private let placeholderSwitchView: UIView = {
-//        let placeholderSwitchView = UIView()
-//        return placeholderSwitchView
-//    }()
-//
-
-//    //MARK: - Constraints:
-//    private func setupConstraints() {
-//        stackView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(116)
-//            make.leading.equalToSuperview().offset(16)
-//            make.trailing.equalToSuperview().offset(-16)
-//            make.bottom.equalToSuperview().offset(-312)
-//        }
-//        containerView.snp.makeConstraints { make in
-//            make.bottom.equalToSuperview().offset(0)
-//            make.top.equalTo(stackView.snp.bottom).offset(194)
-//            make.leading.equalToSuperview().offset(0)
-//            make.trailing.equalToSuperview().offset(0)
-//        }
-//        continueButton.snp.makeConstraints { make in
-//            make.bottom.equalToSuperview().offset(-34-16)
-//            make.leading.equalToSuperview().offset(16)
-//            make.trailing.equalToSuperview().offset(-16)
-//            make.height.equalTo(52)
-//        }
-//    }
-//}
-//
