@@ -48,7 +48,7 @@ final class SelectCityViewController: UIViewController {
 
     private let shadowview: UIView = {
         let shadowview = UIView()
-        shadowview.backgroundColor = .red
+        shadowview.backgroundColor = .white
         return shadowview
     }()
 
@@ -65,9 +65,9 @@ final class SelectCityViewController: UIViewController {
     private func setupViews() {
         view.addSubview(textField)
         view.addSubview(tableview)
-        view.addSubview(button)
+        view.addSubview(shadowview)
 
-//        shadowview.addSubview(button)
+        shadowview.addSubview(button)
         textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
 
@@ -90,17 +90,17 @@ final class SelectCityViewController: UIViewController {
             make.top.equalTo(textField.snp.bottom).offset(1)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-100)
+            make.bottom.equalToSuperview().offset(-118)
         }
-//        shadowview.snp.makeConstraints { make in
-//            make.top.equalTo(tableview.snp.bottom)
-//            make.bottom.equalToSuperview()
-//            make.leading.equalToSuperview()
-//            make.trailing.equalToSuperview()
-//            make.width.equalTo(200)
-//        }
+        shadowview.snp.makeConstraints { make in
+            make.top.equalTo(tableview.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(112)
+        }
         button.snp.makeConstraints { make in
-            make.top.equalTo(tableview.snp.bottom).offset(3)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
