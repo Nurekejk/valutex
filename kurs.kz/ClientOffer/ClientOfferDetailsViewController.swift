@@ -46,9 +46,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.backgroundColor = UIColor(named: "timerStackViewBackgroundColor")
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24, leading: 72, bottom: 24, trailing: 72)
-
-        stackView.addArrangedSubview(self.timerTextLabel)
-        stackView.addArrangedSubview(self.timerCountDownLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         return stackView
@@ -80,9 +77,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.backgroundColor = .white
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-
-        stackView.addArrangedSubview(self.detailsTableView)
-        stackView.addArrangedSubview(self.resetButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         return stackView
@@ -108,6 +102,12 @@ class ClientOfferDetailsViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = UIColor(named: "offerDetailsBackgroundColor")
+        
+        timerStackView.addArrangedSubview(self.timerTextLabel)
+        timerStackView.addArrangedSubview(self.timerCountDownLabel)
+        
+        detailsStackView.addArrangedSubview(self.detailsTableView)
+        detailsStackView.addArrangedSubview(self.resetButton)
         
         view.addSubview(timerStackView)
         view.addSubview(detailsStackView)
