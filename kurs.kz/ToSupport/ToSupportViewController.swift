@@ -32,6 +32,26 @@ final class ToSupportViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }()
+    
+    private let whatsappButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("WhatsApp", for: .normal)
+        button.setImage(UIImage(named: "whatsapp_icon"), for: .normal)
+        button.tintColor = .black
+        button.imageView?.contentMode = .scaleAspectFit
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 2
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+        return stackView
+    }()
 
     // MARK: lifecicle
     
