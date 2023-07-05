@@ -21,6 +21,7 @@ class CityTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "selectCity")
+        imageView.highlightedImage = UIImage(named: "selectedCity")
         return imageView
     }()
 
