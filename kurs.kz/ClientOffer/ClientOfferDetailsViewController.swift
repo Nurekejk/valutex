@@ -10,6 +10,15 @@ import SnapKit
 
 class ClientOfferDetailsViewController: UIViewController {
 
+    // MARK: - State
+    
+    private let details : [Detail] = [Detail(type: "Статус", option: "Продажа"),
+                                      Detail(type: "Валюта", option: "USD"),
+                                      Detail(type: "Курс", option: "500 ₸"),
+                                      Detail(type: "Сумма получения", option: "495 $"),
+                                      Detail(type: "Обменник", option: "Som Exchange"),
+                                      Detail(type: "Адрес обменника", option: "г.Алматы, ул. Ауэзова 14")]
+    
     // MARK: - UI
     private lazy var timerTextLabel: UILabel = {
         let label = UILabel()
@@ -47,7 +56,7 @@ class ClientOfferDetailsViewController: UIViewController {
     
     private lazy var detailsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(OfferDetailsTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = 50.0
         tableView.dataSource = self
         return tableView
@@ -139,8 +148,8 @@ extension ClientOfferDetailsViewController: UITableViewDataSource {
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Status"
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? OfferDetailsTableViewCell
+        cell?.detail = details[indexPath.row]
+        return cell ?? UITableViewCell()
     }
 }
