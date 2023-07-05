@@ -54,8 +54,10 @@ class ClientOfferDetailsViewController: UIViewController {
     private lazy var detailsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(OfferDetailsTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(OfferDetailsHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.rowHeight = 50.0
         tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
     
@@ -129,9 +131,10 @@ class ClientOfferDetailsViewController: UIViewController {
         }
         
         detailsTableView.snp.makeConstraints { make in
+            make.top.equalTo(detailsStackView.snp.top)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(300)
+            make.height.equalTo(352)
         }
 
         resetButton.snp.makeConstraints { make in
@@ -142,7 +145,7 @@ class ClientOfferDetailsViewController: UIViewController {
     }
 }
 
-extension ClientOfferDetailsViewController: UITableViewDataSource {
+extension ClientOfferDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -150,6 +153,12 @@ extension ClientOfferDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? OfferDetailsTableViewCell
         cell?.detail = details[indexPath.row]
+        cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! OfferDetailsHeaderView
+        return view
     }
 }
