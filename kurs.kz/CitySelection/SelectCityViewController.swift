@@ -9,6 +9,8 @@ import UIKit
 
 final class SelectCityViewController: UIViewController {
 
+    private var cities = ["Алматы", "Астана", "Атырау","Актобе","Алматинская область","Астана","Атырау","Актобе","Алматинская область"]
+
     // MARK: - Outlets
 
     private let textField: UITextField = {
@@ -27,6 +29,13 @@ final class SelectCityViewController: UIViewController {
         return imageView
     }()
 
+    private lazy var tableview: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.dataSource = self
+        return tableView
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +48,14 @@ final class SelectCityViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(textField)
+        view.addSubview(tableview)
+
         textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+
         textField.leftView = imageView
         textField.leftViewMode = .always
+
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 48).isActive = true
         imageView.heightAnchor.constraint(equalTo: textField.heightAnchor).isActive = true
@@ -55,6 +68,25 @@ final class SelectCityViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
+        tableview.snp.makeConstraints { make in
+            make.top.equalTo(textField.snp.bottom).offset(1)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview()
+
+        }
     }
 
+
+}
+
+extension SelectCityViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        15
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
+    }
 }
