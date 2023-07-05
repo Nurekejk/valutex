@@ -139,4 +139,3 @@ final class SignupViewController: UIViewController {
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
     }
 }
-

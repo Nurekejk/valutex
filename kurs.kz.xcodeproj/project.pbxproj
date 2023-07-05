@@ -143,6 +143,7 @@
 				9F899D7A2A4AFB43002D1F74 /* Frameworks */,
 				9F899D7B2A4AFB43002D1F74 /* Resources */,
 				8185968B9E490D0F706847D7 /* [CP] Embed Pods Frameworks */,
+				9F599BC12A5565A30073C558 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -223,6 +224,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9F599BC12A5565A30073C558 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		A978145459F756DA82375A9D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
