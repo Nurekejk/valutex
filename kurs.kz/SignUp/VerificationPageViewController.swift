@@ -32,7 +32,7 @@ final class VerificationPageViewController: UIViewController {
     
     private let resendCodeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Еще не получили код подтверждения?\nОтправить код повторно"
+        label.text = "Еще не получили код подтверждения?"
         label.textColor = UIColor(named: "resendCodeTextColor")
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14.0)
@@ -40,11 +40,21 @@ final class VerificationPageViewController: UIViewController {
         return label
     }()
     
+    private let resendCodeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Отправить код повторно", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.textColor = UIColor(named: "verifyButtonColor")
+        return button
+    }()
+    
     private let verifyButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "verifyButtonColor")
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
         button.layer.cornerRadius = 12.0
         return button
     }()
@@ -59,7 +69,7 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        [otpLabel,otpCodeField, resendCodeLabel, verifyButton].forEach {
+        [otpLabel,otpCodeField, resendCodeLabel, resendCodeButton, verifyButton].forEach {
             view.addSubview($0)
         }
     }
@@ -83,8 +93,14 @@ final class VerificationPageViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        resendCodeButton.snp.makeConstraints { make in
+            make.top.equalTo(resendCodeLabel).offset(15)
+            make.leading.equalToSuperview().offset(104)
+            make.trailing.equalToSuperview().offset(-104)
+        }
+        
         verifyButton.snp.makeConstraints { make in
-            make.top.equalTo(resendCodeLabel).offset(120)
+            make.top.equalTo(resendCodeButton).offset(120)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
