@@ -78,5 +78,19 @@ final class ToSupportViewController: UIViewController {
             make.top.equalToSuperview().offset(62)
             make.leading.trailing.equalToSuperview()
         }
+        
+        stackView.snp.makeConstraints {make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        
+        telegramButton.snp.makeConstraints {make in
+            make.height.equalTo(50)
+        }
+        
+        whatsappButton.snp.makeConstraints {make in
+            make.height.equalTo(telegramButton)
+        }
     }
 }
