@@ -15,7 +15,7 @@ final class ToSupportViewController: UIViewController {
     private let titleLabel: UILabel = {
        let label = UILabel()
        label.text = "Написать в поддержу"
-       label.font = .boldSystemFont(ofSize: 24)
+       label.font = .boldSystemFont(ofSize: 20)
        label.textAlignment = .center
        return label
     }()
@@ -39,6 +39,9 @@ final class ToSupportViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        setupView()
+        setupConstraints()
 
     }
     
@@ -52,7 +55,7 @@ final class ToSupportViewController: UIViewController {
     
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(62)
             make.leading.trailing.equalToSuperview()
         }
     }
