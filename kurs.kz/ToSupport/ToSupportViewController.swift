@@ -45,7 +45,7 @@ final class ToSupportViewController: UIViewController {
     // MARK: Setup View
     
     private func setupView() {
-        
+        view.addSubview(titleLabel)
     }
     
     // MARK: Setup Constraints
