@@ -11,7 +11,6 @@ import SnapKit
 class ClientOfferDetailsViewController: UIViewController {
 
     // MARK: - State
-    
     private let details : [Detail] = [Detail(type: "Статус", option: "Продажа"),
                                       Detail(type: "Валюта", option: "USD"),
                                       Detail(type: "Курс", option: "500 ₸"),
@@ -50,7 +49,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24, leading: 72, bottom: 24, trailing: 72)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
         return stackView
     }()
     
@@ -83,7 +81,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
         return stackView
     }()
     
@@ -97,7 +94,7 @@ class ClientOfferDetailsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         timerStackView.layer.cornerRadius = 8.0
-        
+
         resetButton.layer.cornerRadius = 12.0
         resetButton.layer.borderWidth = 1.0
         resetButton.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
@@ -126,7 +123,6 @@ class ClientOfferDetailsViewController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
-        
         
         detailsStackView.snp.makeConstraints { make in
             make.top.equalTo(timerStackView.snp.bottom).offset(16)

@@ -17,7 +17,7 @@ class OfferDetailsTableViewCell: UITableViewCell {
         }
     }
     
-    // MARK: - Outlets
+    // MARK: - UI
     private lazy var detailTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Статус"
