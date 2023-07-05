@@ -69,6 +69,10 @@ final class ToSupportViewController: UIViewController {
     
     private func setupView() {
         view.addSubview(titleLabel)
+        view.addSubview(stackView)
+        
+        stackView.addArrangedSubview(telegramButton)
+        stackView.addArrangedSubview(whatsappButton)
     }
     
     // MARK: Setup Constraints
