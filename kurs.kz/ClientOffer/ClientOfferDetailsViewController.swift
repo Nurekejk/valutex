@@ -35,7 +35,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.alignment = .center
         stackView.spacing = 12.0
         stackView.backgroundColor = UIColor(named: "timerStackViewBackgroundColor")
-        stackView.layer.cornerRadius = 8.0
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24, leading: 72, bottom: 24, trailing: 72)
 
@@ -57,9 +56,6 @@ class ClientOfferDetailsViewController: UIViewController {
     private lazy var resetButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
-        button.layer.cornerRadius = 12.0
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
         button.setTitle("Отменить", for: .normal)
         button.setTitleColor( UIColor(named: "resetButtonTextColor"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
@@ -75,7 +71,6 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.backgroundColor = .white
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        stackView.layer.cornerRadius = 8.0
 
         stackView.addArrangedSubview(self.detailsTableView)
         stackView.addArrangedSubview(self.resetButton)
@@ -91,13 +86,21 @@ class ClientOfferDetailsViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        timerStackView.layer.cornerRadius = 8.0
+        
+        resetButton.layer.cornerRadius = 12.0
+        resetButton.layer.borderWidth = 1.0
+        resetButton.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
+        
+        detailsStackView.layer.cornerRadius = 8.0
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = UIColor(named: "offerDetailsBackgroundColor")
         
         view.addSubview(timerStackView)
-//        view.addSubview(detailsTableView)
-//        view.addSubview(resetButton)
         view.addSubview(detailsStackView)
     }
     
