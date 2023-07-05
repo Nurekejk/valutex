@@ -48,7 +48,7 @@ class CityTableViewCell: UITableViewCell {
     private func setupHierarchy(){
         stack.addArrangedSubview(label)
         stack.addArrangedSubview(selectImageView)
-        addSubview(stack)
+        contentView.addSubview(stack)
     }
 
     private func setupLayout () {

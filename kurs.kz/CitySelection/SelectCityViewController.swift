@@ -30,9 +30,10 @@ final class SelectCityViewController: UIViewController {
     }()
 
     private lazy var tableview: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         return tableView
     }()
 
