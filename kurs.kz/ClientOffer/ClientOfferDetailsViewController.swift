@@ -27,6 +27,24 @@ class ClientOfferDetailsViewController: UIViewController {
         return label
     }()
     
+    private lazy var timerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 12.0
+        stackView.backgroundColor = UIColor(named: "timerStackViewBackgroundColor")
+        stackView.layer.cornerRadius = 8.0
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24, leading: 72, bottom: 24, trailing: 72)
+
+        stackView.addArrangedSubview(self.timerTextLabel)
+        stackView.addArrangedSubview(self.timerCountDownLabel)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        return stackView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
