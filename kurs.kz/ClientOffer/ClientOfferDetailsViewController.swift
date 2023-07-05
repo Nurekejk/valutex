@@ -45,6 +45,16 @@ class ClientOfferDetailsViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var detailsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "detailCell")
+        tableView.dataSource = self
+        tableView.rowHeight = 50.0
+        tableView.frame = CGRect(x: 0, y: 0, width: 100, height: 400)
+
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,5 +67,17 @@ class ClientOfferDetailsViewController: UIViewController {
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
+    }
+}
+
+extension ClientOfferDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+       
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
+        cell.textLabel?.text = "Status"
+        return cell
     }
 }
