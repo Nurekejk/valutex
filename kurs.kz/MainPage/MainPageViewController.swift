@@ -42,13 +42,24 @@ class MainPageViewController: UIViewController {
   
   let buttonRegister: UIButton = {
     let button = UIButton()
-    button.setTitle("Зарегистрироватся", for: .normal)
-    button.backgroundColor = .blue
+    button.layer.borderColor = UIColor.blue.cgColor
+    button.layer.borderWidth = 1
     button.layer.cornerRadius = 10
+    button.setTitle("Зарегистрироватся", for: .normal)
+    button.setTitleColor(.blue, for: .normal)
     
     return button
   }()
   
+  
+  let buttonNext: UIButton = {
+    let button = UIButton()
+    button.layer.cornerRadius = 10
+    button.setTitle("Пропустить", for: .normal)
+    button.setTitleColor(.gray, for: .normal)
+    
+    return button
+  }()
   
   
   override func viewDidLoad() {
@@ -66,6 +77,7 @@ class MainPageViewController: UIViewController {
     view.addSubview(label)
     view.addSubview(buttonLogIn)
     view.addSubview(buttonRegister)
+    view.addSubview(buttonNext)
     
   }
   
@@ -89,16 +101,22 @@ class MainPageViewController: UIViewController {
       make.top.equalTo(label.snp.bottom).offset(32)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
-      make.height.equalTo(56)
+      make.height.equalTo(52)
     }
     
     buttonRegister.snp.makeConstraints { make in
       make.top.equalTo(buttonLogIn.snp.bottom).offset(12)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
-      make.height.equalTo(56)
+      make.height.equalTo(52)
     }
     
+    buttonNext.snp.makeConstraints { make in
+      make.top.equalTo(buttonRegister.snp.bottom).offset(75)
+      make.leading.equalToSuperview().offset(24)
+      make.trailing.equalToSuperview().offset(-24)
+      make.height.equalTo(20)
+    }
     
   }
   
