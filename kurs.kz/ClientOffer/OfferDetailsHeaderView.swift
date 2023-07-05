@@ -11,7 +11,6 @@ import SnapKit
 final class OfferDetailsHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI
-    
     let detailLabel: UILabel = {
         let label = UILabel()
         label.text = "Детали"
