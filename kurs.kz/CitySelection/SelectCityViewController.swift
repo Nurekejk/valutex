@@ -34,7 +34,22 @@ final class SelectCityViewController: UIViewController {
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.layer.cornerRadius = 8
         return tableView
+    }()
+
+    private let button: UIButton = {
+        let button = UIButton()
+        button.setTitle("Выбрать", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 12
+        return button
+    }()
+
+    private let shadowview: UIView = {
+        let shadowview = UIView()
+        shadowview.backgroundColor = .red
+        return shadowview
     }()
 
     // MARK: - Lifecycle
@@ -50,7 +65,9 @@ final class SelectCityViewController: UIViewController {
     private func setupViews() {
         view.addSubview(textField)
         view.addSubview(tableview)
+        view.addSubview(button)
 
+//        shadowview.addSubview(button)
         textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
 
@@ -74,7 +91,20 @@ final class SelectCityViewController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
-
+        }
+//        shadowview.snp.makeConstraints { make in
+//            make.top.equalTo(tableview.snp.bottom)
+//            make.bottom.equalToSuperview()
+//            make.leading.equalToSuperview()
+//            make.trailing.equalToSuperview()
+//            make.width.equalTo(200)
+//        }
+        button.snp.makeConstraints { make in
+            make.top.equalTo(tableview.snp.bottom)
+            make.bottom.equalToSuperview().offset(-50)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(52)
         }
     }
 
@@ -88,6 +118,9 @@ extension SelectCityViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let selectedView = UIView()
+           selectedView.backgroundColor = UIColor.white
+           cell.selectedBackgroundView = selectedView
         return cell
     }
 }
