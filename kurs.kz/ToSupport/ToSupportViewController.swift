@@ -10,6 +10,8 @@ import SnapKit
 
 final class ToSupportViewController: UIViewController {
     
+    // MARK: UI
+    
     private let telegramButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Telegram", for: .normal)
@@ -23,9 +25,25 @@ final class ToSupportViewController: UIViewController {
         return button
     }()
 
+    // MARK: lifecicle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
 
+    }
+    
+    // MARK: Setup View
+    
+    private func setupView() {
+        
+    }
+    
+    // MARK: Setup Constraints
+    
+    private func setupConstraints() {
+        
     }
 
 }
