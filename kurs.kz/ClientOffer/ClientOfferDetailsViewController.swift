@@ -83,6 +83,23 @@ class ClientOfferDetailsViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 16.0
+        stackView.backgroundColor = UIColor(named: "clientOfferDetailsBackgroundColor")
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: -16, bottom: 16, trailing: -16)
+
+        stackView.addArrangedSubview(self.timerStackView)
+        stackView.addArrangedSubview(self.detailsTableView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        return stackView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
