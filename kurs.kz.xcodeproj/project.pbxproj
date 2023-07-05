@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */; };
+		7141A09C2A557B2800472C67 /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141A09B2A557B2800472C67 /* CustomSkyFloatingLabelTextField.swift */; };
 		7E49676C68A64FF69C6AA35F /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2A9F2F52D130B36FB57829 /* Pods_kurs_kz.framework */; };
 		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
 		44B2D61FE789A6BD4AD6CB54 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		7141A09B2A557B2800472C67 /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 				AAB1C965BEF6D364E9431652 /* Pods-kurs.kz.debug.xcconfig */,
 				44B2D61FE789A6BD4AD6CB54 /* Pods-kurs.kz.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -78,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				9F63DF402A50497A00EA9060 /* SiginInViewController.swift */,
+				7141A09B2A557B2800472C67 /* CustomSkyFloatingLabelTextField.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				7141A09C2A557B2800472C67 /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 			);
