@@ -10,5 +10,6 @@ target 'kurs.kz' do
   pod 'CHIOTPField/Two'
   pod 'CHIOTPField/Three'
   pod 'CHIOTPField/Four'
+  pod 'SwiftLint'
 
 end
