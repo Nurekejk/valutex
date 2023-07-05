@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ClientOfferDetailsViewController: UIViewController {
 
@@ -46,12 +47,10 @@ class ClientOfferDetailsViewController: UIViewController {
     }()
     
     private lazy var detailsTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "detailCell")
-        tableView.dataSource = self
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = 50.0
-        tableView.frame = CGRect(x: 0, y: 0, width: 100, height: 400)
-
+        tableView.dataSource = self
         return tableView
     }()
     
@@ -61,8 +60,9 @@ class ClientOfferDetailsViewController: UIViewController {
         button.layer.cornerRadius = 12.0
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
-        button.titleLabel?.text = "Отменить"
-        button.titleLabel?.textColor = UIColor(named: "resetButtonTextColor")
+        button.setTitle("Отменить", for: .normal)
+        button.setTitleColor( UIColor(named: "resetButtonTextColor"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
         return button
     }()
     
@@ -71,10 +71,11 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .center
-        stackView.spacing = 8.0
-        stackView.backgroundColor = .orange
+        stackView.spacing = 16.0
+        stackView.backgroundColor = .white
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        stackView.layer.cornerRadius = 8.0
 
         stackView.addArrangedSubview(self.detailsTableView)
         stackView.addArrangedSubview(self.resetButton)
@@ -83,35 +84,49 @@ class ClientOfferDetailsViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.spacing = 16.0
-        stackView.backgroundColor = UIColor(named: "clientOfferDetailsBackgroundColor")
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: -16, bottom: 16, trailing: -16)
-
-        stackView.addArrangedSubview(self.timerStackView)
-        stackView.addArrangedSubview(self.detailsTableView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        return stackView
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        setupConstraints()
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "offerDetailsBackgroundColor")
+        
+        view.addSubview(timerStackView)
+//        view.addSubview(detailsTableView)
+//        view.addSubview(resetButton)
+        view.addSubview(detailsStackView)
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
+        timerStackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(116)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        
+        detailsStackView.snp.makeConstraints { make in
+            make.top.equalTo(timerStackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        detailsTableView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(300)
+        }
+
+        resetButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(52)
+        }
     }
 }
 
@@ -121,7 +136,7 @@ extension ClientOfferDetailsViewController: UITableViewDataSource {
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "Status"
         return cell
     }
