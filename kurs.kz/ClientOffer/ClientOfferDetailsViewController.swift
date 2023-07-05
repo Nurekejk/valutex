@@ -19,6 +19,9 @@ class ClientOfferDetailsViewController: UIViewController {
                                       Detail(type: "Обменник", option: "Som Exchange"),
                                       Detail(type: "Адрес обменника", option: "г.Алматы, ул. Ауэзова 14")]
     
+    private var timeRemaining: Int = 1800
+    private var timer: Timer?
+    
     // MARK: - UI
     private lazy var timerTextLabel: UILabel = {
         let label = UILabel()
@@ -31,7 +34,7 @@ class ClientOfferDetailsViewController: UIViewController {
     
     private lazy var timerCountDownLabel: UILabel = {
         let label = UILabel()
-        label.text = "23 : 58"
+        label.text = "\(timeFormatter(timeRemaining))"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
         return label
@@ -89,6 +92,7 @@ class ClientOfferDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        startTimer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -141,6 +145,27 @@ class ClientOfferDetailsViewController: UIViewController {
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
             make.height.equalTo(52)
+        }
+    }
+    
+    // MARK: - Actions
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    private func timeFormatter(_ seconds: Int) -> String {
+        let minutes = Int(timeRemaining)/60 % 60
+        let seconds = Int(timeRemaining) % 60
+        let timeString = String(format: "%02d:%02d", minutes, seconds)
+        return timeString
+    }
+    
+    @objc private func updateTime() {
+        if timeRemaining >= 0 {
+            timerCountDownLabel.text = "\(timeFormatter(timeRemaining))"
+            timeRemaining -= 1
+        } else {
+            timer?.invalidate()
         }
     }
 }
