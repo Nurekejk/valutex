@@ -2,13 +2,14 @@
 //  SiginInViewController.swift
 //  kurs.kz
 //
-//  Created by Nurgul on 01.07.2023.
+//  Created by Akerke on 01.07.2023.
 //
 
 import UIKit
 import SnapKit
+import SkyFloatingLabelTextField
 
-class SiginInViewController: UIViewController {
+final class SiginInViewController: UIViewController {
 
     //MARK: - Outlets
 
@@ -19,34 +20,112 @@ class SiginInViewController: UIViewController {
         return label
     }()
 
-    private lazy var phoneTextField: UITextField = {
-        let textField = UITextField()
+    /*private lazy var phoneTextField: SkyFloatingLabelTextField = {
+        let textField = SkyFloatingLabelTextField(frame: CGRect(x: 150, y: 10, width: 120, height: 45))
         textField.placeholder = "Телефон"
-        textField.font = .systemFont(ofSize: 16)
+        textField.title = "Телефон"
         textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        /*textField.titleColor = UIColor.lightGray
+        textField.selectedTitleColor = UIColor.lightGray
+        textField.placeholderColor = UIColor.black
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.keyboardType = .phonePad
+        textField.setTitleVisible(true)*/
+        return textField
+        /*textField.font = .systemFont(ofSize: 16)
         textField.layer.borderWidth = 1
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
+        textField.rightViewMode = .always
+        let imageView = UIImageView()
+        let image = AppImage.check.uiImage
+        imageView.image = image
+        textField.rightView = imageView*/
+    }()*/
+    private lazy var phoneTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
+        textField.placeholder = "Телефон"
+        textField.title = "Телефон"
+        //textField.selectedLineColor = .lightGray
+        textField.titleColor = UIColor.lightGray
+        textField.selectedTitleColor = UIColor.lightGray
+        textField.placeholderColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.layer.borderColor = UIColor.gray.cgColor
+        //textField.borderStyle = .roundedRect
+       // textField.layer.borderWidth = 1
+        //textField.layer.cornerRadius = 8
+       // textField.keyboardType = .phonePad
+       /* //textField.lineColor = .gray
+        //textField.tintColor = .lightGray
+        textField.textColor = .black
+        //textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.keyboardType = .phonePad
+
+        // Additional customizations
+       textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+       textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.titleColor = .lightGray
+        textField.selectedTitleColor = .lightGray
+        textField.placeholderColor = .black
+       // textField.lineHeight = 1.0
+       // textField.selectedLineHeight = 1.0
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 1
+       // textField.borderStyle = .roundedRect
+       // textField.clipsToBounds = true
+*/
         return textField
     }()
 
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
+
+    private lazy var passwordTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
+        textField.title = "Пароль"
+        textField.placeholder = "Пароль"
+        textField.titleColor = UIColor.lightGray
+        textField.selectedTitleColor = UIColor.lightGray
+        textField.placeholderColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.layer.borderColor = UIColor.gray.cgColor
+        //textField.borderStyle = .roundedRect
+        //textField.layer.borderWidth = 1
+       // textField.layer.cornerRadius = 8
+        textField.keyboardType = .phonePad
+        return textField
+        /*let textField = UITextField()
         textField.placeholder = "Пароль"
         textField.font = .systemFont(ofSize: 16)
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
-        return textField
+        return textField*/
     }()
 
-    private lazy var forgotPasswordLabel: UILabel = {
+    /*private lazy var forgotPasswordLabel: UILabel = {
         let label = UILabel()
         label.text = "Забыли пароль"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 16)
         return label
+    }()*/
+
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Забыли пароль", for: .normal)
+        button.setTitleColor(.lightGray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        return button
     }()
 
     private lazy var signInButton: UIButton = {
@@ -56,7 +135,7 @@ class SiginInViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 12
+        //button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
@@ -90,13 +169,27 @@ class SiginInViewController: UIViewController {
         setupConstriants()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        phoneTextField.layer.cornerRadius = 8
+        phoneTextField.layer.borderWidth = 1
+        passwordTextField.layer.cornerRadius = 8
+        passwordTextField.layer.borderWidth = 1
+        signInButton.layer.cornerRadius = 12
+    }
+
     // MARK: - Setup
 
     private func setupViews() {
         view.addSubview(enterLabel)
         view.addSubview(phoneTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(forgotPasswordLabel)
+        view.addSubview(forgotPasswordButton)
         view.addSubview(signInButton)
         view.addSubview(signUpAskLabel)
         view.addSubview(signUpButton)
@@ -123,13 +216,13 @@ class SiginInViewController: UIViewController {
             make.height.equalTo(56)
         }
 
-        forgotPasswordLabel.snp.makeConstraints { make in
+        forgotPasswordButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(12)
             make.trailing.equalToSuperview().offset(-24)
         }
 
         signInButton.snp.makeConstraints { make in
-            make.top.equalTo(forgotPasswordLabel.snp.bottom).offset(16)
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
