@@ -51,7 +51,9 @@ final class ToSupportViewController: UIViewController {
     // MARK: Setup Constraints
     
     private func setupConstraints() {
-        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(100)
+            make.leading.trailing.equalToSuperview()
+        }
     }
-
 }
