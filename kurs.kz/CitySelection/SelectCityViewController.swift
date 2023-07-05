@@ -90,7 +90,7 @@ final class SelectCityViewController: UIViewController {
             make.top.equalTo(textField.snp.bottom).offset(1)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-100)
         }
 //        shadowview.snp.makeConstraints { make in
 //            make.top.equalTo(tableview.snp.bottom)
@@ -100,8 +100,7 @@ final class SelectCityViewController: UIViewController {
 //            make.width.equalTo(200)
 //        }
         button.snp.makeConstraints { make in
-            make.top.equalTo(tableview.snp.bottom)
-            make.bottom.equalToSuperview().offset(-50)
+            make.top.equalTo(tableview.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
