@@ -41,7 +41,7 @@ final class VerificationPageViewController: UIViewController {
     }()
     
     private let verifyButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "verifyButtonColor")
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -59,10 +59,9 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        view.addSubview(otpLabel)
-        view.addSubview(otpCodeField)
-        view.addSubview(resendCodeLabel)
-        view.addSubview(verifyButton)
+        [otpLabel,otpCodeField, resendCodeLabel, verifyButton].forEach {
+            view.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
@@ -91,10 +90,4 @@ final class VerificationPageViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
-    
-    // MARK: - Actions
-        
-//    @objc private func verifyButtonDidPressed() {
-//        self.navigationController?.pushViewController(, animated: true)
-//    }
 }
