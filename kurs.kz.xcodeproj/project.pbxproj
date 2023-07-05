@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */; };
+		8F3E0CD02A55DF5A00C5E61C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E0CCF2A55DF5A00C5E61C /* MainPageViewController.swift */; };
 		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		223E43EC2A5153770009AC9F /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
+		8F3E0CCF2A55DF5A00C5E61C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 			path = LanguageSelection;
 			sourceTree = "<group>";
 		};
+		8F3E0CCD2A55DF1400C5E61C /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				8F3E0CCF2A55DF5A00C5E61C /* MainPageViewController.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
 		9F63DF3F2A50495100EA9060 /* Sigin */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8F3E0CCD2A55DF1400C5E61C /* MainPage */,
 				223E43E72A5151040009AC9F /* LanguageSelection */,
 				9F63DF3F2A50495100EA9060 /* Sigin */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
@@ -173,6 +184,7 @@
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				8F3E0CD02A55DF5A00C5E61C /* MainPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
