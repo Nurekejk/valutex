@@ -12,6 +12,14 @@ final class ToSupportViewController: UIViewController {
     
     // MARK: UI
     
+    private let titleLabel: UILabel = {
+       let label = UILabel()
+       label.text = "Написать в поддержу"
+       label.font = .boldSystemFont(ofSize: 24)
+       label.textAlignment = .center
+       return label
+    }()
+    
     private let telegramButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Telegram", for: .normal)
