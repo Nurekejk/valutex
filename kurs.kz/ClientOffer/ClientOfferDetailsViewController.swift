@@ -19,6 +19,14 @@ class ClientOfferDetailsViewController: UIViewController {
         return label
     }()
     
+    private lazy var timerCountDownLabel: UILabel = {
+        let label = UILabel()
+        label.text = "23 : 58"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        return label
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
