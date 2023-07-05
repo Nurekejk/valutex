@@ -55,6 +55,17 @@ class ClientOfferDetailsViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var resetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 12.0
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
+        button.titleLabel?.text = "Отменить"
+        button.titleLabel?.textColor = UIColor(named: "resetButtonTextColor")
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
