@@ -27,7 +27,6 @@ class SiginInViewController: UIViewController {
         return textField
     }()
 
-
     let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Пароль"
