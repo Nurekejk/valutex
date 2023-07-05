@@ -118,6 +118,7 @@
 			children = (
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
+				223E43EE2A53E8910009AC9F /* SelectLanguage */,
 				FAD47F902A50A24C0055EDEA /* Registration */,
 				9F63DF3F2A50495100EA9060 /* Sigin */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
