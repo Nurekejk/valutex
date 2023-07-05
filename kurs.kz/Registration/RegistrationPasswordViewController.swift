@@ -5,13 +5,12 @@
 //  Created by Adil on 03.07.2023.
 //
 
-
 import UIKit
 import SnapKit
 
-class RegistrationPasswordViewController: UIViewController {
+final class RegistrationPasswordViewController: UIViewController {
     
-    //MARK: - UI
+    // MARK: - UI
     private let elementsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -39,7 +38,7 @@ class RegistrationPasswordViewController: UIViewController {
     private let continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.configuration?.contentInsets = .init()
@@ -62,7 +61,7 @@ class RegistrationPasswordViewController: UIViewController {
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
         label.textColor = .systemGray3
-        label.font = .systemFont(ofSize: 14, weight: .init(rawValue: 400))
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -84,23 +83,18 @@ class RegistrationPasswordViewController: UIViewController {
         return textField
     }()
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        
-        
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(elementsStackView)
-        view.addSubview(containerView)
-        elementsStackView.addArrangedSubview(passwordStackView)
-        elementsStackView.addArrangedSubview(textLabel)
-        passwordStackView.addArrangedSubview(enterPasswordTextField)
-        passwordStackView.addArrangedSubview(repeatPasswordTextField)
+        [elementsStackView, containerView].forEach { view.addSubview($0) }
+        [passwordStackView, textLabel].forEach { elementsStackView.addArrangedSubview($0)}
+        [enterPasswordTextField, repeatPasswordTextField].forEach { passwordStackView.addArrangedSubview($0) }
         containerView.addSubview(continueButton)
         
         enterPasswordTextField.rightView = enterPasswordButton
@@ -108,10 +102,9 @@ class RegistrationPasswordViewController: UIViewController {
         
         view.backgroundColor = .systemGray5
         elementsStackView.backgroundColor = .white
-
     }
     
-    //MARK: - Constraints:
+    // MARK: - Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
