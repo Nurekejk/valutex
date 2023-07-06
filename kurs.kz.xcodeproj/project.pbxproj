@@ -156,6 +156,8 @@
 				9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */,
 			);
 			path = LanguageSelect;
+            sourceTree = "<group>";
+        };
 		FAD47F902A50A24C0055EDEA /* Registration */ = {
 			isa = PBXGroup;
 			children = (
