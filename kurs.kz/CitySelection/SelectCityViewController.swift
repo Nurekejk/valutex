@@ -41,8 +41,9 @@ final class SelectCityViewController: UIViewController {
     private let button: UIButton = {
         let button = UIButton()
         button.setTitle("Выбрать", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
         button.layer.cornerRadius = 12
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return button
     }()
 
