@@ -17,12 +17,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .blue
-        
     }
     
-    //this method does nothing:
+    // this method does nothing:
     func adilMethod() {
 
     }
@@ -34,11 +32,10 @@ class MyTableViewController: UITableViewController {
         // здесь тоже будут доп настройки для контроллера
     }
     
-    //MARK: - Test functions
+    // MARK: - Test functions
     
-    //this function returns the string "Hello"
+    // this function returns the string "Hello"
     func returnStringHelloWorld () -> String {
         return "Hello, World!"
     }
 }
-
