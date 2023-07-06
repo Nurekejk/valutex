@@ -21,14 +21,13 @@ final class ToSupportViewController: UIViewController {
     
     private let telegramButton: UIButton = {
         let button = UIButton(type: .system)
-        
-        var config = UIButton.Configuration.plain()
-        config.title = "Telegram"
-        config.image = UIImage(named: "telegram_icon")
-        config.imagePadding = 10
-        config.imagePlacement = .leading
-        button.contentHorizontalAlignment = .left
-        button.configuration = config
+//        var config = UIButton.Configuration.plain()
+//        config.title = "Telegram"
+//        config.image = UIImage(named: "telegram_icon")
+//        config.imagePadding = 10
+//        config.imagePlacement = .leading
+//        button.contentHorizontalAlignment = .left
+//        button.configuration = config
         
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
@@ -40,13 +39,13 @@ final class ToSupportViewController: UIViewController {
     private let whatsappButton: UIButton = {
         let button = UIButton(type: .system)
         
-        var config = UIButton.Configuration.plain()
-        config.title = "WhatsApp"
-        config.image = UIImage(named: "whatsapp_icon")
-        config.imagePadding = 10
-        config.imagePlacement = .leading
-        button.contentHorizontalAlignment = .left
-        button.configuration = config
+//        var config = UIButton.Configuration.plain()
+//        config.title = "WhatsApp"
+//        config.image = UIImage(named: "whatsapp_icon")
+//        config.imagePadding = 10
+//        config.imagePlacement = .leading
+//        button.contentHorizontalAlignment = .left
+//        button.configuration = config
         
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
