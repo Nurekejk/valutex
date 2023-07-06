@@ -25,8 +25,9 @@ final class ToSupportViewController: UIViewController {
         var config = UIButton.Configuration.plain()
         config.title = "Telegram"
         config.image = UIImage(named: "telegram_icon")
-        config.imagePadding = 50
+        config.imagePadding = 10
         config.imagePlacement = .leading
+        button.contentHorizontalAlignment = .left
         button.configuration = config
         
         button.backgroundColor = .white
@@ -42,8 +43,9 @@ final class ToSupportViewController: UIViewController {
         var config = UIButton.Configuration.plain()
         config.title = "WhatsApp"
         config.image = UIImage(named: "whatsapp_icon")
-        config.imagePadding = 50
+        config.imagePadding = 10
         config.imagePlacement = .leading
+        button.contentHorizontalAlignment = .left
         button.configuration = config
         
         button.backgroundColor = .white
