@@ -9,18 +9,6 @@ import UIKit
 
 final class SelectCityViewController: UIViewController {
 
-    private var cities = [
-        "Алматы",
-        "Астана",
-        "Атырау",
-        "Актобе",
-        "Алматинская область",
-        "Астана",
-        "Атырау",
-        "Актобе",
-        "Алматинская область"
-    ]
-
     // MARK: - Outlets
 
     private let textField: UITextField = {
@@ -65,9 +53,9 @@ final class SelectCityViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
         setupViews()
         setupConctraints()
     }
@@ -75,6 +63,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
+        view.backgroundColor = .systemGray6
         view.addSubview(textField)
         view.addSubview(tableview)
         view.addSubview(shadowview)
@@ -119,6 +108,8 @@ final class SelectCityViewController: UIViewController {
         }
     }
 }
+
+    // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension SelectCityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
