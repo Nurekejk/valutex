@@ -18,7 +18,8 @@ final class RegistrationPasswordViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        stackView.directionalLayoutMargins =
+            NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
         return stackView
@@ -41,7 +42,7 @@ final class RegistrationPasswordViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
-        button.configuration?.contentInsets = .init()
+//        button.configuration?.contentInsets = .init()
         button.backgroundColor = .cyan
         return button
     }()
