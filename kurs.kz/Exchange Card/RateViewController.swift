@@ -13,7 +13,31 @@ final class RateViewController: UIViewController {
         stackView.backgroundColor = .red
         return stackView
     }()
-
+    private let reviewLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Теперь напишите отзыв"
+        label.font = .systemFont(ofSize: 14)
+        label.backgroundColor = .blue
+        return label
+    }()
+    
+    override func viewDidLayoutSubviews() {
+        
+    }
+    
+    private let topStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.alignment = .center
+        stackView.distribution = .fillProportionally
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0,
+                                                                     bottom: 16, trailing: 0)
+        stackView.backgroundColor = .red
+        return stackView
+    }()
+    
     private func addButtonsToStarStackView() {
         let numberOfButtons = 5
         for _ in 1...numberOfButtons {
@@ -33,10 +57,18 @@ final class RateViewController: UIViewController {
     // MARK: - Setup Views
     
     private func setupViews() {
-
+        
+        view.addSubview(topStackView)
+        topStackView.addArrangedSubview(starStackView)
+        topStackView.addArrangedSubview(reviewLabel)
+        addButtonsToStarStackView()
+        
+        view.backgroundColor = .gray
     }
     
     // MARK: - Constraints:
     private func setupConstraints() {
+
     }
 }
+
