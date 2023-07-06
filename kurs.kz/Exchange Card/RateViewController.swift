@@ -22,4 +22,21 @@ final class RateViewController: UIViewController {
             starStackView.addArrangedSubview(starButton)
         }
     }
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        setupConstraints()
+    }
+    
+    // MARK: - Setup Views
+    
+    private func setupViews() {
+
+    }
+    
+    // MARK: - Constraints:
+    private func setupConstraints() {
+    }
 }
