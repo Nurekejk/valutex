@@ -21,5 +21,6 @@ final class StarButton: UIButton {
 
     func setupButton() {
         setImage(UIImage(named: "gray_star"), for: .normal)
+        imageView?.contentMode = .scaleToFill
     }
 }
