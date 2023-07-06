@@ -14,4 +14,12 @@ final class RateViewController: UIViewController {
         return stackView
     }()
 
+    private func addButtonsToStarStackView() {
+        let numberOfButtons = 5
+        for _ in 1...numberOfButtons {
+            let starButton = StarButton()
+            starArray.append(starButton)
+            starStackView.addArrangedSubview(starButton)
+        }
+    }
 }
