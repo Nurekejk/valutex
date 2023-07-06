@@ -9,26 +9,22 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 
-
-
 final class RegistrationPersonalDataViewController: UIViewController {
     
-    //MARK: - UI
+    // MARK: - UI
     
-    private let registrationGrayColor = UIColor (
+    private let registrationGrayColor = UIColor(
         red: 246.0 / 255.0,
         green: 247.0 / 255.0,
         blue: 249.0 / 255.0,
-        alpha: 1 )
+        alpha: 1)
     
-    private let registrationBlueColor = UIColor (
+    private let registrationBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,
         blue: 219.0 / 255.0,
-        alpha: 1 )
-    
-    
-    
+        alpha: 1)
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -36,7 +32,10 @@ final class RegistrationPersonalDataViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20,
+                                                                     leading: 20,
+                                                                     bottom: 20,
+                                                                     trailing: 20)
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
         return stackView
@@ -84,7 +83,6 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    
     private let patronymicTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.borderStyle = .roundedRect
@@ -130,14 +128,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return button
     }()
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
     
-    //MARK: - Setup Views
+    // MARK: - Setup Views
     private func setupViews() {
         stackView.addArrangedSubview(surnameTextField)
         stackView.addArrangedSubview(nameTextField)
@@ -151,10 +149,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
         
         view.backgroundColor = registrationGrayColor
         continueButton.backgroundColor = registrationBlueColor
-
-        
     }
-    //MARK: - Constraints:
+    // MARK: - Constraints:
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             make.height.equalTo(316)
@@ -176,4 +172,3 @@ final class RegistrationPersonalDataViewController: UIViewController {
         }
     }
 }
-
