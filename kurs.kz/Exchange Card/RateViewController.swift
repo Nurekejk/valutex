@@ -24,6 +24,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "Теперь напишите отзыв"
+        label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
         label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,15 +55,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         return button
     }()
     
-    override func viewDidLayoutSubviews() {
-        reviewTextView.layer.cornerRadius = 8
-        reviewTextView.layer.borderWidth = 1
-        reviewTextView.layer.borderColor = borderGrayColor
-        continueButton.layer.cornerRadius = 12
-        entireStackView.layer.cornerRadius = 8
-         
-    }
-    
     private let entireStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -79,27 +71,34 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let numberOfButtons = 5
         for _ in 1...numberOfButtons {
             lazy var starButton = StarButton()
+            starButton.addTarget(self, action: #selector(changeStars), for: .touchUpInside)
             starArray.append(starButton)
             starStackView.addArrangedSubview(starButton)
         }
     }
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
     
-    // MARK: - Setup Views
+    override func viewDidLayoutSubviews() {
+        reviewTextView.layer.cornerRadius = 8
+        reviewTextView.layer.borderWidth = 1
+        reviewTextView.layer.borderColor = borderGrayColor
+        continueButton.layer.cornerRadius = 12
+        entireStackView.layer.cornerRadius = 8
+         
+    }
     
+    // MARK: - Setup Views
     private func setupViews() {
         
         view.addSubview(entireStackView)
+        
         [starStackView, reviewLabel, borderView,
          reviewTextView, continueButton].forEach { entireStackView.addArrangedSubview($0) }
-//        topStackView.addArrangedSubview(starStackView)
-//        topStackView.addArrangedSubview(reviewLabel)
         
         addButtonsToStarStackView()
         
@@ -113,7 +112,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    // MARK: - Constraints:
+    // MARK: - Setup Constraints:
     private func setupConstraints() {
         entireStackView.snp.makeConstraints { make in
             make.height.equalTo(318)
@@ -140,8 +139,19 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
         }
     }
+    // MARK: - Action
+    @objc func changeStars(sender: UIButton!) {
+        starArray.forEach { $0.setImage(UIImage(named: "gray_star"), for: .normal) }
+        for (index, element) in starArray.enumerated() {
+            starArray[index].setImage(UIImage(named: "golden_star"), for: .normal)
+            if element == sender {
+                break
+            }
+        }
+    }
 }
 
+// MARK: - UITextViewDelegate
 extension RateViewController {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
