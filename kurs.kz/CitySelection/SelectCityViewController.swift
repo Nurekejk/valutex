@@ -9,7 +9,17 @@ import UIKit
 
 final class SelectCityViewController: UIViewController {
 
-    private var cities = ["Алматы", "Астана", "Атырау","Актобе","Алматинская область","Астана","Атырау","Актобе","Алматинская область"]
+    private var cities = [
+        "Алматы",
+        "Астана",
+        "Атырау",
+        "Актобе",
+        "Алматинская область",
+        "Астана",
+        "Атырау",
+        "Актобе",
+        "Алматинская область"
+    ]
 
     // MARK: - Outlets
 
@@ -108,8 +118,6 @@ final class SelectCityViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
-
-
 }
 
 extension SelectCityViewController: UITableViewDataSource {
@@ -120,8 +128,8 @@ extension SelectCityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let selectedView = UIView()
-           selectedView.backgroundColor = UIColor.white
-           cell.selectedBackgroundView = selectedView
+        selectedView.backgroundColor = UIColor.white
+        cell.selectedBackgroundView = selectedView
         return cell
     }
 }

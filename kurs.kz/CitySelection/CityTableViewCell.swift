@@ -37,8 +37,8 @@ class CityTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupHierarchy ()
-        setupLayout ()
+        setupHierarchy()
+        setupLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -46,7 +46,7 @@ class CityTableViewCell: UITableViewCell {
     }
 
     // MARK: - Setup
-    private func setupHierarchy(){
+    private func setupHierarchy() {
         stack.addArrangedSubview(label)
         stack.addArrangedSubview(selectImageView)
         contentView.addSubview(stack)
