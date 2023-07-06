@@ -1,0 +1,36 @@
+PODS:
+  - CHIOTPField (0.1.0):
+    - CHIOTPField/Four (= 0.1.0)
+    - CHIOTPField/One (= 0.1.0)
+    - CHIOTPField/Three (= 0.1.0)
+    - CHIOTPField/Two (= 0.1.0)
+  - CHIOTPField/Four (0.1.0)
+  - CHIOTPField/One (0.1.0)
+  - CHIOTPField/Three (0.1.0)
+  - CHIOTPField/Two (0.1.0)
+  - SkyFloatingLabelTextField (4.0.0)
+  - SwiftLint (0.51.0)
+
+DEPENDENCIES:
+  - CHIOTPField
+  - CHIOTPField/Four
+  - CHIOTPField/One
+  - CHIOTPField/Three
+  - CHIOTPField/Two
+  - SkyFloatingLabelTextField
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - CHIOTPField
+    - SkyFloatingLabelTextField
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
+  SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
+  SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
+
+PODFILE CHECKSUM: 0184d8ec33a94e88f3190a137faec6caa7bd2419
+
+COCOAPODS: 1.12.1
