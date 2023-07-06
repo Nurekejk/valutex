@@ -4,21 +4,8 @@
 //
 //  Created by Bekzhan Askerbekov on 5/7/23.
 //
-
 import UIKit
 import SnapKit
-
-extension UIButton {
-    func alignImageAndTitleVertically(padding: CGFloat = 6.0) {
-        guard let imageView = self.imageView, let titleLabel = self.titleLabel else { return }
-        let imageSize = imageView.frame.size
-        let titleSize = titleLabel.bounds.size
-        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageSize.width, bottom: -(imageSize.height + padding), right: 0)
-        let titleWidth = max(0, titleSize.width - imageSize.width)
-        self.imageEdgeInsets = UIEdgeInsets(top: -(imageSize.height + padding), left: 0, bottom: 0, right: -titleWidth)
-        self.contentEdgeInsets = UIEdgeInsets(top: imageSize.height + padding, left: 0, bottom: 0, right: 0)
-    }
-}
 
 final class ToSupportViewController: UIViewController {
     
@@ -34,29 +21,35 @@ final class ToSupportViewController: UIViewController {
     
     private let telegramButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Telegram", for: .normal)
-        button.setImage(UIImage(named: "telegram_icon")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.alignImageAndTitleVertically(padding: 11)
+        
+        var config = UIButton.Configuration.plain()
+        config.title = "Telegram"
+        config.image = UIImage(named: "telegram_icon")
+        config.imagePadding = 50
+        config.imagePlacement = .leading
+        button.configuration = config
+        
         button.backgroundColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 5
         button.layer.borderWidth = 0.1
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
         return button
     }()
     
     private let whatsappButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("WhatsApp", for: .normal)
-        button.setImage(UIImage(named: "whatsapp_icon")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.alignImageAndTitleVertically(padding: 11)
+        
+        var config = UIButton.Configuration.plain()
+        config.title = "WhatsApp"
+        config.image = UIImage(named: "whatsapp_icon")
+        config.imagePadding = 50
+        config.imagePlacement = .leading
+        button.configuration = config
+        
         button.backgroundColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 5
         button.layer.borderWidth = 0.1
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
         return button
     }()
     
@@ -64,7 +57,7 @@ final class ToSupportViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = 0.5
+        stackView.spacing = 0.3
         return stackView
     }()
     
@@ -100,7 +93,7 @@ final class ToSupportViewController: UIViewController {
            }
            
            telegramButton.snp.makeConstraints { make in
-               make.height.equalTo(50)
+               make.height.equalTo(54)
            }
            
            whatsappButton.snp.makeConstraints { make in
