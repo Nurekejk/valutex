@@ -2,14 +2,26 @@ import UIKit
 
 final class RateViewController: UIViewController, UITextViewDelegate {
    
+    private let buttonBlueColor = UIColor(
+        red: 45.0 / 255.0,
+        green: 156.0 / 255.0,
+        blue: 219.0 / 255.0,
+        alpha: 1)
+    
     private let borderGrayColor = CGColor(
         red: 232.0 / 255.0,
         green: 233.0 / 255.0,
         blue: 238.0 / 255.0,
-        alpha: 1 )
+        alpha: 1)
+
+    private let backgroundGrayColor = UIColor(
+        red: 246.0 / 255.0,
+        green: 247.0 / 255.0,
+        blue: 249.0 / 255.0,
+        alpha: 1)
     
     // MARK: - UI
-    private var starArray = [StarButton]()
+    private var starButtons = [StarButton]()
     
     private let starStackView: UIStackView = {
         let stackView = UIStackView()
@@ -17,7 +29,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         stackView.spacing = 4
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .white
         return stackView
     }()
     
@@ -26,7 +37,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         label.text = "Теперь напишите отзыв"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
-        label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -36,14 +46,12 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
         textView.textColor = .lightGray
-        textView.backgroundColor = .white
         textView.font = .systemFont(ofSize: 14)
         return textView
     }()
     
     private let borderView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -70,9 +78,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private func addButtonsToStarStackView() {
         let numberOfButtons = 5
         for _ in 1...numberOfButtons {
-            lazy var starButton = StarButton()
+            var starButton = StarButton()
             starButton.addTarget(self, action: #selector(changeStars), for: .touchUpInside)
-            starArray.append(starButton)
+            starButtons.append(starButton)
             starStackView.addArrangedSubview(starButton)
         }
     }
@@ -84,12 +92,12 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         reviewTextView.layer.cornerRadius = 8
         reviewTextView.layer.borderWidth = 1
         reviewTextView.layer.borderColor = borderGrayColor
         continueButton.layer.cornerRadius = 12
         entireStackView.layer.cornerRadius = 8
-         
     }
     
     // MARK: - Setup Views
@@ -102,10 +110,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         addButtonsToStarStackView()
         
-        view.backgroundColor = .gray
-        
-        continueButton.backgroundColor = .cyan
-        
+        view.backgroundColor = backgroundGrayColor
+        borderView.backgroundColor = backgroundGrayColor
+        continueButton.backgroundColor = buttonBlueColor
         entireStackView.backgroundColor = .white
         
         reviewTextView.delegate = self
@@ -141,9 +148,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     // MARK: - Action
     @objc func changeStars(sender: UIButton!) {
-        starArray.forEach { $0.setImage(UIImage(named: "gray_star"), for: .normal) }
-        for (index, element) in starArray.enumerated() {
-            starArray[index].setImage(UIImage(named: "golden_star"), for: .normal)
+        starButtons.forEach { $0.setImage(UIImage(named: "gray_star"), for: .normal) }
+        for (index, element) in starButtons.enumerated() {
+            starButtons[index].setImage(UIImage(named: "golden_star"), for: .normal)
             if element == sender {
                 break
             }
