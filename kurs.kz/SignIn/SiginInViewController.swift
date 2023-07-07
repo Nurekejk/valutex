@@ -86,7 +86,8 @@ final class SiginInViewController: UIViewController {
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
-        let titleString = NSAttributedString(string: "Зарегистрироваться", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        let titleString = NSAttributedString(string: "Зарегистрироваться",
+                                             attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setAttributedTitle(titleString, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
