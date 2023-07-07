@@ -1,23 +1,25 @@
 //
-//  LanguageSelectViewController.swift
+//  SelectLanguageViewController.swift
 //  kurs.kz
 //
-//  Created by Bekzhan Askerbekov on 2/7/23.
+//  Created by Bekzhan Askerbekov on 4/7/23.
 //
 
 import UIKit
 import SnapKit
 
-class LanguageSelectViewController: UIViewController {
+final class SelectLanguageViewController: UIViewController {
     
-    let imageView: UIImageView = {
+    // MARK: - UI
+
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "selectlanguage")
         return imageView
     }()
-    
-    let label: UILabel = {
+
+    private let label: UILabel = {
         let label = UILabel()
         label.text = "Выберите язык\nприложения"
         label.font = .boldSystemFont(ofSize: 24)
@@ -25,8 +27,8 @@ class LanguageSelectViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
-    let kazakhButton: UIButton = {
+
+    private let kazakhButton: UIButton = {
         let button = UIButton()
         button.setTitle("Қазақша", for: .normal)
         button.backgroundColor = .white
@@ -37,8 +39,8 @@ class LanguageSelectViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
-    let russianButton: UIButton = {
+
+    private let russianButton: UIButton = {
         let button = UIButton()
         button.setTitle("Русский", for: .normal)
         button.backgroundColor = .white
@@ -49,8 +51,8 @@ class LanguageSelectViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
-    let englishButton: UIButton = {
+
+    private let englishButton: UIButton = {
         let button = UIButton()
         button.setTitle("English", for: .normal)
         button.backgroundColor = .white
@@ -61,16 +63,16 @@ class LanguageSelectViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    
-    let stackView: UIStackView = {
+
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 30
         return stackView
     }()
-    
-    
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,9 +80,9 @@ class LanguageSelectViewController: UIViewController {
         
         setupViews()
         setupContraints()
-    
     }
-    
+
+    // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(imageView)
         view.addSubview(label)
@@ -90,7 +92,8 @@ class LanguageSelectViewController: UIViewController {
         stackView.addArrangedSubview(russianButton)
         stackView.addArrangedSubview(englishButton)
     }
-    
+
+    // MARK: - Setup Constraints
     private func setupContraints() {
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(124)
