@@ -78,7 +78,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private func addButtonsToStarStackView() {
         let numberOfButtons = 5
         for _ in 1...numberOfButtons {
-            var starButton = StarButton()
+            let starButton = StarButton()
             starButton.addTarget(self, action: #selector(changeStars), for: .touchUpInside)
             starButtons.append(starButton)
             starStackView.addArrangedSubview(starButton)

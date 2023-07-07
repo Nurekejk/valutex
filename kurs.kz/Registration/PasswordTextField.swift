@@ -13,7 +13,10 @@ final class PasswordTextField: UITextField {
         let rightViewWidth: CGFloat = 24.0
         let rightViewHeight: CGFloat = 24.0
         let middlePointAdjuster = (bounds.height - rightViewHeight) / 2.0
-        let rightBounds = CGRect(x: bounds.width - rightViewWidth - padding, y: middlePointAdjuster, width: rightViewWidth, height: rightViewHeight)
+        let rightBounds = CGRect(x: bounds.width - rightViewWidth - padding,
+                                 y: middlePointAdjuster,
+                                 width: rightViewWidth,
+                                 height: rightViewHeight)
             return rightBounds
     }
 }
