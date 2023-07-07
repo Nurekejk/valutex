@@ -18,9 +18,10 @@ final class RegistrationPasswordViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        stackView.backgroundColor = .white
-        stackView.layer.cornerRadius = 8
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16,
+                                                                     leading: 16,
+                                                                     bottom: 16,
+                                                                     trailing: 16)
         return stackView
     }()
     
@@ -30,8 +31,6 @@ final class RegistrationPasswordViewController: UIViewController {
         stackView.spacing = 12
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = .white
-        stackView.layer.cornerRadius = 8
         return stackView
     }()
 
@@ -39,16 +38,11 @@ final class RegistrationPasswordViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
-        button.configuration?.contentInsets = .init()
-        button.backgroundColor = .cyan
         return button
     }()
     
     private let containerView: UIView = {
         let container = UIView()
-        container.backgroundColor = .white
         return container
     }()
     
@@ -60,7 +54,6 @@ final class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.textColor = .systemGray3
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
@@ -68,7 +61,6 @@ final class RegistrationPasswordViewController: UIViewController {
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
         return textField
@@ -77,7 +69,6 @@ final class RegistrationPasswordViewController: UIViewController {
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
         return textField
@@ -88,6 +79,14 @@ final class RegistrationPasswordViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        continueButton.layer.cornerRadius = 12
+        elementsStackView.layer.cornerRadius = 8
+        enterPasswordButton.layer.cornerRadius = 8
+        repeatPasswordButton.layer.cornerRadius = 8
+        passwordStackView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
@@ -102,6 +101,11 @@ final class RegistrationPasswordViewController: UIViewController {
         
         view.backgroundColor = .systemGray5
         elementsStackView.backgroundColor = .white
+        passwordStackView.backgroundColor = .white
+        textLabel.textColor = .systemGray3
+        continueButton.setTitleColor(.white, for: .normal)
+        continueButton.backgroundColor = .cyan
+        containerView.backgroundColor = .white
     }
     
     // MARK: - Constraints:
