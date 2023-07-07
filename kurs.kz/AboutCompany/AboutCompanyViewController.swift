@@ -40,8 +40,8 @@ class AboutCompanyViewController: UIViewController {
         aboutCompanyTextView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
         }
     }
 }
