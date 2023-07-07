@@ -11,16 +11,16 @@ import SnapKit
 class MainPageViewController: UIViewController {
   
   
-  let imageView: UIImageView = {
+  private let imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
-    imageView.image = UIImage(named: "frame1")
+    imageView.image = UIImage(named: "onBoardingImage")
     
     return imageView
   }()
   
   
-  let label: UILabel = {
+  private let titleLabel: UILabel = {
     let label = UILabel()
     label.text = "Предлагай свой курс на\n валюту и получай \n актуальные валютные \n курсы в твоем городе"
     label.font = .boldSystemFont(ofSize: 24)
@@ -30,7 +30,7 @@ class MainPageViewController: UIViewController {
   }()
   
   
-  let buttonLogIn: UIButton = {
+  private let logInButton: UIButton = {
     let button = UIButton()
     button.setTitle("Войти", for: .normal)
     button.backgroundColor = .blue
@@ -40,8 +40,8 @@ class MainPageViewController: UIViewController {
   }()
   
   
-  let buttonRegister: UIButton = {
-    let button = UIButton()
+  private let registerButton: UIButton = {
+    let button = UIButton(type: .system)
     button.layer.borderColor = UIColor.blue.cgColor
     button.layer.borderWidth = 1
     button.layer.cornerRadius = 10
@@ -52,7 +52,7 @@ class MainPageViewController: UIViewController {
   }()
   
   
-  let buttonNext: UIButton = {
+  private let nextButton: UIButton = {
     let button = UIButton()
     button.layer.cornerRadius = 10
     button.setTitle("Пропустить", for: .normal)
@@ -65,21 +65,19 @@ class MainPageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .white
-    
     setupViews()
     setupConstriants()
   }
   
+  // MARK: - Setup Views:"
   
   private func setupViews() {
-    view.addSubview(imageView)
-    view.addSubview(label)
-    view.addSubview(buttonLogIn)
-    view.addSubview(buttonRegister)
-    view.addSubview(buttonNext)
+    view.backgroundColor = .white
     
+    [imageView, titleLabel, logInButton, registerButton, nextButton].forEach {view.addSubview($0)}
   }
+  
+  // MARK: - Setup Constraints:"
   
   private func setupConstriants() {
     
@@ -90,34 +88,32 @@ class MainPageViewController: UIViewController {
       make.height.equalTo(244)
     }
     
-    label.snp.makeConstraints { make in
+    titleLabel.snp.makeConstraints { make in
       make.top.equalTo(imageView.snp.bottom).offset(64)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
       make.centerX.equalToSuperview()
     }
     
-    buttonLogIn.snp.makeConstraints { make in
-      make.top.equalTo(label.snp.bottom).offset(32)
+    logInButton.snp.makeConstraints { make in
+      make.top.equalTo(titleLabel.snp.bottom).offset(32)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
       make.height.equalTo(52)
     }
     
-    buttonRegister.snp.makeConstraints { make in
-      make.top.equalTo(buttonLogIn.snp.bottom).offset(12)
+    registerButton.snp.makeConstraints { make in
+      make.top.equalTo(logInButton.snp.bottom).offset(12)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
       make.height.equalTo(52)
     }
     
-    buttonNext.snp.makeConstraints { make in
-      make.top.equalTo(buttonRegister.snp.bottom).offset(75)
+    nextButton.snp.makeConstraints { make in
+      make.top.equalTo(registerButton.snp.bottom).offset(90)
       make.leading.equalToSuperview().offset(24)
       make.trailing.equalToSuperview().offset(-24)
       make.height.equalTo(20)
     }
-    
   }
-  
 }
