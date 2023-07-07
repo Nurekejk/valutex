@@ -47,6 +47,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         textView.text = "Поделитесь мнением об обменнике?"
         textView.textColor = .lightGray
         textView.font = .systemFont(ofSize: 14)
+        textView.returnKeyType = .done
         return textView
     }()
     
@@ -173,5 +174,15 @@ extension RateViewController {
             textView.text = "Поделитесь мнением об обменнике ?"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView,
+                  shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return true
+        }
+        return true
     }
 }
