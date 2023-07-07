@@ -148,9 +148,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     // MARK: - Action
     @objc func changeStars(sender: UIButton!) {
-        starButtons.forEach { $0.setImage(UIImage(named: "gray_star"), for: .normal) }
+        starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
-            starButtons[index].setImage(UIImage(named: "golden_star"), for: .normal)
+            starButtons[index].isSelected = true
             if element == sender {
                 break
             }
