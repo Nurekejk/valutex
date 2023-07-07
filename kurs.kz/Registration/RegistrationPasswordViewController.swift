@@ -38,6 +38,7 @@ final class RegistrationPasswordViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
@@ -82,6 +83,8 @@ final class RegistrationPasswordViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+      
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
         enterPasswordButton.layer.cornerRadius = 8
