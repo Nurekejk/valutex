@@ -10,6 +10,8 @@
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
+		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
+		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
@@ -29,12 +31,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
-		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
-		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
+		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
+		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		618977FB2A533D9C009DFF0B /* CitySelection */ = {
+			isa = PBXGroup;
+			children = (
+				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
+				618978042A549426009DFF0B /* CityTableViewCell.swift */,
+			);
+			path = CitySelection;
+			sourceTree = "<group>";
+		};
 		9F63DF3F2A50495100EA9060 /* Sigin */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +140,7 @@
 				223E43EE2A53E8910009AC9F /* SelectLanguage */,
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
+				618977FB2A533D9C009DFF0B /* CitySelection */,
 				223E43EE2A53E8910009AC9F /* SelectLanguage */,
 				FAD47F902A50A24C0055EDEA /* Registration */,
 				9F63DF3F2A50495100EA9060 /* Sigin */,
@@ -316,6 +330,7 @@
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
@@ -323,6 +338,7 @@
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
