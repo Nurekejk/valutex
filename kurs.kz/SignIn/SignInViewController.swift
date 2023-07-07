@@ -100,14 +100,8 @@ final class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-
         setupViews()
         setupConstriants()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     override func viewDidLayoutSubviews() {
@@ -126,6 +120,7 @@ final class SignInViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(enterLabel)
         view.addSubview(phoneTextField)
         view.addSubview(passwordTextField)
