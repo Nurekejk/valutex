@@ -1,16 +1,17 @@
 //
-//  SiginInViewController.swift
+//  SignInViewController.swift
 //  kurs.kz
 //
-//  Created by Nurgul on 01.07.2023.
+//  Created by Akerke on 01.07.2023.
 //
 
 import UIKit
 import SnapKit
+import SkyFloatingLabelTextField
 
-class SiginInViewController: UIViewController {
+final class SignInViewController: UIViewController {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
 
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
@@ -19,45 +20,59 @@ class SiginInViewController: UIViewController {
         return label
     }()
 
-    private lazy var phoneTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var phoneTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
+
         textField.placeholder = "Телефон"
-        textField.font = .systemFont(ofSize: 16)
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
+        textField.placeholderColor = UIColor.lightGray
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+
+        textField.title = "Телефон"
+        textField.titleColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.selectedTitleColor = UIColor.lightGray
+
+        textField.keyboardType = .phonePad
+        textField.lineView.isHidden = true
         return textField
+
     }()
 
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var passwordTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
+
         textField.placeholder = "Пароль"
-        textField.font = .systemFont(ofSize: 16)
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
+        textField.placeholderColor = UIColor.lightGray
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+
+        textField.title = "Пароль"
+        textField.titleColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.selectedTitleColor = UIColor.lightGray
+
+        textField.keyboardType = .phonePad
+        textField.lineView.isHidden = true
         return textField
+
     }()
 
-    private lazy var forgotPasswordLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Забыли пароль"
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 16)
-        return label
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Забыли пароль", for: .normal)
+        button.setTitleColor(.lightGray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
+        return button
     }()
 
     private lazy var signInButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 12
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -66,16 +81,17 @@ class SiginInViewController: UIViewController {
         label.text = "Вы еще не зарегистрированы?"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
-
         return label
     }()
 
     private lazy var signUpButton: UIButton = {
-        let button = UIButton()
-        let titleString = NSAttributedString(string: "Зарегистрироваться", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        let button = UIButton(type: .system)
+        let titleString = NSAttributedString(string: "Зарегистрироваться",
+                                             attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setAttributedTitle(titleString, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -90,13 +106,30 @@ class SiginInViewController: UIViewController {
         setupConstriants()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        phoneTextField.layer.cornerRadius = 8
+        phoneTextField.layer.borderWidth = 1
+        phoneTextField.layer.borderColor = UIColor.gray.cgColor
+        passwordTextField.layer.cornerRadius = 8
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor.gray.cgColor
+        signInButton.layer.cornerRadius = 12
+
+    }
+
     // MARK: - Setup
 
     private func setupViews() {
         view.addSubview(enterLabel)
         view.addSubview(phoneTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(forgotPasswordLabel)
+        view.addSubview(forgotPasswordButton)
         view.addSubview(signInButton)
         view.addSubview(signUpAskLabel)
         view.addSubview(signUpButton)
@@ -123,13 +156,13 @@ class SiginInViewController: UIViewController {
             make.height.equalTo(56)
         }
 
-        forgotPasswordLabel.snp.makeConstraints { make in
+        forgotPasswordButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(12)
             make.trailing.equalToSuperview().offset(-24)
         }
 
         signInButton.snp.makeConstraints { make in
-            make.top.equalTo(forgotPasswordLabel.snp.bottom).offset(16)
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
@@ -150,7 +183,15 @@ class SiginInViewController: UIViewController {
 
     // MARK: - Actions
 
-    @objc private func buttonPressed() {
+    @objc private func forgotPasswordButtonDidPressed() {
 
+    }
+
+    @objc private func signInButtonDidPressed() {
+
+    }
+
+    @objc private func signUpButtonDidPressed() {
+        self.navigationController?.pushViewController(SignupViewController(), animated: true)
     }
 }
