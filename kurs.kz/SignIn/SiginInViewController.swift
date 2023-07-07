@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 
 final class SiginInViewController: UIViewController {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
 
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
@@ -20,111 +20,48 @@ final class SiginInViewController: UIViewController {
         return label
     }()
 
-    /*private lazy var phoneTextField: SkyFloatingLabelTextField = {
-        let textField = SkyFloatingLabelTextField(frame: CGRect(x: 150, y: 10, width: 120, height: 45))
-        textField.placeholder = "Телефон"
-        textField.title = "Телефон"
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 8
-        /*textField.titleColor = UIColor.lightGray
-        textField.selectedTitleColor = UIColor.lightGray
-        textField.placeholderColor = UIColor.black
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
-        textField.keyboardType = .phonePad
-        textField.setTitleVisible(true)*/
-        return textField
-        /*textField.font = .systemFont(ofSize: 16)
-        textField.layer.borderWidth = 1
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
-        textField.rightViewMode = .always
-        let imageView = UIImageView()
-        let image = AppImage.check.uiImage
-        imageView.image = image
-        textField.rightView = imageView*/
-    }()*/
     private lazy var phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
+
         textField.placeholder = "Телефон"
-        textField.title = "Телефон"
-        //textField.selectedLineColor = .lightGray
-        textField.titleColor = UIColor.lightGray
-        textField.selectedTitleColor = UIColor.lightGray
         textField.placeholderColor = UIColor.lightGray
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
-        textField.layer.borderColor = UIColor.gray.cgColor
-        //textField.borderStyle = .roundedRect
-       // textField.layer.borderWidth = 1
-        //textField.layer.cornerRadius = 8
-       // textField.keyboardType = .phonePad
-       /* //textField.lineColor = .gray
-        //textField.tintColor = .lightGray
-        textField.textColor = .black
-        //textField.font = UIFont.systemFont(ofSize: 16.0)
+
+        textField.title = "Телефон"
+        textField.titleColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.selectedTitleColor = UIColor.lightGray
+
         textField.keyboardType = .phonePad
-
-        // Additional customizations
-       textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-       textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.titleColor = .lightGray
-        textField.selectedTitleColor = .lightGray
-        textField.placeholderColor = .black
-       // textField.lineHeight = 1.0
-       // textField.selectedLineHeight = 1.0
-        textField.layer.cornerRadius = 8
-        textField.layer.borderWidth = 1
-       // textField.borderStyle = .roundedRect
-       // textField.clipsToBounds = true
-*/
+        textField.lineView.isHidden = true
         return textField
-    }()
 
+    }()
 
     private lazy var passwordTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
-        textField.title = "Пароль"
-        textField.placeholder = "Пароль"
-        textField.titleColor = UIColor.lightGray
-        textField.selectedTitleColor = UIColor.lightGray
-        textField.placeholderColor = UIColor.lightGray
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
-        textField.layer.borderColor = UIColor.gray.cgColor
-        //textField.borderStyle = .roundedRect
-        //textField.layer.borderWidth = 1
-       // textField.layer.cornerRadius = 8
-        textField.keyboardType = .phonePad
-        return textField
-        /*let textField = UITextField()
-        textField.placeholder = "Пароль"
-        textField.font = .systemFont(ofSize: 16)
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
-        return textField*/
-    }()
 
-    /*private lazy var forgotPasswordLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Забыли пароль"
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 16)
-        return label
-    }()*/
+        textField.placeholder = "Пароль"
+        textField.placeholderColor = UIColor.lightGray
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+
+        textField.title = "Пароль"
+        textField.titleColor = UIColor.lightGray
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.selectedTitleColor = UIColor.lightGray
+
+        textField.keyboardType = .phonePad
+        textField.lineView.isHidden = true
+        return textField
+
+    }()
 
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle("Забыли пароль", for: .normal)
         button.setTitleColor(.lightGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -135,8 +72,7 @@ final class SiginInViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
-        //button.layer.cornerRadius = 12
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -145,7 +81,6 @@ final class SiginInViewController: UIViewController {
         label.text = "Вы еще не зарегистрированы?"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
-
         return label
     }()
 
@@ -155,6 +90,7 @@ final class SiginInViewController: UIViewController {
         button.setAttributedTitle(titleString, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -178,9 +114,12 @@ final class SiginInViewController: UIViewController {
 
         phoneTextField.layer.cornerRadius = 8
         phoneTextField.layer.borderWidth = 1
+        phoneTextField.layer.borderColor = UIColor.gray.cgColor
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor.gray.cgColor
         signInButton.layer.cornerRadius = 12
+
     }
 
     // MARK: - Setup
@@ -243,7 +182,15 @@ final class SiginInViewController: UIViewController {
 
     // MARK: - Actions
 
-    @objc private func buttonPressed() {
+    @objc private func forgotPasswordButtonDidPressed() {
 
+    }
+
+    @objc private func signInButtonDidPressed() {
+
+    }
+
+    @objc private func signUpButtonDidPressed() {
+    
     }
 }
