@@ -8,7 +8,17 @@
 import UIKit
 import SnapKit
 
-class AboutCompanyViewController: UIViewController {
+final class AboutCompanyViewController: UIViewController {
+    
+    // MARK: - UI
+    
+    private let aboutCompanyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "О компании"
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
 
     private let aboutCompanyTextView: UITextView = {
         let textView = UITextView()
@@ -26,6 +36,8 @@ class AboutCompanyViewController: UIViewController {
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
         return textView
     }()
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +46,23 @@ class AboutCompanyViewController: UIViewController {
         setupLayout()
     }
 
+    // MARK: - Setup
+    
     private func setupLayout() {
+        view.addSubview(aboutCompanyLabel)
         view.addSubview(aboutCompanyTextView)
+        
+        aboutCompanyLabel.snp.makeConstraints {make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+        }
 
         aboutCompanyTextView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(aboutCompanyLabel.snp.bottom).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
         }
     }
 }
