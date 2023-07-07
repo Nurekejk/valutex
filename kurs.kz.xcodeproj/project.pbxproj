@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224B1F682A57C8E9007C3A8A /* AboutCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B1F672A57C8E9007C3A8A /* AboutCompanyViewController.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
@@ -18,14 +19,15 @@
 		9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D842A4AFB44002D1F74 /* ViewController.swift */; };
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
+		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
+		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
-		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
-		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		224B1F672A57C8E9007C3A8A /* AboutCompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCompanyViewController.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -40,10 +42,10 @@
 		9F899D892A4AFB46002D1F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
-		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		224B1F662A57C896007C3A8A /* AboutCompany */ = {
+			isa = PBXGroup;
+			children = (
+				224B1F672A57C8E9007C3A8A /* AboutCompanyViewController.swift */,
+			);
+			path = AboutCompany;
+			sourceTree = "<group>";
+		};
 		46EE99A18985E63B77BA8021 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +126,8 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				224B1F662A57C896007C3A8A /* AboutCompany */,
 				FA74EA7B2A52C8A500578C21 /* Registration */,
-				223E43E72A5151040009AC9F /* LanguageSelection */,
-				223E43EE2A53E8910009AC9F /* SelectLanguage */,
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
 				9F63DF3F2A50495100EA9060 /* Sigin */,
@@ -132,6 +141,14 @@
 			path = kurs.kz;
 			sourceTree = "<group>";
 		};
+		9FD284AB2A552EC400D9EB32 /* LanguageSelect */ = {
+			isa = PBXGroup;
+			children = (
+				9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */,
+			);
+			path = LanguageSelect;
+			sourceTree = "<group>";
+		};
 		FA74EA7B2A52C8A500578C21 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,14 +157,6 @@
 				FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */,
 			);
 			path = Registration;
-      		sourceTree = "<group>";
-		};
-		9FD284AB2A552EC400D9EB32 /* LanguageSelect */ = {
-			isa = PBXGroup;
-			children = (
-				9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */,
-			);
-			path = LanguageSelect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,10 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224B1F682A57C8E9007C3A8A /* AboutCompanyViewController.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
-				223E43ED2A5153770009AC9F /* LanguageSelectViewController.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
