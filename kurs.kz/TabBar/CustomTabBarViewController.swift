@@ -7,14 +7,9 @@
 
 import UIKit
 
-class CustomTabBarViewController: UITabBarController {
+final class CustomTabBarViewController: UITabBarController {
     
-    private let registrationBlueColor = CGColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
@@ -23,6 +18,7 @@ class CustomTabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Setup Views
     func setupTabs() {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: UIImage(named: "home_selected")!,
@@ -48,9 +44,7 @@ class CustomTabBarViewController: UITabBarController {
         navigationController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
         
         viewController.navigationItem.title = mainTitle
-        //        navigationController.viewControllers.first?.navigationItem.title = mainTitle
-//        navigationController.viewControllers.first?.navigationItem.
-//        navigationController.viewControllers.first?.navigationItem.rightBarButtonItem
+        
         return navigationController
     }
 }
