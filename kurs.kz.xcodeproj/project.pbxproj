@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		223E43F02A53E8EE0009AC9F /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E43EF2A53E8EE0009AC9F /* SelectLanguageViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
+		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
+		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
-		9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63DF402A50497A00EA9060 /* SiginInViewController.swift */; };
+		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
+		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
+		9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A492A5BDC7400F9126C /* StarButton.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
@@ -25,21 +28,31 @@
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
+		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
+		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
+		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
+		FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */; };
+		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
+		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
+		FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */ = {isa = PBXBuildFile; productRef = FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		223E43EF2A53E8EE0009AC9F /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
+		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
+		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		9F63DF402A50497A00EA9060 /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
+		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
+		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +61,12 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
+		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
+		FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
+		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +77,7 @@
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
+				FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +91,15 @@
 				816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		618977FB2A533D9C009DFF0B /* CitySelection */ = {
+			isa = PBXGroup;
+			children = (
+				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
+				618978042A549426009DFF0B /* CityTableViewCell.swift */,
+			);
+			path = CitySelection;
 			sourceTree = "<group>";
 		};
 		69B63E2E40C15D95ADEE8E58 /* Frameworks */ = {
@@ -91,6 +120,7 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+    
 		9909CB152A55AA95000AC039 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,11 +141,21 @@
 			sourceTree = "<group>";
 		};
 		9F63DF3F2A50495100EA9060 /* Sigin */ = {
+		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
-				9F63DF402A50497A00EA9060 /* SiginInViewController.swift */,
+				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
+				9F402A492A5BDC7400F9126C /* StarButton.swift */,
 			);
-			path = Sigin;
+			path = Rate;
+			sourceTree = "<group>";
+		};
+		9F63DF3F2A50495100EA9060 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9F1094362A5833E100648D14 /* SignInViewController.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		9F899D742A4AFB43002D1F74 = {
@@ -140,10 +180,14 @@
 			isa = PBXGroup;
 			children = (
 				9987B0FB2A553B77005BB185 /* ClientOffer */,
-				223E43EE2A53E8910009AC9F /* SelectLanguage */,
+				9F402A472A5BDC5A00F9126C /* Rate */,
+				FA357BC02A58B2DF005D5271 /* TabBar */,
+				FA74EA7B2A52C8A500578C21 /* Registration */,
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
-				9F63DF3F2A50495100EA9060 /* Sigin */,
+				9F63DF3F2A50495100EA9060 /* SignIn */,
+				618977FB2A533D9C009DFF0B /* CitySelection */,
+				FAD47F902A50A24C0055EDEA /* Registration */,
 				9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */,
 				9F899D802A4AFB44002D1F74 /* AppDelegate.swift */,
 				9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */,
@@ -160,6 +204,33 @@
 				9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */,
 			);
 			path = LanguageSelect;
+			sourceTree = "<group>";
+		};
+		FA357BC02A58B2DF005D5271 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FA74EA7B2A52C8A500578C21 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */,
+				FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */,
+				FA1475262A5431C60085AF1E /* PasswordTextField.swift */,
+				FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		FAD47F902A50A24C0055EDEA /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FA1475242A5416C80085AF1E /* PaddedTextField.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +255,7 @@
 			packageProductDependencies = (
 				9F63DF432A504C3200EA9060 /* SnapKit */,
 				9F63DF462A50540F00EA9060 /* Alamofire */,
+				FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */,
 			);
 			productName = kurs.kz;
 			productReference = 9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */;
@@ -216,6 +288,7 @@
 			packageReferences = (
 				9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -304,16 +377,27 @@
 			files = (
 				9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
+				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
+				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
+				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
+				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
-				9F63DF412A50497A00EA9060 /* SiginInViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
-				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
+				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
+				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
+				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
+				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
+				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +631,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Skyscanner/SkyFloatingLabelTextField";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -559,6 +651,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */;
+			productName = SkyFloatingLabelTextField;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
