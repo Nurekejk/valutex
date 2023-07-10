@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
+		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
+		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
+		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
+		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +120,27 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+    
+		9909CB152A55AA95000AC039 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9909CB132A55AA90000AC039 /* Detail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9987B0FB2A553B77005BB185 /* ClientOffer */ = {
+			isa = PBXGroup;
+			children = (
+				9909CB152A55AA95000AC039 /* Model */,
+				9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */,
+				9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */,
+				9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */,
+			);
+			path = ClientOffer;
+			sourceTree = "<group>";
+		};
+		9F63DF3F2A50495100EA9060 /* Sigin */ = {
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +179,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				9987B0FB2A553B77005BB185 /* ClientOffer */,
 				9F402A472A5BDC5A00F9126C /* Rate */,
 				FA357BC02A58B2DF005D5271 /* TabBar */,
 				FA74EA7B2A52C8A500578C21 /* Registration */,
@@ -345,6 +375,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */,
+				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
@@ -357,6 +389,8 @@
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
+				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
+				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
