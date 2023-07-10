@@ -7,10 +7,12 @@
 
 import UIKit
 
-class OfferDetailsTableViewCell: UITableViewCell {
+final class OfferDetailsTableViewCell: UITableViewCell {
     
     // MARK: - State
-     var detail: Detail? {
+    static let reuseID = String(describing: OfferDetailsTableViewCell.self)
+    
+    var detail: Detail? {
         didSet {
             detailTypeLabel.text = detail?.type
             detailNameLabel.text = detail?.option
@@ -62,7 +64,7 @@ class OfferDetailsTableViewCell: UITableViewCell {
         contentView.addSubview(detailCellStack)
     }
     
-    // MARK: -  Setup Constraints
+    // MARK: - Setup Constraints
     private func setupConstraints() {
         detailCellStack.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)

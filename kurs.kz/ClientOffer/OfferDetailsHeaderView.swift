@@ -10,6 +10,9 @@ import SnapKit
 
 final class OfferDetailsHeaderView: UITableViewHeaderFooterView {
     
+    // MARK: - State
+    static let reuseID = String(describing: OfferDetailsHeaderView.self)
+    
     // MARK: - UI
     let detailLabel: UILabel = {
         let label = UILabel()

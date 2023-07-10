@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-class ClientOfferDetailsViewController: UIViewController {
+final class ClientOfferDetailsViewController: UIViewController {
 
     // MARK: - State
+    
     private let details : [Detail] = [Detail(type: "Статус", option: "Продажа"),
                                       Detail(type: "Валюта", option: "USD"),
                                       Detail(type: "Курс", option: "500 ₸"),
@@ -47,15 +48,19 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.spacing = 12.0
         stackView.backgroundColor = UIColor(named: "timerStackViewBackgroundColor")
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24, leading: 72, bottom: 24, trailing: 72)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24,
+                                                                     leading: 72,
+                                                                     bottom: 24,
+                                                                     trailing: 72)
         return stackView
     }()
     
     private lazy var detailsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(OfferDetailsTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(OfferDetailsHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(OfferDetailsTableViewCell.self,
+                           forCellReuseIdentifier: OfferDetailsTableViewCell.reuseID)
+        tableView.register(OfferDetailsHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: OfferDetailsHeaderView.reuseID)
         tableView.rowHeight = 50.0
         tableView.dataSource = self
         tableView.delegate = self
@@ -79,8 +84,10 @@ class ClientOfferDetailsViewController: UIViewController {
         stackView.spacing = 16.0
         stackView.backgroundColor = .white
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16,
+                                                                     leading: 16,
+                                                                     bottom: 16,
+                                                                     trailing: 16)
         return stackView
     }()
     
@@ -93,6 +100,7 @@ class ClientOfferDetailsViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         timerStackView.layer.cornerRadius = 8.0
 
         resetButton.layer.cornerRadius = 12.0
@@ -146,7 +154,11 @@ class ClientOfferDetailsViewController: UIViewController {
     
     // MARK: - Actions
     private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: #selector(updateTime),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     private func timeFormatter(_ seconds: Int) -> String {
@@ -166,20 +178,30 @@ class ClientOfferDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension ClientOfferDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? OfferDetailsTableViewCell
-        cell?.detail = details[indexPath.row]
-        cell?.selectionStyle = .none
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: OfferDetailsTableViewCell.reuseID,
+            for: indexPath) as? OfferDetailsTableViewCell
+        else {
+            fatalError("Could not cast to OfferDetailsTableViewCell")
+        }
+        cell.detail = details[indexPath.row]
+        cell.selectionStyle = .none
+        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! OfferDetailsHeaderView
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                    OfferDetailsHeaderView.reuseID)
+                as? OfferDetailsHeaderView
+        else {
+            fatalError("Could not cast to OfferDetailsHeaderView")
+        }
         return view
     }
 }
