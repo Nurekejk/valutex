@@ -20,33 +20,25 @@ final class ToSupportViewController: UIViewController {
     }()
     
     private let telegramButton: UIButton = {
-        let button = UIButton(type: .system)
-//        var config = UIButton.Configuration.plain()
-//        config.title = "Telegram"
-//        config.image = UIImage(named: "telegram_icon")
-//        config.imagePadding = 10
-//        config.imagePlacement = .leading
-//        button.contentHorizontalAlignment = .left
-//        button.configuration = config
-        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "telegram_icon"), for: .normal)
+        button.setTitle("Telegram", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 0.1
-        
         return button
     }()
     
     private let whatsappButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-//        var config = UIButton.Configuration.plain()
-//        config.title = "WhatsApp"
-//        config.image = UIImage(named: "whatsapp_icon")
-//        config.imagePadding = 10
-//        config.imagePlacement = .leading
-//        button.contentHorizontalAlignment = .left
-//        button.configuration = config
-        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "whatsapp_icon"), for: .normal)
+        button.setTitle("WhatsApp", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 0.1
@@ -95,6 +87,7 @@ final class ToSupportViewController: UIViewController {
            
            telegramButton.snp.makeConstraints { make in
                make.height.equalTo(54)
+               make.leading.equalToSuperview().offset(10)
            }
            
            whatsappButton.snp.makeConstraints { make in
