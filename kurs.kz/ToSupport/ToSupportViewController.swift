@@ -42,7 +42,6 @@ final class ToSupportViewController: UIViewController {
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 0.1
-        
         return button
     }()
     
@@ -58,7 +57,6 @@ final class ToSupportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupView()
         setupConstraints()
     }
@@ -66,6 +64,7 @@ final class ToSupportViewController: UIViewController {
     // MARK: Setup View
     
     private func setupView() {
+        view.backgroundColor = .white
         view.addSubview(titleLabel)
         view.addSubview(stackView)
         stackView.addArrangedSubview(telegramButton)
@@ -87,7 +86,6 @@ final class ToSupportViewController: UIViewController {
            
            telegramButton.snp.makeConstraints { make in
                make.height.equalTo(54)
-               make.leading.equalToSuperview().offset(10)
            }
            
            whatsappButton.snp.makeConstraints { make in
