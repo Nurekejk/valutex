@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
+		8F122D2B2A5BCD8A00E31B46 /* languageAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F122D2A2A5BCD8A00E31B46 /* languageAppViewController.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
@@ -35,6 +36,7 @@
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		8F122D2A2A5BCD8A00E31B46 /* languageAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = languageAppViewController.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8F122D292A5BCD6B00E31B46 /* LanguageApp */ = {
+			isa = PBXGroup;
+			children = (
+				8F122D2A2A5BCD8A00E31B46 /* languageAppViewController.swift */,
+			);
+			path = LanguageApp;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8F122D292A5BCD6B00E31B46 /* LanguageApp */,
 				FA74EA7B2A52C8A500578C21 /* Registration */,
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
@@ -335,6 +346,7 @@
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
+				8F122D2B2A5BCD8A00E31B46 /* languageAppViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
