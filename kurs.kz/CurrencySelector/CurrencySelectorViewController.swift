@@ -30,7 +30,11 @@ final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - UI
     
-    private let currencies = ["Доллар США"]
+    private let currenciesDictionary = ["Доллар США" : "usd_flag","Евро" : "euro_flag",
+                                        "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
+                                        "Кит.юань" : "cn_flag"]
+    private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
+                                      "Кит.юань"]
     private lazy var curreniesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -145,10 +149,9 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as? CurrencySelectorTableViewCell
-        
+        cell?.configureCell(currency: "AMAZON", flagName: "kzt_flag")
         let customSelectionView = UIView()
         customSelectionView.backgroundColor = UIColor.white
-
         cell?.selectedBackgroundView = customSelectionView
         return cell ?? UITableViewCell()
     }
