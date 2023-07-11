@@ -41,6 +41,7 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.register(CurrencySelectorTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = 56
         
@@ -193,7 +194,7 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
