@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220C3F272A5D0EA2000002DB /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
-		9F402A432A5BD37700F9126C /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A422A5BD37600F9126C /* ToSupportViewController.swift */; };
+		9F402A432A5BD37700F9126C /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A422A5BD37600F9126C /* SupportTableViewCell.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,7 +43,7 @@
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		9F402A422A5BD37600F9126C /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/ToSupport/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
+		9F402A422A5BD37600F9126C /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportTableViewCell.swift; path = kurs.kz/ToSupport/SupportTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 		9F402A412A5BD35C00F9126C /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				9F402A422A5BD37600F9126C /* ToSupportViewController.swift */,
+				9F402A422A5BD37600F9126C /* SupportTableViewCell.swift */,
+				220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -338,10 +341,11 @@
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
+				220C3F272A5D0EA2000002DB /* ToSupportViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
-				9F402A432A5BD37700F9126C /* ToSupportViewController.swift in Sources */,
+				9F402A432A5BD37700F9126C /* SupportTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
