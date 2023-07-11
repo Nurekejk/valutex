@@ -143,17 +143,22 @@ final class CurrencySelectorViewController: UIViewController {
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        currenciesKeyArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as? CurrencySelectorTableViewCell
-        cell?.configureCell(currency: "AMAZON", flagName: "kzt_flag")
-        let customSelectionView = UIView()
-        customSelectionView.backgroundColor = UIColor.white
-        cell?.selectedBackgroundView = customSelectionView
-        return cell ?? UITableViewCell()
+        let dictionaryKey = currenciesKeyArray[indexPath.row]
+        if let flagName = currenciesDictionary[dictionaryKey] {
+            cell?.configureCell(currency: currenciesKeyArray[indexPath.row], flagName: flagName)
+            let customSelectionView = UIView()
+            customSelectionView.backgroundColor = UIColor.white
+            cell?.selectedBackgroundView = customSelectionView
+            return cell ?? UITableViewCell()
+        } else {
+            return UITableViewCell()
+        }
     }
     
 }
