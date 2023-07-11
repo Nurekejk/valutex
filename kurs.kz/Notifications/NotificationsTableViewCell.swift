@@ -17,11 +17,11 @@ final class NotificationsTableViewCell: UITableViewCell {
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
-    private lazy var subTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Добро пожаловать в службу поддержки"
-        label.font = .systemFont(ofSize: 16)
-        return label
+    private lazy var subTitleTextField: UITextField = {
+        let textField = UITextField()
+        textField.text = "Добро пожаловать в службу поддержки"
+        textField.font = .systemFont(ofSize: 16)
+        return textField
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -43,7 +43,7 @@ final class NotificationsTableViewCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(titleLabel)
-        contentView.addSubview(subTitleLabel)
+        contentView.addSubview(subTitleTextField)
         
     }
     
@@ -57,7 +57,7 @@ final class NotificationsTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-40)
             
         }
-        subTitleLabel.snp.makeConstraints { make in
+        subTitleTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-40)
