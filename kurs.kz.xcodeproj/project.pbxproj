@@ -36,6 +36,7 @@
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
 		FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */ = {isa = PBXBuildFile; productRef = FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */; };
 		FAEEE75B2A5D95B5007FB7A6 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE75A2A5D95B5007FB7A6 /* CurrencySelectorViewController.swift */; };
+		FAEEE75D2A5DD85F007FB7A6 /* CurrencySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE75C2A5DD85F007FB7A6 /* CurrencySelectorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 		FAEEE75A2A5D95B5007FB7A6 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
+		FAEEE75C2A5DD85F007FB7A6 /* CurrencySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				FAEEE75A2A5D95B5007FB7A6 /* CurrencySelectorViewController.swift */,
+				FAEEE75C2A5DD85F007FB7A6 /* CurrencySelectorTableViewCell.swift */,
 			);
 			path = CurrencySelector;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				FAEEE75D2A5DD85F007FB7A6 /* CurrencySelectorTableViewCell.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,

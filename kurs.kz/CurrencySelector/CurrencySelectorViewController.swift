@@ -27,8 +27,16 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            curreniesTableView.reloadData()
+        }
+    }
+
+    
     // MARK: - UI
     
+    private let currencies = ["Доллар США",]
     private let curreniesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -179,6 +187,8 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
 
 // MARK: - UITextViewDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         <#code#>
     }
