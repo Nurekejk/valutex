@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         window?.rootViewController = UINavigationController(
-            rootViewController: ClientOfferDetailsViewController())
+            rootViewController: OfferSellViewController())
         window?.makeKeyAndVisible()
     }
 }

@@ -8,21 +8,31 @@
 import UIKit
 
 final class OfferSellCurrencyView: UIView {
-    private let flagImageView: UIImageView
-    private let currencyLabel: UILabel
+    private let flagImageName: String
+    private let currencyLabelText: String
     private let hasButton: Bool
     
     
-    
+    private let flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     
     private let buttonView: UIView = {
         let view = UIView()
         return view
     }()
     
+    private let sumLabel: UILabel = {
+        let currencySign: String
+        let currencySum: String
+        let label = UILabel()
+        label.text = currencySum + "" + currencySign
+        return label
+    }()
+    
     init(flagImageName: String, currencyText: String, hasButton: Bool) {
-        self.flagImageView = UIImageView(image: UIImage(named: flagImageName))
-        self.currencyLabel = UILabel()
+        self.currencyLabelText = currencyText
         self.hasButton = hasButton
         
         super.init(frame: .zero)
@@ -30,8 +40,7 @@ final class OfferSellCurrencyView: UIView {
         configureView()
         configureSubviews()
         configureConstraints()
-        
-        currencyLabel.text = currencyText
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,13 +48,14 @@ final class OfferSellCurrencyView: UIView {
     }
     
     private func configureView() {
-        currencyLabel.font = .systemFont(ofSize: 16)
+//        currencyLabel.font = .systemFont(ofSize: 16)
     }
     
     private func configureSubviews() {
         // Add and configure subviews (e.g., imageView, label) here
         addSubview(flagImageView)
         addSubview(currencyLabel)
+        flagImageView.image = UIImage(named: flagImageName)
     }
     
     private func configureConstraints() {
