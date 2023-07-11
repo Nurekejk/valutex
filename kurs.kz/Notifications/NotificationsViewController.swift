@@ -6,16 +6,27 @@
 //
 
 import UIKit
+import SnapKit
 
 final class NotificationsViewController: UIViewController {
+
+    // MARK: - State
+        private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+            didSet {
+                tableView.reloadData()
+            }
+        }
+
     // MARK: - UI
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource  = self
         tableView.delegate = self
+        tableView.register(NotificationsTableViewCell.self, forCellReuseIdentifier: "notifications_cell")
+        tableView.rowHeight = 126
         return tableView
-    }
+    }()
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -28,12 +39,16 @@ final class NotificationsViewController: UIViewController {
     // MARK: - Setup Views
 
     private func setupViews() {
+        view.addSubview(tableView)
 
     }
 
     // MARK: - Setup Constraints
 
     private func setupConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
 
     }
 }
@@ -49,8 +64,8 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notifications_cell",
+                                                 for: indexPath) as? NotificationsTableViewCell
+        return cell ?? UITableViewCell()
     }
 }
-
-
