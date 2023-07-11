@@ -31,7 +31,7 @@ final class SupportTableViewCell: UITableViewCell {
         supportImageView.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
             make.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(40)
+            make.height.width.equalTo(25)
         }
         
         supportLabel.snp.makeConstraints { make in
