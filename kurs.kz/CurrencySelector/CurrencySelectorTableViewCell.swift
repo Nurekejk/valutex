@@ -74,4 +74,9 @@ class CurrencySelectorTableViewCell: UITableViewCell {
             make.size.equalTo(24)
         }
     }
+    public func configureCell(currency: String, flagName: String) {
+        currencyLabel.text = currency
+        flagImageView.image = UIImage(named: flagName)
+    }
+    
 }
