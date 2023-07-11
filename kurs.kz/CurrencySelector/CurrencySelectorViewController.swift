@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class CurrencySelectorViewController: UIViewController, UITextViewDelegate {
     
@@ -33,13 +34,15 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
         }
     }
 
-    
     // MARK: - UI
     
-    private let currencies = ["Доллар США",]
-    private let curreniesTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    private let currencies = ["Доллар США"]
+    private lazy var curreniesTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CurrencySelectorTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 56
         
         return tableView
     }()
@@ -127,8 +130,6 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(curreniesTableView)
-        curreniesTableView.dataSource = self
-        curreniesTableView.delegate = self
         //        view.addSubview(entireStackView)
         //
         //        [starStackView, reviewLabel, borderView,
@@ -147,6 +148,9 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+        curreniesTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
 //        entireStackView.snp.makeConstraints { make in
 //            make.height.equalTo(318)
 //            make.leading.equalToSuperview().offset(16)
@@ -183,20 +187,20 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
 //            }
 //        }
 //    }
-//}
+// }
 
 // MARK: - UITextViewDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                 for: indexPath) as? CurrencySelectorTableViewCell
+        
+        return cell ?? UITableViewCell()
     }
     
-
 }
-
