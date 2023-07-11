@@ -7,89 +7,46 @@
 import UIKit
 import SnapKit
 
-final class ToSupportViewController: UIViewController {
+final class SupportTableViewCell: UITableViewCell {
+    static let identifier = "SupportTableViewCell"
     
-    // MARK: UI
+    private let supportImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
-    private let titleLabel: UILabel = {
+    private let supportLabel: UILabel = {
         let label = UILabel()
-        label.text = "Написать в поддержу"
-        label.font = .boldSystemFont(ofSize: 20)
-        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
-    private let telegramButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "telegram_icon"), for: .normal)
-        button.setTitle("Telegram", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        button.contentHorizontalAlignment = .left
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 0.1
-        return button
-    }()
-    
-    private let whatsappButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "whatsapp_icon"), for: .normal)
-        button.setTitle("WhatsApp", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        button.contentHorizontalAlignment = .left
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 0.1
-        return button
-    }()
-    
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 0.3
-        return stackView
-    }()
-    
-    // MARK: Lifecicle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        setupConstraints()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(supportImageView)
+        contentView.addSubview(supportLabel)
+        
+        supportImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(contentView)
+            make.leading.equalTo(contentView).offset(10)
+            make.height.width.equalTo(40)
+        }
+        
+        supportLabel.snp.makeConstraints { make in
+            make.leading.equalTo(supportImageView.snp.trailing).offset(10)
+            make.trailing.equalTo(contentView).offset(-10)
+            make.centerY.equalTo(contentView)
+        }
     }
     
-    // MARK: Setup View
-    
-    private func setupView() {
-        view.backgroundColor = .white
-        view.addSubview(titleLabel)
-        view.addSubview(stackView)
-        stackView.addArrangedSubview(telegramButton)
-        stackView.addArrangedSubview(whatsappButton)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been impemented")
     }
     
-    // MARK: Setup Constraints
-    private func setupConstraints() {
-           titleLabel.snp.makeConstraints { make in
-               make.top.equalToSuperview().offset(62)
-               make.leading.trailing.equalToSuperview()
-           }
-           
-           stackView.snp.makeConstraints { make in
-               make.top.equalTo(titleLabel.snp.bottom).offset(20)
-               make.leading.equalToSuperview().offset(20)
-               make.trailing.equalToSuperview().offset(-20)
-           }
-           
-           telegramButton.snp.makeConstraints { make in
-               make.height.equalTo(54)
-           }
-           
-           whatsappButton.snp.makeConstraints { make in
-               make.height.equalTo(telegramButton)
-           }
-       }
-   }
+    func configure(with model: (image: UIImage?, title: String)) {
+        supportImageView.image = model.image
+        supportLabel.text = model.title
+    }
+}
