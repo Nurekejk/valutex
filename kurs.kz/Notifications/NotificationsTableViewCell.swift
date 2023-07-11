@@ -24,6 +24,15 @@ final class NotificationsTableViewCell: UITableViewCell {
         return textField
     }()
 
+    private lazy var dateTextField: UITextField = {
+        let textField = UITextField()
+        textField.text = "9:05"
+        textField.font = .systemFont(ofSize: 14)
+        textField.textColor = UIColor.lightGray
+        textField.textAlignment = .right
+        return textField
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -44,6 +53,7 @@ final class NotificationsTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleTextField)
+        contentView.addSubview(dateTextField)
         
     }
     
@@ -59,6 +69,11 @@ final class NotificationsTableViewCell: UITableViewCell {
         }
         subTitleTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-40)
+        }
+       dateTextField.snp.makeConstraints { make in
+            make.top.equalTo(subTitleTextField.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-40)
         }
