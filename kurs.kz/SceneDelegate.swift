@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         window?.rootViewController = UINavigationController(
-            rootViewController: ClientOfferDetailsViewController())
+            rootViewController: NotificationsViewController())
         window?.makeKeyAndVisible()
     }
 }
