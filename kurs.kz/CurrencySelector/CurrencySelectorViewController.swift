@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CurrencySelectorViewController: UIViewController, UITextViewDelegate {
+final class CurrencySelectorViewController: UIViewController {
     
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
@@ -28,12 +28,6 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
         blue: 249.0 / 255.0,
         alpha: 1)
     
-    private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            curreniesTableView.reloadData()
-        }
-    }
-
     // MARK: - UI
     
     private let currencies = ["Доллар США"]
@@ -131,20 +125,6 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(curreniesTableView)
-        //        view.addSubview(entireStackView)
-        //
-        //        [starStackView, reviewLabel, borderView,
-        //         reviewTextView, continueButton].forEach { entireStackView.addArrangedSubview($0) }
-        //
-        //        addButtonsToStarStackView()
-        //
-        //        view.backgroundColor = backgroundGrayColor
-        //        borderView.backgroundColor = backgroundGrayColor
-        //        continueButton.backgroundColor = buttonBlueColor
-        //        entireStackView.backgroundColor = .white
-        //
-        //        reviewTextView.delegate = self
-        
     }
     
     // MARK: - Setup Constraints:
@@ -152,43 +132,8 @@ final class CurrencySelectorViewController: UIViewController, UITextViewDelegate
         curreniesTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-//        entireStackView.snp.makeConstraints { make in
-//            make.height.equalTo(318)
-//            make.leading.equalToSuperview().offset(16)
-//            make.trailing.equalToSuperview().offset(-16)
-//            make.top.equalToSuperview().offset(116)
-//        }
-//        borderView.snp.makeConstraints { make in
-//            make.height.equalTo(1)
-//            make.leading.equalTo(entireStackView.snp.leading)
-//            make.trailing.equalTo(entireStackView.snp.trailing)
-//        }
-//        reviewLabel.snp.makeConstraints { make in
-//            make.height.equalTo(18)
-//        }
-//        reviewTextView.snp.makeConstraints { make in
-//            make.height.equalTo(120)
-//            make.leading.equalTo(entireStackView.snp.leading).offset(16)
-//            make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
-//        }
-//        continueButton.snp.makeConstraints { make in
-//            make.height.equalTo(52)
-//            make.leading.equalTo(entireStackView.snp.leading).offset(16)
-//            make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
-//        }
     }
 }
-//    // MARK: - Action
-//    @objc func changeStars(sender: UIButton!) {
-//        starButtons.forEach { $0.isSelected = false }
-//        for (index, element) in starButtons.enumerated() {
-//            starButtons[index].isSelected = true
-//            if element == sender {
-//                break
-//            }
-//        }
-//    }
-// }
 
 // MARK: - UITextViewDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
@@ -201,6 +146,10 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as? CurrencySelectorTableViewCell
         
+        let customSelectionView = UIView()
+        customSelectionView.backgroundColor = UIColor.white
+
+        cell?.selectedBackgroundView = customSelectionView
         return cell ?? UITableViewCell()
     }
     
