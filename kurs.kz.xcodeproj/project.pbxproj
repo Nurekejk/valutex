@@ -140,7 +140,6 @@
 			path = ClientOffer;
 			sourceTree = "<group>";
 		};
-		9F63DF3F2A50495100EA9060 /* Sigin */ = {
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
