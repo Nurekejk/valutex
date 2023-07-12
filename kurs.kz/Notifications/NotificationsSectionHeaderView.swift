@@ -1,14 +1,13 @@
 //
-//  SectionHeaderView.swift
+//  NotificationsSectionHeaderView.swift
 //  kurs.kz
 //
-//  Created by Акерке on 11.07.2023.
+//  Created by Акерке on 12.07.2023.
 //
 
 import UIKit
-import SnapKit
 
-class SectionHeaderView: UIView {
+class NotificationsSectionHeaderView: UIView {
 
     private lazy var titleLabel: UILabel = {
             let label = UILabel()
@@ -31,7 +30,7 @@ class SectionHeaderView: UIView {
 
     // MARK: - Setup Views
         private func setupViews() {
-            
+
             addSubview(titleLabel)
         }
 
@@ -40,6 +39,5 @@ class SectionHeaderView: UIView {
             titleLabel.snp.makeConstraints { make in
                 make.center.equalToSuperview()
             }
-//
         }
     }
