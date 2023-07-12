@@ -19,6 +19,7 @@
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
 		9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A492A5BDC7400F9126C /* StarButton.swift */; };
+		9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
+		9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutCompanyViewController.swift; path = kurs.kz/AboutCompany/AboutCompanyViewController.swift; sourceTree = SOURCE_ROOT; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,15 @@
 			path = Rate;
 			sourceTree = "<group>";
 		};
+		9F402A4C2A5BDDA600F9126C /* AboutCompany */ = {
+			isa = PBXGroup;
+			children = (
+				9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */,
+			);
+			name = AboutCompany;
+			path = Rate/AboutCompany;
+			sourceTree = "<group>";
+		};
 		9F63DF3F2A50495100EA9060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +189,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				9F402A4C2A5BDDA600F9126C /* AboutCompany */,
 				9987B0FB2A553B77005BB185 /* ClientOffer */,
 				9F402A472A5BDC5A00F9126C /* Rate */,
 				FA357BC02A58B2DF005D5271 /* TabBar */,
@@ -388,6 +400,7 @@
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
+				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
