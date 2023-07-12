@@ -35,7 +35,6 @@ final class NotificationsViewController: UIViewController {
 
         setupViews()
         setupConstraints()
-
     }
     // MARK: - Setup Views
 
@@ -47,15 +46,12 @@ final class NotificationsViewController: UIViewController {
     // MARK: - Setup Constraints
 
     private func setupConstraints() {
-        //        let width = UIScreen.main.bounds.width
-        //                headerView.frame = CGRect(x: 0, y: 0, width: width, height: 200)
-        //        tableView.snp.makeConstraints { make in
-        //            make.edges.equalToSuperview()
-        //        }
-        //
-        //    }
+
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                        make.leading.equalToSuperview()
+                        make.trailing.equalToSuperview()
+                        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
@@ -83,12 +79,5 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
                 let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
                 return view
             }
-//        return cell ?? UITableViewCell()
-//    }
 
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//            let width = UIScreen.main.bounds.width
-//            let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
-//            return view
-//        }
 }
