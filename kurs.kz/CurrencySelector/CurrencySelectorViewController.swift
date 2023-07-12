@@ -75,7 +75,7 @@ final class CurrencySelectorViewController: UIViewController {
     }
 }
 
-// MARK: - UITextViewDelegate
+// MARK: - UITableViewDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
