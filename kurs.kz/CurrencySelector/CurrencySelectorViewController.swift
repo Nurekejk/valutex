@@ -30,6 +30,15 @@ final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - UI
     
+    private let chooseCurrencyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Выберите валюту"
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let currenciesDictionary = ["Доллар США" : "usd_flag","Евро" : "euro_flag",
                                         "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
                                         "Кит.юань" : "cn_flag"]
