@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SectionHeaderView: UIView {
 
@@ -13,6 +14,7 @@ class SectionHeaderView: UIView {
             let label = UILabel()
             label.text = "Сегодня"
             label.font = .systemFont(ofSize: 14)
+            label.textColor = .lightGray
             return label
         }()
 
@@ -38,5 +40,6 @@ class SectionHeaderView: UIView {
             titleLabel.snp.makeConstraints { make in
                 make.center.equalToSuperview()
             }
+//
         }
     }
