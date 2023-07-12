@@ -25,7 +25,7 @@ final class OfferTableViewCell: UITableViewCell {
 
     private let infoStack: UIStackView = {
         let stack = UIStackView()
-        stack.alignment = .leading
+        stack.alignment = .center
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.spacing = 4
@@ -175,14 +175,6 @@ final class OfferTableViewCell: UITableViewCell {
             make.width.equalTo(151.1)
             make.bottom.equalToSuperview().offset(-16)
         }
-        starImage.snp.makeConstraints { make in
-            make.centerY.equalTo(nameLabel.snp.centerY)
-        }
-        ratingLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nameLabel.snp.centerY)
-        }
     }
-    
-    // MARK: - Reuse
-
+        // MARK: - Reuse
 }

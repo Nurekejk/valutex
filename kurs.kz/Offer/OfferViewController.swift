@@ -19,7 +19,7 @@ final class OfferViewController: UIViewController {
         return label
     }()
 
-    private lazy var tableview: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
@@ -33,24 +33,24 @@ final class OfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupConctraints()
+        setupConstraints()
     }
     
     // MARK: - Setup
     private func setupViews() {
         view.backgroundColor = .systemGray6
         view.addSubview(label)
-        view.addSubview(tableview)
+        view.addSubview(tableView)
     }
 
-    private func setupConctraints() {
+    private func setupConstraints() {
         label.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(332)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-48)
             make.height.equalTo(20)
         }
-        tableview.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
