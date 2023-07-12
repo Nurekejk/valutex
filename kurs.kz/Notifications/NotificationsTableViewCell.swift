@@ -13,9 +13,9 @@ final class NotificationsTableViewCell: UITableViewCell {
     // MARK: - UI
 
     private lazy var containerView: UIView = {
-            let view = UIView()
-            return view
-        }()
+        let view = UIView()
+        return view
+    }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -52,22 +52,28 @@ final class NotificationsTableViewCell: UITableViewCell {
     }
 
     override func layoutSubviews() {
-            super.layoutSubviews()
+        super.layoutSubviews()
 
         containerView.layer.cornerRadius = 8
         containerView.layer.borderWidth = 0.5
-
-        }
+    }
 
     // MARK: - Setup Views
 
-       private func setupViews() {
-           [titleLabel, subTitleLabel, dateLabel].forEach {
-               containerView.addSubview($0)
-           }
-           contentView.backgroundColor = .clear
-           contentView.addSubview(containerView)
-       }
+    private func setupViews() {
+        [titleLabel, subTitleLabel, dateLabel].forEach {
+            containerView.addSubview($0)
+        }
+        let backgroundGrayColor = UIColor(
+            red: 246.0 / 255.0,
+            green: 247.0 / 255.0,
+            blue: 249.0 / 255.0,
+            alpha: 1)
+
+        contentView.backgroundColor = backgroundGrayColor // rgba(246, 247, 249, 1)
+        containerView.backgroundColor = .white
+        contentView.addSubview(containerView)
+    }
 
     // MARK: - Setup Constraints
     
@@ -77,19 +83,19 @@ final class NotificationsTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-8)
-                }
+        }
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(26)
-            
         }
+
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(26)
 
         }
-       dateLabel.snp.makeConstraints { make in
+        dateLabel.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
             make.trailing.equalToSuperview().offset(-40)
         }
