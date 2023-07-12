@@ -46,12 +46,9 @@ final class NotificationsViewController: UIViewController {
     // MARK: - Setup Constraints
 
     private func setupConstraints() {
-
+    
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-                        make.leading.equalToSuperview()
-                        make.trailing.equalToSuperview()
-                        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.edges.equalToSuperview()
         }
     }
 }

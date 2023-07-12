@@ -24,20 +24,20 @@ final class NotificationsTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var subTitleTextField: UITextField = {
-        let textField = UITextField()
-        textField.text = "Добро пожаловать в службу поддержки"
-        textField.font = .systemFont(ofSize: 16)
-        return textField
+    private lazy var subTitleLabel: UITextField = {
+        let label = UITextField()
+        label.text = "Добро пожаловать в службу поддержки"
+        label.font = .systemFont(ofSize: 16)
+        return label
     }()
 
-    private lazy var dateTextField: UITextField = {
-        let textField = UITextField()
-        textField.text = "9:05"
-        textField.font = .systemFont(ofSize: 14)
-        textField.textColor = UIColor.lightGray
-        textField.textAlignment = .right
-        return textField
+    private lazy var dateLabel: UITextField = {
+        let label = UITextField()
+        label.text = "9:05"
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .right
+        return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,24 +50,22 @@ final class NotificationsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func prepareForReuse() {
-            super.prepareForReuse()
 
-        }
     override func layoutSubviews() {
             super.layoutSubviews()
 
         containerView.layer.cornerRadius = 8
         containerView.layer.borderWidth = 0.5
+
         }
 
     // MARK: - Setup Views
 
        private func setupViews() {
-           [titleLabel, subTitleTextField, dateTextField].forEach {
+           [titleLabel, subTitleLabel, dateLabel].forEach {
                containerView.addSubview($0)
            }
-
+           contentView.backgroundColor = .clear
            contentView.addSubview(containerView)
        }
 
@@ -83,18 +81,16 @@ final class NotificationsTableViewCell: UITableViewCell {
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-40)
+            make.leading.equalToSuperview().offset(26)
             
         }
-        subTitleTextField.snp.makeConstraints { make in
+        subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-40)
+            make.leading.equalToSuperview().offset(26)
+
         }
-       dateTextField.snp.makeConstraints { make in
-            make.top.equalTo(subTitleTextField.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
+       dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
             make.trailing.equalToSuperview().offset(-40)
         }
     }
