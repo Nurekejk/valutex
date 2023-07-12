@@ -12,10 +12,11 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
     static let identifier = "TableHeader"
     
     // MARK: - UI
-    private let currencySearchTextField: UISearchTextField = {
-        let searchTextField = UISearchTextField()
-        searchTextField.ima
-        return searchTextField
+    private let currencySearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
+        searchBar.setPositionAdjustment(UIOffset(horizontal: 16, vertical: 0), for: .search)
+        return searchBar
     }()
     
     override init(reuseIdentifier: String?) {
@@ -30,12 +31,14 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(currencySearchTextField)
+        contentView.addSubview(currencySearchBar)
+        currencySearchBar.layer.borderWidth = 1
+        currencySearchBar.layer.borderColor = UIColor.white.cgColor
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        currencySearchTextField.snp.makeConstraints { make in
+        currencySearchBar.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
 
@@ -43,5 +46,5 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
 }
 
 extension CurrencySelectorTableViewHeader: UISearchTextFieldDelegate {
-    sea
+    
 }
