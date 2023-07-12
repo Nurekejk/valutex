@@ -15,13 +15,12 @@ final class ProfileViewController: UIViewController {
     private lazy var informationTableView: UITableView = {
             let tableView = UITableView(frame: .zero, style: .plain)
             tableView.register(ProfileTableViewCell.self,
-                               forCellReuseIdentifier: "cell")
+                               forCellReuseIdentifier: ProfileTableViewCell.reuseID)
             tableView.register(ProfileTableHeaderView.self,
                                forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.reuseID)
             tableView.rowHeight = 50.0
             tableView.dataSource = self
             tableView.delegate = self
-            tableView.backgroundColor = .orange
             tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
             return tableView
         }()
@@ -55,7 +54,7 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+    // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,8 +62,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
-                                                 for: indexPath) as? ProfileTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseID,
+            for: indexPath) as? ProfileTableViewCell
         else {
             fatalError("Could not cast to ProfileTableViewCell")
         }
