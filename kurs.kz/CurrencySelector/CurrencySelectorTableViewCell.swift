@@ -48,9 +48,6 @@ class CurrencySelectorTableViewCell: UITableViewCell {
         contentView.addSubview(flagImageView)
         contentView.addSubview(selectionImageView)
         contentView.addSubview(currencyLabel)
-//        detailCellStack.addArrangedSubview(detailTypeLabel)
-//        detailCellStack.addArrangedSubview(detailNameLabel)
-//        contentView.addSubview(detailCellStack)
     }
     
     // MARK: - Setup Constraints
