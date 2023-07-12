@@ -55,7 +55,6 @@ final class NotificationsTableViewCell: UITableViewCell {
         super.layoutSubviews()
 
         containerView.layer.cornerRadius = 8
-        containerView.layer.borderWidth = 0.5
     }
 
     // MARK: - Setup Views
@@ -64,13 +63,14 @@ final class NotificationsTableViewCell: UITableViewCell {
         [titleLabel, subTitleLabel, dateLabel].forEach {
             containerView.addSubview($0)
         }
+
         let backgroundGrayColor = UIColor(
             red: 246.0 / 255.0,
             green: 247.0 / 255.0,
             blue: 249.0 / 255.0,
             alpha: 1)
 
-        contentView.backgroundColor = backgroundGrayColor // rgba(246, 247, 249, 1)
+        contentView.backgroundColor = backgroundGrayColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
@@ -80,24 +80,25 @@ final class NotificationsTableViewCell: UITableViewCell {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
             make.bottom.equalToSuperview().offset(-8)
         }
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(26)
+            make.leading.equalToSuperview().offset(16)
         }
 
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(26)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-40)
 
         }
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
-            make.trailing.equalToSuperview().offset(-40)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
 }
