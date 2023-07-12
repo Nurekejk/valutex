@@ -173,7 +173,6 @@ final class OfferTableViewCell: UITableViewCell {
             make.top.equalTo(infoview.snp.bottom).offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.width.equalTo(151.1)
-            make.height.equalTo(42)
             make.bottom.equalToSuperview().offset(-16)
         }
         starImage.snp.makeConstraints { make in
