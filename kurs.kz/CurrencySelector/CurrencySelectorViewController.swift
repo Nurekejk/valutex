@@ -35,13 +35,23 @@ final class CurrencySelectorViewController: UIViewController {
                                         "Кит.юань" : "cn_flag"]
     private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
                                       "Кит.юань"]
+    
+    private lazy var headerView: CurrencySelectorTableViewHeader = {
+        let headerView = CurrencySelectorTableViewHeader()
+        return headerView
+    }()
+    
     private lazy var curreniesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.register(CurrencySelectorTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CurrencySelectorTableViewHeader.self,
+                           forHeaderFooterViewReuseIdentifier: CurrencySelectorTableViewHeader.identifier)
+        tableView.register(CurrencySelectorTableViewCell.self,
+                           forCellReuseIdentifier: "cell")
         tableView.rowHeight = 56
+        tableView.tableHeaderView = headerView
         
         return tableView
     }()
@@ -69,6 +79,14 @@ final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+
+        let screen = screen()
+        let deviceWidth = CGFloat((screen?.bounds.width)!)
+//        print("asdasdas")
+//        print(CGFloatDeviceWidth)
+        
+        headerView.frame = CGRect(x: 0, y: 0, width: deviceWidth, height: 52)
+        print(deviceWidth)
         curreniesTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -97,4 +115,18 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         }
     }
     
+}
+
+extension CurrencySelectorViewController {
+  func screen() -> UIScreen? {
+    var parent = self.parent
+    var lastParent = parent
+    
+    while parent != nil {
+      lastParent = parent
+      parent = parent!.parent
+    }
+    
+      return lastParent?.view.window?.windowScene?.screen
+  }
 }
