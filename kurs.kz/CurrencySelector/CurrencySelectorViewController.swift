@@ -29,17 +29,29 @@ final class CurrencySelectorViewController: UIViewController {
         alpha: 1)
     
     // MARK: - UI
-    
     private let chooseCurrencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Выберите валюту"
-        label.textColor = .lightGray
+        label.textColor = .gray
         label.font = .systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    private let exitButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "cross"), for: .normal)
+        return button
+    }()
+
+    private let continueButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Продолжить", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
     
-    private let currenciesDictionary = ["Доллар США" : "usd_flag","Евро" : "euro_flag",
+    private let currenciesDictionary = ["Доллар США" : "usd_flag", "Евро" : "euro_flag",
                                         "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
                                         "Кит.юань" : "cn_flag"]
     private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
@@ -74,31 +86,42 @@ final class CurrencySelectorViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //        reviewTextView.layer.cornerRadius = 8
-        //        reviewTextView.layer.borderWidth = 1
-        //        reviewTextView.layer.borderColor = borderGrayColor
-        //        continueButton.layer.cornerRadius = 12
-        //        entireStackView.layer.cornerRadius = 8
+        curreniesTableView.layer.cornerRadius = 8
+        curreniesTableView.layer.backgroundColor = buttonBlueColor.cgColor
     }
     
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(curreniesTableView)
+        view.addSubview(chooseCurrencyLabel)
+        view.addSubview(exitButton)
+        view.backgroundColor = backgroundGrayColor
+
     }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
-
-        let screen = screen()
-        let deviceWidth = CGFloat((screen?.bounds.width)!)
-//        print("asdasdas")
-//        print(CGFloatDeviceWidth)
         
-        headerView.frame = CGRect(x: 0, y: 0, width: deviceWidth, height: 52)
-        print(deviceWidth)
-        curreniesTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        chooseCurrencyLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(28)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(24)
         }
+        exitButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(28)
+            make.trailing.equalToSuperview().offset(-16)
+            make.size.equalTo(24)
+        }
+        curreniesTableView.snp.makeConstraints { make in
+            make.top.equalTo(chooseCurrencyLabel.snp.bottom).offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(276)
+
+        }
+        
+        headerView.frame = CGRect(x: 100, y: 100, width: 100, height: 52)
+        
     }
 }
 
@@ -124,18 +147,4 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         }
     }
     
-}
-
-extension CurrencySelectorViewController {
-  func screen() -> UIScreen? {
-    var parent = self.parent
-    var lastParent = parent
-    
-    while parent != nil {
-      lastParent = parent
-      parent = parent!.parent
-    }
-    
-      return lastParent?.view.window?.windowScene?.screen
-  }
 }

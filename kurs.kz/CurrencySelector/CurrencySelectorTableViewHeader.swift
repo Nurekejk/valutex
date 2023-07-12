@@ -14,6 +14,7 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - UI
     private let currencySearchTextField: UISearchTextField = {
         let searchTextField = UISearchTextField()
+        searchTextField.ima
         return searchTextField
     }()
     
@@ -30,37 +31,17 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - Setup Views
     private func setupViews() {
         contentView.addSubview(currencySearchTextField)
-        contentView.backgroundColor = .blue
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
         currencySearchTextField.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-//            make.height.equalTo(100)
+            make.edges.equalToSuperview()
         }
-        //        flagImageView.snp.makeConstraints { make in
-        //            make.top.equalToSuperview().offset(20)
-        //            make.leading.equalToSuperview().offset(16)
-        //            make.bottom.equalToSuperview().offset(-20)
-        //            make.height.equalTo(16)
-        //            make.width.equalTo(30)
-        //        }
-        //        currencyLabel.snp.makeConstraints { make in
-        //            make.top.equalToSuperview().offset(18)
-        //            make.leading.equalTo(flagImageView.snp.trailing).offset(16)
-        //            make.bottom.equalToSuperview().offset(-18)
-        //        }
-        //        selectionImageView.snp.makeConstraints { make in
-        //            make.top.equalToSuperview().offset(16)
-        //            make.trailing.equalToSuperview().offset(-16)
-        //            make.bottom.equalToSuperview().offset(-16)
-        //            make.size.equalTo(24)
-        //        }
-        //    }
-        //    public func configureCell(currency: String, flagName: String) {
-        //        currencyLabel.text = currency
-        //        flagImageView.image = UIImage(named: flagName)
-        //    }
+
     }
+}
+
+extension CurrencySelectorTableViewHeader: UISearchTextFieldDelegate {
+    sea
 }
