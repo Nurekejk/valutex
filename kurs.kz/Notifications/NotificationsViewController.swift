@@ -10,14 +10,8 @@ import SnapKit
 
 final class NotificationsViewController: UIViewController {
 
-    // MARK: - State
-    private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
     // MARK: - UI
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource  = self
@@ -25,6 +19,7 @@ final class NotificationsViewController: UIViewController {
         tableView.register(NotificationsTableViewCell.self, forCellReuseIdentifier: "notifications_cell")
         tableView.rowHeight = 126
         tableView.sectionHeaderHeight = 18
+        tableView.separatorStyle = .none
         return tableView
     }()
 
@@ -40,6 +35,12 @@ final class NotificationsViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(tableView)
+        let backgroundGrayColor = UIColor(
+            red: 246.0 / 255.0,
+            green: 247.0 / 255.0,
+            blue: 249.0 / 255.0,
+            alpha: 1)
+        tableView.backgroundColor = backgroundGrayColor
     }
 
     // MARK: - Setup Constraints
@@ -71,7 +72,7 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let width = UIScreen.main.bounds.width
-        let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
+        let view = NotificationsSectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         return view
     }
 
