@@ -11,12 +11,19 @@ import SnapKit
 final class NotificationsTableViewCell: UITableViewCell {
 
     // MARK: - UI
+
+    private lazy var containerView: UIView = {
+            let view = UIView()
+            return view
+        }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Тех. поддержка"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
+
     private lazy var subTitleTextField: UITextField = {
         let textField = UITextField()
         textField.text = "Добро пожаловать в службу поддержки"
@@ -47,20 +54,33 @@ final class NotificationsTableViewCell: UITableViewCell {
             super.prepareForReuse()
 
         }
+    override func layoutSubviews() {
+            super.layoutSubviews()
+
+        containerView.layer.cornerRadius = 8
+        containerView.layer.borderWidth = 0.5
+        }
 
     // MARK: - Setup Views
-    
-    private func setupViews() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(subTitleTextField)
-        contentView.addSubview(dateTextField)
-        
-    }
-    
+
+       private func setupViews() {
+           [titleLabel, subTitleTextField, dateTextField].forEach {
+               containerView.addSubview($0)
+           }
+
+           contentView.addSubview(containerView)
+       }
+
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
-        
+        containerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-8)
+                }
+
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
