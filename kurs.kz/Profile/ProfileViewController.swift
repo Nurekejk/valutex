@@ -12,6 +12,20 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - UI
     
+    private lazy var informationTableView: UITableView = {
+            let tableView = UITableView(frame: .zero, style: .plain)
+            tableView.register(ProfileTableViewCell.self,
+                               forCellReuseIdentifier: "cell")
+            tableView.register(ProfileTableHeaderView.self,
+                               forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.reuseID)
+            tableView.rowHeight = 50.0
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.backgroundColor = .orange
+            tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
+            return tableView
+        }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
