@@ -16,7 +16,8 @@ final class NotificationsViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource  = self
         tableView.delegate = self
-        tableView.register(NotificationsTableViewCell.self, forCellReuseIdentifier: "notifications_cell")
+        tableView.register(NotificationsTableViewCell.self,
+                           forCellReuseIdentifier: NotificationsTableViewCell.reuseIdentifier)
         tableView.rowHeight = 126
         tableView.sectionHeaderHeight = 18
         tableView.separatorStyle = .none
@@ -60,7 +61,7 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "notifications_cell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: NotificationsTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? NotificationsTableViewCell
         return cell ?? UITableViewCell()
     }

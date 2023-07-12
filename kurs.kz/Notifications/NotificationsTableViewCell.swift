@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 final class NotificationsTableViewCell: UITableViewCell {
+    // MARK: - Public
+
+    public static var reuseIdentifier = String(describing: NotificationsTableViewCell.self)
 
     // MARK: - UI
 
