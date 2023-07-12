@@ -45,3 +45,32 @@ final class ProfileViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                 for: indexPath) as? ProfileTableViewCell
+        else {
+            fatalError("Could not cast to ProfileTableViewCell")
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                    ProfileTableHeaderView.reuseID)
+                as? ProfileTableHeaderView
+        else {
+            fatalError("Could not cast to ProfileTableHeaderView")
+        }
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 148
+    }
+}
