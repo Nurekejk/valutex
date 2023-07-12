@@ -27,6 +27,7 @@ final class ProfileViewController: UIViewController {
         }()
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +36,22 @@ final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Setup Views
+    
     private func setupViews() {
         view.backgroundColor = .white
+        view.addSubview(informationTableView)
     }
     
     // MARK: - Setup Constraints
+    
     private func setupConstraints() {
+        informationTableView.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(124)
+                make.leading.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-16)
+                make.bottom.equalToSuperview()
+        }
+
     }
 }
 
