@@ -14,7 +14,7 @@ final class MainPageViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "onBoardingImage")
+        imageView.image = UIImage(named: "onboardingImage")
         return imageView
     }()
 
