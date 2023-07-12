@@ -117,20 +117,18 @@ final class OfferTableViewCell: UITableViewCell {
 
     // MARK: - Setup
     private func setupHierarchy() {
-        infoStack.addArrangedSubview(nameLabel)
-        infoStack.addArrangedSubview(starImage)
-        infoStack.addArrangedSubview(ratingLabel)
-
-        locationStack.addArrangedSubview(locationLabel)
-        locationStack.addArrangedSubview(distanceLabel)
-
-        infoview.addSubview(infoStack)
-        infoview.addSubview(locationStack)
-        cellView.addSubview(infoview)
-        cellView.addSubview(exchangeRateLabel)
-        cellView.addSubview(rejectButton)
-        cellView.addSubview(acceptButton)
-
+        [nameLabel, starImage, ratingLabel].forEach {
+            infoStack.addArrangedSubview($0)
+        }
+        [locationLabel, distanceLabel].forEach {
+            locationStack.addArrangedSubview($0)
+        }
+        [infoStack, locationStack].forEach {
+            infoview.addSubview($0)
+        }
+        [infoview, exchangeRateLabel, rejectButton, acceptButton].forEach {
+            cellView.addSubview($0)
+        }
         contentView.addSubview(cellView)
     }
 
