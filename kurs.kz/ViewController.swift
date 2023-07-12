@@ -17,10 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // здесь будут доп настройки
-
         view.backgroundColor = .blue
-        
     }
     
     // this method does nothing:
