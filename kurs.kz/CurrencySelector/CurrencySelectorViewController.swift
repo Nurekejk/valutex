@@ -18,12 +18,6 @@ final class CurrencySelectorViewController: UIViewController {
         blue: 219.0 / 255.0,
         alpha: 1)
     
-    private let borderGrayColor = CGColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-    
     private let backgroundGrayColor = UIColor(
         red: 246.0 / 255.0,
         green: 247.0 / 255.0,
@@ -136,7 +130,7 @@ final class CurrencySelectorViewController: UIViewController {
     }
 }
 
-// MARK: - // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+    // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,15 +138,19 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencySelectorTableViewCell.identifier,
-                                                 for: indexPath) as? CurrencySelectorTableViewCell
-        let dictionaryKey = isSearching ? searchKeyArray[indexPath.row] : currenciesKeyArray[indexPath.row]
-        if let flagName = currenciesDictionary[dictionaryKey] {
-            cell?.configureCell(currency: dictionaryKey, flagName: flagName)
-            let customSelectionView = UIView()
-            customSelectionView.backgroundColor = UIColor.white
-            cell?.selectedBackgroundView = customSelectionView
-            return cell ?? UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencySelectorTableViewCell.identifier,
+                                                    for: indexPath) as? CurrencySelectorTableViewCell {
+            let dictionaryKey = isSearching ?
+            searchKeyArray[indexPath.row] : currenciesKeyArray[indexPath.row]
+            if let flagName = currenciesDictionary[dictionaryKey] {
+                cell.configureCell(currency: dictionaryKey, flagName: flagName)
+                let customSelectionView = UIView()
+                customSelectionView.backgroundColor = UIColor.white
+                cell.selectedBackgroundView = customSelectionView
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         } else {
             return UITableViewCell()
         }
