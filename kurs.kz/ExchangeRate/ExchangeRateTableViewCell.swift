@@ -40,6 +40,13 @@ class ExchangeRateTableViewCell: UITableViewCell {
         textField.font = .systemFont(ofSize: 16)
         return textField
     }()
+
+    private lazy var amountOfSaleUSDTextField: UITextField = {
+        let textField = UITextField()
+        textField.text = "500"
+        textField.font = .systemFont(ofSize: 16)
+        return textField
+    }()
     //    private let rejectButton: UIButton = {
     //           let button = UIButton(type: .system)
     //           button.setTitle("Отклонить", for: .normal)
@@ -69,11 +76,14 @@ class ExchangeRateTableViewCell: UITableViewCell {
         amountOfPurchaseUSDTextField.layer.cornerRadius = 10
         amountOfPurchaseUSDTextField.layer.borderWidth = 1
         amountOfPurchaseUSDTextField.layer.borderColor = UIColor.gray.cgColor
+        amountOfSaleUSDTextField.layer.cornerRadius = 10
+        amountOfSaleUSDTextField.layer.borderWidth = 1
+        amountOfSaleUSDTextField.layer.borderColor = UIColor.gray.cgColor
     }
     // MARK: - Setup Views
 
     private func setupViews() {
-        [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField].forEach {
+        [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField, amountOfSaleUSDTextField].forEach {
             containerView.addSubview($0)
         }
         contentView.backgroundColor = .systemGray6
@@ -103,6 +113,12 @@ class ExchangeRateTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(163)
             make.trailing.equalToSuperview().offset(-116)
+            make.height.equalTo(32)
+        }
+        amountOfSaleUSDTextField.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(235)
+            make.trailing.equalToSuperview().offset(-44)
             make.height.equalTo(32)
         }
     }
