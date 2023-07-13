@@ -8,7 +8,7 @@
 import UIKit
 
 final class OfferSellViewController: UIViewController {
-    
+
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,
@@ -76,14 +76,16 @@ final class OfferSellViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
         label.textAlignment = .center
+        label.textColor = .blue
         return label
     }()
-    private lazy var resetButton: UIButton = {
+    private lazy var offerButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = buttonBlueColor
         button.setTitle("Предложить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.addTarget(self, action: #selector(calculateOffer), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -102,9 +104,11 @@ final class OfferSellViewController: UIViewController {
         exchangeRateCurrencyView.changeCurrency(newFlagImage: "kzt_flag",
                                                 newCurrencyLabel: "KZT",
                                                 newCurrencySignLabel: "₸" )
+        
         sellCurrencyView.layer.borderWidth = 1
         sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
         sellCurrencyView.layer.cornerRadius = 8
+        
         exchangeRateCurrencyView.layer.borderWidth = 1
         exchangeRateCurrencyView.layer.borderColor = borderGrayColor.cgColor
         exchangeRateCurrencyView.layer.cornerRadius = 8
@@ -118,6 +122,9 @@ final class OfferSellViewController: UIViewController {
         getTotalLabel.layer.borderWidth = 1
         getTotalLabel.layer.borderColor = borderGrayColor.cgColor
         getTotalLabel.backgroundColor = backgroundGrayColor
+        
+        offerButton.layer.cornerRadius = 12
+        
     }
     
     // MARK: - Setup Views
@@ -133,11 +140,11 @@ final class OfferSellViewController: UIViewController {
          exchangeRateLabel,
          lowerBorderView,
          getLabel,
-         getTotalLabel].forEach { containerView.addSubview($0) }
+         getTotalLabel,
+         offerButton].forEach { containerView.addSubview($0) }
     }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
-        
         containerView.snp.makeConstraints { make in
             make.height.equalTo(430)
             make.leading.equalToSuperview().offset(16)
@@ -181,46 +188,18 @@ final class OfferSellViewController: UIViewController {
             make.top.equalTo(getLabel.snp.bottom).offset(4)
             make.leading.equalTo(containerView.snp.leading).offset(16)
             make.height.equalTo(48)
+            make.width.equalTo(311) }
+        offerButton.snp.makeConstraints { make in
+            make.top.equalTo(getTotalLabel.snp.bottom).offset(24)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(52)
             make.width.equalTo(311)
         }
     }
     // MARK: - Action
-    //    @objc func changeStars(sender: UIButton!) {
-    //        starButtons.forEach { $0.isSelected = false }
-    //        for (index, element) in starButtons.enumerated() {
-    //            starButtons[index].isSelected = true
-    //            if element == sender {
-    //                break
-    //            }
-    //        }
-    //    }
-    // }
-    
-    // MARK: - UITextViewDelegate
-    // extension RateViewController {
-    //
-    //    func textViewDidBeginEditing(_ textView: UITextView) {
-    //        if textView.textColor == UIColor.lightGray {
-    //            textView.text = nil
-    //            textView.textColor = UIColor.black
-    //        }
-    //    }
-    //
-    //    func textViewDidEndEditing(_ textView: UITextView) {
-    //        if textView.text.isEmpty {
-    //            textView.text = "Поделитесь мнением об обменнике ?"
-    //            textView.textColor = UIColor.lightGray
-    //        }
-    //    }
-    //
-    //    func textView(_ textView: UITextView,
-    //                  shouldChangeTextIn range: NSRange,
-    //                  replacementText text: String) -> Bool {
-    //        if (text == "\n") {
-    //            textView.resignFirstResponder()
-    //            return true
-    //        }
-    //        return true
-    //    }
-    // }
+    @objc func calculateOffer(sender: UIButton!) {
+        let firstNumber = sellCurrencyView.getTextfieldNumber()
+        let secondNumber = exchangeRateCurrencyView.getTextfieldNumber()
+        getTotalLabel.text = String(format: "%.3f", firstNumber * secondNumber)
+    }
 }

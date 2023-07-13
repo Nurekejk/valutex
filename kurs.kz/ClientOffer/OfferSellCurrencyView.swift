@@ -16,6 +16,9 @@ final class OfferSellCurrencyView: UIView {
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
     }
+    public func getTextfieldNumber() -> Double {
+        return Double(amountTextField.text ?? "0") ?? 0.0
+    }
     
     private let hasButton: Bool
     
