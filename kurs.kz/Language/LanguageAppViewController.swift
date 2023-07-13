@@ -1,5 +1,5 @@
 //
-//  languageAppViewController.swift
+//  LanguageAppViewController.swift
 //  kurs.kz
 //
 //  Created by Diar Orynbek on 10.07.2023.
