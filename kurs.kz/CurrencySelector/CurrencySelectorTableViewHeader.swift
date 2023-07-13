@@ -21,6 +21,7 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
         let searchBar = UISearchBar()
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
         searchBar.setPositionAdjustment(UIOffset(horizontal: 16, vertical: 0), for: .search)
+        searchBar.placeholder = "Поиск"
         return searchBar
     }()
     
