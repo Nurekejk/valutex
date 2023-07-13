@@ -31,10 +31,10 @@ final class MyExchangesTableViewCell: UITableViewCell {
     private lazy var subTitleLabel: UITextField = {
         let label = UITextField()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 14)
         return label
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

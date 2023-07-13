@@ -64,9 +64,4 @@ extension MyExchangesViewController: UITableViewDataSource, UITableViewDelegate 
                                                  for: indexPath) as? MyExchangesTableViewCell
         return cell ?? UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let width = UIScreen.main.bounds.width
-        return view
-    }
 }
