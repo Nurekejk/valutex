@@ -10,6 +10,7 @@ import SnapKit
 
 final class ToSupportViewController: UIViewController {
     
+    // MARK: - UI
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Написать в поддержку"
@@ -28,28 +29,44 @@ final class ToSupportViewController: UIViewController {
         (UIImage(named: "telegram_icon"), "Telegram"),
         (UIImage(named: "whatsapp_icon"), "WhatsApp")
     ]
-
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViews()
+        setupConstraints()
+        setupTableView()
+        
+    }
+    
+    // MARK: - SetupViews
+    private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
         view.addSubview(supportTableView)
-        
-        titleLabel.snp.makeConstraints { make in // corrected "male" to "make"
+    }
+    
+    // MARK: - SetupConstraints()
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(18)
             make.leading.trailing.equalToSuperview()
         }
-        
         supportTableView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(18)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        
+    }
+    
+    // MARK: - SetupTableView
+    private func setupTableView() {
         supportTableView.dataSource = self
         supportTableView.delegate = self
     }
 }
 
+    // MARK: - UITableViewDataSource, UITableViewDelegate
 extension ToSupportViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return supportOptions.count
