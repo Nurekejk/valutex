@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */; };
+		220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExchangesViewController.swift; sourceTree = "<group>"; };
+		220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExchangesTableViewCell.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220C3F372A5FD8B6000002DB /* MyExchanges */ = {
+			isa = PBXGroup;
+			children = (
+				220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */,
+				220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */,
+			);
+			path = MyExchanges;
+			sourceTree = "<group>";
+		};
 		46EE99A18985E63B77BA8021 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +228,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				220C3F372A5FD8B6000002DB /* MyExchanges */,
 				9FF456F52A5FC4A900C2E845 /* ToSupport */,
 				9FF456EF2A5FC2BA00C2E845 /* Language Select */,
 				71D01EB12A5D48F200422491 /* Notifications */,
@@ -469,6 +483,7 @@
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
@@ -479,6 +494,7 @@
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
+				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
