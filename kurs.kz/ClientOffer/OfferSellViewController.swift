@@ -29,104 +29,11 @@ final class OfferSellViewController: UIViewController {
     
     // MARK: - UI
     
-    private let mainStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.alignment = .center
-        stackView.distribution = .fill
-//        stackView.isLayoutMarginsRelativeArrangement = true
-//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0,
-//                                                                     bottom: 16, trailing: 0)
-        return stackView
+    private let containerView: UIView = {
+        let view = UIView()
+        return view
     }()
     
-//    private let currencyView: UIView = {
-//       let view = UIView()
-//
-//        return view
-//    }()
-//
-//    private let flagImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "usd_flag")
-//        return imageView
-//    }()
-//
-//    private let downArrowButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(named: "down_arrow"), for: .normal)
-//        return button
-//    }()
-//
-//    private let verticalLineView: UIView = {
-//       let view = UIView()
-////        view.backgroundColor = backgroundGrayColor
-//
-//        return view
-//    }()
-//
-//    private let sumLabel: UILabel = {
-//        let currencySign = "$"
-//        let currencySum = "5000"
-//        let label = UILabel()
-//        label.text = currencySum + "" + currencySign
-//        return label
-//    }()
-//    //    private var starButtons = [StarButton]()
-//
-//    //    private let starStackView: UIStackView = {
-//    //        let stackView = UIStackView()
-//    //        stackView.axis = .horizontal
-//    //        stackView.spacing = 4
-//    //        stackView.alignment = .fill
-//    //        stackView.distribution = .equalSpacing
-//    //        return stackView
-//    //    }()
-//    //
-//    private let reviewLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Теперь напишите отзыв"
-//        label.textColor = .lightGray
-//        label.font = .systemFont(ofSize: 14)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    private let reviewTextView: UITextView = {
-//        let textView = UITextView()
-//        textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
-//        textView.text = "Поделитесь мнением об обменнике?"
-//        textView.textColor = .lightGray
-//        textView.font = .systemFont(ofSize: 14)
-//        textView.returnKeyType = .done
-//        return textView
-//    }()
-//
-//    private let borderView: UIView = {
-//        let view = UIView()
-//        return view
-//    }()
-//
-//    private let continueButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Отправить отзыв", for: .normal)
-//        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
-//        button.setTitleColor(.white, for: .normal)
-//        return button
-//    }()
-//
-//    private let entireStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.spacing = 16
-//        stackView.alignment = .center
-//        stackView.distribution = .fill
-//        stackView.isLayoutMarginsRelativeArrangement = true
-//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 0,
-//                                                                     bottom: 16, trailing: 0)
-//        return stackView
-//    }()
     let sellCurrencyView: OfferSellCurrencyView = {
         let currencyView = OfferSellCurrencyView(hasButton: true)
         return currencyView
@@ -136,15 +43,6 @@ final class OfferSellViewController: UIViewController {
         return currencyView
     }()
     
-    //    private func addButtonsToStarStackView() {
-    //        let numberOfButtons = 5
-    //        for _ in 1...numberOfButtons {
-    //            let starButton = StarButton()
-    //            starButton.addTarget(self, action: #selector(changeStars), for: .touchUpInside)
-    //            starButtons.append(starButton)
-    //            starStackView.addArrangedSubview(starButton)
-    //        }
-    //    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,20 +65,24 @@ final class OfferSellViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         
-        view.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(sellCurrencyView)
-        mainStackView.addArrangedSubview(exchangeRateCurrencyView)
-        mainStackView.backgroundColor = .cyan
+        view.addSubview(containerView)
+        containerView.addSubview(sellCurrencyView)
+        containerView.addSubview(exchangeRateCurrencyView)
+        containerView.backgroundColor = .cyan
     }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
-        mainStackView.snp.makeConstraints { make in
+        containerView.snp.makeConstraints { make in
             make.height.equalTo(430)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(116)
+        }
+        sellCurrencyView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.width.equalTo(311)
         }
 //        borderView.snp.makeConstraints { make in
 //            make.height.equalTo(1)
