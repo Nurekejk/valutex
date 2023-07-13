@@ -1,0 +1,89 @@
+//
+//  CartExchangeFeedbackViewController.swift
+//  kurs.kz
+//
+//  Created by Diar Orynbek on 13.07.2023.
+//
+
+import UIKit
+import SnapKit
+
+final class CartExchangeFeedbackViewController: UIViewController {
+    
+    // MARK: - State
+    
+    private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private let languages: [String] = ["Отзывы", "Телефоны", "Время работы", "Email", "Web-site", "Whatsapp"]
+    
+    private let titleOfIcons: [String] = ["user-tag", "Vector", "clock", "sms", "link-2", "messenger"]
+    
+    // MARK: - UI
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CartExchangeFeedbackViewCell.self, forCellReuseIdentifier: "newCell")
+        tableView.rowHeight = 56
+        
+        return tableView
+    }()
+    
+    // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupViews()
+        setupConstraits()
+    }
+    
+    // MARK: - Setup Views
+    
+    func setupViews() {
+        
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+    }
+    
+    // MARK: - Setup Constraits
+    
+    func setupConstraits() {
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(150)
+            make.bottom.equalToSuperview().offset(100)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+    }
+}
+
+    // MARK: - Extension
+
+extension CartExchangeFeedbackViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return languages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell",
+                                                    for: indexPath) as? CartExchangeFeedbackViewCell
+        let language = languages[indexPath.row]
+        let titleOfIcon = titleOfIcons[indexPath.row]
+        cell?.configureCell(language: language, titleOfIcon: titleOfIcon)
+        
+        return cell ?? UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath
+        print(indexPath)
+    }
+}
