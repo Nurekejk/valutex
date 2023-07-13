@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ToSupportViewController: UIViewController {
+final class ToSupportViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -50,7 +50,6 @@ class ToSupportViewController: UIViewController {
     }
 }
 
-// Add this extension to conform to the UITableViewDataSource and UITableViewDelegate
 extension ToSupportViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return supportOptions.count
