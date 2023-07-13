@@ -40,13 +40,13 @@ final class CurrencySelectorViewController: UIViewController {
         label.font = .systemFont(ofSize: 18)
         return label
     }()
-    private let exitButton: UIButton = {
+    private lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "cross"), for: .normal)
         return button
     }()
 
-    private let selectButton: UIButton = {
+    private lazy var selectButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
