@@ -10,15 +10,41 @@ import SnapKit
 
 final class ProfileViewController: UIViewController {
     
-    // MARK: - UI
+    // MARK: - States
+    private let profileSections: [ProfileSection] =
+                                                     [ProfileSection(imageString: "bitcoinExchange",
+                                                                     name: "Мои обменники"),
+                                                     ProfileSection(imageString: "moneys",
+                                                                    name: "Курс валют"),
+                                                     ProfileSection(imageString: "setting-3",
+                                                                    name: "Настройки аккаунта"),
+                                                     ProfileSection(imageString: "notification",
+                                                                    name: "Уведомления"),
+                                                     ProfileSection(imageString: "language-circle",
+                                                                    name: "Язык приложения"),
+                                                     ProfileSection(imageString: "global",
+                                                                    name: "Город"),
+                                                     ProfileSection(imageString: "profile-2user",
+                                                                    name: "Стать партнером"),
+                                                     ProfileSection(imageString: "messages",
+                                                                    name: "Написать в поддержку"),
+                                                     ProfileSection(imageString: "info",
+                                                                    name: "О компании"),
+                                                     ProfileSection(imageString: "message-question",
+                                                                    name: "FAQ"),
+                                                     ProfileSection(imageString: "bank",
+                                                                    name: "Курс Нацбанка")]
     
+    // MARK: - UI
     private lazy var informationTableView: UITableView = {
-            let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.layer.cornerRadius = 8
+        tableView.layer.masksToBounds = true
             tableView.register(ProfileTableViewCell.self,
                                forCellReuseIdentifier: ProfileTableViewCell.reuseID)
             tableView.register(ProfileTableHeaderView.self,
                                forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.reuseID)
-            tableView.rowHeight = 50.0
+            tableView.rowHeight = 54.0
             tableView.dataSource = self
             tableView.delegate = self
             tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +52,6 @@ final class ProfileViewController: UIViewController {
         }()
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,30 +60,35 @@ final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Setup Views
-    
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(informationTableView)
     }
     
     // MARK: - Setup Constraints
-    
     private func setupConstraints() {
         informationTableView.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(124)
-                make.leading.equalToSuperview().offset(16)
-                make.trailing.equalToSuperview().offset(-16)
-                make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
 
     }
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate
-
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        var rowCount = 1
+        if section == 0 {
+            rowCount = 10
+        }
+        if section == 1 {
+            rowCount = 1
+        }
+        return rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,6 +96,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath) as? ProfileTableViewCell
         else {
             fatalError("Could not cast to ProfileTableViewCell")
+        }
+        
+        cell.selectionStyle = .none
+        if indexPath.section == 0 {
+            cell.profileSection = profileSections[indexPath.row]
+        } else {
+            cell.profileSection = profileSections[10]
         }
         return cell
     }
@@ -81,6 +118,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 148
+        return section == 0 ? 196 : 0
     }
 }

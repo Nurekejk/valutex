@@ -2,7 +2,7 @@
 //  ProfileTableHeaderView.swift
 //  kurs.kz
 //
-//  Created by Aigerim Abitayeva on 12.07.2023.
+//  Created by Aigerim Abitayeva on 13.07.2023.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         userInformationStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(24)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(94)
             make.trailing.equalToSuperview().offset(-94)

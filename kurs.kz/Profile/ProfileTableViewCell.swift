@@ -13,22 +13,36 @@ final class ProfileTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: ProfileTableViewCell.self)
     
+    var profileSection: ProfileSection? {
+        didSet {
+            informationTypeImageView.image = UIImage(named: profileSection?.imageString ?? "")
+            informationTypeLabel.text = profileSection?.name
+        }
+    }
+    
     // MARK: - UI
     private lazy var informationTypeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bitcoinExchange")
-        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "bank")
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
     
     private lazy var informationTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Мои обменники"
+        label.text = "Курс Нацбанка"
         label.textColor = UIColor(named: "infoTypeColor")
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         label.textAlignment = .left
         return label
+    }()
+    
+    private lazy var arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "arrow-right")
+        imageView.contentMode = .right
+        return imageView
     }()
     
     private let informationCellStack: UIStackView = {
@@ -55,6 +69,7 @@ final class ProfileTableViewCell: UITableViewCell {
     private func setupViews() {
         informationCellStack.addArrangedSubview(informationTypeImageView)
         informationCellStack.addArrangedSubview(informationTypeLabel)
+        informationCellStack.addArrangedSubview(arrowImageView)
         contentView.addSubview(informationCellStack)
     }
     
@@ -67,8 +82,13 @@ final class ProfileTableViewCell: UITableViewCell {
         }
         
         informationTypeImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
             make.height.equalTo(24)
             make.width.equalTo(24)
+        }
+        
+        informationTypeLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
         }
     }
 
