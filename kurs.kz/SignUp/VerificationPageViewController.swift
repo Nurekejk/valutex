@@ -49,12 +49,13 @@ final class VerificationPageViewController: UIViewController {
         return button
     }()
     
-    private let verifyButton: UIButton = {
+    private lazy var verifyButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "verifyButtonColor")
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.addTarget(self, action: #selector(verifyButtonDidPress), for: .touchUpInside)
         button.layer.cornerRadius = 12.0
         return button
     }()
@@ -62,8 +63,17 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "OTP"
     }
     
     // MARK: - Setup Views
@@ -77,7 +87,7 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         otpLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
         }
         
@@ -105,5 +115,12 @@ final class VerificationPageViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func verifyButtonDidPress() {
+        self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
+                                                      animated: true)
     }
 }

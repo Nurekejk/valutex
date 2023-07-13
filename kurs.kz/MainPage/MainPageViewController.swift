@@ -13,7 +13,7 @@ final class MainPageViewController: UIViewController {
     // MARK: - UI
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "onboardingImage")
         return imageView
     }()
@@ -28,29 +28,33 @@ final class MainPageViewController: UIViewController {
         return label
     }()
 
-    private let logInButton: UIButton = {
-        let button = UIButton()
+    private lazy var signInButton: UIButton = {
+        let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(signInButtonDidPress), for: .touchUpInside)
         return button
     }()
 
-    private let registerButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderColor = UIColor.blue.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
         button.setTitle("Зарегистрироватся", for: .normal)
         button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action: #selector(signUpButtonDidPress), for: .touchUpInside)
         return button
     }()
 
-    private let nextButton: UIButton = {
+    private lazy var skipButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
         button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(skipButtonDidPress), for: .touchUpInside)
         return button
     }()
 
@@ -67,7 +71,9 @@ final class MainPageViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
 
-        [imageView, titleLabel, logInButton, registerButton, nextButton].forEach {view.addSubview($0)}
+        [imageView, titleLabel, signInButton, signUpButton, skipButton].forEach {
+            view.addSubview($0)
+        }
     }
 
     // MARK: - Setup Constraints"
@@ -88,25 +94,41 @@ final class MainPageViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
 
-        logInButton.snp.makeConstraints { make in
+        signInButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(32)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
 
-        registerButton.snp.makeConstraints { make in
-            make.top.equalTo(logInButton.snp.bottom).offset(12)
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(signInButton.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
 
-        nextButton.snp.makeConstraints { make in
-            make.top.equalTo(registerButton.snp.bottom).offset(90)
+        skipButton.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton.snp.bottom).offset(90)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(20)
         }
+    }
+
+    // MARK: Actions
+
+    @objc private func signInButtonDidPress() {
+        self.navigationController?.pushViewController(SignInViewController(), animated: true)
+    }
+
+    @objc private func signUpButtonDidPress() {
+        self.navigationController?.pushViewController(SignupViewController(), animated: true)
+    }
+
+    @objc private func skipButtonDidPress() {
+        let controller = CustomTabBarViewController()
+        controller.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
