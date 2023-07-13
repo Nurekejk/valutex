@@ -20,6 +20,11 @@ final class OfferSellCurrencyView: UIView {
     private let hasButton: Bool
     
     // MARK: - UI
+    private let containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private let flagImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -67,12 +72,14 @@ final class OfferSellCurrencyView: UIView {
     
     // MARK: - Setup Views
     private func setupViews() {
-        addSubview(flagImageView)
-        addSubview(currencyLabel)
-        addSubview(selectCurrencyButton)
-        addSubview(borderView)
-        addSubview(amountTextField)
-        addSubview(currencySignLabel)
+//        self.addSubview(containerView)
+        [flagImageView, currencyLabel,
+         selectCurrencyButton, borderView,
+         amountTextField, currencySignLabel].forEach {self.addSubview($0) }
+        containerView.backgroundColor = .orange
+        borderView.backgroundColor = .systemGray5
+        selectCurrencyButton.backgroundColor = .red
+        amountTextField.backgroundColor = .green
         if !hasButton {
             selectCurrencyButton.isHidden = true
         }
@@ -80,6 +87,7 @@ final class OfferSellCurrencyView: UIView {
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+
         flagImageView.snp.makeConstraints { make in
             make.height.equalTo(16)
             make.leading.equalToSuperview().offset(16)
@@ -90,7 +98,7 @@ final class OfferSellCurrencyView: UIView {
             make.top.equalToSuperview().offset(14)
         }
         selectCurrencyButton.snp.makeConstraints { make in
-            make.leading.equalTo(flagImageView.snp.trailing).offset(16)
+            make.leading.equalTo(currencyLabel.snp.trailing).offset(16)
             make.top.equalToSuperview().offset(14)
             make.width.equalTo(9)
         }
@@ -100,14 +108,14 @@ final class OfferSellCurrencyView: UIView {
             make.height.equalTo(32)
             make.width.equalTo(1)
         }
-        currencySignLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(flagImageView.snp.trailing).offset(-16)
-            make.top.equalToSuperview().offset(14)
-        }
         amountTextField.snp.makeConstraints { make in
-            make.trailing.equalTo(flagImageView.snp.trailing).offset(16)
             make.top.equalToSuperview().offset(14)
-            make.leading.equalTo(borderView).offset(10)
+            make.trailing.equalTo(currencySignLabel.snp.trailing).offset(-10)
+            make.width.equalTo(100)
+        }
+        currencySignLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(14)
         }
     }
 }
