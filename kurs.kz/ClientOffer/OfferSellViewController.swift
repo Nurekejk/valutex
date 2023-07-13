@@ -61,6 +61,10 @@ final class OfferSellViewController: UIViewController {
         sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
+        
+        sellCurrencyView.layer.borderWidth = 1
+        sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        sellCurrencyView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
@@ -83,6 +87,7 @@ final class OfferSellViewController: UIViewController {
             make.top.equalToSuperview().offset(116)
         }
         sellCurrencyView.snp.makeConstraints { make in
+            
             make.height.equalTo(48)
             make.width.equalTo(311)
         }

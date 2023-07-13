@@ -37,6 +37,7 @@ final class OfferSellCurrencyView: UIView {
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "down_arrow"), for: .normal)
         return button
     }()
     
@@ -79,8 +80,6 @@ final class OfferSellCurrencyView: UIView {
          selectCurrencyButton, borderView,
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
         borderView.backgroundColor = .systemGray5
-        selectCurrencyButton.backgroundColor = .red
-        selectCurrencyButton.imageView?.image = UIImage(named: "down_arrow")
         if !hasButton {
             selectCurrencyButton.isHidden = true
         }
