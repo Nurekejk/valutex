@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220C3F272A5D0EA2000002DB /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
@@ -36,7 +35,7 @@
 		9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F02A5FC2D700C2E845 /* LanguageAppViewController.swift */; };
 		9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */; };
 		9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */; };
-		9FF456F92A5FC4EA00C2E845 /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F72A5FC4EA00C2E845 /* ToSupportViewController.swift */; };
+		9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
@@ -48,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +78,7 @@
 		9FF456F02A5FC2D700C2E845 /* LanguageAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageAppViewController.swift; path = kurs.kz/Language/LanguageAppViewController.swift; sourceTree = SOURCE_ROOT; };
 		9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = kurs.kz/Language/LanguageTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportTableViewCell.swift; path = kurs.kz/Support/SupportTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		9FF456F72A5FC4EA00C2E845 /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/Support/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
+		9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/Support/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 		9FF456F42A5FC47500C2E845 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				220C3F262A5D0EA2000002DB /* ToSupportViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -277,8 +274,8 @@
 		9FF456F52A5FC4A900C2E845 /* ToSupport */ = {
 			isa = PBXGroup;
 			children = (
+				9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */,
 				9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */,
-				9FF456F72A5FC4EA00C2E845 /* ToSupportViewController.swift */,
 			);
 			path = ToSupport;
 			sourceTree = "<group>";
@@ -465,8 +462,7 @@
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
-				9FF456F92A5FC4EA00C2E845 /* ToSupportViewController.swift in Sources */,
-				220C3F272A5D0EA2000002DB /* ToSupportViewController.swift in Sources */,
+				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
