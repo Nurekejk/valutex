@@ -47,15 +47,38 @@ class ExchangeRateTableViewCell: UITableViewCell {
         textField.font = .systemFont(ofSize: 16)
         return textField
     }()
-    //    private let rejectButton: UIButton = {
-    //           let button = UIButton(type: .system)
-    //           button.setTitle("Отклонить", for: .normal)
-    //           button.tintColor = .red
-    //           button.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1.0)
-    //           button.layer.cornerRadius = 8
-    //           button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-    //           return button
-    //       }()
+    private lazy var deleteCurrencyButton: UIButton = {
+        let button = UIButton(type: .system)
+        if let iconImage = UIImage(named: "deleteCurrency") {
+            button.setImage(iconImage, for: .normal)
+        }
+//        let iconConfig = UIImage.SymbolConfiguration(pointSize: 16)
+//        let deleteIcon = UIImage(systemName: "deleteCurrency")?.withConfiguration(iconConfig)
+//        button.setImage(deleteIcon, for: .normal)
+//        button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(deleteCurrencyButtonDidPressed),
+                         for: .touchUpInside)
+
+        return button
+    }()
+
+//    let deleteButton = UIButton(type: .system)
+//    let iconConfig = UIImage.SymbolConfiguration(pointSize: 24)
+//    let deleteIcon = UIImage(systemName: "trash")?.withConfiguration(iconConfig)
+//    deleteButton.setImage(deleteIcon, for: .normal)
+//    deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+
+//    private lazy var signInButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Войти", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+//        button.clipsToBounds = true
+//        button.backgroundColor = .systemBlue
+//        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
+//        return button
+//    }()
+
     // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -83,7 +106,8 @@ class ExchangeRateTableViewCell: UITableViewCell {
     // MARK: - Setup Views
 
     private func setupViews() {
-        [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField, amountOfSaleUSDTextField].forEach {
+        [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField, amountOfSaleUSDTextField,
+         deleteCurrencyButton].forEach {
             containerView.addSubview($0)
         }
         contentView.backgroundColor = .systemGray6
@@ -121,5 +145,17 @@ class ExchangeRateTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-44)
             make.height.equalTo(32)
         }
+        deleteCurrencyButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(315)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(16)
+        }
+    }
+
+    // MARK: - Actions
+
+    @objc private func deleteCurrencyButtonDidPressed() {
+
     }
 }
