@@ -34,11 +34,12 @@ final class RegistrationPasswordViewController: UIViewController {
         return stackView
     }()
 
-    private let continueButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -78,8 +79,22 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Придумайте пароль"
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPress))
     }
     
     override func viewDidLayoutSubviews() {
@@ -114,7 +129,7 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(232)
@@ -123,9 +138,9 @@ final class RegistrationPasswordViewController: UIViewController {
             make.height.equalTo(36)
         }
         containerView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(0)
-            make.leading.equalToSuperview().offset(0)
-            make.trailing.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.height.equalTo(118)
         }
         continueButton.snp.makeConstraints { make in
@@ -134,5 +149,17 @@ final class RegistrationPasswordViewController: UIViewController {
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
             make.height.equalTo(52)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func continueButtonDidPress() {
+        let controller = CustomTabBarViewController()
+        controller.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+    @objc private func backButtonDidPress() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

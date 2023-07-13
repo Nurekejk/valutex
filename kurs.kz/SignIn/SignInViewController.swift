@@ -183,7 +183,9 @@ final class SignInViewController: UIViewController {
     }
 
     @objc private func signInButtonDidPressed() {
-
+        let conrtoller = CustomTabBarViewController()
+        conrtoller.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(conrtoller, animated: true)
     }
 
     @objc private func signUpButtonDidPressed() {

@@ -11,13 +11,6 @@ import SkyFloatingLabelTextField
 final class SignupViewController: UIViewController {
 
     // MARK: - UI
-    private let registrationLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Регистрация"
-        label.font = .boldSystemFont(ofSize: 28)
-        return label
-    }()
-
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
         
@@ -84,28 +77,31 @@ final class SignupViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Регистрация"
     }
 
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        [registrationLabel, phoneTextField, continueButton, isThereAccountLabel, signInButton].forEach {
+        [phoneTextField, continueButton, isThereAccountLabel, signInButton].forEach {
             view.addSubview($0)
         }
     }
 
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        registrationLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
-            make.centerX.equalToSuperview()
-        }
-
         phoneTextField.snp.makeConstraints { make in
-            make.top.equalTo(registrationLabel.snp.bottom).offset(24)
+            make.top.equalToSuperview().offset(24)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(56)
@@ -117,19 +113,19 @@ final class SignupViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
+
+        signInButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-60)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(20)
+        }
         
         isThereAccountLabel.snp.makeConstraints { make in
             make.bottom.equalTo(signInButton.snp.top).offset(-8)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(18)
-        }
-        
-        signInButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-60)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
-            make.height.equalTo(20)
         }
     }
     
