@@ -1,23 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Change Profile Pic.pdf",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "Change Profile Pic 1.pdf",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "Change Profile Pic 2.pdf",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "avatar.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
