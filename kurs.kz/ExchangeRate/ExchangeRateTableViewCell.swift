@@ -25,6 +25,13 @@ class ExchangeRateTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 16)
         return label
     }()
+
+    private lazy var titleFLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Доллар"
+        label.font = .systemFont(ofSize: 16)
+        return label
+    }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
