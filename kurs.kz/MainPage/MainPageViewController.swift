@@ -14,7 +14,7 @@ final class MainPageViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "onboardingImage")
+        imageView.image = UIImage(named: "onBoardingImage")
         return imageView
     }()
 
@@ -50,7 +50,7 @@ final class MainPageViewController: UIViewController {
     }()
 
     private lazy var skipButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
         button.setTitleColor(.gray, for: .normal)
