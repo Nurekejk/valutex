@@ -119,20 +119,35 @@ final class RegistrationPersonalDataViewController: UIViewController {
         return textField
     }()
     
-    private let continueButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        self.edgesForExtendedLayout = []
+        self.navigationItem.title = "Регистрация"
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPress))
     }
     
     // MARK: - Setup Views
@@ -152,23 +167,50 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
     // MARK: - Constraints:
     private func setupConstraints() {
+
+        surnameTextField.snp.makeConstraints { make in
+            make.height.equalTo(56)
+        }
+
+        nameTextField.snp.makeConstraints { make in
+            make.height.equalTo(56)
+        }
+
+        patronymicTextField.snp.makeConstraints { make in
+            make.height.equalTo(56)
+        }
+
+        phoneTextField.snp.makeConstraints { make in
+            make.height.equalTo(56)
+        }
+
         stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
             make.height.equalTo(316)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-380)
         }
+
         containerView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(0)
-            make.top.equalTo(stackView.snp.bottom).offset(194)
-            make.leading.equalToSuperview().offset(0)
-            make.trailing.equalToSuperview().offset(0)
+            make.height.equalTo(118)
+            make.leading.trailing.bottom.equalToSuperview()
         }
+
         continueButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-34-16)
+            make.bottom.equalToSuperview().offset(-34)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func backButtonDidPress() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func continueButtonDidPress() {
+        self.navigationController?.pushViewController(RegistrationPasswordViewController(), animated: true)
     }
 }
