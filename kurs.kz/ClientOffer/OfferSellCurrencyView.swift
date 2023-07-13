@@ -108,7 +108,7 @@ final class OfferSellCurrencyView: UIView {
         }
         borderView.snp.makeConstraints { make in
             make.leading.equalTo(selectCurrencyButton.snp.trailing).offset(16)
-            make.top.equalTo(containerView.snp.top).offset(14)
+            make.top.equalTo(containerView.snp.top).offset(8)
             make.height.equalTo(32)
             make.width.equalTo(1)
         }

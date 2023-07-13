@@ -15,7 +15,7 @@ final class OfferSellViewController: UIViewController {
         blue: 219.0 / 255.0,
         alpha: 1)
     
-    private let borderGrayColor = CGColor(
+    private let borderGrayColor = UIColor(
         red: 232.0 / 255.0,
         green: 233.0 / 255.0,
         blue: 238.0 / 255.0,
@@ -32,6 +32,11 @@ final class OfferSellViewController: UIViewController {
     private let containerView: UIView = {
         let view = UIView()
         return view
+    }()
+    private let sellLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Продать По курсу"
+        return label
     }()
     
     let sellCurrencyView: OfferSellCurrencyView = {
@@ -52,23 +57,20 @@ final class OfferSellViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        containerView.layer.cornerRadius = 8
         sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
-//        reviewTextView.layer.cornerRadius = 8
-//        reviewTextView.layer.borderWidth = 1
-//        reviewTextView.layer.borderColor = borderGrayColor
-//        continueButton.layer.cornerRadius = 12
-//        entireStackView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        
+        view.backgroundColor = backgroundGrayColor
+        sellLabel.textColor = borderGrayColor
+        containerView.backgroundColor = .white
         view.addSubview(containerView)
         containerView.addSubview(sellCurrencyView)
         containerView.addSubview(exchangeRateCurrencyView)
-        containerView.backgroundColor = .cyan
     }
     
     // MARK: - Setup Constraints:
@@ -84,6 +86,7 @@ final class OfferSellViewController: UIViewController {
             make.height.equalTo(48)
             make.width.equalTo(311)
         }
+        
 //        borderView.snp.makeConstraints { make in
 //            make.height.equalTo(1)
 //            make.leading.equalTo(entireStackView.snp.leading)
