@@ -200,6 +200,13 @@ final class OfferSellViewController: UIViewController {
     @objc func calculateOffer(sender: UIButton!) {
         let firstNumber = sellCurrencyView.getTextfieldNumber()
         let secondNumber = exchangeRateCurrencyView.getTextfieldNumber()
-        getTotalLabel.text = String(format: "%.3f", firstNumber * secondNumber)
+        let sum = String(format: "%.3f", firstNumber * secondNumber)
+            .trimmingCharacters(in: ["0", "."])
+        if sum != "" {
+            getTotalLabel.text = String(format: "%.3f", firstNumber * secondNumber)
+                .trimmingCharacters(in: ["0", "."])
+        } else {
+            getTotalLabel.text = "0"
+        }
     }
 }
