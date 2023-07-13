@@ -65,7 +65,7 @@ final class CurrencySelectorViewController: UIViewController {
         return headerView
     }()
     
-    private lazy var curreniesTableView: UITableView = {
+    private lazy var currenciesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,7 +90,7 @@ final class CurrencySelectorViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        curreniesTableView.layer.cornerRadius = 8
+        currenciesTableView.layer.cornerRadius = 8
         selectButton.backgroundColor = buttonBlueColor
         selectButton.layer.cornerRadius = 12
 
@@ -98,7 +98,7 @@ final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(curreniesTableView)
+        view.addSubview(currenciesTableView)
         view.addSubview(chooseCurrencyLabel)
         view.addSubview(exitButton)
         view.addSubview(selectButton)
@@ -121,14 +121,14 @@ final class CurrencySelectorViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.size.equalTo(24)
         }
-        curreniesTableView.snp.makeConstraints { make in
+        currenciesTableView.snp.makeConstraints { make in
             make.top.equalTo(chooseCurrencyLabel.snp.bottom).offset(16)
             make.width.equalTo(tableWidth)
             make.height.equalTo(328)
             make.leading.equalToSuperview().offset(16)
         }
         selectButton.snp.makeConstraints { make in
-            make.top.equalTo(curreniesTableView.snp.bottom).offset(16)
+            make.top.equalTo(currenciesTableView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(343)
             make.height.equalTo(52)
@@ -160,14 +160,14 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             isSearching = false
-            curreniesTableView.reloadData()
+            currenciesTableView.reloadData()
             searchBar.resignFirstResponder()
         } else {
             isSearching = true
             searchKeyArray = currenciesKeyArray.filter { currency in
                 return currency.localizedCaseInsensitiveContains(searchText)
             }
-            curreniesTableView.reloadData()
+            currenciesTableView.reloadData()
         }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
