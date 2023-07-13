@@ -55,13 +55,23 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
     }
     
+    // MARK: - Setup Navigation Bar
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+                                                            image: UIImage(named: "logout"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: nil)
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
         view.addSubview(informationTableView)
     }
     
@@ -97,12 +107,17 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Could not cast to ProfileTableViewCell")
         }
-        
-        cell.selectionStyle = .none
+
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
             cell.profileSection = profileSections[10]
+        }
+        
+        if cell.profileSection?.name == "Уведомления" {
+            cell.notificationImageView.isHidden = false
+        } else {
+            cell.notificationImageView.isHidden = true
         }
         return cell
     }

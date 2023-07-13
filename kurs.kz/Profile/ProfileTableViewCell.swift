@@ -38,9 +38,16 @@ final class ProfileTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var arrowImageView: UIImageView = {
+     private lazy var arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "arrow-right")
+        imageView.contentMode = .right
+        return imageView
+    }()
+    
+    var notificationImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "new-message")
         imageView.contentMode = .right
         return imageView
     }()
@@ -49,7 +56,7 @@ final class ProfileTableViewCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .leading
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.spacing = 16
         return stack
     }()
@@ -67,9 +74,9 @@ final class ProfileTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        informationCellStack.addArrangedSubview(informationTypeImageView)
-        informationCellStack.addArrangedSubview(informationTypeLabel)
-        informationCellStack.addArrangedSubview(arrowImageView)
+        [informationTypeImageView, informationTypeLabel, notificationImageView, arrowImageView].forEach {
+            informationCellStack.addArrangedSubview($0)
+        }
         contentView.addSubview(informationCellStack)
     }
     
@@ -89,6 +96,15 @@ final class ProfileTableViewCell: UITableViewCell {
         
         informationTypeLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
+        }
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+        }
+        
+        notificationImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(arrowImageView).offset(-24)
         }
     }
 
