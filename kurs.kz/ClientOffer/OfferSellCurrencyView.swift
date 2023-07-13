@@ -8,75 +8,103 @@
 import UIKit
 
 final class OfferSellCurrencyView: UIView {
-    private let flagImageName: String
-    private let currencyLabelText: String
+    // MARK: - Static
+    public func changeCurrency (newFlagImage: String, newCurrencyLabel: String, newCurrencySignLabel: String) {
+        flagImageView.image = UIImage(named: newFlagImage)
+        currencyLabel.text = newCurrencyLabel
+        currencySignLabel.text = newCurrencySignLabel
+    }
+    
     private let hasButton: Bool
     
-    
+    // MARK: - UI
     private let flagImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
-    private let buttonView: UIView = {
+    private let currencyLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private let selectCurrencyButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    
+    private let borderView: UIView = {
         let view = UIView()
         return view
     }()
     
-    private let sumLabel: UILabel = {
-        let currencySign: String
-        let currencySum: String
+    private let amountTextField: UITextField = {
+        let textField = UITextField()
+        return textField
+    }()
+    
+    private let currencySignLabel: UILabel = {
         let label = UILabel()
-        label.text = currencySum + "" + currencySign
         return label
     }()
     
-    init(flagImageName: String, currencyText: String, hasButton: Bool) {
-        self.currencyLabelText = currencyText
+    // MARK: - Initializers
+    init(hasButton: Bool) {
         self.hasButton = hasButton
         
         super.init(frame: .zero)
         
-        configureView()
-        configureSubviews()
-        configureConstraints()
-    
+        setupConstraints()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureView() {
-//        currencyLabel.font = .systemFont(ofSize: 16)
-    }
     
-    private func configureSubviews() {
-        // Add and configure subviews (e.g., imageView, label) here
+    // MARK: - Setup Views
+    private func setupViews() {
         addSubview(flagImageView)
         addSubview(currencyLabel)
-        flagImageView.image = UIImage(named: flagImageName)
+        addSubview(selectCurrencyButton)
+        addSubview(borderView)
+        addSubview(amountTextField)
+        addSubview(currencyLabel)
+        
     }
     
-    private func configureConstraints() {
-        
+    // MARK: - Setup Constraints:
+    private func setupConstraints() {
         flagImageView.snp.makeConstraints { make in
             make.height.equalTo(16)
             make.leading.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(14)
         }
         currencyLabel.snp.makeConstraints { make in
             make.leading.equalTo(flagImageView.snp.trailing).offset(16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(14)
         }
-        buttonView.snp.makeConstraints { make in
+        selectCurrencyButton.snp.makeConstraints { make in
             make.leading.equalTo(flagImageView.snp.trailing).offset(16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(14)
+            make.width.equalTo(9)
         }
-        
-        if hasButton {
-            
+        borderView.snp.makeConstraints { make in
+            make.leading.equalTo(selectCurrencyButton.snp.trailing).offset(16)
+            make.top.equalToSuperview().offset(14)
+            make.height.equalTo(32)
+            make.width.equalTo(1)
         }
-        
+        currencySignLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(flagImageView.snp.trailing).offset(-16)
+            make.top.equalToSuperview().offset(14)
+        }
+        amountTextField.snp.makeConstraints { make in
+            make.trailing.equalTo(flagImageView.snp.trailing).offset(16)
+            make.top.equalToSuperview().offset(14)
+            make.leading.equalTo(borderView).offset(10)
+        }
     }
 }
