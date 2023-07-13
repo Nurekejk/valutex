@@ -18,8 +18,7 @@ class MyExchangesViewController: UIViewController {
         tableView.delegate = self
         tableView.register(MyExchangesTableViewCell.self,
                            forCellReuseIdentifier: MyExchangesTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 126
-        tableView.sectionFooterHeight = 18
+        tableView.rowHeight = 100
         tableView.separatorStyle = .none
         return tableView
     }()

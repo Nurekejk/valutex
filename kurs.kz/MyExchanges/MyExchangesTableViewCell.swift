@@ -21,17 +21,36 @@ final class MyExchangesTableViewCell: UITableViewCell {
         return view
     }()
     
+    private lazy var companyImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: "some_exchange")
+            return imageView
+        }()
+        
+        private lazy var editButton: UIButton = {
+            let button = UIButton()
+            button.setImage(UIImage(named: "edit"), for: .normal)
+            return button
+        }()
+        
+        private lazy var deleteButton: UIButton = {
+            let button = UIButton()
+            button.setImage(UIImage(named: "trash"), for: .normal)
+            return button
+        }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Som Exchange"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
     
     private lazy var subTitleLabel: UITextField = {
         let label = UITextField()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
@@ -47,14 +66,15 @@ final class MyExchangesTableViewCell: UITableViewCell {
     }
 
     override func layoutSubviews() {
-        super.layoutSubviews()
+        super
+            .layoutSubviews()
         
-        containerView.layer.cornerRadius = 8
+        containerView.layer.cornerRadius = 25
     }
     // MARK: - Setup Views
     
     private func setupViews() {
-        [titleLabel, subTitleLabel].forEach {
+        [titleLabel, subTitleLabel,companyImageView, editButton, deleteButton].forEach {
             containerView.addSubview($0)
         }
         
@@ -73,22 +93,43 @@ final class MyExchangesTableViewCell: UITableViewCell {
 
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
-            make.bottom.equalToSuperview().offset(-8)
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-12)
         }
-
-        titleLabel.snp.makeConstraints { make in
+        
+        companyImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
+            make.width.height.equalTo(40)
         }
-
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(companyImageView)
+            make.leading.equalTo(companyImageView.snp.trailing).offset(16)
+            make.trailing.equalTo(editButton.snp.leading).offset(-16)
+        }
+        
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-40)
-
+            make.leading.equalTo(companyImageView.snp.trailing).offset(16)
+            make.trailing.equalTo(editButton.snp.leading).offset(-16)
         }
+        
+        editButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(deleteButton.snp.leading).offset(-16)
+            make.width.height.equalTo(24)
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-16)
+            make.width.height.equalTo(24)
+        }
+        
+        // MARK: - Button Actions
+        
     }
 }
