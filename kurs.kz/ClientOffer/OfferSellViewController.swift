@@ -125,10 +125,13 @@ final class OfferSellViewController: UIViewController {
         
         offerButton.layer.cornerRadius = 12
         
+        sellCurrencyView.viewController = self
+        
     }
     
     // MARK: - Setup Views
     private func setupViews() {
+        print("whatt")
         view.backgroundColor = backgroundGrayColor
         sellLabel.textColor = borderGrayColor
         containerView.backgroundColor = .white

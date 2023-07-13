@@ -1,4 +1,6 @@
 import UIKit
+// delete this
+import PanModal
 
 final class RateViewController: UIViewController, UITextViewDelegate {
    
@@ -184,5 +186,18 @@ extension RateViewController {
             return true
         }
         return true
+    }
+}
+// will need to delete this when ill have the right viewcontroller
+extension RateViewController: PanModalPresentable {
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(496)
+    }
+    var longFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(40)
     }
 }

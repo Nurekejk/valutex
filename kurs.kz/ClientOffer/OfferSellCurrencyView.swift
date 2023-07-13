@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import PanModal
 
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
+    public weak var viewController: UIViewController?
+
     public func changeCurrency (newFlagImage: String,
                                 newCurrencyLabel: String,
                                 newCurrencySignLabel: String) {
@@ -42,6 +45,7 @@ final class OfferSellCurrencyView: UIView {
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "down_arrow"), for: .normal)
+        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
         return button
     }()
     
@@ -125,5 +129,9 @@ final class OfferSellCurrencyView: UIView {
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
             make.top.equalTo(containerView.snp.top).offset(14)
         }
+    }
+    // MARK: - Action
+    @objc func presentController(sender: UIButton!) {
+        self.viewController?.presentPanModal(RateViewController())
     }
 }
