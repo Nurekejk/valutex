@@ -9,18 +9,17 @@ import UIKit
 import SnapKit
 
 class CurrencySelectorTableViewCell: UITableViewCell {
+    // MARK: - State
+    static let identifier = "TableCell"
 
     // MARK: - UI
     private let flagImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "usd_flag")
         return imageView
     }()
     
     private let currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "parlez vous?"
-        label.font = .systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
