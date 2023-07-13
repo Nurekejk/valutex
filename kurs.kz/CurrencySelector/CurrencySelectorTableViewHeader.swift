@@ -8,8 +8,12 @@
 import UIKit
 
 final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
-    // MARK: - UI
+    // MARK: - State
     static let identifier = "TableHeader"
+    
+    func getSearchBar() -> UISearchBar {
+        return currencySearchBar
+    }
     
     // MARK: - UI
     private let currencySearchBar: UISearchBar = {
@@ -41,10 +45,5 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
         currencySearchBar.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
     }
-}
-
-extension CurrencySelectorTableViewHeader: UISearchTextFieldDelegate {
-    
 }
