@@ -53,6 +53,7 @@ final class OfferSellCurrencyView: UIView {
     private let amountTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .blue
+        textField.textAlignment = .right
         textField.keyboardType = .decimalPad
         return textField
     }()
