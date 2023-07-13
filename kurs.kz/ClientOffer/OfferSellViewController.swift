@@ -62,6 +62,30 @@ final class OfferSellViewController: UIViewController {
         return currencyView
     }()
     
+    let lowerBorderView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    let getLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Получить"
+        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        return label
+    }()
+    let getTotalLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+        label.textAlignment = .center
+        return label
+    }()
+    private lazy var resetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = buttonBlueColor
+        button.setTitle("Предложить", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        return button
+    }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +108,16 @@ final class OfferSellViewController: UIViewController {
         exchangeRateCurrencyView.layer.borderWidth = 1
         exchangeRateCurrencyView.layer.borderColor = borderGrayColor.cgColor
         exchangeRateCurrencyView.layer.cornerRadius = 8
+        
         sellLabel.textColor = textGrayColor
         exchangeRateLabel.textColor = textGrayColor
+        getLabel.textColor = textGrayColor
+        lowerBorderView.backgroundColor = borderGrayColor
+        
+        getTotalLabel.layer.cornerRadius = 8
+        getTotalLabel.layer.borderWidth = 1
+        getTotalLabel.layer.borderColor = borderGrayColor.cgColor
+        getTotalLabel.backgroundColor = backgroundGrayColor
     }
     
     // MARK: - Setup Views
@@ -95,10 +127,13 @@ final class OfferSellViewController: UIViewController {
         containerView.backgroundColor = .white
         
         view.addSubview(containerView)
-        containerView.addSubview(sellCurrencyView)
-        containerView.addSubview(exchangeRateCurrencyView)
-        containerView.addSubview(sellLabel)
-        containerView.addSubview(exchangeRateLabel)
+        [sellCurrencyView,
+         exchangeRateCurrencyView,
+         sellLabel,
+         exchangeRateLabel,
+         lowerBorderView,
+         getLabel,
+         getTotalLabel].forEach { containerView.addSubview($0) }
     }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -131,7 +166,23 @@ final class OfferSellViewController: UIViewController {
             make.height.equalTo(48)
             make.width.equalTo(311)
         }
-        
+        lowerBorderView.snp.makeConstraints { make in
+            make.top.equalTo(exchangeRateCurrencyView.snp.bottom).offset(16)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(1)
+            make.width.equalTo(311)
+        }
+        getLabel.snp.makeConstraints { make in
+            make.top.equalTo(lowerBorderView.snp.bottom).offset(16)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(18)
+        }
+        getTotalLabel.snp.makeConstraints { make in
+            make.top.equalTo(getLabel.snp.bottom).offset(4)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(48)
+            make.width.equalTo(311)
+        }
     }
     // MARK: - Action
     //    @objc func changeStars(sender: UIButton!) {
