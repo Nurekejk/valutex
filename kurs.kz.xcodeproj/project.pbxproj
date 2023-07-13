@@ -36,6 +36,7 @@
 		9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */; };
 		9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */; };
 		9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */; };
+		9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
@@ -79,6 +80,7 @@
 		9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = kurs.kz/Language/LanguageTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportTableViewCell.swift; path = kurs.kz/Support/SupportTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/Support/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
+		9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */,
+				9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
