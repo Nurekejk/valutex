@@ -27,6 +27,12 @@ final class OfferSellViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private let textGrayColor = UIColor(
+        red: 147.0 / 255.0,
+        green: 153.0 / 255.0,
+        blue: 171.0 / 255.0,
+        alpha: 1)
+
     // MARK: - UI
     
     private let containerView: UIView = {
@@ -35,7 +41,15 @@ final class OfferSellViewController: UIViewController {
     }()
     private let sellLabel: UILabel = {
         let label = UILabel()
-        label.text = "Продать По курсу"
+        label.text = "Продать"
+        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        return label
+    }()
+    
+    private let exchangeRateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "По курсу"
+        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         return label
     }()
     
@@ -61,10 +75,17 @@ final class OfferSellViewController: UIViewController {
         sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
-        
+        exchangeRateCurrencyView.changeCurrency(newFlagImage: "kzt_flag",
+                                                newCurrencyLabel: "KZT",
+                                                newCurrencySignLabel: "₸" )
         sellCurrencyView.layer.borderWidth = 1
         sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
         sellCurrencyView.layer.cornerRadius = 8
+        exchangeRateCurrencyView.layer.borderWidth = 1
+        exchangeRateCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        exchangeRateCurrencyView.layer.cornerRadius = 8
+        sellLabel.textColor = textGrayColor
+        exchangeRateLabel.textColor = textGrayColor
     }
     
     // MARK: - Setup Views
@@ -72,11 +93,13 @@ final class OfferSellViewController: UIViewController {
         view.backgroundColor = backgroundGrayColor
         sellLabel.textColor = borderGrayColor
         containerView.backgroundColor = .white
+        
         view.addSubview(containerView)
         containerView.addSubview(sellCurrencyView)
         containerView.addSubview(exchangeRateCurrencyView)
+        containerView.addSubview(sellLabel)
+        containerView.addSubview(exchangeRateLabel)
     }
-    
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
@@ -86,30 +109,29 @@ final class OfferSellViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(116)
         }
+        sellLabel.snp.makeConstraints { make in
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.top.equalTo(containerView.snp.top).offset(80)
+            make.height.equalTo(18)
+        }
         sellCurrencyView.snp.makeConstraints { make in
-            
+            make.top.equalTo(sellLabel.snp.bottom).offset(4)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(48)
+            make.width.equalTo(311)
+        }
+        exchangeRateLabel.snp.makeConstraints { make in
+            make.top.equalTo(sellCurrencyView.snp.bottom).offset(16)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.height.equalTo(18)
+        }
+        exchangeRateCurrencyView.snp.makeConstraints { make in
+            make.top.equalTo(exchangeRateLabel.snp.bottom).offset(4)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
             make.height.equalTo(48)
             make.width.equalTo(311)
         }
         
-//        borderView.snp.makeConstraints { make in
-//            make.height.equalTo(1)
-//            make.leading.equalTo(entireStackView.snp.leading)
-//            make.trailing.equalTo(entireStackView.snp.trailing)
-//        }
-//        reviewLabel.snp.makeConstraints { make in
-//            make.height.equalTo(18)
-//        }
-//        reviewTextView.snp.makeConstraints { make in
-//            make.height.equalTo(120)
-//            make.leading.equalTo(entireStackView.snp.leading).offset(16)
-//            make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
-//        }
-//        continueButton.snp.makeConstraints { make in
-//            make.height.equalTo(52)
-//            make.leading.equalTo(entireStackView.snp.leading).offset(16)
-//            make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
-//        }
     }
     // MARK: - Action
     //    @objc func changeStars(sender: UIButton!) {
