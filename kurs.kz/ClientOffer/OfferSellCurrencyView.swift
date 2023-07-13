@@ -9,7 +9,9 @@ import UIKit
 
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
-    public func changeCurrency (newFlagImage: String, newCurrencyLabel: String, newCurrencySignLabel: String) {
+    public func changeCurrency (newFlagImage: String,
+                                newCurrencyLabel: String,
+                                newCurrencySignLabel: String) {
         flagImageView.image = UIImage(named: newFlagImage)
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
@@ -30,9 +32,9 @@ final class OfferSellCurrencyView: UIView {
     
     private let selectCurrencyButton: UIButton = {
         let button = UIButton()
+        button.imageView?.image = UIImage(named: "down_arrow")
         return button
     }()
-    
     
     private let borderView: UIView = {
         let view = UIView()
@@ -54,15 +56,14 @@ final class OfferSellCurrencyView: UIView {
         self.hasButton = hasButton
         
         super.init(frame: .zero)
-        
-        setupConstraints()
         setupViews()
+        setupConstraints()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - Setup Views
     private func setupViews() {
@@ -71,8 +72,10 @@ final class OfferSellCurrencyView: UIView {
         addSubview(selectCurrencyButton)
         addSubview(borderView)
         addSubview(amountTextField)
-        addSubview(currencyLabel)
-        
+        addSubview(currencySignLabel)
+        if !hasButton {
+            selectCurrencyButton.isHidden = true
+        }
     }
     
     // MARK: - Setup Constraints:
