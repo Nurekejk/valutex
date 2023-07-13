@@ -8,10 +8,11 @@
 import UIKit
 
 final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
+    
     // MARK: - State
     static let identifier = "TableHeader"
     
-    func getSearchBar() -> UISearchBar {
+    public func getSearchBar() -> UISearchBar {
         return currencySearchBar
     }
     
@@ -23,6 +24,7 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
         return searchBar
     }()
     
+    // MARK: - Initializers
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()

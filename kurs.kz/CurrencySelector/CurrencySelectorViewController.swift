@@ -10,7 +10,7 @@ import SnapKit
 
 final class CurrencySelectorViewController: UIViewController {
     
-    private var isSearching = false
+    // MARK: - State
     
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
@@ -30,6 +30,14 @@ final class CurrencySelectorViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private let currenciesDictionary = ["Доллар США" : "usd_flag", "Евро" : "euro_flag",
+                                        "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
+                                        "Кит.юань" : "cn_flag"]
+    private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
+                                      "Кит.юань"]
+    private var searchKeyArray = [String]()
+    private var isSearching = false
+    
     // MARK: - UI
     private let chooseCurrencyLabel: UILabel = {
         let label = UILabel()
@@ -44,20 +52,13 @@ final class CurrencySelectorViewController: UIViewController {
         return button
     }()
 
-    private let continueButton: UIButton = {
+    private let selectButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.setTitle("Выбрать", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    
-    private let currenciesDictionary = ["Доллар США" : "usd_flag", "Евро" : "euro_flag",
-                                        "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
-                                        "Кит.юань" : "cn_flag"]
-    private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
-                                      "Кит.юань"]
-    private var searchKeyArray = [String]()
     
     private lazy var headerView: CurrencySelectorTableViewHeader = {
         let headerView = CurrencySelectorTableViewHeader()
@@ -90,6 +91,8 @@ final class CurrencySelectorViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         curreniesTableView.layer.cornerRadius = 8
+        selectButton.backgroundColor = buttonBlueColor
+        selectButton.layer.cornerRadius = 12
 
     }
     
@@ -98,12 +101,15 @@ final class CurrencySelectorViewController: UIViewController {
         view.addSubview(curreniesTableView)
         view.addSubview(chooseCurrencyLabel)
         view.addSubview(exitButton)
+        view.addSubview(selectButton)
         view.backgroundColor = backgroundGrayColor
-        
     }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+        
+        let tableWidth = UIScreen.main.bounds.width - 32
+        headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 52)
         
         chooseCurrencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(28)
@@ -117,18 +123,20 @@ final class CurrencySelectorViewController: UIViewController {
         }
         curreniesTableView.snp.makeConstraints { make in
             make.top.equalTo(chooseCurrencyLabel.snp.bottom).offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(tableWidth)
+            make.height.equalTo(328)
             make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(0)
-
         }
-        
-        headerView.frame = CGRect(x: 100, y: 100, width: 100, height: 52)
-        
+        selectButton.snp.makeConstraints { make in
+            make.top.equalTo(curreniesTableView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(343)
+            make.height.equalTo(52)
+        }
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -159,8 +167,6 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
             searchKeyArray = currenciesKeyArray.filter { currency in
                 return currency.localizedCaseInsensitiveContains(searchText)
             }
-            print(searchKeyArray)
-            print("here")
             curreniesTableView.reloadData()
         }
     }
@@ -172,7 +178,5 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        print("hereee")
     }
-    
 }

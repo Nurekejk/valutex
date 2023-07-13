@@ -9,8 +9,14 @@ import UIKit
 import SnapKit
 
 class CurrencySelectorTableViewCell: UITableViewCell {
+    
     // MARK: - State
     static let identifier = "TableCell"
+    
+    public func configureCell(currency: String, flagName: String) {
+        currencyLabel.text = currency
+        flagImageView.image = UIImage(named: flagName)
+    }
 
     // MARK: - UI
     private let flagImageView: UIImageView = {
@@ -31,11 +37,11 @@ class CurrencySelectorTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -70,9 +76,4 @@ class CurrencySelectorTableViewCell: UITableViewCell {
             make.size.equalTo(24)
         }
     }
-    public func configureCell(currency: String, flagName: String) {
-        currencyLabel.text = currency
-        flagImageView.image = UIImage(named: flagName)
-    }
-    
 }
