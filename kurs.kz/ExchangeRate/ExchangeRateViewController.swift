@@ -9,17 +9,24 @@ import UIKit
 import SnapKit
 
 final class ExchangeRateViewController: UIViewController {
-    
+
+    // MARK: - State
+
+    let image: [UIImage] = [
+        UIImage(named: "USDflag").flatMap { $0 },
+        UIImage(named: "EUROflag").flatMap { $0 },
+        UIImage(named: "RUflag").flatMap { $0 }
+    ].compactMap { $0 }
     // MARK: - UI
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource  = self
         tableView.delegate = self
         tableView.register(ExchangeRateTableViewCell.self,
                            forCellReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.rowHeight = 126
-        tableView.sectionHeaderHeight = 18
+       // tableView.sectionHeaderHeight = 18
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -33,6 +40,7 @@ final class ExchangeRateViewController: UIViewController {
         setupConstraints()
         
     }
+    
     // MARK: - Setup Views
     
     private func setupViews() {
@@ -57,12 +65,15 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.image.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? ExchangeRateTableViewCell
+        let image = self.image[indexPath.row]
+        cell!.configure(with: image, and: indexPath.row.description)
+
         return cell ?? UITableViewCell()
     }
 }

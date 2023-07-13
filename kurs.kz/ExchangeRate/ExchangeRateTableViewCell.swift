@@ -8,39 +8,39 @@
 import UIKit
 import SnapKit
 
-class ExchangeRateTableViewCell: UITableViewCell {
+final class ExchangeRateTableViewCell: UITableViewCell {
     // MARK: - Public
-
+    
     public static var reuseIdentifier = String(describing: ExchangeRateTableViewCell.self)
-
+    
     // MARK: - UI
-
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
     }()
-
-    private let USDFlagImage: UIImageView = {
+    
+    let USDFlagImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "USDFlag")
+        // image.image = UIImage(named: "USDFlag")
         return image
     }()
-
+    
     private lazy var currencyUSDLabel: UILabel = {
         let label = UILabel()
         label.text = "Доллар"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
-
+    
     private lazy var amountOfPurchaseUSDTextField: UITextField = {
         let textField = UITextField()
         textField.text = "500"
         textField.font = .systemFont(ofSize: 16)
         return textField
     }()
-
+    
     private lazy var amountOfSaleUSDTextField: UITextField = {
         let textField = UITextField()
         textField.text = "500"
@@ -52,49 +52,53 @@ class ExchangeRateTableViewCell: UITableViewCell {
         if let iconImage = UIImage(named: "deleteCurrency") {
             button.setImage(iconImage, for: .normal)
         }
-//        let iconConfig = UIImage.SymbolConfiguration(pointSize: 16)
-//        let deleteIcon = UIImage(systemName: "deleteCurrency")?.withConfiguration(iconConfig)
-//        button.setImage(deleteIcon, for: .normal)
-//        button.imageView?.contentMode = .scaleAspectFill
+        //        let iconConfig = UIImage.SymbolConfiguration(pointSize: 16)
+        //        let deleteIcon = UIImage(systemName: "deleteCurrency")?.withConfiguration(iconConfig)
+        //        button.setImage(deleteIcon, for: .normal)
+        //        button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(deleteCurrencyButtonDidPressed),
                          for: .touchUpInside)
-
+        
         return button
     }()
-
-//    let deleteButton = UIButton(type: .system)
-//    let iconConfig = UIImage.SymbolConfiguration(pointSize: 24)
-//    let deleteIcon = UIImage(systemName: "trash")?.withConfiguration(iconConfig)
-//    deleteButton.setImage(deleteIcon, for: .normal)
-//    deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-
-//    private lazy var signInButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Войти", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-//        button.clipsToBounds = true
-//        button.backgroundColor = .systemBlue
-//        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
-//        return button
-//    }()
-
+    
+    //    let deleteButton = UIButton(type: .system)
+    //    let iconConfig = UIImage.SymbolConfiguration(pointSize: 24)
+    //    let deleteIcon = UIImage(systemName: "trash")?.withConfiguration(iconConfig)
+    //    deleteButton.setImage(deleteIcon, for: .normal)
+    //    deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+    
+    //    private lazy var signInButton: UIButton = {
+    //        let button = UIButton(type: .system)
+    //        button.setTitle("Войти", for: .normal)
+    //        button.setTitleColor(.white, for: .normal)
+    //        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    //        button.clipsToBounds = true
+    //        button.backgroundColor = .systemBlue
+    //        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
+    //        return button
+    //    }()
+    
     // MARK: - Initializers
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         setupViews()
         setupConstraints()
-
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    public func configure(with image: UIImage, and label: String) {
+        self.USDFlagImage.image = image
+        self.currencyUSDLabel.text = label
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         containerView.layer.cornerRadius = 8
         amountOfPurchaseUSDTextField.layer.cornerRadius = 10
         amountOfPurchaseUSDTextField.layer.borderWidth = 1
@@ -104,7 +108,7 @@ class ExchangeRateTableViewCell: UITableViewCell {
         amountOfSaleUSDTextField.layer.borderColor = UIColor.gray.cgColor
     }
     // MARK: - Setup Views
-
+    
     private func setupViews() {
         [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField, amountOfSaleUSDTextField,
          deleteCurrencyButton].forEach {
@@ -115,7 +119,7 @@ class ExchangeRateTableViewCell: UITableViewCell {
         contentView.addSubview(containerView)
     }
     // MARK: - Setup Constraints
-
+    
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
@@ -152,10 +156,10 @@ class ExchangeRateTableViewCell: UITableViewCell {
             make.height.equalTo(16)
         }
     }
-
+    
     // MARK: - Actions
-
+    
     @objc private func deleteCurrencyButtonDidPressed() {
-
+        
     }
 }
