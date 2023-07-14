@@ -8,7 +8,11 @@
 import UIKit
 
 final class OfferSellViewController: UIViewController {
-
+    // MARK: - Properties
+    
+    var upperTextFieldNumber = "0"
+    var lowerTextFieldNumber = "0"
+    
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,
@@ -85,7 +89,6 @@ final class OfferSellViewController: UIViewController {
         button.setTitle("Предложить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
-        button.addTarget(self, action: #selector(calculateOffer), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -128,6 +131,14 @@ final class OfferSellViewController: UIViewController {
         
         sellCurrencyView.viewController = self
         
+        sellCurrencyView.amountTextField.tag = 1
+        exchangeRateCurrencyView.amountTextField.tag = 2
+        sellCurrencyView.amountTextField.addTarget(self,
+                                                   action: #selector(calculateOffer(sender:)),
+                                                   for: .editingChanged)
+        exchangeRateCurrencyView.amountTextField.addTarget(self,
+                                                           action: #selector(calculateOffer(sender:)),
+                                                           for: .editingChanged)
     }
     
     // MARK: - Setup Views
@@ -200,14 +211,24 @@ final class OfferSellViewController: UIViewController {
         }
     }
     // MARK: - Action
-    @objc func calculateOffer(sender: UIButton!) {
-        let firstNumber = sellCurrencyView.getTextfieldNumber()
-        let secondNumber = exchangeRateCurrencyView.getTextfieldNumber()
+    @objc func calculateOffer(sender: UITextField) {
+        if sender.tag == 1 {
+            upperTextFieldNumber = sender.text ?? "0"
+        } else {
+            lowerTextFieldNumber = sender.text ?? "0"
+        }
+        let firstNumber = Double(upperTextFieldNumber) ?? 0.0
+        let secondNumber = Double(lowerTextFieldNumber) ?? 0.0
         let sum = String(format: "%.3f", firstNumber * secondNumber)
             .trimmingCharacters(in: ["0", "."])
         if sum != "" {
-            getTotalLabel.text = String(format: "%.3f", firstNumber * secondNumber)
-                .trimmingCharacters(in: ["0", "."])
+            
+           var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
+                .trimmingCharacters(in: ["0"])
+            if trimmedResult.last == "." {
+                trimmedResult.removeLast()
+            }
+            getTotalLabel.text = trimmedResult
         } else {
             getTotalLabel.text = "0"
         }

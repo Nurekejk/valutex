@@ -25,15 +25,20 @@ final class OfferSellCurrencyView: UIView {
     
     public weak var viewController: UIViewController?
     
+    public let amountTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .blue
+        textField.textAlignment = .right
+        textField.keyboardType = .decimalPad
+        return textField
+    }()
+    
     func changeCurrency (newFlagImage: String,
                          newCurrencyLabel: String,
                          newCurrencySignLabel: String) {
         flagImageView.image = UIImage(named: newFlagImage)
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
-    }
-    public func getTextfieldNumber() -> Double {
-        return Double(amountTextField.text ?? "0") ?? 0.0
     }
     
     private let hasButton: Bool
@@ -65,14 +70,6 @@ final class OfferSellCurrencyView: UIView {
     private let borderView: UIView = {
         let view = UIView()
         return view
-    }()
-    
-    private let amountTextField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = .blue
-        textField.textAlignment = .right
-        textField.keyboardType = .decimalPad
-        return textField
     }()
     
     private let currencySignLabel: UILabel = {
