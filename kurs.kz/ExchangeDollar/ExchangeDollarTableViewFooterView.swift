@@ -28,6 +28,13 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
         return label
     }()
     
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Еще", for: .normal)
+        
+        return button
+    }()
+    
     // MARK: - Life Cycle
     
     override init(reuseIdentifier: String?) {
@@ -46,14 +53,14 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     func setupViews() {
         
         contentView.backgroundColor = .white
-        contentView.addSubview(titleOneLabel)
+        contentView.addSubview(button)
     }
     
     // MARK: - Setup Constraits
     
     func setupConstriats() {
         
-        titleOneLabel.snp.makeConstraints { make in
+        button.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-16)
         }
