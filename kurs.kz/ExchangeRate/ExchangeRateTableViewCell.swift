@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class ExchangeRateTableViewCell: UITableViewCell {
+
     // MARK: - Public
     
     public static var reuseIdentifier = String(describing: ExchangeRateTableViewCell.self)
@@ -20,64 +21,36 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         return view
     }()
     
-    let USDFlagImage: UIImageView = {
+    let flagImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        // image.image = UIImage(named: "USDFlag")
         return image
     }()
     
-    private lazy var currencyUSDLabel: UILabel = {
+    let currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Доллар"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
-    private lazy var amountOfPurchaseUSDTextField: UITextField = {
+    let amountOfPurchaseTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "500"
         textField.font = .systemFont(ofSize: 16)
         return textField
     }()
     
-    private lazy var amountOfSaleUSDTextField: UITextField = {
+    let amountOfSaleTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "500"
         textField.font = .systemFont(ofSize: 16)
         return textField
     }()
-    private lazy var deleteCurrencyButton: UIButton = {
+    lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
-        if let iconImage = UIImage(named: "deleteCurrency") {
-            button.setImage(iconImage, for: .normal)
-        }
-        //        let iconConfig = UIImage.SymbolConfiguration(pointSize: 16)
-        //        let deleteIcon = UIImage(systemName: "deleteCurrency")?.withConfiguration(iconConfig)
-        //        button.setImage(deleteIcon, for: .normal)
-        //        button.imageView?.contentMode = .scaleAspectFill
-        button.addTarget(self, action: #selector(deleteCurrencyButtonDidPressed),
+        button.addTarget(self, action: #selector(trashButtonDidPressed),
                          for: .touchUpInside)
-        
+
         return button
     }()
-    
-    //    let deleteButton = UIButton(type: .system)
-    //    let iconConfig = UIImage.SymbolConfiguration(pointSize: 24)
-    //    let deleteIcon = UIImage(systemName: "trash")?.withConfiguration(iconConfig)
-    //    deleteButton.setImage(deleteIcon, for: .normal)
-    //    deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-    
-    //    private lazy var signInButton: UIButton = {
-    //        let button = UIButton(type: .system)
-    //        button.setTitle("Войти", for: .normal)
-    //        button.setTitleColor(.white, for: .normal)
-    //        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-    //        button.clipsToBounds = true
-    //        button.backgroundColor = .systemBlue
-    //        button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
-    //        return button
-    //    }()
     
     // MARK: - Initializers
     
@@ -91,27 +64,23 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    public func configure(with image: UIImage, and label: String) {
-        self.USDFlagImage.image = image
-        self.currencyUSDLabel.text = label
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         containerView.layer.cornerRadius = 8
-        amountOfPurchaseUSDTextField.layer.cornerRadius = 10
-        amountOfPurchaseUSDTextField.layer.borderWidth = 1
-        amountOfPurchaseUSDTextField.layer.borderColor = UIColor.gray.cgColor
-        amountOfSaleUSDTextField.layer.cornerRadius = 10
-        amountOfSaleUSDTextField.layer.borderWidth = 1
-        amountOfSaleUSDTextField.layer.borderColor = UIColor.gray.cgColor
+        amountOfPurchaseTextField.layer.cornerRadius = 10
+        amountOfPurchaseTextField.layer.borderWidth = 1
+        amountOfPurchaseTextField.layer.borderColor = UIColor.gray.cgColor
+        amountOfSaleTextField.layer.cornerRadius = 10
+        amountOfSaleTextField.layer.borderWidth = 1
+        amountOfSaleTextField.layer.borderColor = UIColor.gray.cgColor
     }
     // MARK: - Setup Views
     
     private func setupViews() {
-        [currencyUSDLabel, USDFlagImage, amountOfPurchaseUSDTextField, amountOfSaleUSDTextField,
-         deleteCurrencyButton].forEach {
+        [currencyLabel, flagImage, amountOfPurchaseTextField, amountOfSaleTextField,
+         trashButton].forEach {
             containerView.addSubview($0)
         }
         contentView.backgroundColor = .systemGray6
@@ -127,29 +96,29 @@ final class ExchangeRateTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-24)
             make.bottom.equalToSuperview().offset(-8)
         }
-        USDFlagImage.snp.makeConstraints { make in
+        flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
             make.trailing.equalToSuperview().offset(-301)
         }
-        currencyUSDLabel.snp.makeConstraints { make in
+        currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalToSuperview().offset(58)
             make.trailing.equalToSuperview().offset(-196)
         }
-        amountOfPurchaseUSDTextField.snp.makeConstraints { make in
+        amountOfPurchaseTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(163)
             make.trailing.equalToSuperview().offset(-116)
             make.height.equalTo(32)
         }
-        amountOfSaleUSDTextField.snp.makeConstraints { make in
+        amountOfSaleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(235)
             make.trailing.equalToSuperview().offset(-44)
             make.height.equalTo(32)
         }
-        deleteCurrencyButton.snp.makeConstraints { make in
+        trashButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(315)
             make.trailing.equalToSuperview().offset(-12)
@@ -159,7 +128,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     
-    @objc private func deleteCurrencyButtonDidPressed() {
+    @objc private func trashButtonDidPressed() {
         
     }
 }
