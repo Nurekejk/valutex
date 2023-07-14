@@ -97,6 +97,11 @@ final class MyExchangesTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-12)
+            containerView.layer.shadowColor = UIColor.black.cgColor
+            containerView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+            containerView.layer.shadowOpacity = 0.2
+            containerView.layer.shadowRadius = 4.0
+            containerView.layer.masksToBounds = false
         }
         
         companyImageView.snp.makeConstraints { make in
