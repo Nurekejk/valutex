@@ -51,6 +51,7 @@ final class CurrencySelectorViewController: UIViewController {
     private lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "cross"), for: .normal)
+        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
 
@@ -135,6 +136,11 @@ final class CurrencySelectorViewController: UIViewController {
             make.width.equalTo(343)
             make.height.equalTo(52)
         }
+    }
+    
+    // MARK: - Action
+    @objc func closeController() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
