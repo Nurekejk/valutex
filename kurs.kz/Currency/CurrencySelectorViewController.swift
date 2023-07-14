@@ -59,7 +59,7 @@ final class CurrencySelectorViewController: UIViewController {
     private lazy var selectButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
-        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
+        button.addTarget(self, action: #selector(changeCurrency), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -144,7 +144,7 @@ final class CurrencySelectorViewController: UIViewController {
     @objc func closeController() {
         dismiss(animated: true, completion: nil)
     }
-    @objc func currencyDidSelect() {
+    @objc func changeCurrency() {
         if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
         let senderViewController = delegate {
             senderViewController.currencyDidSelect(selectedIndexPath:
