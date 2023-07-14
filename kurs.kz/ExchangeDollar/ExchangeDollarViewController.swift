@@ -18,7 +18,6 @@ final class ExchangeDollarViewController: UIViewController {
     
     private let miniTitle: [String] = ["1 доллар",  "1 евро", "1 рубль"]
     
-    
     // MARK: - UI
     
     private lazy var headerView: ExchangeDollarTableViewHeaderView = {
@@ -38,8 +37,10 @@ final class ExchangeDollarViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: "newcell")
-        tableView.register(ExchangeDollarTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
-        tableView.register(ExchangeDollarTableViewFooterView.self, forHeaderFooterViewReuseIdentifier: "footer_id")
+        tableView.register(ExchangeDollarTableViewHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: "header_id")
+        tableView.register(ExchangeDollarTableViewFooterView.self,
+                           forHeaderFooterViewReuseIdentifier: "footer_id")
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
         tableView.rowHeight = 56
