@@ -132,6 +132,6 @@ final class OfferSellCurrencyView: UIView {
     }
     // MARK: - Action
     @objc func presentController(sender: UIButton!) {
-        self.viewController?.presentPanModal(RateViewController())
+        self.viewController?.presentPanModal(CurrencySelectorViewController())
     }
 }

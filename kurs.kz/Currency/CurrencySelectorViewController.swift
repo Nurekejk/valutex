@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 import SnapKit
 
 final class CurrencySelectorViewController: UIViewController {
@@ -24,11 +25,18 @@ final class CurrencySelectorViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
-    private let currenciesDictionary = ["Доллар США" : "usd_flag", "Евро" : "euro_flag",
-                                        "Рос.рубль" : "ru_flag", "Кирг.сом" : "kgs_flag",
+    private let currenciesDictionary = ["Доллар США" : "usd_flag",
+                                        "Евро" : "euro_flag",
+                                        "Рос.рубль" : "ru_flag",
+                                        "Кирг.сом" : "kgs_flag",
                                         "Кит.юань" : "cn_flag"]
-    private let currenciesKeyArray = ["Доллар США", "Евро", "Рос.рубль", "Кирг.сом",
+    
+    private let currenciesKeyArray = ["Доллар США",
+                                      "Евро",
+                                      "Рос.рубль",
+                                      "Кирг.сом",
                                       "Кит.юань"]
+    
     private var searchKeyArray = [String]()
     private var isSearching = false
     
@@ -36,8 +44,8 @@ final class CurrencySelectorViewController: UIViewController {
     private let chooseCurrencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Выберите валюту"
-        label.textColor = .gray
-        label.font = .systemFont(ofSize: 18)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
     private lazy var exitButton: UIButton = {
@@ -176,5 +184,18 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension CurrencySelectorViewController: PanModalPresentable {
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(496)
+    }
+    var longFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(40)
     }
 }

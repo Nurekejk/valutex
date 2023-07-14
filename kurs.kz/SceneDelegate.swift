@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isAutorized = true
 
         if isAutorized {
-            window?.rootViewController = CurrencySelectorViewController()
+            window?.rootViewController = OfferSellViewController()
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
