@@ -22,8 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isAutorized = true
 
         if isAutorized {
-            window?.rootViewController =
-                UINavigationController(rootViewController: CustomTabBarViewController())
+            window?.rootViewController = CurrencySelectorViewController()
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
