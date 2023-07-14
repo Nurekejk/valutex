@@ -10,6 +10,10 @@ import SnapKit
 
 final class ExchangeDollarTableViewCell: UITableViewCell {
     
+    // MARK: - Public
+    
+    public static var reuseIdentifier = String(describing: ExchangeDollarTableViewCell.self)
+    
     // MARK: - UI
     
     private let nameImageView: UIImageView = {
@@ -68,7 +72,7 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
     // MARK: - Setup Views
     
     func setupViews() {
-        
+
         contentView.addSubview(nameImageView)
         contentView.addSubview(nameOfTitleLabel)
         contentView.addSubview(miniTitleLabel)
@@ -79,7 +83,7 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
     // MARK: - Setup Constraits
     
     func setupConstraits() {
-        
+
         nameImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(23)
             make.leading.equalToSuperview().offset(16)
@@ -88,19 +92,19 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
         
         nameOfTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.bottom.equalToSuperview().offset(-24)
-            make.leading.equalTo(nameImageView.snp.trailing).offset(8)
+            make.leading.equalToSuperview().offset(40)
         }
         
         miniTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
+            make.leading.equalToSuperview().offset(40)
             make.bottom.equalToSuperview().offset(-12)
-            make.leading.equalTo(nameImageView.snp.trailing).offset(8)
+            make.trailing.equalTo(purchaseNameLabel.snp.leading).offset(-96)
         }
         
         purchaseNameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(17)
-            make.trailing.equalTo(buyNameLabel.snp.leading).offset(-16)
+            make.trailing.equalToSuperview().offset(-96)
             make.bottom.equalToSuperview().offset(-17)
         }
         

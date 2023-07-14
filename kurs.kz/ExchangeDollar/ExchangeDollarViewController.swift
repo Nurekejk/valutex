@@ -14,11 +14,17 @@ final class ExchangeDollarViewController: UIViewController {
     
     private let nameOfImage: [String] = ["usa", "dublin", "russian"]
     
-    private let nameOfTitle: [String] = ["Доллар", "Евро", "Рубль"]
+    private let nameOfTitle: [String] = ["Доллар США", "Евро", "Рубль"]
     
     private let miniTitle: [String] = ["1 доллар",  "1 евро", "1 рубль"]
     
     // MARK: - UI
+    
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
     
     private lazy var headerView: ExchangeDollarTableViewHeaderView = {
         let headerView = ExchangeDollarTableViewHeaderView()
@@ -36,7 +42,8 @@ final class ExchangeDollarViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ExchangeDollarTableViewCell.self, forCellReuseIdentifier: "newcell")
+        tableView.register(ExchangeDollarTableViewCell.self,
+                           forCellReuseIdentifier: ExchangeDollarTableViewCell.reuseIdentifier)
         tableView.register(ExchangeDollarTableViewHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: "header_id")
         tableView.register(ExchangeDollarTableViewFooterView.self,
@@ -53,6 +60,7 @@ final class ExchangeDollarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        containerView.layer.cornerRadius = 8
         setupViews()
         setupConstraits()
     }
@@ -61,7 +69,16 @@ final class ExchangeDollarViewController: UIViewController {
     
     func setupViews() {
         
-        view.backgroundColor = .gray
+        let backgroundGrayColor = UIColor(
+            red: 246.0 / 255.0,
+            green: 247.0 / 255.0,
+            blue: 249.0 / 255.0,
+            alpha: 1
+        )
+        
+        view.backgroundColor = backgroundGrayColor
+        containerView.backgroundColor = .white
+        view.addSubview(containerView)
         view.addSubview(tableView)
     }
     
@@ -69,16 +86,23 @@ final class ExchangeDollarViewController: UIViewController {
     
     func setupConstraits() {
         
+        containerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(96)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-496)
+        }
+        
         headerView.frame = CGRect(x: 0, y: 0, width: 311, height: 36)
         
         footerView.frame = CGRect(x: 0, y: 0, width: 311, height: 34)
         
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(72)
-            make.bottom.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(54)
+            make.bottom.equalToSuperview().offset(-500)
+            make.height.equalTo(232)
         }
     }
 }
@@ -92,7 +116,7 @@ extension ExchangeDollarViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newcell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeDollarTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? ExchangeDollarTableViewCell
         
         let nameOfImage = nameOfImage[indexPath.row]
@@ -102,10 +126,6 @@ extension ExchangeDollarViewController: UITableViewDataSource, UITableViewDelega
         let miniTitle = miniTitle[indexPath.row]
         
         cell?.configureCell(nameImage: nameOfImage, nameTitle: nameOfTitle, miniTitle: miniTitle)
-        
-        cell?.contentView.backgroundColor = UIColor(ciColor: .cyan)
-        let header = ExchangeDollarTableViewHeaderView()
-        header.contentView.backgroundColor = UIColor.blue
         
         return cell ?? UITableViewCell()
     }

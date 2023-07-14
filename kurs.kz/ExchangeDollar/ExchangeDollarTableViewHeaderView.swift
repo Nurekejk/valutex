@@ -53,6 +53,7 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     
     func setupViews() {
         
+        contentView.backgroundColor = .white
         contentView.addSubview(titleOneLabel)
         contentView.addSubview(titletTwoLabel)
         contentView.addSubview(titleThreeLabel)
@@ -63,21 +64,18 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     func setupConstriats() {
         
         titleOneLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(12)
         }
         
         titletTwoLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-60)
-            make.height.equalTo(12)
+            make.top.equalToSuperview().offset(12)
+            make.trailing.equalTo(titleThreeLabel.snp.leading).offset(-33)
         }
         
         titleThreeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(12)
+            make.top.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
 }

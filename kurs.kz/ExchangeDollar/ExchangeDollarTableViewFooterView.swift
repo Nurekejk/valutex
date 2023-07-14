@@ -12,11 +12,18 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     
     // MARK: - UI
     
+    let backgroundBlueColor = UIColor(
+        red: 45 / 255.0,
+        green: 156 / 255.0,
+        blue: 219 / 255.0,
+        alpha: 1
+    )
+    
     private lazy var titleOneLabel: UILabel = {
         let label = UILabel()
         label.text = "Еще"
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .blue
+        label.font = .boldSystemFont(ofSize: 14)
+        label.textColor = backgroundBlueColor
         
         return label
     }()
@@ -38,6 +45,7 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     
     func setupViews() {
         
+        contentView.backgroundColor = .white
         contentView.addSubview(titleOneLabel)
     }
     
@@ -46,8 +54,7 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     func setupConstriats() {
         
         titleOneLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-16)
         }
     }
