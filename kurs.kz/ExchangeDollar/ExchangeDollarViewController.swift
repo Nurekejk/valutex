@@ -36,7 +36,7 @@ final class ExchangeDollarViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: "newcell")
+        tableView.register(ExchangeDollarTableViewCell.self, forCellReuseIdentifier: "newcell")
         tableView.register(ExchangeDollarTableViewHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: "header_id")
         tableView.register(ExchangeDollarTableViewFooterView.self,
@@ -61,7 +61,7 @@ final class ExchangeDollarViewController: UIViewController {
     
     func setupViews() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .gray
         view.addSubview(tableView)
     }
     
@@ -103,6 +103,13 @@ extension ExchangeDollarViewController: UITableViewDataSource, UITableViewDelega
         
         cell?.configureCell(nameImage: nameOfImage, nameTitle: nameOfTitle, miniTitle: miniTitle)
         
+        cell?.contentView.backgroundColor = UIColor(ciColor: .cyan)
+        let header = ExchangeDollarTableViewHeaderView()
+        header.contentView.backgroundColor = UIColor.blue
+        
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     }
 }
