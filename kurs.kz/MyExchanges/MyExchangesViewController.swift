@@ -18,7 +18,7 @@ class MyExchangesViewController: UIViewController {
         tableView.delegate = self
         tableView.register(MyExchangesTableViewCell.self,
                            forCellReuseIdentifier: MyExchangesTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 100
+        tableView.rowHeight = 71
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -50,9 +50,9 @@ class MyExchangesViewController: UIViewController {
 
 extension MyExchangesViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
