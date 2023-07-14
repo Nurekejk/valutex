@@ -11,5 +11,6 @@ target 'kurs.kz' do
   pod 'CHIOTPField/Three'
   pod 'CHIOTPField/Four'
   pod 'SwiftLint'
-
+  pod 'YandexMapKit'
+  
 end
