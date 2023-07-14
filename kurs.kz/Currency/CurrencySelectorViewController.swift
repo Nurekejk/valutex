@@ -39,6 +39,7 @@ final class CurrencySelectorViewController: UIViewController {
     
     private var searchKeyArray = [String]()
     private var isSearching = false
+    weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
     private let chooseCurrencyLabel: UILabel = {
@@ -58,6 +59,7 @@ final class CurrencySelectorViewController: UIViewController {
     private lazy var selectButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
+        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -142,6 +144,16 @@ final class CurrencySelectorViewController: UIViewController {
     @objc func closeController() {
         dismiss(animated: true, completion: nil)
     }
+    @objc func currencyDidSelect() {
+        if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
+        let senderViewController = delegate {
+            senderViewController.currencyDidSelect(selectedIndexPath:
+                                                    selectedIndexPath,
+                                                   isSearching: isSearching,
+                                                   searchArray: searchKeyArray)
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
@@ -192,7 +204,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         searchBar.resignFirstResponder()
     }
 }
-
+// MARK: - PanModalPresentable
 extension CurrencySelectorViewController: PanModalPresentable {
 
     var panScrollable: UIScrollView? {
@@ -204,4 +216,10 @@ extension CurrencySelectorViewController: PanModalPresentable {
     var longFormHeight: PanModalHeight {
         return .maxHeightWithTopInset(40)
     }
+}
+// MARK: - Protocol
+protocol CurrencySelectorViewControllerDelegate: AnyObject {
+    func currencyDidSelect(selectedIndexPath: IndexPath,
+                           isSearching: Bool,
+                           searchArray: [String])
 }

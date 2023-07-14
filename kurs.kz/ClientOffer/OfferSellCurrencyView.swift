@@ -10,11 +10,24 @@ import PanModal
 
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
+    
+    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
+                                        "Евро" : ("euro_flag", "EUR", "€"),
+                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
+                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
+                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
+    
+    private let currenciesKeyArray = ["Доллар США",
+                                      "Евро",
+                                      "Рос.рубль",
+                                      "Кирг.сом",
+                                      "Кит.юань"]
+    
     public weak var viewController: UIViewController?
-
-    public func changeCurrency (newFlagImage: String,
-                                newCurrencyLabel: String,
-                                newCurrencySignLabel: String) {
+    
+    func changeCurrency (newFlagImage: String,
+                         newCurrencyLabel: String,
+                         newCurrencySignLabel: String) {
         flagImageView.image = UIImage(named: newFlagImage)
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
@@ -75,7 +88,7 @@ final class OfferSellCurrencyView: UIView {
         super.init(frame: .zero)
         setupViews()
         setupConstraints()
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -132,6 +145,24 @@ final class OfferSellCurrencyView: UIView {
     }
     // MARK: - Action
     @objc func presentController(sender: UIButton!) {
-        self.viewController?.presentPanModal(CurrencySelectorViewController())
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        self.viewController?.presentPanModal(modalScreen)
+    }
+}
+// MARK: - CurrencySelectorViewControllerDelegate
+extension OfferSellCurrencyView: CurrencySelectorViewControllerDelegate {
+    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
+        let newKey: String
+        if !isSearching {
+            newKey = currenciesKeyArray[selectedIndexPath.row]
+        } else {
+            newKey = searchArray[selectedIndexPath.row]
+        }
+        if let unwrappedTuple = currenciesDictionary[newKey] {
+            changeCurrency(newFlagImage: unwrappedTuple.0,
+                           newCurrencyLabel: unwrappedTuple.1,
+                           newCurrencySignLabel: unwrappedTuple.2)
+        }
     }
 }

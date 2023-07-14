@@ -93,18 +93,19 @@ final class OfferSellViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        containerView.layer.cornerRadius = 8
+        
         sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
         exchangeRateCurrencyView.changeCurrency(newFlagImage: "kzt_flag",
                                                 newCurrencyLabel: "KZT",
                                                 newCurrencySignLabel: "₸" )
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        containerView.layer.cornerRadius = 8
+ 
         sellCurrencyView.layer.borderWidth = 1
         sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
         sellCurrencyView.layer.cornerRadius = 8
@@ -131,7 +132,6 @@ final class OfferSellViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        print("whatt")
         view.backgroundColor = backgroundGrayColor
         sellLabel.textColor = borderGrayColor
         containerView.backgroundColor = .white
