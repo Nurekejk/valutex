@@ -20,7 +20,7 @@ final class CartExchangeFeedbackViewController: UIViewController {
     
     private let languages: [String] = ["Отзывы", "Телефоны", "Время работы", "Email", "Web-site", "Whatsapp"]
     
-    private let titleOfIcons: [String] = ["user-tag", "Vector", "clock", "sms", "link-2", "messenger"]
+    private let titleOfIcons: [String] = ["feedbackUser", "phone", "clock", "email", "website", "whatsapp"]
     
     // MARK: - UI
     

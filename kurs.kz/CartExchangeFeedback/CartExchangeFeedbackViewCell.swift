@@ -30,7 +30,7 @@ final class CartExchangeFeedbackViewCell: UITableViewCell {
     private let secondIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "arrow-up")
+        imageView.image = UIImage(named: "arrowDown")
         
         return imageView
     }()
