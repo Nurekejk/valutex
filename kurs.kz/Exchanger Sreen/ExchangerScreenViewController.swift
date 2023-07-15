@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExchangerScreenViewController: UIViewController {
+final class ExchangerScreenViewController: UIViewController {
     
     // MARK: - UI
     
@@ -55,8 +55,11 @@ extension ExchangerScreenViewController: UITableViewDataSource, UITableViewDeleg
         return 2
     }
     
-    func tableView(_tableView: UITableView, cellForRowt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangerScreenTableViewCell)?.reuseIdentifier, for: IndexPath) as? ExchangerScreenTableViewCell
+    func tableView(_tableView: UITableView,
+                   cellForRowt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell
+        (withIdentifier: ExchangerScreenTableViewCell)?.reuseIdentifier,
+        for: IndexPath) as? ExchangerScreenTableViewCell
         return cell ?? UITableViewCell()
     }
 }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class ExchangerScreenViewController: UIViewController {
+final class ExchangerScreenViewController: UIViewController {
     
     // MARK: - UI
     
@@ -21,19 +22,19 @@ class ExchangerScreenViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
+
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
-        setupConstraits()
+        setupViews()
+        setupConstraints()
     }
     
     // MARK: - Setup Views
     
-    private func setupView() {
+    private func setupViews() {
         view.addSubview(tableView)
         tableView.backgroundColor = .systemGray6
     }
@@ -52,11 +53,12 @@ class ExchangerScreenViewController: UIViewController {
 extension ExchangerScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
-    func tableView(_tableView: UITableView, cellForRowt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangerScreenTableViewCell)?.reuseIdentifier, for: IndexPath) as? ExchangerScreenTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:ExchangerScreenTableViewCell.reuseIdentifier,
+                                                 for: indexPath) as? ExchangerScreenTableViewCell
         return cell ?? UITableViewCell()
     }
 }
