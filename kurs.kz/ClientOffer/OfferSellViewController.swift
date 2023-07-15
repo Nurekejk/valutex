@@ -10,8 +10,8 @@ import UIKit
 final class OfferSellViewController: UIViewController {
     // MARK: - Properties
     
-    var upperTextFieldNumber = "0"
-    var lowerTextFieldNumber = "0"
+    private var upperTextFieldNumber = "0"
+    private var lowerTextFieldNumber = "0"
     
     private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
                                         "Евро" : ("euro_flag", "EUR", "€"),
@@ -69,12 +69,12 @@ final class OfferSellViewController: UIViewController {
         return label
     }()
     
-    let sellCurrencyView: OfferSellCurrencyView = {
-        let currencyView = OfferSellCurrencyView(hasButton: true)
+    private let sellCurrencyView: OfferSellCurrencyView = {
+        let currencyView = OfferSellCurrencyView(hasButton: true, tag: 1)
         return currencyView
     }()
-    let exchangeRateCurrencyView: OfferSellCurrencyView = {
-        let currencyView = OfferSellCurrencyView(hasButton: false)
+    private let exchangeRateCurrencyView: OfferSellCurrencyView = {
+        let currencyView = OfferSellCurrencyView(hasButton: false, tag: 2)
         return currencyView
     }()
     
@@ -140,15 +140,6 @@ final class OfferSellViewController: UIViewController {
         getTotalLabel.backgroundColor = backgroundGrayColor
         
         offerButton.layer.cornerRadius = 12
-
-        sellCurrencyView.amountTextField.tag = 1
-        exchangeRateCurrencyView.amountTextField.tag = 2
-        sellCurrencyView.amountTextField.addTarget(self,
-                                                   action: #selector(calculateOffer(sender:)),
-                                                   for: .editingChanged)
-        exchangeRateCurrencyView.amountTextField.addTarget(self,
-                                                           action: #selector(calculateOffer(sender:)),
-                                                           for: .editingChanged)
     }
     
     // MARK: - Setup Views
@@ -166,7 +157,8 @@ final class OfferSellViewController: UIViewController {
          getLabel,
          getTotalLabel,
          offerButton].forEach { containerView.addSubview($0) }
-         sellCurrencyView.delegate = self
+        sellCurrencyView.delegate = self
+        exchangeRateCurrencyView.delegate = self
     }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -221,8 +213,12 @@ final class OfferSellViewController: UIViewController {
             make.width.equalTo(311)
         }
     }
-    // MARK: - Action
-    @objc func calculateOffer(sender: UITextField) {
+}
+// MARK: - CurrencySelectorViewControllerDelegate
+extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
+    
+    func calculateOffer(sender: UITextField) {
+        print(sender.tag)
         if sender.tag == 1 {
             upperTextFieldNumber = sender.text ?? "0"
         } else {
@@ -244,10 +240,7 @@ final class OfferSellViewController: UIViewController {
             getTotalLabel.text = "0"
         }
     }
-}
-// MARK: - CurrencySelectorViewControllerDelegate
-extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
-    
+
     func selectorButtonPressed() {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self

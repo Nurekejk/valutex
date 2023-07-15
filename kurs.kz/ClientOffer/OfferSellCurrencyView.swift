@@ -13,11 +13,12 @@ final class OfferSellCurrencyView: UIView {
     
     weak var delegate: OfferSellCurrencyViewDelegate?
     
-    public let amountTextField: UITextField = {
+    private lazy var amountTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .blue
         textField.textAlignment = .right
         textField.keyboardType = .decimalPad
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -67,10 +68,10 @@ final class OfferSellCurrencyView: UIView {
     }()
     
     // MARK: - Initializers
-    init(hasButton: Bool) {
+    init(hasButton: Bool, tag: Int) {
         self.hasButton = hasButton
-        
         super.init(frame: .zero)
+        amountTextField.tag = tag
         setupViews()
         setupConstraints()
         
@@ -130,7 +131,12 @@ final class OfferSellCurrencyView: UIView {
     @objc func buttonPressed(sender: UIButton!) {
         delegate?.selectorButtonPressed()
     }
+    @objc func textFieldDidChange(sender: UITextField!) {
+        delegate?.calculateOffer(sender: sender)
+    }
 }
+
 protocol OfferSellCurrencyViewDelegate: AnyObject {
     func selectorButtonPressed()
+    func calculateOffer(sender: UITextField)
 }
