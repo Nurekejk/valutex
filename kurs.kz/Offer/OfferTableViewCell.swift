@@ -9,6 +9,10 @@ import UIKit
 
 final class OfferTableViewCell: UITableViewCell {
 
+    // MARK: - Public
+
+    public static var reuseIdentifier = String(describing: OfferTableViewCell.self)
+
     // MARK: - Outlets
     private let cellView: UIView = {
         let cellView = UIView()

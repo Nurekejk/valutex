@@ -21,7 +21,8 @@ final class OfferViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
+                            OfferTableViewCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
@@ -60,18 +61,22 @@ final class OfferViewController: UIViewController {
 }
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension OfferViewController: UITableViewDataSource {
+extension OfferViewController: UITableViewDataSource,
+                               UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: OfferTableViewCell.reuseIdentifier,
+            for: indexPath) as?
+                OfferTableViewCell else {fatalError("message")
+        }
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor.systemGray6
         cell.backgroundColor = .systemGray6
         cell.selectedBackgroundView = selectedView
         return cell
     }
-
 }
