@@ -12,7 +12,7 @@ import GoogleMaps
 final class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
-    private var currentZoom : Float = 10.0
+    private var currentZoom : Float = 15.0
     
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
@@ -57,6 +57,13 @@ final class MapViewController: UIViewController {
         return button
     }()
     
+    private lazy var myLocationButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "my-location"), for: .normal)
+        button.addTarget(self, action: #selector(myLocationButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +100,14 @@ final class MapViewController: UIViewController {
         exchangersButton.layer.shadowPath = UIBezierPath(rect: exchangersButton.bounds).cgPath
         exchangersButton.layer.shouldRasterize = true
         exchangersButton.layer.rasterizationScale = UIScreen.main.scale
+        
+        myLocationButton.layer.shadowColor = UIColor.black.cgColor
+        myLocationButton.layer.shadowOpacity = 0.16
+        myLocationButton.layer.shadowOffset = .zero
+        myLocationButton.layer.shadowRadius = 1000.0
+        myLocationButton.layer.shadowPath = UIBezierPath(rect: myLocationButton.bounds).cgPath
+        myLocationButton.layer.shouldRasterize = true
+        myLocationButton.layer.rasterizationScale = UIScreen.main.scale
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,7 +136,7 @@ final class MapViewController: UIViewController {
             if CLLocationManager.locationServicesEnabled() {
                 self.locationManager.requestLocation()
                 self.googleMapView.isMyLocationEnabled = true
-                self.googleMapView.settings.myLocationButton = true
+                self.googleMapView.settings.myLocationButton = false
             } else {
                 self.locationManager.requestWhenInUseAuthorization()
             }
@@ -131,7 +146,7 @@ final class MapViewController: UIViewController {
             zoomStackView.addArrangedSubview($0)
         }
         zoomView.addSubview(zoomStackView)
-        [exchangersButton, zoomView].forEach {
+        [exchangersButton, zoomView, myLocationButton].forEach {
             googleMapView.addSubview($0)
         }
     }
@@ -143,17 +158,22 @@ final class MapViewController: UIViewController {
         }
         
         exchangersButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().offset(-120)
         }
         
         zoomView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-26)
             make.top.equalToSuperview().offset(116)
+            make.trailing.equalToSuperview().offset(-25)
         }
         
         zoomStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        myLocationButton.snp.makeConstraints { make in
+            make.top.equalTo(zoomView.snp.bottom).offset(12)
+            make.trailing.equalToSuperview().offset(-8)
         }
     }
     
@@ -175,6 +195,10 @@ final class MapViewController: UIViewController {
     @objc private func zoomInZoomOutGoogleMap() {
         googleMapView.animate(toZoom: currentZoom)
     }
+    
+    @objc private func myLocationButtonDidPressed() {
+        self.locationManager.startUpdatingLocation()
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -195,6 +219,8 @@ extension MapViewController: CLLocationManagerDelegate {
             zoom: currentZoom,
             bearing: 0,
             viewingAngle: 0)
+        self.googleMapView.animate(to: camera)
+        self.locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager,
