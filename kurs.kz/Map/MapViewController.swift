@@ -11,19 +11,26 @@ import GoogleMaps
 
 final class MapViewController: UIViewController {
     
+    let locationManager = CLLocationManager()
+    
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         return GMSMapView(frame: view.bounds,
-                                  camera: camera)
+                          camera: camera)
     }()
     
     private lazy var camera: GMSCameraPosition = {
-            return GMSCameraPosition(latitude: -33.86,
-                                     longitude: 151.20,
-                                      zoom: 7)
-      }()
+        return GMSCameraPosition(latitude: -33.86,
+                                 longitude: 151.20,
+                                 zoom: 7)
+    }()
     
-    private let locationService: LocationServiceProtocol =   LocationService()
+    private lazy var exchangersButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "my-exchanges-navigation"), for: .normal)
+        button.addTarget(self, action: #selector(exchangersButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,7 +39,6 @@ final class MapViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
-        locationService.startLocationService()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,12 +47,12 @@ final class MapViewController: UIViewController {
                                                                 y: 0,
                                                                 width: self.view.frame.width,
                                                                 height: 100)
+        googleMapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 450, right: 16)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-         super.viewWillDisappear(animated)
-         locationService.stopLocationService()
-     }
+        super.viewWillDisappear(animated)
+    }
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
@@ -61,6 +67,19 @@ final class MapViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(googleMapView)
+        
+        locationManager.delegate = self
+        DispatchQueue.main.async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.requestLocation()
+                self.googleMapView.isMyLocationEnabled = true
+                self.googleMapView.settings.myLocationButton = true
+            } else {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        }
+        
+        googleMapView.addSubview(exchangersButton)
     }
     
     // MARK: - Setup Constraints
@@ -68,5 +87,41 @@ final class MapViewController: UIViewController {
         googleMapView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        exchangersButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-120)
+        }
+    }
+    
+    // MARK: - Actions
+    @objc private func exchangersButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
+        guard status == .authorizedWhenInUse else { return }
+        locationManager.requestLocation()
+        googleMapView.isMyLocationEnabled = true
+        googleMapView.settings.myLocationButton = true
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        googleMapView.camera = GMSCameraPosition(
+            target: location.coordinate,
+            zoom: 15,
+            bearing: 0,
+            viewingAngle: 0)
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error) {
+        print(error)
     }
 }
