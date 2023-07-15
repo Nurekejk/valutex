@@ -18,7 +18,9 @@ final class ExchangerScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.register(ExchangerScreenTableViewCell.self,
                            forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 126
+        tableView.register(ExchangerScreenTextCell.self,
+                           forCellReuseIdentifier: ExchangerScreenTextCell.reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -53,12 +55,19 @@ final class ExchangerScreenViewController: UIViewController {
 extension ExchangerScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier:ExchangerScreenTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as? ExchangerScreenTableViewCell
-        return cell ?? UITableViewCell()
+                                                     for: indexPath) as? ExchangerScreenTableViewCell
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier:ExchangerScreenTextCell.reuseIdentifier,
+                                                     for: indexPath) as? ExchangerScreenTextCell
+            cell?.configure(with: "Ваш текст")
+            return cell ?? UITableViewCell()
+        }
     }
 }
