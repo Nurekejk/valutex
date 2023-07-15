@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
+		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
+		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
+		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
+		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
+		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
-		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
-		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
-		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
-		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
+		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
 		9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A492A5BDC7400F9126C /* StarButton.swift */; };
+		9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */; };
 		9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF432A504C3200EA9060 /* SnapKit */; };
 		9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F63DF462A50540F00EA9060 /* Alamofire */; };
 		9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F899D802A4AFB44002D1F74 /* AppDelegate.swift */; };
@@ -27,6 +31,12 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
+		9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456E82A5E716F00C2E845 /* MainPageViewController.swift */; };
+		9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F02A5FC2D700C2E845 /* LanguageAppViewController.swift */; };
+		9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */; };
+		9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */; };
+		9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */; };
+		9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
@@ -38,21 +48,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
-		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
-		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
-		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
+		9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutCompanyViewController.swift; path = kurs.kz/AboutCompany/AboutCompanyViewController.swift; sourceTree = SOURCE_ROOT; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F899D822A4AFB44002D1F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +75,12 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		9FF456E82A5E716F00C2E845 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPageViewController.swift; path = kurs.kz/MainPage/MainPageViewController.swift; sourceTree = SOURCE_ROOT; };
+		9FF456F02A5FC2D700C2E845 /* LanguageAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageAppViewController.swift; path = kurs.kz/Language/LanguageAppViewController.swift; sourceTree = SOURCE_ROOT; };
+		9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewCell.swift; path = kurs.kz/Language/LanguageTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportTableViewCell.swift; path = kurs.kz/Support/SupportTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/Support/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
+		9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -110,6 +130,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		71D01EB12A5D48F200422491 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				71D01EB22A5D493200422491 /* NotificationsViewController.swift */,
+				71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */,
+				71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +150,6 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-    
 		9909CB152A55AA95000AC039 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +178,15 @@
 			path = Rate;
 			sourceTree = "<group>";
 		};
+		9F402A4C2A5BDDA600F9126C /* AboutCompany */ = {
+			isa = PBXGroup;
+			children = (
+				9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */,
+			);
+			name = AboutCompany;
+			path = Rate/AboutCompany;
+			sourceTree = "<group>";
+		};
 		9F63DF3F2A50495100EA9060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +202,7 @@
 				9F899D7E2A4AFB44002D1F74 /* Products */,
 				46EE99A18985E63B77BA8021 /* Pods */,
 				69B63E2E40C15D95ADEE8E58 /* Frameworks */,
+				9FF456F42A5FC47500C2E845 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +217,11 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				9FF456F52A5FC4A900C2E845 /* ToSupport */,
+				9FF456EF2A5FC2BA00C2E845 /* Language Select */,
+				71D01EB12A5D48F200422491 /* Notifications */,
+				9FF456E72A5E715B00C2E845 /* Main */,
+				9F402A4C2A5BDDA600F9126C /* AboutCompany */,
 				9987B0FB2A553B77005BB185 /* ClientOffer */,
 				9F402A472A5BDC5A00F9126C /* Rate */,
 				FA357BC02A58B2DF005D5271 /* TabBar */,
@@ -205,10 +249,44 @@
 			path = LanguageSelect;
 			sourceTree = "<group>";
 		};
+		9FF456E72A5E715B00C2E845 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9FF456E82A5E716F00C2E845 /* MainPageViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9FF456EF2A5FC2BA00C2E845 /* Language Select */ = {
+			isa = PBXGroup;
+			children = (
+				9FF456F02A5FC2D700C2E845 /* LanguageAppViewController.swift */,
+				9FF456F12A5FC2D700C2E845 /* LanguageTableViewCell.swift */,
+			);
+			path = "Language Select";
+			sourceTree = "<group>";
+		};
+		9FF456F42A5FC47500C2E845 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9FF456F52A5FC4A900C2E845 /* ToSupport */ = {
+			isa = PBXGroup;
+			children = (
+				9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */,
+				9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */,
+			);
+			path = ToSupport;
+			sourceTree = "<group>";
+		};
 		FA357BC02A58B2DF005D5271 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */,
+				9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -380,21 +458,31 @@
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
+				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
+				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
+				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
+				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
+				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
+				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
+				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
