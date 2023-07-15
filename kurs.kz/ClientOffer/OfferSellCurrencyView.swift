@@ -87,9 +87,7 @@ final class OfferSellCurrencyView: UIView {
          selectCurrencyButton, borderView,
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
         borderView.backgroundColor = .systemGray5
-        if !hasButton {
-            selectCurrencyButton.isHidden = true
-        }
+        selectCurrencyButton.isHidden = !hasButton
     }
     
     // MARK: - Setup Constraints:
