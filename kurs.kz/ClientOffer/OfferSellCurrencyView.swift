@@ -11,19 +11,7 @@ import PanModal
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
     
-    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
-                                        "Евро" : ("euro_flag", "EUR", "€"),
-                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
-                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
-                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
-    
-    private let currenciesKeyArray = ["Доллар США",
-                                      "Евро",
-                                      "Рос.рубль",
-                                      "Кирг.сом",
-                                      "Кит.юань"]
-    
-    public weak var viewController: UIViewController?
+    weak var delegate: OfferSellCurrencyViewDelegate?
     
     public let amountTextField: UITextField = {
         let textField = UITextField()
@@ -63,7 +51,7 @@ final class OfferSellCurrencyView: UIView {
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "down_arrow"), for: .normal)
-        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -141,25 +129,10 @@ final class OfferSellCurrencyView: UIView {
         }
     }
     // MARK: - Action
-    @objc func presentController(sender: UIButton!) {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        self.viewController?.presentPanModal(modalScreen)
+    @objc func buttonPressed(sender: UIButton!) {
+        delegate?.selectorButtonPressed()
     }
 }
-// MARK: - CurrencySelectorViewControllerDelegate
-extension OfferSellCurrencyView: CurrencySelectorViewControllerDelegate {
-    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
-        let newKey: String
-        if !isSearching {
-            newKey = currenciesKeyArray[selectedIndexPath.row]
-        } else {
-            newKey = searchArray[selectedIndexPath.row]
-        }
-        if let unwrappedTuple = currenciesDictionary[newKey] {
-            changeCurrency(newFlagImage: unwrappedTuple.0,
-                           newCurrencyLabel: unwrappedTuple.1,
-                           newCurrencySignLabel: unwrappedTuple.2)
-        }
-    }
+protocol OfferSellCurrencyViewDelegate: AnyObject {
+    func selectorButtonPressed()
 }

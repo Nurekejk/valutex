@@ -13,6 +13,18 @@ final class OfferSellViewController: UIViewController {
     var upperTextFieldNumber = "0"
     var lowerTextFieldNumber = "0"
     
+    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
+                                        "Евро" : ("euro_flag", "EUR", "€"),
+                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
+                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
+                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
+    
+    private let currenciesKeyArray = ["Доллар США",
+                                      "Евро",
+                                      "Рос.рубль",
+                                      "Кирг.сом",
+                                      "Кит.юань"]
+    
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,
@@ -128,9 +140,7 @@ final class OfferSellViewController: UIViewController {
         getTotalLabel.backgroundColor = backgroundGrayColor
         
         offerButton.layer.cornerRadius = 12
-        
-        sellCurrencyView.viewController = self
-        
+
         sellCurrencyView.amountTextField.tag = 1
         exchangeRateCurrencyView.amountTextField.tag = 2
         sellCurrencyView.amountTextField.addTarget(self,
@@ -156,6 +166,7 @@ final class OfferSellViewController: UIViewController {
          getLabel,
          getTotalLabel,
          offerButton].forEach { containerView.addSubview($0) }
+         sellCurrencyView.delegate = self
     }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -233,4 +244,30 @@ final class OfferSellViewController: UIViewController {
             getTotalLabel.text = "0"
         }
     }
+}
+// MARK: - CurrencySelectorViewControllerDelegate
+extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
+    
+    func selectorButtonPressed() {
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        self.presentPanModal(modalScreen)
+    }
+    
+    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        let newKey: String
+        if !isSearching {
+            newKey = currenciesKeyArray[selectedIndexPath.row]
+        } else {
+            newKey = searchArray[selectedIndexPath.row]
+        }
+        if let unwrappedTuple = currenciesDictionary[newKey] {
+            sellCurrencyView.changeCurrency(newFlagImage: unwrappedTuple.0,
+                           newCurrencyLabel: unwrappedTuple.1,
+                           newCurrencySignLabel: unwrappedTuple.2)
+        }
+    }
+    
 }

@@ -59,7 +59,7 @@ final class CurrencySelectorViewController: UIViewController {
     private lazy var selectButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
-        button.addTarget(self, action: #selector(changeCurrency), for: .touchUpInside)
+        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -67,6 +67,7 @@ final class CurrencySelectorViewController: UIViewController {
     
     private lazy var headerView: CurrencySelectorTableViewHeader = {
         let headerView = CurrencySelectorTableViewHeader()
+        headerView.getSearchBar().delegate = self
         return headerView
     }()
     
@@ -74,7 +75,7 @@ final class CurrencySelectorViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        headerView.getSearchBar().delegate = self
+        
         tableView.separatorStyle = .none
         tableView.register(CurrencySelectorTableViewHeader.self,
                            forHeaderFooterViewReuseIdentifier: CurrencySelectorTableViewHeader.identifier)
@@ -144,7 +145,7 @@ final class CurrencySelectorViewController: UIViewController {
     @objc func closeController() {
         dismiss(animated: true, completion: nil)
     }
-    @objc func changeCurrency() {
+    @objc func currencyDidSelect() {
         if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
         let senderViewController = delegate {
             senderViewController.currencyDidSelect(selectedIndexPath:
