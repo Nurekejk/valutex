@@ -154,7 +154,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(NotificationsViewController(),
                                                      animated: true)
         case 4:
-            navigationController?.pushViewController(EmptyViewController(),
+            navigationController?.pushViewController(LanguageAppViewController(),
                                                      animated: true)
         case 5:
             navigationController?.pushViewController(SelectCityViewController(),
