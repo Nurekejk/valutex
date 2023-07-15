@@ -23,6 +23,8 @@ final class MapViewController: UIViewController {
                                       zoom: 7)
       }()
     
+    private let locationService: LocationServiceProtocol =   LocationService()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ final class MapViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        locationService.startLocationService()
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,6 +42,11 @@ final class MapViewController: UIViewController {
                                                                 width: self.view.frame.width,
                                                                 height: 100)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         locationService.stopLocationService()
+     }
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
