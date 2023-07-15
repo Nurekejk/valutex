@@ -135,4 +135,46 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 196 : 0
     }
+    
+    // swiftlint:disable cyclomatic_complexity
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+
+        switch row {
+        case 0:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        case 1:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        case 2:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        case 3:
+            navigationController?.pushViewController(NotificationsViewController(),
+                                                     animated: true)
+        case 4:
+            navigationController?.pushViewController(SelectLanguageViewController(),
+                                                     animated: true)
+        case 5:
+            navigationController?.pushViewController(SelectCityViewController(),
+                                                     animated: true)
+        case 6:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        case 7:
+            navigationController?.pushViewController(ToSupportViewController(),
+                                                     animated: true)
+        case 8:
+            navigationController?.pushViewController(AboutCompanyViewController(),
+                                                     animated: true)
+        case 9:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        default:
+            navigationController?.pushViewController(EmptyViewController(),
+                                                     animated: true)
+        }
+    }
+    // swiftlint:enable cyclomatic_complexity
 }
