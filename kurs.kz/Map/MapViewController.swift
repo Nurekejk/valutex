@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
     
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
@@ -29,6 +29,25 @@ class MapViewController: UIViewController {
         
         setupViews()
         setupConstraints()
+        setupNavigationBar()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.navigationController?.navigationBar.frame = CGRect(x: 0,
+                                                                y: 0,
+                                                                width: self.view.frame.width,
+                                                                height: 100)
+    }
+    
+    // MARK: - Setup Navigation Bar
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        let label = UILabel()
+        label.text = "Обменники"
+        label.textColor = UIColor(named: "navigation_title_color")
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
     
     // MARK: - Setup Views
