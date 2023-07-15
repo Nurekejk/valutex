@@ -40,10 +40,12 @@ final class MapViewController: UIViewController {
         return button
     }()
     
+    private lazy var zoomView = UIView()
+    
     private lazy var zoomStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.spacing = 0.1
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -71,7 +73,26 @@ final class MapViewController: UIViewController {
                                                                 width: self.view.frame.width,
                                                                 height: 100)
         googleMapView.padding = UIEdgeInsets(top: 116, left: 0, bottom: 0, right: 16)
-        zoomStackView.layer.cornerRadius = 12
+        
+        zoomStackView.layer.cornerRadius = 12.0
+        zoomStackView.layer.masksToBounds = true
+        zoomStackView.clipsToBounds = true
+        
+        zoomView.layer.shadowColor = UIColor.black.cgColor
+        zoomView.layer.shadowOpacity = 0.13
+        zoomView.layer.shadowOffset = .zero
+        zoomView.layer.shadowRadius = 12.0
+        zoomView.layer.shadowPath = UIBezierPath(rect: zoomView.bounds).cgPath
+        zoomView.layer.shouldRasterize = true
+        zoomView.layer.rasterizationScale = UIScreen.main.scale
+        
+        exchangersButton.layer.shadowColor = UIColor.black.cgColor
+        exchangersButton.layer.shadowOpacity = 0.16
+        exchangersButton.layer.shadowOffset = .zero
+        exchangersButton.layer.shadowRadius = 1000.0
+        exchangersButton.layer.shadowPath = UIBezierPath(rect: exchangersButton.bounds).cgPath
+        exchangersButton.layer.shouldRasterize = true
+        exchangersButton.layer.rasterizationScale = UIScreen.main.scale
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +105,7 @@ final class MapViewController: UIViewController {
         let label = UILabel()
         label.text = "Обменники"
         label.textColor = UIColor(named: "navigation_title_color")
+        label.tintColor = UIColor(named: "navigation_title_color")
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
@@ -91,6 +113,8 @@ final class MapViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(googleMapView)
+        view.backgroundColor = .white
+        view.tintColor = .black
         
         locationManager.delegate = self
         DispatchQueue.main.async {
@@ -106,7 +130,8 @@ final class MapViewController: UIViewController {
         [zoomInButton, zoomOutButton].forEach {
             zoomStackView.addArrangedSubview($0)
         }
-        [exchangersButton, zoomStackView].forEach {
+        zoomView.addSubview(zoomStackView)
+        [exchangersButton, zoomView].forEach {
             googleMapView.addSubview($0)
         }
     }
@@ -122,9 +147,13 @@ final class MapViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-120)
         }
         
-        zoomStackView.snp.makeConstraints { make in
+        zoomView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-26)
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(116)
+        }
+        
+        zoomStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -134,12 +163,12 @@ final class MapViewController: UIViewController {
     }
     
     @objc private func zoomInButtonDidPressed() {
-        self.currentZoom += 1
+        self.currentZoom += 0.5
         zoomInZoomOutGoogleMap()
     }
     
     @objc private func zoomOutButtonDidPressed() {
-        self.currentZoom -= 1
+        self.currentZoom -= 0.5
         zoomInZoomOutGoogleMap()
     }
     

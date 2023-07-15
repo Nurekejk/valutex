@@ -23,7 +23,7 @@ final class CustomTabBarViewController: UITabBarController {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: UIImage(named: "home_selected")!,
                                     image: UIImage(named: "home_gray")!,
-                                    viewController: EmptyViewController())
+                                    viewController: MapViewController())
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                      selectedImage: UIImage(named: "money_selected")!,
                                      image: UIImage(named: "money_gray")!,
