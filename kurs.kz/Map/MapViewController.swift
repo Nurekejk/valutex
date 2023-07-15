@@ -12,6 +12,7 @@ import GoogleMaps
 final class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    private var currentZoom : Float = 10.0
     
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
@@ -22,7 +23,29 @@ final class MapViewController: UIViewController {
     private lazy var camera: GMSCameraPosition = {
         return GMSCameraPosition(latitude: -33.86,
                                  longitude: 151.20,
-                                 zoom: 7)
+                                 zoom: currentZoom)
+    }()
+    
+    private lazy var zoomInButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "zoom-in"), for: .normal)
+        button.addTarget(self, action: #selector(zoomInButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var zoomOutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "zoom-out"), for: .normal)
+        button.addTarget(self, action: #selector(zoomOutButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var zoomStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.distribution = .fillEqually
+        return stackView
     }()
     
     private lazy var exchangersButton: UIButton = {
@@ -47,7 +70,8 @@ final class MapViewController: UIViewController {
                                                                 y: 0,
                                                                 width: self.view.frame.width,
                                                                 height: 100)
-        googleMapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 450, right: 16)
+        googleMapView.padding = UIEdgeInsets(top: 116, left: 0, bottom: 0, right: 16)
+        zoomStackView.layer.cornerRadius = 12
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,7 +103,12 @@ final class MapViewController: UIViewController {
             }
         }
         
-        googleMapView.addSubview(exchangersButton)
+        [zoomInButton, zoomOutButton].forEach {
+            zoomStackView.addArrangedSubview($0)
+        }
+        [exchangersButton, zoomStackView].forEach {
+            googleMapView.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
@@ -92,11 +121,30 @@ final class MapViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-120)
         }
+        
+        zoomStackView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-26)
+            make.top.equalToSuperview().offset(16)
+        }
     }
     
     // MARK: - Actions
     @objc private func exchangersButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func zoomInButtonDidPressed() {
+        self.currentZoom += 1
+        zoomInZoomOutGoogleMap()
+    }
+    
+    @objc private func zoomOutButtonDidPressed() {
+        self.currentZoom -= 1
+        zoomInZoomOutGoogleMap()
+    }
+    
+    @objc private func zoomInZoomOutGoogleMap() {
+        googleMapView.animate(toZoom: currentZoom)
     }
 }
 
@@ -115,7 +163,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         googleMapView.camera = GMSCameraPosition(
             target: location.coordinate,
-            zoom: 15,
+            zoom: currentZoom,
             bearing: 0,
             viewingAngle: 0)
     }
