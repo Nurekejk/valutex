@@ -115,9 +115,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         if cell.profileSection?.name == "Уведомления" {
-            cell.notificationImageView.isHidden = false
+            cell.configureCell(isBadgeHidden: false)
         } else {
-            cell.notificationImageView.isHidden = true
+            cell.configureCell(isBadgeHidden: true)
         }
         return cell
     }

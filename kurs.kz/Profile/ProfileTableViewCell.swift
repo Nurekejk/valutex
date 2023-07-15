@@ -45,7 +45,7 @@ final class ProfileTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    var notificationImageView: UIImageView = {
+    private lazy var notificationImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "new-message")
         imageView.contentMode = .right
@@ -60,6 +60,7 @@ final class ProfileTableViewCell: UITableViewCell {
         stack.spacing = 16
         return stack
     }()
+
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -106,6 +107,11 @@ final class ProfileTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalTo(arrowImageView).offset(-24)
         }
+    }
+    
+    // MARK: - Public
+    public func configureCell(isBadgeHidden: Bool) {
+        self.notificationImageView.isHidden = isBadgeHidden
     }
 
 }
