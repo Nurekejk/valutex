@@ -11,8 +11,7 @@ import SnapKit
 
 final class CurrencySelectorViewController: UIViewController {
     
-    // MARK: - State
-    
+    // MARK: - Properties
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,

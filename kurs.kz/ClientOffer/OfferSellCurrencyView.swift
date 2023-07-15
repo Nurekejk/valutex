@@ -10,27 +10,17 @@ import PanModal
 
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
-    
-    weak var delegate: OfferSellCurrencyViewDelegate?
-    
-    private lazy var amountTextField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = .blue
-        textField.textAlignment = .right
-        textField.keyboardType = .decimalPad
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        return textField
-    }()
-    
-    func changeCurrency (newFlagImage: String,
-                         newCurrencyLabel: String,
-                         newCurrencySignLabel: String) {
+    public func changeCurrency (newFlagImage: String,
+                                newCurrencyLabel: String,
+                                newCurrencySignLabel: String) {
         flagImageView.image = UIImage(named: newFlagImage)
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
     }
     
+    // MARK: - Properties
     private let hasButton: Bool
+    weak var delegate: OfferSellCurrencyViewDelegate?
     
     // MARK: - UI
     private let containerView: UIView = {
@@ -59,6 +49,15 @@ final class OfferSellCurrencyView: UIView {
     private let borderView: UIView = {
         let view = UIView()
         return view
+    }()
+    
+    private lazy var amountTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .blue
+        textField.textAlignment = .right
+        textField.keyboardType = .decimalPad
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        return textField
     }()
     
     private let currencySignLabel: UILabel = {
@@ -135,7 +134,7 @@ final class OfferSellCurrencyView: UIView {
         delegate?.calculateOffer(sender: sender)
     }
 }
-
+    // MARK: - Protocols
 protocol OfferSellCurrencyViewDelegate: AnyObject {
     func selectorButtonPressed()
     func calculateOffer(sender: UITextField)

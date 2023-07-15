@@ -78,17 +78,17 @@ final class OfferSellViewController: UIViewController {
         return currencyView
     }()
     
-    let lowerBorderView: UIView = {
+    private let lowerBorderView: UIView = {
         let view = UIView()
         return view
     }()
-    let getLabel: UILabel = {
+    private let getLabel: UILabel = {
         let label = UILabel()
         label.text = "Получить"
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         return label
     }()
-    let getTotalLabel: UILabel = {
+    private let getTotalLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
         label.textAlignment = .center
