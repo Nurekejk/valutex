@@ -11,7 +11,7 @@ class PartnerOfferViewController: UIViewController {
 
     // MARK: - UI
     private lazy var acceptedSendTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(AcceptedSendTableViewCell.self,
                            forCellReuseIdentifier: AcceptedSendTableViewCell.reuseID)
         tableView.dataSource = self
@@ -53,9 +53,9 @@ class PartnerOfferViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         acceptedSendTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-24)
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }
@@ -64,11 +64,11 @@ class PartnerOfferViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
+            return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,4 +79,20 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
         cell.selectionStyle = .none
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            return UIView()
+        }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            return UIView()
+        }
 }
