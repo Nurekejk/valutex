@@ -91,4 +91,10 @@ final class AcceptedSendTableViewCell: UITableViewCell {
             make.width.equalTo(16)
         }
     }
+    
+    // MARK: - Public
+    public func configureCell(acceptedSendImage: String, acceptedSendText: String) {
+        acceptedSendImageView.image = UIImage(named: acceptedSendImage)
+        acceptedSendLabel.text = acceptedSendText
+    }
 }

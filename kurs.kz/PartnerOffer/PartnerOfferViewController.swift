@@ -77,6 +77,13 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
             fatalError("Could not cast to AcceptedSendTableViewCell")
         }
         cell.selectionStyle = .none
+        
+        if indexPath.section == 0 {
+            cell.configureCell(acceptedSendImage: "accepted-image", acceptedSendText: "Принятые (2)")
+        } else if indexPath.section == 1 {
+            cell.configureCell(acceptedSendImage: "sent-image", acceptedSendText: "Отправленные (1)")
+        }
+        
         return cell
     }
     
