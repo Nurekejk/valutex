@@ -22,6 +22,35 @@ class PartnerOfferViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupViews()
+        setupConstraints()
+        setupNavigationBar()
+    }
+    
+    // MARK: - Setup Navigation Bar
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Оффер"
+    }
+    
+    // MARK: - Setup Views
+    private func setupViews() {
+        view.backgroundColor = .white
+        
+        [acceptedSendTableView].forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    // MARK: - Setup Constraints
+    private func setupConstraints() {
+        acceptedSendTableView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(176)
+        }
     }
 }
 
