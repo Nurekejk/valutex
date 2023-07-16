@@ -12,6 +12,59 @@ class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
+    private let registrationGrayColor = UIColor(
+        red: 246.0 / 255.0,
+        green: 247.0 / 255.0,
+        blue: 249.0 / 255.0,
+        alpha: 1)
+    
+    private let registrationBlueColor = UIColor(
+        red: 45.0 / 255.0,
+        green: 156.0 / 255.0,
+        blue: 219.0 / 255.0,
+        alpha: 1)
+    
+    private let textGrayColor = UIColor(
+        red: 125.0 / 255.0,
+        green: 132.0 / 255.0,
+        blue: 153.0 / 255.0,
+        alpha: 1)
+    
+    public func changeExchanger(with newExchanger: Exchanger) {
+        exchanger = newExchanger
+    }
+    
+    private var exchanger: Exchanger? {
+        didSet {
+            mainTitleLabel.text = exchanger?.mainTitle
+            iconImageView.image = UIImage(named: exchanger?.iconImageName ??
+                                          "blank_icon")
+            if let newRating = exchanger?.rating,
+                let newTotalRatings = exchanger?.totalRatings {
+                ratingLabel.text = "\(newRating)" + " (\(newTotalRatings))"
+            } else {
+                ratingLabel.text = "?.?"
+            }
+            if let newAddress = exchanger?.address,
+                let newDistance = exchanger?.distance {
+                addressLabel.text = newAddress + "" + "(" + newDistance + ")"
+            } else {
+                addressLabel.text = "Ошибка"
+            }
+            dateLabel.text = exchanger?.date
+            if let newBuyRate = exchanger?.buyRate {
+                buyRateLabel.text = String(newBuyRate)
+            } else {
+                buyRateLabel.text = "ОшибкаОшибка"
+            }
+            if let newSellRate = exchanger?.sellRate {
+                sellRateLabel.text = String(newSellRate)
+            } else {
+                sellRateLabel.text = "Ошибка"
+            }
+        }
+    }
+    
     public func configureCell(withValue currency: String, named iconName: String) {
         mainTitleLabel.text = currency
         iconImageView.image = UIImage(named: iconName)
@@ -25,37 +78,46 @@ class ExchangeListTableViewCell: UITableViewCell {
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
 //        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "rating_icon")
         return imageView
     }()
     
-    private let ratingLabel: UILabel = {
+    private lazy var ratingLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = textGrayColor
         return label
     }()
     
-    private let addressLabel: UILabel = {
+    private lazy var addressLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = textGrayColor
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
     private let buyRateLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     private let sellRateLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -92,12 +154,12 @@ class ExchangeListTableViewCell: UITableViewCell {
         }
         ratingImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
-            make.trailing.equalTo(mainTitleLabel.snp.trailing).offset(8)
+            make.leading.equalTo(mainTitleLabel.snp.trailing).offset(8)
             make.size.equalTo(12)
         }
         ratingLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(13.5)
-            make.trailing.equalTo(ratingImageView.snp.trailing).offset(4)
+            make.leading.equalTo(ratingImageView.snp.trailing).offset(4)
             make.height.equalTo(15)
         }
         
@@ -107,7 +169,7 @@ class ExchangeListTableViewCell: UITableViewCell {
             make.height.equalTo(18)
         }
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(addressLabel.snp.bottom).offset(10.5)
+            make.bottom.equalToSuperview().offset(-14.5)
             make.leading.equalToSuperview().offset(12)
             make.height.equalTo(18)
         }
