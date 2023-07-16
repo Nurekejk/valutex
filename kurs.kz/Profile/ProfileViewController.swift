@@ -38,8 +38,6 @@ final class ProfileViewController: UIViewController {
     // MARK: - UI
     private lazy var informationTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.layer.cornerRadius = 8
-        tableView.layer.masksToBounds = true
             tableView.register(ProfileTableViewCell.self,
                                forCellReuseIdentifier: ProfileTableViewCell.reuseID)
             tableView.register(ProfileTableHeaderView.self,
@@ -58,6 +56,11 @@ final class ProfileViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        informationTableView.layer.cornerRadius = 8
+        informationTableView.layer.masksToBounds = true
     }
     
     // MARK: - Setup Navigation Bar
