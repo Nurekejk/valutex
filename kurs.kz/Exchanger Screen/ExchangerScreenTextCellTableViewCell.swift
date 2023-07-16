@@ -14,7 +14,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     public static var reuseIdentifier = String(describing: ExchangerScreenTextCellTableViewCell.self)
     
-    // MARK: - Ui
+    // MARK: - UI
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -28,19 +28,41 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var subTitleLabel: UITextField = {
-        let label = UITextField()
+    private lazy var subTitleLabel: UILabel = {
+        let label = UILabel()
         label.text = "г.Алматы, ул.Ауэзова 14"
         label.font = .systemFont(ofSize: 14)
         return label
     }()
     
-    private lazy var subTitleLabelTwo: UITextField = {
-        let label = UITextField()
+    private lazy var subTitleLabelTwo: Paddinglabel = {
+        let label = Paddinglabel()
+        let softGreen = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        label.layer.borderColor = softGreen.cgColor
+        label.textColor = softGreen
         label.text = "Круглосуточно"
         label.font = .systemFont(ofSize: 12)
+        label.backgroundColor = UIColor.green
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 8
         return label
     }()
+    
+    private lazy var starImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "star")
+        return imageView
+    }()
+    
+    private lazy var ratingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "4.9"
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
+    // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,6 +75,8 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         fatalError("init(coder) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -62,7 +86,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     // MARK: - Setup Views
     
     private func setupViews() {
-        [titleLabel, subTitleLabel, subTitleLabelTwo].forEach {
+        [titleLabel, subTitleLabel, subTitleLabelTwo, starImageView, ratingLabel].forEach {
             containerView.addSubview($0)
         }
         
@@ -86,6 +110,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-8)
         }
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -101,6 +126,17 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
             make.top.equalTo(subTitleLabel.snp.bottom).offset(4)
             make.leading.trailing.equalTo(titleLabel)
             make.bottom.equalToSuperview().offset(-8)
+        }
+        
+        starImageView.snp.makeConstraints {make in
+            make.top.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-46)
+            make.size.equalTo(CGSize(width: 16, height: 16))
+        }
+        
+        ratingLabel.snp.makeConstraints {make in
+            make.centerY.equalTo(starImageView)
+            make.leading.equalTo(starImageView.snp.trailing).offset(8)
         }
     }
 }

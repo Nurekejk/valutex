@@ -12,6 +12,7 @@
 		220C3F432A62822F000002DB /* ExchangerScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F422A62822F000002DB /* ExchangerScreenViewController.swift */; };
 		220C3F452A628310000002DB /* ExchangerScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F442A628310000002DB /* ExchangerScreenTableViewCell.swift */; };
 		223C9C632A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C622A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift */; };
+		223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C642A648DDE008FE874 /* Paddinglabel.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
@@ -58,6 +59,7 @@
 		220C3F422A62822F000002DB /* ExchangerScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenViewController.swift; sourceTree = "<group>"; };
 		220C3F442A628310000002DB /* ExchangerScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTableViewCell.swift; sourceTree = "<group>"; };
 		223C9C622A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTextCellTableViewCell.swift; sourceTree = "<group>"; };
+		223C9C642A648DDE008FE874 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				220C3F422A62822F000002DB /* ExchangerScreenViewController.swift */,
 				220C3F442A628310000002DB /* ExchangerScreenTableViewCell.swift */,
 				223C9C622A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift */,
+				223C9C642A648DDE008FE874 /* Paddinglabel.swift */,
 			);
 			path = "Exchanger Screen";
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
+				223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
