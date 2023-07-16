@@ -46,6 +46,55 @@ final class ApplicationTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    private lazy var phoneNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "+7(707) 303-22-00"
+        label.textColor = UIColor(named: "partnerOfferBasicTextColor")
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    private lazy var buyingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Покупает: "
+        label.textColor = UIColor(named: "partnerOfferGrayTextColor")
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    private lazy var buyingSumLabel: UILabel = {
+        let label = UILabel()
+        label.text = "250 500 ₸  "
+        label.textColor = UIColor(named: "partnerOfferBasicTextColor")
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    private lazy var currencyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "по курсу: "
+        label.textColor = UIColor(named: "partnerOfferGrayTextColor")
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    private lazy var currencySumLabel: UILabel = {
+        let label = UILabel()
+        label.text = "500$"
+        label.textColor = UIColor(named: "partnerOfferBasicTextColor")
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    private lazy var currencyInformationStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.distribution = .fill
+        stackView.spacing = 2
+        return stackView
+    }()
+    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,7 +108,13 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(partnerNameStackView)
+        [partnerNameStackView, phoneNumberLabel, currencyInformationStackView].forEach {
+            contentView.addSubview($0)
+        }
+        
+        [buyingLabel, buyingSumLabel, currencyLabel, currencySumLabel].forEach {
+            currencyInformationStackView.addArrangedSubview($0)
+        }
         
         [partnerNameLabel, starImageView, ratingLabel].forEach {
             partnerNameStackView.addArrangedSubview($0)
@@ -72,7 +127,16 @@ final class ApplicationTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
-            make.width.equalTo(113)
+        }
+        
+        phoneNumberLabel.snp.makeConstraints { make in
+            make.top.equalTo(partnerNameLabel.snp.bottom).offset(2)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        currencyInformationStackView.snp.makeConstraints { make in
+            make.top.equalTo(phoneNumberLabel.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
         }
     }
 }
