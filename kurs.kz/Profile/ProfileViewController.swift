@@ -175,6 +175,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(EmptyViewController(),
                                                      animated: true)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     // swiftlint:enable cyclomatic_complexity
 }
