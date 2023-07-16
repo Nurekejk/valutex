@@ -44,6 +44,7 @@
 		FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */; };
 		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
 		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
+		FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
 		FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */ = {isa = PBXBuildFile; productRef = FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */; };
@@ -89,6 +90,7 @@
 		FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
 		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
+		FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListViewController.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,8 +301,9 @@
 		FA57597F2A63D98500DE9A6B /* MainExchangeList */ = {
 			isa = PBXGroup;
 			children = (
-				FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */,
 				FA5759842A63E90100DE9A6B /* Model */,
+				FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */,
+				FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */,
 			);
 			path = MainExchangeList;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
