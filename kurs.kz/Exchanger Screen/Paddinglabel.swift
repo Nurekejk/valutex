@@ -9,7 +9,7 @@ import UIKit
 
 final class Paddinglabel: UILabel {
     
-    // MARK: - Public Properties
+    // MARK: - Public
     
     @IBInspectable var topInset: CGFloat = 5.0
     @IBInspectable var bottomInset: CGFloat = 5.0
