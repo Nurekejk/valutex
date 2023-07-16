@@ -8,9 +8,18 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-final class SignupViewController: UIViewController {
+final class SignUpViewController: UIViewController {
 
     // MARK: - UI
+    private let signUpLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Регистрация"
+        label.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
+        label.textColor = UIColor(named: "signUpLabelColor")
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
         
@@ -30,6 +39,9 @@ final class SignupViewController: UIViewController {
         
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
+        
+        textField.titleFormatter = { $0 } // autocapitalizes the title
+        textField.selectedTitle = "Телефон"
         
         return textField
     }()
@@ -54,8 +66,7 @@ final class SignupViewController: UIViewController {
         return label
     }()
     
-    private lazy var signInButton: UIButton = {
-        
+    private lazy var signUpButton: UIButton = {
         let myAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .medium),
             .foregroundColor: UIColor(named: "signupButtonColor") ?? .blue,
@@ -70,7 +81,7 @@ final class SignupViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
         button.setAttributedTitle(attributeString, for: .normal)
-        
+        button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -87,21 +98,32 @@ final class SignupViewController: UIViewController {
 
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
-        self.navigationItem.title = "Регистрация"
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPressed))
     }
 
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        [phoneTextField, continueButton, isThereAccountLabel, signInButton].forEach {
+        [signUpLabel, phoneTextField, continueButton, isThereAccountLabel, signUpButton].forEach {
             view.addSubview($0)
         }
     }
 
     // MARK: - Setup Constraints
     private func setupConstraints() {
+        signUpLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(56)
+        }
+        
         phoneTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalTo(signUpLabel.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(56)
@@ -114,7 +136,7 @@ final class SignupViewController: UIViewController {
             make.height.equalTo(52)
         }
 
-        signInButton.snp.makeConstraints { make in
+        signUpButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-60)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
@@ -122,7 +144,7 @@ final class SignupViewController: UIViewController {
         }
         
         isThereAccountLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(signInButton.snp.top).offset(-8)
+            make.bottom.equalTo(signUpButton.snp.top).offset(-8)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(18)
@@ -130,8 +152,15 @@ final class SignupViewController: UIViewController {
     }
     
      // MARK: - Actions
-        
     @objc private func continueButtonDidPressed() {
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+    }
+    
+    @objc private func signUpButtonDidPressed() {
+        self.navigationController?.pushViewController(SignInViewController(), animated: true)
+    }
+    
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
