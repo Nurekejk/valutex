@@ -32,6 +32,7 @@ final class ExchangerScreenViewController: UIViewController {
         
         setupViews()
         setupConstraints()
+        setupNavigationBar()
     }
     
     // MARK: - Setup Views
@@ -48,6 +49,25 @@ final class ExchangerScreenViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    private func setupNavigationBar() {
+        let buttonOne = UIBarButtonItem(image:UIImage(named: "button_one_image"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(buttonOneTapped))
+        let buttonTwo = UIBarButtonItem(image:UIImage(named: "button_two_image"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(buttonTwoTapped))
+        navigationItem.rightBarButtonItems = [buttonOne, buttonTwo]
+    }
+    
+    @objc private func buttonOneTapped() {
+           // обработка нажатия на кнопку 1
+       }
+    @objc private func buttonTwoTapped() {
+            // обработка нажатия на кнопку 2
+        }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate

@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MyExchangesViewController()
+        
+        let exchangerScreenVC = ExchangerScreenViewController()
+        let navigationCantroller = UINavigationController(rootViewController: exchangerScreenVC)
+        
+        window?.rootViewController = navigationCantroller
         window?.makeKeyAndVisible()
     }
 }
