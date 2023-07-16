@@ -61,7 +61,6 @@ final class ProfileTableViewCell: UITableViewCell {
         return stack
     }()
 
-    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
