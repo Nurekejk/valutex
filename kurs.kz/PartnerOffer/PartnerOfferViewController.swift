@@ -113,7 +113,7 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
         if section != 2 {
             return UIView()
         } else {
-            let headerView = UITableViewHeaderFooterView()
+            let headerView = ApplicationsHeaderView()
             return headerView
         }
     }
@@ -124,9 +124,5 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 2 ? "Заявки (2)" : ""
     }
 }

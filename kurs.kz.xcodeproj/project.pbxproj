@@ -22,6 +22,7 @@
 		998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */; };
 		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
+		998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
 		9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A492A5BDC7400F9126C /* StarButton.swift */; };
@@ -69,6 +70,7 @@
 		998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewController.swift; sourceTree = "<group>"; };
 		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
+		998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsHeaderView.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
@@ -181,6 +183,7 @@
 				998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */,
 				998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */,
 				998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */,
+				998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */,
 			);
 			path = PartnerOffer;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
