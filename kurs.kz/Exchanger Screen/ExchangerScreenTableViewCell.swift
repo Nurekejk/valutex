@@ -36,27 +36,6 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Som Exchange"
-        label.font = .boldSystemFont(ofSize: 14)
-        return label
-    }()
-    
-    private lazy var subTitleLabel: UITextField = {
-        let label = UITextField()
-        label.text = "г.Алматы, ул.Aуэзова 14 (1км)"
-        label.font = .systemFont(ofSize: 14)
-        return label
-    }()
-    
-    private lazy var subTitleLabelTwo: UITextField = {
-        let label = UITextField()
-        label.text = "Кругласуточно"
-        label.font = .systemFont(ofSize: 12)
-        return label
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -78,7 +57,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     // MARK: - Setup Views
     
     private func setupViews() {
-        [titleLabel, subTitleLabel, subTitleLabelTwo,cellImageView, buttonImageView].forEach {
+        [cellImageView, buttonImageView].forEach {
             containerView.addSubview($0)
         }
         let backgroundGrayColor = UIColor(
@@ -96,7 +75,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(6)
+            make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-6)
@@ -104,7 +83,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         
         cellImageView.snp.makeConstraints {make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(containerView.snp.height).multipliedBy(1.1)
+            make.height.equalTo(containerView.snp.height).multipliedBy(1.05)
         }
         buttonImageView.snp.makeConstraints {make in
             make.bottom.trailing.equalTo(cellImageView).offset(-10)

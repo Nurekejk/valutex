@@ -18,9 +18,9 @@ final class ExchangerScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.register(ExchangerScreenTableViewCell.self,
                            forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
-        tableView.register(ExchangerScreenTextCell.self,
-                           forCellReuseIdentifier: ExchangerScreenTextCell.reuseIdentifier)
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(ExchangerScreenTextCellTableViewCell.self,
+                           forCellReuseIdentifier:  ExchangerScreenTextCellTableViewCell.reuseIdentifier)
+        tableView.rowHeight = 117
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -55,19 +55,23 @@ final class ExchangerScreenViewController: UIViewController {
 extension ExchangerScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
+            return 2  // Return the number of rows you want to display
+        }
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Using first cell type for first row, second cell type for second row
         if indexPath.row == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier:ExchangerScreenTableViewCell.reuseIdentifier,
+            let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangerScreenTableViewCell.reuseIdentifier,
                                                      for: indexPath) as? ExchangerScreenTableViewCell
             return cell ?? UITableViewCell()
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier:ExchangerScreenTextCell.reuseIdentifier,
-                                                     for: indexPath) as? ExchangerScreenTextCell
-            cell?.configure(with: "Ваш текст")
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangerScreenTextCellTableViewCell.reuseIdentifier,
+                                                     for: indexPath) as? ExchangerScreenTextCellTableViewCell
             return cell ?? UITableViewCell()
+        } else {
+            return UITableViewCell()  // Return empty cell for any other rows (just in case)
         }
     }
 }
