@@ -7,16 +7,17 @@
 
 import UIKit
 
-class PartnerOfferViewController: UIViewController {
-
+final class PartnerOfferViewController: UIViewController {
+    
     // MARK: - UI
     private lazy var acceptedSendTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(AcceptedSendTableViewCell.self,
                            forCellReuseIdentifier: AcceptedSendTableViewCell.reuseID)
+        tableView.register(ApplicationTableViewCell.self,
+                           forCellReuseIdentifier: ApplicationTableViewCell.reuseID)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 80.0
         tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -24,7 +25,7 @@ class PartnerOfferViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setupConstraints()
         setupNavigationBar()
@@ -64,7 +65,7 @@ class PartnerOfferViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-            return 4
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,19 +73,36 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptedSendTableViewCell.reuseID,
-                                                       for: indexPath) as? AcceptedSendTableViewCell else {
-            fatalError("Could not cast to AcceptedSendTableViewCell")
+        if (indexPath.section == 0 || indexPath.section == 1) {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptedSendTableViewCell.reuseID,
+                                                           for: indexPath) as? AcceptedSendTableViewCell
+            else {
+                fatalError("Could not cast to AcceptedSendTableViewCell")
+            }
+            cell.selectionStyle = .none
+            
+            if indexPath.section == 0 {
+                cell.configureCell(acceptedSendImage: "accepted-image", acceptedSendText: "Принятые (2)")
+            } else if indexPath.section == 1 {
+                cell.configureCell(acceptedSendImage: "sent-image", acceptedSendText: "Отправленные (1)")
+            }
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ApplicationTableViewCell.reuseID,
+                                                           for: indexPath) as? ApplicationTableViewCell else {
+                fatalError("Could not cast to ApplicationTableViewCell")
+            }
+            cell.selectionStyle = .none
+            return cell
         }
-        cell.selectionStyle = .none
-        
-        if indexPath.section == 0 {
-            cell.configureCell(acceptedSendImage: "accepted-image", acceptedSendText: "Принятые (2)")
-        } else if indexPath.section == 1 {
-            cell.configureCell(acceptedSendImage: "sent-image", acceptedSendText: "Отправленные (1)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section == 0 || indexPath.section == 1) {
+            return 80.0
+        } else {
+            return 213.0
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,14 +110,18 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            return UIView()
-        }
+        return UIView()
+    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 8.0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-            return UIView()
-        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 2 ? "Заявки (2)" : ""
+    }
 }
