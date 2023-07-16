@@ -95,6 +95,33 @@ final class ApplicationTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    private lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelButtonColor")
+        button.setTitle("Отклонить", for: .normal)
+        button.setTitleColor(UIColor(named: "cancelButtonTitleColor"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        return button
+    }()
+    
+    private lazy var acceptButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "acceptButtonColor")
+        button.setTitle("Принять", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        return button
+    }()
+    
+    private lazy var buttonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -105,10 +132,10 @@ final class ApplicationTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setup Views
     private func setupViews() {
-        [partnerNameStackView, phoneNumberLabel, currencyInformationStackView].forEach {
+        [partnerNameStackView, phoneNumberLabel, currencyInformationStackView, buttonsStackView].forEach {
             contentView.addSubview($0)
         }
         
@@ -118,6 +145,13 @@ final class ApplicationTableViewCell: UITableViewCell {
         
         [partnerNameLabel, starImageView, ratingLabel].forEach {
             partnerNameStackView.addArrangedSubview($0)
+        }
+        
+        cancelButton.layer.cornerRadius = 8.0
+        acceptButton.layer.cornerRadius = 8.0
+        
+        [cancelButton, acceptButton].forEach {
+            buttonsStackView.addArrangedSubview($0)
         }
     }
     
@@ -137,6 +171,21 @@ final class ApplicationTableViewCell: UITableViewCell {
         currencyInformationStackView.snp.makeConstraints { make in
             make.top.equalTo(phoneNumberLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
+        }
+        
+        buttonsStackView.snp.makeConstraints { make in
+            make.top.equalTo(currencyInformationStackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        cancelButton.snp.makeConstraints { make in
+            make.width.equalTo(151.5)
+            make.height.equalTo(42)
+        }
+        
+        acceptButton.snp.makeConstraints { make in
+            make.width.equalTo(151.5)
+            make.height.equalTo(42)
         }
     }
 }
