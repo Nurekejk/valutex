@@ -18,4 +18,3 @@ struct Exchanger {
     let sellRate: Float
     let distance: String
 }
-
