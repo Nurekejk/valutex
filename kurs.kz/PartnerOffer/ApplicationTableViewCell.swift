@@ -96,7 +96,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     }()
     
     private lazy var cancelButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "cancelButtonColor")
         button.setTitle("Отклонить", for: .normal)
         button.setTitleColor(UIColor(named: "cancelButtonTitleColor"), for: .normal)
@@ -105,7 +105,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     }()
     
     private lazy var acceptButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "acceptButtonColor")
         button.setTitle("Принять", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -122,6 +122,15 @@ final class ApplicationTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    private lazy var offerYourCurrencyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .white
+        button.setTitle("Предложить свой курс", for: .normal)
+        button.setTitleColor(UIColor(named: "offerCurrencyTextColor"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        return button
+    }()
+    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -135,7 +144,11 @@ final class ApplicationTableViewCell: UITableViewCell {
 
     // MARK: - Setup Views
     private func setupViews() {
-        [partnerNameStackView, phoneNumberLabel, currencyInformationStackView, buttonsStackView].forEach {
+        [partnerNameStackView,
+         phoneNumberLabel,
+         currencyInformationStackView,
+         buttonsStackView,
+         offerYourCurrencyButton].forEach {
             contentView.addSubview($0)
         }
         
@@ -149,6 +162,9 @@ final class ApplicationTableViewCell: UITableViewCell {
         
         cancelButton.layer.cornerRadius = 8.0
         acceptButton.layer.cornerRadius = 8.0
+        offerYourCurrencyButton.layer.borderColor = UIColor(named: "offerCurrencyBorderColor")?.cgColor
+        offerYourCurrencyButton.layer.borderWidth = 1.0
+        offerYourCurrencyButton.layer.cornerRadius = 8.0
         
         [cancelButton, acceptButton].forEach {
             buttonsStackView.addArrangedSubview($0)
@@ -185,6 +201,13 @@ final class ApplicationTableViewCell: UITableViewCell {
         
         acceptButton.snp.makeConstraints { make in
             make.width.equalTo(151.5)
+            make.height.equalTo(42)
+        }
+        
+        offerYourCurrencyButton.snp.makeConstraints { make in
+            make.top.equalTo(buttonsStackView.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(319)
             make.height.equalTo(42)
         }
     }

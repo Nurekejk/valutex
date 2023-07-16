@@ -106,11 +106,16 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 8.0
+        return section == 2 ? 60.0 : 8.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+        if section != 2 {
+            return UIView()
+        } else {
+            let headerView = UITableViewHeaderFooterView()
+            return headerView
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
