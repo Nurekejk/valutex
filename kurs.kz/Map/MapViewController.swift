@@ -149,7 +149,6 @@ final class MapViewController: UIViewController {
     private func setupViews() {
         view.addSubview(googleMapView)
         view.backgroundColor = .white
-        view.tintColor = .black
         
         locationManager.delegate = self
         DispatchQueue.main.async {
@@ -169,6 +168,18 @@ final class MapViewController: UIViewController {
         [exchangersButton, zoomView, myLocationButton].forEach {
             googleMapView.addSubview($0)
         }
+        
+        medeuMarker.title = "Medeu"
+        medeuMarker.snippet = "Sports complex"
+        medeuMarker.map = googleMapView
+
+        shymbulakMarker.title = "Shymbulak"
+        shymbulakMarker.snippet = "Mountain resort"
+        shymbulakMarker.map = googleMapView
+
+        auylMarker.title = "Auyl"
+        auylMarker.snippet = "Restaurant"
+        auylMarker.map = googleMapView
     }
     
     // MARK: - Setup Constraints

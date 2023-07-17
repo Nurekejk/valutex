@@ -19,6 +19,7 @@
 		99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
+		9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
@@ -64,6 +65,7 @@
 		99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */,
+				9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
+				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
