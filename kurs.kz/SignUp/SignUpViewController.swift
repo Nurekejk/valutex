@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 import SkyFloatingLabelTextField
+import InputMask
 
 final class SignUpViewController: UIViewController {
     
@@ -18,6 +20,20 @@ final class SignUpViewController: UIViewController {
         label.textColor = UIColor(named: "signUpLabelColor")
         label.textAlignment = .center
         return label
+    }()
+    
+    // MARK: - MaskedTextField Listener
+        private lazy var listener: MaskedTextFieldDelegate = {
+            let listener = MaskedTextFieldDelegate()
+            listener.onMaskedTextChangedCallback = { textField, _, isFilled in
+                let updatedText = textField.text ?? ""
+                if isFilled {
+                    print("Text field is filled: \(updatedText)")
+                }
+            }
+            listener.delegate = self
+            listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
+            return listener
     }()
     
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
@@ -113,6 +129,7 @@ final class SignUpViewController: UIViewController {
         [signUpLabel, phoneTextField, continueButton, isThereAccountLabel, signUpButton].forEach {
             view.addSubview($0)
         }
+        phoneTextField.delegate = listener
     }
     
     // MARK: - Setup Constraints
