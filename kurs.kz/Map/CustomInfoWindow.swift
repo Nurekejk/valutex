@@ -41,6 +41,7 @@ final class CustomInfoWindow: UIView {
         setupConstraints()
     }
     
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         self.layer.cornerRadius = 8.0
     }

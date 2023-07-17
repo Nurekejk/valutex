@@ -10,19 +10,18 @@ import CoreLocation
 import GoogleMaps
 
 final class MapViewController: UIViewController {
-    `
     private let medeuMarker = GMSMarker(
-       position: CLLocationCoordinate2D(latitude: 43.157713441585436, longitude: 77.05901863169184))
+        position: CLLocationCoordinate2D(latitude: 43.157713441585436, longitude: 77.05901863169184))
     
-     private let shymbulakMarker = GMSMarker(
-       position: CLLocationCoordinate2D(latitude: 43.113232516457245, longitude: 77.11098765027998))
-
-     private let auylMarker = GMSMarker(
-       position: CLLocationCoordinate2D(latitude: 43.162750364364236, longitude: 77.05992323741296))
+    private let shymbulakMarker = GMSMarker(
+        position: CLLocationCoordinate2D(latitude: 43.113232516457245, longitude: 77.11098765027998))
+    
+    private let auylMarker = GMSMarker(
+        position: CLLocationCoordinate2D(latitude: 43.162750364364236, longitude: 77.05992323741296))
     
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
-
+    
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         let map =  GMSMapView(frame: view.bounds,
@@ -172,11 +171,11 @@ final class MapViewController: UIViewController {
         medeuMarker.title = "Medeu"
         medeuMarker.snippet = "Sports complex"
         medeuMarker.map = googleMapView
-
+        
         shymbulakMarker.title = "Shymbulak"
         shymbulakMarker.snippet = "Mountain resort"
         shymbulakMarker.map = googleMapView
-
+        
         auylMarker.title = "Auyl"
         auylMarker.snippet = "Restaurant"
         auylMarker.map = googleMapView
@@ -260,10 +259,11 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - GMSMapViewDelegate
 extension MapViewController: GMSMapViewDelegate {
-  func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-    let infoWindow = CustomInfoWindow()
-      infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
-      return infoWindow
-  }
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let infoWindow = CustomInfoWindow()
+        infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
+        return infoWindow
+    }
 }
