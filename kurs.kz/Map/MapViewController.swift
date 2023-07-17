@@ -238,3 +238,11 @@ extension MapViewController: CLLocationManagerDelegate {
         print(error)
     }
 }
+
+extension MapViewController: GMSMapViewDelegate {
+  func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+    let infoWindow = CustomInfoWindow()
+      infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
+      return infoWindow
+  }
+}
