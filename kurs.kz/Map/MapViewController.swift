@@ -16,13 +16,14 @@ final class MapViewController: UIViewController {
     
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
-        return GMSMapView(frame: view.bounds,
+        let map =  GMSMapView(frame: view.bounds,
                           camera: camera)
+        return map
     }()
     
     private lazy var camera: GMSCameraPosition = {
-        return GMSCameraPosition(latitude: -33.86,
-                                 longitude: 151.20,
+        return GMSCameraPosition(latitude: 43.241545,
+                                 longitude: 76.926355,
                                  zoom: currentZoom)
     }()
     
@@ -108,6 +109,15 @@ final class MapViewController: UIViewController {
         myLocationButton.layer.shadowPath = UIBezierPath(rect: myLocationButton.bounds).cgPath
         myLocationButton.layer.shouldRasterize = true
         myLocationButton.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let bounds = self.navigationController!.navigationBar.bounds
+        self.navigationController!.navigationBar.frame = CGRect(x: 0,
+                                                                y: 0,
+                                                                width: bounds.width,
+                                                                height: bounds.height + 100)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
