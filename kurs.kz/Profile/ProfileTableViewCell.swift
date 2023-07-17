@@ -38,7 +38,7 @@ final class ProfileTableViewCell: UITableViewCell {
         return label
     }()
     
-     private lazy var arrowImageView: UIImageView = {
+    private lazy var arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "arrow-right")
         imageView.contentMode = .right
@@ -60,7 +60,7 @@ final class ProfileTableViewCell: UITableViewCell {
         stack.spacing = 16
         return stack
     }()
-
+    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -112,5 +112,5 @@ final class ProfileTableViewCell: UITableViewCell {
     public func configureCell(isBadgeHidden: Bool) {
         self.notificationImageView.isHidden = isBadgeHidden
     }
-
+    
 }

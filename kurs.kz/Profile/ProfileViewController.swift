@@ -12,42 +12,42 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-                                                     [ProfileSection(imageString: "bitcoinExchange",
-                                                                     name: "Мои обменники"),
-                                                     ProfileSection(imageString: "moneys",
-                                                                    name: "Курс валют"),
-                                                     ProfileSection(imageString: "setting-3",
-                                                                    name: "Настройки аккаунта"),
-                                                     ProfileSection(imageString: "notification",
-                                                                    name: "Уведомления"),
-                                                     ProfileSection(imageString: "language-circle",
-                                                                    name: "Язык приложения"),
-                                                     ProfileSection(imageString: "global",
-                                                                    name: "Город"),
-                                                     ProfileSection(imageString: "profile-2user",
-                                                                    name: "Стать партнером"),
-                                                     ProfileSection(imageString: "messages",
-                                                                    name: "Написать в поддержку"),
-                                                     ProfileSection(imageString: "info",
-                                                                    name: "О компании"),
-                                                     ProfileSection(imageString: "message-question",
-                                                                    name: "FAQ"),
-                                                     ProfileSection(imageString: "bank",
-                                                                    name: "Курс Нацбанка")]
+    [ProfileSection(imageString: "bitcoinExchange",
+                    name: "Мои обменники"),
+     ProfileSection(imageString: "moneys",
+                    name: "Курс валют"),
+     ProfileSection(imageString: "setting-3",
+                    name: "Настройки аккаунта"),
+     ProfileSection(imageString: "notification",
+                    name: "Уведомления"),
+     ProfileSection(imageString: "language-circle",
+                    name: "Язык приложения"),
+     ProfileSection(imageString: "global",
+                    name: "Город"),
+     ProfileSection(imageString: "profile-2user",
+                    name: "Стать партнером"),
+     ProfileSection(imageString: "messages",
+                    name: "Написать в поддержку"),
+     ProfileSection(imageString: "info",
+                    name: "О компании"),
+     ProfileSection(imageString: "message-question",
+                    name: "FAQ"),
+     ProfileSection(imageString: "bank",
+                    name: "Курс Нацбанка")]
     
     // MARK: - UI
     private lazy var informationTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
-            tableView.register(ProfileTableViewCell.self,
-                               forCellReuseIdentifier: ProfileTableViewCell.reuseID)
-            tableView.register(ProfileTableHeaderView.self,
-                               forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.reuseID)
-            tableView.rowHeight = 54.0
-            tableView.dataSource = self
-            tableView.delegate = self
-            tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
-            return tableView
-        }()
+        tableView.register(ProfileTableViewCell.self,
+                           forCellReuseIdentifier: ProfileTableViewCell.reuseID)
+        tableView.register(ProfileTableHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.reuseID)
+        tableView.rowHeight = 54.0
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,10 +66,10 @@ final class ProfileViewController: UIViewController {
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-                                                            image: UIImage(named: "logout"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: nil)
+            image: UIImage(named: "logout"),
+            style: .plain,
+            target: self,
+            action: nil)
     }
     
     // MARK: - Setup Views
@@ -83,7 +83,6 @@ final class ProfileViewController: UIViewController {
         informationTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
     }
 }
 
@@ -106,18 +105,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseID,
-            for: indexPath) as? ProfileTableViewCell
+                                                       for: indexPath) as? ProfileTableViewCell
         else {
             fatalError("Could not cast to ProfileTableViewCell")
         }
-
+        
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
             cell.profileSection = profileSections[10]
         }
         
-        if cell.profileSection?.name == "Уведомления" {
+        if cell.profileSection?.name == profileSections[3].name {
             cell.configureCell(isBadgeHidden: false)
         } else {
             cell.configureCell(isBadgeHidden: true)
@@ -142,7 +141,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-
+        
         switch row {
         case 0:
             navigationController?.pushViewController(EmptyViewController(),
