@@ -10,19 +10,17 @@ import UIKit
 final class OfferViewController: UIViewController {
 
     // MARK: - Outlets
-
-    private let label: UILabel = {
-        let label = UILabel()
-        label.text = "Отклики (2)"
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.numberOfLines = 0
-        return label
+    private lazy var headerView: OfferTableViewHeaderView = {
+        let headerView = OfferTableViewHeaderView()
+        return headerView
     }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
                             OfferTableViewCell.reuseIdentifier)
+        tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
+        tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
@@ -40,25 +38,21 @@ final class OfferViewController: UIViewController {
     // MARK: - Setup
     private func setupViews() {
         view.backgroundColor = .systemGray6
-        view.addSubview(label)
         view.addSubview(tableView)
     }
 
     private func setupConstraints() {
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(332)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-48)
-            make.height.equalTo(20)
-        }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom)
+            make.top.equalToSuperview().offset(116)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        let width = UIScreen.main.bounds.width
+        headerView.frame = CGRect(x: 0, y: 0, width: width, height: 192)
     }
 }
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension OfferViewController: UITableViewDataSource,
