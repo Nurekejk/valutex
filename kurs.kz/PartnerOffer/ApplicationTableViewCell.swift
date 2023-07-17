@@ -8,6 +8,7 @@
 import UIKit
 
 final class ApplicationTableViewCell: UITableViewCell {
+    
     // MARK: - State
     static let reuseID = String(describing: ApplicationTableViewCell.self)
     
@@ -141,7 +142,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - Setup Views
     private func setupViews() {
         [partnerNameStackView,
