@@ -9,7 +9,7 @@ import UIKit
 import SkyFloatingLabelTextField
 
 final class SignUpViewController: UIViewController {
-
+    
     // MARK: - UI
     private let signUpLabel: UILabel = {
         let label = UILabel()
@@ -33,10 +33,6 @@ final class SignUpViewController: UIViewController {
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.font = UIFont.systemFont(ofSize: 16.0)
         
-        textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 8
-        
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
         
@@ -52,7 +48,6 @@ final class SignUpViewController: UIViewController {
         button.titleLabel!.font = .boldSystemFont(ofSize: 16)
         button.backgroundColor = UIColor(named: "signupButtonColor")
         button.tintColor = .white
-        button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -70,12 +65,12 @@ final class SignUpViewController: UIViewController {
         let myAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .medium),
             .foregroundColor: UIColor(named: "signupButtonColor") ?? .blue,
-              .underlineStyle: NSUnderlineStyle.single.rawValue
+            .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
         let attributeString = NSMutableAttributedString(
-                string: "Войти",
-                attributes: myAttributes
+            string: "Войти",
+            attributes: myAttributes
         )
         
         let button = UIButton(type: .system)
@@ -88,23 +83,30 @@ final class SignUpViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupNavigationBar()
         setupViews()
         setupConstraints()
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        phoneTextField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
+        phoneTextField.layer.borderWidth = 1
+        phoneTextField.layer.cornerRadius = 8
+        continueButton.layer.cornerRadius = 12
+    }
+    
     // MARK: - Setup Navigation Bar
-
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
         self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image: UIImage(named: "arrow_back"),
-                            style: .plain,
-                            target: self,
-                            action: #selector(backButtonDidPressed))
+        UIBarButtonItem(image: UIImage(named: "arrow_back"),
+                        style: .plain,
+                        target: self,
+                        action: #selector(backButtonDidPressed))
     }
-
+    
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
@@ -112,7 +114,7 @@ final class SignUpViewController: UIViewController {
             view.addSubview($0)
         }
     }
-
+    
     // MARK: - Setup Constraints
     private func setupConstraints() {
         signUpLabel.snp.makeConstraints { make in
@@ -128,14 +130,14 @@ final class SignUpViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(56)
         }
-
+        
         continueButton.snp.makeConstraints { make in
             make.top.equalTo(phoneTextField.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
-
+        
         signUpButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-60)
             make.leading.equalToSuperview().offset(24)
@@ -151,7 +153,7 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-     // MARK: - Actions
+    // MARK: - Actions
     @objc private func continueButtonDidPressed() {
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
     }
