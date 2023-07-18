@@ -1,7 +1,7 @@
 import UIKit
 import PanModal
 
-final class OfferSellCurrencyView: UIView {
+final class NavigationBarCurencyButtonView: UIView {
     // MARK: - Static
     public func changeCurrency (newFlagImage: String,
                                 newCurrencyLabel: String) {
@@ -10,7 +10,7 @@ final class OfferSellCurrencyView: UIView {
     }
     
     // MARK: - Properties
-    weak var delegate: OfferSellCurrencyViewDelegate?
+    weak var delegate: NavigationBarCurencyButtonViewDelegate?
     
     // MARK: - UI
     private let containerView: UIView = {
@@ -31,7 +31,7 @@ final class OfferSellCurrencyView: UIView {
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "down_arrow"), for: .normal)
+        button.setImage(UIImage(named: "main_down_arrow"), for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
@@ -39,6 +39,8 @@ final class OfferSellCurrencyView: UIView {
     // MARK: - Initializers
     init() {
         super.init(frame: .zero)
+        setupViews()
+        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,6 +85,6 @@ final class OfferSellCurrencyView: UIView {
     }
 }
     // MARK: - Protocols
-protocol OfferSellCurrencyViewDelegate: AnyObject {
+protocol NavigationBarCurencyButtonViewDelegate: AnyObject {
     func selectorButtonPressed()
 }

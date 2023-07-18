@@ -88,24 +88,11 @@ final class ExchangeListViewController: UIViewController {
 //
     private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
-
-        let flagImageView = UIImageView(image: UIImage(named: "mig_exchange"))
-        flagImageView.frame = CGRect(x: 0, y: 0, width: 18, height: 12)
-        containerView.addSubview(flagImageView)
-
-        let titleLabel = UILabel(frame: CGRect(x: 44, y: 0, width: 58, height: 24))
-        titleLabel.text = "USD"
-        titleLabel.textAlignment = .center
-        containerView.addSubview(titleLabel)
-
-        let downImageView = UIImageView(image: UIImage(named: "som_exchange"))
-        downImageView.frame = CGRect(x: 102, y: 0, width: 44, height: 24)
-        containerView.addSubview(downImageView)
-
+        
+        let navigationBarView = NavigationBarCurencyButtonView()
+        navigationBarView.changeCurrency(newFlagImage: "main_usd_flag", newCurrencyLabel: "USD")
+        containerView.addSubview(navigationBarView)
         let button = UIBarButtonItem(customView: containerView)
-        button.target = self
-        button.action = #selector(selectorPressed)
-
         return button
     }()
     private let navigationTitleLabel: UILabel = {
@@ -236,7 +223,7 @@ final class ExchangeListViewController: UIViewController {
         
         self.navigationItem.titleView = navigationTitleLabel
         self.navigationItem.titleView?.backgroundColor = .cyan
-        self.navigationItem.titleView?.bounds = CGRect(x: 0, y: 0, width: 258, height: 24)
+//        self.navigationItem.titleView?.bounds = CGRect(x: 0, y: 0, width: 258, height: 24)
         
     }
 
@@ -276,35 +263,16 @@ final class ExchangeListViewController: UIViewController {
             make.width.equalTo(56)
         }
         
-//        exitButton.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(28)
-//            make.trailing.equalToSuperview().offset(-16)
-//            make.size.equalTo(24)
-//        }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(currencySearchBar.snp.bottom).offset(16)
             make.width.equalTo(tableWidth)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
         }
-//        selectButton.snp.makeConstraints { make in
-//            make.top.equalTo(currenciesTableView.snp.bottom).offset(16)
-//            make.leading.equalToSuperview().offset(16)
-//            make.width.equalTo(343)
-//            make.height.equalTo(52)
-//        }
     }
     
     // MARK: - Action
     @objc func selectorPressed() {
-//        if let selectedIndexPath = exchangeListTableView.indexPathForSelectedRow,
-//        let senderViewController = delegate {
-//            senderViewController.currencyDidSelect(selectedIndexPath:
-//                                                    selectedIndexPath,
-//                                                   isSearching: isSearching,
-//                                                   searchArray: searchArray)
-//            dismiss(animated: true, completion: nil)
-//        }
     }
 }
 
@@ -366,9 +334,5 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
 //        return .maxHeightWithTopInset(40)
 //    }
 // }
-// MARK: - Protocol
-protocol CurrencySelectorViewControllerDelegate: AnyObject {
-    func currencyDidSelect(selectedIndexPath: IndexPath,
-                           isSearching: Bool,
-                           searchArray: [String])
-}
+
+
