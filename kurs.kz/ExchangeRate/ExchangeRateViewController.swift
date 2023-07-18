@@ -29,10 +29,6 @@ final class ExchangeRateViewController: UIViewController {
         tableView.delegate = self
         tableView.register(ExchangeRateTableViewCell.self,
                            forCellReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
-        tableView.register(ExchangeRateTableViewCell.self,
-                           forHeaderFooterViewReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
-        tableView.register(ExchangeRateTableViewCell.self,
-                           forHeaderFooterViewReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
         tableView.rowHeight = 80
