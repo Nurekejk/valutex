@@ -20,7 +20,6 @@ final class ExchangerScreenViewController: UIViewController {
                            forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
         tableView.register(ExchangerScreenTextCellTableViewCell.self,
                            forCellReuseIdentifier:  ExchangerScreenTextCellTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 117
         tableView.separatorStyle = .none
         return tableView
     }()

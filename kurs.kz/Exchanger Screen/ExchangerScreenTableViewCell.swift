@@ -41,7 +41,6 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         
         setupViews()
         setupConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +51,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         containerView.layer.cornerRadius = 8
+        
     }
     
     // MARK: - Setup Views
@@ -75,11 +75,10 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-6)
-        }
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 16, bottom: 8, right: 16))
+            make.width.equalTo(343)
+            make.height.equalTo(117)
+           }
         
         cellImageView.snp.makeConstraints {make in
             make.top.leading.trailing.equalToSuperview()

@@ -30,15 +30,29 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "г.Алматы, ул.Ауэзова 14"
-        label.font = .systemFont(ofSize: 14)
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 14),
+                .foregroundColor: UIColor.black
+        ]
+        let boldAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 14),
+            .foregroundColor: UIColor.black
+        ]
+        let regularText = NSMutableAttributedString(string: "г.Алматы, ул.Ауэзова 14",
+                                                    attributes: regularAttributes)
+        let boldText = NSMutableAttributedString(string: "(1км)", attributes: boldAttributes)
+        
+        regularText.append(boldText)
+        label.attributedText = regularText
         return label
     }()
     
     private lazy var subTitleLabelTwo: Paddinglabel = {
         let label = Paddinglabel()
         let softGreen = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        let borderColor = UIColor(red: 67/255.0, green: 160.0/255.0, blue: 72.0/255.0, alpha: 0.16)
         label.layer.borderColor = softGreen.cgColor
+        label.layer.borderWidth = 1.0
         label.textColor = softGreen
         label.text = "Круглосуточно"
         label.font = .systemFont(ofSize: 12)
@@ -105,10 +119,8 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-8)
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16))
+            make.height.equalTo(114)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -118,14 +130,15 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         }
            
         subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(-4)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalTo(titleLabel)
         }
            
         subTitleLabelTwo.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(4)
             make.leading.trailing.equalTo(titleLabel)
-            make.bottom.equalToSuperview().offset(-8)
+            make.height.equalTo(24)
+            make.width.lessThanOrEqualTo(subTitleLabel.snp.width).offset(-100)
         }
         
         starImageView.snp.makeConstraints {make in
