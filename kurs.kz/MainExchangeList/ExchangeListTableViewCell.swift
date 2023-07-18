@@ -12,6 +12,13 @@ class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
+    public func configureCell(withValue currency: String, named iconName: String) {
+        mainTitleLabel.text = currency
+        iconImageView.image = UIImage(named: iconName)
+    }
+    
+    // MARK: - Properties
+    
     private let registrationGrayColor = UIColor(
         red: 246.0 / 255.0,
         green: 247.0 / 255.0,
@@ -33,7 +40,7 @@ class ExchangeListTableViewCell: UITableViewCell {
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
     }
-    
+
     private var exchanger: Exchanger? {
         didSet {
             mainTitleLabel.text = exchanger?.mainTitle
@@ -65,12 +72,8 @@ class ExchangeListTableViewCell: UITableViewCell {
         }
     }
     
-    public func configureCell(withValue currency: String, named iconName: String) {
-        mainTitleLabel.text = currency
-        iconImageView.image = UIImage(named: iconName)
-    }
-
     // MARK: - UI
+    
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -126,6 +129,7 @@ class ExchangeListTableViewCell: UITableViewCell {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
+
     }
     
     required init?(coder: NSCoder) {
@@ -138,6 +142,20 @@ class ExchangeListTableViewCell: UITableViewCell {
          ratingImageView, ratingLabel,
          addressLabel, dateLabel,
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layer.cornerRadius = 20
+        contentView.layer.masksToBounds = true
+        contentView.clipsToBounds = true
+        contentView.backgroundColor = .white
+        contentView.tintColor = .cyan        
     }
     
     // MARK: - Setup Constraints

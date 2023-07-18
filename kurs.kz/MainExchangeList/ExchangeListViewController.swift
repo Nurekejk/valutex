@@ -109,13 +109,14 @@ final class ExchangeListViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.backgroundColor = .clear
+        tableView.layer.masksToBounds = true
+        tableView.clipsToBounds = true
         tableView.separatorStyle = .none
 //        tableView.register(ExchangeListTableViewCell.self,
 //                           forHeaderFooterViewReuseIdentifier: ExchangeListTableViewCell.identifier)
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
-        tableView.rowHeight = 87
 //        tableView.tableHeaderView = headerView
         
         return tableView
@@ -130,10 +131,8 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        exchangeListTableView.layer.cornerRadius = 8
         selectButton.backgroundColor = buttonBlueColor
-        selectButton.layer.cornerRadius = 12
-
+        selectButton.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
@@ -192,34 +191,54 @@ final class ExchangeListViewController: UIViewController {
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchArray.count : exchangersArray.count
+        isSearching ? searchArray.count * 2 : exchangersArray.count * 2
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 2 == 1 {
+            return 4
+        } else {
+            return 87
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-       if let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    ExchangeListTableViewCell.identifier,
-                                                   for: indexPath) as? ExchangeListTableViewCell {
-           cell.changeExchanger(with: exchangersArray[indexPath.row])
-           return cell
-       } else {
-           return UITableViewCell()
-       }
-//            let dictionaryKey = isSearching ?
-//            searchArray[indexPath.row] : exchangersArray[indexPath.row]
-//            if let flagName = currenciesDictionary[dictionaryKey] {
-//                cell.configureCell(withValue: dictionaryKey, named: flagName)
-//                let customSelectionView = UIView()
-//                customSelectionView.backgroundColor = UIColor.white
-//                cell.selectedBackgroundView = customSelectionView
-//                return cell
-//            } else {
-//                return UITableViewCell()
-//            }
-//        } else {
-//            return UITableViewCell()
-//        }
-        
+        if indexPath.row % 2 == 1 {
+            let newCell = UITableViewCell()
+            newCell.backgroundColor = view.backgroundColor
+            return newCell
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                            ExchangeListTableViewCell.identifier,
+                                                        for: indexPath) as? ExchangeListTableViewCell {
+//                cell.layer.borderWidth = 1
+//                cell.layer.borderColor = backgroundGrayColor.cgColor
+                cell.contentView.layer.cornerRadius = 8
+                cell.contentView.layer.masksToBounds = true
+                cell.contentView.clipsToBounds = true
+                cell.backgroundColor = view.backgroundColor
+                
+                cell.changeExchanger(with: exchangersArray[indexPath.row / 2])
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+            //            let dictionaryKey = isSearching ?
+            //            searchArray[indexPath.row] : exchangersArray[indexPath.row]
+            //            if let flagName = currenciesDictionary[dictionaryKey] {
+            //                cell.configureCell(withValue: dictionaryKey, named: flagName)
+            //                let customSelectionView = UIView()
+            //                customSelectionView.backgroundColor = UIColor.white
+            //                cell.selectedBackgroundView = customSelectionView
+            //                return cell
+            //            } else {
+            //                return UITableViewCell()
+            //            }
+            //        } else {
+            //            return UITableViewCell()
+            //        }
+            
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchText.isEmpty {
