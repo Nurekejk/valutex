@@ -41,7 +41,7 @@ class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         [purchaseLabel, sellLabel].forEach {
             contentView.addSubview($0)
         }
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = .white
     }
     // MARK: - Setup Constraints
 
