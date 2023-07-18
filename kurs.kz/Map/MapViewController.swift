@@ -17,7 +17,7 @@ final class MapViewController: UIViewController {
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         let map =  GMSMapView(frame: view.bounds,
-                          camera: camera)
+                              camera: camera)
         return map
     }()
     
@@ -69,9 +69,9 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
-        setupNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,10 +120,6 @@ final class MapViewController: UIViewController {
                                                                 height: bounds.height + 100)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
@@ -142,14 +138,13 @@ final class MapViewController: UIViewController {
         view.tintColor = .black
         
         locationManager.delegate = self
-        DispatchQueue.main.async {
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.requestLocation()
-                self.googleMapView.isMyLocationEnabled = true
-                self.googleMapView.settings.myLocationButton = false
-            } else {
-                self.locationManager.requestWhenInUseAuthorization()
-            }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestLocation()
+            self.googleMapView.isMyLocationEnabled = true
+            self.googleMapView.settings.myLocationButton = false
+        } else {
+            self.locationManager.requestWhenInUseAuthorization()
         }
         
         [zoomInButton, zoomOutButton].forEach {

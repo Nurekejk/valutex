@@ -658,7 +658,7 @@
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = bekzhan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "By accessing your location, this app can find good places to eat for you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -690,7 +690,7 @@
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = bekzhan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "By accessing your location, this app can find good places to eat for you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
