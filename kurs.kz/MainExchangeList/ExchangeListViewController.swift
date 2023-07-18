@@ -78,14 +78,36 @@ final class ExchangeListViewController: UIViewController {
     // MARK: - UI
     
     // MARK: - Navigation Bar UI
+//    private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
+//        let button = UIBarButtonItem(image: UIImage(named: "search_normal"),
+//                                     style: .done,
+//                                     target: self,
+//                                     action: #selector(selectorPressed))
+//        return button
+//    }()
+//
     private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(named: "search_normal"),
-                                     style: .done,
-                                     target: self,
-                                     action: #selector(selectorPressed))
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
+
+        let flagImageView = UIImageView(image: UIImage(named: "mig_exchange"))
+        flagImageView.frame = CGRect(x: 0, y: 0, width: 18, height: 12)
+        containerView.addSubview(flagImageView)
+
+        let titleLabel = UILabel(frame: CGRect(x: 44, y: 0, width: 58, height: 24))
+        titleLabel.text = "USD"
+        titleLabel.textAlignment = .center
+        containerView.addSubview(titleLabel)
+
+        let downImageView = UIImageView(image: UIImage(named: "som_exchange"))
+        downImageView.frame = CGRect(x: 102, y: 0, width: 44, height: 24)
+        containerView.addSubview(downImageView)
+
+        let button = UIBarButtonItem(customView: containerView)
+        button.target = self
+        button.action = #selector(selectorPressed)
+
         return button
     }()
-    
     private let navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Обменники"
