@@ -144,18 +144,17 @@ class ExchangeListTableViewCell: UITableViewCell {
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
     }
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 8
+        contentView.backgroundColor = .white
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
-        contentView.backgroundColor = .white
-        contentView.tintColor = .cyan        
+        contentView.frame = contentView.frame.inset(by:
+                                                       UIEdgeInsets(top: 0,
+                                                                    left: 0,
+                                                                    bottom: 4,
+                                                                    right: 0))
     }
     
     // MARK: - Setup Constraints

@@ -61,7 +61,7 @@ final class ExchangeListViewController: UIViewController {
                                              sellRate: 451,
                                              distance: "3 км"),
                                    Exchanger(mainTitle: "МИГ",
-                                             iconImageName: "ьшп_exchange",
+                                             iconImageName: "mig_exchange",
                                              rating: 4.9,
                                              totalRatings: 15,
                                              address: "мкр. Ақбұлақ ул. Хан шатыр, 273",
@@ -191,54 +191,23 @@ final class ExchangeListViewController: UIViewController {
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchArray.count * 2 : exchangersArray.count * 2
+        isSearching ? searchArray.count : exchangersArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row % 2 == 1 {
-            return 4
-        } else {
-            return 87
-        }
-        
+        return 91
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 1 {
-            let newCell = UITableViewCell()
-            newCell.backgroundColor = view.backgroundColor
-            return newCell
-        } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier:
                                                             ExchangeListTableViewCell.identifier,
                                                         for: indexPath) as? ExchangeListTableViewCell {
-//                cell.layer.borderWidth = 1
-//                cell.layer.borderColor = backgroundGrayColor.cgColor
-                cell.contentView.layer.cornerRadius = 8
-                cell.contentView.layer.masksToBounds = true
-                cell.contentView.clipsToBounds = true
                 cell.backgroundColor = view.backgroundColor
                 
-                cell.changeExchanger(with: exchangersArray[indexPath.row / 2])
+                cell.changeExchanger(with: exchangersArray[indexPath.row])
                 return cell
             } else {
                 return UITableViewCell()
             }
-            //            let dictionaryKey = isSearching ?
-            //            searchArray[indexPath.row] : exchangersArray[indexPath.row]
-            //            if let flagName = currenciesDictionary[dictionaryKey] {
-            //                cell.configureCell(withValue: dictionaryKey, named: flagName)
-            //                let customSelectionView = UIView()
-            //                customSelectionView.backgroundColor = UIColor.white
-            //                cell.selectedBackgroundView = customSelectionView
-            //                return cell
-            //            } else {
-            //                return UITableViewCell()
-            //            }
-            //        } else {
-            //            return UITableViewCell()
-            //        }
-            
-        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchText.isEmpty {
