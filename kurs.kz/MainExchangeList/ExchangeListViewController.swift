@@ -24,6 +24,18 @@ final class ExchangeListViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private let borderGrayColor = UIColor(
+        red: 232.0 / 255.0,
+        green: 233.0 / 255.0,
+        blue: 238.0 / 255.0,
+        alpha: 1)
+    
+    private let textGrayColor = UIColor(
+        red: 147.0 / 255.0,
+        green: 153.0 / 255.0,
+        blue: 171.0 / 255.0,
+        alpha: 1)
+    
     private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
                                         "Евро" : ("euro_flag", "EUR", "€"),
                                         "Рос.рубль" : ("ru_flag", "RUB", "₽"),
@@ -107,6 +119,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIBarButtonItem(customView: containerView)
         return button
     }()
+    
     private let navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Обменники"
@@ -121,6 +134,7 @@ final class ExchangeListViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
+    
     private let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
@@ -142,6 +156,7 @@ final class ExchangeListViewController: UIViewController {
         button.backgroundColor = .white
         return button
     }()
+    
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "pin_button"), for: .normal)
@@ -154,15 +169,18 @@ final class ExchangeListViewController: UIViewController {
         button.setImage(UIImage(named: "main_filter"), for: .normal)
         return button
     }()
+    
     private lazy var nearbyFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Рядом", for: .normal)
+        button.setTitleColor(textGrayColor, for: .normal)
         return button
     }()
+    
     private lazy var openFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Открыто", for: .normal)
-//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        button.setTitleColor(textGrayColor, for: .normal)
         return button
     }()
     
@@ -201,6 +219,12 @@ final class ExchangeListViewController: UIViewController {
         currencySearchBar.layer.borderWidth = 1
         calculatorButton.layer.borderWidth = 1
         calculatorButton.layer.borderColor = view.backgroundColor?.cgColor
+        openFilterButton.layer.borderWidth = 1
+        openFilterButton.layer.borderColor = borderGrayColor.cgColor
+        openFilterButton.layer.cornerRadius = 8
+        nearbyFilterButton.layer.borderWidth = 1
+        nearbyFilterButton.layer.borderColor = borderGrayColor.cgColor
+        nearbyFilterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
         
@@ -249,9 +273,25 @@ final class ExchangeListViewController: UIViewController {
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
-        
+        mainFilterButton.snp.makeConstraints { make in
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
+            make.leading.equalToSuperview().offset(16)
+            make.size.equalTo(32)
+        }
+        nearbyFilterButton.snp.makeConstraints { make in
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
+            make.leading.equalTo(mainFilterButton.snp.trailing).offset(8)
+            make.width.equalTo(77)
+            make.height.equalTo(34)
+        }
+        openFilterButton.snp.makeConstraints { make in
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
+            make.leading.equalTo(nearbyFilterButton.snp.trailing).offset(8)
+            make.width.equalTo(93)
+            make.height.equalTo(34)
+        }
         exchangeListTableView.snp.makeConstraints { make in
-            make.top.equalTo(currencySearchBar.snp.bottom).offset(16)
+            make.top.equalTo(mainFilterButton.snp.bottom).offset(9)
             make.width.equalTo(tableWidth)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
