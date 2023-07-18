@@ -99,11 +99,10 @@ final class ExchangeListViewController: UIViewController {
         return button
     }()
     
-//    private lazy var headerView: CurrencySelectorTableViewHeader = {
-//        let headerView = CurrencySelectorTableViewHeader()
-//        headerView.getSearchBar().delegate = self
-//        return headerView
-//    }()
+    private lazy var headerView: ExchangeListHeaderView = {
+        let headerView = ExchangeListHeaderView()
+        return headerView
+    }()
 //    exchangeListTableView
     private lazy var exchangeListTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -113,11 +112,11 @@ final class ExchangeListViewController: UIViewController {
         tableView.layer.masksToBounds = true
         tableView.clipsToBounds = true
         tableView.separatorStyle = .none
-//        tableView.register(ExchangeListTableViewCell.self,
-//                           forHeaderFooterViewReuseIdentifier: ExchangeListTableViewCell.identifier)
+//        tableView.register(ExchangeListHeaderView.self,
+//                           forHeaderFooterViewReuseIdentifier: ExchangeListHeaderView.identifier)
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
-//        tableView.tableHeaderView = headerView
+        tableView.tableHeaderView = headerView
         
         return tableView
     }()
@@ -148,7 +147,7 @@ final class ExchangeListViewController: UIViewController {
     private func setupConstraints() {
         
         let tableWidth = UIScreen.main.bounds.width - 32
-//        headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 52)
+        headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
 //        chooseCurrencyLabel.snp.makeConstraints { make in
 //            make.top.equalToSuperview().offset(28)

@@ -82,7 +82,6 @@ class ExchangeListTableViewCell: UITableViewCell {
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -144,6 +143,7 @@ class ExchangeListTableViewCell: UITableViewCell {
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
     }
     
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 8

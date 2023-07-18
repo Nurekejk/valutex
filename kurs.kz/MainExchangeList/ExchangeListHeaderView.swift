@@ -15,14 +15,14 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - UI
     private let buyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Детали"
+        label.text = "Покупка"
         label.textColor = UIColor(named: "detailNameLabelColor")
         label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         return label
     }()
     private let sellLabel: UILabel = {
         let label = UILabel()
-        label.text = "Детали"
+        label.text = "Продажа"
         label.textColor = UIColor(named: "detailNameLabelColor")
         label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         return label
@@ -49,11 +49,25 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layer.cornerRadius = 8
+        contentView.backgroundColor = .white
+        contentView.layer.masksToBounds = true
+        contentView.clipsToBounds = true
+        contentView.frame = contentView.frame.inset(by:
+                                                       UIEdgeInsets(top: 0,
+                                                                    left: 0,
+                                                                    bottom: 4,
+                                                                    right: 0))
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
-        
         [buyLabel, sellLabel,
          upDownFilterButton, downUpFilterButton].forEach {contentView.addSubview($0)}
+        contentView.backgroundColor = .white
     }
     
     // MARK: - Setup Constraints
