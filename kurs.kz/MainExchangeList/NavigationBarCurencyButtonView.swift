@@ -9,9 +9,6 @@ final class NavigationBarCurencyButtonView: UIView {
         currencyLabel.text = newCurrencyLabel
     }
     
-    // MARK: - Properties
-    weak var delegate: NavigationBarCurencyButtonViewDelegate?
-    
     // MARK: - UI
     private let containerView: UIView = {
         let view = UIView()
@@ -32,7 +29,6 @@ final class NavigationBarCurencyButtonView: UIView {
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "main_down_arrow"), for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -79,12 +75,4 @@ final class NavigationBarCurencyButtonView: UIView {
             make.height.equalTo(4.91)
         }
     }
-    // MARK: - Action
-    @objc func buttonPressed(sender: UIButton!) {
-        delegate?.selectorButtonPressed()
-    }
-}
-    // MARK: - Protocols
-protocol NavigationBarCurencyButtonViewDelegate: AnyObject {
-    func selectorButtonPressed()
 }

@@ -24,6 +24,18 @@ final class ExchangeListViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
+                                        "Евро" : ("euro_flag", "EUR", "€"),
+                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
+                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
+                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
+    
+    private let currenciesKeyArray = ["Доллар США",
+                                      "Евро",
+                                      "Рос.рубль",
+                                      "Кирг.сом",
+                                      "Кит.юань"]
+    
     private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
                                              iconImageName: "som_exchange",
                                              rating: 4.9,
@@ -77,21 +89,21 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - UI
     
-    // MARK: - Navigation Bar UI
-//    private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
-//        let button = UIBarButtonItem(image: UIImage(named: "search_normal"),
-//                                     style: .done,
-//                                     target: self,
-//                                     action: #selector(selectorPressed))
-//        return button
-//    }()
-//
+    private lazy var navigationBarView: NavigationBarCurencyButtonView = {
+        let view = NavigationBarCurencyButtonView()
+        return view
+    }()
+    
     private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
+        let buttonTapGesture = UITapGestureRecognizer(target: self, action: #selector(selectorPressed))
         
-        let navigationBarView = NavigationBarCurencyButtonView()
-        navigationBarView.changeCurrency(newFlagImage: "main_usd_flag", newCurrencyLabel: "USD")
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
+        containerView.isUserInteractionEnabled = true
+        containerView.addGestureRecognizer(buttonTapGesture)
         containerView.addSubview(navigationBarView)
+
+        navigationBarView.changeCurrency(newFlagImage: "main_usd_flag", newCurrencyLabel: "USD")
+        
         let button = UIBarButtonItem(customView: containerView)
         return button
     }()
@@ -127,28 +139,23 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "calculator_button"), for: .normal)
         button.backgroundColor = .white
-        
-//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "pin_button"), for: .normal)
         button.backgroundColor = .white
-//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     
     private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "main_filter"), for: .normal)
-//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private lazy var nearbyFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Рядом", for: .normal)
-//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private lazy var openFilterButton: UIButton = {
@@ -157,21 +164,12 @@ final class ExchangeListViewController: UIViewController {
 //        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
-
-//    private lazy var selectButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Выбрать", for: .normal)
-////        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
-//        button.titleLabel?.font = .systemFont(ofSize: 16)
-//        button.setTitleColor(.white, for: .normal)
-//        return button
-//    }()
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
         return headerView
     }()
-//    exchangeListTableView
+    
     private lazy var exchangeListTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -180,8 +178,6 @@ final class ExchangeListViewController: UIViewController {
         tableView.layer.masksToBounds = true
         tableView.clipsToBounds = true
         tableView.separatorStyle = .none
-//        tableView.register(ExchangeListHeaderView.self,
-//                           forHeaderFooterViewReuseIdentifier: ExchangeListHeaderView.identifier)
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
         tableView.tableHeaderView = headerView
@@ -192,6 +188,7 @@ final class ExchangeListViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("sasdasda")
         setupViews()
         setupConstraints()
         setupNavigationBar()
@@ -205,8 +202,6 @@ final class ExchangeListViewController: UIViewController {
         calculatorButton.layer.borderColor = view.backgroundColor?.cgColor
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
-//        selectButton.backgroundColor = buttonBlueColor
-//        selectButton.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
@@ -223,23 +218,12 @@ final class ExchangeListViewController: UIViewController {
         
         self.navigationItem.titleView = navigationTitleLabel
         self.navigationItem.titleView?.backgroundColor = .cyan
-//        self.navigationItem.titleView?.bounds = CGRect(x: 0, y: 0, width: 258, height: 24)
         
-    }
-
-    @objc func done() { // remove @objc for Swift 3
-
     }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         edgesForExtendedLayout = []
-        
-//        navigationTitleLabel.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(16)
-//            make.leading.equalToSuperview().offset(16)
-//            make.height.equalTo(24)
-//        }
         
         let tableWidth = UIScreen.main.bounds.width - 32
         
@@ -273,6 +257,9 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Action
     @objc func selectorPressed() {
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        self.presentPanModal(modalScreen)
     }
 }
 
@@ -299,40 +286,38 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
             }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty {
-//            isSearching = false
-//            exchangeListTableView.reloadData()
-//            searchBar.resignFirstResponder()
-//        } else {
-//            isSearching = true
-//            searchKeyArray = currenciesKeyArray.filter { currency in
-//                return currency.localizedCaseInsensitiveContains(searchText)
-//            }
-//            exchangeListTableView.reloadData()
-//        }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        isSearching = false
-//        searchKeyArray.removeAll()
-//        searchBar.text = ""
-//        searchBar.resignFirstResponder()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }
-// MARK: - PanModalPresentable
-// extension ExchangeListViewController: PanModalPresentable {
-//
-//    var panScrollable: UIScrollView? {
-//        return nil
-//    }
-//    var shortFormHeight: PanModalHeight {
-//        return .contentHeight(496)
-//    }
-//    var longFormHeight: PanModalHeight {
-//        return .maxHeightWithTopInset(40)
-//    }
-// }
 
+    // MARK: - PanModalPresentable
+ extension ExchangeListViewController: PanModalPresentable {
 
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(496)
+    }
+    var longFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(40)
+    }
+ }
+extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
+    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
+        let newKey: String
+        if !isSearching {
+            newKey = currenciesKeyArray[selectedIndexPath.row]
+        } else {
+            newKey = searchArray[selectedIndexPath.row]
+        }
+        if let unwrappedTuple = currenciesDictionary[newKey] {
+            navigationBarView.changeCurrency(newFlagImage: unwrappedTuple.0,
+                           newCurrencyLabel: unwrappedTuple.1)
+        }
+    }
+}
