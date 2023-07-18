@@ -10,15 +10,14 @@ import CoreLocation
 import GoogleMaps
 
 final class MapViewController: UIViewController {
-    private let medeuMarker = GMSMarker(
         position: CLLocationCoordinate2D(latitude: 43.157713441585436, longitude: 77.05901863169184))
+    private let medeuMarker = GMSMarker(
     
-    private let shymbulakMarker = GMSMarker(
-        position: CLLocationCoordinate2D(latitude: 43.113232516457245, longitude: 77.11098765027998))
     
     private let auylMarker = GMSMarker(
         position: CLLocationCoordinate2D(latitude: 43.162750364364236, longitude: 77.05992323741296))
     
+    private let shymbulakMarker = GMSMarker(
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
     
@@ -80,7 +79,6 @@ final class MapViewController: UIViewController {
         
         setupViews()
         setupConstraints()
-        setupNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -130,9 +128,6 @@ final class MapViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
@@ -150,14 +145,12 @@ final class MapViewController: UIViewController {
         view.backgroundColor = .white
         
         locationManager.delegate = self
-        DispatchQueue.main.async {
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.requestLocation()
-                self.googleMapView.isMyLocationEnabled = true
-                self.googleMapView.settings.myLocationButton = false
-            } else {
-                self.locationManager.requestWhenInUseAuthorization()
-            }
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestLocation()
+            self.googleMapView.isMyLocationEnabled = true
+            self.googleMapView.settings.myLocationButton = false
+        } else {
+            self.locationManager.requestWhenInUseAuthorization()
         }
         
         [zoomInButton, zoomOutButton].forEach {
