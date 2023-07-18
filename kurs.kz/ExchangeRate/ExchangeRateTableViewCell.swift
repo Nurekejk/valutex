@@ -34,12 +34,18 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }()
     private lazy var amountOfPurchaseTextField: UITextField = {
         let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.rightViewMode = .always
+        textField.textAlignment = .center
         textField.font = .systemFont(ofSize: 16)
         textField.text = "500"
         return textField
     }()
     private lazy var amountOfSaleTextField: UITextField = {
         let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.rightViewMode = .always
+        textField.textAlignment = .center
         textField.font = .systemFont(ofSize: 16)
         textField.text = "500"
         return textField
