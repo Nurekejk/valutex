@@ -83,6 +83,31 @@ final class ExchangeListViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
+    private let currencySearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
+        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14)
+        searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
+        searchBar.barTintColor = UIColor.white
+        searchBar.searchTextField.backgroundColor = UIColor.white
+        
+        searchBar.placeholder = "Поиск"
+        return searchBar
+    }()
+    
+    private lazy var calculatorButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "calculator_button"), for: .normal)
+//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        return button
+    }()
+    private lazy var pinButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "pin_button"), for: .normal)
+//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "main_filter"), for: .normal)
@@ -150,7 +175,8 @@ final class ExchangeListViewController: UIViewController {
     private func setupViews() {
         [exchangeListTableView, chooseCurrencyLabel,
          mainFilterButton, nearbyFilterButton,
-         openFilterButton].forEach {view.addSubview($0)}
+         openFilterButton, currencySearchBar,
+         calculatorButton, pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = backgroundGrayColor
     }
     
@@ -160,11 +186,24 @@ final class ExchangeListViewController: UIViewController {
         let tableWidth = UIScreen.main.bounds.width - 32
         headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
-//        chooseCurrencyLabel.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(28)
-//            make.leading.equalToSuperview().offset(16)
-//            make.height.equalTo(24)
-//        }
+        currencySearchBar.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.height.equalTo(48)
+            make.width.equalTo(263)
+        }
+        calculatorButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalTo(currencySearchBar.snp.trailing)
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        pinButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalTo(calculatorButton.snp.trailing)
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        
 //        exitButton.snp.makeConstraints { make in
 //            make.top.equalToSuperview().offset(28)
 //            make.trailing.equalToSuperview().offset(-16)
