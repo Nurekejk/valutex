@@ -20,28 +20,24 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         let view = UIView()
         return view
     }()
-    
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "USDflag")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Доллар"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
-    
     private lazy var amountOfPurchaseTextField: UITextField = {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 16)
         textField.text = "500"
         return textField
     }()
-    
     private lazy var amountOfSaleTextField: UITextField = {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 16)
@@ -61,10 +57,8 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
         setupConstraints()
-        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,7 +67,6 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         containerView.layer.cornerRadius = 8
         amountOfPurchaseTextField.layer.cornerRadius = 10
         amountOfPurchaseTextField.layer.borderWidth = 1

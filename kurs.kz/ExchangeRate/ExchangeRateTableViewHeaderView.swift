@@ -23,15 +23,14 @@ class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = .systemFont(ofSize: 10)
         return label
     }()
+    
     // MARK: - LifeCycle
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-
         setupViews()
-        setupConstriats()
+        setupConstraints()
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,18 +43,16 @@ class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         }
         contentView.backgroundColor = .systemGray6
     }
-        // MARK: - Setup Constraits
+    // MARK: - Setup Constraints
 
-        func setupConstriats() {
-
-            purchaseLabel.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(12)
-                make.trailing.equalToSuperview().offset(-33)
-            }
-
-            sellLabel.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(12)
-                make.trailing.equalToSuperview().offset(-16)
-            }
+    func setupConstraints() {
+        purchaseLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-33)
+        }
+        sellLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
+}
