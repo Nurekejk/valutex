@@ -29,6 +29,7 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Setup Views
     
     func setupViews() {
@@ -44,6 +45,7 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
             make.leading.equalToSuperview().offset(12)
         }
     }
+    
     // MARK: - Actions
 
     @objc private func addCurrencyButtonDidPressed() {

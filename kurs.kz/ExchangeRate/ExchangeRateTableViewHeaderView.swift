@@ -8,9 +8,9 @@
 import UIKit
 
 final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
-
+    
     // MARK: - UI
-
+    
     private lazy var purchaseLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
@@ -43,7 +43,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     
     // MARK: - LifeCycle
-
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -52,9 +52,9 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - Setup Views
-
+    
     private func setupViews() {
         [purchaseLabel, sellLabel, arrowUpButton, arrowDownButton].forEach {
             contentView.addSubview($0)
@@ -62,7 +62,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         contentView.backgroundColor = .white
     }
     // MARK: - Setup Constraints
-
+    
     func setupConstraints() {
         arrowDownButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
@@ -81,12 +81,13 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalTo(arrowUpButton.snp.leading).offset(-4)
         }
     }
+    
     // MARK: - Actions
-
+    
     @objc private func arrowUpButtonDidPressed() {
-
+        
     }
     @objc private func arrowDownButtonDidPressed() {
-
+        
     }
 }

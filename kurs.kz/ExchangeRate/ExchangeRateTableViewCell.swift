@@ -15,11 +15,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     public static var reuseIdentifier = String(describing: ExchangeRateTableViewCell.self)
     
     // MARK: - UI
-    
-//    private lazy var containerView: UIView = {
-//        let view = UIView()
-//        return view
-//    }()
+
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "USDflag")
@@ -69,6 +65,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Layers
     
     override func layoutSubviews() {
@@ -80,6 +77,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         amountOfSaleTextField.layer.borderWidth = 1
         amountOfSaleTextField.layer.borderColor = UIColor.gray.cgColor
     }
+
     // MARK: - Setup Views
     
     private func setupViews() {
@@ -87,12 +85,10 @@ final class ExchangeRateTableViewCell: UITableViewCell {
          trashButton].forEach {
             contentView.addSubview($0)
         }
-//        containerView.backgroundColor = .white
-//        contentView.addSubview(containerView)
-//        contentView.backgroundColor = .systemGray6
     }
+
     // MARK: - Setup Constraints
-    // corner radius
+
     private func setupConstraints() {
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -125,8 +121,9 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     @objc private func trashButtonDidPressed() {
         
     }
+    
     // MARK: - Public
-
+    
     public func configureCell(flagImage: UIImage?,
                               currencyLabel: String,
                               amountOfPurchaseTextField: String,
