@@ -23,6 +23,7 @@ final class OfferViewController: UIViewController {
         tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         tableView.isScrollEnabled = false
         tableView.backgroundColor = .systemGray6
         return tableView
@@ -67,10 +68,6 @@ extension OfferViewController: UITableViewDataSource,
             for: indexPath) as?
                 OfferTableViewCell else {fatalError("message")
         }
-        let selectedView = UIView()
-        selectedView.backgroundColor = UIColor.systemGray6
-        cell.backgroundColor = .systemGray6
-        cell.selectedBackgroundView = selectedView
         return cell
     }
 }
