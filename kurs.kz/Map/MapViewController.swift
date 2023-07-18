@@ -10,14 +10,13 @@ import CoreLocation
 import GoogleMaps
 
 final class MapViewController: UIViewController {
-        position: CLLocationCoordinate2D(latitude: 43.157713441585436, longitude: 77.05901863169184))
-    private let medeuMarker = GMSMarker(
-    
-    
-    private let auylMarker = GMSMarker(
-        position: CLLocationCoordinate2D(latitude: 43.162750364364236, longitude: 77.05992323741296))
-    
-    private let shymbulakMarker = GMSMarker(
+        
+    private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
+                                                                         longitude: 77.05901863169184))
+    private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
+                                                                        longitude: 77.05992323741296))
+    private let shymbulakMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.113733768676546,
+                                                                             longitude: 77.11150263265574))
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
     
@@ -77,6 +76,7 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
     }
@@ -121,13 +121,12 @@ final class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController!.navigationBar.frame = CGRect(x: 0,
+        self.navigationController?.navigationBar.frame = CGRect(x: 0,
                                                                 y: 0,
                                                                 width: bounds.width,
                                                                 height: bounds.height + 100)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
