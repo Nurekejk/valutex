@@ -10,12 +10,6 @@ import SnapKit
 
 final class ExchangeRateViewController: UIViewController {
     
-    // MARK: - State
-    
-    private let flagOfImage: [String] = ["USDflag", "EUROflag", "RUflag"]
-    
-    private let currencyOfLabel: [String] = ["Доллар", "Евро", "Рос. рубль"]
-    
     // MARK: - UI
     
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
@@ -80,14 +74,21 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flagOfImage.count
+        return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? ExchangeRateTableViewCell
-        let flagOfImage = flagOfImage[indexPath.row]
-        let currencyOfLabel = currencyOfLabel[indexPath.row]
-        cell?.configureCell(nameImage: flagOfImage, nameTitle: currencyOfLabel)
+        switch indexPath.row {
+        case 0:
+            cell?.configureCell(flagImage: UIImage(named: "USDflag"),
+                                currencyLabel: "Доллар",
+                                amountOfPurchaseTextField: "500",
+                                amountOfSaleTextField: "500",
+                                trashButton: UIImage(named: "trashButton"))
+        default:
+            break
+        }
         return cell ?? UITableViewCell()
     }
 }
