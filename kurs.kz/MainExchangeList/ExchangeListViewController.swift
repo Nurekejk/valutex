@@ -83,9 +83,21 @@ final class ExchangeListViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
-    private lazy var exitButton: UIButton = {
+    private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "cross"), for: .normal)
+        button.setImage(UIImage(named: "main_filter"), for: .normal)
+//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        return button
+    }()
+    private lazy var nearbyFilterButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Рядом", for: .normal)
+//        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        return button
+    }()
+    private lazy var openFilterButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Открыто", for: .normal)
 //        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
@@ -136,10 +148,9 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(exchangeListTableView)
-        view.addSubview(chooseCurrencyLabel)
-        view.addSubview(exitButton)
-        view.addSubview(selectButton)
+        [exchangeListTableView, chooseCurrencyLabel,
+         mainFilterButton, nearbyFilterButton,
+         openFilterButton].forEach {view.addSubview($0)}
         view.backgroundColor = backgroundGrayColor
     }
     
