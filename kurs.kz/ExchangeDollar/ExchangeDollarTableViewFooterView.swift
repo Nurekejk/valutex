@@ -11,7 +11,6 @@ import SnapKit
 final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     
     // MARK: - UI
-    
     let backgroundBlueColor = UIColor(
         red: 45 / 255.0,
         green: 156 / 255.0,
@@ -24,24 +23,21 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
         label.text = "Еще"
         label.font = .boldSystemFont(ofSize: 14)
         label.textColor = backgroundBlueColor
-        
         return label
     }()
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Еще", for: .normal)
-        
         return button
     }()
     
     // MARK: - Life Cycle
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
         setupViews()
-        setupConstriats()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -49,17 +45,13 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
-        
         contentView.backgroundColor = .white
         contentView.addSubview(button)
     }
     
-    // MARK: - Setup Constraits
-    
-    func setupConstriats() {
-        
+    // MARK: - Setup Constraints
+    func setupConstraints() {
         button.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-16)

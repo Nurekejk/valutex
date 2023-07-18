@@ -11,38 +11,33 @@ import SnapKit
 final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI
-    
-    private lazy var titleOneLabel: UILabel = {
+    private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Валюта"
         label.font = .systemFont(ofSize: 10)
-        
         return label
     }()
     
-    private lazy var titletTwoLabel: UILabel = {
+    private lazy var purchaseLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
         label.font = .systemFont(ofSize: 10)
-        
         return label
     }()
     
-    private lazy var titleThreeLabel: UILabel = {
+    private lazy var buyLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
         label.font = .systemFont(ofSize: 10)
-        
         return label
     }()
     
     // MARK: - Life Cycle
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
         setupViews()
-        setupConstriats()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -50,30 +45,27 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
-        
         contentView.backgroundColor = .white
-        contentView.addSubview(titleOneLabel)
-        contentView.addSubview(titletTwoLabel)
-        contentView.addSubview(titleThreeLabel)
+        
+        [currencyLabel, purchaseLabel, buyLabel].forEach {
+            contentView.addSubview($0)
+        }
     }
     
-    // MARK: - Setup Constraits
-    
-    func setupConstriats() {
-        
-        titleOneLabel.snp.makeConstraints { make in
+    // MARK: - Setup Constraitns
+    func setupConstraints() {
+        currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)
         }
         
-        titletTwoLabel.snp.makeConstraints { make in
+        purchaseLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.trailing.equalTo(titleThreeLabel.snp.leading).offset(-33)
+            make.trailing.equalTo(buyLabel.snp.leading).offset(-33)
         }
         
-        titleThreeLabel.snp.makeConstraints { make in
+        buyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.trailing.equalToSuperview().offset(-16)
         }

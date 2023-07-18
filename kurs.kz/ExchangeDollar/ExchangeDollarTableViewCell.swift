@@ -11,16 +11,13 @@ import SnapKit
 final class ExchangeDollarTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    
     public static var reuseIdentifier = String(describing: ExchangeDollarTableViewCell.self)
     
     // MARK: - UI
-    
-    private let nameImageView: UIImageView = {
+    private let imageNameView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "usa")
-        
         return imageView
     }()
     
@@ -28,15 +25,13 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Доллар США"
         label.font = .boldSystemFont(ofSize: 14)
-        
         return label
     }()
     
-    private lazy var miniTitleLabel: UILabel = {
+    private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "1 доллар"
         label.font = .systemFont(ofSize: 10)
-        
         return label
     }()
     
@@ -44,7 +39,6 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "448"
         label.font = .boldSystemFont(ofSize: 16)
-        
         return label
     }()
     
@@ -52,17 +46,15 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "451"
         label.font = .boldSystemFont(ofSize: 16)
-        
         return label
     }()
     
     // MARK: - Life Cycle
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
-        setupConstraits()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -70,21 +62,17 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
-
-        contentView.addSubview(nameImageView)
+        contentView.addSubview(imageNameView)
         contentView.addSubview(nameOfTitleLabel)
-        contentView.addSubview(miniTitleLabel)
+        contentView.addSubview(subTitleLabel)
         contentView.addSubview(purchaseNameLabel)
         contentView.addSubview(buyNameLabel)
     }
     
-    // MARK: - Setup Constraits
-    
-    func setupConstraits() {
-
-        nameImageView.snp.makeConstraints { make in
+    // MARK: - Setup Constraints
+    func setupConstraints() {
+        imageNameView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(23)
             make.leading.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(-23)
@@ -95,7 +83,7 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(40)
         }
         
-        miniTitleLabel.snp.makeConstraints { make in
+        subTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
             make.leading.equalToSuperview().offset(40)
             make.bottom.equalToSuperview().offset(-12)
@@ -117,10 +105,9 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public
-    
-    public func configureCell(nameImage: String, nameTitle: String, miniTitle: String) {
-        nameImageView.image = UIImage(named: nameImage)
-        nameOfTitleLabel.text = nameTitle
-        miniTitleLabel.text = miniTitle
+    public func configureCell(with imageName: String, title: String, subTitle: String) {
+        imageNameView.image = UIImage(named: imageName)
+        nameOfTitleLabel.text = title
+        subTitleLabel.text = subTitle
     }
 }
