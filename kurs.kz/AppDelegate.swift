@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
+            appearance.shadowColor = .clear
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         
