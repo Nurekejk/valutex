@@ -67,7 +67,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        containerView.layer.cornerRadius = 8
+        //        containerView.layer.cornerRadius = 8
         amountOfPurchaseTextField.layer.cornerRadius = 10
         amountOfPurchaseTextField.layer.borderWidth = 1
         amountOfPurchaseTextField.layer.borderColor = UIColor.gray.cgColor
@@ -89,12 +89,13 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
     // поменять trailing laeding- сделать цепочным
     // добавить padding
+    // corner radius
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
-            make.bottom.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview()
         }
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -132,9 +133,20 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         
     }
     // MARK: - Public
-    
-    public func configureCell(nameImage: String, nameTitle: String) {
-        flagImage.image = UIImage(named: nameImage)
-        currencyLabel.text = nameTitle
+
+    public func configureCell(flagImage: UIImage?,
+                              currencyLabel: String,
+                              amountOfPurchaseTextField: String,
+                              amountOfSaleTextField: String,
+                              trashButton: UIImage?) {
+        if let flagImage = flagImage {
+            self.flagImage.image = flagImage
+        }
+        self.currencyLabel.text = currencyLabel
+        self.amountOfPurchaseTextField.placeholder = amountOfPurchaseTextField
+        self.amountOfSaleTextField.placeholder = amountOfSaleTextField
+        if let trashButton = trashButton {
+            self.trashButton.setImage(trashButton, for: .normal)
+        }
     }
 }
