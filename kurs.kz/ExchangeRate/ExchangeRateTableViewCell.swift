@@ -16,10 +16,10 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+//    private lazy var containerView: UIView = {
+//        let view = UIView()
+//        return view
+//    }()
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "USDflag")
@@ -73,7 +73,6 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //        containerView.layer.cornerRadius = 8
         amountOfPurchaseTextField.layer.cornerRadius = 10
         amountOfPurchaseTextField.layer.borderWidth = 1
         amountOfPurchaseTextField.layer.borderColor = UIColor.gray.cgColor
@@ -86,22 +85,15 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     private func setupViews() {
         [currencyLabel, flagImage, amountOfPurchaseTextField, amountOfSaleTextField,
          trashButton].forEach {
-            containerView.addSubview($0)
+            contentView.addSubview($0)
         }
-        containerView.backgroundColor = .white
-        contentView.addSubview(containerView)
-        contentView.backgroundColor = .systemGray6
+//        containerView.backgroundColor = .white
+//        contentView.addSubview(containerView)
+//        contentView.backgroundColor = .systemGray6
     }
     // MARK: - Setup Constraints
-    // поменять trailing laeding- сделать цепочным
     // corner radius
     private func setupConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
-        }
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)

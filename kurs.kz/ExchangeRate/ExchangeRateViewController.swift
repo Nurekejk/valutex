@@ -25,7 +25,7 @@ final class ExchangeRateViewController: UIViewController {
                            forCellReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
-        tableView.rowHeight = 32
+        tableView.rowHeight = 56
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -46,33 +46,29 @@ final class ExchangeRateViewController: UIViewController {
     // MARK: - Setup Views
 
     private func setupViews() {
+        view.backgroundColor = .systemGray6
         view.addSubview(tableView)
-        tableView.backgroundColor = .systemGray6
+        tableView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
+
+        headerView.frame = CGRect(x: 0, y: 0, width: 343, height: 36)
+        footerView.frame = CGRect(x: 0, y: 0, width: 343, height: 46)
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(100)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(260)
         }
-        headerView.frame = CGRect(x: 0, y: 0, width: 311, height: 36)
-        footerView.frame = CGRect(x: 0, y: 0, width: 311, height: 34)
     }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    func tableView(_ tableView: UITableView,
-                   willDisplayHeaderView view: UIView,
-                   forSection section: Int) {
-        view.backgroundColor = .clear
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

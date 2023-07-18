@@ -40,8 +40,8 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     
     func setupConstriats() {
         addCurrencyButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(12)
         }
     }
     // MARK: - Actions
