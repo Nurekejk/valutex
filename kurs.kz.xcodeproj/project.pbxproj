@@ -10,6 +10,7 @@
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71564A8B2A663D1300979090 /* ExchangeRateTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564A8A2A663D1300979090 /* ExchangeRateTableViewHeaderView.swift */; };
+		71564A8D2A66447800979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564A8C2A66447800979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71D01EBF2A5F028100422491 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EBE2A5F028100422491 /* ExchangeRateViewController.swift */; };
 		71D01EC12A5F061900422491 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EC02A5F061900422491 /* ExchangeRateTableViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
@@ -45,6 +46,7 @@
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71564A8A2A663D1300979090 /* ExchangeRateTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTableViewHeaderView.swift; sourceTree = "<group>"; };
+		71564A8C2A66447800979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTableViewFooterView.swift; sourceTree = "<group>"; };
 		71D01EBE2A5F028100422491 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
 		71D01EC02A5F061900422491 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTableViewCell.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				71D01EBE2A5F028100422491 /* ExchangeRateViewController.swift */,
 				71D01EC02A5F061900422491 /* ExchangeRateTableViewCell.swift */,
 				71564A8A2A663D1300979090 /* ExchangeRateTableViewHeaderView.swift */,
+				71564A8C2A66447800979090 /* ExchangeRateTableViewFooterView.swift */,
 			);
 			path = ExchangeRate;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				71564A8D2A66447800979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				71D01EBF2A5F028100422491 /* ExchangeRateViewController.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
