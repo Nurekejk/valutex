@@ -18,11 +18,6 @@ final class ExchangeDollarViewController: UIViewController {
     private let miniTitle: [String] = ["1 доллар",  "1 евро", "1 рубль"]
     
     // MARK: - UI
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
     private lazy var headerView: ExchangeDollarTableViewHeaderView = {
         let headerView = ExchangeDollarTableViewHeaderView()
         return headerView
@@ -67,21 +62,11 @@ final class ExchangeDollarViewController: UIViewController {
         )
         
         view.backgroundColor = backgroundGrayColor
-        containerView.backgroundColor = .white
-        containerView.layer.cornerRadius = 8
-        
-        view.addSubview(containerView)
         view.addSubview(tableView)
     }
     
     // MARK: - Setup Constraints
     func setupConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(96)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-496)
-        }
         
         headerView.frame = CGRect(x: 0, y: 0, width: 311, height: 36)
         
@@ -91,8 +76,7 @@ final class ExchangeDollarViewController: UIViewController {
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-500)
-            make.height.equalTo(232)
+            make.height.equalTo(260)
         }
     }
 }
