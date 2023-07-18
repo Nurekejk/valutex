@@ -59,6 +59,7 @@ final class ProfileViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         informationTableView.layer.cornerRadius = 8
         informationTableView.layer.masksToBounds = true
     }
@@ -86,6 +87,12 @@ final class ProfileViewController: UIViewController {
     }
 }
 
+// MARK: - Enumerator
+enum SectionNumber: Int {
+    case zero = 0
+    case one = 1
+}
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,10 +101,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
-        if section == 0 {
+        if section == SectionNumber.zero.rawValue {
             rowCount = 10
         }
-        if section == 1 {
+        if section == SectionNumber.one.rawValue {
             rowCount = 1
         }
         return rowCount
