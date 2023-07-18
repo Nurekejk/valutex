@@ -16,7 +16,7 @@ final class OfferViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
                             OfferTableViewCell.reuseIdentifier)
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
