@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class ExchangeRateTableViewCell: UITableViewCell {
-
+    
     // MARK: - Public
     
     public static var reuseIdentifier = String(describing: ExchangeRateTableViewCell.self)
@@ -69,8 +69,8 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-// MARK: - Layers
-
+    // MARK: - Layers
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -89,9 +89,9 @@ final class ExchangeRateTableViewCell: UITableViewCell {
          trashButton].forEach {
             containerView.addSubview($0)
         }
-        contentView.backgroundColor = .systemGray6
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
+        contentView.backgroundColor = .systemGray6
     }
     // MARK: - Setup Constraints
     
@@ -105,12 +105,12 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
-
+            
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalToSuperview().offset(58)
-
+            
         }
         amountOfPurchaseTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
@@ -138,9 +138,9 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         
     }
     // MARK: - Public
-
-        public func configureCell(nameImage: String, nameTitle: String) {
-            flagImage.image = UIImage(named: nameImage)
-            currencyLabel.text = nameTitle
-        }
+    
+    public func configureCell(nameImage: String, nameTitle: String) {
+        flagImage.image = UIImage(named: nameImage)
+        currencyLabel.text = nameTitle
     }
+}
