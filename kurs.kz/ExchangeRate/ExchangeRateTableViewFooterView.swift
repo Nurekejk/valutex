@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
+final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
 
     // MARK: - UI
     
