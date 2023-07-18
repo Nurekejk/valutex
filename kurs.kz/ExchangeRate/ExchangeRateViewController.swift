@@ -25,7 +25,7 @@ final class ExchangeRateViewController: UIViewController {
                            forCellReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
-        tableView.rowHeight = 80
+        tableView.rowHeight = 32
         tableView.separatorStyle = .none
         return tableView
     }()

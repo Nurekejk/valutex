@@ -94,40 +94,35 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }
     // MARK: - Setup Constraints
     // поменять trailing laeding- сделать цепочным
-    // добавить padding
     // corner radius
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
         }
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
-            
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
-            make.leading.equalToSuperview().offset(58)
+            make.leading.equalTo(flagImage.snp.trailing).offset(16)
             
         }
         amountOfPurchaseTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.equalToSuperview().offset(163)
-            make.trailing.equalToSuperview().offset(-116)
+            make.trailing.equalTo(amountOfSaleTextField.snp.leading).offset(-8)
             make.height.equalTo(32)
         }
         amountOfSaleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.equalToSuperview().offset(235)
-            make.trailing.equalToSuperview().offset(-44)
+            make.trailing.equalTo(trashButton.snp.leading).offset(-16)
             make.height.equalTo(32)
         }
         trashButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
-            make.leading.equalToSuperview().offset(315)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(16)
         }
