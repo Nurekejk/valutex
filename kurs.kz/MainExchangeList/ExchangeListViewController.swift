@@ -110,6 +110,7 @@ final class ExchangeListViewController: UIViewController {
     private let navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Обменники"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
     
@@ -202,6 +203,7 @@ final class ExchangeListViewController: UIViewController {
         calculatorButton.layer.borderColor = view.backgroundColor?.cgColor
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
+        
     }
     
     // MARK: - Setup Views
@@ -215,11 +217,12 @@ final class ExchangeListViewController: UIViewController {
     
     func setupNavigationBar() {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
-        
-        self.navigationItem.titleView = navigationTitleLabel
         self.navigationItem.titleView?.backgroundColor = .cyan
-        
-    }
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
+                                                                        navigationTitleLabel)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+}
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
