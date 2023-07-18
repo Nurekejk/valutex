@@ -12,9 +12,9 @@ final class ExchangeRateViewController: UIViewController {
 
     // MARK: - State
 
-    private let flagImage: [String] = ["USDflag", "EUROflag", "RUflag"]
+    private let flagOfImage: [String] = ["USDflag", "EUROflag", "RUflag"]
 
-       private let currencyLabel: [String] = ["Доллар", "Евро", "Рос. рубль"]
+       private let currencyOfLabel: [String] = ["Доллар", "Евро", "Рос. рубль"]
 
     // MARK: - UI
 
@@ -48,7 +48,6 @@ final class ExchangeRateViewController: UIViewController {
             return footerView
         }()
 
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -89,19 +88,19 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
                    forSection section: Int) {
         view.backgroundColor = .clear
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flagImage.count
+        return flagOfImage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? ExchangeRateTableViewCell
-        let flagImage = flagImage[indexPath.row]
-        let currencyLabel = currencyLabel[indexPath.row]
+        let flagOfImage = flagOfImage[indexPath.row]
+        let currencyOfLabel = currencyOfLabel[indexPath.row]
         //        switch indexPath.row {
         //        case 0:
         //            cell!.flagImage.image = UIImage(named: "USDflag")
@@ -130,7 +129,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         // 2 trying
         //        let image = self.image[indexPath.row]
         //        cell!.configure(with: image, and: indexPath.row.description)
-        cell?.configureCell(flagImage: flagImage, currencyLabel: currencyLabel)
+        cell?.configureCell(nameImage: flagOfImage, nameTitle: currencyOfLabel)
         return cell ?? UITableViewCell()
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
