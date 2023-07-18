@@ -33,6 +33,7 @@ final class PartnerOfferViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         acceptedSendTableView.layer.cornerRadius = 8
         acceptedSendTableView.layer.masksToBounds = true
     }
@@ -56,8 +57,7 @@ final class PartnerOfferViewController: UIViewController {
     private func setupConstraints() {
         acceptedSendTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }
@@ -101,9 +101,8 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == 0 || indexPath.section == 1) {
             return 80.0
-        } else {
-            return 213.0
-        }
+        } 
+        return 213.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

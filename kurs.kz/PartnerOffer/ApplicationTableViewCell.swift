@@ -143,8 +143,18 @@ final class ApplicationTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        cancelButton.layer.cornerRadius = 8.0
+        acceptButton.layer.cornerRadius = 8.0
+        offerYourCurrencyButton.layer.borderColor = UIColor(named: "offerCurrencyBorderColor")?.cgColor
+        offerYourCurrencyButton.layer.borderWidth = 1.0
+        offerYourCurrencyButton.layer.cornerRadius = 8.0
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
+        contentView.backgroundColor = .white
         [partnerNameStackView,
          phoneNumberLabel,
          currencyInformationStackView,
@@ -160,12 +170,6 @@ final class ApplicationTableViewCell: UITableViewCell {
         [partnerNameLabel, starImageView, ratingLabel].forEach {
             partnerNameStackView.addArrangedSubview($0)
         }
-        
-        cancelButton.layer.cornerRadius = 8.0
-        acceptButton.layer.cornerRadius = 8.0
-        offerYourCurrencyButton.layer.borderColor = UIColor(named: "offerCurrencyBorderColor")?.cgColor
-        offerYourCurrencyButton.layer.borderWidth = 1.0
-        offerYourCurrencyButton.layer.cornerRadius = 8.0
         
         [cancelButton, acceptButton].forEach {
             buttonsStackView.addArrangedSubview($0)
