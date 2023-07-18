@@ -11,10 +11,11 @@ class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
 
     // MARK: - UI
     
-    private lazy var button: UIButton = {
+    private lazy var addCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Добавить валюту", for: .normal)
-        //        button.setTitleColor(blue, for: <#T##UIControl.State#>)
+        button.addTarget(self, action: #selector(addCurrencyButtonDidPressed),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -32,15 +33,20 @@ class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     
     func setupViews() {
         contentView.backgroundColor = .white
-        contentView.addSubview(button)
+        contentView.addSubview(addCurrencyButton)
     }
     
     // MARK: - Setup Constraits
     
     func setupConstriats() {
-        button.snp.makeConstraints { make in
+        addCurrencyButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-16)
         }
+    }
+    // MARK: - Actions
+
+    @objc private func addCurrencyButtonDidPressed() {
+
     }
 }
