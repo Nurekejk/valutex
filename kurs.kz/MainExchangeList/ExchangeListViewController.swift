@@ -189,6 +189,12 @@ final class ExchangeListViewController: UIViewController {
         return headerView
     }()
     
+    private lazy var mapButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "map_button"), for: .normal)
+        return button
+    }()
+    
     private lazy var exchangeListTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -207,7 +213,6 @@ final class ExchangeListViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("sasdasda")
         setupViews()
         setupConstraints()
         setupNavigationBar()
@@ -227,15 +232,14 @@ final class ExchangeListViewController: UIViewController {
         nearbyFilterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
-        
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView,
-         mainFilterButton, nearbyFilterButton,
-         openFilterButton, currencySearchBar,
-         calculatorButton, pinButton].forEach {view.addSubview($0)}
+        [exchangeListTableView, mainFilterButton,
+         nearbyFilterButton, openFilterButton,
+         currencySearchBar, calculatorButton,
+         pinButton, mapButton].forEach {view.addSubview($0)}
         view.backgroundColor = backgroundGrayColor
     }
     
@@ -289,6 +293,11 @@ final class ExchangeListViewController: UIViewController {
             make.leading.equalTo(nearbyFilterButton.snp.trailing).offset(8)
             make.width.equalTo(93)
             make.height.equalTo(34)
+        }
+        mapButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-108)
+            make.size.equalTo(48)
         }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(mainFilterButton.snp.bottom).offset(9)
