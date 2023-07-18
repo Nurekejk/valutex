@@ -87,7 +87,8 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         contentView.backgroundColor = .systemGray6
     }
     // MARK: - Setup Constraints
-    
+    // поменять trailing laeding- сделать цепочным
+    // добавить padding
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
