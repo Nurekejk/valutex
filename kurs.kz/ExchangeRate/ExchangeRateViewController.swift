@@ -9,21 +9,21 @@ import UIKit
 import SnapKit
 
 final class ExchangeRateViewController: UIViewController {
-
+    
     // MARK: - State
-
+    
     private let flagOfImage: [String] = ["USDflag", "EUROflag", "RUflag"]
-
-       private let currencyOfLabel: [String] = ["Доллар", "Евро", "Рос. рубль"]
-
+    
+    private let currencyOfLabel: [String] = ["Доллар", "Евро", "Рос. рубль"]
+    
     // MARK: - UI
-
+    
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
-            let headerView = ExchangeRateTableViewHeaderView()
-
-            return headerView
-        }()
-
+        let headerView = ExchangeRateTableViewHeaderView()
+        
+        return headerView
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         
@@ -36,18 +36,18 @@ final class ExchangeRateViewController: UIViewController {
         tableView.register(ExchangeRateTableViewCell.self,
                            forHeaderFooterViewReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.tableHeaderView = headerView
-               tableView.tableFooterView = footerView
+        tableView.tableFooterView = footerView
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
         return tableView
     }()
-
+    
     private lazy var footerView: ExchangeRateTableViewFooterView = {
-            let footerView = ExchangeTableViewFooterView()
-
-            return footerView
-        }()
-
+        let footerView = ExchangeTableViewFooterView()
+        
+        return footerView
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -72,8 +72,8 @@ final class ExchangeRateViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         headerView.frame = CGRect(x: 0, y: 0, width: 311, height: 36)
-
-               footerView.frame = CGRect(x: 0, y: 0, width: 311, height: 34)
+        
+        footerView.frame = CGRect(x: 0, y: 0, width: 311, height: 34)
     }
 }
 
@@ -88,9 +88,9 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
                    forSection section: Int) {
         view.backgroundColor = .clear
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//
-//    }
+    //    func numberOfSections(in tableView: UITableView) -> Int {
+    //
+    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flagOfImage.count
