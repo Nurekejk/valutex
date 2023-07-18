@@ -76,6 +76,22 @@ final class ExchangeListViewController: UIViewController {
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
+    
+    // MARK: - Navigation Bar UI
+    private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: "search_normal"),
+                                     style: .done,
+                                     target: self,
+                                     action: #selector(selectorPressed))
+        return button
+    }()
+    
+    private let navigationTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Обменники"
+        return label
+    }()
+    
     private let chooseCurrencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Выберите валюту"
@@ -88,22 +104,28 @@ final class ExchangeListViewController: UIViewController {
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
         searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14)
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
-        searchBar.barTintColor = UIColor.white
         searchBar.searchTextField.backgroundColor = UIColor.white
+        searchBar.placeholder = "Найти обменник"
+        searchBar.searchBarStyle = .default
+        searchBar.barStyle = .default
+        searchBar.backgroundColor = .white
+        searchBar.barTintColor = UIColor.white
         
-        searchBar.placeholder = "Поиск"
         return searchBar
     }()
     
     private lazy var calculatorButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "calculator_button"), for: .normal)
+        button.backgroundColor = .white
+        
 //        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "pin_button"), for: .normal)
+        button.backgroundColor = .white
 //        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
@@ -127,14 +149,14 @@ final class ExchangeListViewController: UIViewController {
         return button
     }()
 
-    private lazy var selectButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Выбрать", for: .normal)
-//        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
+//    private lazy var selectButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Выбрать", for: .normal)
+////        button.addTarget(self, action: #selector(currencyDidSelect), for: .touchUpInside)
+//        button.titleLabel?.font = .systemFont(ofSize: 16)
+//        button.setTitleColor(.white, for: .normal)
+//        return button
+//    }()
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
@@ -163,43 +185,71 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        selectButton.backgroundColor = buttonBlueColor
-        selectButton.layer.cornerRadius = 8
+        currencySearchBar.layer.borderColor = view.backgroundColor?.cgColor
+        currencySearchBar.layer.borderWidth = 1
+        calculatorButton.layer.borderWidth = 1
+        calculatorButton.layer.borderColor = view.backgroundColor?.cgColor
+        pinButton.layer.borderWidth = 1
+        pinButton.layer.borderColor = view.backgroundColor?.cgColor
+//        selectButton.backgroundColor = buttonBlueColor
+//        selectButton.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView, chooseCurrencyLabel,
+        [exchangeListTableView,
          mainFilterButton, nearbyFilterButton,
          openFilterButton, currencySearchBar,
          calculatorButton, pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = backgroundGrayColor
     }
     
+    func setupNavigationBar() {
+        self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
+        
+        self.navigationItem.titleView = navigationTitleLabel
+        self.navigationItem.titleView?.backgroundColor = .cyan
+        self.navigationItem.titleView?.bounds = CGRect(x: 0, y: 0, width: 258, height: 24)
+        
+    }
+
+    @objc func done() { // remove @objc for Swift 3
+
+    }
+    
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+        edgesForExtendedLayout = []
+        
+//        navigationTitleLabel.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(16)
+//            make.leading.equalToSuperview().offset(16)
+//            make.height.equalTo(24)
+//        }
         
         let tableWidth = UIScreen.main.bounds.width - 32
+        
         headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
         currencySearchBar.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalTo(calculatorButton.snp.leading)
             make.height.equalTo(48)
-            make.width.equalTo(263)
         }
         calculatorButton.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalTo(currencySearchBar.snp.trailing)
+            make.trailing.equalTo(pinButton.snp.leading)
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
         pinButton.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalTo(calculatorButton.snp.trailing)
+            make.top.trailing.equalToSuperview()
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
@@ -210,7 +260,7 @@ final class ExchangeListViewController: UIViewController {
 //            make.size.equalTo(24)
 //        }
         exchangeListTableView.snp.makeConstraints { make in
-            make.top.equalTo(chooseCurrencyLabel.snp.bottom).offset(16)
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(16)
             make.width.equalTo(tableWidth)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
@@ -224,7 +274,7 @@ final class ExchangeListViewController: UIViewController {
     }
     
     // MARK: - Action
-//    @objc func currencyDidSelect() {
+    @objc func selectorPressed() {
 //        if let selectedIndexPath = exchangeListTableView.indexPathForSelectedRow,
 //        let senderViewController = delegate {
 //            senderViewController.currencyDidSelect(selectedIndexPath:
@@ -233,7 +283,7 @@ final class ExchangeListViewController: UIViewController {
 //                                                   searchArray: searchArray)
 //            dismiss(animated: true, completion: nil)
 //        }
-//    }
+    }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
