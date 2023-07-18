@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ExchangeListTableViewCell: UITableViewCell {
+final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     

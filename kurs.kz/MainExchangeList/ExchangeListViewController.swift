@@ -192,6 +192,7 @@ final class ExchangeListViewController: UIViewController {
     private lazy var mapButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "map_button"), for: .normal)
+        button.scalesLargeContentImage = true
         return button
     }()
     
@@ -206,7 +207,6 @@ final class ExchangeListViewController: UIViewController {
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
         tableView.tableHeaderView = headerView
-        
         return tableView
     }()
     
@@ -215,7 +215,10 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        setupNavigationBar()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -232,6 +235,7 @@ final class ExchangeListViewController: UIViewController {
         nearbyFilterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
+        setupNavigationBar()
     }
     
     // MARK: - Setup Views
@@ -248,8 +252,6 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.titleView?.backgroundColor = .cyan
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
 }
     
     // MARK: - Setup Constraints:
@@ -346,8 +348,8 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-    // MARK: - PanModalPresentable
- extension ExchangeListViewController: PanModalPresentable {
+    // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
+ extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
 
     var panScrollable: UIScrollView? {
         return nil
@@ -358,18 +360,17 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     var longFormHeight: PanModalHeight {
         return .maxHeightWithTopInset(40)
     }
+     
+     func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
+         let newKey: String
+         if !isSearching {
+             newKey = currenciesKeyArray[selectedIndexPath.row]
+         } else {
+             newKey = searchArray[selectedIndexPath.row]
+         }
+         if let unwrappedTuple = currenciesDictionary[newKey] {
+             navigationBarView.changeCurrency(newFlagImage: unwrappedTuple.0,
+                            newCurrencyLabel: unwrappedTuple.1)
+         }
+     }
  }
-extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
-    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
-        let newKey: String
-        if !isSearching {
-            newKey = currenciesKeyArray[selectedIndexPath.row]
-        } else {
-            newKey = searchArray[selectedIndexPath.row]
-        }
-        if let unwrappedTuple = currenciesDictionary[newKey] {
-            navigationBarView.changeCurrency(newFlagImage: unwrappedTuple.0,
-                           newCurrencyLabel: unwrappedTuple.1)
-        }
-    }
-}
