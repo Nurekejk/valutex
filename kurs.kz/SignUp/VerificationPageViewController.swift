@@ -74,6 +74,11 @@ final class VerificationPageViewController: UIViewController {
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
         self.navigationItem.title = "OTP"
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPressed))
     }
     
     // MARK: - Setup Views
@@ -118,9 +123,12 @@ final class VerificationPageViewController: UIViewController {
     }
 
     // MARK: - Actions
-
     @objc private func verifyButtonDidPress() {
         self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
                                                       animated: true)
+    }
+    
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
