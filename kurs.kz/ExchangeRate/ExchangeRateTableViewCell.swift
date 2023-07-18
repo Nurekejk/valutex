@@ -21,34 +21,39 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         return view
     }()
     
-    let flagImage: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        return image
+    private lazy var flagImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "USDflag")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
-    let currencyLabel: UILabel = {
+    private lazy var currencyLabel: UILabel = {
         let label = UILabel()
+        label.text = "Доллар"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
-    let amountOfPurchaseTextField: UITextField = {
+    private lazy var amountOfPurchaseTextField: UITextField = {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 16)
+        textField.text = "500"
         return textField
     }()
     
-    let amountOfSaleTextField: UITextField = {
+    private lazy var amountOfSaleTextField: UITextField = {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 16)
+        textField.text = "500"
         return textField
     }()
-    lazy var trashButton: UIButton = {
+    private lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
+        let iconImage = UIImage(named: "trash")
+        button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(trashButtonDidPressed),
                          for: .touchUpInside)
-
         return button
     }()
     
@@ -64,7 +69,8 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+// MARK: - Layers
+
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -99,12 +105,12 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         flagImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-301)
+
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalToSuperview().offset(58)
-            make.trailing.equalToSuperview().offset(-196)
+
         }
         amountOfPurchaseTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
@@ -131,4 +137,10 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     @objc private func trashButtonDidPressed() {
         
     }
-}
+    // MARK: - Public
+
+        public func configureCell(nameImage: String, nameTitle: String) {
+            flagImage.image = UIImage(named: nameImage)
+            currencyLabel.text = nameTitle
+        }
+    }
