@@ -14,6 +14,7 @@ final class ExchangeRateViewController: UIViewController {
     
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
         let headerView = ExchangeRateTableViewHeaderView()
+        headerView.backgroundColor = .systemGray6
         return headerView
     }()
     
@@ -29,12 +30,25 @@ final class ExchangeRateViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
     private lazy var footerView: ExchangeRateTableViewFooterView = {
         let footerView = ExchangeRateTableViewFooterView()
         return footerView
     }()
-    
+    private lazy var safeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Cохранить", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
+        button.layer.cornerRadius = 12
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        return button
+    }()
+    private lazy var shadowView: UIView = {
+        let shadowView = UIView()
+        shadowView.backgroundColor = .white
+        return shadowView
+    }()
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -44,19 +58,34 @@ final class ExchangeRateViewController: UIViewController {
     }
     
     // MARK: - Setup Views
-
+    
     private func setupViews() {
         view.backgroundColor = .systemGray6
+        view.addSubview(headerView)
         view.addSubview(tableView)
+        view.addSubview(shadowView)
+        shadowView.addSubview(safeButton)
         tableView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
+        safeButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(52)
+        }
+        shadowView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(112)
+        }
+        headerView.frame = CGRect(x: 0, y: 0, width: 0, height: 36)
+        footerView.frame = CGRect(x: 0, y: 0, width: 0, height: 46)
 
-        headerView.frame = CGRect(x: 0, y: 0, width: 343, height: 36)
-        footerView.frame = CGRect(x: 0, y: 0, width: 343, height: 46)
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
