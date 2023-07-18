@@ -28,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }
