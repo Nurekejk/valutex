@@ -11,7 +11,6 @@ import SnapKit
 final class CartExchangeFeedbackViewController: UIViewController {
     
     // MARK: - State
-    
     private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
         didSet {
             tableView.reloadData()
@@ -23,7 +22,6 @@ final class CartExchangeFeedbackViewController: UIViewController {
     private let titleOfIcons: [String] = ["feedbackUser", "phone", "clock", "email", "website", "whatsapp"]
     
     // MARK: - UI
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -35,26 +33,21 @@ final class CartExchangeFeedbackViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
-        setupConstraits()
+        setupConstraints()
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
-        
         view.backgroundColor = .white
         view.addSubview(tableView)
     }
     
     // MARK: - Setup Constraits
-    
-    func setupConstraits() {
-        
+    func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(150)
             make.bottom.equalToSuperview().offset(100)
@@ -64,8 +57,7 @@ final class CartExchangeFeedbackViewController: UIViewController {
     }
 }
 
-    // MARK: - Extension
-
+// MARK: - Extension
 extension CartExchangeFeedbackViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,9 +73,5 @@ extension CartExchangeFeedbackViewController: UITableViewDataSource, UITableView
         cell?.configureCell(language: language, titleOfIcon: titleOfIcon)
         
         return cell ?? UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath
-        print(indexPath)
     }
 }

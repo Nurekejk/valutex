@@ -11,12 +11,10 @@ import SnapKit
 final class CartExchangeFeedbackViewCell: UITableViewCell {
     
     // MARK: - UI
-    
     private let iconImageView: UIImageView = {
         let iconImage = UIImageView()
         iconImage.contentMode = .scaleToFill
         iconImage.image = UIImage(named: "sms")
-        
         return iconImage
     }()
     
@@ -31,12 +29,10 @@ final class CartExchangeFeedbackViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "arrowDown")
-        
         return imageView
     }()
     
     // MARK: - Life Cycle
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -49,18 +45,14 @@ final class CartExchangeFeedbackViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
-        
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(secondIconImageView)
     }
     
     // MARK: - Setup Constraits
-    
     func setupConstraits() {
-        
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.leading.equalToSuperview().offset(16)
