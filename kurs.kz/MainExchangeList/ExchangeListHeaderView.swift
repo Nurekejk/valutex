@@ -12,18 +12,24 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
+    private let textGrayColor = UIColor(
+        red: 147.0 / 255.0,
+        green: 153.0 / 255.0,
+        blue: 171.0 / 255.0,
+        alpha: 1)
+    
     // MARK: - UI
-    private let buyLabel: UILabel = {
+    private lazy var buyLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
-        label.textColor = UIColor(named: "detailNameLabelColor")
+        label.textColor = textGrayColor
         label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         return label
     }()
-    private let sellLabel: UILabel = {
+    private lazy var sellLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
-        label.textColor = UIColor(named: "detailNameLabelColor")
+        label.textColor = textGrayColor
         label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         return label
     }()
@@ -72,22 +78,22 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         downUpFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(12)
+            make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-12.5)
             make.size.equalTo(12)
         }
         sellLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(12)
+            make.centerY.equalToSuperview()
             make.trailing.equalTo(downUpFilterButton.snp.leading).offset(-4)
             make.height.equalTo(12)
         }
         upDownFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(12)
+            make.centerY.equalToSuperview()
             make.trailing.equalTo(sellLabel.snp.leading).offset(-16.5)
             make.size.equalTo(12)
         }
         buyLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(12)
+            make.centerY.equalToSuperview()
             make.trailing.equalTo(upDownFilterButton.snp.leading).offset(-4)
             make.height.equalTo(12)
         }
