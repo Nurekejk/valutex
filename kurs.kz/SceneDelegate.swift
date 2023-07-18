@@ -23,12 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: PartnerOfferViewController())
+                UINavigationController(rootViewController: SignUpViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }
