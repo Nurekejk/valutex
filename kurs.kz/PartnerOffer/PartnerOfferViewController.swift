@@ -63,14 +63,23 @@ final class PartnerOfferViewController: UIViewController {
     }
 }
 
+// MARK: - Enumerator
+private enum SectionNumber: Int {
+    case zero = 0
+    case one = 1
+}
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == SectionNumber.zero.rawValue || section == SectionNumber.one.rawValue {
+            return 1
+        }
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
