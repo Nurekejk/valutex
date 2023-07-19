@@ -108,29 +108,6 @@ final class OfferTableViewCell: UITableViewCell {
         return button
     }()
 
-    private let phoneTextField: CustomSkyFloatingLabelTextField = {
-        let textField = CustomSkyFloatingLabelTextField()
-
-        textField.title = "Телефон"
-        textField.placeholder = "+7 777 777 00 00"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
-        textField.placeholderColor = UIColor(named: "phoneNumberColor")!
-
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
-
-        textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 8
-
-        textField.keyboardType = .phonePad
-        textField.setTitleVisible(true)
-
-        return textField
-    }()
-    
     // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
