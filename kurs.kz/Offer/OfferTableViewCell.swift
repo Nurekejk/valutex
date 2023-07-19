@@ -14,6 +14,7 @@ final class OfferTableViewCell: UITableViewCell {
     public static var reuseIdentifier = String(describing: OfferTableViewCell.self)
 
     // MARK: - Outlets
+    
     private let cellView: UIView = {
         let cellView = UIView()
         cellView.backgroundColor = .white
@@ -105,6 +106,29 @@ final class OfferTableViewCell: UITableViewCell {
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
+    }()
+
+    private let phoneTextField: CustomSkyFloatingLabelTextField = {
+        let textField = CustomSkyFloatingLabelTextField()
+
+        textField.title = "Телефон"
+        textField.placeholder = "+7 777 777 00 00"
+        textField.titleColor = UIColor(named: "selectedTitleColor")!
+        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.placeholderColor = UIColor(named: "phoneNumberColor")!
+
+        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.font = UIFont.systemFont(ofSize: 16.0)
+
+        textField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+
+        textField.keyboardType = .phonePad
+        textField.setTitleVisible(true)
+
+        return textField
     }()
     
     // MARK: - Initializers

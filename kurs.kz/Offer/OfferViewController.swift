@@ -10,13 +10,14 @@ import UIKit
 final class OfferViewController: UIViewController {
 
     // MARK: - Outlets
+    
     private lazy var headerView: OfferTableViewHeaderView = {
         let headerView = OfferTableViewHeaderView()
         return headerView
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
                             OfferTableViewCell.reuseIdentifier)
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
@@ -30,6 +31,7 @@ final class OfferViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -37,6 +39,7 @@ final class OfferViewController: UIViewController {
     }
     
     // MARK: - Setup
+
     private func setupViews() {
         view.backgroundColor = .systemGray6
         view.addSubview(tableView)
@@ -50,14 +53,14 @@ final class OfferViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         let width = UIScreen.main.bounds.width
-        headerView.frame = CGRect(x: 0, y: 0, width: width, height: 192)
+        headerView.frame = CGRect(x: 0, y: 0, width: width, height: 224)
     }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension OfferViewController: UITableViewDataSource,
-                               UITableViewDelegate {
+extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
