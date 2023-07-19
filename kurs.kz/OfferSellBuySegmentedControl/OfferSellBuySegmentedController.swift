@@ -30,8 +30,8 @@
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        
         displayViewController(buyViewController)
+        title = "Оффер"
     }
 
     // MARK: - Setup Views
@@ -67,7 +67,6 @@
      
      func displayViewController(_ viewController: UIViewController) {
          children.forEach { $0.removeFromParent() }
-         
          addChild(viewController)
          viewController.view.frame = containerView.bounds
          containerView.addSubview(viewController.view)
