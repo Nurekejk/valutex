@@ -25,13 +25,13 @@ final class SignInViewController: UIViewController {
         let textField = CustomSkyFloatingLabelTextField()
 
         textField.placeholder = "Телефон"
-        textField.placeholderColor = UIColor.lightGray
+        textField.placeholderColor = AppColor.mediumGray.uiColor
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
 
         textField.title = "Телефон"
         textField.titleColor = UIColor.lightGray
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.selectedTitleColor = UIColor.lightGray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.textColor = AppColor.darkGray.uiColor
         
         textField.keyboardType = .phonePad
@@ -44,13 +44,13 @@ final class SignInViewController: UIViewController {
         let textField = CustomSkyFloatingLabelTextField()
 
         textField.placeholder = "Пароль"
-        textField.placeholderColor = UIColor.lightGray
+        textField.placeholderColor = AppColor.mediumGray.uiColor
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
 
         textField.title = "Пароль"
         textField.titleColor = UIColor.lightGray
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.selectedTitleColor = UIColor.lightGray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.textColor = AppColor.darkGray.uiColor
 
         textField.keyboardType = .phonePad
@@ -62,7 +62,7 @@ final class SignInViewController: UIViewController {
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Забыли пароль", for: .normal)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
         return button

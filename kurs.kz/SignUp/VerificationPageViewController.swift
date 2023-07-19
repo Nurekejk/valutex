@@ -14,7 +14,7 @@ final class VerificationPageViewController: UIViewController {
     private let otpLabel: UILabel = {
         let label = UILabel()
         label.text = "Мы отправили письмо с кодом на ваш номер"
-        label.textColor = UIColor(named: "selectedTitleColor")
+        label.textColor = AppColor.mediumGray.uiColor
         label.font = UIFont.systemFont(ofSize: 14.0)
         return label
     }()

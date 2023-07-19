@@ -47,8 +47,9 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Фамилия"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Фамилия"
         textField.textColor = AppColor.darkGray.uiColor
         return textField
@@ -66,8 +67,9 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Имя"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Имя"
         textField.textColor = AppColor.darkGray.uiColor
         return textField
@@ -85,8 +87,9 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Отчество"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Отчество"
         textField.textColor = AppColor.darkGray.uiColor
         return textField
@@ -104,8 +107,9 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Телефон"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Телефон"
         textField.textColor = AppColor.darkGray.uiColor
         return textField

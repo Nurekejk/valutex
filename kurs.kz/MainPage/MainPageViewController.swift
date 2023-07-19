@@ -54,7 +54,7 @@ final class MainPageViewController: UIViewController {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
+        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
         button.addTarget(self, action: #selector(skipButtonDidPress), for: .touchUpInside)
         return button
     }()

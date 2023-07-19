@@ -17,7 +17,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "Теперь напишите отзыв"
-        label.textColor = .lightGray
+        label.textColor = AppColor.mediumGray.uiColor
         label.font = .systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +27,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let textView = UITextView()
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
-        textView.textColor = .lightGray
+        textView.textColor = AppColor.mediumGray.uiColor
         textView.font = .systemFont(ofSize: 14)
         textView.returnKeyType = .done
         return textView

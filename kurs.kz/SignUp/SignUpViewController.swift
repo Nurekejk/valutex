@@ -41,8 +41,8 @@ final class SignUpViewController: UIViewController {
         
         textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.placeholderColor = AppColor.darkGray.uiColor
         
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
@@ -62,7 +62,7 @@ final class SignUpViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel!.font = .boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.backgroundColor = AppColor.primaryBlue.uiColor
         button.tintColor = .white
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
@@ -73,7 +73,7 @@ final class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
         label.font = UIFont.systemFont(ofSize: 14.0)
-        label.textColor = UIColor(named: "defaultTextColor")
+        label.textColor = AppColor.mediumGray.uiColor
         label.textAlignment = .center
         return label
     }()
