@@ -17,7 +17,7 @@ final class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
-        label.textColor = AppColor.darkBlue.uiColor
+        label.textColor = AppColor.darkGray.uiColor
         label.textAlignment = .center
         return label
     }()
@@ -43,7 +43,7 @@ final class SignUpViewController: UIViewController {
         textField.placeholder = "+7 777 777 00 00"
         textField.titleColor = UIColor(named: "selectedTitleColor")!
         textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
-        textField.placeholderColor = AppColor.darkBlue.uiColor
+        textField.placeholderColor = AppColor.darkGray.uiColor
         
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
