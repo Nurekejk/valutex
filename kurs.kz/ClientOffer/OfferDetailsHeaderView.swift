@@ -17,7 +17,7 @@ final class OfferDetailsHeaderView: UITableViewHeaderFooterView {
     let detailLabel: UILabel = {
         let label = UILabel()
         label.text = "Детали"
-        label.textColor = UIColor(named: "detailNameLabelColor")
+        label.textColor = AppColor.darkBlue.uiColor
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textAlignment = .left
         return label

@@ -31,7 +31,7 @@ final class OfferDetailsTableViewCell: UITableViewCell {
     private lazy var detailNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
-        label.textColor = UIColor(named: "detailNameLabelColor")
+        label.textColor = AppColor.darkBlue.uiColor
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         label.textAlignment = .right
         return label

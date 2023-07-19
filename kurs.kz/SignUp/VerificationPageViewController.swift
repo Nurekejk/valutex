@@ -33,7 +33,7 @@ final class VerificationPageViewController: UIViewController {
     private let resendCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Еще не получили код подтверждения?"
-        label.textColor = UIColor(named: "resendCodeTextColor")
+        label.textColor = AppColor.darkBlue.uiColor
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14.0)
         label.textAlignment = .center
