@@ -7,9 +7,16 @@
 
 import UIKit
 
-class CalculatorTableViewCell: UITableViewCell {
+final class CalculatorTableViewCell: UITableViewCell {
+
     // MARK: - Public
 
     public static var reuseIdentifier = String(describing: CalculatorTableViewCell.self)
 
+    // MARK: - UI
+
+        private lazy var containerView: UIView = {
+            let view = UIView()
+            return view
+        }()
 }
