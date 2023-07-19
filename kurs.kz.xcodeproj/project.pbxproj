@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */; };
+		220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
@@ -15,11 +17,13 @@
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
+		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
+		9985BA542A65BF0D00DD871C /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = 9985BA532A65BF0D00DD871C /* InputMask */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
@@ -50,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExchangesViewController.swift; sourceTree = "<group>"; };
+		220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExchangesTableViewCell.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +66,7 @@
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
-		990100482A50B99B003EE3C4 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 			files = (
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
+				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
 				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
 				FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */,
 			);
@@ -108,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220C3F372A5FD8B6000002DB /* MyExchanges */ = {
+			isa = PBXGroup;
+			children = (
+				220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */,
+				220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */,
+			);
+			path = MyExchanges;
+			sourceTree = "<group>";
+		};
 		46EE99A18985E63B77BA8021 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +172,7 @@
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				990100482A50B99B003EE3C4 /* SignupViewController.swift */,
+				990100482A50B99B003EE3C4 /* SignUpViewController.swift */,
 				9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */,
 				997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */,
 			);
@@ -231,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				8F8189D72A6066240082F80F /* CartExchangeFeedback */,
+				220C3F372A5FD8B6000002DB /* MyExchanges */,
 				9FF456F52A5FC4A900C2E845 /* ToSupport */,
 				9FF456EF2A5FC2BA00C2E845 /* Language Select */,
 				71D01EB12A5D48F200422491 /* Notifications */,
@@ -347,6 +364,7 @@
 				9F63DF432A504C3200EA9060 /* SnapKit */,
 				9F63DF462A50540F00EA9060 /* Alamofire */,
 				FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */,
+				9985BA532A65BF0D00DD871C /* InputMask */,
 			);
 			productName = kurs.kz;
 			productReference = 9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */;
@@ -380,6 +398,7 @@
 				9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */,
+				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -483,11 +502,12 @@
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
-				990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */,
+				990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
@@ -499,6 +519,7 @@
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
+				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
@@ -718,6 +739,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RedMadRobot/input-mask-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.0;
+			};
+		};
 		9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -745,6 +774,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9985BA532A65BF0D00DD871C /* InputMask */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */;
+			productName = InputMask;
+		};
 		9F63DF432A504C3200EA9060 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */;

@@ -123,7 +123,7 @@ final class MainPageViewController: UIViewController {
     }
 
     @objc private func signUpButtonDidPress() {
-        self.navigationController?.pushViewController(SignupViewController(), animated: true)
+        self.navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
 
     @objc private func skipButtonDidPress() {
