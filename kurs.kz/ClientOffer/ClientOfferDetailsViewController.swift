@@ -112,7 +112,7 @@ final class ClientOfferDetailsViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = UIColor(named: "offerDetailsBackgroundColor")
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         
         timerStackView.addArrangedSubview(self.timerTextLabel)
         timerStackView.addArrangedSubview(self.timerCountDownLabel)

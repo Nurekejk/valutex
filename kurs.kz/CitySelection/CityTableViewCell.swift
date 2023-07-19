@@ -13,6 +13,7 @@ final class CityTableViewCell: UITableViewCell {
     private let label: UILabel = {
         let label = UILabel()
         label.text = "Алматы"
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 

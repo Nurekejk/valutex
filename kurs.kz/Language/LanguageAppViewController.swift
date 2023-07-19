@@ -46,7 +46,7 @@ final class LanguageAppViewController: UIViewController {
         button.setTitle("Выбрать", for: .normal)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 12
-        
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         return button
     }()
     
@@ -62,7 +62,7 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup Views
     
     func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         view.addSubview(label)
         view.addSubview(tableView)
         view.addSubview(selectButton)

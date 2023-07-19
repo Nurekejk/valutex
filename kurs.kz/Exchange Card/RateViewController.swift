@@ -97,7 +97,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Setup Views
     private func setupViews() {
-        
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         view.addSubview(entireStackView)
         
         [starStackView, reviewLabel, borderView,

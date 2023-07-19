@@ -69,13 +69,7 @@ final class NotificationsTableViewCell: UITableViewCell {
             containerView.addSubview($0)
         }
 
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.backgroundGray.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }

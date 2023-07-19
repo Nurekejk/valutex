@@ -35,6 +35,7 @@ final class AboutCompanyViewController: UIViewController {
         textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
         textView.textColor = AppColor.darkGray.uiColor
+        textView.backgroundColor = AppColor.backgroundGray.uiColor
         return textView
     }()
     
@@ -50,7 +51,7 @@ final class AboutCompanyViewController: UIViewController {
     // MARK: - Setup
     
     private func setupNavigationBar() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = AppColor.backgroundGray.uiColor
         self.title = "О компании"
     }
         

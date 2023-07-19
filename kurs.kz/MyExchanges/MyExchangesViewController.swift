@@ -35,7 +35,7 @@ class MyExchangesViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(tableView)
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = AppColor.backgroundGray.uiColor
     }
     
     // MARK: - Setup Constraints

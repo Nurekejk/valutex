@@ -63,7 +63,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         view.addSubview(textField)
         view.addSubview(tableview)
         view.addSubview(shadowview)

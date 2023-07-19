@@ -119,7 +119,7 @@ final class RegistrationPasswordViewController: UIViewController {
         enterPasswordTextField.rightView = enterPasswordButton
         repeatPasswordTextField.rightView = repeatPasswordButton
         
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         elementsStackView.backgroundColor = .white
         passwordStackView.backgroundColor = .white
         textLabel.textColor = .systemGray3
