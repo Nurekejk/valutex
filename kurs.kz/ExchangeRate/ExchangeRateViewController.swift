@@ -65,9 +65,12 @@ final class ExchangeRateViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(shadowView)
         shadowView.addSubview(safeButton)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
     }
-    
+        
     // MARK: - Setup Constraints
     
     private func setupConstraints() {

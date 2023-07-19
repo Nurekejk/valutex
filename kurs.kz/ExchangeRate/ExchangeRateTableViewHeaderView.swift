@@ -41,7 +41,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
                          for: .touchUpInside)
         return button
     }()
-    
+
     // MARK: - LifeCycle
     
     override init(reuseIdentifier: String?) {
