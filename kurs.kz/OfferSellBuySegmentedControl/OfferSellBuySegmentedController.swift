@@ -10,31 +10,6 @@
 
  final class OfferSellBuySegmentedController: UIViewController {
      
-    // MARK: - Properties
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-
-    private let borderGrayColor = UIColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-
-    private let textGrayColor = UIColor(
-        red: 147.0 / 255.0,
-        green: 153.0 / 255.0,
-        blue: 171.0 / 255.0,
-        alpha: 1)
-
     // MARK: - UI
      private let segmentedControl: UISegmentedControl = {
          let segmentedControl = UISegmentedControl(items: ["Продать", "Купить"])
@@ -45,6 +20,10 @@
      private lazy var buyViewController = OfferSellViewController(mode: .sell)
      private lazy var sellViewController = OfferSellViewController(mode: .buy)
      
+     let containerView: UIView = {
+         let containerView = UIView()
+         return containerView
+     }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -52,13 +31,15 @@
         setupViews()
         setupConstraints()
         
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         
+        displayViewController(buyViewController)
     }
 
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = backgroundGrayColor
-
+        view.addSubview(containerView)
         view.addSubview(segmentedControl)
     }
      
@@ -70,9 +51,29 @@
             make.height.equalTo(40)
             make.width.equalTo(311)
         }
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
      
      // MARK: - Actions
      @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+         switch sender.selectedSegmentIndex {
+         case 0:
+             displayViewController(buyViewController)
+         case 1:
+             displayViewController(sellViewController)
+         default:
+             break
+         }
+     }
+     
+     func displayViewController(_ viewController: UIViewController) {
+         children.forEach { $0.removeFromParent() }
+         
+         addChild(viewController)
+         viewController.view.frame = containerView.bounds
+         containerView.addSubview(viewController.view)
+         viewController.didMove(toParent: self)
      }
  }
