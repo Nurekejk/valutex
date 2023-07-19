@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-            UINavigationController(rootViewController: OfferSellViewController(mode: .buy))
+            UINavigationController(rootViewController: OfferSellBuySegmentedController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
