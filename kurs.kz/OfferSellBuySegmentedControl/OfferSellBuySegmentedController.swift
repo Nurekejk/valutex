@@ -9,11 +9,11 @@
  import SnapKit
 
  final class OfferSellBuySegmentedController: UIViewController {
-     
     // MARK: - UI
-     private let segmentedControl: UISegmentedControl = {
+     private lazy var segmentedControl: UISegmentedControl = {
          let segmentedControl = UISegmentedControl(items: ["Продать", "Купить"])
          segmentedControl.selectedSegmentIndex = 0
+         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
          return segmentedControl
      }()
      
@@ -31,14 +31,11 @@
         setupViews()
         setupConstraints()
         
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-        
         displayViewController(buyViewController)
     }
 
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = backgroundGrayColor
         view.addSubview(containerView)
         view.addSubview(segmentedControl)
     }
