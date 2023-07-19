@@ -12,6 +12,7 @@
 		618978082A5AC86B009DFF0B /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978072A5AC86B009DFF0B /* OfferViewController.swift */; };
 		6189780A2A5ACDB8009DFF0B /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978092A5ACDB8009DFF0B /* OfferTableViewCell.swift */; };
 		61BBB5402A658CE7007E9BAD /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBB53F2A658CE7007E9BAD /* OfferTableViewHeaderView.swift */; };
+		61BBB5462A6841AC007E9BAD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBB5452A6841AC007E9BAD /* SectionHeaderView.swift */; };
 		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -46,6 +47,7 @@
 		618978072A5AC86B009DFF0B /* OfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		618978092A5ACDB8009DFF0B /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		61BBB53F2A658CE7007E9BAD /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
+		61BBB5452A6841AC007E9BAD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				618978072A5AC86B009DFF0B /* OfferViewController.swift */,
 				618978092A5ACDB8009DFF0B /* OfferTableViewCell.swift */,
 				61BBB53F2A658CE7007E9BAD /* OfferTableViewHeaderView.swift */,
+				61BBB5452A6841AC007E9BAD /* SectionHeaderView.swift */,
 			);
 			path = Offer;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
+				61BBB5462A6841AC007E9BAD /* SectionHeaderView.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,

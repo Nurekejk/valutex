@@ -17,7 +17,7 @@ final class OfferViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
                             OfferTableViewCell.reuseIdentifier)
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
@@ -27,6 +27,7 @@ final class OfferViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.isScrollEnabled = false
         tableView.backgroundColor = .systemGray6
+        tableView.sectionHeaderHeight = 100
         return tableView
     }()
 
@@ -72,5 +73,10 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
                 OfferTableViewCell else {fatalError("message")
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let width = UIScreen.main.bounds.width
+        let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
+        return view
     }
 }
