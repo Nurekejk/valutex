@@ -40,7 +40,7 @@ final class SelectCityViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return button

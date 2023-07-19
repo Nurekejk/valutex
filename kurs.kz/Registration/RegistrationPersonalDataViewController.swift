@@ -18,12 +18,6 @@ final class RegistrationPersonalDataViewController: UIViewController {
         green: 247.0 / 255.0,
         blue: 249.0 / 255.0,
         alpha: 1)
-    
-    private let registrationBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -167,7 +161,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(stackView)
         
         view.backgroundColor = registrationGrayColor
-        continueButton.backgroundColor = registrationBlueColor
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
     }
     // MARK: - Constraints:
     private func setupConstraints() {

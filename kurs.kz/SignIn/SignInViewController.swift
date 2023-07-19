@@ -74,7 +74,7 @@ final class SignInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.clipsToBounds = true
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -92,7 +92,7 @@ final class SignInViewController: UIViewController {
         let titleString = NSAttributedString(string: "Зарегистрироваться",
                                              attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setAttributedTitle(titleString, for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button

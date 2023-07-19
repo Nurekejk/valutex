@@ -46,7 +46,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         stackView.distribution = .fill
         stackView.alignment = .center
         stackView.spacing = 12.0
-        stackView.backgroundColor = UIColor(named: "timerStackViewBackgroundColor")
+        stackView.backgroundColor = AppColor.primaryBlue.uiColor
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24,
                                                                      leading: 72,

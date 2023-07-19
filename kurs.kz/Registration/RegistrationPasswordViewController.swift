@@ -124,7 +124,7 @@ final class RegistrationPasswordViewController: UIViewController {
         passwordStackView.backgroundColor = .white
         textLabel.textColor = .systemGray3
         continueButton.setTitleColor(.white, for: .normal)
-        continueButton.backgroundColor = .cyan
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
         containerView.backgroundColor = .white
     }
     

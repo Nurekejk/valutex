@@ -1,12 +1,6 @@
 import UIKit
 
 final class RateViewController: UIViewController, UITextViewDelegate {
-   
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
     
     private let borderGrayColor = CGColor(
         red: 232.0 / 255.0,
@@ -113,7 +107,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         view.backgroundColor = backgroundGrayColor
         borderView.backgroundColor = backgroundGrayColor
-        continueButton.backgroundColor = buttonBlueColor
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
         entireStackView.backgroundColor = .white
         
         reviewTextView.delegate = self

@@ -54,6 +54,7 @@ final class SignUpViewController: UIViewController {
         
         textField.titleFormatter = { $0 } // autocapitalizes the title
         textField.selectedTitle = "Телефон"
+        textField.lineView.isHidden = true
         
         return textField
     }()
@@ -62,7 +63,7 @@ final class SignUpViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel!.font = .boldSystemFont(ofSize: 16)
-        button.backgroundColor = UIColor(named: "signupButtonColor")
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.tintColor = .white
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
@@ -80,7 +81,7 @@ final class SignUpViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let myAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .medium),
-            .foregroundColor: UIColor(named: "signupButtonColor") ?? .blue,
+            .foregroundColor: AppColor.primaryBlue.uiColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         

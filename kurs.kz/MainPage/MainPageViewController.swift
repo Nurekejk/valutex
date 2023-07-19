@@ -33,7 +33,7 @@ final class MainPageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(signInButtonDidPress), for: .touchUpInside)
         return button
@@ -41,11 +41,11 @@ final class MainPageViewController: UIViewController {
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.borderColor = UIColor.blue.cgColor
+        button.layer.borderColor = AppColor.primaryBlue.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
         button.setTitle("Зарегистрироватся", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
         button.addTarget(self, action: #selector(signUpButtonDidPress), for: .touchUpInside)
         return button
     }()

@@ -26,7 +26,7 @@ final class VerificationPageViewController: UIViewController {
         codeField.boxBackgroundColor = UIColor(named: "otpCodeFieldBoxColor")!
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
-        codeField.activeShadowColor = UIColor(named: "otpCodeFieldActiveShadowColor")
+        codeField.activeShadowColor = AppColor.primaryBlue.uiColor
         return codeField
     }()
     
@@ -45,13 +45,13 @@ final class VerificationPageViewController: UIViewController {
         button.setTitle("Отправить код повторно", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
         button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = UIColor(named: "verifyButtonColor")
+        button.titleLabel?.textColor = AppColor.primaryBlue.uiColor
         return button
     }()
     
     private lazy var verifyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(named: "verifyButtonColor")
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
