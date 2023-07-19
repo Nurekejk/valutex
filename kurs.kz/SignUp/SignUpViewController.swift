@@ -16,7 +16,7 @@ final class SignUpViewController: UIViewController {
     private let signUpLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
-        label.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
+        label.font = AppFont.bold.s28()
         label.textColor = AppColor.darkGray.uiColor
         label.textAlignment = .center
         return label
@@ -45,9 +45,9 @@ final class SignUpViewController: UIViewController {
         textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.placeholderColor = AppColor.darkGray.uiColor
         
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.titleLabel.font = AppFont.reqular.s12()
+        textField.placeholderFont = AppFont.reqular.s16()
+        textField.font = AppFont.reqular.s16()
         
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
@@ -62,7 +62,7 @@ final class SignUpViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = AppFont.bold.s16()
         button.backgroundColor = AppColor.primaryBlue.uiColor
         button.tintColor = .white
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
@@ -72,7 +72,7 @@ final class SignUpViewController: UIViewController {
     private let isThereAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = AppFont.reqular.s14()
         label.textColor = AppColor.mediumGray.uiColor
         label.textAlignment = .center
         return label
@@ -80,7 +80,7 @@ final class SignUpViewController: UIViewController {
     
     private lazy var signUpButton: UIButton = {
         let myAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
+            .font: AppFont.medium.s16(),
             .foregroundColor: AppColor.primaryBlue.uiColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
@@ -118,7 +118,7 @@ final class SignUpViewController: UIViewController {
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
         self.navigationItem.leftBarButtonItem =
-        UIBarButtonItem(image: UIImage(named: "arrow_back"),
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
                         style: .plain,
                         target: self,
                         action: #selector(backButtonDidPressed))

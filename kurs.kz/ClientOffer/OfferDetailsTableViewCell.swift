@@ -24,7 +24,7 @@ final class OfferDetailsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Статус"
         label.textColor = AppColor.mediumGray.uiColor
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
@@ -32,7 +32,7 @@ final class OfferDetailsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Продажа"
         label.textColor = AppColor.darkGray.uiColor
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.font = AppFont.reqular.s14()
         label.textAlignment = .right
         return label
     }()

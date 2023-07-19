@@ -37,7 +37,7 @@ final class RegistrationPasswordViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
@@ -56,7 +56,7 @@ final class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
@@ -93,7 +93,7 @@ final class RegistrationPasswordViewController: UIViewController {
         edgesForExtendedLayout = []
         self.navigationItem.title = "Придумайте пароль"
         self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+            UIBarButtonItem(image: AppImage.arrow_back.uiImage,
                             style: .plain,
                             target: self,
                             action: #selector(backButtonDidPress))

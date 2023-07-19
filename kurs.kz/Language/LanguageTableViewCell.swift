@@ -15,7 +15,7 @@ class LanguageTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "kazakh"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.reqular.s16()
         label.textColor = AppColor.darkGray.uiColor
         return label
     }()
@@ -23,7 +23,7 @@ class LanguageTableViewCell: UITableViewCell {
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "selectCity")
+        imageView.image = AppImage.select_city.uiImage
         
         return imageView
     }()
@@ -67,8 +67,8 @@ class LanguageTableViewCell: UITableViewCell {
     public func confgireCell(language: String, isSelected: Bool) {
         
         iconImageView.image = isSelected
-        ? UIImage(named: "selectedCity")
-        : UIImage(named: "selectCity")
+        ? AppImage.selected_city.uiImage
+        : AppImage.select_city.uiImage
         
         titleLabel.text = language
     }

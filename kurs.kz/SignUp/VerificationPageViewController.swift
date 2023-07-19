@@ -15,7 +15,7 @@ final class VerificationPageViewController: UIViewController {
         let label = UILabel()
         label.text = "Мы отправили письмо с кодом на ваш номер"
         label.textColor = AppColor.mediumGray.uiColor
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
@@ -35,7 +35,7 @@ final class VerificationPageViewController: UIViewController {
         label.text = "Еще не получили код подтверждения?"
         label.textColor = AppColor.darkGray.uiColor
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = AppFont.reqular.s14()
         label.textAlignment = .center
         return label
     }()
@@ -43,7 +43,7 @@ final class VerificationPageViewController: UIViewController {
     private let resendCodeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить код повторно", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s14()
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.textColor = AppColor.primaryBlue.uiColor
         return button
@@ -54,7 +54,7 @@ final class VerificationPageViewController: UIViewController {
         button.backgroundColor = AppColor.primaryBlue.uiColor
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         button.addTarget(self, action: #selector(verifyButtonDidPress), for: .touchUpInside)
         button.layer.cornerRadius = 12.0
         return button
@@ -75,7 +75,7 @@ final class VerificationPageViewController: UIViewController {
         edgesForExtendedLayout = []
         self.navigationItem.title = "OTP"
         self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
                             style: .plain,
                             target: self,
                             action: #selector(backButtonDidPressed))

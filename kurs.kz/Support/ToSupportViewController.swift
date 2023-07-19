@@ -14,7 +14,7 @@ final class ToSupportViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Написать в поддержку"
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = AppFont.bold.s20()
         label.textAlignment = .center
         label.textColor = AppColor.darkGray.uiColor
         return label
@@ -27,8 +27,8 @@ final class ToSupportViewController: UIViewController {
     }()
     
     private let supportOptions: [(image: UIImage?, title: String)] = [
-        (UIImage(named: "telegram_icon"), "Telegram"),
-        (UIImage(named: "whatsapp_icon"), "WhatsApp")
+        (AppImage.telegram_icon.uiImage, "Telegram"),
+        (AppImage.whatsapp_icon.uiImage, "WhatsApp")
     ]
     
     // MARK: - Lifecycle
@@ -46,6 +46,7 @@ final class ToSupportViewController: UIViewController {
         view.backgroundColor = AppColor.backgroundGray.uiColor
         view.addSubview(titleLabel)
         view.addSubview(supportTableView)
+        supportTableView.backgroundColor = AppColor.backgroundGray.uiColor
     }
     
     // MARK: - SetupConstraints()

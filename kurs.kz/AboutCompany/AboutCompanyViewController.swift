@@ -15,7 +15,7 @@ final class AboutCompanyViewController: UIViewController {
     private let aboutCompanyLabel: UILabel = {
         let label = UILabel()
         label.text = "О компании"
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = AppFont.semibold.s20()
         label.textAlignment = .center
         return label
     }()
@@ -29,7 +29,7 @@ final class AboutCompanyViewController: UIViewController {
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         """
-        textView.font = .systemFont(ofSize: 18)
+        textView.font = AppFont.reqular.s14()
         textView.textAlignment = .justified
         textView.isEditable = false
         textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero

@@ -118,7 +118,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font =  AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)

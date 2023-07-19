@@ -28,7 +28,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         label.text = "Вы должны совершить обмен \nв течении указанного времени"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
@@ -36,7 +36,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         let label = UILabel()
         label.text = "\(timeFormatter(timeRemaining))"
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        label.font = AppFont.semibold.s18()
         return label
     }()
     
@@ -71,8 +71,8 @@ final class ClientOfferDetailsViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
         button.setTitle("Отменить", for: .normal)
-        button.setTitleColor( UIColor(named: "resetButtonTextColor"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     

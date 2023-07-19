@@ -14,7 +14,7 @@ final class MainPageViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "onboardingImage")
+        imageView.image = AppImage.on_boarding_image.uiImage
         return imageView
     }()
 
@@ -22,7 +22,7 @@ final class MainPageViewController: UIViewController {
         let label = UILabel()
         label.text =
             "Предлагай свой курс на\n валюту и получай \n актуальные валютные \n курсы в твоем городе"
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = AppFont.bold.s24()
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = AppColor.darkGray.uiColor
@@ -33,6 +33,7 @@ final class MainPageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
         button.backgroundColor = AppColor.primaryBlue.uiColor
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(signInButtonDidPress), for: .touchUpInside)
@@ -46,6 +47,7 @@ final class MainPageViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setTitle("Зарегистрироватся", for: .normal)
         button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
         button.addTarget(self, action: #selector(signUpButtonDidPress), for: .touchUpInside)
         return button
     }()
