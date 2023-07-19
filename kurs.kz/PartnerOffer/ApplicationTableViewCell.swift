@@ -12,6 +12,10 @@ final class ApplicationTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: ApplicationTableViewCell.self)
     
+    var acceptButtonAction : (() -> Void)?
+    var cancelButtonAction : (() -> Void)?
+    var offerYourCurrencyButtonAction : (() -> Void)?
+    
     // MARK: - UI
     private lazy var partnerNameLabel: UILabel = {
         let label = UILabel()
@@ -102,6 +106,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.setTitle("Отклонить", for: .normal)
         button.setTitleColor(UIColor(named: "cancelButtonTitleColor"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        button.addTarget(self, action: #selector(cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -111,6 +116,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.setTitle("Принять", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        button.addTarget(self, action: #selector(acceptButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -129,6 +135,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.setTitle("Предложить свой курс", for: .normal)
         button.setTitleColor(UIColor(named: "offerCurrencyTextColor"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        button.addTarget(self, action: #selector(offerYourCurrencyButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -215,5 +222,18 @@ final class ApplicationTableViewCell: UITableViewCell {
             make.width.equalTo(319)
             make.height.equalTo(42)
         }
+    }
+    
+    // MARK: - Actions
+    @objc private func acceptButtonDidPressed() {
+        acceptButtonAction?()
+    }
+    
+    @objc private func cancelButtonDidPressed() {
+        cancelButtonAction?()
+    }
+    
+    @objc private func offerYourCurrencyButtonDidPressed() {
+        offerYourCurrencyButtonAction?()
     }
 }

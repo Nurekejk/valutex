@@ -103,6 +103,36 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
                 fatalError("Could not cast to ApplicationTableViewCell")
             }
             cell.selectionStyle = .none
+            cell.acceptButtonAction = { [unowned self] in
+                  let alert = UIAlertController(title: "Принято!",
+                                                message: "Вы успешно приняли запрос.",
+                                                preferredStyle: .alert)
+                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                  alert.addAction(okAction)
+                        
+                  self.present(alert, animated: true, completion: nil)
+            }
+            
+            cell.cancelButtonAction = { [unowned self] in
+                  let alert = UIAlertController(title: "Отменено!",
+                                                message: "Вы отменили запрос.",
+                                                preferredStyle: .alert)
+                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                  alert.addAction(okAction)
+                        
+                  self.present(alert, animated: true, completion: nil)
+            }
+            
+            cell.offerYourCurrencyButtonAction = { [unowned self] in
+                  let alert = UIAlertController(title: "Вы предложили свой курс!",
+                                                message: "",
+                                                preferredStyle: .alert)
+                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                  alert.addAction(okAction)
+                        
+                  self.present(alert, animated: true, completion: nil)
+            }
+            
             return cell
         }
     }
@@ -133,5 +163,15 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SectionNumber.zero.rawValue {
+            navigationController?.pushViewController(EmptyViewController(),
+                                                                 animated: true)
+        } else if indexPath.section == SectionNumber.one.rawValue {
+            navigationController?.pushViewController(EmptyViewController(),
+                                                                 animated: true)
+        }
     }
 }
