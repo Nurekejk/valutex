@@ -114,21 +114,37 @@ final class CalculatorTableViewCell: UITableViewCell {
                make.trailing.equalToSuperview().offset(-24)
                make.bottom.equalToSuperview().offset(-8)
            }
-
            migLogoImage.snp.makeConstraints { make in
-               make.top.equalToSuperview().offset(16)
-               make.leading.equalToSuperview().offset(16)
+               make.top.equalToSuperview().offset(17.5)
+               make.leading.equalToSuperview().offset(12)
            }
-
            titleLabel.snp.makeConstraints { make in
-               make.top.equalTo(titleLabel.snp.bottom).offset(8)
-               make.leading.equalToSuperview().offset(16)
-               make.trailing.equalToSuperview().offset(-40)
-
+               make.top.equalTo(titleLabel.snp.bottom).offset(12)
+               make.leading.equalTo(migLogoImage.snp.trailing).offset(16)
            }
            starImage.snp.makeConstraints { make in
-               make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
-               make.trailing.equalToSuperview().offset(-16)
+               make.top.equalToSuperview().offset(15)
+               make.leading.equalTo(titleLabel.snp.trailing).offset(8)
+           }
+           rateLabel.snp.makeConstraints { make in
+               make.top.equalToSuperview().offset(13.5)
+               make.leading.equalTo(starImage.snp.trailing).offset(4)
+           }
+           addressLabel.snp.makeConstraints { make in
+               make.top.equalTo(titleLabel.snp.bottom).offset(2)
+               make.leading.equalTo(migLogoImage.snp.trailing).offset(16)
+           }
+           kmLabel.snp.makeConstraints { make in
+               make.top.equalToSuperview().offset(33.5)
+               make.leading.equalTo(addressLabel.snp.trailing).offset(8)
+           }
+           dateLabel.snp.makeConstraints { make in
+               make.top.equalTo(kmLabel.snp.bottom).offset(8)
+               make.leading.equalToSuperview().offset(12)
+           }
+           amountLabel.snp.makeConstraints { make in
+               make.top.equalTo(kmLabel.snp.bottom).offset(8)
+               make.trailing.equalToSuperview().offset(-12)
            }
        }
    }
