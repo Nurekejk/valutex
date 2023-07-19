@@ -105,7 +105,9 @@ final class RegistrationPasswordViewController: UIViewController {
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
         enterPasswordButton.layer.cornerRadius = 8
+        enterPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
+        repeatPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         passwordStackView.layer.cornerRadius = 8
     }
     

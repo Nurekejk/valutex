@@ -37,7 +37,7 @@ final class SelectLanguageViewController: UIViewController {
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -50,7 +50,7 @@ final class SelectLanguageViewController: UIViewController {
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -63,7 +63,7 @@ final class SelectLanguageViewController: UIViewController {
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()

@@ -108,7 +108,7 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        phoneTextField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
+        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
         phoneTextField.layer.borderWidth = 1
         phoneTextField.layer.cornerRadius = 8
         continueButton.layer.cornerRadius = 12

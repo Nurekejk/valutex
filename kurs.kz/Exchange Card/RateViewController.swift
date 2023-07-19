@@ -2,18 +2,6 @@ import UIKit
 
 final class RateViewController: UIViewController, UITextViewDelegate {
     
-    private let borderGrayColor = CGColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
     // MARK: - UI
     private var starButtons = [StarButton]()
     
@@ -90,14 +78,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         super.viewDidLayoutSubviews()
         reviewTextView.layer.cornerRadius = 8
         reviewTextView.layer.borderWidth = 1
-        reviewTextView.layer.borderColor = borderGrayColor
+        reviewTextView.layer.borderColor = AppColor.lightGray.cgColor
         continueButton.layer.cornerRadius = 12
         entireStackView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
         view.addSubview(entireStackView)
         
         [starStackView, reviewLabel, borderView,
@@ -105,8 +92,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         addButtonsToStarStackView()
         
-        view.backgroundColor = backgroundGrayColor
-        borderView.backgroundColor = backgroundGrayColor
+        view.backgroundColor = AppColor.backgroundGray.uiColor
+        borderView.backgroundColor = AppColor.backgroundGray.uiColor
         continueButton.backgroundColor = AppColor.primaryBlue.uiColor
         entireStackView.backgroundColor = .white
         

@@ -23,7 +23,7 @@ final class VerificationPageViewController: UIViewController {
         let codeField = CHIOTPFieldOne()
         codeField.numberOfDigits = 6
         codeField.spacing = 8
-        codeField.boxBackgroundColor = UIColor(named: "otpCodeFieldBoxColor")!
+        codeField.boxBackgroundColor = AppColor.backgroundGray.uiColor
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
         codeField.activeShadowColor = AppColor.primaryBlue.uiColor

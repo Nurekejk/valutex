@@ -157,6 +157,13 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.backgroundColor = AppColor.backgroundGray.uiColor
         continueButton.backgroundColor = AppColor.primaryBlue.uiColor
     }
+    
+    override func viewDidLayoutSubviews() {
+        surnameTextField.layer.borderColor = AppColor.lightGray.cgColor
+        nameTextField.layer.borderColor = AppColor.lightGray.cgColor
+        patronymicTextField.layer.borderColor = AppColor.lightGray.cgColor
+        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
+    }
     // MARK: - Constraints:
     private func setupConstraints() {
 
