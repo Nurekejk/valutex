@@ -44,6 +44,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Som Exchange"
         label.font = .boldSystemFont(ofSize: 14)
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
     
@@ -51,6 +52,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
         let label = UITextField()
         label.text = "г.Алматы, ул.Aуэзова 14"
         label.font = .systemFont(ofSize: 12)
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
     

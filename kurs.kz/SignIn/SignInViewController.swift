@@ -16,6 +16,7 @@ final class SignInViewController: UIViewController {
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
         label.text = "Вход"
+        label.textColor = AppColor.darkGray.uiColor
         label.font = .boldSystemFont(ofSize: 28)
         return label
     }()
@@ -31,7 +32,8 @@ final class SignInViewController: UIViewController {
         textField.titleColor = UIColor.lightGray
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.selectedTitleColor = UIColor.lightGray
-
+        textField.textColor = AppColor.darkGray.uiColor
+        
         textField.keyboardType = .phonePad
         textField.lineView.isHidden = true
         return textField
@@ -49,6 +51,7 @@ final class SignInViewController: UIViewController {
         textField.titleColor = UIColor.lightGray
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.selectedTitleColor = UIColor.lightGray
+        textField.textColor = AppColor.darkGray.uiColor
 
         textField.keyboardType = .phonePad
         textField.lineView.isHidden = true

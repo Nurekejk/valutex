@@ -16,6 +16,7 @@ final class ToSupportViewController: UIViewController {
         label.text = "Написать в поддержку"
         label.font = .boldSystemFont(ofSize: 20)
         label.textAlignment = .center
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
     

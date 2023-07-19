@@ -25,6 +25,7 @@ final class MainPageViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 

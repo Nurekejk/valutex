@@ -34,6 +34,7 @@ final class AboutCompanyViewController: UIViewController {
         textView.isEditable = false
         textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
+        textView.textColor = AppColor.darkGray.uiColor
         return textView
     }()
     

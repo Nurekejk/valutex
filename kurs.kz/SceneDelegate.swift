@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: ClientOfferDetailsViewController())
+                UINavigationController(rootViewController: AboutCompanyViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())

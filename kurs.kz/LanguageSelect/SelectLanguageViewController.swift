@@ -25,6 +25,7 @@ final class SelectLanguageViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 
@@ -32,7 +33,7 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Қазақша", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
@@ -45,7 +46,7 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Русский", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
@@ -58,7 +59,7 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("English", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5

@@ -62,6 +62,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
@@ -70,6 +71,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
