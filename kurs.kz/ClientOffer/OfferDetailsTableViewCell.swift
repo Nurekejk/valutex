@@ -23,7 +23,7 @@ final class OfferDetailsTableViewCell: UITableViewCell {
     private lazy var detailTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Статус"
-        label.textColor = UIColor(named: "detailTypeLabelColor")
+        label.textColor = AppColor.mediumGray.uiColor
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         return label
     }()

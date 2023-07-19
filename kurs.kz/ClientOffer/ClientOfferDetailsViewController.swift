@@ -105,7 +105,7 @@ final class ClientOfferDetailsViewController: UIViewController {
 
         resetButton.layer.cornerRadius = 12.0
         resetButton.layer.borderWidth = 1.0
-        resetButton.layer.borderColor = UIColor(named: "resetButtonBorderColor")?.cgColor
+        resetButton.layer.borderColor = AppColor.lightGray2.cgColor
         
         detailsStackView.layer.cornerRadius = 8.0
     }
