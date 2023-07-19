@@ -215,6 +215,7 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -235,7 +236,6 @@ final class ExchangeListViewController: UIViewController {
         nearbyFilterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
-        setupNavigationBar()
     }
     
     // MARK: - Setup Views
