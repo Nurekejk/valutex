@@ -20,19 +20,6 @@ final class OfferSellViewController: UIViewController {
     
     var mode: ControllerMode
     
-    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
-                                        "Евро" : ("euro_flag", "EUR", "€"),
-                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
-                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
-                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
-
-    private let currenciesArray = [Currency(flag: "🇰🇿",
-                                            russianName: "тенге",
-                                            symbol: "₸",
-                                            code: "KZT",
-                                            kazakhName: "теңге",
-                                            englishName: "Tenge")]
-    
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
         green: 156.0 / 255.0,
