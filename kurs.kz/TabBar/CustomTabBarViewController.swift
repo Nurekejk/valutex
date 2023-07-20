@@ -21,16 +21,16 @@ final class CustomTabBarViewController: UITabBarController {
     // MARK: - Setup Views
     func setupTabs() {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
-                                    selectedImage: UIImage(named: "home_selected")!,
-                                    image: UIImage(named: "home_gray")!,
+                                    selectedImage: AppImage.home_selected.uiImage!,
+                                    image: AppImage.home_gray.uiImage!,
                                     viewController: EmptyViewController())
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
-                                     selectedImage: UIImage(named: "money_selected")!,
-                                     image: UIImage(named: "money_gray")!,
+                                     selectedImage: AppImage.money_selected.uiImage!,
+                                     image: AppImage.money_gray.uiImage!,
                                      viewController: EmptyViewController())
         let other = createNavigation(mainTitle: "", title: "Еще",
-                                     selectedImage: UIImage(named: "other_selected")!,
-                                     image: UIImage(named: "other_gray")!,
+                                     selectedImage: AppImage.other_selected.uiImage!,
+                                     image: AppImage.other_gray.uiImage!,
                                      viewController: EmptyViewController())
         self.setViewControllers([home,money,other], animated: true)
     }

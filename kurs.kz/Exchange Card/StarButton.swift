@@ -20,8 +20,8 @@ final class StarButton: UIButton {
     }
 
     func setupButton() {
-        setImage(UIImage(named: "gray_star"), for: .normal)
-        setImage(UIImage(named: "golden_star"), for: .selected)
+        setImage(AppImage.gray_star.uiImage, for: .normal)
+        setImage(AppImage.golden_star.uiImage, for: .selected)
         imageView?.contentMode = .scaleToFill
     }
 }
