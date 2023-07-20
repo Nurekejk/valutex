@@ -349,8 +349,7 @@ extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewC
     
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
-                                         newCurrencyLabel: getCurrencyName(currency,
-                                                                           language: selectedLanguage))
+                                         newCurrencyLabel: currency.code)
     }
 
  }
