@@ -13,6 +13,7 @@
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		71564AB22A6775DE00979090 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB12A6775DE00979090 /* CalculatorViewController.swift */; };
 		71564AB42A67775B00979090 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */; };
+		71564AB62A67DF8900979090 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -59,6 +60,7 @@
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		71564AB12A6775DE00979090 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewCell.swift; sourceTree = "<group>"; };
+		71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewHeaderView.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				71564AB12A6775DE00979090 /* CalculatorViewController.swift */,
 				71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */,
+				71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
+				71564AB62A67DF8900979090 /* CalculatorTableViewHeaderView.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
