@@ -29,13 +29,13 @@ final class AboutCompanyViewController: UIViewController {
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         """
-        textView.font = AppFont.reqular.s14()
+        textView.font = AppFont.regular.s14()
         textView.textAlignment = .justified
         textView.isEditable = false
         textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
-        textView.textColor = AppColor.darkGray.uiColor
-        textView.backgroundColor = AppColor.backgroundGray.uiColor
+        textView.textColor = AppColor.gray100.uiColor
+        textView.backgroundColor = AppColor.gray10.uiColor
         return textView
     }()
     
@@ -51,7 +51,7 @@ final class AboutCompanyViewController: UIViewController {
     // MARK: - Setup
     
     private func setupNavigationBar() {
-        self.view.backgroundColor = AppColor.backgroundGray.uiColor
+        self.view.backgroundColor = AppColor.gray10.uiColor
         self.title = "О компании"
     }
         

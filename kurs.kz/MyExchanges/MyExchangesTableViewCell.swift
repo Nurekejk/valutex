@@ -44,15 +44,15 @@ final class MyExchangesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Som Exchange"
         label.font = AppFont.bold.s14()
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = AppFont.reqular.s12()
-        label.textColor = AppColor.darkGray.uiColor
+        label.font = AppFont.regular.s12()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -79,7 +79,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
             containerView.addSubview($0)
         }
         
-        contentView.backgroundColor = AppColor.backgroundGray.uiColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }

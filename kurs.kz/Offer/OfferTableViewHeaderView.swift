@@ -41,8 +41,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "Продать"
-        textField.titleColor = AppColor.mediumGray.uiColor
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!
@@ -65,8 +65,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "Получить"
-        textField.titleColor = AppColor.mediumGray.uiColor
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!
@@ -89,8 +89,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "По курсу"
-        textField.titleColor = AppColor.mediumGray.uiColor
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!

@@ -16,7 +16,7 @@ final class SignInViewController: UIViewController {
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
         label.text = "Вход"
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         label.font = AppFont.bold.s28()
         return label
     }()
@@ -25,14 +25,14 @@ final class SignInViewController: UIViewController {
         let textField = CustomSkyFloatingLabelTextField()
 
         textField.placeholder = "Телефон"
-        textField.placeholderColor = AppColor.mediumGray.uiColor
-        textField.placeholderFont = AppFont.reqular.s16()
+        textField.placeholderColor = AppColor.gray50.uiColor
+        textField.placeholderFont = AppFont.regular.s16()
 
         textField.title = "Телефон"
         textField.titleColor = UIColor.lightGray
-        textField.titleLabel.font = AppFont.reqular.s12()
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.titleLabel.font = AppFont.regular.s12()
+        textField.selectedTitleColor = AppColor.gray50.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         
         textField.keyboardType = .phonePad
         textField.lineView.isHidden = true
@@ -44,14 +44,14 @@ final class SignInViewController: UIViewController {
         let textField = CustomSkyFloatingLabelTextField()
 
         textField.placeholder = "Пароль"
-        textField.placeholderColor = AppColor.mediumGray.uiColor
-        textField.placeholderFont = AppFont.reqular.s16()
+        textField.placeholderColor = AppColor.gray50.uiColor
+        textField.placeholderFont = AppFont.regular.s16()
 
         textField.title = "Пароль"
         textField.titleColor = UIColor.lightGray
-        textField.titleLabel.font = AppFont.reqular.s12()
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.titleLabel.font = AppFont.regular.s12()
+        textField.selectedTitleColor = AppColor.gray50.uiColor
+        textField.textColor = AppColor.gray100.uiColor
 
         textField.keyboardType = .phonePad
         textField.lineView.isHidden = true
@@ -62,8 +62,8 @@ final class SignInViewController: UIViewController {
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Забыли пароль", for: .normal)
-        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
-        button.titleLabel?.font = AppFont.reqular.s16()
+        button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -74,7 +74,7 @@ final class SignInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = AppFont.bold.s16()
         button.clipsToBounds = true
-        button.backgroundColor = AppColor.primaryBlue.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -82,8 +82,8 @@ final class SignInViewController: UIViewController {
     private lazy var signUpAskLabel: UILabel = {
         let label = UILabel()
         label.text = "Вы еще не зарегистрированы?"
-        label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
 
@@ -92,8 +92,8 @@ final class SignInViewController: UIViewController {
         let titleString = NSAttributedString(string: "Зарегистрироваться",
                                              attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setAttributedTitle(titleString, for: .normal)
-        button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
-        button.titleLabel?.font = AppFont.reqular.s16()
+        button.setTitleColor(AppColor.primaryBase.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -112,10 +112,10 @@ final class SignInViewController: UIViewController {
 
         phoneTextField.layer.cornerRadius = 8
         phoneTextField.layer.borderWidth = 1
-        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
+        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = AppColor.lightGray.cgColor
+        passwordTextField.layer.borderColor = AppColor.grayWhite.cgColor
         signInButton.layer.cornerRadius = 12
 
     }

@@ -16,7 +16,7 @@ final class ToSupportViewController: UIViewController {
         label.text = "Написать в поддержку"
         label.font = AppFont.bold.s20()
         label.textAlignment = .center
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -43,10 +43,10 @@ final class ToSupportViewController: UIViewController {
     
     // MARK: - SetupViews
     private func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(titleLabel)
         view.addSubview(supportTableView)
-        supportTableView.backgroundColor = AppColor.backgroundGray.uiColor
+        supportTableView.backgroundColor = AppColor.gray10.uiColor
     }
     
     // MARK: - SetupConstraints()
