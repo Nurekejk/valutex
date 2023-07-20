@@ -347,7 +347,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
 }
 
     // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
- extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
+extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
 
     var panScrollable: UIScrollView? {
         return nil
@@ -358,16 +358,11 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     var longFormHeight: PanModalHeight {
         return .maxHeightWithTopInset(40)
     }
-     
-     func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [Currency]) {
-         let currency: Currency
-//         if !isSearching {
-//             currency = currenciesKeyArray[selectedIndexPath.row]
-//         } else {
-             currency = searchArray[selectedIndexPath.row]
-//         }
-         navigationBarView.changeCurrency(newFlagImage: currency.flag,
-                                          newCurrencyLabel: getCurrencyName(currency,
-                                                                            language: selectedLanguage))
-     }
+    
+    func currencyDidSelect(currency: Currency) {
+        navigationBarView.changeCurrency(newFlagImage: currency.flag,
+                                         newCurrencyLabel: getCurrencyName(currency,
+                                                                           language: selectedLanguage))
+    }
+
  }

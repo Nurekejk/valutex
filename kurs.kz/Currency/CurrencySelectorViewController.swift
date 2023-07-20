@@ -145,10 +145,10 @@ final class CurrencySelectorViewController: UIViewController {
     @objc func currencySelected() {
         if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
         let senderViewController = delegate {
-            senderViewController.currencyDidSelect(selectedIndexPath:
-                                                    selectedIndexPath,
-                                                   isSearching: isSearching,
-                                                   searchArray: searchArray)
+            let selectedCurrency = isSearching ?
+            searchArray[selectedIndexPath.row] : currenciesArray[selectedIndexPath.row]
+            
+            senderViewController.currencyDidSelect(currency: selectedCurrency)
             dismiss(animated: true, completion: nil)
         }
     }
@@ -226,7 +226,5 @@ extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
 }
 // MARK: - Protocol
 protocol CurrencySelectorViewControllerDelegate: AnyObject {
-    func currencyDidSelect(selectedIndexPath: IndexPath,
-                           isSearching: Bool,
-                           searchArray: [Currency])
+    func currencyDidSelect(currency: Currency)
 }

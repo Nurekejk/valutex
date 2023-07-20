@@ -13,7 +13,7 @@ final class OfferSellCurrencyView: UIView {
     public func changeCurrency (newFlagImage: String,
                                 newCurrencyLabel: String,
                                 newCurrencySignLabel: String) {
-        flagImageView.image = UIImage(named: newFlagImage)
+        flagIconLabel.text = newFlagImage
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
     }
@@ -28,8 +28,8 @@ final class OfferSellCurrencyView: UIView {
         return view
     }()
     
-    private let flagImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let flagIconLabel: UILabel = {
+        let imageView = UILabel()
         return imageView
     }()
     
@@ -83,7 +83,7 @@ final class OfferSellCurrencyView: UIView {
     // MARK: - Setup Views
     private func setupViews() {
         self.addSubview(containerView)
-        [flagImageView, currencyLabel,
+        [flagIconLabel, currencyLabel,
          selectCurrencyButton, borderView,
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
         borderView.backgroundColor = .systemGray5
@@ -95,13 +95,13 @@ final class OfferSellCurrencyView: UIView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        flagImageView.snp.makeConstraints { make in
+        flagIconLabel.snp.makeConstraints { make in
             make.height.equalTo(16)
             make.leading.equalTo(containerView.snp.leading).offset(16)
             make.top.equalTo(containerView.snp.top).offset(16)
         }
         currencyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(flagImageView.snp.trailing).offset(16)
+            make.leading.equalTo(flagIconLabel.snp.trailing).offset(16)
             make.top.equalTo(containerView.snp.top).offset(14)
         }
         selectCurrencyButton.snp.makeConstraints { make in

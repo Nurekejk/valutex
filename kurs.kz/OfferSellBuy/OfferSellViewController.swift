@@ -58,7 +58,7 @@ final class OfferSellViewController: UIViewController {
         alpha: 1)
 
     // MARK: - UI
-    
+    private lazy var modalScreen = CurrencySelectorViewController()
     private let containerView: UIView = {
         let view = UIView()
         return view
@@ -119,10 +119,10 @@ final class OfferSellViewController: UIViewController {
         setupViews()
         setupConstraints()
         
-        sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
+        sellCurrencyView.changeCurrency(newFlagImage: "🇺🇸",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
-        exchangeRateCurrencyView.changeCurrency(newFlagImage: "kzt_flag",
+        exchangeRateCurrencyView.changeCurrency(newFlagImage: "🇰🇿",
                                                 newCurrencyLabel: "KZT",
                                                 newCurrencySignLabel: "₸" )
     }
@@ -185,8 +185,8 @@ final class OfferSellViewController: UIViewController {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(430)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(116)
+            make.width.equalTo(343)
         }
         sellLabel.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading).offset(16)
@@ -237,6 +237,13 @@ final class OfferSellViewController: UIViewController {
 // MARK: - CurrencySelectorViewControllerDelegate
 extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
     
+    func currencyDidSelect(currency: Currency) {
+        sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
+                                        newCurrencyLabel: getCurrencyName(currency,
+                                                                          language: selectedLanguage),
+                                        newCurrencySignLabel: currency.symbol)
+    }
+
     func calculateOffer(sender: UITextField) {
         print(sender.tag)
         if sender.tag == 1 {
@@ -262,24 +269,7 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
     }
 
     func selectorButtonPressed() {
-        let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
-    
-    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [Currency]) {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        let currency: Currency
-        if !isSearching {
-            currency = currenciesArray[selectedIndexPath.row]
-        } else {
-            currency = searchArray[selectedIndexPath.row]
-        }
-        sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
-                                        newCurrencyLabel: getCurrencyName(currency,
-                                                                          language: selectedLanguage),
-                                        newCurrencySignLabel: currency.symbol)
-    }
-    
 }
