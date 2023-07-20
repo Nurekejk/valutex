@@ -23,11 +23,11 @@ final class CustomTabBarViewController: UITabBarController {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: AppImage.home_selected.uiImage!,
                                     image: AppImage.home_gray.uiImage!,
-                                    viewController: EmptyViewController())
+                                    viewController: OfferSellBuySegmentedController())
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                      selectedImage: AppImage.money_selected.uiImage!,
                                      image: AppImage.money_gray.uiImage!,
-                                     viewController: EmptyViewController())
+                                     viewController: OfferViewController())
         let other = createNavigation(mainTitle: "", title: "Еще",
                                      selectedImage: AppImage.other_selected.uiImage!,
                                      image: AppImage.other_gray.uiImage!,
