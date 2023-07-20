@@ -23,11 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-            UINavigationController(rootViewController: OfferSellBuySegmentedController())
+                UINavigationController(rootViewController: ExchangerScreenViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
         }
+
         window?.makeKeyAndVisible()
     }
 }
