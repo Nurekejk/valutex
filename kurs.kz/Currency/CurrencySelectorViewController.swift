@@ -24,6 +24,12 @@ final class CurrencySelectorViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
+    private var currenciesArray: [OfferSellCurrency] = [] {
+        didSet {
+            self.currenciesTableView.reloadData()
+        }
+    }
+    
     private let currenciesDictionary = ["Доллар США" : "usd_flag",
                                         "Евро" : "euro_flag",
                                         "Рос.рубль" : "ru_flag",
