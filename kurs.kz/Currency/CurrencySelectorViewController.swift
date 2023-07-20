@@ -87,6 +87,7 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        currencyManager.delegate = self
         currencyManager.fetchCurrencies()
     }
     
@@ -165,7 +166,6 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
                                                     for: indexPath) as? CurrencySelectorTableViewCell {
             let tableCurrencies = isSearching ?
             searchArray[indexPath.row] : currenciesArray[indexPath.row]
-            
             cell.configureCell(currency: getCurrencyName(tableCurrencies,
                                                          language: selectedLanguage),
                                flagIcon: tableCurrencies.flag)
@@ -217,8 +217,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
 }
 extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
-        let currenciesArray = currency
-        print(currenciesArray)
+        currenciesArray = currency
     }
     
     func didFailWithError(_ error: Error) {
