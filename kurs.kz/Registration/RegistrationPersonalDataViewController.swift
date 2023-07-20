@@ -12,18 +12,6 @@ import SkyFloatingLabelTextField
 final class RegistrationPersonalDataViewController: UIViewController {
     
     // MARK: - UI
-    
-    private let registrationGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let registrationBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -59,9 +47,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Фамилия"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Фамилия"
+        textField.textColor = AppColor.darkGray.uiColor
         return textField
     }()
     
@@ -77,9 +67,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Имя"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Имя"
+        textField.textColor = AppColor.darkGray.uiColor
         return textField
     }()
     
@@ -95,9 +87,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Отчество"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Отчество"
+        textField.textColor = AppColor.darkGray.uiColor
         return textField
     }()
     
@@ -113,16 +107,18 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = .gray
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.title = "Телефон"
+        textField.titleColor = AppColor.mediumGray.uiColor
         textField.placeholder = "Телефон"
+        textField.textColor = AppColor.darkGray.uiColor
         return textField
     }()
     
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font =  AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
@@ -162,8 +158,15 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(containerView)
         view.addSubview(stackView)
         
-        view.backgroundColor = registrationGrayColor
-        continueButton.backgroundColor = registrationBlueColor
+        view.backgroundColor = AppColor.backgroundGray.uiColor
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
+    }
+    
+    override func viewDidLayoutSubviews() {
+        surnameTextField.layer.borderColor = AppColor.lightGray.cgColor
+        nameTextField.layer.borderColor = AppColor.lightGray.cgColor
+        patronymicTextField.layer.borderColor = AppColor.lightGray.cgColor
+        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
     }
     // MARK: - Constraints:
     private func setupConstraints() {
