@@ -24,7 +24,7 @@ final class CurrencySelectorViewController: UIViewController {
         blue: 249.0 / 255.0,
         alpha: 1)
     
-    private var currenciesArray: [OfferSellCurrency] = [] {
+    private var currenciesArray: [Currency] = [] {
         didSet {
             self.currenciesTableView.reloadData()
         }
@@ -222,6 +222,18 @@ extension CurrencySelectorViewController: PanModalPresentable {
     var longFormHeight: PanModalHeight {
         return .maxHeightWithTopInset(40)
     }
+}
+extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
+    func currencyDidUpdate(_ currency: Currency) {
+        let newArray = currency
+        print(newArray)
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print(error)
+    }
+    
+    
 }
 // MARK: - Protocol
 protocol CurrencySelectorViewControllerDelegate: AnyObject {
