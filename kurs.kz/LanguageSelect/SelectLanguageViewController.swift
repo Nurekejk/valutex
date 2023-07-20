@@ -15,16 +15,17 @@ final class SelectLanguageViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "selectlanguage")
+        imageView.image = AppImage.select_language.uiImage
         return imageView
     }()
 
     private let label: UILabel = {
         let label = UILabel()
         label.text = "Выберите язык\nприложения"
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = AppFont.bold.s24()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 
@@ -32,11 +33,11 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Қазақша", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.bold.s20()
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -45,11 +46,11 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Русский", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.bold.s20()
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -58,11 +59,11 @@ final class SelectLanguageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("English", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        button.setTitleColor(AppColor.darkGray.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.bold.s20()
         button.layer.cornerRadius = 20
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.layer.borderColor = AppColor.lightGray.cgColor
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
         return button
     }()

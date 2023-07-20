@@ -37,7 +37,7 @@ final class RegistrationPasswordViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
@@ -56,12 +56,13 @@ final class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
@@ -70,6 +71,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
@@ -91,7 +93,7 @@ final class RegistrationPasswordViewController: UIViewController {
         edgesForExtendedLayout = []
         self.navigationItem.title = "Придумайте пароль"
         self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image: UIImage(named: "arrow_back"),
+            UIBarButtonItem(image: AppImage.arrow_back.uiImage,
                             style: .plain,
                             target: self,
                             action: #selector(backButtonDidPress))
@@ -103,7 +105,9 @@ final class RegistrationPasswordViewController: UIViewController {
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
         enterPasswordButton.layer.cornerRadius = 8
+        enterPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
+        repeatPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         passwordStackView.layer.cornerRadius = 8
     }
     
@@ -117,12 +121,12 @@ final class RegistrationPasswordViewController: UIViewController {
         enterPasswordTextField.rightView = enterPasswordButton
         repeatPasswordTextField.rightView = repeatPasswordButton
         
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         elementsStackView.backgroundColor = .white
         passwordStackView.backgroundColor = .white
-        textLabel.textColor = .systemGray3
+        textLabel.textColor = AppColor.mediumGray.uiColor
         continueButton.setTitleColor(.white, for: .normal)
-        continueButton.backgroundColor = .cyan
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
         containerView.backgroundColor = .white
     }
     

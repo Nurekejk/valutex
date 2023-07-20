@@ -24,33 +24,35 @@ final class MyExchangesTableViewCell: UITableViewCell {
     private lazy var companyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "some_exchange")
+        imageView.image = AppImage.some_exchange.uiImage
         return imageView
     }()
 
     private lazy var editButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "edit"), for: .normal)
+        button.setImage(AppImage.edit.uiImage, for: .normal)
         return button
     }()
 
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "trash"), for: .normal)
+        button.setImage(AppImage.trash.uiImage, for: .normal)
         return button
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Som Exchange"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.reqular.s12()
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
     
@@ -77,13 +79,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
             containerView.addSubview($0)
         }
         
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.backgroundGray.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }

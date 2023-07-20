@@ -18,11 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        
-        let exchangerScreenVC = ExchangerScreenViewController()
-        let navigationCantroller = UINavigationController(rootViewController: exchangerScreenVC)
-        
-        window?.rootViewController = navigationCantroller
+
+        let isAutorized = true
+
+        if isAutorized {
+            window?.rootViewController =
+                UINavigationController(rootViewController: PartnerOfferViewController())
+        } else {
+            window?.rootViewController =
+                UINavigationController(rootViewController: SelectLanguageViewController())
+        }
         window?.makeKeyAndVisible()
     }
 }
