@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appearance.configureWithOpaqueBackground()
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        let googleMapsAPIKey = "AIzaSyA5vHwbUueRGKvRvVB26tcBrwXtJMjElQ8"
+        GMSServices.provideAPIKey(googleMapsAPIKey)
         
         return true
     }
