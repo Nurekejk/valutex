@@ -47,11 +47,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Фамилия"
-        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Фамилия"
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
     
@@ -67,11 +67,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Имя"
-        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Имя"
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
     
@@ -87,11 +87,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Отчество"
-        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray100.uiColor
         textField.placeholder = "Отчество"
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
     
@@ -107,11 +107,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                 return text
             }
         }
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Телефон"
-        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Телефон"
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
     
@@ -159,14 +159,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(stackView)
         
         view.backgroundColor = AppColor.gray10.uiColor
-        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
+        continueButton.backgroundColor = AppColor.primaryBase.uiColor
     }
     
     override func viewDidLayoutSubviews() {
-        surnameTextField.layer.borderColor = AppColor.lightGray.cgColor
-        nameTextField.layer.borderColor = AppColor.lightGray.cgColor
-        patronymicTextField.layer.borderColor = AppColor.lightGray.cgColor
-        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
+        surnameTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        nameTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        patronymicTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
     }
     // MARK: - Constraints:
     private func setupConstraints() {

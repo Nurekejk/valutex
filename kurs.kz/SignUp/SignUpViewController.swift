@@ -17,7 +17,7 @@ final class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = AppFont.bold.s28()
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         label.textAlignment = .center
         return label
     }()
@@ -41,9 +41,9 @@ final class SignUpViewController: UIViewController {
         
         textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
-        textField.titleColor = AppColor.mediumGray.uiColor
-        textField.selectedTitleColor = AppColor.mediumGray.uiColor
-        textField.placeholderColor = AppColor.darkGray.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
+        textField.placeholderColor = AppColor.gray100.uiColor
         
         textField.titleLabel.font = AppFont.regular.s12()
         textField.placeholderFont = AppFont.regular.s16()
@@ -63,7 +63,7 @@ final class SignUpViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font = AppFont.bold.s16()
-        button.backgroundColor = AppColor.primaryBlue.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.tintColor = .white
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
@@ -73,7 +73,7 @@ final class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
         label.font = AppFont.regular.s14()
-        label.textColor = AppColor.mediumGray.uiColor
+        label.textColor = AppColor.gray50.uiColor
         label.textAlignment = .center
         return label
     }()
@@ -81,7 +81,7 @@ final class SignUpViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let myAttributes: [NSAttributedString.Key: Any] = [
             .font: AppFont.medium.s16(),
-            .foregroundColor: AppColor.primaryBlue.uiColor,
+            .foregroundColor: AppColor.primaryBase.uiColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
@@ -108,7 +108,7 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        phoneTextField.layer.borderColor = AppColor.lightGray.cgColor
+        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
         phoneTextField.layer.borderWidth = 1
         phoneTextField.layer.cornerRadius = 8
         continueButton.layer.cornerRadius = 12

@@ -22,7 +22,7 @@ final class SupportTableViewCell: UITableViewCell {
     private let supportLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.regular.s14()
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     

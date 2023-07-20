@@ -16,7 +16,7 @@ class LanguageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "kazakh"
         label.font = AppFont.regular.s16()
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     

@@ -62,7 +62,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
@@ -71,7 +71,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
-        textField.textColor = AppColor.darkGray.uiColor
+        textField.textColor = AppColor.gray100.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
@@ -105,9 +105,9 @@ final class RegistrationPasswordViewController: UIViewController {
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
         enterPasswordButton.layer.cornerRadius = 8
-        enterPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
+        enterPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
-        repeatPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
+        repeatPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
         passwordStackView.layer.cornerRadius = 8
     }
     
@@ -121,12 +121,12 @@ final class RegistrationPasswordViewController: UIViewController {
         enterPasswordTextField.rightView = enterPasswordButton
         repeatPasswordTextField.rightView = repeatPasswordButton
         
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         elementsStackView.backgroundColor = .white
         passwordStackView.backgroundColor = .white
-        textLabel.textColor = AppColor.mediumGray.uiColor
+        textLabel.textColor = AppColor.gray50.uiColor
         continueButton.setTitleColor(.white, for: .normal)
-        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
+        continueButton.backgroundColor = AppColor.primaryBase.uiColor
         containerView.backgroundColor = .white
     }
     

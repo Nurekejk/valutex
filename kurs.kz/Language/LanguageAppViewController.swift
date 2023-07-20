@@ -45,7 +45,7 @@ final class LanguageAppViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Выбрать", for: .normal)
         button.layer.cornerRadius = 12
-        button.backgroundColor = AppColor.primaryBlue.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         return button
     }()
     

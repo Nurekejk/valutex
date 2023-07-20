@@ -24,7 +24,7 @@ final class NotificationsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Тех. поддержка"
         label.font = .boldSystemFont(ofSize: 16)
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
 
@@ -32,7 +32,7 @@ final class NotificationsTableViewCell: UITableViewCell {
         let label = UITextField()
         label.text = "Добро пожаловать в службу поддержки"
         label.font = .systemFont(ofSize: 16)
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
 
