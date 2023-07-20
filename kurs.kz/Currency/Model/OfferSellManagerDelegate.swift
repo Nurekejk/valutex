@@ -1,5 +1,5 @@
 //
-//  OfferSellManagerDelegate.swift
+//  CurrencySelectorManager.swift
 //  kurs.kz
 //
 //  Created by MacBook on 20.07.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol OfferSellManagerDelegate {
-    func currencyDidUpdate(_ currency: OfferSellCurrency)
+protocol CurrencySelectorManagerDelegate {
+    func currencyDidUpdate(_ currency: Currency)
     func didFailWithError(_ error: Error)
 }

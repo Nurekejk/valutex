@@ -1,5 +1,5 @@
 //
-//  OfferSellManager.swift
+//  CurrencySelectorManager.swift
 //  kurs.kz
 //
 //  Created by MacBook on 20.07.2023.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct OfferSellManager {
+struct CurrencySelectorManager {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    var OfferSellManagerDelegate: OfferSellManagerDelegate?
+    var CurrencySelectorManagerDelegate: CurrencySelectorManagerDelegate?
     
     private func fetchCurrencies() {
         let urlsesion = URLSession.shared
@@ -19,13 +19,13 @@ struct OfferSellManager {
             
             let task = urlsesion.dataTask(with: urlRequest) { data, _, error in
                 if error != nil {
-                    self.OfferSellManagerDelegate?.didFailWithError(error!)
+                    self.CurrencySelectorManagerDelegate?.didFailWithError(error!)
                     return
                 }
                 if let safeData = data {
                     if let currency = parseJSON(currencyData: safeData) {
                         DispatchQueue.main.async {
-                            self.OfferSellManagerDelegate?.currencyDidUpdate(currency)
+                            self.CurrencySelectorManagerDelegate?.currencyDidUpdate(currency)
                         }
                     }
                 }
@@ -34,13 +34,13 @@ struct OfferSellManager {
         }
     }
     
-    func parseJSON(currencyData:Data) -> OfferSellCurrency? {
+    func parseJSON(currencyData:Data) -> Currency? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(OfferSellCurrency.self, from: currencyData)
+            let decodedData = try decoder.decode(Currency.self, from: currencyData)
             return decodedData
         } catch {
-            OfferSellManagerDelegate?.didFailWithError(error)
+            CurrencySelectorManagerDelegate?.didFailWithError(error)
             return nil
         }
     }
