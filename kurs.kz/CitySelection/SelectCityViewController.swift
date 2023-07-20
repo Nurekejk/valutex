@@ -15,7 +15,7 @@ final class SelectCityViewController: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "Поиск"
-        textField.font = .systemFont(ofSize: 14)
+        textField.font = AppFont.regular.s14()
         textField.layer.cornerRadius = 8
         return textField
     }()
@@ -23,7 +23,7 @@ final class SelectCityViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "searchCity")
+        imageView.image = AppImage.search_city.uiImage
         return imageView
     }()
 
@@ -40,9 +40,9 @@ final class SelectCityViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
 
@@ -63,7 +63,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
         view.addSubview(tableview)
         view.addSubview(shadowview)

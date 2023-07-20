@@ -1,24 +1,6 @@
 import UIKit
 
 final class RateViewController: UIViewController, UITextViewDelegate {
-   
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let borderGrayColor = CGColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
     
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -35,8 +17,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "Теперь напишите отзыв"
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 14)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,8 +27,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let textView = UITextView()
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
-        textView.textColor = .lightGray
-        textView.font = .systemFont(ofSize: 14)
+        textView.textColor = AppColor.gray50.uiColor
+        textView.font = AppFont.regular.s14()
         textView.returnKeyType = .done
         return textView
     }()
@@ -59,7 +41,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить отзыв", for: .normal)
-        button.titleLabel?.font =  .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -96,14 +78,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         super.viewDidLayoutSubviews()
         reviewTextView.layer.cornerRadius = 8
         reviewTextView.layer.borderWidth = 1
-        reviewTextView.layer.borderColor = borderGrayColor
+        reviewTextView.layer.borderColor = AppColor.grayWhite.cgColor
         continueButton.layer.cornerRadius = 12
         entireStackView.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        
         view.addSubview(entireStackView)
         
         [starStackView, reviewLabel, borderView,
@@ -111,9 +92,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         addButtonsToStarStackView()
         
-        view.backgroundColor = backgroundGrayColor
-        borderView.backgroundColor = backgroundGrayColor
-        continueButton.backgroundColor = buttonBlueColor
+        view.backgroundColor = AppColor.gray10.uiColor
+        borderView.backgroundColor = AppColor.gray10.uiColor
+        continueButton.backgroundColor = AppColor.primaryBase.uiColor
         entireStackView.backgroundColor = .white
         
         reviewTextView.delegate = self

@@ -36,7 +36,8 @@ final class NotificationsViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(tableView)
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = AppColor.gray10.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
     }
 
     // MARK: - Setup Constraints
@@ -71,5 +72,4 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
         let view = NotificationsSectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         return view
     }
-
 }

@@ -16,8 +16,8 @@ final class SignUpViewController: UIViewController {
     private let signUpLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
-        label.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
-        label.textColor = UIColor(named: "signUpLabelColor")
+        label.font = AppFont.bold.s28()
+        label.textColor = AppColor.gray100.uiColor
         label.textAlignment = .center
         return label
     }()
@@ -41,19 +41,20 @@ final class SignUpViewController: UIViewController {
         
         textField.title = "Телефон"
         textField.placeholder = "+7 777 777 00 00"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
-        textField.placeholderColor = UIColor(named: "phoneNumberColor")!
+        textField.titleColor = AppColor.gray50.uiColor
+        textField.selectedTitleColor = AppColor.gray50.uiColor
+        textField.placeholderColor = AppColor.gray100.uiColor
         
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
-        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.titleLabel.font = AppFont.regular.s12()
+        textField.placeholderFont = AppFont.regular.s16()
+        textField.font = AppFont.regular.s16()
         
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
         
         textField.titleFormatter = { $0 } // autocapitalizes the title
         textField.selectedTitle = "Телефон"
+        textField.lineView.isHidden = true
         
         return textField
     }()
@@ -61,8 +62,8 @@ final class SignUpViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel!.font = .boldSystemFont(ofSize: 16)
-        button.backgroundColor = UIColor(named: "signupButtonColor")
+        button.titleLabel?.font = AppFont.bold.s16()
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.tintColor = .white
         button.addTarget(self, action: #selector(continueButtonDidPressed), for: .touchUpInside)
         return button
@@ -71,16 +72,16 @@ final class SignUpViewController: UIViewController {
     private let isThereAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
-        label.font = UIFont.systemFont(ofSize: 14.0)
-        label.textColor = UIColor(named: "defaultTextColor")
+        label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray50.uiColor
         label.textAlignment = .center
         return label
     }()
     
     private lazy var signUpButton: UIButton = {
         let myAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
-            .foregroundColor: UIColor(named: "signupButtonColor") ?? .blue,
+            .font: AppFont.medium.s16(),
+            .foregroundColor: AppColor.primaryBase.uiColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
@@ -107,7 +108,7 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        phoneTextField.layer.borderColor = UIColor(named: "phoneTextFieldBorderColor")?.cgColor
+        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
         phoneTextField.layer.borderWidth = 1
         phoneTextField.layer.cornerRadius = 8
         continueButton.layer.cornerRadius = 12
@@ -117,7 +118,7 @@ final class SignUpViewController: UIViewController {
     private func setupNavigationBar() {
         edgesForExtendedLayout = []
         self.navigationItem.leftBarButtonItem =
-        UIBarButtonItem(image: UIImage(named: "arrow_back"),
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
                         style: .plain,
                         target: self,
                         action: #selector(backButtonDidPressed))
