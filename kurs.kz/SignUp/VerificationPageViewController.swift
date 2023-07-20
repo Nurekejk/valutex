@@ -15,7 +15,7 @@ final class VerificationPageViewController: UIViewController {
         let label = UILabel()
         label.text = "Мы отправили письмо с кодом на ваш номер"
         label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         return label
     }()
     
@@ -35,7 +35,7 @@ final class VerificationPageViewController: UIViewController {
         label.text = "Еще не получили код подтверждения?"
         label.textColor = AppColor.darkGray.uiColor
         label.numberOfLines = 0
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         label.textAlignment = .center
         return label
     }()

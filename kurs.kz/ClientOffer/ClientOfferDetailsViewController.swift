@@ -28,7 +28,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         label.text = "Вы должны совершить обмен \nв течении указанного времени"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         return label
     }()
     

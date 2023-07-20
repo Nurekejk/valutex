@@ -18,7 +18,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let label = UILabel()
         label.text = "Теперь напишите отзыв"
         label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -28,7 +28,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
         textView.textColor = AppColor.mediumGray.uiColor
-        textView.font = AppFont.reqular.s14()
+        textView.font = AppFont.regular.s14()
         textView.returnKeyType = .done
         return textView
     }()

@@ -26,10 +26,20 @@ extension AppColorProtocol {
 }
 
 enum AppColor: String, AppColorProtocol {
-    case darkGray
-    case backgroundGray
-    case lightGray
-    case lightGray2
-    case mediumGray
-    case primaryBlue
+    case gray10
+    case gray20
+    case gray30
+    case gray40
+    case gray50
+    case gray60
+    case gray70
+    case gray80
+    case gray90
+    case gray100
+    case grayWhite
+    case primaryBase
+    case primarySecondary
+    case statusError
+    case statusSuccess
+    case statusWarning
 }

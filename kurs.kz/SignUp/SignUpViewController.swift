@@ -45,9 +45,9 @@ final class SignUpViewController: UIViewController {
         textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.placeholderColor = AppColor.darkGray.uiColor
         
-        textField.titleLabel.font = AppFont.reqular.s12()
-        textField.placeholderFont = AppFont.reqular.s16()
-        textField.font = AppFont.reqular.s16()
+        textField.titleLabel.font = AppFont.regular.s12()
+        textField.placeholderFont = AppFont.regular.s16()
+        textField.font = AppFont.regular.s16()
         
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
@@ -72,7 +72,7 @@ final class SignUpViewController: UIViewController {
     private let isThereAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас есть аккаунт?"
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         label.textColor = AppColor.mediumGray.uiColor
         label.textAlignment = .center
         return label

@@ -65,7 +65,7 @@ extension AppFontProtocol {
 }
 
 enum AppFont: String, AppFontProtocol {
-    case reqular = "Inter-Regular"
+    case regular = "Inter-Regular"
     case medium = "Inter-Medium"
     case semibold = "Inter-SemiBold"
     case bold = "Inter-Bold"

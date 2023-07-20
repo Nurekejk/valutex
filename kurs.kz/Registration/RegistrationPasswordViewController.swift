@@ -56,7 +56,7 @@ final class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         return label
     }()
     

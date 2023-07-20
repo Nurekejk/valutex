@@ -26,11 +26,11 @@ final class SignInViewController: UIViewController {
 
         textField.placeholder = "Телефон"
         textField.placeholderColor = AppColor.mediumGray.uiColor
-        textField.placeholderFont = AppFont.reqular.s16()
+        textField.placeholderFont = AppFont.regular.s16()
 
         textField.title = "Телефон"
         textField.titleColor = UIColor.lightGray
-        textField.titleLabel.font = AppFont.reqular.s12()
+        textField.titleLabel.font = AppFont.regular.s12()
         textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.textColor = AppColor.darkGray.uiColor
         
@@ -45,11 +45,11 @@ final class SignInViewController: UIViewController {
 
         textField.placeholder = "Пароль"
         textField.placeholderColor = AppColor.mediumGray.uiColor
-        textField.placeholderFont = AppFont.reqular.s16()
+        textField.placeholderFont = AppFont.regular.s16()
 
         textField.title = "Пароль"
         textField.titleColor = UIColor.lightGray
-        textField.titleLabel.font = AppFont.reqular.s12()
+        textField.titleLabel.font = AppFont.regular.s12()
         textField.selectedTitleColor = AppColor.mediumGray.uiColor
         textField.textColor = AppColor.darkGray.uiColor
 
@@ -63,7 +63,7 @@ final class SignInViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Забыли пароль", for: .normal)
         button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
-        button.titleLabel?.font = AppFont.reqular.s16()
+        button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -83,7 +83,7 @@ final class SignInViewController: UIViewController {
         let label = UILabel()
         label.text = "Вы еще не зарегистрированы?"
         label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         return label
     }()
 
@@ -93,7 +93,7 @@ final class SignInViewController: UIViewController {
                                              attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setAttributedTitle(titleString, for: .normal)
         button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
-        button.titleLabel?.font = AppFont.reqular.s16()
+        button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         return button
     }()

@@ -15,7 +15,7 @@ final class SelectCityViewController: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "Поиск"
-        textField.font = AppFont.reqular.s14()
+        textField.font = AppFont.regular.s14()
         textField.layer.cornerRadius = 8
         return textField
     }()

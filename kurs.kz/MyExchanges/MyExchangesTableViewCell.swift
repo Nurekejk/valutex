@@ -51,7 +51,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = AppFont.reqular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.darkGray.uiColor
         return label
     }()
