@@ -50,6 +50,10 @@
 		9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */; };
 		9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */; };
 		9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */; };
+		9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D562A694A1D00A11284 /* OfferViewController.swift */; };
+		9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */; };
+		9FF55D5C2A694A1D00A11284 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */; };
+		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
@@ -108,6 +112,10 @@
 		9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportTableViewCell.swift; path = kurs.kz/Support/SupportTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		9FF456FA2A5FC54100C2E845 /* ToSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToSupportViewController.swift; path = kurs.kz/Support/ToSupportViewController.swift; sourceTree = SOURCE_ROOT; };
 		9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		9FF55D562A694A1D00A11284 /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
+		9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
+		9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -159,6 +167,17 @@
 				618978042A549426009DFF0B /* CityTableViewCell.swift */,
 			);
 			path = CitySelection;
+			sourceTree = "<group>";
+		};
+		618978062A5AC824009DFF0B /* Offer */ = {
+			isa = PBXGroup;
+			children = (
+				9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */,
+				9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */,
+				9FF55D562A694A1D00A11284 /* OfferViewController.swift */,
+				9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */,
+			);
+			path = Offer;
 			sourceTree = "<group>";
 		};
 		69B63E2E40C15D95ADEE8E58 /* Frameworks */ = {
@@ -308,6 +327,7 @@
 				9987B0FB2A553B77005BB185 /* ClientOffer */,
 				9F402A472A5BDC5A00F9126C /* Rate */,
 				FA357BC02A58B2DF005D5271 /* TabBar */,
+				618978062A5AC824009DFF0B /* Offer */,
 				FA74EA7B2A52C8A500578C21 /* Registration */,
 				9FD284AB2A552EC400D9EB32 /* LanguageSelect */,
 				990100472A50B987003EE3C4 /* SignUp */,
@@ -581,9 +601,12 @@
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
+				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
+				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
+				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
@@ -592,6 +615,7 @@
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
+				9FF55D5C2A694A1D00A11284 /* SectionHeaderView.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 			);
