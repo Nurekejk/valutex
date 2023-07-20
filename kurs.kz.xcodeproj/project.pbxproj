@@ -181,7 +181,7 @@
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
-		FAD4D9662A6935F30051D1B4 /* OfferSellManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellManagerDelegate.swift; sourceTree = "<group>"; };
+		FAD4D9662A6935F30051D1B4 /* CurrencySelectorManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorManagerDelegate.swift; sourceTree = "<group>"; };
 		FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellCurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -595,7 +595,7 @@
 			children = (
 				FA5759902A692B4700DE9A6B /* Currency.swift */,
 				FA57598E2A692B2100DE9A6B /* CurrencySelectorManager.swift */,
-				FAD4D9662A6935F30051D1B4 /* OfferSellManagerDelegate.swift */,
+				FAD4D9662A6935F30051D1B4 /* CurrencySelectorManagerDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -782,7 +782,6 @@
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
-				FAD4D9672A6935F30051D1B4 /* OfferSellManagerDelegate.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,

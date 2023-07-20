@@ -9,7 +9,7 @@ import Foundation
 
 struct CurrencySelectorManager {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    var CurrencySelectorManagerDelegate: CurrencySelectorManagerDelegate?
+    var delegate: CurrencySelectorManagerDelegate?
     
     private func fetchCurrencies() {
         let urlsesion = URLSession.shared
@@ -19,7 +19,7 @@ struct CurrencySelectorManager {
             
             let task = urlsesion.dataTask(with: urlRequest) { data, _, error in
                 if error != nil {
-                    self.CurrencySelectorManagerDelegate?.didFailWithError(error!)
+                    self.delegate?.didFailWithError(error!)
                     return
                 }
                 if let safeData = data {
@@ -40,7 +40,7 @@ struct CurrencySelectorManager {
             let decodedData = try decoder.decode(Currency.self, from: currencyData)
             return decodedData
         } catch {
-            CurrencySelectorManagerDelegate?.didFailWithError(error)
+            delegate?.didFailWithError(error)
             return nil
         }
     }
