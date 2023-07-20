@@ -31,7 +31,7 @@ final class CustomTabBarViewController: UITabBarController {
         let other = createNavigation(mainTitle: "", title: "Еще",
                                      selectedImage: AppImage.other_selected.uiImage!,
                                      image: AppImage.other_gray.uiImage!,
-                                     viewController: EmptyViewController())
+                                     viewController: ProfileViewController())
         self.setViewControllers([home,money,other], animated: true)
     }
     
