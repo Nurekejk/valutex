@@ -43,10 +43,10 @@ final class ToSupportViewController: UIViewController {
     
     // MARK: - SetupViews
     private func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(titleLabel)
         view.addSubview(supportTableView)
-        supportTableView.backgroundColor = AppColor.backgroundGray.uiColor
+        supportTableView.backgroundColor = AppColor.gray10.uiColor
     }
     
     // MARK: - SetupConstraints()

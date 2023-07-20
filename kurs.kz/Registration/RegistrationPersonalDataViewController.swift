@@ -158,7 +158,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         view.addSubview(containerView)
         view.addSubview(stackView)
         
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBlue.uiColor
     }
     

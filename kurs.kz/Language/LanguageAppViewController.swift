@@ -61,8 +61,8 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup Views
     
     func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
-        tableView.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
+        tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(label)
         view.addSubview(tableView)
         view.addSubview(selectButton)
