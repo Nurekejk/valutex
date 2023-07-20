@@ -149,25 +149,25 @@ final class CalculatorTableViewCell: UITableViewCell {
     }
     // MARK: - Public
 
-       public func configureCell(migLogoImage: UIImage?,
-                                 titleLabel: String,
-                                 starImage: UIImage?,
-                                 rateLabel: String,
-                                 addressLabel: String,
-                                 kmLabel: String,
-                                 dateLabel: String,
-                                 amountLabel: String) {
-           if let flagImage = migLogoImage {
-               self.migLogoImage.image = migLogoImage
-           }
-           self.titleLabel.text = titleLabel
-           if let starImage = starImage {
-               self.starImage.image = starImage
-           }
-           self.rateLabel.text = rateLabel
-           self.addressLabel.text = rateLabel
-           self.kmLabel.text = rateLabel
-           self.dateLabel.text = rateLabel
-           self.amountLabel.text = rateLabel
-       }
+    public func configureCell(migLogoImage: UIImage?,
+                              titleLabel: String,
+                              starImage: UIImage?,
+                              rateLabel: String,
+                              addressLabel: String,
+                              kmLabel: String,
+                              dateLabel: String,
+                              amountLabel: String) {
+        if let migLogoImage = migLogoImage {
+            self.migLogoImage.image = migLogoImage
+        }
+        self.titleLabel.text = titleLabel
+        if let starImage = starImage {
+            self.starImage.image = starImage
+        }
+        self.rateLabel.text = rateLabel
+        self.addressLabel.text = rateLabel
+        self.kmLabel.text = rateLabel
+        self.dateLabel.text = rateLabel
+        self.amountLabel.text = rateLabel
+    }
 }
