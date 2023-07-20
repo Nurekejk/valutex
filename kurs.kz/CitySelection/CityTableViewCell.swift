@@ -13,6 +13,7 @@ final class CityTableViewCell: UITableViewCell {
     private let label: UILabel = {
         let label = UILabel()
         label.text = "Алматы"
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 
@@ -20,8 +21,8 @@ final class CityTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "selectCity")
-        imageView.highlightedImage = UIImage(named: "selectedCity")
+        imageView.image = AppImage.select_city.uiImage
+        imageView.highlightedImage = AppImage.selected_city.uiImage
         return imageView
     }()
 

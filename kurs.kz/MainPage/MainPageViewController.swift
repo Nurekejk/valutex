@@ -14,7 +14,7 @@ final class MainPageViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "onBoardingImage")
+        imageView.image = AppImage.on_boarding_image.uiImage
         return imageView
     }()
 
@@ -22,9 +22,10 @@ final class MainPageViewController: UIViewController {
         let label = UILabel()
         label.text =
             "Предлагай свой курс на\n валюту и получай \n актуальные валютные \n курсы в твоем городе"
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = AppFont.bold.s24()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = AppColor.darkGray.uiColor
         return label
     }()
 
@@ -32,7 +33,8 @@ final class MainPageViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(signInButtonDidPress), for: .touchUpInside)
         return button
@@ -40,20 +42,21 @@ final class MainPageViewController: UIViewController {
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.borderColor = UIColor.blue.cgColor
+        button.layer.borderColor = AppColor.primaryBlue.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
         button.setTitle("Зарегистрироватся", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(AppColor.primaryBlue.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
         button.addTarget(self, action: #selector(signUpButtonDidPress), for: .touchUpInside)
         return button
     }()
 
     private lazy var skipButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
+        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
         button.addTarget(self, action: #selector(skipButtonDidPress), for: .touchUpInside)
         return button
     }()
