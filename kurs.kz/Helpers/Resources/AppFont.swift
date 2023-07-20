@@ -61,26 +61,16 @@ extension AppFontProtocol {
 extension AppFontProtocol {
 
     private func apply(size value: CGFloat) -> UIFont {
-        var font: UIFont
-        switch rawValue {
-        case "regular":
-            font = UIFont.systemFont(ofSize: value, weight: .regular)
-        case "medium":
-            font = UIFont.systemFont(ofSize: value, weight: .medium)
-        case "semibold":
-            font = UIFont.systemFont(ofSize: value, weight: .semibold)
-        case "bold":
-            font = UIFont.systemFont(ofSize: value, weight: .bold)
-        default:
-            font = UIFont.systemFont(ofSize: value, weight: .regular)
+        guard let font = UIFont.init(name: rawValue, size: value) else {
+            fatalError("Could not find font with name \(rawValue)")
         }
         return font
     }
 }
 
 enum AppFont: String, AppFontProtocol {
-    case reqular
-    case medium
-    case semibold
-    case bold
+    case reqular = "Inter-Regular"
+    case medium = "Inter-Medium"
+    case semibold = "Inter-SemiBold"
+    case bold = "Inter-Bold"
 }

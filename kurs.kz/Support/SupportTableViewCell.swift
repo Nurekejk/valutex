@@ -21,7 +21,7 @@ final class SupportTableViewCell: UITableViewCell {
     
     private let supportLabel: UILabel = {
         let label = UILabel()
-        label.font = AppFont.reqular.s18()
+        label.font = AppFont.reqular.s14()
         label.textColor = AppColor.darkGray.uiColor
         return label
     }()
