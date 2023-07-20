@@ -10,14 +10,21 @@ import CoreLocation
 import GoogleMaps
 
 final class MapViewController: UIViewController {
-    
-    let locationManager = CLLocationManager()
+        
+    private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
+                                                                         longitude: 77.05901863169184))
+    private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
+                                                                        longitude: 77.05992323741296))
+    private let shymbulakMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.113733768676546,
+                                                                             longitude: 77.11150263265574))
+    private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
     
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         let map =  GMSMapView(frame: view.bounds,
                               camera: camera)
+        map.delegate = self
         return map
     }()
     
@@ -114,7 +121,7 @@ final class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController!.navigationBar.frame = CGRect(x: 0,
+        self.navigationController?.navigationBar.frame = CGRect(x: 0,
                                                                 y: 0,
                                                                 width: bounds.width,
                                                                 height: bounds.height + 100)
@@ -135,10 +142,8 @@ final class MapViewController: UIViewController {
     private func setupViews() {
         view.addSubview(googleMapView)
         view.backgroundColor = .white
-        view.tintColor = .black
         
         locationManager.delegate = self
-        
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.requestLocation()
             self.googleMapView.isMyLocationEnabled = true
@@ -154,6 +159,18 @@ final class MapViewController: UIViewController {
         [exchangersButton, zoomView, myLocationButton].forEach {
             googleMapView.addSubview($0)
         }
+        
+        medeuMarker.title = "Medeu"
+        medeuMarker.snippet = "Sports complex"
+        medeuMarker.map = googleMapView
+        
+        shymbulakMarker.title = "Shymbulak"
+        shymbulakMarker.snippet = "Mountain resort"
+        shymbulakMarker.map = googleMapView
+        
+        auylMarker.title = "Auyl"
+        auylMarker.snippet = "Restaurant"
+        auylMarker.map = googleMapView
     }
     
     // MARK: - Setup Constraints
@@ -231,5 +248,14 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didFailWithError error: Error) {
         print(error)
+    }
+}
+
+// MARK: - GMSMapViewDelegate
+extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let infoWindow = CustomInfoWindow()
+        infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
+        return infoWindow
     }
 }

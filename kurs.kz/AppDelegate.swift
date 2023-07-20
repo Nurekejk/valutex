@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         
-        let googleMapsAPIKey = "AIzaSyA5vHwbUueRGKvRvVB26tcBrwXtJMjElQ8"
-        GMSServices.provideAPIKey(googleMapsAPIKey)
+        GMSServices.provideAPIKey(AppConstants().getGoogleMapsAPIKey())
         
         return true
     }
