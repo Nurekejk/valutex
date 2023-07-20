@@ -201,8 +201,6 @@ final class ExchangeListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
-        tableView.layer.masksToBounds = true
-        tableView.clipsToBounds = true
         tableView.separatorStyle = .none
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
