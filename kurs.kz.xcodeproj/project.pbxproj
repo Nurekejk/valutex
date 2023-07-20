@@ -59,7 +59,6 @@
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
-		FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */ = {isa = PBXBuildFile; productRef = FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */; };
 		FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,7 +127,6 @@
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
 				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
-				FAD6FB4A2A52AD11004E4F86 /* SkyFloatingLabelTextField in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +227,7 @@
 				9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */,
 			);
 			path = Profile;
-      sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		99D973FD2A680D6A00F7E506 /* Helpers */ = {
 			isa = PBXGroup;
@@ -427,7 +425,6 @@
 			packageProductDependencies = (
 				9F63DF432A504C3200EA9060 /* SnapKit */,
 				9F63DF462A50540F00EA9060 /* Alamofire */,
-				FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */,
 				9985BA532A65BF0D00DD871C /* InputMask */,
 				FA0E72912A6095C900EEAD48 /* PanModal */,
 			);
@@ -462,7 +459,6 @@
 			packageReferences = (
 				9F63DF422A504C3200EA9060 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
@@ -847,14 +843,6 @@
 				version = 1.2.6;
 			};
 		};
-		FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Skyscanner/SkyFloatingLabelTextField";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -877,11 +865,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
-		};
-		FAD6FB492A52AD11004E4F86 /* SkyFloatingLabelTextField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAD6FB482A52AD11004E4F86 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */;
-			productName = SkyFloatingLabelTextField;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
