@@ -72,5 +72,4 @@ extension NotificationsViewController: UITableViewDataSource, UITableViewDelegat
         let view = NotificationsSectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         return view
     }
-
 }
