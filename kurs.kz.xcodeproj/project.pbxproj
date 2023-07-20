@@ -187,8 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				9909CB132A55AA90000AC039 /* Detail.swift */,
-				FA57598E2A692B2100DE9A6B /* OfferSellManager.swift */,
-				FA5759902A692B4700DE9A6B /* Currency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,8 +194,6 @@
 		9987B0FB2A553B77005BB185 /* ClientOffer */ = {
 			isa = PBXGroup;
 			children = (
-				FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */,
-				FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */,
 				9909CB152A55AA95000AC039 /* Model */,
 				9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */,
 				9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */,
@@ -255,6 +251,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				FA57598B2A67CBC800DE9A6B /* OfferSellBuySegmentedControl */,
 				9FEDDC902A6020C7005A3723 /* Currency */,
 				220C3F372A5FD8B6000002DB /* MyExchanges */,
@@ -367,6 +364,25 @@
 				FA1475242A5416C80085AF1E /* PaddedTextField.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		FAD4D9642A69352B0051D1B4 /* OfferSellBuy */ = {
+			isa = PBXGroup;
+			children = (
+				FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */,
+				FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */,
+				FAD4D9652A6935660051D1B4 /* Model */,
+			);
+			path = OfferSellBuy;
+			sourceTree = "<group>";
+		};
+		FAD4D9652A6935660051D1B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5759902A692B4700DE9A6B /* Currency.swift */,
+				FA57598E2A692B2100DE9A6B /* OfferSellManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
