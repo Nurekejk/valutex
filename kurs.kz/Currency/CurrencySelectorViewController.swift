@@ -223,7 +223,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
         return .maxHeightWithTopInset(40)
     }
 }
-extension CurrencySelectorViewController: currencysel {
+extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
     func currencyDidUpdate(_ currency: Currency) {
         let newArray = currency
         print(newArray)
@@ -232,8 +232,6 @@ extension CurrencySelectorViewController: currencysel {
     func didFailWithError(_ error: Error) {
         print(error)
     }
-    
-    
 }
 // MARK: - Protocol
 protocol CurrencySelectorViewControllerDelegate: AnyObject {

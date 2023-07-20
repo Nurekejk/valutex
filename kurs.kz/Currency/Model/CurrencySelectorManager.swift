@@ -25,7 +25,7 @@ struct CurrencySelectorManager {
                 if let safeData = data {
                     if let currency = parseJSON(currencyData: safeData) {
                         DispatchQueue.main.async {
-                            self.CurrencySelectorManagerDelegate?.currencyDidUpdate(currency)
+                            self.delegate?.currencyDidUpdate(currency)
                         }
                     }
                 }
