@@ -8,6 +8,11 @@ PODS:
   - CHIOTPField/One (0.1.0)
   - CHIOTPField/Three (0.1.0)
   - CHIOTPField/Two (0.1.0)
+  - GoogleMaps (8.0.0):
+    - GoogleMaps/Maps (= 8.0.0)
+  - GoogleMaps/Base (8.0.0)
+  - GoogleMaps/Maps (8.0.0):
+    - GoogleMaps/Base
   - SkyFloatingLabelTextField (4.0.0)
   - SwiftLint (0.51.0)
 
@@ -17,20 +22,25 @@ DEPENDENCIES:
   - CHIOTPField/One
   - CHIOTPField/Three
   - CHIOTPField/Two
+  - GoogleMaps (= 8.0.0)
   - SkyFloatingLabelTextField
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CHIOTPField
+    - GoogleMaps
     - SkyFloatingLabelTextField
     - SwiftLint
 
 SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
+  GoogleMaps: 0dce473ab18742d0f327887853630927cbee9127
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 57e39c0e0e456663bb6552a1457791ee5cc8a163
+
+PODFILE CHECKSUM: cfc15cbf7a2e67a137ce8d4408b6161335c6135b
+
 
 COCOAPODS: 1.12.1

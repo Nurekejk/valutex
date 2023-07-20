@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '14.0'
 
 target 'kurs.kz' do
   use_frameworks!
@@ -11,12 +11,14 @@ target 'kurs.kz' do
   pod 'CHIOTPField/Three'
   pod 'CHIOTPField/Four'
   pod 'SwiftLint'
+  pod 'GoogleMaps', '8.0.0'
+  
 
   post_install do |installer|
       installer.generated_projects.each do |project|
         project.targets.each do |target|
           target.build_configurations.each do |config|
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
           end
         end
       end
