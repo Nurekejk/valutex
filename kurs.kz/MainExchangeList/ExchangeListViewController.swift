@@ -361,12 +361,13 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
      
      func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [Currency]) {
          let currency: Currency
-         if !isSearching {
-             currency = currenciesKeyArray[selectedIndexPath.row]
-         } else {
+//         if !isSearching {
+//             currency = currenciesKeyArray[selectedIndexPath.row]
+//         } else {
              currency = searchArray[selectedIndexPath.row]
-         }
+//         }
          navigationBarView.changeCurrency(newFlagImage: currency.flag,
-                                          newCurrencyLabel: currency.)
+                                          newCurrencyLabel: getCurrencyName(currency,
+                                                                            language: selectedLanguage))
      }
  }

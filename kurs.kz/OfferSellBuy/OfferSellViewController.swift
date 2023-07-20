@@ -25,12 +25,13 @@ final class OfferSellViewController: UIViewController {
                                         "Рос.рубль" : ("ru_flag", "RUB", "₽"),
                                         "Кирг.сом" : ("kgs_flag", "KGS", "c"),
                                         "Кит.юань" : ("cn_flag", "CNY", "¥")]
-    
-    private let currenciesKeyArray = ["Доллар США",
-                                      "Евро",
-                                      "Рос.рубль",
-                                      "Кирг.сом",
-                                      "Кит.юань"]
+
+    private let currenciesArray = [Currency(flag: "🇰🇿",
+                                            russianName: "тенге",
+                                            symbol: "₸",
+                                            code: "KZT",
+                                            kazakhName: "теңге",
+                                            englishName: "Tenge")]
     
     private let buttonBlueColor = UIColor(
         red: 45.0 / 255.0,
@@ -271,12 +272,13 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         modalScreen.delegate = self
         let currency: Currency
         if !isSearching {
-            currency = currenciesKeyArray[selectedIndexPath.row]
+            currency = currenciesArray[selectedIndexPath.row]
         } else {
             currency = searchArray[selectedIndexPath.row]
         }
         sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
-                                        newCurrencyLabel: getCurrencyName(currency, language: selectedLanguage),
+                                        newCurrencyLabel: getCurrencyName(currency,
+                                                                          language: selectedLanguage),
                                         newCurrencySignLabel: currency.symbol)
     }
     

@@ -23,7 +23,6 @@ struct CurrencySelectorManager {
                     return
                 }
                 if let safeData = data {
-                    print("hereeeeee2")
                     if let currency = parseJSON(currencyData: safeData) {
                         DispatchQueue.main.async {
                             self.delegate?.currencyDidUpdate(currency)
@@ -39,8 +38,6 @@ struct CurrencySelectorManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([Currency].self, from: currencyData)
-            print(decodedData)
-            print("qweaeqwe")
             return decodedData
         } catch {
             delegate?.didFailWithError(error)

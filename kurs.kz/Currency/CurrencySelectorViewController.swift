@@ -87,7 +87,6 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        print("hereeee")
         currencyManager.fetchCurrencies()
     }
     
@@ -167,13 +166,14 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
             let tableCurrencies = isSearching ?
             searchArray[indexPath.row] : currenciesArray[indexPath.row]
             
-            cell.configureCell(currency: getCurrencyName(tableCurrencies, language: selectedLanguage), flagIcon: tableCurrencies.flag)
+            cell.configureCell(currency: getCurrencyName(tableCurrencies,
+                                                         language: selectedLanguage),
+                               flagIcon: tableCurrencies.flag)
                 let customSelectionView = UIView()
                 customSelectionView.backgroundColor = UIColor.white
                 cell.selectedBackgroundView = customSelectionView
                 return cell
-            }
-        else {
+            } else {
             return UITableViewCell()
         }
     }
@@ -185,7 +185,9 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         } else {
             isSearching = true
             searchArray = currenciesArray.filter { currency in
-                return getCurrencyName(currency, language: selectedLanguage).localizedCaseInsensitiveContains(searchText)
+                return getCurrencyName(currency,
+                                       language: selectedLanguage)
+                .localizedCaseInsensitiveContains(searchText)
             }
             currenciesTableView.reloadData()
         }
@@ -215,7 +217,8 @@ extension CurrencySelectorViewController: PanModalPresentable {
 }
 extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
-        let newArray = currency
+        let currenciesArray = currency
+        print(currenciesArray)
     }
     
     func didFailWithError(_ error: Error) {
