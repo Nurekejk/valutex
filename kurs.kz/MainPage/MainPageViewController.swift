@@ -70,7 +70,6 @@ final class MainPageViewController: UIViewController {
     }
 
     // MARK: - Setup Views"
-
     private func setupViews() {
         view.backgroundColor = .white
 
@@ -80,9 +79,7 @@ final class MainPageViewController: UIViewController {
     }
 
     // MARK: - Setup Constraints"
-
     private func setupConstriants() {
-
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(124)
             make.leading.equalToSuperview().offset(45)
@@ -120,7 +117,6 @@ final class MainPageViewController: UIViewController {
     }
 
     // MARK: Actions
-
     @objc private func signInButtonDidPress() {
         self.navigationController?.pushViewController(SignInViewController(), animated: true)
     }
