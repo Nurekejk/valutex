@@ -14,8 +14,8 @@ final class VerificationPageViewController: UIViewController {
     private let otpLabel: UILabel = {
         let label = UILabel()
         label.text = "Мы отправили письмо с кодом на ваш номер"
-        label.textColor = UIColor(named: "selectedTitleColor")
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.textColor = AppColor.mediumGray.uiColor
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
@@ -23,19 +23,19 @@ final class VerificationPageViewController: UIViewController {
         let codeField = CHIOTPFieldOne()
         codeField.numberOfDigits = 6
         codeField.spacing = 8
-        codeField.boxBackgroundColor = UIColor(named: "otpCodeFieldBoxColor")!
+        codeField.boxBackgroundColor = AppColor.backgroundGray.uiColor
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
-        codeField.activeShadowColor = UIColor(named: "otpCodeFieldActiveShadowColor")
+        codeField.activeShadowColor = AppColor.primaryBlue.uiColor
         return codeField
     }()
     
     private let resendCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Еще не получили код подтверждения?"
-        label.textColor = UIColor(named: "resendCodeTextColor")
+        label.textColor = AppColor.darkGray.uiColor
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = AppFont.reqular.s14()
         label.textAlignment = .center
         return label
     }()
@@ -43,18 +43,19 @@ final class VerificationPageViewController: UIViewController {
     private let resendCodeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить код повторно", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s14()
         button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = UIColor(named: "verifyButtonColor")
+        button.titleLabel?.textColor = AppColor.primaryBlue.uiColor
         return button
     }()
     
-    private let verifyButton: UIButton = {
+    private lazy var verifyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(named: "verifyButtonColor")
+        button.backgroundColor = AppColor.primaryBlue.uiColor
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.addTarget(self, action: #selector(verifyButtonDidPress), for: .touchUpInside)
         button.layer.cornerRadius = 12.0
         return button
     }()
@@ -62,8 +63,22 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "OTP"
+        self.navigationItem.leftBarButtonItem =
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPressed))
     }
     
     // MARK: - Setup Views
@@ -77,7 +92,7 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         otpLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
         }
         
@@ -105,5 +120,15 @@ final class VerificationPageViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
+    }
+
+    // MARK: - Actions
+    @objc private func verifyButtonDidPress() {
+        self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
+                                                      animated: true)
+    }
+    
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

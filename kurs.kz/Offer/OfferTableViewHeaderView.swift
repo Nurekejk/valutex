@@ -41,8 +41,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "Продать"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!
@@ -65,8 +65,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "Получить"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!
@@ -84,13 +84,13 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return textField
     }()
 
-    private let maintextField: SkyFloatingLabelTextField = {
-        let textField =  CustomSkyFloatingLabelTextField()
+    private let maintextField: NurbolTextField = {
+        let textField =  NurbolTextField()
         textField.titleFormatter = {$0}
         textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         textField.title = "По курсу"
-        textField.titleColor = UIColor(named: "selectedTitleColor")!
-        textField.selectedTitleColor = UIColor(named: "selectedTitleColor")!
+        textField.titleColor = AppColor.mediumGray.uiColor
+        textField.selectedTitleColor = AppColor.mediumGray.uiColor
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = UIColor(named: "phoneNumberColor")!
@@ -131,6 +131,7 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
     private func setupViews() {
         maintextField.rightView = changeButton
+        changeButton.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         maintextField.rightViewMode = .always
 
         [titleLabel, cancelButton, selltextField, buytextField, maintextField].forEach {
@@ -175,5 +176,46 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(56)
         }
+    }
+}
+
+final class NurbolTextField: SkyFloatingLabelTextField {
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        let padding: CGFloat = 16.0
+        let rightViewWidth: CGFloat = 24.0
+        let rightViewHeight: CGFloat = 24.0
+        let middlePointAdjuster = (bounds.height - rightViewHeight) / 2.0
+        let rightBounds = CGRect(x: bounds.width - rightViewWidth - padding,
+                                 y: middlePointAdjuster,
+                                 width: rightViewWidth,
+                                 height: rightViewHeight)
+        return rightBounds
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let trimValue: CGFloat = 30
+        let rightViewWidth: CGFloat = 40
+        return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
+    }
+
+    let padding = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 0)
+
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+//
+//    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
+//        return bounds.inset(by: padding)
+//    }
+
+    override public func titleLabelRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
+        if editing {
+            return CGRect(x: 16, y: 8, width: bounds.size.width, height: titleHeight())
+        }
+        return CGRect(x: 100, y: titleHeight(), width: bounds.size.width, height: titleHeight())
     }
 }

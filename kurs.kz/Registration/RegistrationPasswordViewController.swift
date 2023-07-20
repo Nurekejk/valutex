@@ -34,11 +34,12 @@ final class RegistrationPasswordViewController: UIViewController {
         return stackView
     }()
 
-    private let continueButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = AppFont.bold.s16()
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -55,12 +56,13 @@ final class RegistrationPasswordViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = AppFont.reqular.s14()
         return label
     }()
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
@@ -69,6 +71,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
+        textField.textColor = AppColor.darkGray.uiColor
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
@@ -78,8 +81,22 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigationBar() {
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Придумайте пароль"
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                            style: .plain,
+                            target: self,
+                            action: #selector(backButtonDidPress))
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,7 +105,9 @@ final class RegistrationPasswordViewController: UIViewController {
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
         enterPasswordButton.layer.cornerRadius = 8
+        enterPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
+        repeatPasswordTextField.layer.borderColor = AppColor.lightGray.cgColor
         passwordStackView.layer.cornerRadius = 8
     }
     
@@ -102,19 +121,19 @@ final class RegistrationPasswordViewController: UIViewController {
         enterPasswordTextField.rightView = enterPasswordButton
         repeatPasswordTextField.rightView = repeatPasswordButton
         
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = AppColor.backgroundGray.uiColor
         elementsStackView.backgroundColor = .white
         passwordStackView.backgroundColor = .white
-        textLabel.textColor = .systemGray3
+        textLabel.textColor = AppColor.mediumGray.uiColor
         continueButton.setTitleColor(.white, for: .normal)
-        continueButton.backgroundColor = .cyan
+        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
         containerView.backgroundColor = .white
     }
     
     // MARK: - Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(232)
@@ -123,9 +142,9 @@ final class RegistrationPasswordViewController: UIViewController {
             make.height.equalTo(36)
         }
         containerView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(0)
-            make.leading.equalToSuperview().offset(0)
-            make.trailing.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.height.equalTo(118)
         }
         continueButton.snp.makeConstraints { make in
@@ -134,5 +153,17 @@ final class RegistrationPasswordViewController: UIViewController {
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
             make.height.equalTo(52)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func continueButtonDidPress() {
+        let controller = CustomTabBarViewController()
+        controller.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+    @objc private func backButtonDidPress() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

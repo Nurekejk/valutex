@@ -13,38 +13,41 @@ final class CustomTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
+
         self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .blue
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Setup Views
     func setupTabs() {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
-                                    selectedImage: UIImage(named: "home_selected")!,
-                                    image: UIImage(named: "home_gray")!,
-                                    viewController: RegistrationPasswordViewController())
+                                    selectedImage: AppImage.home_selected.uiImage!,
+                                    image: AppImage.home_gray.uiImage!,
+                                    viewController: EmptyViewController())
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
-                                     selectedImage: UIImage(named: "money_selected")!,
-                                    image: UIImage(named: "money_gray")!,
-                                     viewController: RegistrationPersonalDataViewController())
+                                     selectedImage: AppImage.money_selected.uiImage!,
+                                     image: AppImage.money_gray.uiImage!,
+                                     viewController: EmptyViewController())
         let other = createNavigation(mainTitle: "", title: "Еще",
-                                     selectedImage: UIImage(named: "other_selected")!,
-                                    image: UIImage(named: "other_gray")!,
-                                     viewController: SelectLanguageViewController())
+                                     selectedImage: AppImage.other_selected.uiImage!,
+                                     image: AppImage.other_gray.uiImage!,
+                                     viewController: ProfileViewController())
         self.setViewControllers([home,money,other], animated: true)
     }
     
-    func createNavigation(mainTitle: String, title: String, selectedImage: UIImage, image: UIImage,
-                          viewController: UIViewController) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: viewController)
+    func createNavigation(mainTitle: String,
+                          title: String,
+                          selectedImage: UIImage,
+                          image: UIImage,
+                          viewController: UIViewController) -> UIViewController {
+        let viewController = viewController
         
-        navigationController.tabBarItem.title = title
-        navigationController.tabBarItem.image = image
-        navigationController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
+        viewController.tabBarItem.title = title
+        viewController.tabBarItem.image = image
+        viewController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
         
         viewController.navigationItem.title = mainTitle
         
-        return navigationController
+        return viewController
     }
 }
