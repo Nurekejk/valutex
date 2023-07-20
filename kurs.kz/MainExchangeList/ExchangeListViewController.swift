@@ -36,18 +36,6 @@ final class ExchangeListViewController: UIViewController {
         blue: 171.0 / 255.0,
         alpha: 1)
     
-    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
-                                        "Евро" : ("euro_flag", "EUR", "€"),
-                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
-                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
-                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
-    
-    private let currenciesKeyArray = ["Доллар США",
-                                      "Евро",
-                                      "Рос.рубль",
-                                      "Кирг.сом",
-                                      "Кит.юань"]
-    
     private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
                                              iconImageName: "som_exchange",
                                              rating: 4.9,
@@ -114,7 +102,7 @@ final class ExchangeListViewController: UIViewController {
         containerView.addGestureRecognizer(buttonTapGesture)
         containerView.addSubview(navigationBarView)
 
-        navigationBarView.changeCurrency(newFlagImage: "main_usd_flag", newCurrencyLabel: "USD")
+        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
         
         let button = UIBarButtonItem(customView: containerView)
         return button
