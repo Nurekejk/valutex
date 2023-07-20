@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CurrencySelectorManagerDelegate: AnyObject {
-    func currencyDidUpdate(_ currency: Currency)
+    func currencyDidUpdate(_ currency: [Currency])
     func didFailWithError(_ error: Error)
 }

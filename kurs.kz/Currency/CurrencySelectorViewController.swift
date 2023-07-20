@@ -45,6 +45,7 @@ final class CurrencySelectorViewController: UIViewController {
     private var searchKeyArray = [String]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
+    var currencyManager = CurrencySelectorManager()
     
     // MARK: - UI
     private let chooseCurrencyLabel: UILabel = {
@@ -97,6 +98,8 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        print("hereeee")
+        currencyManager.fetchCurrencies()
     }
     
     override func viewDidLayoutSubviews() {
@@ -224,7 +227,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
     }
 }
 extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
-    func currencyDidUpdate(_ currency: Currency) {
+    func currencyDidUpdate(_ currency: [Currency]) {
         let newArray = currency
         print(newArray)
     }

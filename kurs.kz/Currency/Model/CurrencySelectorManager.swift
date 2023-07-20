@@ -11,7 +11,7 @@ struct CurrencySelectorManager {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
     var delegate: CurrencySelectorManagerDelegate?
     
-    private func fetchCurrencies() {
+    func fetchCurrencies() {
         let urlsesion = URLSession.shared
         if let url = URL(string: currencyListURL) {
             var urlRequest = URLRequest(url: url)
@@ -23,6 +23,7 @@ struct CurrencySelectorManager {
                     return
                 }
                 if let safeData = data {
+                    print("hereeeeee2")
                     if let currency = parseJSON(currencyData: safeData) {
                         DispatchQueue.main.async {
                             self.delegate?.currencyDidUpdate(currency)
@@ -34,10 +35,12 @@ struct CurrencySelectorManager {
         }
     }
     
-    func parseJSON(currencyData:Data) -> Currency? {
+    func parseJSON(currencyData:Data) -> [Currency]? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(Currency.self, from: currencyData)
+            let decodedData = try decoder.decode([Currency].self, from: currencyData)
+            print(decodedData)
+            print("qweaeqwe")
             return decodedData
         } catch {
             delegate?.didFailWithError(error)
