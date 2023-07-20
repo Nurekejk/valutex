@@ -53,7 +53,7 @@ final class MainPageViewController: UIViewController {
     }()
 
     private lazy var skipButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
         button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)

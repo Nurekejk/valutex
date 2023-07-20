@@ -14,6 +14,9 @@
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
+		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
+		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
+		990100492A50B99B003EE3C4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignupViewController.swift */; };
 		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -83,6 +86,8 @@
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
 		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
+		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +215,15 @@
 				71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		8F8189D72A6066240082F80F /* CartExchangeFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */,
+				8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */,
+			);
+			path = CartExchangeFeedback;
 			sourceTree = "<group>";
 		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
@@ -349,6 +363,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8F8189D72A6066240082F80F /* CartExchangeFeedback */,
 				99D973FD2A680D6A00F7E506 /* Helpers */,
 				220C3F372A5FD8B6000002DB /* MyExchanges */,
 				998D66CE2A64209300287FD4 /* PartnerOffer */,
@@ -634,6 +649,7 @@
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
@@ -661,6 +677,7 @@
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
+				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
