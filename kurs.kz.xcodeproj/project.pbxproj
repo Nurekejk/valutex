@@ -92,6 +92,7 @@
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
 		FACEE05E2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05D2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift */; };
+		FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
 		FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */; };
 /* End PBXBuildFile section */
@@ -182,6 +183,7 @@
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
 		FACEE05D2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorManagerDelegate.swift; sourceTree = "<group>"; };
+		FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLanguage.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 		FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellCurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -489,6 +491,7 @@
 				9FEDDC8C2A602099005A3723 /* CurrencySelectorTableViewCell.swift */,
 				9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */,
 				9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */,
+				FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
+				FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */,
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,

@@ -13,15 +13,15 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "TableCell"
     
-    public func configureCell(currency: String, flagName: String) {
+    public func configureCell(currency: String, flagIcon: String) {
         currencyLabel.text = currency
-        flagImageView.image = UIImage(named: flagName)
+        flagLabel.text = flagIcon
     }
 
     // MARK: - UI
-    private let flagImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
+    private let flagLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
     private let currencyLabel: UILabel = {
@@ -50,14 +50,14 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(flagImageView)
+        contentView.addSubview(flagLabel)
         contentView.addSubview(selectionImageView)
         contentView.addSubview(currencyLabel)
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        flagImageView.snp.makeConstraints { make in
+        flagLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(-20)
@@ -66,7 +66,7 @@ class CurrencySelectorTableViewCell: UITableViewCell {
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
-            make.leading.equalTo(flagImageView.snp.trailing).offset(16)
+            make.leading.equalTo(flagLabel.snp.trailing).offset(16)
             make.bottom.equalToSuperview().offset(-18)
         }
         selectionImageView.snp.makeConstraints { make in

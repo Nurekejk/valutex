@@ -359,16 +359,14 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
         return .maxHeightWithTopInset(40)
     }
      
-     func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
-         let newKey: String
+     func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [Currency]) {
+         let currency: Currency
          if !isSearching {
-             newKey = currenciesKeyArray[selectedIndexPath.row]
+             currency = currenciesKeyArray[selectedIndexPath.row]
          } else {
-             newKey = searchArray[selectedIndexPath.row]
+             currency = searchArray[selectedIndexPath.row]
          }
-         if let unwrappedTuple = currenciesDictionary[newKey] {
-             navigationBarView.changeCurrency(newFlagImage: unwrappedTuple.0,
-                            newCurrencyLabel: unwrappedTuple.1)
-         }
+         navigationBarView.changeCurrency(newFlagImage: currency.flag,
+                                          newCurrencyLabel: currency.)
      }
  }

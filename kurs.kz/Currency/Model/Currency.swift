@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Decodable {
+public struct Currency: Decodable {
     let flag: String
     let russianName: String
     let symbol: String

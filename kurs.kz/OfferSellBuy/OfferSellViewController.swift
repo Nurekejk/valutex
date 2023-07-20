@@ -266,20 +266,18 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         self.presentPanModal(modalScreen)
     }
     
-    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
+    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [Currency]) {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
-        let newKey: String
+        let currency: Currency
         if !isSearching {
-            newKey = currenciesKeyArray[selectedIndexPath.row]
+            currency = currenciesKeyArray[selectedIndexPath.row]
         } else {
-            newKey = searchArray[selectedIndexPath.row]
+            currency = searchArray[selectedIndexPath.row]
         }
-        if let unwrappedTuple = currenciesDictionary[newKey] {
-            sellCurrencyView.changeCurrency(newFlagImage: unwrappedTuple.0,
-                           newCurrencyLabel: unwrappedTuple.1,
-                           newCurrencySignLabel: unwrappedTuple.2)
-        }
+        sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
+                                        newCurrencyLabel: getCurrencyName(currency, language: selectedLanguage),
+                                        newCurrencySignLabel: currency.symbol)
     }
     
 }
