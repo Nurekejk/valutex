@@ -74,6 +74,11 @@
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */; };
+		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
+		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
+		FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */; };
+		FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759872A66653C00DE9A6B /* ExchangeListHeaderView.swift */; };
+		FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759892A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
@@ -147,6 +152,11 @@
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
+		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
+		FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListViewController.swift; sourceTree = "<group>"; };
+		FA5759872A66653C00DE9A6B /* ExchangeListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListHeaderView.swift; sourceTree = "<group>"; };
+		FA5759892A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarCurencyButtonView.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +392,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				FA57597F2A63D98500DE9A6B /* MainExchangeList */,
 				8F8189D72A6066240082F80F /* CartExchangeFeedback */,
 				99D973FD2A680D6A00F7E506 /* Helpers */,
 				220C3F412A6281EF000002DB /* Exchanger Screen */,
@@ -474,6 +485,26 @@
 				9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FA57597F2A63D98500DE9A6B /* MainExchangeList */ = {
+			isa = PBXGroup;
+			children = (
+				FA5759892A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift */,
+				FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */,
+				FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */,
+				FA5759872A66653C00DE9A6B /* ExchangeListHeaderView.swift */,
+				FA5759842A63E90100DE9A6B /* Model */,
+			);
+			path = MainExchangeList;
+			sourceTree = "<group>";
+		};
+		FA5759842A63E90100DE9A6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5759822A63E8F500DE9A6B /* Exchanger.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FA74EA7B2A52C8A500578C21 /* Registration */ = {
@@ -664,6 +695,7 @@
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
+				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
@@ -672,12 +704,14 @@
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
+				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
+				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				99D974022A680FF400F7E506 /* AppImage.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
@@ -693,6 +727,7 @@
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
@@ -712,6 +747,7 @@
 				220C3F432A62822F000002DB /* ExchangerScreenViewController.swift in Sources */,
 				220C3F452A628310000002DB /* ExchangerScreenTableViewCell.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,

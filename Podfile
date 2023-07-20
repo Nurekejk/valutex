@@ -13,6 +13,7 @@ target 'kurs.kz' do
   pod 'SwiftLint'
   pod 'GoogleMaps', '8.0.0'
   
+
   post_install do |installer|
       installer.generated_projects.each do |project|
         project.targets.each do |target|
