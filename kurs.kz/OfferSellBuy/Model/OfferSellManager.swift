@@ -9,6 +9,6 @@ import Foundation
 
 struct OfferSellManager {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    weak var OfferSellManagerDelegate: 
+    var OfferSellManagerDelegate: OfferSellManagerDelegate
     
 }
