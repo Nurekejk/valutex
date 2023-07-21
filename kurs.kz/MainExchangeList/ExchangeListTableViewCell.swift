@@ -153,7 +153,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 8
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
         contentView.frame = contentView.frame.inset(by:
