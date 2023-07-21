@@ -94,9 +94,9 @@ final class OfferSellViewController: UIViewController {
     }()
     private lazy var offerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = buttonBlueColor
+        button.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.setTitle("Предложить", for: .normal)
-        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
         return button
     }()
