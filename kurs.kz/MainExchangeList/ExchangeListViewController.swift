@@ -12,29 +12,6 @@ import SnapKit
 final class ExchangeListViewController: UIViewController {
     
     // MARK: - Properties
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let borderGrayColor = UIColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-    
-    private let textGrayColor = UIColor(
-        red: 147.0 / 255.0,
-        green: 153.0 / 255.0,
-        blue: 171.0 / 255.0,
-        alpha: 1)
     
     private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
                                              iconImageName: "som_exchange",
@@ -83,7 +60,6 @@ final class ExchangeListViewController: UIViewController {
                                              distance: "1 км")]
     
     private var searchArray = [Exchanger]()
-    
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
@@ -101,8 +77,6 @@ final class ExchangeListViewController: UIViewController {
         containerView.isUserInteractionEnabled = true
         containerView.addGestureRecognizer(buttonTapGesture)
         containerView.addSubview(navigationBarView)
-
-        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
         
         let button = UIBarButtonItem(customView: containerView)
         return button
@@ -115,25 +89,17 @@ final class ExchangeListViewController: UIViewController {
         return label
     }()
     
-    private let chooseCurrencyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Выберите валюту"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        return label
-    }()
-    
     private let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
         searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14)
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
-        searchBar.searchTextField.backgroundColor = UIColor.white
+        searchBar.searchTextField.backgroundColor = AppColor.grayWhite.uiColor
         searchBar.placeholder = "Найти обменник"
         searchBar.searchBarStyle = .default
         searchBar.barStyle = .default
-        searchBar.backgroundColor = .white
-        searchBar.barTintColor = UIColor.white
+        searchBar.backgroundColor = AppColor.grayWhite.uiColor
+        searchBar.barTintColor = AppColor.grayWhite.uiColor
         
         return searchBar
     }()
@@ -141,14 +107,14 @@ final class ExchangeListViewController: UIViewController {
     private lazy var calculatorButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "calculator_button"), for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = AppColor.grayWhite.uiColor
         return button
     }()
     
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "pin_button"), for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = AppColor.grayWhite.uiColor
         return button
     }()
     
@@ -161,14 +127,16 @@ final class ExchangeListViewController: UIViewController {
     private lazy var nearbyFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Рядом", for: .normal)
-        button.setTitleColor(textGrayColor, for: .normal)
+        button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.regular.s14()
         return button
     }()
     
     private lazy var openFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Открыто", for: .normal)
-        button.setTitleColor(textGrayColor, for: .normal)
+        button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.regular.s14()
         return button
     }()
     
@@ -210,15 +178,18 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        navigationCurrencySelectButton.customView?.layer.borderColor = AppColor.gray10.cgColor
+        navigationCurrencySelectButton.customView?.layer.borderWidth = 1
+        navigationCurrencySelectButton.customView?.layer.cornerRadius = 8
         currencySearchBar.layer.borderColor = view.backgroundColor?.cgColor
         currencySearchBar.layer.borderWidth = 1
         calculatorButton.layer.borderWidth = 1
         calculatorButton.layer.borderColor = view.backgroundColor?.cgColor
         openFilterButton.layer.borderWidth = 1
-        openFilterButton.layer.borderColor = borderGrayColor.cgColor
+        openFilterButton.layer.borderColor = AppColor.gray20.cgColor
         openFilterButton.layer.cornerRadius = 8
         nearbyFilterButton.layer.borderWidth = 1
-        nearbyFilterButton.layer.borderColor = borderGrayColor.cgColor
+        nearbyFilterButton.layer.borderColor = AppColor.gray20.cgColor
         nearbyFilterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
@@ -230,12 +201,12 @@ final class ExchangeListViewController: UIViewController {
          nearbyFilterButton, openFilterButton,
          currencySearchBar, calculatorButton,
          pinButton, mapButton].forEach {view.addSubview($0)}
-        view.backgroundColor = backgroundGrayColor
+        view.backgroundColor = AppColor.gray10.uiColor
+        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
     func setupNavigationBar() {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
-        self.navigationItem.titleView?.backgroundColor = .cyan
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
 }
