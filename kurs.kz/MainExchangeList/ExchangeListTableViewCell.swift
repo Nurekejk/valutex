@@ -12,11 +12,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
-    public func configureCell(withValue currency: String, named iconName: String) {
-        mainTitleLabel.text = currency
-        iconImageView.image = UIImage(named: iconName)
-    }
-    
     // MARK: - Properties
     
     public func changeExchanger(with newExchanger: Exchanger) {
@@ -34,12 +29,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
             } else {
                 ratingLabel.text = "?.?"
             }
-            if let newAddress = exchanger?.address,
-                let newDistance = exchanger?.distance {
-                addressLabel.text = newAddress + "" + "(" + newDistance + ")"
-            } else {
-                addressLabel.text = "Ошибка"
-            }
+            setupAddressLabel(with: exchanger?.address ?? "",
+                              and: exchanger?.distance ?? "")
             dateLabel.text = exchanger?.date
             if let newBuyRate = exchanger?.buyRate {
                 buyRateLabel.text = String(newBuyRate)
@@ -83,10 +74,30 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.font = AppFont.regular.s12()
-        label.textColor = AppColor.gray60.uiColor
         return label
     }()
+    
+    func setupAddressLabel(with location: String, and distance: String ) {
+        let locationText = location
+        let distanceText = distance
+        
+        let locationTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: AppFont.regular.s12(),
+            .foregroundColor: AppColor.gray100.uiColor
+        ]
+        
+        let distanceTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: AppFont.bold.s12(),
+            .foregroundColor: AppColor.gray60.uiColor
+        ]
+
+        let attributedText = NSMutableAttributedString(string: locationText, attributes: locationTextAttributes)
+        let attributedDistanceString = NSAttributedString(string: distanceText,
+                                                          attributes: distanceTextAttributes)
+        attributedText.append(attributedDistanceString)
+
+        addressLabel.attributedText = attributedText
+    }
     
     private let dateLabel: UILabel = {
         let label = UILabel()
