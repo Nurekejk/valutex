@@ -215,10 +215,9 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         let sum = String(format: "%.3f", firstNumber * secondNumber)
             .trimmingCharacters(in: ["0", "."])
         if sum != "" {
-            print("12")
             buttonIsEnabled = true
             offerButton.backgroundColor = AppColor.primaryBase.uiColor
-           var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
+            var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
                 .trimmingCharacters(in: ["0"])
             if trimmedResult.last == "." {
                 trimmedResult.removeLast()

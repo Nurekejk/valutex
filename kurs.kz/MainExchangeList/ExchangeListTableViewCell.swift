@@ -13,7 +13,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     static let identifier = "ExchangeListTableCell"
     
     // MARK: - Properties
-    
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
     }
@@ -24,7 +23,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
             iconImageView.image = UIImage(named: exchanger?.iconImageName ??
                                           "blank_icon")
             if let newRating = exchanger?.rating,
-                let newTotalRatings = exchanger?.totalRatings {
+               let newTotalRatings = exchanger?.totalRatings {
                 ratingLabel.text = "\(newRating)" + " (\(newTotalRatings))"
             } else {
                 ratingLabel.text = "?.?"
@@ -32,13 +31,15 @@ final class ExchangeListTableViewCell: UITableViewCell {
             setupAddressLabel(with: exchanger?.address ?? "",
                               and: exchanger?.distance ?? "")
             dateLabel.text = exchanger?.date
-            if let newBuyRate = exchanger?.buyRate {
-                buyRateLabel.text = String(newBuyRate)
+            if let safeBuyRate = exchanger?.buyRate {
+                let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
+                buyRateLabel.text = String(trimmedBuyRate)
             } else {
-                buyRateLabel.text = "ОшибкаОшибка"
+                buyRateLabel.text = "Ошибка"
             }
-            if let newSellRate = exchanger?.sellRate {
-                sellRateLabel.text = String(newSellRate)
+            if let safeSellRate = exchanger?.sellRate {
+                let trimmedSellRate = trimExchangeRate(rate: safeSellRate)
+                sellRateLabel.text = String(trimmedSellRate)
             } else {
                 sellRateLabel.text = "Ошибка"
             }
@@ -77,43 +78,22 @@ final class ExchangeListTableViewCell: UITableViewCell {
         return label
     }()
     
-    func setupAddressLabel(with location: String, and distance: String ) {
-        let locationText = location
-        let distanceText = distance
-        
-        let locationTextAttributes: [NSAttributedString.Key: Any] = [
-            .font: AppFont.regular.s12(),
-            .foregroundColor: AppColor.gray100.uiColor
-        ]
-        
-        let distanceTextAttributes: [NSAttributedString.Key: Any] = [
-            .font: AppFont.bold.s12(),
-            .foregroundColor: AppColor.gray60.uiColor
-        ]
-
-        let attributedText = NSMutableAttributedString(string: locationText, attributes: locationTextAttributes)
-        let attributedDistanceString = NSAttributedString(string: distanceText,
-                                                          attributes: distanceTextAttributes)
-        attributedText.append(attributedDistanceString)
-
-        addressLabel.attributedText = attributedText
-    }
-    
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
     private let buyRateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
     private let sellRateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
@@ -137,6 +117,38 @@ final class ExchangeListTableViewCell: UITableViewCell {
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
     }
     
+    private func setupAddressLabel(with location: String, and distance: String ) {
+        print(distance)
+        let locationText = location
+        let distanceText = " (\(distance))"
+        
+        let locationTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: AppFont.regular.s12(),
+            .foregroundColor: AppColor.gray100.uiColor
+        ]
+        
+        let distanceTextAttributes: [NSAttributedString.Key: Any] = [
+            // have to update the font to s10. Also the type is unknown
+            .font: AppFont.semibold.s12(),
+            .foregroundColor: AppColor.gray100.uiColor
+        ]
+
+        let attributedText = NSMutableAttributedString(string: locationText,
+                                                       attributes: locationTextAttributes)
+        let attributedDistanceString = NSAttributedString(string: distanceText,
+                                                          attributes: distanceTextAttributes)
+        attributedText.append(attributedDistanceString)
+
+        addressLabel.attributedText = attributedText
+    }
+    private func trimExchangeRate(rate: Float) -> String {
+        var trimmedResult = String(format: "%.3f", rate)
+            .trimmingCharacters(in: ["0"])
+        if trimmedResult.last == "." {
+            trimmedResult.removeLast()
+        }
+        return trimmedResult
+    }
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
