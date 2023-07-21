@@ -20,50 +20,27 @@ final class OfferSellViewController: UIViewController {
     }
     
     var mode: ControllerMode
-    
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let borderGrayColor = UIColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-    
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let textGrayColor = UIColor(
-        red: 147.0 / 255.0,
-        green: 153.0 / 255.0,
-        blue: 171.0 / 255.0,
-        alpha: 1)
 
     // MARK: - UI
     private lazy var modalScreen = CurrencySelectorViewController()
     private let containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = AppColor.grayWhite.uiColor
         return view
     }()
     private lazy var sellLabel: UILabel = {
         let label = UILabel()
-        
         label.text = mode == .buy ? "Купить" : "Продать"
-        
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
     private let exchangeRateLabel: UILabel = {
         let label = UILabel()
         label.text = "По курсу"
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
@@ -83,14 +60,16 @@ final class OfferSellViewController: UIViewController {
     private let getLabel: UILabel = {
         let label = UILabel()
         label.text = "Получить"
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     private let getTotalLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
         label.textAlignment = .center
-        label.textColor = .blue
+        label.textColor = AppColor.primaryBase.uiColor
+        label.font = AppFont.semibold.s16()
+        label.backgroundColor = AppColor.gray10.uiColor
         return label
     }()
     private lazy var offerButton: UIButton = {
@@ -98,7 +77,7 @@ final class OfferSellViewController: UIViewController {
         button.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
         button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.setTitle("Предложить", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     // MARK: - Lifecycle
@@ -117,25 +96,20 @@ final class OfferSellViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         containerView.layer.cornerRadius = 8
  
         sellCurrencyView.layer.borderWidth = 1
-        sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        sellCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         sellCurrencyView.layer.cornerRadius = 8
         
         exchangeRateCurrencyView.layer.borderWidth = 1
-        exchangeRateCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        exchangeRateCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         exchangeRateCurrencyView.layer.cornerRadius = 8
-        
-        sellLabel.textColor = textGrayColor
-        exchangeRateLabel.textColor = textGrayColor
-        getLabel.textColor = textGrayColor
-        lowerBorderView.backgroundColor = borderGrayColor
         
         getTotalLabel.layer.cornerRadius = 8
         getTotalLabel.layer.borderWidth = 1
-        getTotalLabel.layer.borderColor = borderGrayColor.cgColor
-        getTotalLabel.backgroundColor = backgroundGrayColor
+        getTotalLabel.layer.borderColor = AppColor.gray20.cgColor
         
         offerButton.layer.cornerRadius = 12
     }
@@ -152,9 +126,7 @@ final class OfferSellViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = backgroundGrayColor
-        sellLabel.textColor = borderGrayColor
-        containerView.backgroundColor = .white
+        view.backgroundColor = AppColor.gray10.uiColor
         
         view.addSubview(containerView)
         [sellCurrencyView,
