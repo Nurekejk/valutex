@@ -19,24 +19,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    private let registrationGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let registrationBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let textGrayColor = UIColor(
-        red: 125.0 / 255.0,
-        green: 132.0 / 255.0,
-        blue: 153.0 / 255.0,
-        alpha: 1)
-    
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
     }
@@ -81,7 +63,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.font =  AppFont.medium.s14()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -93,15 +76,15 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = textGrayColor
+        label.font =  AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = textGrayColor
+        label.font = AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
