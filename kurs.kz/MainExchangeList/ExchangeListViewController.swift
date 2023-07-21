@@ -213,7 +213,6 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
-        edgesForExtendedLayout = []
         
         let tableWidth = UIScreen.main.bounds.width - 32
         
