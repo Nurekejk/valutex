@@ -35,7 +35,8 @@ final class OfferSellCurrencyView: UIView {
     
     private let currencyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.regular.s16()
         return label
     }()
     
@@ -48,12 +49,14 @@ final class OfferSellCurrencyView: UIView {
     
     private let borderView: UIView = {
         let view = UIView()
+        view.backgroundColor = AppColor.gray10.uiColor
         return view
     }()
     
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .blue
+        textField.textColor = AppColor.primaryBase.uiColor
+        textField.font = AppFont.semibold.s16()
         textField.textAlignment = .right
         textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -62,7 +65,8 @@ final class OfferSellCurrencyView: UIView {
     
     private let currencySignLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .blue
+        label.textColor = AppColor.primaryBase.uiColor
+        label.font = AppFont.semibold.s16()
         return label
     }()
     
@@ -86,7 +90,6 @@ final class OfferSellCurrencyView: UIView {
         [flagIconLabel, currencyLabel,
          selectCurrencyButton, borderView,
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
-        borderView.backgroundColor = .systemGray5
         selectCurrencyButton.isHidden = !hasButton
     }
     
