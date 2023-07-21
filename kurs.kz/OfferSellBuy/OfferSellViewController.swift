@@ -12,6 +12,7 @@ final class OfferSellViewController: UIViewController {
     
     private var upperTextFieldNumber = "0"
     private var lowerTextFieldNumber = "0"
+    private var buttonIsEnabled = false
     
     enum ControllerMode {
         case buy
@@ -232,7 +233,6 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
     }
 
     func calculateOffer(sender: UITextField) {
-        print(sender.tag)
         if sender.tag == 1 {
             upperTextFieldNumber = sender.text ?? "0"
         } else {
@@ -243,7 +243,9 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         let sum = String(format: "%.3f", firstNumber * secondNumber)
             .trimmingCharacters(in: ["0", "."])
         if sum != "" {
-            
+            print("12")
+            buttonIsEnabled = true
+            offerButton.backgroundColor = AppColor.primaryBase.uiColor
            var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
                 .trimmingCharacters(in: ["0"])
             if trimmedResult.last == "." {
@@ -252,6 +254,8 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
             getTotalLabel.text = trimmedResult
         } else {
             getTotalLabel.text = "0"
+            buttonIsEnabled = false
+            offerButton.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
         }
     }
 
