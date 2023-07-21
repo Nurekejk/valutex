@@ -147,7 +147,7 @@ final class CurrencySelectorViewController: UIViewController {
         let senderViewController = delegate {
             let selectedCurrency = isSearching ?
             searchArray[selectedIndexPath.row] : currenciesArray[selectedIndexPath.row]
-            
+
             senderViewController.currencyDidSelect(currency: selectedCurrency)
             dismiss(animated: true, completion: nil)
         }
@@ -215,6 +215,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
         return .maxHeightWithTopInset(40)
     }
 }
+// MARK: - CurrencySelectorManagerDelegate
 extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
         currenciesArray = currency
