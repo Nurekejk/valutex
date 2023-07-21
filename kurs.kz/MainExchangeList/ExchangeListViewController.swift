@@ -85,14 +85,14 @@ final class ExchangeListViewController: UIViewController {
     private let navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Обменники"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = AppFont.medium.s18()
         return label
     }()
     
     private let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
-        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14)
+        searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
         searchBar.searchTextField.backgroundColor = AppColor.grayWhite.uiColor
         searchBar.placeholder = "Найти обменник"
