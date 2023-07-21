@@ -128,8 +128,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
         ]
         
         let distanceTextAttributes: [NSAttributedString.Key: Any] = [
-            // have to update the font to s10. Also the type is unknown
-            .font: AppFont.semibold.s12(),
+            .font: AppFont.semibold.s10(),
             .foregroundColor: AppColor.gray100.uiColor
         ]
 
