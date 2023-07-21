@@ -26,7 +26,7 @@ final class OfferViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.isScrollEnabled = false
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.sectionHeaderHeight = 100
         return tableView
     }()
@@ -42,7 +42,7 @@ final class OfferViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
 
