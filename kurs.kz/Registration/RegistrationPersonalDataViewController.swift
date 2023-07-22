@@ -24,14 +24,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
                                                                      leading: 20,
                                                                      bottom: 20,
                                                                      trailing: 20)
-        stackView.backgroundColor = .white
+        stackView.backgroundColor = AppColor.grayWhite.uiColor
         stackView.layer.cornerRadius = 8
         return stackView
     }()
     
     private let containerView: UIView = {
         let container = UIView()
-        container.backgroundColor = .white
+        container.backgroundColor = AppColor.grayWhite.uiColor
         return container
     }()
 
