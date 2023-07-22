@@ -41,8 +41,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить отзыв", for: .normal)
-        button.titleLabel?.font = AppFont.bold.s16()
-        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         return button
     }()
     
@@ -95,7 +95,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         view.backgroundColor = AppColor.gray10.uiColor
         borderView.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
-        entireStackView.backgroundColor = .white
+        entireStackView.backgroundColor = AppColor.grayWhite.uiColor
         
         reviewTextView.delegate = self
 
@@ -144,16 +144,16 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 extension RateViewController {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == AppColor.gray50.uiColor {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = AppColor.gray100.uiColor
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Поделитесь мнением об обменнике ?"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = AppColor.gray50.uiColor
         }
     }
     
