@@ -18,35 +18,26 @@ final class RegistrationPersonalDataViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 12
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20,
                                                                      leading: 20,
                                                                      bottom: 20,
                                                                      trailing: 20)
-        stackView.backgroundColor = .white
-        stackView.layer.cornerRadius = 8
+        stackView.backgroundColor = AppColor.grayWhite.uiColor
         return stackView
     }()
     
     private let containerView: UIView = {
         let container = UIView()
-        container.backgroundColor = .white
+        container.backgroundColor = AppColor.grayWhite.uiColor
         return container
     }()
 
     private let surnameTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Фамилия"
         textField.titleColor = AppColor.gray50.uiColor
@@ -57,16 +48,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let nameTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Имя"
         textField.titleColor = AppColor.gray50.uiColor
@@ -77,19 +60,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let patronymicTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Отчество"
-        textField.titleColor = AppColor.gray100.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Отчество"
         textField.textColor = AppColor.gray100.uiColor
         return textField
@@ -97,16 +72,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let phoneTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Телефон"
         textField.titleColor = AppColor.gray50.uiColor
@@ -118,9 +85,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font =  AppFont.bold.s16()
+        button.titleLabel?.font =  AppFont.semibold.s16()
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -133,7 +99,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        [surnameTextField, nameTextField,
+         patronymicTextField, phoneTextField].forEach { setupBorders(for: $0) }
+        
+        stackView.layer.cornerRadius = 8
+        continueButton.layer.cornerRadius = 12
+    }
     // MARK: - Setup Navigation Bar
 
     private func setupNavigationBar() {
@@ -162,12 +135,12 @@ final class RegistrationPersonalDataViewController: UIViewController {
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
     }
     
-    override func viewDidLayoutSubviews() {
-        surnameTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        nameTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        patronymicTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
+    func setupBorders(for textfield: PaddedTextField) {
+        textfield.layer.borderWidth = 1
+        textfield.layer.borderColor = AppColor.gray20.cgColor
+        textfield.layer.cornerRadius = 8
     }
+
     // MARK: - Constraints:
     private func setupConstraints() {
 
