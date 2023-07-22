@@ -118,7 +118,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     }
     
     private func setupAddressLabel(with location: String, and distance: String ) {
-        print(distance)
         let locationText = location
         let distanceText = " (\(distance))"
         

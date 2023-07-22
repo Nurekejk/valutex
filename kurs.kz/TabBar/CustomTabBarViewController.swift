@@ -14,8 +14,8 @@ final class CustomTabBarViewController: UITabBarController {
         super.viewDidLoad()
         setupTabs()
 
-        self.tabBar.barTintColor = .white
-        self.tabBar.tintColor = .blue
+        self.tabBar.barTintColor = AppColor.grayWhite.uiColor
+        self.tabBar.tintColor = AppColor.primaryBase.uiColor
     }
     
     // MARK: - Setup Views
