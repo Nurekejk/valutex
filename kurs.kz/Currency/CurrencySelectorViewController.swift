@@ -12,19 +12,6 @@ import SnapKit
 final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Properties
-    
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
     private var currenciesArray: [Currency] = [] {
         didSet {
             self.currenciesTableView.reloadData()
@@ -37,11 +24,17 @@ final class CurrencySelectorViewController: UIViewController {
     var currencyManager = CurrencySelectorManager()
     
     // MARK: - UI
+    private let sliderBorderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColor.gray20.uiColor
+        return view
+    }()
+    
     private let chooseCurrencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Выберите валюту"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.medium.s18()
         return label
     }()
     private lazy var exitButton: UIButton = {
@@ -55,8 +48,9 @@ final class CurrencySelectorViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.addTarget(self, action: #selector(currencySelected), for: .touchUpInside)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
+        button.backgroundColor = AppColor.primaryBase.uiColor
         return button
     }()
     
@@ -94,9 +88,8 @@ final class CurrencySelectorViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         currenciesTableView.layer.cornerRadius = 8
-        selectButton.backgroundColor = buttonBlueColor
         selectButton.layer.cornerRadius = 12
-
+        sliderBorderView.layer.cornerRadius = 5
     }
     
     // MARK: - Setup Views
@@ -105,7 +98,12 @@ final class CurrencySelectorViewController: UIViewController {
         view.addSubview(chooseCurrencyLabel)
         view.addSubview(exitButton)
         view.addSubview(selectButton)
-        view.backgroundColor = backgroundGrayColor
+        [sliderBorderView,
+         currenciesTableView,
+         chooseCurrencyLabel,
+         exitButton,
+         selectButton].forEach {view.addSubview($0)}
+        view.backgroundColor = AppColor.gray10.uiColor
     }
     
     // MARK: - Setup Constraints:
@@ -113,6 +111,13 @@ final class CurrencySelectorViewController: UIViewController {
         
         let tableWidth = UIScreen.main.bounds.width - 32
         headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 52)
+        
+        sliderBorderView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.height.equalTo(4)
+            make.width.equalTo(60)
+            make.centerX.equalToSuperview()
+        }
         
         chooseCurrencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(28)
@@ -170,7 +175,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
                                                          language: selectedLanguage),
                                flagIcon: tableCurrencies.flag)
                 let customSelectionView = UIView()
-                customSelectionView.backgroundColor = UIColor.white
+                customSelectionView.backgroundColor = AppColor.grayWhite.uiColor
                 cell.selectedBackgroundView = customSelectionView
                 return cell
             } else {
