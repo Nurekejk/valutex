@@ -174,6 +174,9 @@ final class MockExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            self.exchangersArray = exchangers
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

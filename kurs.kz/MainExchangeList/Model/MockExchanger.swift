@@ -8,9 +8,9 @@
 import Foundation
 
 struct MockExchanger: Codable {
-    let id: String
+    let id: Int
     let mainTitle: String
-    let iconImageName: String = "mig_icon"
+    let iconImageName: String = "mig_exchange"
     let rating: Float
     let totalRatings: Int
     let address: String
@@ -19,10 +19,12 @@ struct MockExchanger: Codable {
     let sellRate: Float
     let latitude: Float
     let longitude: Float
+    let open: Bool
+    let contacts: [String]
     
     enum CodingKeys: String, CodingKey {
         case id
-        case mainTitle
+        case mainTitle = "name"
         case iconImageName
         case rating = "score"
         case totalRatings = "score_count"
@@ -32,5 +34,7 @@ struct MockExchanger: Codable {
         case sellRate = "sell_price"
         case latitude
         case longitude
+        case open
+        case contacts
     }
 }

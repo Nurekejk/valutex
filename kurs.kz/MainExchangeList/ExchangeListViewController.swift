@@ -289,7 +289,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
                 
-                cell.changeExchanger(with: exchangersArray[indexPath.row])
+//                cell.changeExchanger(with: exchangersArray[indexPath.row])
                 return cell
             } else {
                 return UITableViewCell()

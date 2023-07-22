@@ -12,16 +12,22 @@ struct ExchangerListService {
     
     let exchangeListURL = "http://77.240.38.143:4443/actual_currency_rates"
     
-    func fetchCurrencies(currencyCode: String, cityId: Int, completion: @escaping ([MockExchanger]) -> Void) {
+    func fetchExchangers(currencyCode: String, cityId: Int, completion: @escaping ([MockExchanger]) -> Void) {
         guard let url = URL(string: exchangeListURL) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let requestData: [String: Any] = ["currency_code": currencyCode, "city_id": cityId]
-        let jsonData = try? JSONSerialization.data(withJSONObject: requestData)
-        urlRequest.httpBody = jsonData
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: requestData)
+            urlRequest.httpBody = jsonData
+        } catch {
+            print("Error creating JSON data: \(error)")
+            return
+        }
         
-        let task = urlSession.dataTask(with: urlRequest) { data, _, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, _, _ in
             guard let data = data else {
                 fatalError("Data not found")
             }
@@ -35,8 +41,10 @@ struct ExchangerListService {
     }
     
     func parseJSON(excnhagerData:Data) -> [MockExchanger]? {
+        print(excnhagerData)
         let decoder = JSONDecoder()
         do {
+            print("here")
             let decodedData = try decoder.decode([MockExchanger].self, from: excnhagerData)
             return decodedData
         } catch {
