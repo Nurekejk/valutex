@@ -15,9 +15,30 @@ final class DeatilViewViewController: UIViewController {
         "Diko", "jame", "Nikol", "Nurbol", "Diko", "jame", "Nikol", "Aigerim"
     ]
     
+    let Cname = [
+        "Call", "Clip", "California"
+    ]
+    
+    let Dname = [
+        "Diko"
+    ]
+    
+    let twoDimensionalArray = [
+        ["Diko", "Diar"],
+        ["Diko", "jame", "Nikol", "Nurbol", "Diko", "jame", "Nikol"],
+        ["Call"],
+        ["Second"],
+        ["Third"]
+    ]
+    
     // MARK: - UI
+    private lazy var header: HeaderView = {
+        let header = HeaderView()
+        return header
+    }()
+    
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
         tableView.dataSource = self
         return tableView
@@ -51,22 +72,19 @@ final class DeatilViewViewController: UIViewController {
 // MARK: - Extension
 extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Header \(section)"
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return twoDimensionalArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return twoDimensionalArray[section].count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellid", for: indexPath)
-        let name = names[indexPath.row]
+        
+        let name = twoDimensionalArray[indexPath.section][indexPath.row]
         cell.textLabel?.text = name
         cell.textLabel?.text = "\(name)  Section: \(indexPath.section)  Row: \(indexPath.row)"
         return cell
