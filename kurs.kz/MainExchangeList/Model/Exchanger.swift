@@ -9,7 +9,7 @@ import Foundation
 
 struct Exchanger {
     let mainTitle: String
-    let iconImageName: String = "mig_icon"
+    let iconImageName: String
     let rating: Float
     let totalRatings: Int
     let address: String

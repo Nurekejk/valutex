@@ -10,15 +10,15 @@ import Foundation
 struct MockExchanger: Codable {
     let id: String
     let mainTitle: String
-    let iconImageName: String
-    let rating: Double
+    let iconImageName: String = "mig_icon"
+    let rating: Float
     let totalRatings: Int
     let address: String
     let date: String
-    let buyRate: Double
-    let sellRate: Double
-    let latitude: Double
-    let longitude: Double
+    let buyRate: Float
+    let sellRate: Float
+    let latitude: Float
+    let longitude: Float
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -13,11 +13,11 @@ final class ExchangeListTableViewCell: UITableViewCell {
     static let identifier = "ExchangeListTableCell"
     
     // MARK: - Properties
-    public func changeExchanger(with newExchanger: Exchanger) {
+    public func changeExchanger(with newExchanger: MockExchanger) {
         exchanger = newExchanger
     }
 
-    private var exchanger: Exchanger? {
+    private var exchanger: MockExchanger? {
         didSet {
             mainTitleLabel.text = exchanger?.mainTitle
             iconImageView.image = UIImage(named: exchanger?.iconImageName ??
