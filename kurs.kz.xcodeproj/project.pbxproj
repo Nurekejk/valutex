@@ -44,6 +44,7 @@
 		998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */; };
 		998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B452A6D1C4E002F6695 /* SnackBarController.swift */; };
 		998D7B522A6D3E94002F6695 /* FullUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B512A6D3E94002F6695 /* FullUser.swift */; };
+		998D7B552A6D3F0A002F6695 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B542A6D3F0A002F6695 /* RegistrationService.swift */; };
 		99A8FB632A696C0E00894C28 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB622A696C0E00894C28 /* Inter-Bold.ttf */; };
 		99A8FB652A696C1400894C28 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB642A696C1400894C28 /* Inter-Medium.ttf */; };
 		99A8FB672A696C1A00894C28 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB662A696C1A00894C28 /* Inter-Regular.ttf */; };
@@ -138,6 +139,7 @@
 		998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpRegistrationService.swift; sourceTree = "<group>"; };
 		998D7B452A6D1C4E002F6695 /* SnackBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarController.swift; sourceTree = "<group>"; };
 		998D7B512A6D3E94002F6695 /* FullUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullUser.swift; sourceTree = "<group>"; };
+		998D7B542A6D3F0A002F6695 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		99A8FB622A696C0E00894C28 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		99A8FB642A696C1400894C28 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		99A8FB662A696C1A00894C28 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				998D7B512A6D3E94002F6695 /* FullUser.swift */,
+				998D7B542A6D3F0A002F6695 /* RegistrationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
+				998D7B552A6D3F0A002F6695 /* RegistrationService.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
