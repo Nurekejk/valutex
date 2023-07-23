@@ -12,7 +12,6 @@ class OfferSendedViewController: UIViewController {
     
     // MARK: - UI
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,4 +32,3 @@ class OfferSendedViewController: UIViewController {
     }
     
 }
-
