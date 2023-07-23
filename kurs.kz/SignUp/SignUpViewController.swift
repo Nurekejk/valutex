@@ -192,17 +192,19 @@ final class SignUpViewController: UIViewController {
         }
         
         let formatedPhoneNumber = phoneNumber
-                    .replacingOccurrences(of: " ", with: "")
-                    .replacingOccurrences(of: "+", with: "")
-                    .replacingOccurrences(of: "(", with: "")
-                    .replacingOccurrences(of: ")", with: "")
-
-        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "+", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
         
         let user = User(phone: formatedPhoneNumber)
-        service.postOTPRequest(with: user) { message in
+        service.postPhoneNumber(with: user) { message in
             print(message)
         }
+        
+        let controller = VerificationPageViewController()
+        controller.configureOTPLabel(phoneNumber: formatedPhoneNumber)
+        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
     }
     
     @objc private func signUpButtonDidPressed() {

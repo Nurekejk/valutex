@@ -10,7 +10,7 @@ import Foundation
 final class OtpRegistrationService {
     
     // MARK: - Network
-    func postOTPRequest(with user: User, completion: @escaping (String) -> Void) {
+    func postPhoneNumber(with user: User, completion: @escaping (String) -> Void) {
         guard let url = URL(string: "http://77.240.38.143:4443/otp/registration") else { fatalError() }
         
         let parameters: [String: Any] = ["phone": user.phone]
@@ -46,6 +46,7 @@ final class OtpRegistrationService {
                 }
             } catch {
                 print("Data decoded incorrectly.")
+                return
             }
         }
         

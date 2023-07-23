@@ -132,4 +132,9 @@ final class VerificationPageViewController: UIViewController {
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - OTP Label
+    public func configureOTPLabel(phoneNumber: String) {
+        otpLabel.text = "Мы отправили письмо с кодом на \(phoneNumber)"
+    }
 }
