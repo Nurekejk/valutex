@@ -41,7 +41,7 @@
 		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
 		998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */; };
-		998D7B432A6D18A8002F6695 /* SignUpPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B422A6D18A8002F6695 /* SignUpPageService.swift */; };
+		998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */; };
 		998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B452A6D1C4E002F6695 /* SnackBarController.swift */; };
 		99A8FB632A696C0E00894C28 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB622A696C0E00894C28 /* Inter-Bold.ttf */; };
 		99A8FB652A696C1400894C28 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB642A696C1400894C28 /* Inter-Medium.ttf */; };
@@ -134,7 +134,7 @@
 		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsHeaderView.swift; sourceTree = "<group>"; };
-		998D7B422A6D18A8002F6695 /* SignUpPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageService.swift; sourceTree = "<group>"; };
+		998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpRegistrationService.swift; sourceTree = "<group>"; };
 		998D7B452A6D1C4E002F6695 /* SnackBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarController.swift; sourceTree = "<group>"; };
 		99A8FB622A696C0E00894C28 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		99A8FB642A696C1400894C28 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				99C19F542A6B099300D10021 /* User.swift */,
-				998D7B422A6D18A8002F6695 /* SignUpPageService.swift */,
+				998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -834,7 +834,7 @@
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				220C3F432A62822F000002DB /* ExchangerScreenViewController.swift in Sources */,
 				220C3F452A628310000002DB /* ExchangerScreenTableViewCell.swift in Sources */,
-				998D7B432A6D18A8002F6695 /* SignUpPageService.swift in Sources */,
+				998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,

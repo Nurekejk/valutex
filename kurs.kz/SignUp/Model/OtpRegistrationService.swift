@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class OtpRegistrationService {
+final class SignUpPageService {
     
     // MARK: - Network
     func postOTPRequest(with user: User) {

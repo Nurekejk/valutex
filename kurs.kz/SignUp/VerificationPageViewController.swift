@@ -27,6 +27,7 @@ final class VerificationPageViewController: UIViewController {
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
         codeField.activeShadowColor = AppColor.primaryBase.uiColor
+        codeField.textContentType = .oneTimeCode
         return codeField
     }()
     
