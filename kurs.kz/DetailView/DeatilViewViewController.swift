@@ -11,16 +11,12 @@ import SnapKit
 final class DeatilViewViewController: UIViewController {
     
     // MARK: - State
-    let names = [
-        "Diko", "jame", "Nikol", "Nurbol", "Diko", "jame", "Nikol", "Aigerim"
+    let phonesNumber = [
+        "8(747) 429 94 13", "8(705) 684 67 10"
     ]
     
-    let Cname = [
-        "Call", "Clip", "California"
-    ]
-    
-    let Dname = [
-        "Diko"
+    let headersName = [
+        "Телефоны", "Время работы", "Email", "Web-site", "Whatsapp"
     ]
     
     var twoDimensionalArray = [
@@ -40,6 +36,8 @@ final class DeatilViewViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
+        tableView.register(PhoneCell.self, forCellReuseIdentifier: PhoneCell.reuseID)
+        tableView.rowHeight = 76
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -107,19 +105,20 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return twoDimensionalArray.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return twoDimensionalArray[section].count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellid", for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: PhoneCell.reuseID,
+            for: indexPath) as? PhoneCell
         
-        let name = twoDimensionalArray[indexPath.section][indexPath.row]
-        cell.textLabel?.text = name
+        cell?.setupPhone(first: "8707 834 43 43", second: "8706 232 23 54")
         
-        return cell
+        return cell ?? UITableViewCell()
     }
 }

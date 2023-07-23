@@ -27,6 +27,7 @@
 		8F21A4B92A6BCE4B000013FA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F21A4B82A6BCE4B000013FA /* HeaderView.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
+		8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -119,6 +120,7 @@
 		8F21A4B82A6BCE4B000013FA /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
+		8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				8F21A4B62A6BBD51000013FA /* DeatilViewViewController.swift */,
 				8F21A4B82A6BCE4B000013FA /* HeaderView.swift */,
+				8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
+				8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
