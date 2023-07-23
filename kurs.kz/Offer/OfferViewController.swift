@@ -19,7 +19,8 @@ final class OfferViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
                             OfferTableViewCell.reuseIdentifier)
-        tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
+        tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier:
+                            OfferTableViewHeaderView.reuseIdentifier)
         tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.delegate = self
@@ -49,9 +50,7 @@ final class OfferViewController: UIViewController {
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
         let width = UIScreen.main.bounds.width
         headerView.frame = CGRect(x: 0, y: 0, width: width, height: 224)

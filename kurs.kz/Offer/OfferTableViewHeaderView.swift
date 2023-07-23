@@ -8,7 +8,10 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class OfferTableViewHeaderView: UITableViewHeaderFooterView {
+final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
+    // MARK: - Public
+
+    public static var reuseIdentifier = String(describing: OfferTableViewHeaderView.self)
 
     // MARK: - UI
     private let containerView: UIView = {
@@ -113,7 +116,7 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return button
     }()
 
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -140,14 +143,11 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     private func setupConstraints() {
         let width = (UIScreen.main.bounds.width - 80)/2
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(-16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.leading.equalToSuperview().offset(16)
+            make.bottom.trailing.equalToSuperview().offset(-16)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.top.leading.equalToSuperview().offset(16)
             make.height.equalTo(20)
         }
         cancelButton.snp.makeConstraints { make in

@@ -141,15 +141,13 @@ final class OfferTableViewCell: UITableViewCell {
 
     private func setupConstraints() {
         cellView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.top.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(125)
         }
 
         infoview.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.top.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-94)
             make.height.equalTo(35)
         }
@@ -177,9 +175,8 @@ final class OfferTableViewCell: UITableViewCell {
         }
         acceptButton.snp.makeConstraints { make in
             make.top.equalTo(infoview.snp.bottom).offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.bottom.equalToSuperview().offset(-16)
             make.width.equalTo(151.1)
-            make.bottom.equalToSuperview().offset(-16)
         }
     }
 }
