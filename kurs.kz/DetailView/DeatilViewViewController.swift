@@ -74,16 +74,36 @@ final class DeatilViewViewController: UIViewController {
 extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton(type: .system)
-        button.setTitle("Close", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .yellow
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
-        return button
+        
+        let view = UIView()
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "phone")
+        
+        let label = UILabel()
+        label.text = "Телефон"
+        label.font = .systemFont(ofSize: 16)
+        
+        view.addSubview(image)
+        view.addSubview(label)
+        
+        image.snp.makeConstraints { make in
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+            make.top.equalToSuperview().offset(15)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(18)
+            make.leading.equalTo(image.snp.trailing).offset(16)
+            make.height.equalTo(18)
+        }
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 34
+        return 54
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,24 +119,7 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         
         let name = twoDimensionalArray[indexPath.section][indexPath.row]
         cell.textLabel?.text = name
-        cell.textLabel?.text = "\(name)  Section: \(indexPath.section)  Row: \(indexPath.row)"
+        
         return cell
-    }
-    
-    // MARK: - Actions
-    
-    @objc func handleExpandClose(button: UIButton) {
-        print("Trying tp expand")
-        
-        let section = 0
-        
-        var indexPath = [IndexPath]()
-        for row in twoDimensionalArray[section].indices {
-            print(0, row)
-            var indexPath = IndexPath(row: row, section: section)
-            indexPath.append(indexPath)
-        }
-        twoDimensionalArray[section].removeAll()
-        tableView.deleteRows(at: indexPath, with: .fade)
     }
 }
