@@ -27,14 +27,16 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         label.font = AppFont.regular.s10()
         return label
     }()
-    private let upDownFilterButton: UIButton = {
+    private lazy var buyRateFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "up_down_filter"), for: .normal)
+        button.addTarget(self, action: #selector(buyFilterButtonDidPress), for: .touchUpInside)
         return button
     }()
-    private let downUpFilterButton: UIButton = {
+    private lazy var sellRateFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "down_up_filter"), for: .normal)
+        button.addTarget(self, action: #selector(sellFilterButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -65,30 +67,38 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
     private func setupViews() {
         [buyLabel, sellLabel,
-         upDownFilterButton, downUpFilterButton].forEach {contentView.addSubview($0)}
+         buyRateFilterButton, sellRateFilterButton].forEach {contentView.addSubview($0)}
         contentView.backgroundColor = AppColor.grayWhite.uiColor
+    }
+    
+    // MARK: - Action
+    @objc func buyFilterButtonDidPress() {
+        
+    }
+    @objc func sellFilterButtonDidPress() {
+        
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        downUpFilterButton.snp.makeConstraints { make in
+        sellRateFilterButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-12.5)
             make.size.equalTo(12)
         }
         sellLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(downUpFilterButton.snp.leading).offset(-4)
+            make.trailing.equalTo(sellRateFilterButton.snp.leading).offset(-4)
             make.height.equalTo(12)
         }
-        upDownFilterButton.snp.makeConstraints { make in
+        buyRateFilterButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(sellLabel.snp.leading).offset(-16.5)
             make.size.equalTo(12)
         }
         buyLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(upDownFilterButton.snp.leading).offset(-4)
+            make.trailing.equalTo(buyRateFilterButton.snp.leading).offset(-4)
             make.height.equalTo(12)
         }
     }
