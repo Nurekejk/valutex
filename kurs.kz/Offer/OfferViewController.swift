@@ -9,8 +9,7 @@ import UIKit
 
 final class OfferViewController: UIViewController {
 
-    // MARK: - Outlets
-    
+    // MARK: - UI
     private lazy var headerView: OfferTableViewHeaderView = {
         let headerView = OfferTableViewHeaderView()
         return headerView
@@ -23,6 +22,7 @@ final class OfferViewController: UIViewController {
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header_id")
         tableView.tableHeaderView = headerView
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.isScrollEnabled = false
@@ -33,14 +33,13 @@ final class OfferViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
     
-    // MARK: - Setup
+    // MARK: - Setup Views
 
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
@@ -60,7 +59,6 @@ final class OfferViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,4 +78,5 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         return view
     }
+
 }

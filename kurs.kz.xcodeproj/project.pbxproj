@@ -16,6 +16,7 @@
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
+		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -74,7 +75,6 @@
 		9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */; };
 		9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D562A694A1D00A11284 /* OfferViewController.swift */; };
 		9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */; };
-		9FF55D5C2A694A1D00A11284 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */; };
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
@@ -104,6 +104,7 @@
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 		9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		9FF55D562A694A1D00A11284 /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
-		9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 				9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */,
 				9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */,
 				9FF55D562A694A1D00A11284 /* OfferViewController.swift */,
-				9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */,
 				61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */,
+				61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */,
 			);
 			path = Offer;
 			sourceTree = "<group>";
@@ -767,6 +767,7 @@
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
@@ -814,7 +815,6 @@
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
-				9FF55D5C2A694A1D00A11284 /* SectionHeaderView.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */,
