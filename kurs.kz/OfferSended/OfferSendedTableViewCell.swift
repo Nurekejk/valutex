@@ -21,6 +21,20 @@ final class OfferSendedTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let ministarsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "ministars")
+        return imageView
+    }()
+    
+    private lazy var feedBackLabel: UILabel = {
+        let label = UILabel()
+        label.text = "4 (10)"
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "+7(707) 303-22-00"
@@ -60,7 +74,7 @@ final class OfferSendedTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [nameLabel, subTitleLabel, priceLabel, cancelButton].forEach {
+        [nameLabel, ministarsImageView, feedBackLabel, subTitleLabel, priceLabel, cancelButton].forEach {
             contentView.addSubview($0)
         }
     }
@@ -72,6 +86,19 @@ final class OfferSendedTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
+        }
+        
+        ministarsImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(19)
+            make.leading.equalTo(nameLabel.snp.trailing).offset(4)
+            make.height.equalTo(12)
+            make.width.equalTo(12)
+        }
+        
+        feedBackLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(17)
+            make.leading.equalTo(nameLabel.snp.trailing).offset(20)
+            make.height.equalTo(15)
         }
         
         subTitleLabel.snp.makeConstraints { make in
