@@ -175,8 +175,32 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func continueButtonDidPressed() {
+        let phoneNumber = phoneTextField.text
+        print(phoneNumber)
+        guard let phoneNumber = phoneNumber else {
+            showSnackBar(message: "Phone number entered incorrectly.")
+            return
+        }
+        
+        if phoneNumber.isEmpty {
+            showSnackBar(message: "Please enter a phone number.")
+            return
+        }
+        
+        if phoneNumber.count != 18 {
+            showSnackBar(message: "Phone number entered incorrectly.")
+            return
+        }
+        
+        let formatedPhoneNumber = phoneNumber
+                    .replacingOccurrences(of: " ", with: "")
+                    .replacingOccurrences(of: "+", with: "")
+                    .replacingOccurrences(of: "(", with: "")
+                    .replacingOccurrences(of: ")", with: "")
+
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
         
+        let user = User(phone: formatedPhoneNumber)
         service.postOTPRequest(with: user)
     }
     
