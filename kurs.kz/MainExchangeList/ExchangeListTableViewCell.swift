@@ -24,12 +24,12 @@ final class ExchangeListTableViewCell: UITableViewCell {
                                           "blank_icon")
             if let newRating = exchanger?.rating,
                let newTotalRatings = exchanger?.totalRatings {
-                ratingLabel.text = "\(newRating)" + " (\(newTotalRatings))"
+                ratingLabel.text = "\(String(format: "%.2f", newRating))" + " (\(newTotalRatings))"
             } else {
                 ratingLabel.text = "?.?"
             }
             setupAddressLabel(with: exchanger?.address ?? "",
-                              and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км") 
+                              and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км")
             dateLabel.text = exchanger?.date
             if let safeBuyRate = exchanger?.buyRate {
                 let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
