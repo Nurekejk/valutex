@@ -12,6 +12,8 @@ import InputMask
 
 final class SignUpViewController: UIViewController {
     
+    private let service = OtpRegistrationService()
+    
     // MARK: - UI
     private let signUpLabel: UILabel = {
         let label = UILabel()
@@ -23,17 +25,17 @@ final class SignUpViewController: UIViewController {
     }()
     
     // MARK: - MaskedTextField Listener
-        private lazy var listener: MaskedTextFieldDelegate = {
-            let listener = MaskedTextFieldDelegate()
-            listener.onMaskedTextChangedCallback = { textField, _, isFilled in
-                let updatedText = textField.text ?? ""
-                if isFilled {
-                    print("Text field is filled: \(updatedText)")
-                }
+    private lazy var listener: MaskedTextFieldDelegate = {
+        let listener = MaskedTextFieldDelegate()
+        listener.onMaskedTextChangedCallback = { textField, _, isFilled in
+            let updatedText = textField.text ?? ""
+            if isFilled {
+                print("Text field is filled: \(updatedText)")
             }
-            listener.delegate = self
-            listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
-            return listener
+        }
+        listener.delegate = self
+        listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
+        return listener
     }()
     
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
@@ -174,6 +176,8 @@ final class SignUpViewController: UIViewController {
     // MARK: - Actions
     @objc private func continueButtonDidPressed() {
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+        
+        service.postOTPRequest(with: user)
     }
     
     @objc private func signUpButtonDidPressed() {
