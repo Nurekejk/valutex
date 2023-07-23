@@ -187,4 +187,9 @@ final class SignUpViewController: UIViewController {
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    }
 }
