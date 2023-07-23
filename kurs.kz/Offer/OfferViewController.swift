@@ -27,7 +27,8 @@ final class OfferViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.isScrollEnabled = false
         tableView.backgroundColor = AppColor.gray10.uiColor
-        tableView.sectionHeaderHeight = 100
+        tableView.rowHeight = 141
+        tableView.sectionHeaderHeight = 20
         return tableView
     }()
 

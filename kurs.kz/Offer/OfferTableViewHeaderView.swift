@@ -10,8 +10,7 @@ import SkyFloatingLabelTextField
 
 class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
-    // MARK: - Outlets
-
+    // MARK: - UI
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -45,7 +44,7 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = AppColor.gray100.uiColor
-        textField.placeholder = "5 000 $"
+        textField.placeholder = "500 $"
 
         textField.backgroundColor = AppColor.gray10.uiColor
         textField.lineView.isHidden = true
@@ -115,7 +114,6 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }()
 
     // MARK: - Lifecycle
-
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -127,7 +125,6 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     // MARK: - Setup Views
-
     private func setupViews() {
         maintextField.rightView = changeButton
         changeButton.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
@@ -140,8 +137,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         contentView.backgroundColor =  AppColor.gray10.uiColor
     }
     // MARK: - Setup Constraints
-
     private func setupConstraints() {
+        let width = (UIScreen.main.bounds.width - 80)/2
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -161,13 +158,13 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         selltextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-193.5)
+            make.width.equalTo(width)
             make.height.equalTo(56)
         }
         buytextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalTo(selltextField.snp.trailing).offset(12)
-            make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(width)
             make.height.equalTo(56)
         }
         maintextField.snp.makeConstraints { make in
