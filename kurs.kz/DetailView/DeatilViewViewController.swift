@@ -37,6 +37,7 @@ final class DeatilViewViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
         tableView.register(PhoneCell.self, forCellReuseIdentifier: PhoneCell.reuseID)
+        tableView.register(EmailCell.self, forCellReuseIdentifier: EmailCell.reuseID)
         tableView.rowHeight = 76
         tableView.dataSource = self
         tableView.delegate = self
@@ -113,11 +114,10 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: PhoneCell.reuseID,
-            for: indexPath) as? PhoneCell
-        
-        cell?.setupPhone(first: "8707 834 43 43", second: "8706 232 23 54")
+        let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                    EmailCell.reuseID, for:
+                                                    indexPath)as? EmailCell
+        cell?.setupEmail(email: "abs.com")
         
         return cell ?? UITableViewCell()
     }
