@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GoogleMaps
 
 struct MockExchanger: Codable {
     let id: Int
@@ -21,6 +22,14 @@ struct MockExchanger: Codable {
     let longitude: Float
     let open: Bool
     let contacts: [String]
+    let myLocation: CLLocation = CLLocation(latitude: CLLocationDegrees(43.157713441585436),
+                                            longitude: CLLocationDegrees(77.05901863169184))
+    var distance: CLLocationDistance? {
+        let exchangerLocation = CLLocation(latitude: CLLocationDegrees(latitude),
+                                           longitude: CLLocationDegrees(longitude))
+        
+        return myLocation.distance(from: exchangerLocation)/1000.0
+    }
     
     enum CodingKeys: String, CodingKey {
         case id

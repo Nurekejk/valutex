@@ -8,6 +8,7 @@
 import UIKit
 import PanModal
 import SnapKit
+import GoogleMaps
 
 final class MockExchangeListViewController: UIViewController {
     
@@ -17,52 +18,6 @@ final class MockExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-//    private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
-//                                             iconImageName: "som_exchange",
-//                                             rating: 4.9,
-//                                             totalRatings: 15,
-//                                             address: "г.Алматы, ул. Ауэзова 14",
-//                                             date: "1 марта, 2023 18:05:33",
-//                                             buyRate: 448,
-//                                             sellRate: 451,
-//                                             distance: "1 км"),
-//                                   Exchanger(mainTitle: "МИГ",
-//                                             iconImageName: "mig_exchange",
-//                                             rating: 4.9,
-//                                             totalRatings: 15,
-//                                             address: "ул. Толе би, 297 г, уг. ул. Тлендиева",
-//                                             date: "1 марта, 2023 18:05:33",
-//                                             buyRate: 448.5,
-//                                             sellRate: 451,
-//                                             distance: "1 км"),
-//                                   Exchanger(mainTitle: "Блиц",
-//                                             iconImageName: "blank_icon",
-//                                             rating: 4.9,
-//                                             totalRatings: 15,
-//                                             address: "ул. Толе би, 297",
-//                                             date: "1 марта, 2023 18:05:33",
-//                                             buyRate: 448,
-//                                             sellRate: 449.5,
-//                                             distance: "5 км"),
-//                                   Exchanger(mainTitle: "Limpopo",
-//                                             iconImageName: "limpopo_exchange",
-//                                             rating: 4.9,
-//                                             totalRatings: 15,
-//                                             address: "534, пр-т. Сейфуллина уг",
-//                                             date: "1 марта, 2023 18:05:33",
-//                                             buyRate: 448.1,
-//                                             sellRate: 451,
-//                                             distance: "3 км"),
-//                                   Exchanger(mainTitle: "МИГ",
-//                                             iconImageName: "mig_exchange",
-//                                             rating: 4.9,
-//                                             totalRatings: 15,
-//                                             address: "мкр. Ақбұлақ ул. Хан шатыр, 273",
-//                                             date: "1 марта, 2023 18:05:33",
-//                                             buyRate: 448.5,
-//                                             sellRate: 451,
-//                                             distance: "1 км")]
-//
     private var searchArray = [MockExchanger]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
