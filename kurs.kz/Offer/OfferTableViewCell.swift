@@ -13,12 +13,10 @@ final class OfferTableViewCell: UITableViewCell {
 
     public static var reuseIdentifier = String(describing: OfferTableViewCell.self)
 
-    // MARK: - Outlets
-    
+    // MARK: - UI
     private let cellView: UIView = {
         let cellView = UIView()
         cellView.backgroundColor = .white
-        cellView.layer.cornerRadius = 8
         return cellView
     }()
 
@@ -93,7 +91,6 @@ final class OfferTableViewCell: UITableViewCell {
         button.setTitle("Отклонить", for: .normal)
         button.tintColor = .red
         button.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1.0)
-        button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
     }()
@@ -103,24 +100,28 @@ final class OfferTableViewCell: UITableViewCell {
         button.setTitle("Принять", for: .normal)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
-        button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
     }()
 
     // MARK: - Initializers
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupHierarchy()
-        setupLayout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
+    override func layoutSubviews() {
+        cellView.layer.cornerRadius = 8
+        rejectButton.layer.cornerRadius = 8
+        acceptButton.layer.cornerRadius = 8
+    }
+
+    // MARK: - Setup Views
     private func setupHierarchy() {
         [nameLabel, starImage, ratingLabel].forEach {
             infoStack.addArrangedSubview($0)
@@ -138,13 +139,12 @@ final class OfferTableViewCell: UITableViewCell {
         contentView.addSubview(cellView)
     }
 
-    private func setupLayout () {
-
+    private func setupConstraints() {
         cellView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
+            make.height.equalTo(125)
         }
 
         infoview.snp.makeConstraints { make in
@@ -182,5 +182,4 @@ final class OfferTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-16)
         }
     }
-        // MARK: - Reuse
 }
