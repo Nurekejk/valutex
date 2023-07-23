@@ -38,6 +38,7 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
         tableView.register(PhoneCell.self, forCellReuseIdentifier: PhoneCell.reuseID)
         tableView.register(EmailCell.self, forCellReuseIdentifier: EmailCell.reuseID)
+        tableView.register(ClockTimeCell.self, forCellReuseIdentifier: ClockTimeCell.reuseID)
         tableView.rowHeight = 76
         tableView.dataSource = self
         tableView.delegate = self
@@ -115,10 +116,10 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    EmailCell.reuseID, for:
-                                                    indexPath)as? EmailCell
-        cell?.setupEmail(email: "abs.com")
+                                                    ClockTimeCell.reuseID, for: indexPath) as? ClockTimeCell
         
+        cell?.setupClockTime(pn: "Пн -", vs: "Вс -")
+                    
         return cell ?? UITableViewCell()
     }
 }

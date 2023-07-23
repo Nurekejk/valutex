@@ -29,6 +29,7 @@
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */; };
 		8FCEF8A42A6D8F6A006B3D5D /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */; };
+		8FCEF8A62A6D90DB006B3D5D /* ClockTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -123,6 +124,7 @@
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
 		8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
+		8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeCell.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				8F21A4B82A6BCE4B000013FA /* HeaderView.swift */,
 				8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */,
 				8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */,
+				8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
+				8FCEF8A62A6D90DB006B3D5D /* ClockTimeCell.swift in Sources */,
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */,
@@ -821,7 +825,6 @@
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
 				8F21A4B72A6BBD51000013FA /* DeatilViewViewController.swift in Sources */,
-				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
 				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
