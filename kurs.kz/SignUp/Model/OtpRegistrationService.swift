@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class SignUpPageService {
+final class OtpRegistrationService {
     
     // MARK: - Network
-    func postOTPRequest(with user: User) {
+    func postOTPRequest(with user: User, completion: @escaping (String) -> Void) {
         guard let url = URL(string: "http://77.240.38.143:4443/otp/registration") else { fatalError() }
         
         let parameters: [String: Any] = ["phone": user.phone]
@@ -28,15 +28,10 @@ final class SignUpPageService {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 print("Post Request Error: \(error.localizedDescription)")
                 return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse,
-               !(200...299).contains(httpResponse.statusCode) {
-                print("Invalid Response received from the server")
             }
             
             guard let responseData = data else {
@@ -44,7 +39,14 @@ final class SignUpPageService {
                 return
             }
             
-            print(String(data: responseData, encoding: .utf8) as Any)
+            do {
+                let decodedData = try JSONDecoder().decode(String.self, from: responseData)
+                DispatchQueue.main.async {
+                    completion(decodedData)
+                }
+            } catch {
+                print("Data decoded incorrectly.")
+            }
         }
         
         task.resume()

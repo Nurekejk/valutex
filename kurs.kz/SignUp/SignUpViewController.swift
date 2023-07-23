@@ -176,7 +176,6 @@ final class SignUpViewController: UIViewController {
     // MARK: - Actions
     @objc private func continueButtonDidPressed() {
         let phoneNumber = phoneTextField.text
-        print(phoneNumber)
         guard let phoneNumber = phoneNumber else {
             showSnackBar(message: "Phone number entered incorrectly.")
             return
@@ -201,7 +200,9 @@ final class SignUpViewController: UIViewController {
         self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
         
         let user = User(phone: formatedPhoneNumber)
-        service.postOTPRequest(with: user)
+        service.postOTPRequest(with: user) { message in
+            print(message)
+        }
     }
     
     @objc private func signUpButtonDidPressed() {
