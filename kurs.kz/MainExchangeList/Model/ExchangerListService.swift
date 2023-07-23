@@ -12,7 +12,7 @@ struct ExchangerListService {
     
     let exchangeListURL = "http://77.240.38.143:4443/actual_currency_rates"
     
-    func fetchExchangers(currencyCode: String, cityId: Int, completion: @escaping ([MockExchanger]) -> Void) {
+    func fetchExchangers(currencyCode: String, cityId: Int, completion: @escaping ([Exchanger]) -> Void) {
         guard let url = URL(string: exchangeListURL) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
@@ -40,10 +40,10 @@ struct ExchangerListService {
         task.resume()
     }
     
-    func parseJSON(excnhagerData:Data) -> [MockExchanger]? {
+    func parseJSON(excnhagerData:Data) -> [Exchanger]? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode([MockExchanger].self, from: excnhagerData)
+            let decodedData = try decoder.decode([Exchanger].self, from: excnhagerData)
             return decodedData
         } catch {
             print("error:\(error)")

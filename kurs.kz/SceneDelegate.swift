@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isAutorized = true
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: MockExchangeListViewController())
+                UINavigationController(rootViewController: ExchangeListViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())

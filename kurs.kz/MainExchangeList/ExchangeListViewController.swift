@@ -12,53 +12,11 @@ import SnapKit
 final class ExchangeListViewController: UIViewController {
     
     // MARK: - Properties
-    
-    private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
-                                             iconImageName: "som_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "г.Алматы, ул. Ауэзова 14",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448,
-                                             sellRate: 451,
-                                             distance: "1 км"),
-                                   Exchanger(mainTitle: "МИГ",
-                                             iconImageName: "mig_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "ул. Толе би, 297 г, уг. ул. Тлендиева",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.5,
-                                             sellRate: 451,
-                                             distance: "1 км"),
-                                   Exchanger(mainTitle: "Блиц",
-                                             iconImageName: "blank_icon",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "ул. Толе би, 297",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448,
-                                             sellRate: 449.5,
-                                             distance: "5 км"),
-                                   Exchanger(mainTitle: "Limpopo",
-                                             iconImageName: "limpopo_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "534, пр-т. Сейфуллина уг",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.1,
-                                             sellRate: 451,
-                                             distance: "3 км"),
-                                   Exchanger(mainTitle: "МИГ",
-                                             iconImageName: "mig_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "мкр. Ақбұлақ ул. Хан шатыр, 273",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.5,
-                                             sellRate: 451,
-                                             distance: "1 км")]
-    
+    private var exchangersArray: [Exchanger] = [] {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
     private var searchArray = [Exchanger]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
@@ -170,6 +128,9 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            self.exchangersArray = exchangers
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -289,7 +250,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
                 
-//                cell.changeExchanger(with: exchangersArray[indexPath.row])
+                cell.changeExchanger(with: exchangersArray[indexPath.row])
                 return cell
             } else {
                 return UITableViewCell()
