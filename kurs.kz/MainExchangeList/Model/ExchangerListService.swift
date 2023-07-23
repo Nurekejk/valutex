@@ -41,10 +41,8 @@ struct ExchangerListService {
     }
     
     func parseJSON(excnhagerData:Data) -> [MockExchanger]? {
-        print(excnhagerData)
         let decoder = JSONDecoder()
         do {
-            print("here")
             let decodedData = try decoder.decode([MockExchanger].self, from: excnhagerData)
             return decodedData
         } catch {
