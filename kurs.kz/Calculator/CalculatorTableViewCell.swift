@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+    // MARK: - Struct
+
 struct CellData {
     let migLogoImage: UIImage?
     let titleLabel: String

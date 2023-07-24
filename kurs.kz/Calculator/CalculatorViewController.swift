@@ -51,7 +51,7 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
-        headerView.frame = CGRect(x: 0, y: 0, width: 0, height: 36)
+        headerView.frame = CGRect(x: 0, y: 0, width: 0, height: 100)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -62,7 +62,7 @@ final class CalculatorViewController: UIViewController {
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 7
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
