@@ -16,6 +16,10 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - UI
 
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
     private lazy var flagImage1: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "KZTflag")
@@ -86,21 +90,37 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.layer.cornerRadius = 8
+    }
     // MARK: - Setup Views
 
     private func setupViews() {
         [flagImage1, currencyLabel1, dropDownButton1, separatorLineImage1,
          arrowLeftRightButton, flagImage2, currencyLabel2, dropDownButton2,
          separatorLineImage2].forEach {
-            contentView.addSubview($0)
+            containerView.addSubview($0)
         }
-        contentView.backgroundColor = .white
-
+        let backgroundGrayColor = UIColor(
+            red: 246.0 / 255.0,
+            green: 247.0 / 255.0,
+            blue: 249.0 / 255.0,
+            alpha: 1)
+        
+        contentView.backgroundColor = backgroundGrayColor
+        containerView.backgroundColor = .white
+        contentView.addSubview(containerView)
     }
     // MARK: - Setup Constraints
 
     func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(4)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.bottom.equalToSuperview().offset(-4)
+        }
         flagImage1.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)

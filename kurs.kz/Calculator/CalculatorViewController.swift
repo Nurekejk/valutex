@@ -62,7 +62,7 @@ final class CalculatorViewController: UIViewController {
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
