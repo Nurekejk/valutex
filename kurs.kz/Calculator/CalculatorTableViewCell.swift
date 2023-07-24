@@ -8,6 +8,16 @@
 import UIKit
 import SnapKit
 
+struct CellData {
+    let migLogoImage: UIImage?
+    let titleLabel: String
+    let starImage: UIImage?
+    let rateLabel: String
+    let addressLabel: String
+    let kmLabel: String
+    let dateLabel: String
+    let amountLabel: String
+}
 final class CalculatorTableViewCell: UITableViewCell {
 
     // MARK: - Public
@@ -147,27 +157,22 @@ final class CalculatorTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-12)
         }
     }
+
     // MARK: - Public
 
-    public func configureCell(migLogoImage: UIImage?,
-                              titleLabel: String,
-                              starImage: UIImage?,
-                              rateLabel: String,
-                              addressLabel: String,
-                              kmLabel: String,
-                              dateLabel: String,
-                              amountLabel: String) {
-        if let migLogoImage = migLogoImage {
+    public func configureCell(data: CellData) {
+        // Configure the cell with the provided data
+        if let migLogoImage = data.migLogoImage {
             self.migLogoImage.image = migLogoImage
         }
-        self.titleLabel.text = titleLabel
-        if let starImage = starImage {
+        self.titleLabel.text = data.titleLabel
+        if let starImage = data.starImage {
             self.starImage.image = starImage
         }
-        self.rateLabel.text = rateLabel
-        self.addressLabel.text = rateLabel
-        self.kmLabel.text = rateLabel
-        self.dateLabel.text = rateLabel
-        self.amountLabel.text = rateLabel
+        self.rateLabel.text = data.rateLabel
+        self.addressLabel.text = data.addressLabel
+        self.kmLabel.text = data.kmLabel
+        self.dateLabel.text = data.dateLabel
+        self.amountLabel.text = data.amountLabel
     }
 }
