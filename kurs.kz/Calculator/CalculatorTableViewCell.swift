@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-    // MARK: - Struct
+// MARK: - Struct
 
 struct CellData {
     let migLogoImage: UIImage?
@@ -20,14 +20,15 @@ struct CellData {
     let dateLabel: String
     let amountLabel: String
 }
+
 final class CalculatorTableViewCell: UITableViewCell {
-
+    
     // MARK: - Public
-
+    
     public static var reuseIdentifier = String(describing: CalculatorTableViewCell.self)
-
+    
     // MARK: - UI
-
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -85,22 +86,19 @@ final class CalculatorTableViewCell: UITableViewCell {
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         setupViews()
         setupConstraints()
-
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         containerView.layer.cornerRadius = 8
     }
-
+    
     // MARK: - Setup Views
-
+    
     private func setupViews() {
         [migLogoImage, titleLabel, starImage, rateLabel,
          addressLabel, kmLabel, dateLabel,amountLabel].forEach {
@@ -111,19 +109,19 @@ final class CalculatorTableViewCell: UITableViewCell {
             green: 247.0 / 255.0,
             blue: 249.0 / 255.0,
             alpha: 1)
-
+        
         contentView.backgroundColor = backgroundGrayColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
-
+    
     // MARK: - Setup Constraints
-
+    
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-4)
         }
         migLogoImage.snp.makeConstraints { make in
@@ -159,9 +157,9 @@ final class CalculatorTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-12)
         }
     }
-
+    
     // MARK: - Public
-
+    
     public func configureCell(data: CellData) {
         if let migLogoImage = data.migLogoImage {
             self.migLogoImage.image = migLogoImage

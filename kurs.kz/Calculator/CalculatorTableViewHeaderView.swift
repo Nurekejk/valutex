@@ -10,10 +10,6 @@ import SnapKit
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
-    // MARK: - Public
-
-    //    public static var reuseIdentifier = String(describing: CalculatorTableViewHeaderView.self)
-
     // MARK: - UI
 
     private lazy var containerView: UIView = {
@@ -99,6 +95,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         let view = UIView()
         return view
     }()
+
     // MARK: - LifeCycle
 
     override init(reuseIdentifier: String?) {
@@ -113,6 +110,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         super.layoutSubviews()
         containerView.layer.cornerRadius = 8
     }
+
     // MARK: - Setup Views
 
     private func setupViews() {
@@ -133,17 +131,18 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         containerView.addSubview(borderView)
         borderView.backgroundColor = backgroundGrayColor
     }
+
     // MARK: - Setup Constraints
     
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-4) }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
-            make.top.equalToSuperview().offset(46)
+            make.top.equalToSuperview().offset(45)
             make.leading.equalTo(containerView.snp.leading)
             make.trailing.equalTo(containerView.snp.trailing) }
         flagImage1.snp.makeConstraints { make in
@@ -157,35 +156,28 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.leading.equalTo(currencyLabel1.snp.trailing).offset(16) }
         separatorLineImage1.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(dropDownButton1.snp.trailing).offset(33.5) }
+            make.leading.equalTo(dropDownButton1.snp.trailing).offset(42) }
         arrowLeftRightButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(separatorLineImage1.snp.trailing).offset(12)
-        }
+            make.leading.equalTo(separatorLineImage1.snp.trailing).offset(12) }
         separatorLineImage2.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
-        }
+            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12) }
         dropDownButton2.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-18.5)
-        }
+            make.trailing.equalToSuperview().offset(-18.5) }
         currencyLabel2.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.trailing.equalTo(dropDownButton2.snp.leading).offset(-16)
-        }
+            make.trailing.equalTo(dropDownButton2.snp.leading).offset(-16) }
         flagImage2.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.trailing.equalTo(currencyLabel2.snp.leading).offset(-16)
-        }
+            make.trailing.equalTo(currencyLabel2.snp.leading).offset(-16) }
         currencyTextField.snp.makeConstraints { make in
-            make.top.equalTo(flagImage1.snp.bottom).offset(27)
-            make.leading.equalToSuperview().offset(16)
-        }
+            make.top.equalTo(flagImage1.snp.bottom).offset(26)
+            make.leading.equalToSuperview().offset(16) }
         clearButton.snp.makeConstraints { make in
-            make.top.equalTo(flagImage1.snp.bottom).offset(27)
-            make.trailing.equalToSuperview().offset(-16)
-        }
+            make.top.equalTo(flagImage1.snp.bottom).offset(26)
+            make.trailing.equalToSuperview().offset(-16) }
     }
 
     // MARK: - Actions

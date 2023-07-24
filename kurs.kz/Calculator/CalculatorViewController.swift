@@ -28,6 +28,7 @@ final class CalculatorViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ final class CalculatorViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
+
     // MARK: - Setup Views
     
     private func setupViews() {
@@ -55,22 +57,16 @@ final class CalculatorViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? CalculatorTableViewCell
-        
         switch indexPath.row {
         case 0:
             let cellData = CellData(migLogoImage: UIImage(named: "migLogo"),
@@ -85,14 +81,6 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
-        
         return cell ?? UITableViewCell()
     }
-    
-    //        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //            let width = UIScreen.main.bounds.width
-    //            let view = CalculatorSectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
-    //            return view
-    //        }
-    
 }
