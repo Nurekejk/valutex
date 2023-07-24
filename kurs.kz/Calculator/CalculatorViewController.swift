@@ -25,7 +25,6 @@ final class CalculatorViewController: UIViewController {
                            forCellReuseIdentifier: CalculatorTableViewCell.reuseIdentifier)
         tableView.tableHeaderView = headerView
         tableView.rowHeight = 87
-        //        tableView.sectionHeaderHeight = 18
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -40,7 +39,6 @@ final class CalculatorViewController: UIViewController {
     
     private func setupViews() {
         tableView.backgroundColor = .systemGray6
-//      view.addSubview(headerView)
         view.addSubview(tableView)
     }
     override func viewDidLayoutSubviews() {
