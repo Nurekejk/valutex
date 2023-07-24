@@ -51,6 +51,7 @@ final class DeatilViewViewController: UIViewController {
         view.backgroundColor = .white
         title = "Contacts"
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.layer.cornerRadius = 8
         
         setupViews()
         setupConstraits()
@@ -65,7 +66,10 @@ final class DeatilViewViewController: UIViewController {
     func setupConstraits() {
         
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(108)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(650)
         }
     }
 }
@@ -107,7 +111,7 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return headersName.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,10 +120,10 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    ClockTimeCell.reuseID, for: indexPath) as? ClockTimeCell
+                                                    PhoneCell.reuseID, for: indexPath) as? PhoneCell
+        let phones = phonesNumber[indexPath.row]
+        cell?.setupPhone(first: phones, second: phones)
         
-        cell?.setupClockTime(pn: "Пн -", vs: "Вс -")
-                    
         return cell ?? UITableViewCell()
     }
 }
