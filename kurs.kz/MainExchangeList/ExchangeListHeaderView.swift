@@ -11,6 +11,7 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
+
     
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
@@ -75,7 +76,7 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     @objc func buyFilterButtonDidPress() {
         
     }
-    @objc func sellFilterButtonDidPress() {
+    @objc private func sellFilterButtonDidPress() {
         
     }
     
