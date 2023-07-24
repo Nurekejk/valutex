@@ -163,7 +163,6 @@ final class CalculatorTableViewCell: UITableViewCell {
     // MARK: - Public
 
     public func configureCell(data: CellData) {
-        // Configure the cell with the provided data
         if let migLogoImage = data.migLogoImage {
             self.migLogoImage.image = migLogoImage
         }

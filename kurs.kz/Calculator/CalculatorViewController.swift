@@ -40,7 +40,7 @@ final class CalculatorViewController: UIViewController {
     
     private func setupViews() {
         tableView.backgroundColor = .systemGray6
-        view.addSubview(headerView)
+//      view.addSubview(headerView)
         view.addSubview(tableView)
     }
     override func viewDidLayoutSubviews() {
@@ -51,7 +51,7 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
-        headerView.frame = CGRect(x: 0, y: 0, width: 0, height: 100)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 96)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
