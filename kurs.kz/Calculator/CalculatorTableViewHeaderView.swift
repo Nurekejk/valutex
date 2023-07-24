@@ -80,6 +80,21 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
                          for: .touchUpInside)
         return button
     }()
+    private lazy var currencyTextField: UITextField = {
+           let textField = UITextField()
+           textField.rightViewMode = .always
+           textField.font = .systemFont(ofSize: 16)
+           textField.text = "500.00"
+           return textField
+       }()
+    private lazy var clearButton: UIButton = {
+        let button = UIButton(type: .system)
+        let iconImage = UIImage(named: "icon-clear")
+        button.setImage(iconImage, for: .normal)
+        button.addTarget(self, action: #selector(clearButtonDidPressed),
+                         for: .touchUpInside)
+        return button
+    }()
     // MARK: - LifeCycle
 
     override init(reuseIdentifier: String?) {
@@ -99,7 +114,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     private func setupViews() {
         [flagImage1, currencyLabel1, dropDownButton1, separatorLineImage1,
          arrowLeftRightButton, flagImage2, currencyLabel2, dropDownButton2,
-         separatorLineImage2].forEach {
+         separatorLineImage2, currencyTextField, clearButton].forEach {
             containerView.addSubview($0)
         }
         let backgroundGrayColor = UIColor(
@@ -130,7 +145,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.leading.equalTo(flagImage1.snp.trailing).offset(16)
         }
         dropDownButton1.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(21.54)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalTo(currencyLabel1.snp.trailing).offset(16)
         }
         separatorLineImage1.snp.makeConstraints { make in
@@ -146,7 +161,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
         }
         dropDownButton2.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(21.54)
+            make.top.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-18.5)
         }
         currencyLabel2.snp.makeConstraints { make in
@@ -157,6 +172,14 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(16)
             make.trailing.equalTo(currencyLabel2.snp.leading).offset(-16)
         }
+        currencyTextField.snp.makeConstraints { make in
+            make.top.equalTo(flagImage1.snp.bottom).offset(29)
+            make.leading.equalToSuperview().offset(16)
+        }
+        clearButton.snp.makeConstraints { make in
+            make.top.equalTo(flagImage1.snp.bottom).offset(29)
+            make.trailing.equalToSuperview().offset(-16)
+        }
     }
 
     // MARK: - Actions
@@ -165,6 +188,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     }
     @objc private func arrowLeftRightButtonDidPressed() {
+
+    }
+    @objc private func clearButtonDidPressed() {
 
     }
 }
