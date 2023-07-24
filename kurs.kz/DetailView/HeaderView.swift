@@ -54,7 +54,6 @@ final class HeaderView: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)
         }
-        
     }
     
     func setup(title: String) {
