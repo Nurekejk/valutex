@@ -134,7 +134,7 @@ final class OfferTableViewCell: UITableViewCell {
         [infoview, exchangeRateLabel, rejectButton, acceptButton].forEach {
             cellView.addSubview($0)
         }
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = AppColor.gray10.uiColor
         contentView.addSubview(cellView)
     }
 

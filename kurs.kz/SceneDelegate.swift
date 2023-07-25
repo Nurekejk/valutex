@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
       
         let isAutorized = true
-
         if isAutorized {
             window?.rootViewController =
                 UINavigationController(rootViewController: ExchangeListViewController())
