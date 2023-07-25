@@ -72,7 +72,7 @@ final class OtpRegistrationService {
         task.resume()
     }
     
-    func postOTPCode (with smsCode: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+    func postOTPCode (with smsCode: String, completion: @escaping (Result<Bool?, NetworkError>) -> Void) {
         guard let url = URL(string: otpVerifyURL) else {
             completion(.failure(.badURL))
             return
@@ -108,15 +108,12 @@ final class OtpRegistrationService {
                 return
             }
             
-            print("data = \(String(describing: (String(data: responseData, encoding: .utf8))))")
             do {
-                let decodedData = try JSONDecoder().decode(String.self, from: responseData)
+                let decodedData = try JSONDecoder().decode(Bool?.self, from: responseData)
                 DispatchQueue.main.async {
-                    print(decodedData)
                     completion(.success(decodedData))
                 }
             } catch {
-                print(error)
                 completion(.failure(.decodingError))
                 return
             }
