@@ -17,7 +17,7 @@ final class ExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var searchArray: [Exchanger] = [] {
+    private var filteredArray: [Exchanger] = [] {
         didSet {
             self.exchangeListTableView.reloadData()
         }
@@ -61,8 +61,9 @@ final class ExchangeListViewController: UIViewController {
         return label
     }()
     
-    private let currencySearchBar: UISearchBar = {
+    private lazy var currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.delegate = self
         searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
         searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
@@ -259,7 +260,7 @@ final class ExchangeListViewController: UIViewController {
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchArray.count : exchangersArray.count
+        isSearching ? filteredArray.count : exchangersArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 91
@@ -270,16 +271,31 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                             ExchangeListTableViewCell.identifier,
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
-                print(buyFilterIsOn)
-                cell.changeExchanger(with: exchangersArray[indexPath.row])
+                if !isSearching {
+                    cell.changeExchanger(with: exchangersArray[indexPath.row])
+                } else {
+                    cell.changeExchanger(with: filteredArray[indexPath.row])
+                }
                 return cell
             } else {
                 return UITableViewCell()
             }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+            searchBar.resignFirstResponder()
+        } else {
+            isSearching = true
+            filteredArray = exchangersArray.filter { exchanger in
+                exchanger.mainTitle.localizedCaseInsensitiveContains(searchText)
+            }
+            print("asd")
+            exchangeListTableView.reloadData()
+        }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredArray = exchangersArray
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
