@@ -14,7 +14,7 @@ final class OfferSendedHeader: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Отправленные (2)"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         label.textAlignment = .left
         return label
     }()
@@ -22,7 +22,6 @@ final class OfferSendedHeader: UITableViewHeaderFooterView {
     // MARK: - Life Cycle
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = AppColor.gray10.uiColor
         
         setupViews()
         setupConstraints()
@@ -34,6 +33,7 @@ final class OfferSendedHeader: UITableViewHeaderFooterView {
     
     // MARK: - Setup Views
     func setupViews() {
+        contentView.backgroundColor = AppColor.gray10.uiColor
         
         [titleLabel].forEach {
             contentView.addSubview($0)

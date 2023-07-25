@@ -20,7 +20,6 @@ final class OfferSendedViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OfferSendedTableViewCell.self,
                            forCellReuseIdentifier: OfferSendedTableViewCell.reuseID)
-        tableView.register(OfferSendedHeader.self, forHeaderFooterViewReuseIdentifier: "header_id")
         tableView.tableHeaderView = header
         tableView.rowHeight = 159
         tableView.dataSource = self
@@ -30,14 +29,20 @@ final class OfferSendedViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = AppColor.gray10.uiColor
-        tableView.layer.cornerRadius = 8
+
         setupViews()
         setupConstraits()
     }
     
+    // MARK: - ViewLayoutSubViews
+    private func viewLayoutSubViews() {
+        tableView.layer.cornerRadius = 8
+    }
+    
     // MARK: - Setup Views
     func setupViews() {
+        view.backgroundColor = AppColor.gray10.uiColor
+        
         [tableView].forEach {
             view.addSubview($0)
         }
@@ -45,7 +50,7 @@ final class OfferSendedViewController: UIViewController {
     
     // MARK: - Setup Constraits
     func setupConstraits() {
-        header.frame = CGRect(x: 0, y: 0, width: 343, height: 53)
+        header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 53)
         
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(108)

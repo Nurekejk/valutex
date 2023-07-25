@@ -17,7 +17,7 @@ final class OfferSendedTableViewCell: UITableViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Aidos Tazhigulov"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
         return label
     }()
     
@@ -31,14 +31,14 @@ final class OfferSendedTableViewCell: UITableViewCell {
     private lazy var feedBackLabel: UILabel = {
         let label = UILabel()
         label.text = "4 (10)"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "+7(707) 303-22-00"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.regular.s12()
         label.textAlignment = .left
         return label
     }()
@@ -46,7 +46,7 @@ final class OfferSendedTableViewCell: UITableViewCell {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупает: 250 500 ₸  по курсу: 500$"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         label.textAlignment = .left
         return label
     }()
