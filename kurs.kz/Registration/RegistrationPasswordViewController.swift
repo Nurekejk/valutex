@@ -11,7 +11,7 @@ import SnapKit
 final class RegistrationPasswordViewController: UIViewController {
     
     private let service: OtpRegistrationService
-    private let user: User
+    private var user: User
     
     // MARK: - UI
     private let elementsStackView: UIStackView = {
@@ -179,9 +179,32 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func continueButtonDidPress() {
-        let controller = CustomTabBarViewController()
-        controller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        guard let password = enterPasswordTextField.text else {
+            self.showSnackBar(message: "Пароль введен неправильно.")
+            return
+        }
+        
+        if password.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, введите пароль.")
+            return
+        } else if password.count < 6 {
+            self.showSnackBar(message: "Пароль слишком короткий!")
+            return
+        }
+        
+        guard let passwordRepeated = repeatPasswordTextField.text else {
+            self.showSnackBar(message: "Повторный пароль введен неправильно.")
+            return
+        }
+        
+        if passwordRepeated.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, повторите пароль.")
+            return
+        } else if password != passwordRepeated {
+            self.showSnackBar(message: "Пароли не совпадают.")
+            return
+        }
+        
     }
 
     @objc private func backButtonDidPress() {
