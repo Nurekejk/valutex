@@ -17,8 +17,16 @@ final class ExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var searchArray = [Exchanger]()
-    private var isSearching = false
+    private var searchArray: [Exchanger] = [] {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
+    private var isSearching = false {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
     private var buyFilterIsOn = false {
         didSet {
             self.exchangeListTableView.reloadData()
