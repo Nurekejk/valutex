@@ -18,9 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-
+      
         let isAutorized = true
-
         if isAutorized {
             window?.rootViewController =
                 UINavigationController(rootViewController: ExchangeRateViewController())
@@ -28,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
         }
+
         window?.makeKeyAndVisible()
     }
 }

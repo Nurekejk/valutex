@@ -28,7 +28,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         label.text = "Вы должны совершить обмен \nв течении указанного времени"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         return label
     }()
     
@@ -46,7 +46,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         stackView.distribution = .fill
         stackView.alignment = .center
         stackView.spacing = 12.0
-        stackView.backgroundColor = AppColor.primaryBlue.uiColor
+        stackView.backgroundColor = AppColor.primaryBase.uiColor
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 24,
                                                                      leading: 72,
@@ -71,7 +71,7 @@ final class ClientOfferDetailsViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
         button.setTitle("Отменить", for: .normal)
-        button.setTitleColor(AppColor.mediumGray.uiColor, for: .normal)
+        button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
@@ -105,14 +105,14 @@ final class ClientOfferDetailsViewController: UIViewController {
 
         resetButton.layer.cornerRadius = 12.0
         resetButton.layer.borderWidth = 1.0
-        resetButton.layer.borderColor = AppColor.lightGray2.cgColor
+        resetButton.layer.borderColor = AppColor.gray30.cgColor
         
         detailsStackView.layer.cornerRadius = 8.0
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         
         timerStackView.addArrangedSubview(self.timerTextLabel)
         timerStackView.addArrangedSubview(self.timerCountDownLabel)

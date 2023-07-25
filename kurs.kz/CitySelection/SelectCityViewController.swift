@@ -15,7 +15,7 @@ final class SelectCityViewController: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "Поиск"
-        textField.font = AppFont.reqular.s14()
+        textField.font = AppFont.regular.s14()
         textField.layer.cornerRadius = 8
         return textField
     }()
@@ -40,7 +40,7 @@ final class SelectCityViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = AppColor.primaryBlue.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
@@ -63,7 +63,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Setup
 
     private func setupViews() {
-        view.backgroundColor = AppColor.backgroundGray.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
         view.addSubview(tableview)
         view.addSubview(shadowview)

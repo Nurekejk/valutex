@@ -39,7 +39,7 @@ enum AppImage: String, AppImageProtocol {
     case golden_star = "golden_star"
     case gray_star = "gray_star"
     case eye_slash = "eye-slash"
-    case on_boarding_image = "onBoardingImage"
+    case on_boarding_image = "onboardingImage"
     case edit = "edit"
     case some_exchange = "some_exchange"
     case trash = "trash"

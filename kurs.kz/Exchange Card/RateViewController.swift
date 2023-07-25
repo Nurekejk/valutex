@@ -17,8 +17,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "Теперь напишите отзыв"
-        label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,8 +27,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let textView = UITextView()
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
-        textView.textColor = AppColor.mediumGray.uiColor
-        textView.font = AppFont.reqular.s14()
+        textView.textColor = AppColor.gray50.uiColor
+        textView.font = AppFont.regular.s14()
         textView.returnKeyType = .done
         return textView
     }()
@@ -78,7 +78,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         super.viewDidLayoutSubviews()
         reviewTextView.layer.cornerRadius = 8
         reviewTextView.layer.borderWidth = 1
-        reviewTextView.layer.borderColor = AppColor.lightGray.cgColor
+        reviewTextView.layer.borderColor = AppColor.grayWhite.cgColor
         continueButton.layer.cornerRadius = 12
         entireStackView.layer.cornerRadius = 8
     }
@@ -92,9 +92,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         addButtonsToStarStackView()
         
-        view.backgroundColor = AppColor.backgroundGray.uiColor
-        borderView.backgroundColor = AppColor.backgroundGray.uiColor
-        continueButton.backgroundColor = AppColor.primaryBlue.uiColor
+        view.backgroundColor = AppColor.gray10.uiColor
+        borderView.backgroundColor = AppColor.gray10.uiColor
+        continueButton.backgroundColor = AppColor.primaryBase.uiColor
         entireStackView.backgroundColor = .white
         
         reviewTextView.delegate = self

@@ -14,8 +14,8 @@ final class VerificationPageViewController: UIViewController {
     private let otpLabel: UILabel = {
         let label = UILabel()
         label.text = "Мы отправили письмо с кодом на ваш номер"
-        label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
@@ -23,19 +23,19 @@ final class VerificationPageViewController: UIViewController {
         let codeField = CHIOTPFieldOne()
         codeField.numberOfDigits = 6
         codeField.spacing = 8
-        codeField.boxBackgroundColor = AppColor.backgroundGray.uiColor
+        codeField.boxBackgroundColor = AppColor.gray10.uiColor
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
-        codeField.activeShadowColor = AppColor.primaryBlue.uiColor
+        codeField.activeShadowColor = AppColor.primaryBase.uiColor
         return codeField
     }()
     
     private let resendCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Еще не получили код подтверждения?"
-        label.textColor = AppColor.darkGray.uiColor
+        label.textColor = AppColor.gray100.uiColor
         label.numberOfLines = 0
-        label.font = AppFont.reqular.s14()
+        label.font = AppFont.regular.s14()
         label.textAlignment = .center
         return label
     }()
@@ -45,13 +45,13 @@ final class VerificationPageViewController: UIViewController {
         button.setTitle("Отправить код повторно", for: .normal)
         button.titleLabel?.font = AppFont.semibold.s14()
         button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = AppColor.primaryBlue.uiColor
+        button.titleLabel?.textColor = AppColor.primaryBase.uiColor
         return button
     }()
     
     private lazy var verifyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = AppColor.primaryBlue.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.setTitle("Подтвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()

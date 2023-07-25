@@ -23,16 +23,16 @@ final class OfferDetailsTableViewCell: UITableViewCell {
     private lazy var detailTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Статус"
-        label.textColor = AppColor.mediumGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
     private lazy var detailNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
-        label.textColor = AppColor.darkGray.uiColor
-        label.font = AppFont.reqular.s14()
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.regular.s14()
         label.textAlignment = .right
         return label
     }()

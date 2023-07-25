@@ -13,6 +13,13 @@ final class OfferSellViewController: UIViewController {
     private var upperTextFieldNumber = "0"
     private var lowerTextFieldNumber = "0"
     
+    enum ControllerMode {
+        case buy
+        case sell
+    }
+    
+    var mode: ControllerMode
+    
     private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
                                         "Евро" : ("euro_flag", "EUR", "€"),
                                         "Рос.рубль" : ("ru_flag", "RUB", "₽"),
@@ -55,9 +62,11 @@ final class OfferSellViewController: UIViewController {
         let view = UIView()
         return view
     }()
-    private let sellLabel: UILabel = {
+    private lazy var sellLabel: UILabel = {
         let label = UILabel()
-        label.text = "Продать"
+        
+        label.text = mode == .buy ? "Купить" : "Продать"
+        
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         return label
     }()
@@ -140,6 +149,16 @@ final class OfferSellViewController: UIViewController {
         getTotalLabel.backgroundColor = backgroundGrayColor
         
         offerButton.layer.cornerRadius = 12
+    }
+    // MARK: - Initializer
+
+    init(mode: ControllerMode) {
+        self.mode = mode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup Views
