@@ -89,7 +89,6 @@ final class FeedBackCell: UITableViewCell {
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        
         oneGrayStarimageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(83)

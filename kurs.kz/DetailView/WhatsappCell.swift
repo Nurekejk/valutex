@@ -1,23 +1,23 @@
 //
-//  EmailCell.swift
+//  WhatsappCell.swift
 //  kurs.kz
 //
-//  Created by Diar Orynbek on 23.07.2023.
+//  Created by Diar Orynbek on 25.07.2023.
 //
 
 import UIKit
 import SnapKit
 
-final class EmailCell: UITableViewCell {
+final class WhatsappCell: UITableViewCell {
     
     // MARK: - Public
-    static let reuseID = String(describing: EmailCell.self)
+    static let reuseID = String(describing: WhatsappCell.self)
     
     // MARK: - UI
-    private lazy var emailLabel: UILabel = {
+    private lazy var numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "mail@mail.ru"
-        label.font = .systemFont(ofSize: 16)
+        label.text = "+7-701-476-99-99"
+        label.font = AppFont.medium.s14()
         return label
     }()
     
@@ -35,14 +35,14 @@ final class EmailCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [emailLabel].forEach {
+        [numberLabel].forEach {
             contentView.addSubview($0)
         }
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        emailLabel.snp.makeConstraints { make in
+        numberLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)

@@ -63,7 +63,6 @@ final class ClockTimeCell: UITableViewCell {
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        
         pnLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -87,10 +86,5 @@ final class ClockTimeCell: UITableViewCell {
             make.leading.equalToSuperview().offset(50)
             make.height.equalTo(18)
         }
-    }
-    
-    public func setupClockTime(pn: String, vs: String) {
-        pnLabel.text = pn
-        vsLabel.text = vs
     }
 }

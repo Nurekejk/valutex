@@ -28,6 +28,7 @@
 		8F41BD462A7014A000536D13 /* FeedBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD452A7014A000536D13 /* FeedBackCell.swift */; };
 		8F41BD482A701A7400536D13 /* WebSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD472A701A7400536D13 /* WebSiteCell.swift */; };
 		8F41BD4A2A7030CE00536D13 /* FeedBackCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD492A7030CE00536D13 /* FeedBackCommentCell.swift */; };
+		8F41BD4C2A7039BB00536D13 /* WhatsappCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD4B2A7039BB00536D13 /* WhatsappCell.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */; };
@@ -126,6 +127,7 @@
 		8F41BD452A7014A000536D13 /* FeedBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackCell.swift; sourceTree = "<group>"; };
 		8F41BD472A701A7400536D13 /* WebSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteCell.swift; sourceTree = "<group>"; };
 		8F41BD492A7030CE00536D13 /* FeedBackCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackCommentCell.swift; sourceTree = "<group>"; };
+		8F41BD4B2A7039BB00536D13 /* WhatsappCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappCell.swift; sourceTree = "<group>"; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				8F21A4B62A6BBD51000013FA /* DeatilViewViewController.swift */,
+				8F41BD4B2A7039BB00536D13 /* WhatsappCell.swift */,
 				8F21A4B82A6BCE4B000013FA /* HeaderView.swift */,
 				8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */,
 				8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */,
@@ -858,6 +861,7 @@
 				8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */,
 				8FCEF8A42A6D8F6A006B3D5D /* EmailCell.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
+				8F41BD4C2A7039BB00536D13 /* WhatsappCell.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

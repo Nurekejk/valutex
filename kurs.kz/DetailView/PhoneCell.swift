@@ -42,13 +42,13 @@ final class PhoneCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(firstNumber)
-        contentView.addSubview(secondNumber)
+        [firstNumber, secondNumber].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        
         firstNumber.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -60,10 +60,5 @@ final class PhoneCell: UITableViewCell {
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
         }
-    }
-    
-    public func setupPhone(first: String, second: String) {
-        firstNumber.text = first
-        secondNumber.text = second
     }
 }

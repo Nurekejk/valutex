@@ -30,6 +30,7 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(FeedBackCell.self, forCellReuseIdentifier: FeedBackCell.reuseID)
         tableView.register(WebSiteCell.self, forCellReuseIdentifier: WebSiteCell.reuseID)
         tableView.register(FeedBackCommentCell.self, forCellReuseIdentifier: FeedBackCommentCell.reuseID)
+        tableView.register(WhatsappCell.self, forCellReuseIdentifier: WhatsappCell.reuseID)
         tableView.rowHeight = 140
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,23 +40,24 @@ final class DeatilViewViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Contacts"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.layer.cornerRadius = 8
         
         setupViews()
         setupConstraits()
     }
     
+    // MARK: - ViewLayoutSubViews
+    private func viewLayoutSubViews() {
+        tableView.layer.cornerRadius = 8
+    }
+    
     // MARK: - Setup Views
-    func setupViews() {
+    private func setupViews() {
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
     
     // MARK: - Setup Constraits
-    func setupConstraits() {
-        
+    private func setupConstraits() {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(108)
             make.leading.equalToSuperview().offset(16)
@@ -83,14 +85,14 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         view.addSubview(label)
         
         image.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.leading.equalToSuperview().offset(16)
             make.height.equalTo(24)
             make.width.equalTo(24)
-            make.top.equalToSuperview().offset(15)
-            make.leading.equalToSuperview().offset(16)
         }
         
         label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
+            make.top.equalToSuperview().offset(7)
             make.leading.equalTo(image.snp.trailing).offset(16)
             make.height.equalTo(18)
         }
@@ -137,6 +139,20 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
                                                      for: indexPath) as? EmailCell
+            
+            return cell ?? UITableViewCell()
+        }
+        
+        if indexPath.row == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: WebSiteCell.reuseID,
+                                                     for: indexPath) as? WebSiteCell
+            
+            return cell ?? UITableViewCell()
+        }
+        
+        if indexPath.row == 6 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: WhatsappCell.reuseID,
+                                                     for: indexPath) as? WhatsappCell
             
             return cell ?? UITableViewCell()
         }
