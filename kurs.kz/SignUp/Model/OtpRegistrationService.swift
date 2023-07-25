@@ -122,4 +122,61 @@ final class OtpRegistrationService {
         
         task.resume()
     }
+    
+    func fetchUser (with user: User, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        guard let url = URL(string: signUpURL) else {
+            completion(.failure(.badURL))
+            return
+        }
+    
+        let parameters: [String: Any] = [ "name": user.name,
+                                          "surname": user.surname,
+                                          "middle_name": user.middleName,
+                                          "password": user.password,
+                                          "phone": user.phone,
+                                          "device_id": user.deviceID,
+                                          "language": user.language,
+                                          "currency_code": user.currencyCode,
+                                          "city_id": user.cityID,
+                                          "sms_code": user.smsCode]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters,
+                                                          options: .fragmentsAllowed)
+        } catch {
+            completion(.failure(.jsonSerializationError))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                print("Post Request Error: \(error.localizedDescription)")
+                completion(.failure(.postRequestError))
+                return
+            }
+            
+            guard let responseData = data else {
+                print("nil Data received from the server")
+                completion(.failure(.nilData))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(String.self, from: responseData)
+                DispatchQueue.main.async {
+                    completion(.success(decodedData))
+                }
+            } catch {
+                completion(.failure(.decodingError))
+                return
+            }
+        }
+        
+        task.resume()
+    }
 }
