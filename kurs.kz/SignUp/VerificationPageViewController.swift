@@ -141,7 +141,7 @@ final class VerificationPageViewController: UIViewController {
         service.postOTPCode(with: code) { result in
             switch result {
             case .success:
-                self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
+                self.navigationController?.pushViewController(RegistrationPersonalDataViewController(service: self.service),
                                                               animated: true)
             case .failure:
                 DispatchQueue.main.async {
