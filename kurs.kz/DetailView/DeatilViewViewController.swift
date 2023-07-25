@@ -110,20 +110,42 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         return 54
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return headersName.count
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return headersName.count
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    PhoneCell.reuseID, for: indexPath) as? PhoneCell
-        let phones = phonesNumber[indexPath.row]
-        cell?.setupPhone(first: phones, second: phones)
-        
-        return cell ?? UITableViewCell()
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhoneCell.reuseID,
+                                                     for: indexPath) as? PhoneCell
+            let phones = phonesNumber[indexPath.row]
+            cell?.setupPhone(first: phones, second: phones)
+
+            return cell ?? UITableViewCell()
+        }
+
+        if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
+                                                     for: indexPath) as? EmailCell
+//            let phones = phonesNumber[indexPath.row]
+//            cell?.setupPhone(first: phones, second: phones)
+
+            return cell ?? UITableViewCell()
+        }
+
+        if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ClockTimeCell.reuseID,
+                                                     for: indexPath) as? ClockTimeCell
+//            let phones = phonesNumber[indexPath.row]
+//            cell?.setupPhone(first: phones, second: phones)
+
+            return cell ?? UITableViewCell()
+        }
+
+        return UITableViewCell()
     }
 }
