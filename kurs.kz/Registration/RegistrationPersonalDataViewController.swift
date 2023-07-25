@@ -198,6 +198,24 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
 
     @objc private func continueButtonDidPress() {
-        self.navigationController?.pushViewController(RegistrationPasswordViewController(), animated: true)
+        
+        let name = nameTextField.text ?? ""
+        let surname = surnameTextField.text ?? ""
+        let middleName = patronymicTextField.text ?? ""
+        let deviceID = "string"
+        let language = "RU"
+        let currencyCode = "USD"
+        let cityID = 1
+        
+        let user = User(name: name,
+                        surname: surname,
+                        middleName: middleName,
+                        phone: service.getPhoneNumber(),
+                        deviceID: deviceID,
+                        language: language,
+                        currencyCode: currencyCode,
+                        cityID: cityID,
+                        smsCode: service.getSMSCode())
+        self.navigationController?.pushViewController(RegistrationPasswordViewController(service: self.service, user: user), animated: true)
     }
 }
