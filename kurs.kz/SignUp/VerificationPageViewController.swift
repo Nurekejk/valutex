@@ -66,7 +66,7 @@ final class VerificationPageViewController: UIViewController {
     // MARK: - Initializers
     init(service: OtpRegistrationService) {
         self.service = service
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -137,16 +137,26 @@ final class VerificationPageViewController: UIViewController {
 
     // MARK: - Actions
     @objc private func verifyButtonDidPress() {
-        self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
-                                                      animated: true)
+        let code = otpCodeField.text ?? ""
+        service.postOTPCode(with: code) { result in
+            switch result {
+            case .success:
+                self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
+                                                              animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Неверный код.")
+                }
+            }
+        }
     }
     
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - OTP Label
-    public func configureOTPLabel(phoneNumber: String) {
-        otpLabel.text = "Мы отправили письмо с кодом на \(phoneNumber)"
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 }

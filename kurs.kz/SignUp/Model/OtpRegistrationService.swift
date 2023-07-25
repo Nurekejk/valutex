@@ -108,12 +108,15 @@ final class OtpRegistrationService {
                 return
             }
             
+            print("data = \(String(describing: (String(data: responseData, encoding: .utf8))))")
             do {
                 let decodedData = try JSONDecoder().decode(String.self, from: responseData)
                 DispatchQueue.main.async {
+                    print(decodedData)
                     completion(.success(decodedData))
                 }
             } catch {
+                print(error)
                 completion(.failure(.decodingError))
                 return
             }
