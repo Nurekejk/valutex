@@ -31,7 +31,7 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(WebSiteCell.self, forCellReuseIdentifier: WebSiteCell.reuseID)
         tableView.register(FeedBackCommentCell.self, forCellReuseIdentifier: FeedBackCommentCell.reuseID)
         tableView.register(WhatsappCell.self, forCellReuseIdentifier: WhatsappCell.reuseID)
-        tableView.rowHeight = 140
+        tableView.rowHeight = 100
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -104,7 +104,7 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 14
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,20 +137,27 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ClockTimeCell.reuseID,
+                                                     for: indexPath) as? ClockTimeCell
+            
+            return cell ?? UITableViewCell()
+        }
+        
+        if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
                                                      for: indexPath) as? EmailCell
             
             return cell ?? UITableViewCell()
         }
         
-        if indexPath.row == 5 {
+        if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: WebSiteCell.reuseID,
                                                      for: indexPath) as? WebSiteCell
             
             return cell ?? UITableViewCell()
         }
         
-        if indexPath.row == 6 {
+        if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: WhatsappCell.reuseID,
                                                      for: indexPath) as? WhatsappCell
             

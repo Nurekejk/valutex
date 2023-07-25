@@ -20,6 +20,13 @@ final class ClockTimeCell: UITableViewCell {
         label.font = .systemFont(ofSize: 14)
         return label
     }()
+
+    private lazy var vtLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Вт"
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
     
     private lazy var vsLabel: UILabel = {
         let label = UILabel()
@@ -56,7 +63,7 @@ final class ClockTimeCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [pnLabel, vsLabel, monday, saturday].forEach {
+        [pnLabel, vtLabel, vsLabel, monday, saturday].forEach {
             contentView.addSubview($0)
         }
     }
@@ -72,6 +79,12 @@ final class ClockTimeCell: UITableViewCell {
         monday.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(50)
+            make.height.equalTo(18)
+        }
+        
+        vtLabel.snp.makeConstraints { make in
+            make.top.equalTo(pnLabel.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
         }
         
