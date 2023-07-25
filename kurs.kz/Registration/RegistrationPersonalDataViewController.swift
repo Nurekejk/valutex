@@ -200,11 +200,21 @@ final class RegistrationPersonalDataViewController: UIViewController {
     @objc private func continueButtonDidPress() {
         
         guard let name = nameTextField.text else {
+            self.showSnackBar(message: "Имя введено неправильно.")
+            return
+        }
+        
+        if name.isEmpty {
             self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
             return
         }
         
         guard let surname = surnameTextField.text else {
+            self.showSnackBar(message: "Фамилия введена неправильно.")
+            return
+        }
+        
+        if surname.isEmpty {
             self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
             return
         }
@@ -225,7 +235,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
                         cityID: cityID,
                         smsCode: service.getSMSCode())
         
-        self.navigationController?.pushViewController(RegistrationPasswordViewController(service: self.service, user: user), animated: true)
+        self.navigationController?.pushViewController(
+            RegistrationPasswordViewController(
+                service: self.service,
+                user: user),
+                animated: true)
     }
     
     // MARK: - SnackBar
