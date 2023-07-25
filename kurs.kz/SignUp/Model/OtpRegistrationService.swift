@@ -179,4 +179,13 @@ final class OtpRegistrationService {
         
         task.resume()
     }
+    
+    // MARK: - Public
+    public func getPhoneNumber() -> String {
+        return phoneNumber
+    }
+    
+    public func getSMSCode() -> String {
+        return smsCode
+    }
 }
