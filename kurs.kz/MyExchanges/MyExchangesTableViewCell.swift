@@ -24,33 +24,35 @@ final class MyExchangesTableViewCell: UITableViewCell {
     private lazy var companyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "some_exchange")
+        imageView.image = AppImage.some_exchange.uiImage
         return imageView
     }()
 
     private lazy var editButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "edit"), for: .normal)
+        button.setImage(AppImage.edit.uiImage, for: .normal)
         return button
     }()
 
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "trash"), for: .normal)
+        button.setImage(AppImage.trash.uiImage, for: .normal)
         return button
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Som Exchange"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
-    private lazy var subTitleLabel: UITextField = {
-        let label = UITextField()
+    private lazy var subTitleLabel: UILabel = {
+        let label = UILabel()
         label.text = "г.Алматы, ул.Aуэзова 14"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.regular.s12()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -69,12 +71,6 @@ final class MyExchangesTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         containerView.layer.cornerRadius = 8
-//        containerView.layer.shadowColor = UIColor.black.cgColor
-//        containerView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-//        containerView.layer.shadowOpacity = 0.2
-//        containerView.layer.shadowRadius = 4.0
-//        containerView.layer.masksToBounds = false
-
     }
     // MARK: - Setup Views
     
@@ -83,13 +79,7 @@ final class MyExchangesTableViewCell: UITableViewCell {
             containerView.addSubview($0)
         }
         
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
@@ -105,7 +95,6 @@ final class MyExchangesTableViewCell: UITableViewCell {
         }
         
         companyImageView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.size.equalTo(40)
             make.centerY.equalToSuperview()
@@ -114,14 +103,12 @@ final class MyExchangesTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalTo(companyImageView.snp.trailing).offset(16)
-//            make.trailing.equalTo(editButton.snp.leading).offset(-16)
         }
         
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.leading.equalTo(companyImageView.snp.trailing).offset(16)
             make.bottom.equalToSuperview().offset(-12)
-//            make.trailing.equalTo(editButton.snp.leading).offset(-16)
         }
 
         deleteButton.snp.makeConstraints { make in
@@ -135,8 +122,5 @@ final class MyExchangesTableViewCell: UITableViewCell {
             make.trailing.equalTo(deleteButton.snp.leading).offset(-16)
             make.size.equalTo(16)
         }
-        
-        // MARK: - Button Actions
-        
     }
 }

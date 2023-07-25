@@ -25,7 +25,7 @@ final class LanguageAppViewController: UIViewController {
     private var label: UILabel = {
         let label = UILabel()
         label.text = "Язык приложения"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.semibold.s16()
         label.textAlignment = .center
         
         return label
@@ -44,9 +44,8 @@ final class LanguageAppViewController: UIViewController {
     private var selectButton: UIButton = {
         let button = UIButton()
         button.setTitle("Выбрать", for: .normal)
-        button.backgroundColor = .blue
         button.layer.cornerRadius = 12
-        
+        button.backgroundColor = AppColor.primaryBase.uiColor
         return button
     }()
     
@@ -62,7 +61,8 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup Views
     
     func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.gray10.uiColor
+        tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(label)
         view.addSubview(tableView)
         view.addSubview(selectButton)
