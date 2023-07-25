@@ -12,7 +12,7 @@ target 'kurs.kz' do
   pod 'CHIOTPField/Four'
   pod 'SwiftLint'
   pod 'GoogleMaps', '8.0.0'
-  
+  pod 'SnackBar.swift', '0.1.0'
 
   post_install do |installer|
       installer.generated_projects.each do |project|

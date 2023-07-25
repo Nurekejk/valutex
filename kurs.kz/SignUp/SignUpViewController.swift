@@ -12,6 +12,8 @@ import InputMask
 
 final class SignUpViewController: UIViewController {
     
+    private let service = OtpRegistrationService()
+    
     // MARK: - UI
     private let signUpLabel: UILabel = {
         let label = UILabel()
@@ -23,17 +25,17 @@ final class SignUpViewController: UIViewController {
     }()
     
     // MARK: - MaskedTextField Listener
-        private lazy var listener: MaskedTextFieldDelegate = {
-            let listener = MaskedTextFieldDelegate()
-            listener.onMaskedTextChangedCallback = { textField, _, isFilled in
-                let updatedText = textField.text ?? ""
-                if isFilled {
-                    print("Text field is filled: \(updatedText)")
-                }
+    private lazy var listener: MaskedTextFieldDelegate = {
+        let listener = MaskedTextFieldDelegate()
+        listener.onMaskedTextChangedCallback = { textField, _, isFilled in
+            let updatedText = textField.text ?? ""
+            if isFilled {
+                print("Text field is filled: \(updatedText)")
             }
-            listener.delegate = self
-            listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
-            return listener
+        }
+        listener.delegate = self
+        listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
+        return listener
     }()
     
     private let phoneTextField: CustomSkyFloatingLabelTextField = {
@@ -173,7 +175,41 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func continueButtonDidPressed() {
-        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
+        let phoneNumber = phoneTextField.text
+        guard let phoneNumber = phoneNumber else {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
+        
+        if phoneNumber.isEmpty {
+            showSnackBar(message: "Пожалуйства, введите свой номер.")
+            return
+        }
+        
+        if phoneNumber.count != 18 {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
+        
+        let formatedPhoneNumber = phoneNumber
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "+", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
+        
+        service.postPhoneNumber(with: formatedPhoneNumber) { result in
+            switch result {
+            case .success(let message):
+                print(message)
+                self.navigationController?.pushViewController(
+                                                    VerificationPageViewController(service: self.service),
+                                                              animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                }
+            }
+        }
     }
     
     @objc private func signUpButtonDidPressed() {
@@ -182,5 +218,10 @@ final class SignUpViewController: UIViewController {
     
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 }
