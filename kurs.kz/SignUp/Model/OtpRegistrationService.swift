@@ -11,6 +11,7 @@ final class OtpRegistrationService {
     
     private let otpRegistrationURL = "http://77.240.38.143:4443/otp/registration"
     private let otpVerifyURL = "http://77.240.38.143:4443/otp/verify"
+    private let signUpURL = "http://77.240.38.143:4443/signup"
     private var phoneNumber = ""
     private var smsCode = ""
     
