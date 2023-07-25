@@ -249,7 +249,9 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                             ExchangeListTableViewCell.identifier,
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
-                
+                headerView.buyFilterButtonDidPress(sender: UIButton) { <#Int#> in
+                    <#code#>
+                }
                 cell.changeExchanger(with: exchangersArray[indexPath.row])
                 return cell
             } else {

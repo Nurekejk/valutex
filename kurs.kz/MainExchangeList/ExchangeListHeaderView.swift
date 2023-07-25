@@ -11,7 +11,6 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
-
     
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
@@ -31,13 +30,15 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     private lazy var buyRateFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "up_down_filter"), for: .normal)
-        button.addTarget(self, action: #selector(buyFilterButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buyFilterButtonDidPress(sender:)), for: .touchUpInside)
+        button.tag = 1
         return button
     }()
     private lazy var sellRateFilterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "down_up_filter"), for: .normal)
-        button.addTarget(self, action: #selector(sellFilterButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sellFilterButtonDidPress(sender:)), for: .touchUpInside)
+        button.tag = 2
         return button
     }()
     
@@ -73,11 +74,14 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Action
-    @objc func buyFilterButtonDidPress() {
+    @objc func buyFilterButtonDidPress(sender: UIButton, completion: @escaping (Int)->Void) {
+        let tag = sender.tag
+        completion(tag)
         
     }
-    @objc private func sellFilterButtonDidPress() {
-        
+    @objc func sellFilterButtonDidPress(sender: UIButton) {
+        let tag = sender.tag
+
     }
     
     // MARK: - Setup Constraints
