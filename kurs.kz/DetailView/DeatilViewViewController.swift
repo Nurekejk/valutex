@@ -11,20 +11,8 @@ import SnapKit
 final class DeatilViewViewController: UIViewController {
     
     // MARK: - State
-    let phonesNumber = [
-        "8(747) 429 94 13", "8(705) 684 67 10"
-    ]
-    
     let headersName = [
         "Телефоны", "Время работы", "Email", "Web-site", "Whatsapp"
-    ]
-    
-    var twoDimensionalArray = [
-        ["Diko", "Diar", "Aiko", "Liko"],
-        ["Diko", "jame", "Nikol", "Nurbol", "Diko", "jame", "Nikol"],
-        ["Call"],
-        ["Second"],
-        ["Third"]
     ]
     
     // MARK: - UI
@@ -39,7 +27,8 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(PhoneCell.self, forCellReuseIdentifier: PhoneCell.reuseID)
         tableView.register(EmailCell.self, forCellReuseIdentifier: EmailCell.reuseID)
         tableView.register(ClockTimeCell.self, forCellReuseIdentifier: ClockTimeCell.reuseID)
-        tableView.rowHeight = 76
+        tableView.register(FeedBackCell.self, forCellReuseIdentifier: FeedBackCell.reuseID)
+        tableView.rowHeight = 102
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -118,8 +107,6 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PhoneCell.reuseID,
                                                      for: indexPath) as? PhoneCell
-            let phones = phonesNumber[indexPath.row]
-            cell?.setupPhone(first: phones, second: phones)
 
             return cell ?? UITableViewCell()
         }
@@ -132,8 +119,15 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ClockTimeCell.reuseID,
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCell.reuseID,
                                                      for: indexPath) as? ClockTimeCell
+            
+            return cell ?? UITableViewCell()
+        }
+
+        if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCell.reuseID,
+                                                     for: indexPath) as? FeedBackCell
             
             return cell ?? UITableViewCell()
         }
