@@ -10,6 +10,8 @@ import SnapKit
 
 final class RegistrationPasswordViewController: UIViewController {
     
+    private let service: OtpRegistrationService
+    
     // MARK: - UI
     private let elementsStackView: UIStackView = {
         let stackView = UIStackView()
@@ -77,6 +79,16 @@ final class RegistrationPasswordViewController: UIViewController {
         textField.placeholder = "Повторите пароль"
         return textField
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
