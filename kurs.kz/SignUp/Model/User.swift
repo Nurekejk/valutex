@@ -32,7 +32,15 @@ struct User: Codable {
         case smsCode = "sms_code"
         }
     
-    init(name: String, surname: String, middleName: String, phone: String, deviceID: String, language: String, currencyCode: String, cityID: Int, smsCode: String) {
+    init(name: String,
+         surname: String,
+         middleName: String,
+         phone: String,
+         deviceID: String,
+         language: String,
+         currencyCode: String,
+         cityID: Int,
+         smsCode: String) {
         self.name = name
         self.surname = surname
         self.middleName = middleName
