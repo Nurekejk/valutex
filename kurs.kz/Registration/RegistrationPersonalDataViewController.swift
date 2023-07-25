@@ -12,6 +12,7 @@ import SkyFloatingLabelTextField
 final class RegistrationPersonalDataViewController: UIViewController {
     
     private let service: OtpRegistrationService
+    private var phoneNumber: String
     
     // MARK: - UI
     private let stackView: UIStackView = {
@@ -79,6 +80,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         textField.title = "Телефон"
         textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Телефон"
+        textField.isUserInteractionEnabled = false
         textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
@@ -95,6 +97,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
     // MARK: - Initializers
     init(service: OtpRegistrationService) {
         self.service = service
+        self.phoneNumber = service.getPhoneNumber()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -144,6 +147,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         
         view.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
+        phoneTextField.text = "+\(phoneNumber)"
     }
     
     func setupBorders(for textfield: PaddedTextField) {
