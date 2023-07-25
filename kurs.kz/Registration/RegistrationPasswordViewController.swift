@@ -187,4 +187,9 @@ final class RegistrationPasswordViewController: UIViewController {
     @objc private func backButtonDidPress() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    }
 }
