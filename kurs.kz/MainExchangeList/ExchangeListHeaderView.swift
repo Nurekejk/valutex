@@ -12,6 +12,8 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
+    public var completion: (Int) -> Void = { _ in }
+    
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
         let label = UILabel()
@@ -74,14 +76,14 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Action
-    @objc func buyFilterButtonDidPress(sender: UIButton, completion: @escaping (Int)->Void) {
+    @objc func buyFilterButtonDidPress(sender: UIButton) {
         let tag = sender.tag
         completion(tag)
         
     }
     @objc func sellFilterButtonDidPress(sender: UIButton) {
         let tag = sender.tag
-
+        completion(tag)
     }
     
     // MARK: - Setup Constraints

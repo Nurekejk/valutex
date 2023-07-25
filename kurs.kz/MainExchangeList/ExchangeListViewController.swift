@@ -19,6 +19,12 @@ final class ExchangeListViewController: UIViewController {
     }
     private var searchArray = [Exchanger]()
     private var isSearching = false
+    private var buyFilterIsOn = false {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
+    private var sellFilterIsOn = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
@@ -100,6 +106,13 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
+        headerView.completion = {
+            if $0 == 1 {
+                self.buyFilterIsOn = !self.buyFilterIsOn
+            } else {
+                self.sellFilterIsOn = !self.sellFilterIsOn
+            }
+        }
         return headerView
     }()
     
@@ -249,9 +262,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                             ExchangeListTableViewCell.identifier,
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
-                headerView.buyFilterButtonDidPress(sender: UIButton) { <#Int#> in
-                    <#code#>
-                }
+                print(buyFilterIsOn)
                 cell.changeExchanger(with: exchangersArray[indexPath.row])
                 return cell
             } else {
