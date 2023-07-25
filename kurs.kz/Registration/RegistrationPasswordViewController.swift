@@ -205,6 +205,20 @@ final class RegistrationPasswordViewController: UIViewController {
             return
         }
         
+        user.setPassword(password: password)
+        
+        service.fetchUser(with: self.user) { result in
+            switch result {
+            case .success:
+                let controller = CustomTabBarViewController()
+                controller.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(controller, animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Повторите еще раз.")
+                }
+            }
+        }
     }
 
     @objc private func backButtonDidPress() {
