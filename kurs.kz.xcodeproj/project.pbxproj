@@ -95,8 +95,12 @@
 		FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759872A66653C00DE9A6B /* ExchangeListHeaderView.swift */; };
 		FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759892A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift */; };
 		FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57598C2A67CC1500DE9A6B /* OfferSellBuySegmentedController.swift */; };
+		FA57598F2A692B2100DE9A6B /* CurrencySelectorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57598E2A692B2100DE9A6B /* CurrencySelectorManager.swift */; };
+		FA5759912A692B4700DE9A6B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759902A692B4700DE9A6B /* Currency.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
+		FACEE05E2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05D2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift */; };
+		FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
 		FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */; };
 /* End PBXBuildFile section */
@@ -190,8 +194,12 @@
 		FA5759872A66653C00DE9A6B /* ExchangeListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListHeaderView.swift; sourceTree = "<group>"; };
 		FA5759892A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarCurencyButtonView.swift; sourceTree = "<group>"; };
 		FA57598C2A67CC1500DE9A6B /* OfferSellBuySegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellBuySegmentedController.swift; sourceTree = "<group>"; };
+		FA57598E2A692B2100DE9A6B /* CurrencySelectorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorManager.swift; sourceTree = "<group>"; };
+		FA5759902A692B4700DE9A6B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
+		FACEE05D2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorManagerDelegate.swift; sourceTree = "<group>"; };
+		FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLanguage.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
 		FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellCurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -350,8 +358,6 @@
 		9987B0FB2A553B77005BB185 /* ClientOffer */ = {
 			isa = PBXGroup;
 			children = (
-				FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */,
-				FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */,
 				9909CB152A55AA95000AC039 /* Model */,
 				9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */,
 				9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */,
@@ -479,6 +485,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRates */,
 				FA57598B2A67CBC800DE9A6B /* OfferSellBuySegmentedControl */,
 				FA57597F2A63D98500DE9A6B /* MainExchangeList */,
@@ -528,9 +535,11 @@
 		9FEDDC902A6020C7005A3723 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4D9652A6935660051D1B4 /* Model */,
 				9FEDDC8C2A602099005A3723 /* CurrencySelectorTableViewCell.swift */,
 				9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */,
 				9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */,
+				FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -622,6 +631,25 @@
 				FA1475242A5416C80085AF1E /* PaddedTextField.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		FAD4D9642A69352B0051D1B4 /* OfferSellBuy */ = {
+			isa = PBXGroup;
+			children = (
+				FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */,
+				FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */,
+			);
+			path = OfferSellBuy;
+			sourceTree = "<group>";
+		};
+		FAD4D9652A6935660051D1B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5759902A692B4700DE9A6B /* Currency.swift */,
+				FA57598E2A692B2100DE9A6B /* CurrencySelectorManager.swift */,
+				FACEE05D2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -794,11 +822,13 @@
 				FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
+				FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */,
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
+				FACEE05E2A69A595000D5CD6 /* CurrencySelectorManagerDelegate.swift in Sources */,
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */,
@@ -814,6 +844,7 @@
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
+				FA5759912A692B4700DE9A6B /* Currency.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
@@ -839,6 +870,7 @@
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
+				FA57598F2A692B2100DE9A6B /* CurrencySelectorManager.swift in Sources */,
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */,

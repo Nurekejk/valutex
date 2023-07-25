@@ -13,6 +13,16 @@
      private lazy var segmentedControl: UISegmentedControl = {
          let segmentedControl = UISegmentedControl(items: ["Продать", "Купить"])
          segmentedControl.selectedSegmentIndex = 0
+         let normalTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: AppColor.gray50.uiColor,
+            NSAttributedString.Key.font: AppFont.regular.s14()
+         ]
+         let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: AppColor.gray100.uiColor,
+            NSAttributedString.Key.font: AppFont.regular.s14()
+         ]
+         segmentedControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
+         segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
          segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
          return segmentedControl
      }()
