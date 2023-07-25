@@ -11,6 +11,7 @@ import SnapKit
 final class RegistrationPasswordViewController: UIViewController {
     
     private let service: OtpRegistrationService
+    private let user: User
     
     // MARK: - UI
     private let elementsStackView: UIStackView = {
@@ -81,8 +82,9 @@ final class RegistrationPasswordViewController: UIViewController {
     }()
     
     // MARK: - Initializers
-    init(service: OtpRegistrationService) {
+    init(service: OtpRegistrationService, user: User) {
         self.service = service
+        self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
