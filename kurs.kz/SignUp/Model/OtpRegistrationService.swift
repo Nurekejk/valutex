@@ -9,11 +9,24 @@ import Foundation
 
 final class OtpRegistrationService {
     
+    private let otpRegistrationURL = "http://77.240.38.143:4443/otp/registration"
+    
+    enum NetworkError: Error {
+        case badURL
+        case jsonSerializationError
+        case postRequestError
+        case nilData
+        case decodingError
+    }
+    
     // MARK: - Network
-    func postPhoneNumber(with user: User, completion: @escaping (String) -> Void) {
-        guard let url = URL(string: "http://77.240.38.143:4443/otp/registration") else { fatalError() }
+    func postPhoneNumber(with phone: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        guard let url = URL(string: otpRegistrationURL) else {
+            completion(.failure(.badURL))
+            return
+        }
         
-        let parameters: [String: Any] = ["phone": user.phone]
+        let parameters: [String: Any] = ["phone": phone]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -23,29 +36,31 @@ final class OtpRegistrationService {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters,
                                                           options: .fragmentsAllowed)
-        } catch let error {
-            print(error.localizedDescription)
+        } catch {
+            completion(.failure(.jsonSerializationError))
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 print("Post Request Error: \(error.localizedDescription)")
+                completion(.failure(.postRequestError))
                 return
             }
             
             guard let responseData = data else {
                 print("nil Data received from the server")
+                completion(.failure(.nilData))
                 return
             }
             
             do {
                 let decodedData = try JSONDecoder().decode(String.self, from: responseData)
                 DispatchQueue.main.async {
-                    completion(decodedData)
+                    completion(.success(decodedData))
                 }
             } catch {
-                print("Data decoded incorrectly.")
+                completion(.failure(.decodingError))
                 return
             }
         }

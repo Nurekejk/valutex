@@ -177,17 +177,17 @@ final class SignUpViewController: UIViewController {
     @objc private func continueButtonDidPressed() {
         let phoneNumber = phoneTextField.text
         guard let phoneNumber = phoneNumber else {
-            showSnackBar(message: "Phone number entered incorrectly.")
+            showSnackBar(message: "Номер телефона введен неправильно.")
             return
         }
         
         if phoneNumber.isEmpty {
-            showSnackBar(message: "Please enter a phone number.")
+            showSnackBar(message: "Пожалуйства, введите свой номер.")
             return
         }
         
         if phoneNumber.count != 18 {
-            showSnackBar(message: "Phone number entered incorrectly.")
+            showSnackBar(message: "Номер телефона введен неправильно.")
             return
         }
         
@@ -197,14 +197,18 @@ final class SignUpViewController: UIViewController {
             .replacingOccurrences(of: "(", with: "")
             .replacingOccurrences(of: ")", with: "")
         
-        let user = User(phone: formatedPhoneNumber)
-        service.postPhoneNumber(with: user) { message in
-            print(message)
+        service.postPhoneNumber(with: formatedPhoneNumber) { result in
+            switch result {
+            case .success(let message):
+                print(message)
+                self.navigationController?.pushViewController(VerificationPageViewController(),
+                                                              animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                }
+            }
         }
-        
-        let controller = VerificationPageViewController()
-        controller.configureOTPLabel(phoneNumber: formatedPhoneNumber)
-        self.navigationController?.pushViewController(VerificationPageViewController(), animated: true)
     }
     
     @objc private func signUpButtonDidPressed() {
