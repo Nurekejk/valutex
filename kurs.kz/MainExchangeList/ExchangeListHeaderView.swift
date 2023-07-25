@@ -10,7 +10,7 @@ import SnapKit
 final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - State
-    static let identifier = "ExchangeListTableCell"
+    static let identifier = "ExchangeListTableHeader"
     
     public var completion: (Int) -> Void = { _ in }
     
