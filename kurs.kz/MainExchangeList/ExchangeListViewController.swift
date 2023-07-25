@@ -180,10 +180,10 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView, mainFilterButton,
+        [exchangeListTableView, mapButton,
          nearbyFilterButton, openFilterButton,
          currencySearchBar, calculatorButton,
-         pinButton, mapButton].forEach {view.addSubview($0)}
+         pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = AppColor.gray10.uiColor
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
@@ -218,14 +218,9 @@ final class ExchangeListViewController: UIViewController {
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
-        mainFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalToSuperview().offset(16)
-            make.size.equalTo(32)
-        }
         nearbyFilterButton.snp.makeConstraints { make in
             make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalTo(mainFilterButton.snp.trailing).offset(8)
+            make.leading.equalToSuperview().offset(16)
             make.width.equalTo(77)
             make.height.equalTo(34)
         }
@@ -241,7 +236,7 @@ final class ExchangeListViewController: UIViewController {
             make.size.equalTo(48)
         }
         exchangeListTableView.snp.makeConstraints { make in
-            make.top.equalTo(mainFilterButton.snp.bottom).offset(9)
+            make.top.equalTo(nearbyFilterButton.snp.bottom).offset(9)
             make.width.equalTo(tableWidth)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
