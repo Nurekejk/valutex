@@ -26,6 +26,7 @@
 		8F21A4B72A6BBD51000013FA /* DeatilViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F21A4B62A6BBD51000013FA /* DeatilViewViewController.swift */; };
 		8F21A4B92A6BCE4B000013FA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F21A4B82A6BCE4B000013FA /* HeaderView.swift */; };
 		8F41BD462A7014A000536D13 /* FeedBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD452A7014A000536D13 /* FeedBackCell.swift */; };
+		8F41BD482A701A7400536D13 /* WebSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41BD472A701A7400536D13 /* WebSiteCell.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */; };
@@ -122,6 +123,7 @@
 		8F21A4B62A6BBD51000013FA /* DeatilViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeatilViewViewController.swift; sourceTree = "<group>"; };
 		8F21A4B82A6BCE4B000013FA /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8F41BD452A7014A000536D13 /* FeedBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackCell.swift; sourceTree = "<group>"; };
+		8F41BD472A701A7400536D13 /* WebSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteCell.swift; sourceTree = "<group>"; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				8F21A4B82A6BCE4B000013FA /* HeaderView.swift */,
 				8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */,
 				8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */,
+				8F41BD472A701A7400536D13 /* WebSiteCell.swift */,
 				8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */,
 				8F41BD452A7014A000536D13 /* FeedBackCell.swift */,
 			);
@@ -799,6 +802,7 @@
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				99D974022A680FF400F7E506 /* AppImage.swift in Sources */,
+				8F41BD482A701A7400536D13 /* WebSiteCell.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */,
 				99D974002A680D8E00F7E506 /* AppColor.swift in Sources */,

@@ -28,7 +28,8 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(EmailCell.self, forCellReuseIdentifier: EmailCell.reuseID)
         tableView.register(ClockTimeCell.self, forCellReuseIdentifier: ClockTimeCell.reuseID)
         tableView.register(FeedBackCell.self, forCellReuseIdentifier: FeedBackCell.reuseID)
-        tableView.rowHeight = 102
+        tableView.register(WebSiteCell.self, forCellReuseIdentifier: WebSiteCell.reuseID)
+        tableView.rowHeight = 140
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -119,8 +120,8 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCell.reuseID,
-                                                     for: indexPath) as? ClockTimeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: WebSiteCell.reuseID,
+                                                     for: indexPath) as? WebSiteCell
             
             return cell ?? UITableViewCell()
         }

@@ -16,16 +16,15 @@ final class PhoneCell: UITableViewCell {
     // MARK: - UI
     private lazy var firstNumber: UILabel = {
         let label = UILabel()
-        label.text = "Aidos"
+        label.text = "+7-701-476-99-99"
         label.font = .boldSystemFont(ofSize: 14)
         return label
     }()
     
     private lazy var secondNumber: UILabel = {
         let label = UILabel()
-        label.text = "Все отлично!"
+        label.text = "+7-701-476-99-99"
         label.font = .boldSystemFont(ofSize: 14)
-        label.textAlignment = .left
         return label
     }()
     

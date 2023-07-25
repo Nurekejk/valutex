@@ -14,17 +14,56 @@ final class FeedBackCell: UITableViewCell {
     static let reuseID = String(describing: FeedBackCell.self)
     
     // MARK: - UI
-    private let grayStarimageView: UIImageView = {
+    private let oneGrayStarimageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = AppImage.gray_star.uiImage
         return imageView
     }()
     
-    private lazy var nameLabel: UILabel = {
+    private let twoGrayStarimageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.gray_star.uiImage
+        return imageView
+    }()
+    
+    private let thereGrayStarimageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.gray_star.uiImage
+        return imageView
+    }()
+    
+    private let fourGrayStarimageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.gray_star.uiImage
+        return imageView
+    }()
+    
+    private let fiveGrayStarimageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.gray_star.uiImage
+        return imageView
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Пользовались услугами обменника? \nНапишите отзыв"
+        label.text = "Пользовались услугами обменника?"
         label.font = AppFont.regular.s14()
+        label.textAlignment = .center
+        label.textColor = AppColor.gray50.uiColor
+        return label
+    }()
+    
+    private lazy var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Напишите отзыв"
+        label.font = AppFont.regular.s14()
+        label.textAlignment = .center
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
@@ -42,7 +81,8 @@ final class FeedBackCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [nameLabel, grayStarimageView].forEach {
+        [titleLabel, oneGrayStarimageView, twoGrayStarimageView,
+         thereGrayStarimageView, fourGrayStarimageView, fiveGrayStarimageView, subtitleLabel].forEach {
             contentView.addSubview($0)
         }
     }
@@ -50,17 +90,50 @@ final class FeedBackCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         
-        grayStarimageView.snp.makeConstraints { make in
+        oneGrayStarimageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(83)
             make.height.equalTo(32)
             make.width.equalTo(32)
         }
+ 
+        twoGrayStarimageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(oneGrayStarimageView.snp.trailing).offset(4)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+        }
         
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(grayStarimageView.snp.bottom).offset(16)
+        thereGrayStarimageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(twoGrayStarimageView.snp.trailing).offset(4)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+        }
+        
+        fourGrayStarimageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(thereGrayStarimageView.snp.trailing).offset(4)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+        }
+        
+        fiveGrayStarimageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(fourGrayStarimageView.snp.trailing).offset(4)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(fiveGrayStarimageView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(36)
+            make.width.equalTo(311)
+        }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(311)
         }
     }
 }

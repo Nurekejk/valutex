@@ -1,23 +1,24 @@
 //
-//  EmailCell.swift
+//  WebSiteCell.swift
 //  kurs.kz
 //
-//  Created by Diar Orynbek on 23.07.2023.
+//  Created by Diar Orynbek on 25.07.2023.
 //
 
 import UIKit
 import SnapKit
 
-final class EmailCell: UITableViewCell {
+final class WebSiteCell: UITableViewCell {
     
     // MARK: - Public
-    static let reuseID = String(describing: EmailCell.self)
+    static let reuseID = String(describing: WebSiteCell.self)
     
     // MARK: - UI
-    private lazy var emailLabel: UILabel = {
+    private lazy var webSiteLabel: UILabel = {
         let label = UILabel()
-        label.text = "mail@mail.ru"
-        label.font = .systemFont(ofSize: 16)
+        label.text = "abs.com"
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = AppColor.primaryBase.uiColor
         return label
     }()
     
@@ -35,20 +36,18 @@ final class EmailCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(emailLabel)
+        [webSiteLabel].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
         
-        emailLabel.snp.makeConstraints { make in
+        webSiteLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
         }
-    }
-    
-    public func setupEmail(email: String) {
-        emailLabel.text = email
     }
 }
