@@ -5,7 +5,7 @@ final class NavigationBarCurencyButtonView: UIView {
     // MARK: - Static
     public func changeCurrency (newFlagImage: String,
                                 newCurrencyLabel: String) {
-        flagImageView.image = UIImage(named: newFlagImage)
+        flagImageLabel.text = newFlagImage
         currencyLabel.text = newCurrencyLabel
     }
     
@@ -15,8 +15,8 @@ final class NavigationBarCurencyButtonView: UIView {
         return view
     }()
     
-    private let flagImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let flagImageLabel: UILabel = {
+        let imageView = UILabel()
         return imageView
     }()
     
@@ -46,7 +46,7 @@ final class NavigationBarCurencyButtonView: UIView {
     // MARK: - Setup Views
     private func setupViews() {
         self.addSubview(containerView)
-        [flagImageView,
+        [flagImageLabel,
          currencyLabel,
          selectCurrencyButton].forEach {containerView.addSubview($0) }
     }
@@ -56,14 +56,14 @@ final class NavigationBarCurencyButtonView: UIView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        flagImageView.snp.makeConstraints { make in
+        flagImageLabel.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading).offset(8)
             make.top.equalTo(containerView.snp.top).offset(6)
             make.height.equalTo(12)
             make.width.equalTo(18)
         }
         currencyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(flagImageView.snp.trailing).offset(4)
+            make.leading.equalTo(flagImageLabel.snp.trailing).offset(4)
             make.top.equalTo(containerView.snp.top).offset(4)
             make.height.equalTo(16)
             make.width.equalTo(26)

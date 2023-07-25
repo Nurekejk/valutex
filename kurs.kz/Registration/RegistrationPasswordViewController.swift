@@ -22,6 +22,7 @@ final class RegistrationPasswordViewController: UIViewController {
                                                                      leading: 16,
                                                                      bottom: 16,
                                                                      trailing: 16)
+        stackView.backgroundColor = AppColor.grayWhite.uiColor
         return stackView
     }()
     
@@ -37,8 +38,8 @@ final class RegistrationPasswordViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = AppFont.bold.s16()
-        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -57,13 +58,13 @@ final class RegistrationPasswordViewController: UIViewController {
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
         label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.textColor = AppColor.gray100.uiColor
-        textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
         return textField
@@ -72,7 +73,6 @@ final class RegistrationPasswordViewController: UIViewController {
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.textColor = AppColor.gray100.uiColor
-        textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
         return textField
@@ -101,13 +101,21 @@ final class RegistrationPasswordViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      
+
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
+
         enterPasswordButton.layer.cornerRadius = 8
-        enterPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
-        repeatPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        
+        enterPasswordTextField.layer.borderColor = AppColor.gray20.cgColor
+        enterPasswordTextField.layer.borderWidth = 1
+        enterPasswordTextField.layer.cornerRadius = 8
+        
+        repeatPasswordTextField.layer.borderColor = AppColor.gray20.cgColor
+        repeatPasswordTextField.layer.borderWidth = 1
+        repeatPasswordTextField.layer.cornerRadius = 8
+        
         passwordStackView.layer.cornerRadius = 8
     }
     
@@ -122,12 +130,11 @@ final class RegistrationPasswordViewController: UIViewController {
         repeatPasswordTextField.rightView = repeatPasswordButton
         
         view.backgroundColor = AppColor.gray10.uiColor
-        elementsStackView.backgroundColor = .white
-        passwordStackView.backgroundColor = .white
-        textLabel.textColor = AppColor.gray50.uiColor
-        continueButton.setTitleColor(.white, for: .normal)
+
+        passwordStackView.backgroundColor = AppColor.grayWhite.uiColor
+        continueButton.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = AppColor.grayWhite.uiColor
     }
     
     // MARK: - Constraints:
