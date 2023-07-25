@@ -199,8 +199,16 @@ final class RegistrationPersonalDataViewController: UIViewController {
 
     @objc private func continueButtonDidPress() {
         
-        let name = nameTextField.text ?? ""
-        let surname = surnameTextField.text ?? ""
+        guard let name = nameTextField.text else {
+            self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
+            return
+        }
+        
+        guard let surname = surnameTextField.text else {
+            self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
+            return
+        }
+        
         let middleName = patronymicTextField.text ?? ""
         let deviceID = "string"
         let language = "RU"
@@ -216,6 +224,12 @@ final class RegistrationPersonalDataViewController: UIViewController {
                         currencyCode: currencyCode,
                         cityID: cityID,
                         smsCode: service.getSMSCode())
+        
         self.navigationController?.pushViewController(RegistrationPasswordViewController(service: self.service, user: user), animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 }
