@@ -14,14 +14,43 @@ final class FeedBackCommentCell: UITableViewCell {
     static let reuseID = String(describing: FeedBackCommentCell.self)
     
     // MARK: - UI
-    private lazy var nameTitleLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Diko"
-        label.font = AppFont.bold.s16()
+        label.text = "Diar"
+        label.font = AppFont.bold.s14()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
-    private let starsImageView: UIImageView = {
+    private let oneStarsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.golden_star.uiImage
+        return imageView
+    }()
+    
+    private let twoStarsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.golden_star.uiImage
+        return imageView
+    }()
+    
+    private let thereStarsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.golden_star.uiImage
+        return imageView
+    }()
+    
+    private let fourStarsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = AppImage.golden_star.uiImage
+        return imageView
+    }()
+    
+    private let fiveStarsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = AppImage.golden_star.uiImage
@@ -39,6 +68,7 @@ final class FeedBackCommentCell: UITableViewCell {
         let label = UILabel()
         label.text = "25.02.2023"
         label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
@@ -56,7 +86,9 @@ final class FeedBackCommentCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [nameTitleLabel, starsImageView, subNameLabel, dateLabel].forEach {
+        [nameLabel, oneStarsImageView, twoStarsImageView,
+         thereStarsImageView, fourStarsImageView, fiveStarsImageView,
+         subNameLabel, dateLabel].forEach {
             contentView.addSubview($0)
         }
     }
@@ -64,29 +96,55 @@ final class FeedBackCommentCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         
-        nameTitleLabel.snp.makeConstraints { make in
+        nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
+        }
+        
+        oneStarsImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(17)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(16)
             make.width.equalTo(16)
         }
         
-        starsImageView.snp.makeConstraints { make in
+        twoStarsImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(17)
-            make.leading.equalTo(nameTitleLabel.snp.trailing).offset(10)
-            make.height.equalTo(32)
-            make.width.equalTo(32)
+            make.trailing.equalTo(oneStarsImageView.snp.leading).offset(-4)
+            make.height.equalTo(16)
+            make.width.equalTo(16)
+        }
+        
+        thereStarsImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(17)
+            make.trailing.equalTo(twoStarsImageView.snp.leading).offset(-4)
+            make.height.equalTo(16)
+            make.width.equalTo(16)
+        }
+        
+        fourStarsImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(17)
+            make.trailing.equalTo(thereStarsImageView.snp.leading).offset(-4)
+            make.height.equalTo(16)
+            make.width.equalTo(16)
+        }
+        
+        fiveStarsImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(17)
+            make.trailing.equalTo(fourStarsImageView.snp.leading).offset(-4)
+            make.height.equalTo(16)
+            make.width.equalTo(16)
         }
         
         subNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameTitleLabel.snp.bottom).offset(8)
+            make.top.equalToSuperview().offset(42)
             make.leading.equalToSuperview().offset(16)
             make.height.equalTo(18)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(subNameLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
+            make.top.equalTo(fiveStarsImageView.snp.bottom).offset(34)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(18)
         }
     }

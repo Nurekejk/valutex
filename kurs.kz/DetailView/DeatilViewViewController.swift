@@ -73,10 +73,10 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
         let view = UIView()
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "phone")
+        image.image = UIImage(named: "feedbackUser")
         
         let label = UILabel()
-        label.text = "Телефон"
+        label.text = "Отзывы (2)"
         label.font = .systemFont(ofSize: 16)
         
         view.addSubview(image)
@@ -119,15 +119,22 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell ?? UITableViewCell()
         }
-
+        
         if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCommentCell.reuseID,
+                                                     for: indexPath) as? FeedBackCommentCell
+            
+            return cell ?? UITableViewCell()
+        }
+
+        if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PhoneCell.reuseID,
                                                      for: indexPath) as? PhoneCell
             
             return cell ?? UITableViewCell()
         }
 
-        if indexPath.row == 3 {
+        if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
                                                      for: indexPath) as? EmailCell
             
