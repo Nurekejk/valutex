@@ -11,13 +11,13 @@ struct User: Codable {
     let name: String
     let surname: String
     let middleName: String
-    let password: String
-    let phone: String
+    var password: String
+    var phone: String
     let deviceID: String
     let language: String
     let currencyCode: String
     let cityID: Int
-    let smsCode: Int
+    var smsCode: Int
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -31,4 +31,17 @@ struct User: Codable {
         case cityID = "city_id"
         case smsCode = "sms_code"
         }
+    
+    init(name: String, surname: String, middleName: String, password: String, phone: String, deviceID: String, language: String, currencyCode: String, cityID: Int, smsCode: Int) {
+        self.name = name
+        self.surname = surname
+        self.middleName = middleName
+        self.password = password
+        self.phone = phone
+        self.deviceID = deviceID
+        self.language = language
+        self.currencyCode = currencyCode
+        self.cityID = cityID
+        self.smsCode = smsCode
+    }
 }
