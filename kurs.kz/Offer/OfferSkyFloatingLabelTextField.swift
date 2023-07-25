@@ -11,7 +11,6 @@ import SkyFloatingLabelTextField
 final class OfferSkyFloatingLabelTextField: SkyFloatingLabelTextField {
 
     let padding = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 192)
-
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let padding: CGFloat = 16.0
         let rightViewWidth: CGFloat = 69.0

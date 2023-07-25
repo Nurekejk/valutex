@@ -25,4 +25,8 @@ final class PasswordTextField: UITextField {
         let trimValue: CGFloat = 30
         return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
     }
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        let trimValue: CGFloat = 30
+        return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
+    }
 }

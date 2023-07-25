@@ -12,25 +12,19 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
-    private let textGrayColor = UIColor(
-        red: 147.0 / 255.0,
-        green: 153.0 / 255.0,
-        blue: 171.0 / 255.0,
-        alpha: 1)
-    
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
-        label.textColor = textGrayColor
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s10()
         return label
     }()
     private lazy var sellLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
-        label.textColor = textGrayColor
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s10()
         return label
     }()
     private let upDownFilterButton: UIButton = {
@@ -59,7 +53,7 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 8
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0,
@@ -72,7 +66,7 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     private func setupViews() {
         [buyLabel, sellLabel,
          upDownFilterButton, downUpFilterButton].forEach {contentView.addSubview($0)}
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
     }
     
     // MARK: - Setup Constraints

@@ -13,7 +13,7 @@ final class OfferSellCurrencyView: UIView {
     public func changeCurrency (newFlagImage: String,
                                 newCurrencyLabel: String,
                                 newCurrencySignLabel: String) {
-        flagImageView.image = UIImage(named: newFlagImage)
+        flagIconLabel.text = newFlagImage
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
     }
@@ -28,14 +28,15 @@ final class OfferSellCurrencyView: UIView {
         return view
     }()
     
-    private let flagImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let flagIconLabel: UILabel = {
+        let imageView = UILabel()
         return imageView
     }()
     
     private let currencyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.regular.s16()
         return label
     }()
     
@@ -48,12 +49,14 @@ final class OfferSellCurrencyView: UIView {
     
     private let borderView: UIView = {
         let view = UIView()
+        view.backgroundColor = AppColor.gray10.uiColor
         return view
     }()
     
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .blue
+        textField.textColor = AppColor.primaryBase.uiColor
+        textField.font = AppFont.semibold.s16()
         textField.textAlignment = .right
         textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -62,7 +65,8 @@ final class OfferSellCurrencyView: UIView {
     
     private let currencySignLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .blue
+        label.textColor = AppColor.primaryBase.uiColor
+        label.font = AppFont.semibold.s16()
         return label
     }()
     
@@ -83,10 +87,9 @@ final class OfferSellCurrencyView: UIView {
     // MARK: - Setup Views
     private func setupViews() {
         self.addSubview(containerView)
-        [flagImageView, currencyLabel,
+        [flagIconLabel, currencyLabel,
          selectCurrencyButton, borderView,
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
-        borderView.backgroundColor = .systemGray5
         selectCurrencyButton.isHidden = !hasButton
     }
     
@@ -95,13 +98,13 @@ final class OfferSellCurrencyView: UIView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        flagImageView.snp.makeConstraints { make in
+        flagIconLabel.snp.makeConstraints { make in
             make.height.equalTo(16)
             make.leading.equalTo(containerView.snp.leading).offset(16)
             make.top.equalTo(containerView.snp.top).offset(16)
         }
         currencyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(flagImageView.snp.trailing).offset(16)
+            make.leading.equalTo(flagIconLabel.snp.trailing).offset(16)
             make.top.equalTo(containerView.snp.top).offset(14)
         }
         selectCurrencyButton.snp.makeConstraints { make in
