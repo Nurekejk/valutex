@@ -29,6 +29,7 @@ final class DeatilViewViewController: UIViewController {
         tableView.register(ClockTimeCell.self, forCellReuseIdentifier: ClockTimeCell.reuseID)
         tableView.register(FeedBackCell.self, forCellReuseIdentifier: FeedBackCell.reuseID)
         tableView.register(WebSiteCell.self, forCellReuseIdentifier: WebSiteCell.reuseID)
+        tableView.register(FeedBackCommentCell.self, forCellReuseIdentifier: FeedBackCommentCell.reuseID)
         tableView.rowHeight = 140
         tableView.dataSource = self
         tableView.delegate = self
@@ -106,29 +107,29 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: PhoneCell.reuseID,
-                                                     for: indexPath) as? PhoneCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCell.reuseID,
+                                                     for: indexPath) as? FeedBackCell
 
             return cell ?? UITableViewCell()
         }
 
         if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
-                                                     for: indexPath) as? EmailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCommentCell.reuseID,
+                                                     for: indexPath) as? FeedBackCommentCell
             
             return cell ?? UITableViewCell()
         }
 
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: WebSiteCell.reuseID,
-                                                     for: indexPath) as? WebSiteCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhoneCell.reuseID,
+                                                     for: indexPath) as? PhoneCell
             
             return cell ?? UITableViewCell()
         }
 
         if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FeedBackCell.reuseID,
-                                                     for: indexPath) as? FeedBackCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
+                                                     for: indexPath) as? EmailCell
             
             return cell ?? UITableViewCell()
         }
