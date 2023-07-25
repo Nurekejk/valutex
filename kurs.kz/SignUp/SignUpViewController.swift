@@ -201,7 +201,7 @@ final class SignUpViewController: UIViewController {
             switch result {
             case .success(let message):
                 print(message)
-                self.navigationController?.pushViewController(VerificationPageViewController(),
+                self.navigationController?.pushViewController(VerificationPageViewController(service: self.service),
                                                               animated: true)
             case .failure:
                 DispatchQueue.main.async {
