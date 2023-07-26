@@ -30,7 +30,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
             }
             setupAddressLabel(with: exchanger?.address ?? "",
                               and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км")
-            dateLabel.text = exchanger?.date
+            dateLabel.text = exchanger?.formattedDate
             if let safeBuyRate = exchanger?.buyRate {
                 let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
                 buyRateLabel.text = String(trimmedBuyRate)
