@@ -21,6 +21,9 @@
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
 		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
 		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
+		71564AB22A6775DE00979090 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB12A6775DE00979090 /* CalculatorViewController.swift */; };
+		71564AB42A67775B00979090 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */; };
+		71564AB62A67DF8900979090 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -120,6 +123,9 @@
 		71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateViewController.swift; path = kurs.kz/ExchangeRate/ExchangeRateViewController.swift; sourceTree = SOURCE_ROOT; };
 		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		71564AB12A6775DE00979090 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewCell.swift; sourceTree = "<group>"; };
+		71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewHeaderView.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -287,6 +293,16 @@
 				71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */,
 			);
 			path = ExchangeRates;
+            sourceTree = "<group>";
+        };
+		71564AB02A6775AD00979090 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				71564AB12A6775DE00979090 /* CalculatorViewController.swift */,
+				71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */,
+				71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		71D01EB12A5D48F200422491 /* Notifications */ = {
