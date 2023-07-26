@@ -11,8 +11,10 @@ import SkyFloatingLabelTextField
 
 final class RegistrationPersonalDataViewController: UIViewController {
     
+    private let service: OtpRegistrationService
+    private var phoneNumber: String
+    
     // MARK: - UI
-
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -78,6 +80,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         textField.title = "Телефон"
         textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Телефон"
+        textField.isUserInteractionEnabled = false
         textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
@@ -90,6 +93,17 @@ final class RegistrationPersonalDataViewController: UIViewController {
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService) {
+        self.service = service
+        self.phoneNumber = service.getPhoneNumber()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -133,6 +147,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         
         view.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
+        phoneTextField.text = "+\(phoneNumber)"
     }
     
     func setupBorders(for textfield: PaddedTextField) {
@@ -187,6 +202,52 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
 
     @objc private func continueButtonDidPress() {
-        self.navigationController?.pushViewController(RegistrationPasswordViewController(), animated: true)
+        
+        guard let name = nameTextField.text else {
+            self.showSnackBar(message: "Имя введено неправильно.")
+            return
+        }
+        
+        if name.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
+            return
+        }
+        
+        guard let surname = surnameTextField.text else {
+            self.showSnackBar(message: "Фамилия введена неправильно.")
+            return
+        }
+        
+        if surname.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
+            return
+        }
+        
+        let middleName = patronymicTextField.text ?? ""
+        let deviceID = "string"
+        let language = "RU"
+        let currencyCode = "USD"
+        let cityID = 1
+        
+        let user = User(name: name,
+                        surname: surname,
+                        middleName: middleName,
+                        phone: service.getPhoneNumber(),
+                        deviceID: deviceID,
+                        language: language,
+                        currencyCode: currencyCode,
+                        cityID: cityID,
+                        smsCode: service.getSMSCode())
+        
+        self.navigationController?.pushViewController(
+            RegistrationPasswordViewController(
+                service: self.service,
+                user: user),
+                animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 }

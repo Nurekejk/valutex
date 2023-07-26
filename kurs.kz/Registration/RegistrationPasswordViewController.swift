@@ -10,6 +10,9 @@ import SnapKit
 
 final class RegistrationPasswordViewController: UIViewController {
     
+    private let service: OtpRegistrationService
+    private var user: User
+    
     // MARK: - UI
     private let elementsStackView: UIStackView = {
         let stackView = UIStackView()
@@ -77,6 +80,17 @@ final class RegistrationPasswordViewController: UIViewController {
         textField.placeholder = "Повторите пароль"
         return textField
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService, user: User) {
+        self.service = service
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -165,12 +179,54 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func continueButtonDidPress() {
-        let controller = CustomTabBarViewController()
-        controller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        guard let password = enterPasswordTextField.text else {
+            self.showSnackBar(message: "Пароль введен неправильно.")
+            return
+        }
+        
+        if password.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, введите пароль.")
+            return
+        } else if password.count < 6 {
+            self.showSnackBar(message: "Пароль слишком короткий!")
+            return
+        }
+        
+        guard let passwordRepeated = repeatPasswordTextField.text else {
+            self.showSnackBar(message: "Повторный пароль введен неправильно.")
+            return
+        }
+        
+        if passwordRepeated.isEmpty {
+            self.showSnackBar(message: "Пожалуйста, повторите пароль.")
+            return
+        } else if password != passwordRepeated {
+            self.showSnackBar(message: "Пароли не совпадают.")
+            return
+        }
+        
+        user.setPassword(password: password)
+        
+        service.fetchUser(with: self.user) { result in
+            switch result {
+            case .success:
+                let controller = CustomTabBarViewController()
+                controller.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(controller, animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Повторите еще раз.")
+                }
+            }
+        }
     }
 
     @objc private func backButtonDidPress() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 }
