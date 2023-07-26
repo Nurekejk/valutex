@@ -46,7 +46,7 @@ final class OfferViewController: UIViewController {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
-
+    // MARK: - Setup Constraints
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(116)
@@ -61,7 +61,7 @@ final class OfferViewController: UIViewController {
 extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
