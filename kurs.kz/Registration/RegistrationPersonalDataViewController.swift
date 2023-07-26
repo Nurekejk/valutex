@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
+import ProgressHUD
 
 final class RegistrationPersonalDataViewController: UIViewController {
     
@@ -204,21 +205,25 @@ final class RegistrationPersonalDataViewController: UIViewController {
     @objc private func continueButtonDidPress() {
         
         guard let name = nameTextField.text else {
+            self.showFailure()
             self.showSnackBar(message: "Имя введено неправильно.")
             return
         }
         
         if name.isEmpty {
+            self.showFailure()
             self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
             return
         }
         
         guard let surname = surnameTextField.text else {
+            self.showFailure()
             self.showSnackBar(message: "Фамилия введена неправильно.")
             return
         }
         
         if surname.isEmpty {
+            self.showFailure()
             self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
             return
         }
@@ -249,5 +254,16 @@ final class RegistrationPersonalDataViewController: UIViewController {
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
         SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension RegistrationPersonalDataViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }
