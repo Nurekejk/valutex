@@ -35,6 +35,9 @@ final class NotificationsViewController: UIViewController {
     // MARK: - Setup Views
 
     private func setupViews() {
+        title = "Уведомления"
+        navigationController?.navigationBar.backItem?.title = ""
+        
         view.addSubview(tableView)
         tableView.backgroundColor = AppColor.gray10.uiColor
         view.backgroundColor = AppColor.gray10.uiColor
