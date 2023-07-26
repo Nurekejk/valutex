@@ -26,7 +26,6 @@ final class LanguageAppViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 56
-        
         return tableView
     }()
     
@@ -47,15 +46,19 @@ final class LanguageAppViewController: UIViewController {
     }
     
     // MARK: - Setup Views
-    func setupViews() {
+    private func setupViews() {
+        title = "Язык приложения"
+        navigationController?.navigationBar.backItem?.title = ""
         view.backgroundColor = AppColor.gray10.uiColor
         tableView.backgroundColor = AppColor.gray10.uiColor
-        view.addSubview(tableView)
-        view.addSubview(selectButton)
+        
+        [tableView, selectButton].forEach {
+            view.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraits
-    func setupConstraits() {
+    private func setupConstraits() {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(120)
             make.bottom.equalToSuperview().offset(100)
