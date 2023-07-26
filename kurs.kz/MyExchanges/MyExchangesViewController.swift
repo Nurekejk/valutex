@@ -34,6 +34,8 @@ class MyExchangesViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
+        title = "Мои обменники"
+        navigationController?.navigationBar.backItem?.title = ""
         view.addSubview(tableView)
         tableView.backgroundColor = AppColor.gray10.uiColor
     }
@@ -49,10 +51,6 @@ class MyExchangesViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension MyExchangesViewController: UITableViewDataSource, UITableViewDelegate {
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
