@@ -228,7 +228,7 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
     }
 }
 

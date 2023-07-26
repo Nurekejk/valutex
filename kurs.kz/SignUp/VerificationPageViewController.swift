@@ -143,8 +143,10 @@ final class VerificationPageViewController: UIViewController {
             switch result {
             case .success:
                 self.showSuccess()
-                self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
-                                                              animated: true)
+                self.navigationController?.pushViewController(
+                    RegistrationPersonalDataViewController(
+                        service: self.service),
+                        animated: true)
             case .failure:
                 DispatchQueue.main.async {
                     self.showFailure()
@@ -160,7 +162,7 @@ final class VerificationPageViewController: UIViewController {
     
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
     }
 }
 

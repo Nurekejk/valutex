@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import ProgressHUD
 
 final class RegistrationPasswordViewController: UIViewController {
     
@@ -180,27 +181,33 @@ final class RegistrationPasswordViewController: UIViewController {
 
     @objc private func continueButtonDidPress() {
         guard let password = enterPasswordTextField.text else {
+            self.showFailure()
             self.showSnackBar(message: "Пароль введен неправильно.")
             return
         }
         
         if password.isEmpty {
+            self.showFailure()
             self.showSnackBar(message: "Пожалуйста, введите пароль.")
             return
         } else if password.count < 6 {
+            self.showFailure()
             self.showSnackBar(message: "Пароль слишком короткий!")
             return
         }
         
         guard let passwordRepeated = repeatPasswordTextField.text else {
+            self.showFailure()
             self.showSnackBar(message: "Повторный пароль введен неправильно.")
             return
         }
         
         if passwordRepeated.isEmpty {
+            self.showFailure()
             self.showSnackBar(message: "Пожалуйста, повторите пароль.")
             return
         } else if password != passwordRepeated {
+            self.showFailure()
             self.showSnackBar(message: "Пароли не совпадают.")
             return
         }
@@ -212,9 +219,11 @@ final class RegistrationPasswordViewController: UIViewController {
             case .success:
                 let controller = CustomTabBarViewController()
                 controller.navigationItem.hidesBackButton = true
+                self.showSuccess()
                 self.navigationController?.pushViewController(controller, animated: true)
             case .failure:
                 DispatchQueue.main.async {
+                    self.showFailure()
                     self.showSnackBar(message: "Ошибка! Повторите еще раз.")
                 }
             }
@@ -227,6 +236,17 @@ final class RegistrationPasswordViewController: UIViewController {
     
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension RegistrationPasswordViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }
