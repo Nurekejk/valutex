@@ -77,7 +77,6 @@
 		9FF55D5C2A694A1D00A11284 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */; };
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
 		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
-		FA095B5E2A71666F006BE687 /* ExchangerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5D2A71666F006BE687 /* ExchangerFilter.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
@@ -172,7 +171,6 @@
 		9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
 		9FF55D582A694A1D00A11284 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
-		FA095B5D2A71666F006BE687 /* ExchangerFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerFilter.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -562,7 +560,6 @@
 			children = (
 				FA5759822A63E8F500DE9A6B /* Exchanger.swift */,
 				FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */,
-				FA095B5D2A71666F006BE687 /* ExchangerFilter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -839,7 +836,6 @@
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
-				FA095B5E2A71666F006BE687 /* ExchangerFilter.swift in Sources */,
 				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
