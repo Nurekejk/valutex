@@ -15,6 +15,8 @@
 		223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C642A648DDE008FE874 /* Paddinglabel.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
+		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
+		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
 		71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */; };
 		71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */; };
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
@@ -33,6 +35,9 @@
 		8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
+		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
+		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
+		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
 		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -117,6 +122,8 @@
 		223C9C642A648DDE008FE874 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewHeaderView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewCell.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewFooterView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewFooterView.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +144,9 @@
 		8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewFooterView.swift; sourceTree = "<group>"; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
+		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
+		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
+		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -335,6 +345,16 @@
 			path = CartExchangeFeedback;
 			sourceTree = "<group>";
 		};
+		8FCA83242A712256003CD865 /* OffersSended */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */,
+				8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */,
+				8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */,
+			);
+			path = OffersSended;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +521,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA83242A712256003CD865 /* OffersSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRates */,
 				FA57598B2A67CBC800DE9A6B /* OfferSellBuySegmentedControl */,
@@ -834,6 +855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */,
 				9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */,
 				FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
@@ -858,6 +880,7 @@
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
+				8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */,
 				71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */,
@@ -899,6 +922,7 @@
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
+				8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
 				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
