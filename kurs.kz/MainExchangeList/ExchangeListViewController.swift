@@ -17,10 +17,9 @@ final class ExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-    private lazy var filteredArray = exchangersArray {
+    private var filteredArray: [Exchanger] = [] {
         didSet {
             self.exchangeListTableView.reloadData()
-            print("sadasdasdasdads")
         }
     }
     private var isSearching = false {
@@ -31,27 +30,36 @@ final class ExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var nearbyFilterIsOn = true {
+    private var nearbySorterIsOn = false {
         didSet {
             filtersDidChange()
-            if nearbyFilterIsOn {
-                nearbyFilterButton.backgroundColor = AppColor.primarySecondary.uiColor
+            if nearbySorterIsOn {
+                nearbySorterButton.backgroundColor = AppColor.primarySecondary.uiColor
             } else {
-                
+                nearbySorterButton.backgroundColor = .clear
             }
         }
     }
     private var openFilterIsOn = false {
         didSet {
             filtersDidChange()
+            if openFilterIsOn {
+                openFilterButton.backgroundColor = AppColor.primarySecondary.uiColor
+            } else {
+                openFilterButton.backgroundColor = .clear
+            }
         }
     }
-    private var buySorterIsOn = false {
+    private var buyRateSorterState: ButtonState = .isOff {
         didSet {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var sellSorterIsOn = false
+    private var sellRateSorterState: ButtonState = .isOff {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
@@ -116,7 +124,7 @@ final class ExchangeListViewController: UIViewController {
         return button
     }()
     
-    private lazy var nearbyFilterButton: UIButton = {
+    private lazy var nearbySorterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Рядом", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
@@ -130,17 +138,17 @@ final class ExchangeListViewController: UIViewController {
         button.setTitle("Открыто", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.regular.s14()
+        button.addTarget(self, action: #selector(openButtonDidPress), for: .touchUpInside)
         return button
     }()
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
-        headerView.completion = {
-            if $0 == 1 {
-                self.buySorterIsOn.toggle()
-            } else {
-                self.sellSorterIsOn.toggle()
-            }
+        headerView.buyCompletion = {
+            self.buyRateSorterState = $0
+        }
+        headerView.sellCompletion = {
+            self.sellRateSorterState = $0
         }
         return headerView
     }()
@@ -172,6 +180,7 @@ final class ExchangeListViewController: UIViewController {
         setupNavigationBar()
         ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
+            self.filteredArray = exchangers
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -191,9 +200,9 @@ final class ExchangeListViewController: UIViewController {
         openFilterButton.layer.borderWidth = 1
         openFilterButton.layer.borderColor = AppColor.gray20.cgColor
         openFilterButton.layer.cornerRadius = 8
-        nearbyFilterButton.layer.borderWidth = 1
-        nearbyFilterButton.layer.borderColor = AppColor.gray20.cgColor
-        nearbyFilterButton.layer.cornerRadius = 8
+        nearbySorterButton.layer.borderWidth = 1
+        nearbySorterButton.layer.borderColor = AppColor.gray20.cgColor
+        nearbySorterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
     }
@@ -201,7 +210,7 @@ final class ExchangeListViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         [exchangeListTableView, mapButton,
-         nearbyFilterButton, openFilterButton,
+         nearbySorterButton, openFilterButton,
          currencySearchBar, calculatorButton,
          pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = AppColor.gray10.uiColor
@@ -215,20 +224,30 @@ final class ExchangeListViewController: UIViewController {
     }
     func filtersDidChange() {
         filteredArray = exchangersArray
-        if buySorterIsOn {
-            
-        }
-        if sellSorterIsOn {
-            
-        }
-        if nearbyFilterIsOn {
-            
-            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
-            print("sadsda")
-        }
         if openFilterIsOn {
-            
+            filteredArray = filteredArray.filter({ $0.open })
         }
+        if nearbySorterIsOn {
+            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
+        }
+
+        if buyRateSorterState != .isOff {
+            sellRateSorterState = .isOff
+            if buyRateSorterState == .ascending {
+                
+            } else {
+                
+            }
+        }
+        if sellRateSorterState != .isOff {
+            buyRateSorterState = .isOff
+            if sellRateSorterState == .ascending {
+                
+            } else {
+                
+            }
+        }
+
     }
     
     // MARK: - Setup Constraints:
@@ -255,7 +274,7 @@ final class ExchangeListViewController: UIViewController {
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
-        nearbyFilterButton.snp.makeConstraints { make in
+        nearbySorterButton.snp.makeConstraints { make in
             make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(77)
@@ -263,7 +282,7 @@ final class ExchangeListViewController: UIViewController {
         }
         openFilterButton.snp.makeConstraints { make in
             make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalTo(nearbyFilterButton.snp.trailing).offset(8)
+            make.leading.equalTo(nearbySorterButton.snp.trailing).offset(8)
             make.width.equalTo(93)
             make.height.equalTo(34)
         }
@@ -273,7 +292,7 @@ final class ExchangeListViewController: UIViewController {
             make.size.equalTo(48)
         }
         exchangeListTableView.snp.makeConstraints { make in
-            make.top.equalTo(nearbyFilterButton.snp.bottom).offset(9)
+            make.top.equalTo(nearbySorterButton.snp.bottom).offset(9)
             make.width.equalTo(tableWidth)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
@@ -287,8 +306,10 @@ final class ExchangeListViewController: UIViewController {
         self.presentPanModal(modalScreen)
     }
     @objc func nearbyButtonDidPress() {
-        nearbyFilterIsOn = !nearbyFilterIsOn
-        print(nearbyFilterIsOn)
+        nearbySorterIsOn = !nearbySorterIsOn
+    }
+    @objc func openButtonDidPress() {
+        openFilterIsOn = !openFilterIsOn
     }
 }
 
@@ -296,7 +317,8 @@ final class ExchangeListViewController: UIViewController {
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? filteredArray.count : exchangersArray.count
+//        isSearching ? filteredArray.count : exchangersArray.count
+        filteredArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 91
