@@ -12,11 +12,12 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
     static let identifier = "ExchangeListTableHeader"
     
-    public var completion: (Int) -> Void = { _ in }
+    public var buyCompletion: (ButtonState) -> Void = { _ in }
+    public var sellCompletion: (ButtonState) -> Void = { _ in }
     
     // MARK: - Properties
-    private var buyRateFilterIsActive = false
-    private var sellRateFilterIsActive = false
+    private var buyRateSorterState = ButtonState.isOff
+    private var sellRateSorterState = ButtonState.isOff
     
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
@@ -43,8 +44,9 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     private lazy var sellRateFilterButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "down_up_filter"), for: .normal)
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "up_down_filter"), for: .normal)
+        button.setImage(UIImage(named: "down_up_filter"), for: .selected)
         button.addTarget(self, action: #selector(sellFilterButtonDidPress(sender:)), for: .touchUpInside)
         button.tag = 2
         return button
@@ -83,18 +85,15 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Action
     @objc func buyFilterButtonDidPress(sender: UIButton) {
-        let tag = sender.tag
         sender.isSelected = !sender.isSelected
-//        sender.setImage(UIImage(named: "up_down_filter"), for: .normal)
-//        sender.setTitleShadowColor(.clear, for: .selected)
-//        sender.setImage(UIImage(named: "down_up_filter"), for: .selected)
-//        sender.isEnabled = !sender.isEnabled
-        completion(tag)
+        
+        buyCompletion(buyRateSorterState)
         
     }
     @objc func sellFilterButtonDidPress(sender: UIButton) {
-        let tag = sender.tag
-        completion(tag)
+        sender.isSelected = !sender.isSelected
+        
+        sellCompletion(sellRateSorterState)
     }
     
     // MARK: - Setup Constraints
