@@ -23,9 +23,10 @@ class ChangeExchangeRateViewController: UIViewController {
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
-    private let closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "cross"), for: .normal)
+        button.addTarget(self, action: #selector (cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
     private let headerStack: UIStackView = {
@@ -74,7 +75,7 @@ class ChangeExchangeRateViewController: UIViewController {
         return stack
     }()
 
-    private let cancelButton: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отмена", for: .normal)
         button.tintColor = AppColor.gray50.uiColor
@@ -83,6 +84,7 @@ class ChangeExchangeRateViewController: UIViewController {
         button.layer.borderColor = AppColor.gray30.cgColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.addTarget(self, action: #selector (cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
     private let confirmChangeButton: UIButton = {
@@ -179,14 +181,9 @@ class ChangeExchangeRateViewController: UIViewController {
 
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    @objc func cancelButtonDidPressed() {
+        self.dismiss(animated: true)
     }
-    */
 
 }
