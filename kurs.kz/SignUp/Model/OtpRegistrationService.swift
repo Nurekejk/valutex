@@ -17,20 +17,18 @@ final class OtpRegistrationService {
     private var smsCode = ""
     
     // MARK: - Network
-    func postPhoneNumber(with phone: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+    func postPhoneNumber(with phone: String, completion: @escaping (Result<String, Error>) -> Void) {
         phoneNumber = phone
         let parameters: [String: Any] = ["phone": phone]
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        AF.request(otpRegistrationURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
             .responseDecodable(of: String.self) { response in
                 switch response.result {
-                case .success(let info):
-                    print(info)
-                    completion(.success(info))
+                case .success(let message):
+                    completion(.success(message))
                 case .failure(let error):
-                    completion(.failure(.nilData))
-                    print(error)
+                    completion(.failure(error))
                 }
             }
         
