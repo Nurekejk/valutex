@@ -16,6 +16,9 @@ struct Exchanger: Codable {
     let totalRatings: Int
     let address: String
     let date: String
+    var formattedDate: String? {
+        getDate(from: date)
+    }
     let buyRate: Float
     let sellRate: Float
     let latitude: Float
@@ -45,5 +48,20 @@ struct Exchanger: Codable {
         case longitude
         case open
         case contacts
+    }
+    
+    func getDate(from dateString: String) -> String {
+        if let dotIndex = dateString.firstIndex(of: ".") {
+            var trimmedDate = String(dateString[..<dotIndex])
+            let formatter = ISO8601DateFormatter()
+            if let date = formatter.date(from: trimmedDate + "Z") {
+                let outputFormatter = DateFormatter()
+                outputFormatter.dateFormat = "dd MMMM yyyy, HH:mm:ss"
+                outputFormatter.timeZone = TimeZone.current
+                
+                return outputFormatter.string(from: date)
+            }
+        }
+        return "error processing date"
     }
 }
