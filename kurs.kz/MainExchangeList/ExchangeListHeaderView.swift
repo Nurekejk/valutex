@@ -12,8 +12,7 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
     static let identifier = "ExchangeListTableHeader"
     
-    public var buyCompletion: (ButtonState) -> Void = { _ in }
-    public var sellCompletion: (ButtonState) -> Void = { _ in }
+    public var сompletion: (ButtonState, ButtonState) -> Void = { ( _: ButtonState, _: ButtonState) in }
     
     // MARK: - Properties
     private var buyRateSorterState = ButtonState.isOff
@@ -86,14 +85,14 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - Action
     @objc func buyFilterButtonDidPress(sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        
-        buyCompletion(buyRateSorterState)
+        sellRateSorterState = ButtonState.isOff
+        сompletion(buyRateSorterState, sellRateSorterState)
         
     }
     @objc func sellFilterButtonDidPress(sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
-        sellCompletion(sellRateSorterState)
+        сompletion(buyRateSorterState, sellRateSorterState)
     }
     
     // MARK: - Setup Constraints

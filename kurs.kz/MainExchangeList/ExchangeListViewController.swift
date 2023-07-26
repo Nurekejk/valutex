@@ -144,11 +144,9 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
-        headerView.buyCompletion = {
-            self.buyRateSorterState = $0
-        }
-        headerView.sellCompletion = {
-            self.sellRateSorterState = $0
+        headerView.сompletion = { (buyState: ButtonState, sellState: ButtonState) in
+            self.buyRateSorterState = buyState
+            self.sellRateSorterState = sellState
         }
         return headerView
     }()
