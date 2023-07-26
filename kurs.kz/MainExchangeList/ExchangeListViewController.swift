@@ -34,6 +34,11 @@ final class ExchangeListViewController: UIViewController {
     private var nearbyFilterIsOn = true {
         didSet {
             filtersDidChange()
+            if nearbyFilterIsOn {
+                nearbyFilterButton.backgroundColor = AppColor.primarySecondary.uiColor
+            } else {
+                
+            }
         }
     }
     private var openFilterIsOn = false {
@@ -41,12 +46,12 @@ final class ExchangeListViewController: UIViewController {
             filtersDidChange()
         }
     }
-    private var buyFilterIsOn = false {
+    private var buySorterIsOn = false {
         didSet {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var sellFilterIsOn = false
+    private var sellSorterIsOn = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
@@ -132,9 +137,9 @@ final class ExchangeListViewController: UIViewController {
         let headerView = ExchangeListHeaderView()
         headerView.completion = {
             if $0 == 1 {
-                self.buyFilterIsOn.toggle()
+                self.buySorterIsOn.toggle()
             } else {
-                self.sellFilterIsOn.toggle()
+                self.sellSorterIsOn.toggle()
             }
         }
         return headerView
@@ -210,10 +215,10 @@ final class ExchangeListViewController: UIViewController {
     }
     func filtersDidChange() {
         filteredArray = exchangersArray
-        if buyFilterIsOn {
+        if buySorterIsOn {
             
         }
-        if sellFilterIsOn {
+        if sellSorterIsOn {
             
         }
         if nearbyFilterIsOn {
