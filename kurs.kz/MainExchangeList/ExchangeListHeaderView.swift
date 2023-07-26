@@ -14,6 +14,10 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     public var completion: (Int) -> Void = { _ in }
     
+    // MARK: - Properties
+    private var buyRateFilterIsActive = false
+    private var sellRateFilterIsActive = false
+    
     // MARK: - UI
     private lazy var buyLabel: UILabel = {
         let label = UILabel()
@@ -30,8 +34,10 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     private lazy var buyRateFilterButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "up_down_filter"), for: .normal)
+        button.setImage(UIImage(named: "down_up_filter"), for: .selected)
+        button.setBackgroundImage(UIImage(), for: .selected)
         button.addTarget(self, action: #selector(buyFilterButtonDidPress(sender:)), for: .touchUpInside)
         button.tag = 1
         return button
@@ -78,6 +84,11 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     // MARK: - Action
     @objc func buyFilterButtonDidPress(sender: UIButton) {
         let tag = sender.tag
+        sender.isSelected = !sender.isSelected
+//        sender.setImage(UIImage(named: "up_down_filter"), for: .normal)
+//        sender.setTitleShadowColor(.clear, for: .selected)
+//        sender.setImage(UIImage(named: "down_up_filter"), for: .selected)
+//        sender.isEnabled = !sender.isEnabled
         completion(tag)
         
     }

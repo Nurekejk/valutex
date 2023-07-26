@@ -17,14 +17,28 @@ final class ExchangeListViewController: UIViewController {
             self.exchangeListTableView.reloadData()
         }
     }
-    private var filteredArray: [Exchanger] = [] {
+    private lazy var filteredArray = exchangersArray {
         didSet {
             self.exchangeListTableView.reloadData()
+            print("sadasdasdasdads")
         }
     }
     private var isSearching = false {
         didSet {
+//            if !isSearching {
+//                filteredArray = exchangersArray
+//            }
             self.exchangeListTableView.reloadData()
+        }
+    }
+    private var nearbyFilterIsOn = true {
+        didSet {
+            filtersDidChange()
+        }
+    }
+    private var openFilterIsOn = false {
+        didSet {
+            filtersDidChange()
         }
     }
     private var buyFilterIsOn = false {
@@ -102,6 +116,7 @@ final class ExchangeListViewController: UIViewController {
         button.setTitle("Рядом", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.regular.s14()
+        button.addTarget(self, action: #selector(nearbyButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -117,9 +132,9 @@ final class ExchangeListViewController: UIViewController {
         let headerView = ExchangeListHeaderView()
         headerView.completion = {
             if $0 == 1 {
-                self.buyFilterIsOn = !self.buyFilterIsOn
+                self.buyFilterIsOn.toggle()
             } else {
-                self.sellFilterIsOn = !self.sellFilterIsOn
+                self.sellFilterIsOn.toggle()
             }
         }
         return headerView
@@ -192,7 +207,24 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
-}
+    }
+    func filtersDidChange() {
+        filteredArray = exchangersArray
+        if buyFilterIsOn {
+            
+        }
+        if sellFilterIsOn {
+            
+        }
+        if nearbyFilterIsOn {
+            
+            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
+            print("sadsda")
+        }
+        if openFilterIsOn {
+            
+        }
+    }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -249,6 +281,10 @@ final class ExchangeListViewController: UIViewController {
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
+    @objc func nearbyButtonDidPress() {
+        nearbyFilterIsOn = !nearbyFilterIsOn
+        print(nearbyFilterIsOn)
+    }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
@@ -267,7 +303,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
                                                         for: indexPath) as? ExchangeListTableViewCell {
                 cell.backgroundColor = view.backgroundColor
                 if !isSearching {
-                    cell.changeExchanger(with: exchangersArray[indexPath.row])
+                    cell.changeExchanger(with: filteredArray[indexPath.row])
                 } else {
                     cell.changeExchanger(with: filteredArray[indexPath.row])
                 }
@@ -285,12 +321,12 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
             filteredArray = exchangersArray.filter { exchanger in
                 exchanger.mainTitle.localizedCaseInsensitiveContains(searchText)
             }
-            print("asd")
             exchangeListTableView.reloadData()
         }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        filteredArray = exchangersArray
+        isSearching = false
+        searchBar.resignFirstResponder()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
