@@ -232,7 +232,7 @@ final class SignUpViewController: UIViewController {
     }
 }
 
-// MARK: - SignUpViewProtocol
+// MARK: - ProgressHudProtocol
 extension SignUpViewController: ProgressHudProtocol {
     func showSuccess() {
         ProgressHUD.show(icon: .succeed)
@@ -240,9 +240,5 @@ extension SignUpViewController: ProgressHudProtocol {
     
     func showFailure() {
         ProgressHUD.show(icon: .failed)
-    }
-    
-    func showProgress() {
-        ProgressHUD.showProgress("Загружаем...", 0.42)
     }
 }
