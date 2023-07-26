@@ -74,54 +74,24 @@ final class OtpRegistrationService {
         task.resume()
     }
     
-    func postOTPCode (with smsCode: String, completion: @escaping (Result<Bool?, NetworkError>) -> Void) {
-        guard let url = URL(string: otpVerifyURL) else {
-            completion(.failure(.badURL))
-            return
-        }
-        
+    func postPhoneNumber(with phone: String, completion: @escaping (Result<String, Error>) -> Void) {
+    }
+    
+    func postOTPCode (with smsCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         self.smsCode = smsCode
         let parameters: [String: Any] = ["phone": phoneNumber,
                                          "sms_code": smsCode]
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "accept")
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters,
-                                                          options: .fragmentsAllowed)
-        } catch {
-            completion(.failure(.jsonSerializationError))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            if let error = error {
-                print("Post Request Error: \(error.localizedDescription)")
-                completion(.failure(.postRequestError))
-                return
-            }
-            
-            guard let responseData = data else {
-                print("nil Data received from the server")
-                completion(.failure(.nilData))
-                return
-            }
-            
-            do {
-                let decodedData = try JSONDecoder().decode(Bool?.self, from: responseData)
-                DispatchQueue.main.async {
-                    completion(.success(decodedData))
+        AF.request(otpVerifyURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodable(of: Bool.self) { response in
+                switch response.result {
+                case .success(let accepted):
+                    completion(.success(accepted))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
-            } catch {
-                completion(.failure(.decodingError))
-                return
             }
-        }
-        
-        task.resume()
     }
 
     func fetchUser (with user: User, completion: @escaping (Result<String, Error>) -> Void) {
