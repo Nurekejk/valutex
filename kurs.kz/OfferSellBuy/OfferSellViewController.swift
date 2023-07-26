@@ -12,6 +12,7 @@ final class OfferSellViewController: UIViewController {
     
     private var upperTextFieldNumber = "0"
     private var lowerTextFieldNumber = "0"
+    private var buttonIsEnabled = false
     
     enum ControllerMode {
         case buy
@@ -19,62 +20,27 @@ final class OfferSellViewController: UIViewController {
     }
     
     var mode: ControllerMode
-    
-    private let currenciesDictionary = ["Доллар США" : ("usd_flag", "USD", "$"),
-                                        "Евро" : ("euro_flag", "EUR", "€"),
-                                        "Рос.рубль" : ("ru_flag", "RUB", "₽"),
-                                        "Кирг.сом" : ("kgs_flag", "KGS", "c"),
-                                        "Кит.юань" : ("cn_flag", "CNY", "¥")]
-    
-    private let currenciesKeyArray = ["Доллар США",
-                                      "Евро",
-                                      "Рос.рубль",
-                                      "Кирг.сом",
-                                      "Кит.юань"]
-    
-    private let buttonBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let borderGrayColor = UIColor(
-        red: 232.0 / 255.0,
-        green: 233.0 / 255.0,
-        blue: 238.0 / 255.0,
-        alpha: 1)
-    
-    private let backgroundGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let textGrayColor = UIColor(
-        red: 147.0 / 255.0,
-        green: 153.0 / 255.0,
-        blue: 171.0 / 255.0,
-        alpha: 1)
 
     // MARK: - UI
-    
+    private lazy var modalScreen = CurrencySelectorViewController()
     private let containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = AppColor.grayWhite.uiColor
         return view
     }()
     private lazy var sellLabel: UILabel = {
         let label = UILabel()
-        
         label.text = mode == .buy ? "Купить" : "Продать"
-        
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
     private let exchangeRateLabel: UILabel = {
         let label = UILabel()
         label.text = "По курсу"
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     
@@ -94,22 +60,24 @@ final class OfferSellViewController: UIViewController {
     private let getLabel: UILabel = {
         let label = UILabel()
         label.text = "Получить"
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = AppColor.gray50.uiColor
+        label.font = AppFont.regular.s14()
         return label
     }()
     private let getTotalLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
         label.textAlignment = .center
-        label.textColor = .blue
+        label.textColor = AppColor.primaryBase.uiColor
+        label.font = AppFont.semibold.s16()
+        label.backgroundColor = AppColor.gray10.uiColor
         return label
     }()
     private lazy var offerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = buttonBlueColor
+        button.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.setTitle("Предложить", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     // MARK: - Lifecycle
@@ -118,35 +86,30 @@ final class OfferSellViewController: UIViewController {
         setupViews()
         setupConstraints()
         
-        sellCurrencyView.changeCurrency(newFlagImage: "usd_flag",
+        sellCurrencyView.changeCurrency(newFlagImage: "🇺🇸",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
-        exchangeRateCurrencyView.changeCurrency(newFlagImage: "kzt_flag",
+        exchangeRateCurrencyView.changeCurrency(newFlagImage: "🇰🇿",
                                                 newCurrencyLabel: "KZT",
                                                 newCurrencySignLabel: "₸" )
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         containerView.layer.cornerRadius = 8
  
         sellCurrencyView.layer.borderWidth = 1
-        sellCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        sellCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         sellCurrencyView.layer.cornerRadius = 8
         
         exchangeRateCurrencyView.layer.borderWidth = 1
-        exchangeRateCurrencyView.layer.borderColor = borderGrayColor.cgColor
+        exchangeRateCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         exchangeRateCurrencyView.layer.cornerRadius = 8
-        
-        sellLabel.textColor = textGrayColor
-        exchangeRateLabel.textColor = textGrayColor
-        getLabel.textColor = textGrayColor
-        lowerBorderView.backgroundColor = borderGrayColor
         
         getTotalLabel.layer.cornerRadius = 8
         getTotalLabel.layer.borderWidth = 1
-        getTotalLabel.layer.borderColor = borderGrayColor.cgColor
-        getTotalLabel.backgroundColor = backgroundGrayColor
+        getTotalLabel.layer.borderColor = AppColor.gray20.cgColor
         
         offerButton.layer.cornerRadius = 12
     }
@@ -163,9 +126,7 @@ final class OfferSellViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = backgroundGrayColor
-        sellLabel.textColor = borderGrayColor
-        containerView.backgroundColor = .white
+        view.backgroundColor = AppColor.gray10.uiColor
         
         view.addSubview(containerView)
         [sellCurrencyView,
@@ -184,8 +145,8 @@ final class OfferSellViewController: UIViewController {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(430)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(116)
+            make.width.equalTo(343)
         }
         sellLabel.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading).offset(16)
@@ -236,8 +197,14 @@ final class OfferSellViewController: UIViewController {
 // MARK: - CurrencySelectorViewControllerDelegate
 extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
     
+    func currencyDidSelect(currency: Currency) {
+        sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
+                                        newCurrencyLabel: getCurrencyName(currency,
+                                                                          language: selectedLanguage),
+                                        newCurrencySignLabel: currency.symbol)
+    }
+
     func calculateOffer(sender: UITextField) {
-        print(sender.tag)
         if sender.tag == 1 {
             upperTextFieldNumber = sender.text ?? "0"
         } else {
@@ -248,8 +215,9 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         let sum = String(format: "%.3f", firstNumber * secondNumber)
             .trimmingCharacters(in: ["0", "."])
         if sum != "" {
-            
-           var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
+            buttonIsEnabled = true
+            offerButton.backgroundColor = AppColor.primaryBase.uiColor
+            var trimmedResult = String(format: "%.3f", firstNumber * secondNumber)
                 .trimmingCharacters(in: ["0"])
             if trimmedResult.last == "." {
                 trimmedResult.removeLast()
@@ -257,29 +225,13 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
             getTotalLabel.text = trimmedResult
         } else {
             getTotalLabel.text = "0"
+            buttonIsEnabled = false
+            offerButton.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
         }
     }
 
     func selectorButtonPressed() {
-        let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
-    
-    func currencyDidSelect(selectedIndexPath: IndexPath, isSearching: Bool, searchArray: [String]) {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        let newKey: String
-        if !isSearching {
-            newKey = currenciesKeyArray[selectedIndexPath.row]
-        } else {
-            newKey = searchArray[selectedIndexPath.row]
-        }
-        if let unwrappedTuple = currenciesDictionary[newKey] {
-            sellCurrencyView.changeCurrency(newFlagImage: unwrappedTuple.0,
-                           newCurrencyLabel: unwrappedTuple.1,
-                           newCurrencySignLabel: unwrappedTuple.2)
-        }
-    }
-    
 }
