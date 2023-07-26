@@ -10,7 +10,6 @@ import UIKit
 final class SelectCityViewController: UIViewController {
 
     // MARK: - Outlets
-
     private let textField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -53,7 +52,6 @@ final class SelectCityViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -61,8 +59,10 @@ final class SelectCityViewController: UIViewController {
     }
 
     // MARK: - Setup
-
     private func setupViews() {
+        title = "Город"
+        navigationController?.navigationBar.backItem?.title = ""
+        
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
         view.addSubview(tableview)
@@ -110,7 +110,6 @@ final class SelectCityViewController: UIViewController {
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension SelectCityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         15
