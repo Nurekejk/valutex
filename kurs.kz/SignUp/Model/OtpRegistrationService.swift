@@ -10,7 +10,6 @@ import Alamofire
 
 final class OtpRegistrationService {
     
-    private let signUpURL = "http://77.240.38.143:4443/signup"
     private var phoneNumber = ""
     private var smsCode = ""
     
