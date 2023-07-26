@@ -21,11 +21,6 @@
 		71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */; };
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
-		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
-		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
-		71564AB22A6775DE00979090 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB12A6775DE00979090 /* CalculatorViewController.swift */; };
-		71564AB42A67775B00979090 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */; };
-		71564AB62A67DF8900979090 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -60,6 +55,7 @@
 		99A8FB652A696C1400894C28 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB642A696C1400894C28 /* Inter-Medium.ttf */; };
 		99A8FB672A696C1A00894C28 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB662A696C1A00894C28 /* Inter-Regular.ttf */; };
 		99A8FB692A696C1F00894C28 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A8FB682A696C1F00894C28 /* Inter-SemiBold.ttf */; };
+		99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B110CD2A7198EC00A24762 /* ProgressHudProtol.swift */; };
 		99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1583F2A5EA1FE001091F7 /* ProfileViewController.swift */; };
 		99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C158472A5EBC42001091F7 /* ProfileTableViewCell.swift */; };
 		99C19F552A6B099300D10021 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C19F542A6B099300D10021 /* User.swift */; };
@@ -128,11 +124,6 @@
 		71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewCell.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewFooterView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewFooterView.swift; sourceTree = SOURCE_ROOT; };
 		71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateViewController.swift; path = kurs.kz/ExchangeRate/ExchangeRateViewController.swift; sourceTree = SOURCE_ROOT; };
-		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		71564AB12A6775DE00979090 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
-		71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewCell.swift; sourceTree = "<group>"; };
-		71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewHeaderView.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -169,6 +160,7 @@
 		99A8FB642A696C1400894C28 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		99A8FB662A696C1A00894C28 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		99A8FB682A696C1F00894C28 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		99B110CD2A7198EC00A24762 /* ProgressHudProtol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHudProtol.swift; sourceTree = "<group>"; };
 		99C1583F2A5EA1FE001091F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		99C158472A5EBC42001091F7 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		99C19F542A6B099300D10021 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -303,16 +295,6 @@
 				71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */,
 			);
 			path = ExchangeRates;
-            sourceTree = "<group>";
-        };
-		71564AB02A6775AD00979090 /* Calculator */ = {
-			isa = PBXGroup;
-			children = (
-				71564AB12A6775DE00979090 /* CalculatorViewController.swift */,
-				71564AB32A67775B00979090 /* CalculatorTableViewCell.swift */,
-				71564AB52A67DF8900979090 /* CalculatorTableViewHeaderView.swift */,
-			);
-			path = Calculator;
 			sourceTree = "<group>";
 		};
 		71D01EB12A5D48F200422491 /* Notifications */ = {
@@ -362,6 +344,7 @@
 				990100482A50B99B003EE3C4 /* SignUpViewController.swift */,
 				9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */,
 				997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */,
+				99B110CD2A7198EC00A24762 /* ProgressHudProtol.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -919,6 +902,7 @@
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */,
+				99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */,
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
