@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 import InputMask
+import ProgressHUD
 
 final class SignUpViewController: UIViewController {
     
@@ -223,5 +224,20 @@ final class SignUpViewController: UIViewController {
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
         SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    }
+}
+
+// MARK: - SignUpViewProtocol
+extension SignUpViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
+    }
+    
+    func showProgress() {
+        ProgressHUD.showProgress("Загружаем...", 0.42)
     }
 }
