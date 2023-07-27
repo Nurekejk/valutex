@@ -31,7 +31,7 @@ final class ProfileTableViewCell: UITableViewCell {
     private lazy var informationTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Курс Нацбанка"
-        label.textColor = UIColor(named: "infoTypeColor")
+        label.textColor = AppColor.gray100.uiColor
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         label.textAlignment = .left
         return label

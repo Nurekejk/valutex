@@ -25,7 +25,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         label.text = "Aidos Tazhigulov"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor(named: "fullNameColor")
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -34,7 +34,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         label.text = "+7(707) 303-22-00"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(named: "phoneNumberColor")
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     

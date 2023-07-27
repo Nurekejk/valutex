@@ -75,7 +75,7 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(informationTableView)
     }
     
