@@ -22,7 +22,7 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - UI
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: "lamguages_cell")
+        tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: LanguageTableViewCell.reuseID)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 56

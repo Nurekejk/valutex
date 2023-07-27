@@ -35,6 +35,7 @@ final class ToSupportViewController: UIViewController {
     
     // MARK: - ViewLayoutSubViews
     private func viewLayoutSubViews() {
+        super.viewDidLayoutSubviews()
         supportTableView.layer.cornerRadius = 8
     }
     
