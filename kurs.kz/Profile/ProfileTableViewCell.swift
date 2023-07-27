@@ -32,7 +32,7 @@ final class ProfileTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Курс Нацбанка"
         label.textColor = AppColor.gray100.uiColor
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        label.font = AppFont.regular.s14()
         label.textAlignment = .left
         return label
     }()
