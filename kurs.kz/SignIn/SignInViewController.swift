@@ -11,7 +11,9 @@ import SkyFloatingLabelTextField
 
 final class SignInViewController: UIViewController {
 
-    // MARK: - Outlets
+    private let service = SignInService()
+
+    // MARK: - UI
 
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
@@ -186,12 +188,99 @@ final class SignInViewController: UIViewController {
     }
 
     @objc private func signInButtonDidPressed() {
-        let conrtoller = CustomTabBarViewController()
-        conrtoller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(conrtoller, animated: true)
+
+        let phoneNumber = phoneTextField.text
+        let password = passwordTextField.text
+//        guard let password = password else {
+//
+//        }
+        guard let phoneNumber = phoneNumber else {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
+
+        if phoneNumber.isEmpty {
+            showSnackBar(message: "Пожалуйства, введите свой номер.")
+            return
+        }
+
+        if phoneNumber.count != 18 {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
+
+        let formatedPhoneNumber = phoneNumber
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "+", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
+
+        service.postSignInData(phone: formatedPhoneNumber, password: password) { result in
+            switch result {
+            case .success(let message):
+                print(message)
+                self.navigationController?.pushViewController(
+                    VerificationPageViewController(service: self.service),
+                    animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                }
+            }
+        }
+    }
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    // MARK: - SnackBar
+
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
     }
 
     @objc private func signUpButtonDidPressed() {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
+}
+
+
+        // MARK: - Networking1
+//
+//        private func performSignInRequest() {
+//
+//            let apiUrlUserCheck = "http://77.240.38.143:4443/user/check"
+//            let apiUrlUserLogin = "http://77.240.38.143:4443/login"
+//
+//            guard let url = URL(string: apiUrlUserCheck) else {
+//                print("Invalid API URL")
+//                return
+//            }
+//
+//            var request = URLRequest(url: url)
+//            request.httpMethod = "POST"
+//            request.setValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
+//
+//            let bodyData = ["username": "your_username", "password": "your_password"]
+//            request.httpBody = try? JSONSerialization.data(withJSONObject: bodyData, options: [])
+//
+//            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//                if let error = error {
+//                    print("Error: \(error)")
+//                    return
+//                }
+//
+//                if let httpResponse = response as? HTTPURLResponse,
+//                   (200...299).contains(httpResponse.statusCode) {
+//                    if let data = data {
+//                        let result = try? JSONDecoder().decode(Auth.self, from: data)
+//                        print("Sign-in successful!")
+//                    }
+//                } else {
+//                    print("Sign-in failed.")
+//                }
+//            }
+//            task.resume()
+//    }
+
 }

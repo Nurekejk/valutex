@@ -15,12 +15,14 @@
 		223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C642A648DDE008FE874 /* Paddinglabel.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
+		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
+		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
 		71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */; };
 		71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */; };
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
-		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
-		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
+		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
+		71564ACA2A72DEBD00979090 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC92A72DEBD00979090 /* SignInService.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -114,12 +116,14 @@
 		223C9C642A648DDE008FE874 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewHeaderView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewCell.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewFooterView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewFooterView.swift; sourceTree = SOURCE_ROOT; };
 		71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateViewController.swift; path = kurs.kz/ExchangeRate/ExchangeRateViewController.swift; sourceTree = SOURCE_ROOT; };
-		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		71564AC72A70B8E300979090 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		71564AC92A72DEBD00979090 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -287,6 +291,15 @@
 				71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */,
 			);
 			path = ExchangeRates;
+			sourceTree = "<group>";
+		};
+		71564AC62A70B8C600979090 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71564AC72A70B8E300979090 /* Auth.swift */,
+				71564AC92A72DEBD00979090 /* SignInService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71D01EB12A5D48F200422491 /* Notifications */ = {
@@ -458,6 +471,7 @@
 		9F63DF3F2A50495100EA9060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				71564AC62A70B8C600979090 /* Model */,
 				9F1094362A5833E100648D14 /* SignInViewController.swift */,
 			);
 			path = SignIn;
@@ -859,6 +873,7 @@
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
+				71564AC82A70B8E300979090 /* Auth.swift in Sources */,
 				9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
@@ -872,6 +887,7 @@
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				FA57598F2A692B2100DE9A6B /* CurrencySelectorManager.swift in Sources */,
+				71564ACA2A72DEBD00979090 /* SignInService.swift in Sources */,
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */,
