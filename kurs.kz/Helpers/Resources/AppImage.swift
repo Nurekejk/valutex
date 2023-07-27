@@ -50,4 +50,9 @@ enum AppImage: String, AppImageProtocol {
     case select_language = "selectlanguage"
     case telegram_icon = "telegram_icon"
     case whatsapp_icon = "whatsapp_icon"
+    case map_button = "map_button"
+    case calculator_button = "calculator_button"
+    case pin_button = "pin_button"
+    case main_filter = "main_filter"
+    
 }

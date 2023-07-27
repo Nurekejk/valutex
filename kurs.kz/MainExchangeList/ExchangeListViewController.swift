@@ -89,7 +89,7 @@ final class ExchangeListViewController: UIViewController {
     private lazy var currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
-        searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
+        searchBar.setImage(AppImage.search_city.uiImage, for: .search, state: .normal)
         searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
         searchBar.searchTextField.backgroundColor = AppColor.grayWhite.uiColor
@@ -104,21 +104,21 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var calculatorButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "calculator_button"), for: .normal)
+        button.setImage(AppImage.calculator_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         return button
     }()
     
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "pin_button"), for: .normal)
+        button.setImage(AppImage.pin_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         return button
     }()
     
     private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "main_filter"), for: .normal)
+        button.setImage(AppImage.main_filter.uiImage, for: .normal)
         return button
     }()
     
@@ -151,8 +151,10 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var mapButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "map_button"), for: .normal)
+        button.setImage(AppImage.map_button.uiImage, for: .normal)
+        button.backgroundColor = AppColor.primarySecondary.uiColor
         button.scalesLargeContentImage = true
+        button.clipsToBounds = true
         return button
     }()
     
@@ -201,6 +203,7 @@ final class ExchangeListViewController: UIViewController {
         nearbySorterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
+        mapButton.layer.cornerRadius = mapButton.frame.size.width / 2
     }
     
     // MARK: - Setup Views
@@ -290,9 +293,6 @@ final class ExchangeListViewController: UIViewController {
         if openFilterIsOn {
             filteredArray = filteredArray.filter({ $0.open })
         }
-        if nearbySorterIsOn {
-            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
-        }
         if buyRateSorterState == .ascending {
             filteredArray = filteredArray.sorted(by: {$0.buyRate > $1.buyRate })
         }
@@ -304,6 +304,9 @@ final class ExchangeListViewController: UIViewController {
         }
         if sellRateSorterState == .descending {
             filteredArray = filteredArray.sorted(by: {$0.sellRate < $1.sellRate})
+        }
+        if nearbySorterIsOn {
+            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
 }
