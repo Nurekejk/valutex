@@ -15,7 +15,7 @@ final class ProfileTableViewCell: UITableViewCell {
     
     var profileSection: ProfileSection? {
         didSet {
-            informationTypeImageView.image = UIImage(named: profileSection?.imageString ?? "")
+            informationTypeImageView.image = profileSection?.image
             informationTypeLabel.text = profileSection?.name
         }
     }
@@ -23,7 +23,6 @@ final class ProfileTableViewCell: UITableViewCell {
     // MARK: - UI
     private lazy var informationTypeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bank")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -40,14 +39,14 @@ final class ProfileTableViewCell: UITableViewCell {
     
     private lazy var arrowImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "arrow-right")
+        imageView.image = AppImage.arrow_right.uiImage
         imageView.contentMode = .right
         return imageView
     }()
     
     private lazy var notificationImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "new-message")
+        imageView.image = AppImage.new_message.uiImage
         imageView.contentMode = .right
         return imageView
     }()

@@ -12,27 +12,27 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-    [ProfileSection(imageString: "bitcoinExchange",
+    [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
                     name: "Мои обменники"),
-     ProfileSection(imageString: "moneys",
+     ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
                     name: "Курс валют"),
-     ProfileSection(imageString: "setting-3",
+     ProfileSection(image: AppImage.setting_3.uiImage ?? UIImage(),
                     name: "Настройки аккаунта"),
-     ProfileSection(imageString: "notification",
+     ProfileSection(image: AppImage.notification.uiImage ?? UIImage(),
                     name: "Уведомления"),
-     ProfileSection(imageString: "language-circle",
+     ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
                     name: "Язык приложения"),
-     ProfileSection(imageString: "global",
+     ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
                     name: "Город"),
-     ProfileSection(imageString: "profile-2user",
+     ProfileSection(image: AppImage.profile_2user.uiImage ?? UIImage(),
                     name: "Стать партнером"),
-     ProfileSection(imageString: "messages",
+     ProfileSection(image: AppImage.messages.uiImage ?? UIImage(),
                     name: "Написать в поддержку"),
-     ProfileSection(imageString: "info",
+     ProfileSection(image: AppImage.info.uiImage ?? UIImage(),
                     name: "О компании"),
-     ProfileSection(imageString: "message-question",
+     ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
                     name: "FAQ"),
-     ProfileSection(imageString: "bank",
+     ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
                     name: "Курс Нацбанка")]
     
     // MARK: - UI
@@ -67,7 +67,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "logout"),
+            image: AppImage.logout.uiImage,
             style: .plain,
             target: self,
             action: nil)

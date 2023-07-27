@@ -15,7 +15,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI
     private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "avatar"))
+        let imageView = UIImageView(image: AppImage.avatar.uiImage)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

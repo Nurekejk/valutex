@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 struct ProfileSection {
-    let imageString: String
+    let image: UIImage
     let name: String
 }
