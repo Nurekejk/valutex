@@ -143,27 +143,6 @@ extension DeatilViewViewController: UITableViewDataSource, UITableViewDelegate {
             return cell ?? UITableViewCell()
         }
         
-        if indexPath.row == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: EmailCell.reuseID,
-                                                     for: indexPath) as? EmailCell
-            
-            return cell ?? UITableViewCell()
-        }
-        
-        if indexPath.row == 6 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: WebSiteCell.reuseID,
-                                                     for: indexPath) as? WebSiteCell
-            
-            return cell ?? UITableViewCell()
-        }
-        
-        if indexPath.row == 7 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: WhatsappCell.reuseID,
-                                                     for: indexPath) as? WhatsappCell
-            
-            return cell ?? UITableViewCell()
-        }
-        
         return UITableViewCell()
     }
 }
