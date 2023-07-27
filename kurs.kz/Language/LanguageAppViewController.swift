@@ -83,7 +83,7 @@ extension LanguageAppViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lamguages_cell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.reuseID,
                                                  for: indexPath) as? LanguageTableViewCell
         let language = languages[indexPath.row]
         
