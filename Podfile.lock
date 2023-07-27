@@ -13,6 +13,7 @@ PODS:
   - GoogleMaps/Base (8.0.0)
   - GoogleMaps/Maps (8.0.0):
     - GoogleMaps/Base
+  - ProgressHUD (13.6.2)
   - SkyFloatingLabelTextField (4.0.0)
   - SnackBar.swift (0.1.0):
     - SnapKit
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - CHIOTPField/Three
   - CHIOTPField/Two
   - GoogleMaps (= 8.0.0)
+  - ProgressHUD (= 13.6.2)
   - SkyFloatingLabelTextField
   - SnackBar.swift (= 0.1.0)
   - SwiftLint
@@ -34,6 +36,7 @@ SPEC REPOS:
   trunk:
     - CHIOTPField
     - GoogleMaps
+    - ProgressHUD
     - SkyFloatingLabelTextField
     - SnackBar.swift
     - SnapKit
@@ -42,11 +45,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
   GoogleMaps: 0dce473ab18742d0f327887853630927cbee9127
+  ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SnackBar.swift: 79ea4df13ea9e6633137dd6acbd490534d26440d
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 9e86552585581930ec6727b2d90a790fb81c876f
+PODFILE CHECKSUM: 5aa5ed9486373ee6d4e68476e4ae7cebb92bbbe5
 
 COCOAPODS: 1.12.1
