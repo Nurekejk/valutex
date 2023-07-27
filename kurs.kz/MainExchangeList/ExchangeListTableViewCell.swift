@@ -194,13 +194,13 @@ final class ExchangeListTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(12)
             make.height.equalTo(18)
         }
-        sellRateLabel.snp.makeConstraints { make in
+        buyRateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
-            make.trailing.equalTo(buyRateLabel.snp.leading).offset(-12)
+            make.trailing.equalTo(sellRateLabel.snp.leading).offset(-12)
             make.height.equalTo(20)
             make.width.equalTo(64)
         }
-        buyRateLabel.snp.makeConstraints { make in
+        sellRateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(20)
