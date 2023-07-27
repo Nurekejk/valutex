@@ -34,20 +34,15 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     private lazy var buyRateFilterButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "up_down_filter"), for: .normal)
-        button.setImage(UIImage(named: "down_up_filter"), for: .selected)
-        button.setBackgroundImage(UIImage(), for: .selected)
+        let button = UIButton(type: .system)
+        button.setImage(AppImage.arrow_back.uiImage, for: .normal)
         button.addTarget(self, action: #selector(buyFilterButtonDidPress(sender:)), for: .touchUpInside)
-        button.tag = 1
         return button
     }()
     private lazy var sellRateFilterButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "up_down_filter"), for: .normal)
-        button.setImage(UIImage(named: "down_up_filter"), for: .selected)
+        let button = UIButton(type: .system)
+        button.setImage(AppImage.arrow_back.uiImage, for: .normal)
         button.addTarget(self, action: #selector(sellFilterButtonDidPress(sender:)), for: .touchUpInside)
-        button.tag = 2
         return button
     }()
     
@@ -84,14 +79,34 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Action
     @objc func buyFilterButtonDidPress(sender: UIButton) {
-        sender.isSelected = !sender.isSelected
         sellRateSorterState = ButtonState.isOff
+        sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+        if buyRateSorterState == .isOff {
+            buyRateFilterButton.setImage(UIImage(named: "up_down_filter"), for: .normal)
+            buyRateSorterState = .ascending
+        } else if buyRateSorterState == .ascending {
+            buyRateFilterButton.setImage(UIImage(named: "down_up_filter"), for: .normal)
+            buyRateSorterState = .descending
+        } else {
+            buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+            buyRateSorterState = .isOff
+        }
         сompletion(buyRateSorterState, sellRateSorterState)
         
     }
     @objc func sellFilterButtonDidPress(sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        
+        buyRateSorterState = ButtonState.isOff
+        buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+        if sellRateSorterState == .isOff {
+            sellRateFilterButton.setImage(UIImage(named: "up_down_filter"), for: .normal)
+            sellRateSorterState = .ascending
+        } else if sellRateSorterState == .ascending {
+            sellRateFilterButton.setImage(UIImage(named: "down_up_filter"), for: .normal)
+            sellRateSorterState = .descending
+        } else {
+            sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+            sellRateSorterState = .isOff
+        }
         сompletion(buyRateSorterState, sellRateSorterState)
     }
     
