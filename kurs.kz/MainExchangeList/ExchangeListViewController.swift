@@ -12,6 +12,7 @@ import SnapKit
 final class ExchangeListViewController: UIViewController {
     
     // MARK: - Properties
+    private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
             self.exchangeListTableView.reloadData()
@@ -24,10 +25,7 @@ final class ExchangeListViewController: UIViewController {
     }
     private var isSearching = false {
         didSet {
-//            if !isSearching {
-//                filteredArray = exchangersArray
-//            }
-            self.exchangeListTableView.reloadData()
+            filtersDidChange()
         }
     }
     private var nearbySorterIsOn = false {
@@ -52,12 +50,12 @@ final class ExchangeListViewController: UIViewController {
     }
     private var buyRateSorterState: ButtonState = .isOff {
         didSet {
-            self.exchangeListTableView.reloadData()
+            filtersDidChange()
         }
     }
     private var sellRateSorterState: ButtonState = .isOff {
         didSet {
-            self.exchangeListTableView.reloadData()
+            filtersDidChange()
         }
     }
     weak var delegate: CurrencySelectorViewControllerDelegate?
@@ -220,33 +218,6 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
     }
-    func filtersDidChange() {
-        filteredArray = exchangersArray
-        if openFilterIsOn {
-            filteredArray = filteredArray.filter({ $0.open })
-        }
-        if nearbySorterIsOn {
-            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
-        }
-
-        if buyRateSorterState != .isOff {
-            sellRateSorterState = .isOff
-            if buyRateSorterState == .ascending {
-                
-            } else {
-                
-            }
-        }
-        if sellRateSorterState != .isOff {
-            buyRateSorterState = .isOff
-            if sellRateSorterState == .ascending {
-                
-            } else {
-                
-            }
-        }
-
-    }
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -309,13 +280,38 @@ final class ExchangeListViewController: UIViewController {
     @objc func openButtonDidPress() {
         openFilterIsOn = !openFilterIsOn
     }
+    func filtersDidChange() {
+        filteredArray = exchangersArray
+        if isSearching {
+            filteredArray = exchangersArray.filter { exchanger in
+                exchanger.mainTitle.localizedCaseInsensitiveContains(searchBarText)
+            }
+        }
+        if openFilterIsOn {
+            filteredArray = filteredArray.filter({ $0.open })
+        }
+        if nearbySorterIsOn {
+            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
+        }
+        if buyRateSorterState == .ascending {
+            filteredArray = filteredArray.sorted(by: {$0.buyRate > $1.buyRate })
+        }
+        if buyRateSorterState == .descending {
+            filteredArray = filteredArray.sorted(by: {$0.buyRate < $1.buyRate})
+        }
+        if sellRateSorterState == .ascending {
+            filteredArray = filteredArray.sorted(by: {$0.sellRate > $1.sellRate })
+        }
+        if sellRateSorterState == .descending {
+            filteredArray = filteredArray.sorted(by: {$0.sellRate < $1.sellRate})
+        }
+    }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        isSearching ? filteredArray.count : exchangersArray.count
         filteredArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -343,10 +339,8 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
             searchBar.resignFirstResponder()
         } else {
             isSearching = true
-            filteredArray = exchangersArray.filter { exchanger in
-                exchanger.mainTitle.localizedCaseInsensitiveContains(searchText)
-            }
-            exchangeListTableView.reloadData()
+            searchBarText = searchText
+            filtersDidChange()
         }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
