@@ -21,7 +21,7 @@ final class CurrencySelectorViewController: UIViewController {
     private var searchArray = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
-    var currencyManager = CurrencySelectorManager()
+    var currencyManager = CurrencySelectorListService()
     
     // MARK: - UI
     private let sliderBorderView: UIView = {
@@ -221,7 +221,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
     }
 }
 // MARK: - CurrencySelectorManagerDelegate
-extension CurrencySelectorViewController: CurrencySelectorManagerDelegate {
+extension CurrencySelectorViewController: CurrencyListServiceDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
         currenciesArray = currency
     }

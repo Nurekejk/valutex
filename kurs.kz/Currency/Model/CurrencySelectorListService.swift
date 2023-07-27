@@ -1,5 +1,5 @@
 //
-//  CurrencySelectorManager.swift
+//  CurrencySelectorListService.swift
 //  kurs.kz
 //
 //  Created by MacBook on 20.07.2023.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CurrencySelectorManager {
+struct CurrencySelectorListService {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    var delegate: CurrencySelectorManagerDelegate?
+    var delegate: CurrencyListServiceDelegate?
     
     func fetchCurrencies() {
         let urlsesion = URLSession.shared
