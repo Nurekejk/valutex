@@ -55,7 +55,8 @@ final class SignInViewController: UIViewController {
         textField.titleLabel.font = AppFont.regular.s12()
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.textColor = AppColor.gray100.uiColor
-//        textField.keyboardType = .
+        textField.isSecureTextEntry = true
+        textField.keyboardType = .default
         textField.lineView.isHidden = true
         return textField
 
@@ -167,18 +168,14 @@ final class SignInViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
-
         signUpAskLabel.snp.makeConstraints { make in
             make.top.equalTo(signInButton.snp.bottom).offset(310)
             make.centerX.equalToSuperview()
         }
-
         signUpButton.snp.makeConstraints { make in
             make.top.equalTo(signUpAskLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
-
         }
-
     }
 
     // MARK: - Actions
@@ -186,7 +183,6 @@ final class SignInViewController: UIViewController {
     @objc private func forgotPasswordButtonDidPressed() {
 
     }
-
     @objc private func signInButtonDidPressed() {
 
         let phoneNumber = phoneTextField.text
@@ -217,7 +213,7 @@ final class SignInViewController: UIViewController {
             switch result {
             case .success(let message):
                 print(message)
-                let mainPageVC = MainPageViewController()
+                let mainPageVC = ExchangeListViewController()
                 mainPageVC.navigationItem.hidesBackButton = true
                 self.navigationController?.pushViewController(mainPageVC, animated: true)
             case .failure:

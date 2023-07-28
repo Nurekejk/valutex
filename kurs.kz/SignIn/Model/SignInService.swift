@@ -57,8 +57,8 @@ final class SignInService {
                 DispatchQueue.main.async {
                     completion(.success(decodedData))
                 }
-            } catch let eror {
-                print(eror)
+            } catch let error {
+                print(error)
                 completion(.failure(.decodingError))
                 return
             }
