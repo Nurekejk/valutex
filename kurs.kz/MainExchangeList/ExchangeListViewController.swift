@@ -16,6 +16,10 @@ final class ExchangeListViewController: UIViewController {
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+                self?.exchangeListTableView.stopSkeletonAnimation()
+                self?.exchangeListTableView.hideSkeleton(transition: .crossDissolve(0.25))
+            }
             self.exchangeListTableView.reloadData()
         }
     }
@@ -215,6 +219,7 @@ final class ExchangeListViewController: UIViewController {
          currencySearchBar, calculatorButton,
          pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = AppColor.gray10.uiColor
+        exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
@@ -314,8 +319,17 @@ final class ExchangeListViewController: UIViewController {
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
-extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
+extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewDataSource, UISearchBarDelegate {
+    func collectionSkeletonView(
+        _ skeletonView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return 6
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView,
+                                cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+       return ExchangeListTableViewCell.identifier
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredArray.count
     }
@@ -356,7 +370,6 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
         searchBar.resignFirstResponder()
     }
 }
-
     // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
 extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
 
