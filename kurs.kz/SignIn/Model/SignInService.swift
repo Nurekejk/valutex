@@ -34,28 +34,45 @@ final class SignInService {
             completion(.failure(.badURL))
             return
         }
-        let requestBody: [String: String] = ["phone": phone]
-        let requestBodyLogin: [String: String] = ["phone": phone]
 
-        var request = URLRequest(url: urlCheck)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "accept")
+        // Request body for user check
+
+        let requestBodyCheck: [String: String] = ["phone": phone]
+//        let requestBodyLogin: [String: String] = ["phone": phone]
+        var requestCheck = URLRequest(url: urlCheck)
+        requestCheck.httpMethod = "POST"
+        requestCheck.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        requestCheck.addValue("application/json", forHTTPHeaderField: "accept")
 
         do {
-            request.httpBody = try
-            JSONSerialization.data(withJSONObject: requestBody, options: .fragmentsAllowed)
+            requestCheck.httpBody = try
+            JSONSerialization.data(withJSONObject: requestBodyCheck, options: .fragmentsAllowed)
         } catch {
             completion(.failure(.jsonSerializationError))
             return
         }
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+
+        // Request body for user login
+
+        let requestBodyLogin: [String: String] = ["phone": phone, "password": password]
+        var requestLogin = URLRequest(url: urlLogin)
+        requestLogin.httpMethod = "POST"
+        requestLogin.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        requestLogin.addValue("application/json", forHTTPHeaderField: "accept")
+
+        do {
+            requestLogin.httpBody = try JSONSerialization.data(withJSONObject: requestBodyLogin, options: .fragmentsAllowed)
+        } catch {
+            completion(.failure(.jsonSerializationError))
+            return
+        }
+        
+        let taskLogin = URLSession.shared.dataTask(with: requestLogin) { data, _, error in
             if let error = error {
                 print("Post Request Error: \(error.localizedDescription)")
                     completion(.failure(.postRequestError))
                        return
             }
-
             guard let responseData = data else {
                 print("nil Data received from the server")
                 completion(.failure(.nilData))
@@ -73,8 +90,6 @@ final class SignInService {
                 return
             }
         }
-        task.resume()
+        taskLogin.resume()
     }
-
-
 }

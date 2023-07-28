@@ -12,8 +12,4 @@ struct Auth: Codable {
     let phone: String
     let password: String
 
-//    enum SignInResult {
-//        case success
-//        case failure(Error)
-//    }
 }
