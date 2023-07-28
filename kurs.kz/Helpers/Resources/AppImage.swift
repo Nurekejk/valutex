@@ -54,5 +54,7 @@ enum AppImage: String, AppImageProtocol {
     case calculator_button = "calculator_button"
     case pin_button = "pin_button"
     case main_filter = "main_filter"
+    case up_down_filter = "up_down_filter"
+    case down_up_filter = "down_up_filter"
     
 }

@@ -82,10 +82,10 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         sellRateSorterState = ButtonState.isOff
         sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
         if buyRateSorterState == .isOff {
-            buyRateFilterButton.setImage(UIImage(named: "up_down_filter"), for: .normal)
+            buyRateFilterButton.setImage(AppImage.up_down_filter.uiImage, for: .normal)
             buyRateSorterState = .ascending
         } else if buyRateSorterState == .ascending {
-            buyRateFilterButton.setImage(UIImage(named: "down_up_filter"), for: .normal)
+            buyRateFilterButton.setImage(AppImage.down_up_filter.uiImage, for: .normal)
             buyRateSorterState = .descending
         } else {
             buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
@@ -98,10 +98,10 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         buyRateSorterState = ButtonState.isOff
         buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
         if sellRateSorterState == .isOff {
-            sellRateFilterButton.setImage(UIImage(named: "up_down_filter"), for: .normal)
+            sellRateFilterButton.setImage(AppImage.up_down_filter.uiImage, for: .normal)
             sellRateSorterState = .ascending
         } else if sellRateSorterState == .ascending {
-            sellRateFilterButton.setImage(UIImage(named: "down_up_filter"), for: .normal)
+            sellRateFilterButton.setImage(AppImage.down_up_filter.uiImage, for: .normal)
             sellRateSorterState = .descending
         } else {
             sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
