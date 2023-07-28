@@ -8,6 +8,7 @@
 import UIKit
 import PanModal
 import SnapKit
+import SkeletonView
 
 final class ExchangeListViewController: UIViewController {
     
@@ -164,6 +165,7 @@ final class ExchangeListViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.isSkeletonable = true
         tableView.register(ExchangeListTableViewCell.self,
                            forCellReuseIdentifier: ExchangeListTableViewCell.identifier)
         tableView.tableHeaderView = headerView
