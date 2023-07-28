@@ -11,7 +11,7 @@ struct User: Codable {
     let name: String
     let surname: String
     let middleName: String
-    let password: String
+    var password: String
     let phone: String
     let deviceID: String
     let language: String
@@ -31,4 +31,29 @@ struct User: Codable {
         case cityID = "city_id"
         case smsCode = "sms_code"
         }
+    
+    init(name: String,
+         surname: String,
+         middleName: String,
+         phone: String,
+         deviceID: String,
+         language: String,
+         currencyCode: String,
+         cityID: Int,
+         smsCode: String) {
+        self.name = name
+        self.surname = surname
+        self.middleName = middleName
+        self.password = ""
+        self.phone = phone
+        self.deviceID = deviceID
+        self.language = language
+        self.currencyCode = currencyCode
+        self.cityID = cityID
+        self.smsCode = Int(smsCode) ?? 0
+    }
+    
+    mutating func setPassword(password: String) {
+        self.password = password
+    }
 }

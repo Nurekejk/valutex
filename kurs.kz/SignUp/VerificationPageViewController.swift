@@ -7,6 +7,7 @@
 
 import UIKit
 import CHIOTPField
+import ProgressHUD
 
 final class VerificationPageViewController: UIViewController {
     
@@ -141,10 +142,14 @@ final class VerificationPageViewController: UIViewController {
         service.postOTPCode(with: code) { result in
             switch result {
             case .success:
-                self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
-                                                              animated: true)
+                self.showSuccess()
+                self.navigationController?.pushViewController(
+                    RegistrationPersonalDataViewController(
+                        service: self.service),
+                        animated: true)
             case .failure:
                 DispatchQueue.main.async {
+                    self.showFailure()
                     self.showSnackBar(message: "Ошибка! Неверный код.")
                 }
             }
@@ -157,6 +162,17 @@ final class VerificationPageViewController: UIViewController {
     
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension VerificationPageViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }
