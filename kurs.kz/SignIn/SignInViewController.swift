@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
+import InputMask
 
 final class SignInViewController: UIViewController {
     // MARK: - Properties
@@ -24,6 +25,21 @@ final class SignInViewController: UIViewController {
         return label
     }()
 
+    // MARK: - MaskedTextField Listener
+    
+    private lazy var listener: MaskedTextFieldDelegate = {
+        let listener = MaskedTextFieldDelegate()
+        listener.onMaskedTextChangedCallback = { textField, _, isFilled in
+            let updatedText = textField.text ?? ""
+            if isFilled {
+                print("Text field is filled: \(updatedText)")
+            }
+        }
+        listener.delegate = self
+        listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
+        return listener
+    }()
+    
     private lazy var phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
 
@@ -108,6 +124,7 @@ final class SignInViewController: UIViewController {
 
         setupViews()
         setupConstriants()
+        phoneTextField.delegate = listener
     }
 
     override func viewDidLayoutSubviews() {
@@ -198,10 +215,10 @@ final class SignInViewController: UIViewController {
             return
         }
 
-//        if phoneNumber.count != 18 {
-//            showSnackBar(message: "Номер телефона введен неправильно.")
-//            return
-//        }
+        if phoneNumber.count != 18 {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
 
         let formatedPhoneNumber = phoneNumber
             .replacingOccurrences(of: " ", with: "")
