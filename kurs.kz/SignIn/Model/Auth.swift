@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct Auth: Codable {
-
+struct SignInRequest: Encodable {
     let phone: String
     let password: String
+}
 
+struct SignInResponse: Decodable {
+    let access_token: String?
+    let refresh_token: String?
 }

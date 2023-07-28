@@ -10,13 +10,13 @@ import Foundation
 struct CurrencyListService {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
     weak var delegate: CurrencySelectorManagerDelegate?
-    
+
     func fetchCurrencies() {
         let urlsesion = URLSession.shared
         if let url = URL(string: currencyListURL) {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
-            
+
             let task = urlsesion.dataTask(with: urlRequest) { data, _, error in
                 if error != nil {
                     self.delegate?.didFailWithError(error!)
@@ -33,7 +33,7 @@ struct CurrencyListService {
             task.resume()
         }
     }
-    
+
     func parseJSON(currencyData:Data) -> [Currency]? {
         let decoder = JSONDecoder()
         do {

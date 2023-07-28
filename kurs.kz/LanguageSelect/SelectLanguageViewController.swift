@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class SelectLanguageViewController: UIViewController {
-    private let service: SignInService
     // MARK: - UI
 
     private let imageView: UIImageView = {
@@ -132,7 +131,7 @@ final class SelectLanguageViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func kazakhButtonDidPress() {
-        let controller = MainPageViewController(coder: self.service)
+        let controller = MainPageViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

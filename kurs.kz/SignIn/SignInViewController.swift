@@ -10,6 +10,7 @@ import SnapKit
 import SkyFloatingLabelTextField
 
 final class SignInViewController: UIViewController {
+    // MARK: - Properties
 
     private let service = SignInService()
 
@@ -54,8 +55,7 @@ final class SignInViewController: UIViewController {
         textField.titleLabel.font = AppFont.regular.s12()
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.textColor = AppColor.gray100.uiColor
-
-        textField.keyboardType = .phonePad
+//        textField.keyboardType = .
         textField.lineView.isHidden = true
         return textField
 
@@ -192,7 +192,7 @@ final class SignInViewController: UIViewController {
         let phoneNumber = phoneTextField.text
         let password = passwordTextField.text
         guard let phoneNumber = phoneNumber,
-        let password = password else {
+              let password = password else {
             showSnackBar(message: "Номер телефона или пароль введены неправильно.")
             return
         }
@@ -202,10 +202,10 @@ final class SignInViewController: UIViewController {
             return
         }
 
-        if phoneNumber.count != 18 {
-            showSnackBar(message: "Номер телефона введен неправильно.")
-            return
-        }
+//        if phoneNumber.count != 18 {
+//            showSnackBar(message: "Номер телефона введен неправильно.")
+//            return
+//        }
 
         let formatedPhoneNumber = phoneNumber
             .replacingOccurrences(of: " ", with: "")
@@ -213,15 +213,13 @@ final class SignInViewController: UIViewController {
             .replacingOccurrences(of: "(", with: "")
             .replacingOccurrences(of: ")", with: "")
 
-        service.postSignInData(phone: formatedPhoneNumber, password: password) { result in
+        service.signIn(phone: formatedPhoneNumber, password: password) { result in
             switch result {
             case .success(let message):
                 print(message)
-                let mainPageVC = MainPageViewController(service: self.service)
-                            mainPageVC.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(
-                    MainPageViewController(service: self.service),
-                    animated: true)
+                let mainPageVC = MainPageViewController()
+                mainPageVC.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(mainPageVC, animated: true)
             case .failure:
                 DispatchQueue.main.async {
                     self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
