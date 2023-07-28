@@ -132,7 +132,7 @@ final class SelectLanguageViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func kazakhButtonDidPress() {
-        let controller = MainPageViewController()
+        let controller = MainPageViewController(service: <#SignInService#>)
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
