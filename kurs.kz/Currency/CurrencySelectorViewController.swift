@@ -18,7 +18,7 @@ final class CurrencySelectorViewController: UIViewController {
         }
     }
     
-    private var searchArray = [Currency]()
+    private var currencies = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
     var currencyManager = CurrencySelectorListService()
@@ -151,7 +151,7 @@ final class CurrencySelectorViewController: UIViewController {
         if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
         let senderViewController = delegate {
             let selectedCurrency = isSearching ?
-            searchArray[selectedIndexPath.row] : currenciesArray[selectedIndexPath.row]
+            currencies[selectedIndexPath.row] : currenciesArray[selectedIndexPath.row]
 
             senderViewController.currencyDidSelect(currency: selectedCurrency)
             dismiss(animated: true, completion: nil)
@@ -163,14 +163,14 @@ final class CurrencySelectorViewController: UIViewController {
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchArray.count : currenciesArray.count
+        isSearching ? currencies.count : currenciesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencySelectorTableViewCell.identifier,
                                                     for: indexPath) as? CurrencySelectorTableViewCell {
             let tableCurrencies = isSearching ?
-            searchArray[indexPath.row] : currenciesArray[indexPath.row]
+            currencies[indexPath.row] : currenciesArray[indexPath.row]
             cell.configureCell(currency: getCurrencyName(tableCurrencies,
                                                          language: selectedLanguage),
                                flagIcon: tableCurrencies.flag)
@@ -189,7 +189,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
             searchBar.resignFirstResponder()
         } else {
             isSearching = true
-            searchArray = currenciesArray.filter { currency in
+            currencies = currenciesArray.filter { currency in
                 return getCurrencyName(currency,
                                        language: selectedLanguage)
                 .localizedCaseInsensitiveContains(searchText)
@@ -199,7 +199,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
-        searchArray.removeAll()
+        currencies.removeAll()
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
