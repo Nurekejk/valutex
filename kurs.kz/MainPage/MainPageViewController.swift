@@ -9,15 +9,6 @@ import UIKit
 import SnapKit
 
 final class MainPageViewController: UIViewController {
-    private let service: SignInService
-
-    init(service: SignInService) {
-            self.service = service
-            super.init(nibName: nil, bundle: nil)
-        }
-    required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
     
     // MARK: - UI
     private let imageView: UIImageView = {

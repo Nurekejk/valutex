@@ -217,6 +217,8 @@ final class SignInViewController: UIViewController {
             switch result {
             case .success(let message):
                 print(message)
+                let mainPageVC = MainPageViewController(service: self.service)
+                            mainPageVC.navigationItem.hidesBackButton = true
                 self.navigationController?.pushViewController(
                     MainPageViewController(service: self.service),
                     animated: true)
