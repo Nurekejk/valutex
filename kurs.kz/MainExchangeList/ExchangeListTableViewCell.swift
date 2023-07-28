@@ -121,7 +121,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
         isSkeletonable = true
         setupViews()
         setupConstraints()
-
     }
     
     required init?(coder: NSCoder) {
