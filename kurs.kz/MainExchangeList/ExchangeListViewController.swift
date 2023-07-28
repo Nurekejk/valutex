@@ -16,10 +16,8 @@ final class ExchangeListViewController: UIViewController {
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
-            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
-                self?.exchangeListTableView.stopSkeletonAnimation()
-                self?.exchangeListTableView.hideSkeleton(transition: .crossDissolve(0.25))
-            }
+            exchangeListTableView.stopSkeletonAnimation()
+            exchangeListTableView.hideSkeleton(transition: .crossDissolve(0.25))
             self.exchangeListTableView.reloadData()
         }
     }
