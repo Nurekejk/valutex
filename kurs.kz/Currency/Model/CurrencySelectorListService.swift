@@ -7,15 +7,9 @@
 
 import Foundation
 
-<<<<<<<< HEAD:kurs.kz/Currency/Model/CurrencySelectorListService.swift
 struct CurrencySelectorListService {
 
     weak var delegate: CurrencySelectorListServiceDelegate?
-========
-struct CurrencyListService {
-    let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    weak var delegate: CurrencySelectorManagerDelegate?
->>>>>>>> develop:kurs.kz/Currency/Model/CurrencyListService.swift
     
     func fetchCurrencies() {
         
