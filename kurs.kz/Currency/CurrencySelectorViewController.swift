@@ -12,16 +12,16 @@ import SnapKit
 final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Properties
-    private var currenciesArray: [Currency] = [] {
+    private var currencies: [Currency] = [] {
         didSet {
             self.currenciesTableView.reloadData()
         }
     }
     
-    private var currencies = [Currency]()
+    private var filteredCurrencies = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
-    var currencyManager = CurrencySelectorListService()
+    var currencyListService = CurrencySelectorListService()
     
     // MARK: - UI
     private let sliderBorderView: UIView = {
@@ -81,8 +81,8 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        currencyManager.delegate = self
-        currencyManager.fetchCurrencies()
+        currencyListService.delegate = self
+        currencyListService.fetchCurrencies()
     }
     
     override func viewDidLayoutSubviews() {
@@ -151,7 +151,7 @@ final class CurrencySelectorViewController: UIViewController {
         if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
         let senderViewController = delegate {
             let selectedCurrency = isSearching ?
-            currencies[selectedIndexPath.row] : currenciesArray[selectedIndexPath.row]
+            filteredCurrencies[selectedIndexPath.row] : currencies[selectedIndexPath.row]
 
             senderViewController.currencyDidSelect(currency: selectedCurrency)
             dismiss(animated: true, completion: nil)
@@ -163,14 +163,14 @@ final class CurrencySelectorViewController: UIViewController {
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? currencies.count : currenciesArray.count
+        isSearching ? filteredCurrencies.count : currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencySelectorTableViewCell.identifier,
                                                     for: indexPath) as? CurrencySelectorTableViewCell {
             let tableCurrencies = isSearching ?
-            currencies[indexPath.row] : currenciesArray[indexPath.row]
+            filteredCurrencies[indexPath.row] : currencies[indexPath.row]
             cell.configureCell(currency: getCurrencyName(tableCurrencies,
                                                          language: selectedLanguage),
                                flagIcon: tableCurrencies.flag)
@@ -189,7 +189,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
             searchBar.resignFirstResponder()
         } else {
             isSearching = true
-            currencies = currenciesArray.filter { currency in
+            filteredCurrencies = currencies.filter { currency in
                 return getCurrencyName(currency,
                                        language: selectedLanguage)
                 .localizedCaseInsensitiveContains(searchText)
@@ -199,7 +199,7 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
-        currencies.removeAll()
+        filteredCurrencies.removeAll()
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
@@ -223,7 +223,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
 // MARK: - CurrencySelectorManagerDelegate
 extension CurrencySelectorViewController: CurrencyListServiceDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
-        currenciesArray = currency
+        currencies = currency
     }
     
     func didFailWithError(_ error: Error) {
