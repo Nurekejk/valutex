@@ -50,6 +50,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -57,12 +58,14 @@ final class ExchangeListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font =  AppFont.medium.s14()
         label.textColor = AppColor.gray100.uiColor
+        label.isSkeletonable = true
         return label
     }()
     
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "rating_icon")
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -70,11 +73,13 @@ final class ExchangeListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font =  AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
+        label.isSkeletonable = true
         return label
     }()
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
+        label.isSkeletonable = true
         return label
     }()
     
@@ -82,24 +87,29 @@ final class ExchangeListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font =  AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
+        label.skeletonCornerRadius = 10
+        label.isSkeletonable = true
         return label
     }()
     
     private let buyRateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
+        label.isSkeletonable = true
         return label
     }()
     
     private let sellRateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
+        label.isSkeletonable = true
         return label
     }()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        isSkeletonable = true
         setupViews()
         setupConstraints()
 
@@ -115,6 +125,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
          ratingImageView, ratingLabel,
          addressLabel, dateLabel,
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
+        isSkeletonable = true
+        contentView.isSkeletonable = true
     }
     
     private func setupAddressLabel(with location: String, and distance: String ) {
