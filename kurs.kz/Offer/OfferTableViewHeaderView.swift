@@ -13,6 +13,8 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
     public static var reuseIdentifier = String(describing: OfferTableViewHeaderView.self)
 
+    var changeButtonAction : ( ( ) -> Void)?
+
     // MARK: - UI
     private let containerView: UIView = {
         let containerView = UIView()
@@ -108,11 +110,14 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return textField
     }()
 
-    private let changeButton: UIButton = {
+    private lazy var changeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Изменить", for: .normal)
         button.tintColor = AppColor.primaryBase.uiColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.addTarget(self,
+                         action: #selector(changeButtonDidPressed),
+                         for: .touchUpInside)
         return button
     }()
 
@@ -173,5 +178,8 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(56)
         }
+    }
+    @objc func changeButtonDidPressed() {
+        changeButtonAction?()
     }
 }

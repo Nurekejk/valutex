@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CurrencySelectorManager {
+struct CurrencyListService {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    var delegate: CurrencySelectorManagerDelegate?
+    weak var delegate: CurrencySelectorManagerDelegate?
     
     func fetchCurrencies() {
         let urlsesion = URLSession.shared

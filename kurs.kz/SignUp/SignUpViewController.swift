@@ -9,12 +9,14 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 import InputMask
+import ProgressHUD
 
 final class SignUpViewController: UIViewController {
     
     private let service = OtpRegistrationService()
     
     // MARK: - UI
+    
     private let signUpLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
@@ -177,16 +179,19 @@ final class SignUpViewController: UIViewController {
     @objc private func continueButtonDidPressed() {
         let phoneNumber = phoneTextField.text
         guard let phoneNumber = phoneNumber else {
+            self.showFailure()
             showSnackBar(message: "Номер телефона введен неправильно.")
             return
         }
         
         if phoneNumber.isEmpty {
+            self.showFailure()
             showSnackBar(message: "Пожалуйства, введите свой номер.")
             return
         }
         
         if phoneNumber.count != 18 {
+            self.showFailure()
             showSnackBar(message: "Номер телефона введен неправильно.")
             return
         }
@@ -199,13 +204,14 @@ final class SignUpViewController: UIViewController {
         
         service.postPhoneNumber(with: formatedPhoneNumber) { result in
             switch result {
-            case .success(let message):
-                print(message)
+            case .success:
+                self.showSuccess()
                 self.navigationController?.pushViewController(
                                                     VerificationPageViewController(service: self.service),
                                                               animated: true)
             case .failure:
                 DispatchQueue.main.async {
+                    self.showFailure()
                     self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
                 }
             }
@@ -222,6 +228,17 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension SignUpViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }

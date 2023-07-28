@@ -21,7 +21,7 @@ final class CurrencySelectorViewController: UIViewController {
     private var searchArray = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
-    var currencyManager = CurrencySelectorManager()
+    private var currencyManager = CurrencyListService()
     
     // MARK: - UI
     private let sliderBorderView: UIView = {
