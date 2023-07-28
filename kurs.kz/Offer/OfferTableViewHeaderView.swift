@@ -8,10 +8,14 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class OfferTableViewHeaderView: UITableViewHeaderFooterView {
+final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
+    // MARK: - Public
 
-    // MARK: - Outlets
+    public static var reuseIdentifier = String(describing: OfferTableViewHeaderView.self)
 
+    var changeButtonAction : ( ( ) -> Void)?
+
+    // MARK: - UI
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -45,7 +49,7 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
         textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
         textField.placeholderColor = AppColor.gray100.uiColor
-        textField.placeholder = "5 000 $"
+        textField.placeholder = "500 $"
 
         textField.backgroundColor = AppColor.gray10.uiColor
         textField.lineView.isHidden = true
@@ -106,16 +110,18 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return textField
     }()
 
-    private let changeButton: UIButton = {
+    private lazy var changeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Изменить", for: .normal)
         button.tintColor = AppColor.primaryBase.uiColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.addTarget(self,
+                         action: #selector(changeButtonDidPressed),
+                         for: .touchUpInside)
         return button
     }()
 
-    // MARK: - Lifecycle
-
+    // MARK: - Initializers
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -127,7 +133,6 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     // MARK: - Setup Views
-
     private func setupViews() {
         maintextField.rightView = changeButton
         changeButton.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
@@ -140,17 +145,14 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         contentView.backgroundColor =  AppColor.gray10.uiColor
     }
     // MARK: - Setup Constraints
-
     private func setupConstraints() {
+        let width = (UIScreen.main.bounds.width - 80)/2
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(-16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.leading.equalToSuperview().offset(16)
+            make.bottom.trailing.equalToSuperview().offset(-16)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.top.leading.equalToSuperview().offset(16)
             make.height.equalTo(20)
         }
         cancelButton.snp.makeConstraints { make in
@@ -161,13 +163,13 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         selltextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-193.5)
+            make.width.equalTo(width)
             make.height.equalTo(56)
         }
         buytextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalTo(selltextField.snp.trailing).offset(12)
-            make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(width)
             make.height.equalTo(56)
         }
         maintextField.snp.makeConstraints { make in
@@ -176,5 +178,8 @@ class OfferTableViewHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(56)
         }
+    }
+    @objc func changeButtonDidPressed() {
+        changeButtonAction?()
     }
 }
