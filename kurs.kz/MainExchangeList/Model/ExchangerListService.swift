@@ -9,11 +9,18 @@ import Foundation
 
 struct ExchangerListService {
     private var urlSession = URLSession.shared
-    
-    let exchangeListURL = "http://77.240.38.143:4443/actual_currency_rates"
-    
+        
     func fetchExchangers(currencyCode: String, cityId: Int, completion: @escaping ([Exchanger]) -> Void) {
-        guard let url = URL(string: exchangeListURL) else { return }
+        
+        var exchangeListURLComponent = URLComponents()
+        exchangeListURLComponent.scheme = "http"
+        exchangeListURLComponent.host = "77.240.38.143"
+        exchangeListURLComponent.port = 4443
+        exchangeListURLComponent.path = "/actual_currency_rates"
+
+        guard let url = exchangeListURLComponent.url else {
+            return
+        }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
