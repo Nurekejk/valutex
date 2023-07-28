@@ -221,7 +221,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
     }
 }
 // MARK: - CurrencySelectorManagerDelegate
-extension CurrencySelectorViewController: CurrencyListServiceDelegate {
+extension CurrencySelectorViewController: CurrencySelectorListServiceDelegate {
     func currencyDidUpdate(_ currency: [Currency]) {
         currencies = currency
     }

@@ -8,12 +8,21 @@
 import Foundation
 
 struct CurrencySelectorListService {
-    let currencyListURL = "http://77.240.38.143:4443/currencies_list"
-    var delegate: CurrencyListServiceDelegate?
+
+    weak var delegate: CurrencySelectorListServiceDelegate?
     
     func fetchCurrencies() {
+        
+        var currencyListURLComponent = URLComponents()
+        currencyListURLComponent.scheme = "http"
+        currencyListURLComponent.host = "77.240.38.143"
+        currencyListURLComponent.port = 4443
+        currencyListURLComponent.path = "/currencies_list"
         let urlsesion = URLSession.shared
-        if let url = URL(string: currencyListURL) {
+        
+        guard let url = currencyListURLComponent.url else {
+            return
+        }
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             
@@ -31,7 +40,6 @@ struct CurrencySelectorListService {
                 }
             }
             task.resume()
-        }
     }
     
     func parseJSON(currencyData:Data) -> [Currency]? {

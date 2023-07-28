@@ -1,5 +1,5 @@
 //
-//  CurrencyListServiceDelegate.swift
+//  CurrencySelectorListServiceDelegate.swift
 //  kurs.kz
 //
 //  Created by MacBook on 20.07.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CurrencyListServiceDelegate: AnyObject {
+protocol CurrencySelectorListServiceDelegate: AnyObject {
     func currencyDidUpdate(_ currency: [Currency])
     func didFailWithError(_ error: Error)
 }
