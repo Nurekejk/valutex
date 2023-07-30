@@ -69,4 +69,11 @@ enum AppImage: String, AppImageProtocol {
     case arrow_right = "arrow-right"
     case new_message = "new-message"
     case avatar = "avatar"
+    case map_button = "map_button"
+    case calculator_button = "calculator_button"
+    case pin_button = "pin_button"
+    case main_filter = "main_filter"
+    case up_down_filter = "up_down_filter"
+    case down_up_filter = "down_up_filter"
+    
 }
