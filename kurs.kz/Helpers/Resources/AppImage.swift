@@ -75,5 +75,9 @@ enum AppImage: String, AppImageProtocol {
     case main_filter = "main_filter"
     case up_down_filter = "up_down_filter"
     case down_up_filter = "down_up_filter"
+    case down_arrow = "down_arrow"
+    case cross = "cross"
+    case search_normal = "search_normal"
+    case rating_icon = "rating_icon"
     
 }

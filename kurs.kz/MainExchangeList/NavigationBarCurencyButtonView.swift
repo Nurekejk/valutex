@@ -22,13 +22,13 @@ final class NavigationBarCurencyButtonView: UIView {
     
     private let currencyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "main_down_arrow"), for: .normal)
+        button.setImage(AppImage.down_arrow.uiImage, for: .normal)
         return button
     }()
     
