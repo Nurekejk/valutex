@@ -1,5 +1,4 @@
 import UIKit
-import PanModal
 
 final class NavigationBarCurencyButtonView: UIView {
     // MARK: - Static

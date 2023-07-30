@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PanModal
 import SnapKit
 import SkeletonView
 
@@ -368,18 +367,8 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
         searchBar.resignFirstResponder()
     }
 }
-    // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
-extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
-
-    var panScrollable: UIScrollView? {
-        return nil
-    }
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(496)
-    }
-    var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(40)
-    }
+    // MARK: - CurrencySelectorViewControllerDelegate
+extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
     
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
