@@ -221,7 +221,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
         return nil
     }
     var shortFormHeight: PanModalHeight {
-            return .contentHeight(496)
+        return .contentHeight(496)
     }
     var longFormHeight: PanModalHeight {
         return .maxHeightWithTopInset(35)
