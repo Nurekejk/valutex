@@ -330,14 +330,14 @@
 			path = CartExchangeFeedback;
 			sourceTree = "<group>";
 		};
-		8FCA83242A712256003CD865 /* OffersSended */ = {
+		8FCA83242A712256003CD865 /* OfferSended */ = {
 			isa = PBXGroup;
 			children = (
 				8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */,
 				8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */,
 				8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */,
 			);
-			path = OffersSended;
+			path = OfferSended;
 			sourceTree = "<group>";
 		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
@@ -507,7 +507,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
-				8FCA83242A712256003CD865 /* OffersSended */,
+				8FCA83242A712256003CD865 /* OfferSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRate */,
 				FA57598B2A67CBC800DE9A6B /* OfferSellBuySegmentedControl */,

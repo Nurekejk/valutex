@@ -41,14 +41,18 @@ final class LanguageAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraits()
     }
     
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Язык приложения"
+    }
+
     // MARK: - Setup Views
     private func setupViews() {
-        title = "Язык приложения"
-        navigationController?.navigationBar.backItem?.title = ""
         view.backgroundColor = AppColor.gray10.uiColor
         tableView.backgroundColor = AppColor.gray10.uiColor
         

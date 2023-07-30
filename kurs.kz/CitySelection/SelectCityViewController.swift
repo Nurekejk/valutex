@@ -54,15 +54,18 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupViews()
         setupConctraints()
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Город"
     }
 
     // MARK: - Setup
     private func setupViews() {
-        title = "Город"
-        navigationController?.navigationBar.backItem?.title = ""
-        
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
         view.addSubview(tableview)

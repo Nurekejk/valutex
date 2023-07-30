@@ -27,10 +27,16 @@ final class ToSupportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
         setupTableView()
-        
+        viewLayoutSubViews()
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Написать в поддержку"
     }
     
     // MARK: - ViewLayoutSubViews
@@ -41,9 +47,6 @@ final class ToSupportViewController: UIViewController {
     
     // MARK: - SetupViews
     private func setupViews() {
-        title = "Написать в поддержку"
-        navigationController?.navigationBar.backItem?.title = ""
-        
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(supportTableView)
         supportTableView.backgroundColor = AppColor.gray10.uiColor
