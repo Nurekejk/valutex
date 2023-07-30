@@ -34,6 +34,7 @@ final class ExchangeListViewController: UIViewController {
         didSet {
             filtersDidChange()
             if nearbySorterIsOn {
+                headerView.resetSorters()
                 nearbySorterButton.backgroundColor = AppColor.primarySecondary.uiColor
             } else {
                 nearbySorterButton.backgroundColor = .clear
@@ -52,12 +53,18 @@ final class ExchangeListViewController: UIViewController {
     }
     private var buyRateSorterState: ButtonState = .isOff {
         didSet {
-            filtersDidChange()
+            if buyRateSorterState != .isOff {
+                nearbySorterIsOn = false
+                filtersDidChange()
+            }
         }
     }
     private var sellRateSorterState: ButtonState = .isOff {
         didSet {
-            filtersDidChange()
+            if sellRateSorterState != .isOff {
+                nearbySorterIsOn = false
+                filtersDidChange()
+            }
         }
     }
     weak var delegate: CurrencySelectorViewControllerDelegate?
