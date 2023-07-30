@@ -11,7 +11,6 @@ import SnapKit
 class MyExchangesViewController: UIViewController {
     
     // MARK: - UI
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
@@ -24,18 +23,21 @@ class MyExchangesViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
     }
     
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Мои обменники"
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
-        title = "Мои обменники"
-        navigationController?.navigationBar.backItem?.title = ""
         view.addSubview(tableView)
         tableView.backgroundColor = AppColor.gray10.uiColor
     }

@@ -31,16 +31,15 @@ final class AboutCompanyViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavigationBar()
         setupView()
         setupConstraints()
     }
     
     // MARK: - Setup
-    
     private func setupNavigationBar() {
         self.view.backgroundColor = AppColor.gray10.uiColor
         self.title = "О компании"
