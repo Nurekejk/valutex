@@ -227,7 +227,7 @@ extension CurrencySelectorViewController: SkeletonTableViewDataSource {
     }
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       return ExchangeListTableViewCell.identifier
+       return CurrencySelectorTableViewCell.identifier
     }
 }
 // MARK: - PanModalPresentable
