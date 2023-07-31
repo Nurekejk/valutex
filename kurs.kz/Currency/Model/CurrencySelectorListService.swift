@@ -19,7 +19,6 @@ struct CurrencySelectorListService {
         currencyListURLComponent.host = "77.240.38.143"
         currencyListURLComponent.port = 4443
         currencyListURLComponent.path = "/currencies_list"
-        let urlsesion = URLSession.shared
         
         guard let url = currencyListURLComponent.url else {
             return
