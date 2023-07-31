@@ -292,6 +292,26 @@ final class ExchangeListViewController: UIViewController {
         // swiftlint:enable all
     }
     
+    private func updateConstraints() {
+        currencySearchBar.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.trailing.equalTo(calculatorButton.snp.leading)
+            make.height.equalTo(48)
+        }
+        calculatorButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalTo(pinButton.snp.leading)
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        pinButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+    }
+    
     // MARK: - Action
     @objc func selectorPressed() {
         let modalScreen = CurrencySelectorViewController()
