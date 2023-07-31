@@ -327,14 +327,14 @@
 			path = ExchangeDollar;
 			sourceTree = "<group>";
 		};
-		8F816F072A76B55000AF4BA9 /* Calculaters */ = {
+		8F816F072A76B55000AF4BA9 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */,
 				8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */,
 				8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */,
 			);
-			path = Calculaters;
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		8F8189D72A6066240082F80F /* CartExchangeFeedback */ = {
@@ -523,7 +523,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
-				8F816F072A76B55000AF4BA9 /* Calculaters */,
+				8F816F072A76B55000AF4BA9 /* Calculator */,
 				8FCA83242A712256003CD865 /* OfferSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRate */,
