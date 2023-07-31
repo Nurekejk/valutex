@@ -8,16 +8,12 @@
 import UIKit
 import Pulley
 
-class ExchangesMapViewController: PulleyViewController {
+final class ExchangesMapViewController: PulleyViewController {
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.delegate = self.primaryContentViewController as? any PulleyDelegate
-        self.navigationController?.navigationBar.backgroundColor = .white
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isTranslucent = false
     }
 }

@@ -260,6 +260,18 @@ extension MapViewController: GMSMapViewDelegate {
     }
 }
 
+// MARK: - PulleyPrimaryContentControllerDelegate
+extension MapViewController: PulleyPrimaryContentControllerDelegate {
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
+                                         distance: CGFloat, bottomSafeArea: CGFloat) {
+        exchangersButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().inset(distance + 16)
+        }
+    }
+}
+
+// MARK: - UIViewController Extension
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
@@ -275,15 +287,5 @@ extension UIViewController {
         willMove(toParent: self.parent)
         view.removeFromSuperview()
         removeFromParent()
-    }
-}
-
-extension MapViewController: PulleyPrimaryContentControllerDelegate {
-    func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
-                                         distance: CGFloat, bottomSafeArea: CGFloat) {
-        exchangersButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-8)
-            make.bottom.equalToSuperview().inset(distance + 16)
-        }
     }
 }

@@ -235,7 +235,7 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
-}
+    }
     // swiftlint:disable all
     // MARK: - Setup Constraints:
     private func setupConstraints() {
@@ -335,7 +335,7 @@ final class ExchangeListViewController: UIViewController {
     }
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -346,16 +346,16 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                            ExchangeListTableViewCell.identifier,
-                                                        for: indexPath) as? ExchangeListTableViewCell {
-                cell.backgroundColor = view.backgroundColor
-                
-                cell.changeExchanger(with: exchangersArray[indexPath.row])
-                return cell
-            } else {
-                return UITableViewCell()
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangeListTableViewCell.identifier,
+                                                    for: indexPath) as? ExchangeListTableViewCell {
+            cell.backgroundColor = view.backgroundColor
+            
+            cell.changeExchanger(with: exchangersArray[indexPath.row])
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     }
@@ -366,9 +366,9 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-    // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
+// MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
 extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
-
+    
     var panScrollable: UIScrollView? {
         return nil
     }
@@ -383,8 +383,9 @@ extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewC
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
     }
- }
+}
 
+// MARK: - PulleyDrawerViewControllerDelegate
 extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
     func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         return 154.0 + bottomSafeArea
