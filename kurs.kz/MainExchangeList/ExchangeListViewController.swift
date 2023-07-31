@@ -226,28 +226,38 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
 }
-    
+    // swiftlint:disable all
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
         let tableWidth = UIScreen.main.bounds.width - 32
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 36)
         
-        headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
-        
+        topView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        gripperView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(157.5)
+            make.height.equalTo(4)
+            make.width.equalTo(60)
+        }
         currencySearchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalTo(calculatorButton.snp.leading)
             make.height.equalTo(48)
         }
         calculatorButton.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
             make.trailing.equalTo(pinButton.snp.leading)
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
         pinButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
+            make.trailing.equalToSuperview()
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
@@ -270,8 +280,8 @@ final class ExchangeListViewController: UIViewController {
         }
         mapButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-108)
-            make.size.equalTo(48)
+            make.bottom.equalToSuperview().offset(-168)
+            make.size.equalTo(80)
         }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(mainFilterButton.snp.bottom).offset(9)
@@ -279,6 +289,7 @@ final class ExchangeListViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
         }
+        // swiftlint:enable all
     }
     
     // MARK: - Action
