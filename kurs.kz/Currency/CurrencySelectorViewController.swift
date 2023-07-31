@@ -8,12 +8,17 @@
 import UIKit
 import PanModal
 import SnapKit
+import SkeletonView
 
 final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Properties
     private var currencies: [Currency] = [] {
         didSet {
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+                self?.currenciesTableView.stopSkeletonAnimation()
+                self?.currenciesTableView.hideSkeleton(transition: .crossDissolve(0.25))
+            }
             self.currenciesTableView.reloadData()
         }
     }
@@ -72,7 +77,7 @@ final class CurrencySelectorViewController: UIViewController {
                            forCellReuseIdentifier: CurrencySelectorTableViewCell.identifier)
         tableView.rowHeight = 56
         tableView.tableHeaderView = headerView
-        
+        tableView.isSkeletonable = true
         return tableView
     }()
     
@@ -104,6 +109,7 @@ final class CurrencySelectorViewController: UIViewController {
          exitButton,
          selectButton].forEach {view.addSubview($0)}
         view.backgroundColor = AppColor.gray10.uiColor
+        currenciesTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
     }
     
     // MARK: - Setup Constraints:
@@ -161,11 +167,9 @@ final class CurrencySelectorViewController: UIViewController {
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         isSearching ? filteredCurrencies.count : currencies.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencySelectorTableViewCell.identifier,
                                                     for: indexPath) as? CurrencySelectorTableViewCell {
@@ -212,6 +216,18 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
         panModalTransition(to: .shortForm)
         isSearching = false
         return true
+    }
+}
+extension CurrencySelectorViewController: SkeletonTableViewDataSource {
+    func collectionSkeletonView(
+        _ skeletonView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return 6
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView,
+                                cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+       return ExchangeListTableViewCell.identifier
     }
 }
 // MARK: - PanModalPresentable
