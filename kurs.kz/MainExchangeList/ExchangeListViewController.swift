@@ -186,9 +186,19 @@ final class ExchangeListViewController: UIViewController {
         setupConstraints()
         setupNavigationBar()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = false
+        if self.pulleyViewController?.drawerPosition == .closed {
+            self.topView.isHidden = true
+            mapButton.isHidden = false
+            updateConstraints()
+        } else {
+            self.topView.isHidden = false
+            mapButton.isHidden = true
+            setupConstraints()
+        }
     }
     
     override func viewDidLayoutSubviews() {
