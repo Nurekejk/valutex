@@ -66,6 +66,19 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - UI
     
+    private let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let gripperView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 60, height: 4)
+        view.backgroundColor = AppColor.gray30.uiColor
+        return view
+    }()
+    
     private lazy var navigationBarView: NavigationBarCurencyButtonView = {
         let view = NavigationBarCurencyButtonView()
         return view
