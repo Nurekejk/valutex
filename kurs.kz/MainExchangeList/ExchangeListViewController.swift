@@ -8,6 +8,7 @@
 import UIKit
 import PanModal
 import SnapKit
+import Pulley
 
 final class ExchangeListViewController: UIViewController {
     
@@ -321,5 +322,18 @@ extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewC
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
     }
-
  }
+
+extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
+    func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 154.0 + bottomSafeArea
+    }
+    
+    func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 379.0 + bottomSafeArea
+    }
+    
+    func supportedDrawerPositions() -> [PulleyPosition] {
+        return [.collapsed, .partiallyRevealed, .closed]
+    }
+}
