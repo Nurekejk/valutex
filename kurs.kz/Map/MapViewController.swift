@@ -120,13 +120,9 @@ final class MapViewController: UIViewController {
         myLocationButton.layer.rasterizationScale = UIScreen.main.scale
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController?.navigationBar.frame = CGRect(x: 0,
-                                                                y: 0,
-                                                                width: bounds.width,
-                                                                height: bounds.height + 100)
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
     }
     
     // MARK: - Setup Navigation Bar
