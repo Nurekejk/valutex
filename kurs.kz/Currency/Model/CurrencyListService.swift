@@ -1,5 +1,5 @@
 //
-//  CurrencySelectorManager.swift
+//  CurrencySelectorListService.swift
 //  kurs.kz
 //
 //  Created by MacBook on 20.07.2023.
@@ -7,13 +7,28 @@
 
 import Foundation
 
+<<<<<<<< HEAD:kurs.kz/Currency/Model/CurrencySelectorListService.swift
+struct CurrencySelectorListService {
+
+    weak var delegate: CurrencySelectorListServiceDelegate?
+========
 struct CurrencyListService {
     let currencyListURL = "http://77.240.38.143:4443/currencies_list"
     weak var delegate: CurrencySelectorManagerDelegate?
+>>>>>>>> develop:kurs.kz/Currency/Model/CurrencyListService.swift
     
     func fetchCurrencies() {
+        
+        var currencyListURLComponent = URLComponents()
+        currencyListURLComponent.scheme = "http"
+        currencyListURLComponent.host = "77.240.38.143"
+        currencyListURLComponent.port = 4443
+        currencyListURLComponent.path = "/currencies_list"
         let urlsesion = URLSession.shared
-        if let url = URL(string: currencyListURL) {
+        
+        guard let url = currencyListURLComponent.url else {
+            return
+        }
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             
@@ -31,7 +46,6 @@ struct CurrencyListService {
                 }
             }
             task.resume()
-        }
     }
     
     func parseJSON(currencyData:Data) -> [Currency]? {

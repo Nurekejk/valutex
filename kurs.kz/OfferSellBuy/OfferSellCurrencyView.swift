@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PanModal
 
 final class OfferSellCurrencyView: UIView {
     // MARK: - Static
@@ -42,7 +41,7 @@ final class OfferSellCurrencyView: UIView {
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "down_arrow"), for: .normal)
+        button.setImage(AppImage.down_arrow.uiImage, for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()

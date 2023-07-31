@@ -19,11 +19,11 @@ final class CurrencySelectorTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - UI
     private let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
-        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14)
+        searchBar.setImage(AppImage.search_normal.uiImage, for: .search, state: .normal)
+        searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
-        searchBar.barTintColor = UIColor.white
-        searchBar.searchTextField.backgroundColor = UIColor.white
+        searchBar.barTintColor = AppColor.grayWhite.uiColor
+        searchBar.searchTextField.backgroundColor = AppColor.grayWhite.uiColor
         
         searchBar.placeholder = "Поиск"
         return searchBar

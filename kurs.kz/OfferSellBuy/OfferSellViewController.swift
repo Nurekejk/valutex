@@ -199,8 +199,7 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
     
     func currencyDidSelect(currency: Currency) {
         sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
-                                        newCurrencyLabel: getCurrencyName(currency,
-                                                                          language: selectedLanguage),
+                                        newCurrencyLabel: currency.code,
                                         newCurrencySignLabel: currency.symbol)
     }
 
