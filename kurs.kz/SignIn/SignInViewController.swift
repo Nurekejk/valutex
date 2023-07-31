@@ -230,6 +230,9 @@ final class SignInViewController: UIViewController {
             switch result {
             case .success(let message):
                 print(message)
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: "isAutorized")
+
                 let mainPageVC = ExchangeListViewController()
                 mainPageVC.navigationItem.hidesBackButton = true
                 self.navigationController?.pushViewController(mainPageVC, animated: true)

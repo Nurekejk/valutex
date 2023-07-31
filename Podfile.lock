@@ -19,6 +19,7 @@ PODS:
     - SnapKit
   - SnapKit (5.6.0)
   - SwiftLint (0.51.0)
+  - Wormholy (1.6.6)
 
 DEPENDENCIES:
   - CHIOTPField
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - SkyFloatingLabelTextField
   - SnackBar.swift (= 0.1.0)
   - SwiftLint
+  - Wormholy
 
 SPEC REPOS:
   trunk:
@@ -41,6 +43,7 @@ SPEC REPOS:
     - SnackBar.swift
     - SnapKit
     - SwiftLint
+    - Wormholy
 
 SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
@@ -50,7 +53,8 @@ SPEC CHECKSUMS:
   SnackBar.swift: 79ea4df13ea9e6633137dd6acbd490534d26440d
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
+  Wormholy: 09da0b876f9276031fd47383627cb75e194fc068
 
-PODFILE CHECKSUM: 5aa5ed9486373ee6d4e68476e4ae7cebb92bbbe5
+PODFILE CHECKSUM: 194d21532a7b9e0894979442e4f4071f4051d504
 
 COCOAPODS: 1.12.1

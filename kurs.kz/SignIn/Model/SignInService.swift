@@ -28,22 +28,39 @@ final class SignInService {
             return
         }
 
-        let signInRequest = SignInRequest(phone: phone, password: password)
+        let signInRequest = SignInRequest(username: phone, password: password)
         var requestLogin = URLRequest(url: urlLogin)
         requestLogin.httpMethod = "POST"
-        requestLogin.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        requestLogin.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         requestLogin.addValue("application/json", forHTTPHeaderField: "Accept")
 
+        let parameters: [String: String] = [
+            "grant_type": "",
+            "username": phone,
+            "password": password,
+            "scope": "",
+            "client_id": "",
+            "client_secret": ""
+        ]
+
         do {
-            requestLogin.httpBody =
-            try JSONEncoder().encode(signInRequest)
+            requestLogin.httpBody = try
+            JSONSerialization.data(withJSONObject: parameters, options: .fragmentsAllowed)
         } catch {
             completion(.failure(.jsonSerializationError))
             return
         }
+//
+//        do {
+//            try JSONEncoder().encode(signInRequest)
+//        } catch {
+//            completion(.failure(.jsonSerializationError))
+//            return
+//        }
 
         let taskLogin = URLSession.shared.dataTask(with: requestLogin) { data, _, error in
             if let error = error {
+                print(error)
                 completion(.failure(.postRequestError))
                 return
             }
