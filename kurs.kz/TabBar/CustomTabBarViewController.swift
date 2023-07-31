@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Pulley
 
 final class CustomTabBarViewController: UITabBarController {
     
@@ -24,7 +25,7 @@ final class CustomTabBarViewController: UITabBarController {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: AppImage.home_selected.uiImage!,
                                     image: AppImage.home_gray.uiImage!,
-                                    viewController: ExchangesMapViewController(
+                                    viewController: PulleyViewController(
                                         contentViewController: MapViewController(),
                                         drawerViewController: ExchangeListViewController()))
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
