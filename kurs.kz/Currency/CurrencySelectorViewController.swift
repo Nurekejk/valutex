@@ -15,10 +15,8 @@ final class CurrencySelectorViewController: UIViewController {
     // MARK: - Properties
     private var currencies: [Currency] = [] {
         didSet {
-            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
-                self?.currenciesTableView.stopSkeletonAnimation()
-                self?.currenciesTableView.hideSkeleton(transition: .crossDissolve(0.25))
-            }
+            currenciesTableView.stopSkeletonAnimation()
+            currenciesTableView.hideSkeleton(transition: .crossDissolve(0.25))
             self.currenciesTableView.reloadData()
         }
     }
