@@ -150,6 +150,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "map_button"), for: .normal)
         button.scalesLargeContentImage = true
+        button.addTarget(self, action: #selector(mapButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
@@ -271,6 +272,11 @@ final class ExchangeListViewController: UIViewController {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
+    }
+    
+    @objc private func mapButtonDidPressed() {
+        self.pulleyViewController?.setDrawerPosition(position: .collapsed, animated: true)
+        remove()
     }
 }
 
