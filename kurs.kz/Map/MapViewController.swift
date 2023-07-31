@@ -8,9 +8,11 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import Pulley
+import SnapKit
 
 final class MapViewController: UIViewController {
-        
+    
     private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
                                                                          longitude: 77.05901863169184))
     private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
@@ -257,5 +259,14 @@ extension MapViewController: GMSMapViewDelegate {
         let infoWindow = CustomInfoWindow()
         infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
         return infoWindow
+    }
+}
+extension MapViewController: PulleyPrimaryContentControllerDelegate {
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
+                                         distance: CGFloat, bottomSafeArea: CGFloat) {
+        exchangersButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().inset(distance + 16)
+        }
     }
 }
