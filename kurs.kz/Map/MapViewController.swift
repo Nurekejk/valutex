@@ -183,11 +183,12 @@ final class MapViewController: UIViewController {
         
         exchangersButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-8)
-            make.bottom.equalToSuperview().offset(-120)
+            let distance = (self.pulleyViewController?.drawerDistanceFromBottom.distance ?? 0) * (-1)
+            make.bottom.equalToSuperview().offset(distance - 16)
         }
         
         zoomView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-25)
         }
         
