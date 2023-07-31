@@ -261,6 +261,25 @@ extension MapViewController: GMSMapViewDelegate {
         return infoWindow
     }
 }
+
+extension UIViewController {
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        guard parent != nil else {
+            return
+        }
+        
+        willMove(toParent: self.parent)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+}
+
 extension MapViewController: PulleyPrimaryContentControllerDelegate {
     func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
                                          distance: CGFloat, bottomSafeArea: CGFloat) {
