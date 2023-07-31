@@ -233,7 +233,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard status == .authorizedWhenInUse else { return }
         locationManager.requestLocation()
         googleMapView.isMyLocationEnabled = true
-        googleMapView.settings.myLocationButton = true
+        googleMapView.settings.myLocationButton = false
     }
     
     func locationManager(_ manager: CLLocationManager,
