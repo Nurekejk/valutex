@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Pulley
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       
         let isAutorized = true
         if isAutorized {
-            window?.rootViewController =
-                UINavigationController(rootViewController: SelectLanguageViewController())
+            window?.rootViewController = 
+                UINavigationController(rootViewController: CustomTabBarViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
