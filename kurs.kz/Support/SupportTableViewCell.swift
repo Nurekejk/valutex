@@ -10,7 +10,7 @@ import SnapKit
 final class SupportTableViewCell: UITableViewCell {
     
     // MARK: - Identifier
-    static let identifier = "SupportTableViewCell"
+    static let identifier = String(describing: SupportTableViewCell.self)
     
     // MARK: - UI
     private let supportImageView: UIImageView = {
@@ -53,15 +53,15 @@ final class SupportTableViewCell: UITableViewCell {
     // MARK: - SetupConstraints
     private func setupConstraints() {
         supportImageView.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView)
-            make.leading.equalTo(contentView).offset(10)
-            make.height.width.equalTo(25)
+            make.top.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(18)
+            make.height.equalTo(19)
+            make.width.equalTo(19)
         }
             
         supportLabel.snp.makeConstraints { make in
-            make.leading.equalTo(supportImageView.snp.trailing).offset(10)
-            make.trailing.equalTo(contentView).offset(-10)
-            make.centerY.equalTo(contentView)
+            make.top.equalToSuperview().offset(18)
+            make.leading.equalTo(supportImageView.snp.trailing).offset(19)
         }
     }
 }
