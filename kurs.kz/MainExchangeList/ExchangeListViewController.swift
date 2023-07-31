@@ -12,6 +12,8 @@ import SkeletonView
 final class ExchangeListViewController: UIViewController {
     
     // MARK: - Properties
+    private let defaults = UserDefaults.standard
+    private let defaultsCurrencyKey = "savedCurrency"
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
@@ -186,6 +188,7 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        fetchDefaults()
         ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
             self.filteredArray = exchangers
@@ -320,6 +323,19 @@ final class ExchangeListViewController: UIViewController {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
+    func fetchDefaults() {
+            if let data = defaults.data(forKey: defaultsCurrencyKey) {
+                do {
+                    let fetchedCurrency = try JSONDecoder().decode(Currency.self, from: data)
+                    navigationBarView.changeCurrency(newFlagImage: fetchedCurrency.flag,
+                                                     newCurrencyLabel: fetchedCurrency.code)
+                } catch {
+                    print("error while decoding")
+                }
+            } else {
+                return
+            }
+        }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
@@ -382,6 +398,11 @@ extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
+        if let data = try? JSONEncoder().encode(currency) {
+            defaults.setValue(data, forKey: defaultsCurrencyKey)
+        } else {
+            print("error while encoding")
+        }
     }
 
  }
