@@ -358,8 +358,10 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            isSearching = false
-            searchBar.resignFirstResponder()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                searchBar.resignFirstResponder()
+                self.isSearching = false
+            }
         } else {
             isSearching = true
             searchBarText = searchText
