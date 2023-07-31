@@ -212,10 +212,11 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView, mainFilterButton,
+        [topView, exchangeListTableView, mainFilterButton,
          nearbyFilterButton, openFilterButton,
          currencySearchBar, calculatorButton,
          pinButton, mapButton].forEach {view.addSubview($0)}
+        topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
