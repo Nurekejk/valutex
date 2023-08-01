@@ -8,5 +8,8 @@
 import UIKit
 
 final class FaqTableViewCell: UITableViewCell {
-
+    // MARK: - State
+    static let reuseID = String(describing: ProfileTableViewCell.self)
+    
+    
 }
