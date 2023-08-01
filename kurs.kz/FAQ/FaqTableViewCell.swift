@@ -33,5 +33,10 @@ final class FaqTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: - Setup Views
+    private func setupViews() {
+        [questionTypeLabel].forEach {
+            contentView.addSubview($0)
+        }
+    }
 }
