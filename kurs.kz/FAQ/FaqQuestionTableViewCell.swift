@@ -9,7 +9,7 @@ import UIKit
 
 final class FaqQuestionTableViewCell: UITableViewCell {
     // MARK: - State
-    static let reuseID = String(describing: ProfileTableViewCell.self)
+    static let reuseID = String(describing: FaqQuestionTableViewCell.self)
     
     // MARK: - UI
     private lazy var questionTypeLabel: UILabel = {
