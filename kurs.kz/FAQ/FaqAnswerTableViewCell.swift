@@ -10,4 +10,17 @@ import UIKit
 final class FaqAnswerTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: FaqAnswerTableViewCell.self)
+    
+    // MARK: - UI
+    private lazy var answerLabel: UILabel = {
+        let label = UILabel()
+        label.text = """
+                    Metalink - это ведущая компания, специализирующаяся на агрегации курсов валют и предоставлении информационных услуг по валютам.
+                    """
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.regular.s14()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
+    }()
 }
