@@ -85,3 +85,20 @@ final class FaqViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        cell.backgroundColor = .cyan
+        return cell
+    }
+}
