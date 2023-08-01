@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class FaqQuestionTableViewCell: UITableViewCell {
+final class FaqTableHeaderView: UITableViewHeaderFooterView {
     // MARK: - State
-    static let reuseID = String(describing: FaqQuestionTableViewCell.self)
+    static let reuseID = String(describing: FaqTableHeaderView.self)
     
     // MARK: - UI
     private lazy var questionTypeLabel: UILabel = {
@@ -23,8 +23,9 @@ final class FaqQuestionTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Initializers
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
         setupViews()
         setupConstraints()
     }

@@ -31,9 +31,12 @@ final class FaqViewController: UIViewController {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(FaqQuestionTableViewCell.self,
-                           forCellReuseIdentifier: FaqQuestionTableViewCell.reuseID)
-        tableView.rowHeight = 50.0
+        tableView.register(FaqTableHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: FaqTableHeaderView.reuseID)
+        tableView.register(FaqTableViewCell.self,
+                           forCellReuseIdentifier: FaqTableViewCell.reuseID)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -105,11 +108,21 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FaqQuestionTableViewCell.reuseID,
-                                                       for: indexPath) as? FaqQuestionTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FaqTableViewCell.reuseID,
+                                                       for: indexPath) as? FaqTableViewCell
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                    FaqTableHeaderView.reuseID)
+                as? FaqTableHeaderView
+        else {
+            fatalError("Could not cast to FaqQuestionTableHeaderView")
+        }
+        return view
     }
 }
