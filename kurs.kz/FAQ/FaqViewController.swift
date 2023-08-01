@@ -11,6 +11,10 @@ import CollapsibleTableSectionViewController
 
 final class FaqViewController: UIViewController {
 
+    var questions = [Question(question: "Question", answer: "Answer"),
+                 Question(question: "Question", answer: "Answer"),
+                 Question(question: "Question", answer: "Answer")]
+    
     // MARK: - UI
     private let questionSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -87,7 +91,7 @@ final class FaqViewController: UIViewController {
             make.top.equalTo(questionSearchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
-            make.height.equalTo(400)
+            make.height.equalToSuperview()
         }
     }
     
@@ -100,11 +104,11 @@ final class FaqViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return questions.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return questions[section].collapsed ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,6 +127,16 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Could not cast to FaqQuestionTableHeaderView")
         }
+        view.section = section
+        view.delegate = self
         return view
     }
+}
+
+extension FaqViewController: FaqTableHeaderViewDelegate {
+    func toggleSection(_ header: FaqTableHeaderView, section: Int) {
+    let collapsed = !questions[section].collapsed
+    questions[section].collapsed = collapsed
+    questionsTableView.reloadData()
+  }
 }

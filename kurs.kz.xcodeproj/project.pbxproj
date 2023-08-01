@@ -66,6 +66,7 @@
 		99D974022A680FF400F7E506 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974012A680FF400F7E506 /* AppImage.swift */; };
 		99D974082A68611D00F7E506 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974072A68611D00F7E506 /* AppFont.swift */; };
 		99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854222A79632C0075CB78 /* FaqTableViewCell.swift */; };
+		99E854262A7969000075CB78 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854252A7969000075CB78 /* Question.swift */; };
 		99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E941BF2A666B1F00C47BD2 /* AppConstants.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
@@ -175,6 +176,7 @@
 		99D974012A680FF400F7E506 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		99D974072A68611D00F7E506 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		99E854222A79632C0075CB78 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
+		99E854252A7969000075CB78 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -378,6 +380,7 @@
 		99499C4F2A7904B100CB9721 /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
+				99E854242A7968F50075CB78 /* Model */,
 				99499C502A7904C300CB9721 /* FaqViewController.swift */,
 				99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */,
 				99E854222A79632C0075CB78 /* FaqTableViewCell.swift */,
@@ -472,6 +475,14 @@
 				99D974072A68611D00F7E506 /* AppFont.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		99E854242A7968F50075CB78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99E854252A7969000075CB78 /* Question.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
@@ -928,6 +939,7 @@
 				99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */,
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
+				99E854262A7969000075CB78 /* Question.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
