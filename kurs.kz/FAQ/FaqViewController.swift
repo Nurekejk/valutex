@@ -22,3 +22,15 @@
         setupViews()
         setupConstraints()
     }
+    
+    // MARK: - Setup Navigation Bar
+    private func setupNavigationBar() {
+        self.view.backgroundColor = AppColor.gray10.uiColor
+        self.title = "FAQ"
+        edgesForExtendedLayout = []
+        self.navigationItem.leftBarButtonItem =
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                        style: .plain,
+                        target: self,
+                        action: #selector(backButtonDidPressed))
+    }
