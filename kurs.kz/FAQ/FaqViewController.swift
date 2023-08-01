@@ -31,7 +31,9 @@ final class FaqViewController: UIViewController {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(FaqTableViewCell.self,
+                           forCellReuseIdentifier: FaqTableViewCell.reuseID)
+        tableView.rowHeight = 50.0
         return tableView
     }()
     
@@ -76,7 +78,7 @@ final class FaqViewController: UIViewController {
             make.top.equalTo(questionSearchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
-            make.bottom.equalToSuperview().offset(-16)
+            make.height.equalTo(400)
         }
     }
     
@@ -89,7 +91,7 @@ final class FaqViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 8
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,8 +99,11 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.backgroundColor = .cyan
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FaqTableViewCell.reuseID,
+                                                       for: indexPath) as? FaqTableViewCell
+        else {
+            fatalError("Could not cast to FaqTableViewCell")
+        }
         return cell
     }
 }

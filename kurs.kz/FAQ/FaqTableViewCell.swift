@@ -43,9 +43,8 @@ final class FaqTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         questionTypeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(2)
-            make.leading.equalToSuperview().offset(2)
-            make.trailing.equalToSuperview().offset(-2)
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(8)
         }
     }
 }
