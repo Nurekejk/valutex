@@ -14,6 +14,8 @@ final class SignInViewController: UIViewController {
     // MARK: - Properties
 
     private let service = SignInService()
+    public static let defaultsIsAuthorizedKey = "isAutorized"
+    public static let defaultsTokensKey = "accessTokens"
 
     // MARK: - UI
 
@@ -228,11 +230,18 @@ final class SignInViewController: UIViewController {
 
         service.signIn(phone: formatedPhoneNumber, password: password) { result in
             switch result {
-            case .success(let message):
-                print(message)
+            case .success(let data):
+                print(data)
+                
                 let defaults = UserDefaults.standard
-                defaults.set(true, forKey: "isAutorized")
+                defaults.set(true, forKey: SignInViewController.defaultsIsAuthorizedKey)
 
+                if let data = try? JSONEncoder().encode(data) {
+                    defaults.setValue(data, forKey: SignInViewController.defaultsTokensKey)
+                } else {
+                    print("error while encoding")
+                }
+                
                 let mainPageVC = ExchangeListViewController()
                 mainPageVC.navigationItem.hidesBackButton = true
                 self.navigationController?.pushViewController(mainPageVC, animated: true)
