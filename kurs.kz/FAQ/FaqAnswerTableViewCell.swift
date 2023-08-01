@@ -17,7 +17,7 @@ final class FaqAnswerTableViewCell: UITableViewCell {
         label.text = """
                     Metalink - это ведущая компания, специализирующаяся на агрегации курсов валют и предоставлении информационных услуг по валютам.
                     """
-        label.textColor = AppColor.gray100.uiColor
+        label.textColor = AppColor.gray80.uiColor
         label.font = AppFont.regular.s14()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -39,6 +39,14 @@ final class FaqAnswerTableViewCell: UITableViewCell {
     private func setupViews() {
         [answerLabel].forEach {
             contentView.addSubview($0)
+        }
+    }
+    
+    // MARK: - Setup Constraints
+    private func setupConstraints() {
+        answerLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(8)
         }
     }
 }
