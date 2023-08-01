@@ -8,7 +8,7 @@ PODS:
   - CHIOTPField/One (0.1.0)
   - CHIOTPField/Three (0.1.0)
   - CHIOTPField/Two (0.1.0)
-  - CollapsibleTableSectionViewController (1.0.1)
+  - CollapsibleTableSectionViewController (2.0.1)
   - GoogleMaps (8.0.0):
     - GoogleMaps/Maps (= 8.0.0)
   - GoogleMaps/Base (8.0.0)
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - CHIOTPField/One
   - CHIOTPField/Three
   - CHIOTPField/Two
-  - CollapsibleTableSectionViewController (~> 1.0.0)
+  - CollapsibleTableSectionViewController (~> 2.0.1)
   - GoogleMaps (= 8.0.0)
   - ProgressHUD (= 13.6.2)
   - SkyFloatingLabelTextField
@@ -47,7 +47,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
-  CollapsibleTableSectionViewController: c41694de812a1039c5f8581c934cf0fc38e4e871
+  CollapsibleTableSectionViewController: 40d97d684d870044522a0dc29b128a6acaaa99df
   GoogleMaps: 0dce473ab18742d0f327887853630927cbee9127
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: ae8c03f5cde70263c2b401255261f3d44b983584
+PODFILE CHECKSUM: fadafeddac27a4ddd4c54e34a78eb389f1600801
 
 COCOAPODS: 1.12.1
