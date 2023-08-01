@@ -13,3 +13,12 @@
         
         return searchBar
     }()
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationBar()
+        setupViews()
+        setupConstraints()
+    }
