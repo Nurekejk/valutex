@@ -46,6 +46,12 @@ final class FaqViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        questionsTableView.layer.cornerRadius = 8.0
+        questionSearchBar.layer.cornerRadius = 8.0
+    }
+    
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         self.view.backgroundColor = AppColor.gray10.uiColor
