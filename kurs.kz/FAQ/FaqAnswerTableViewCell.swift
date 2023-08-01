@@ -34,4 +34,11 @@ final class FaqAnswerTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setup Views
+    private func setupViews() {
+        [answerLabel].forEach {
+            contentView.addSubview($0)
+        }
+    }
 }
