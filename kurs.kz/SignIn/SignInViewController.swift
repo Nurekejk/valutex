@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
+import InputMask
 
 final class SignInViewController: UIViewController {
+    // MARK: - Properties
 
-    // MARK: - Outlets
+    private let service = SignInService()
+
+    // MARK: - UI
 
     private lazy var enterLabel: UILabel = {
         let label = UILabel()
@@ -21,6 +25,21 @@ final class SignInViewController: UIViewController {
         return label
     }()
 
+    // MARK: - MaskedTextField Listener
+    
+    private lazy var listener: MaskedTextFieldDelegate = {
+        let listener = MaskedTextFieldDelegate()
+        listener.onMaskedTextChangedCallback = { textField, _, isFilled in
+            let updatedText = textField.text ?? ""
+            if isFilled {
+                print("Text field is filled: \(updatedText)")
+            }
+        }
+        listener.delegate = self
+        listener.primaryMaskFormat = "+7 ([000]) [000] [00] [00]"
+        return listener
+    }()
+    
     private lazy var phoneTextField: CustomSkyFloatingLabelTextField = {
         let textField = CustomSkyFloatingLabelTextField()
 
@@ -52,8 +71,8 @@ final class SignInViewController: UIViewController {
         textField.titleLabel.font = AppFont.regular.s12()
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.textColor = AppColor.gray100.uiColor
-
-        textField.keyboardType = .phonePad
+        textField.isSecureTextEntry = true
+        textField.keyboardType = .default
         textField.lineView.isHidden = true
         return textField
 
@@ -105,6 +124,7 @@ final class SignInViewController: UIViewController {
 
         setupViews()
         setupConstriants()
+        phoneTextField.delegate = listener
     }
 
     override func viewDidLayoutSubviews() {
@@ -165,18 +185,14 @@ final class SignInViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
-
         signUpAskLabel.snp.makeConstraints { make in
             make.top.equalTo(signInButton.snp.bottom).offset(310)
             make.centerX.equalToSuperview()
         }
-
         signUpButton.snp.makeConstraints { make in
             make.top.equalTo(signUpAskLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
-
         }
-
     }
 
     // MARK: - Actions
@@ -184,13 +200,58 @@ final class SignInViewController: UIViewController {
     @objc private func forgotPasswordButtonDidPressed() {
 
     }
-
     @objc private func signInButtonDidPressed() {
-        let conrtoller = CustomTabBarViewController()
-        conrtoller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(conrtoller, animated: true)
+
+        let phoneNumber = phoneTextField.text
+        let password = passwordTextField.text
+        guard let phoneNumber = phoneNumber,
+              let password = password else {
+            showSnackBar(message: "Номер телефона или пароль введены неправильно.")
+            return
+        }
+
+        if phoneNumber.isEmpty {
+            showSnackBar(message: "Пожалуйства, введите свой номер.")
+            return
+        }
+
+        if phoneNumber.count != 18 {
+            showSnackBar(message: "Номер телефона введен неправильно.")
+            return
+        }
+
+        let formatedPhoneNumber = phoneNumber
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "+", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
+
+        service.signIn(phone: formatedPhoneNumber, password: password) { result in
+            switch result {
+            case .success(let message):
+                print(message)
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: "isAutorized")
+
+                let mainPageVC = ExchangeListViewController()
+                mainPageVC.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(mainPageVC, animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                }
+            }
+        }
+    }
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 
+    // MARK: - SnackBar
+
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    }
     @objc private func signUpButtonDidPressed() {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
