@@ -41,3 +41,13 @@
             view.addSubview($0)
         }
     }
+    
+    // MARK: - Setup Constraints
+    private func setupConstraints() {
+        questionSearchBar.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.height.equalTo(48)
+        }
+    }
