@@ -18,13 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-      
+        
+        var isAutorized = false
+        
         let defaults = UserDefaults.standard
-        let isAutorized = defaults.bool(forKey: "isAutorized")
+        isAutorized = defaults.bool(forKey: SignInViewController.defaultsIsAuthorizedKey)
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: SignInViewController())
+                UINavigationController(rootViewController: CustomTabBarViewController())
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SignInViewController())
