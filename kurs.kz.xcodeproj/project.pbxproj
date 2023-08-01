@@ -40,6 +40,7 @@
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
 		99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */; };
 		99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C502A7904C300CB9721 /* FaqViewController.swift */; };
+		99499C532A790D1900CB9721 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C522A790D1900CB9721 /* FaqTableViewCell.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */; };
 		9952D3562A608080002321E8 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3552A608080002321E8 /* ProfileSection.swift */; };
@@ -148,6 +149,7 @@
 		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
 		99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		99499C502A7904C300CB9721 /* FaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqViewController.swift; sourceTree = "<group>"; };
+		99499C522A790D1900CB9721 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		9952D3552A608080002321E8 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				99499C502A7904C300CB9721 /* FaqViewController.swift */,
+				99499C522A790D1900CB9721 /* FaqTableViewCell.swift */,
 			);
 			path = FAQ;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */,
+				99499C532A790D1900CB9721 /* FaqTableViewCell.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
