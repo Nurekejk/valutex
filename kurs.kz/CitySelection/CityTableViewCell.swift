@@ -62,6 +62,9 @@ final class CityTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: - Reuse
+    // MARK: - Public
 
+     public func configreCell(name: String) {
+         self.label.text = name
+     }
 }

@@ -6,9 +6,18 @@
 //
 
 import UIKit
+import SnapKit
+import Alamofire
 
 final class SelectCityViewController: UIViewController {
 
+    // MARK: - State
+
+      private var cities: [City] = [] {
+          didSet {
+              self.tableview.reloadData()
+          }
+      }
     // MARK: - Outlets
     private let textField: UITextField = {
         let textField = UITextField()
@@ -57,6 +66,8 @@ final class SelectCityViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         setupConctraints()
+
+        fetchCities()
     }
     
     // MARK: - Setup NavigationBar
@@ -110,19 +121,46 @@ final class SelectCityViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
+
+    // MARK: - Network
+
+    private func fetchCities() {
+
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "http"
+        urlComponent.host = "77.240.38.143"
+        urlComponent.port = 4443
+        urlComponent.path = "/cities_list"
+
+        guard let url = urlComponent.url else {
+            return
+        }
+
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: [City].self) { data in
+                switch data.result {
+                case .success(let fetchedCities):
+                    self.cities = fetchedCities
+                case .failure(let error):
+                    print(error)
+                }
+            }
+
+    }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate
 extension SelectCityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        15
+        return cities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let selectedView = UIView()
-        selectedView.backgroundColor = UIColor.white
-        cell.selectedBackgroundView = selectedView
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                         for: indexPath) as? CityTableViewCell
+        let city = cities[indexPath.row]
+        cell?.configreCell(name: city.name_rus)
+        return cell ?? UITableViewCell()
     }
 }
