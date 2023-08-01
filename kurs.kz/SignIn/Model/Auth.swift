@@ -12,7 +12,7 @@ struct SignInRequest: Encodable {
     let password: String
 }
 
-struct SignInResponse: Decodable {
+struct SignInResponse: Codable {
     let access_token: String?
     let refresh_token: String?
 }
