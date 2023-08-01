@@ -31,8 +31,8 @@ final class FaqViewController: UIViewController {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(FaqTableViewCell.self,
-                           forCellReuseIdentifier: FaqTableViewCell.reuseID)
+        tableView.register(FaqQuestionTableViewCell.self,
+                           forCellReuseIdentifier: FaqQuestionTableViewCell.reuseID)
         tableView.rowHeight = 50.0
         return tableView
     }()
@@ -105,8 +105,8 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FaqTableViewCell.reuseID,
-                                                       for: indexPath) as? FaqTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FaqQuestionTableViewCell.reuseID,
+                                                       for: indexPath) as? FaqQuestionTableViewCell
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }

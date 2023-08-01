@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FaqTableViewCell: UITableViewCell {
+final class FaqQuestionTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: ProfileTableViewCell.self)
     
