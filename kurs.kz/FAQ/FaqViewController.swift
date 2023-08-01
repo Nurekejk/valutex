@@ -51,3 +51,9 @@
             make.height.equalTo(48)
         }
     }
+    
+    // MARK: - Actions
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
