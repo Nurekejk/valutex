@@ -27,6 +27,14 @@ final class FaqViewController: UIViewController {
         return searchBar
     }()
     
+    private lazy var questionsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +58,7 @@ final class FaqViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [questionSearchBar].forEach {
+        [questionSearchBar, questionsTableView].forEach {
             view.addSubview($0)
         }
     }
@@ -62,6 +70,13 @@ final class FaqViewController: UIViewController {
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
             make.height.equalTo(48)
+        }
+        
+        questionsTableView.snp.makeConstraints { make in
+            make.top.equalTo(questionSearchBar.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().offset(-16)
         }
     }
     
