@@ -231,7 +231,6 @@ final class SignInViewController: UIViewController {
         service.signIn(phone: formatedPhoneNumber, password: password) { result in
             switch result {
             case .success(let data):
-                print(data)
                 
                 let defaults = UserDefaults.standard
                 defaults.set(true, forKey: SignInViewController.defaultsIsAuthorizedKey)
