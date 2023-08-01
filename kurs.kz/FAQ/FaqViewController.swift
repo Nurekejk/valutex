@@ -34,3 +34,10 @@
                         target: self,
                         action: #selector(backButtonDidPressed))
     }
+    
+    // MARK: - Setup Views
+    private func setupViews() {
+        [questionSearchBar].forEach {
+            view.addSubview($0)
+        }
+    }
