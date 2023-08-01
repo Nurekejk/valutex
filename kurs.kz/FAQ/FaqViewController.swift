@@ -1,3 +1,15 @@
+//
+//  FaqViewController.swift
+//  kurs.kz
+//
+//  Created by Aigerim Abitayeva on 01.08.2023.
+//
+
+import UIKit
+import SnapKit
+
+final class FaqViewController: UIViewController {
+
     // MARK: - UI
     private let questionSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
