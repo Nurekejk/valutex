@@ -44,6 +44,8 @@
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */; };
 		9952D3562A608080002321E8 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3552A608080002321E8 /* ProfileSection.swift */; };
+		995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A32A7A05D000E96AEE /* FaqPageService.swift */; };
+		995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
 		9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */; };
 		9985BA542A65BF0D00DD871C /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = 9985BA532A65BF0D00DD871C /* InputMask */; };
@@ -155,6 +157,8 @@
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		9952D3552A608080002321E8 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
+		995E96A32A7A05D000E96AEE /* FaqPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqPageService.swift; sourceTree = "<group>"; };
+		995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswer.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +485,8 @@
 			isa = PBXGroup;
 			children = (
 				99E854252A7969000075CB78 /* Question.swift */,
+				995E96A32A7A05D000E96AEE /* FaqPageService.swift */,
+				995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -922,6 +928,7 @@
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
@@ -955,6 +962,7 @@
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
+				995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */,
 				8F06DEA52A61B03300637A68 /* ExchangeDollarViewController.swift in Sources */,
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
