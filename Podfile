@@ -16,6 +16,8 @@ target 'kurs.kz' do
   pod 'ProgressHUD', '13.6.2'
   pod 'CollapsibleTableSectionViewController', '~> 2.0.1'
   
+  pod 'Wormholy', :configurations => ['Debug']
+
   post_install do |installer|
       installer.generated_projects.each do |project|
         project.targets.each do |target|
