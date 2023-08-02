@@ -10,10 +10,11 @@ import SnapKit
 import SkeletonView
 
 final class ExchangeListViewController: UIViewController {
+    // MARK: - State
+    public static let defaultsCurrencyKey = "savedCurrency"
     
     // MARK: - Properties
     private let defaults = UserDefaults.standard
-    private let defaultsCurrencyKey = "savedCurrency"
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
