@@ -39,8 +39,9 @@ final class FaqViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: FaqTableHeaderView.reuseID)
         tableView.register(FaqTableViewCell.self,
                            forCellReuseIdentifier: FaqTableViewCell.reuseID)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = AppColor.gray10.uiColor
         return tableView
     }()
     
@@ -61,6 +62,7 @@ final class FaqViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         setupConstraints()
+        fetchQuestionAnswerPairs()
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,6 +108,13 @@ final class FaqViewController: UIViewController {
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
+        questionsTableView.estimatedRowHeight = 100
+        questionsTableView.rowHeight = UITableView.automaticDimension
+        if #available(iOS 15.0, *) {
+            questionsTableView.sectionHeaderTopPadding = 2.0
+        }
+        questionsTableView.sectionHeaderHeight = 50.0
+        
         questionSearchBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(8)
@@ -114,10 +123,10 @@ final class FaqViewController: UIViewController {
         }
         
         questionsTableView.snp.makeConstraints { make in
-            make.top.equalTo(questionSearchBar.snp.bottom).offset(16)
+            make.top.equalTo(questionSearchBar.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
-            make.height.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

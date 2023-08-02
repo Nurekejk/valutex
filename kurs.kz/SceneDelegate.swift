@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isAutorized = true
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: FaqViewController())
+                UINavigationController(rootViewController: FaqViewController(service: FaqPageService()))
         } else {
             window?.rootViewController =
                 UINavigationController(rootViewController: SelectLanguageViewController())
