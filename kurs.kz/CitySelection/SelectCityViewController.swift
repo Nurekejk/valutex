@@ -12,12 +12,12 @@ import Alamofire
 final class SelectCityViewController: UIViewController {
 
     // MARK: - State
-
     private var cities: [City] = [] {
       didSet {
           self.tableview.reloadData()
       }
     }
+    
     let userDefaults = UserDefaults.standard
     var selectedCity: String?
     // MARK: - Outlets
@@ -126,7 +126,6 @@ final class SelectCityViewController: UIViewController {
     }
 
     // MARK: - Network
-
     private func fetchCities() {
 
         var urlComponent = URLComponents()
@@ -152,7 +151,6 @@ final class SelectCityViewController: UIViewController {
 
     }
     // MARK: - Action
-
     @objc private func saveButtonDidPressed() {
         if let selectedIndexPath = tableview.indexPathForSelectedRow {
 
@@ -167,7 +165,7 @@ final class SelectCityViewController: UIViewController {
 
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
@@ -192,5 +190,4 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCity = cities[indexPath.row].name_rus
     }
-
 }
