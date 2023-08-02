@@ -14,10 +14,13 @@ final class FaqViewController: UIViewController {
     let service: FaqPageService
     
     var questions: [Question] = []
+    var searchQuestions: [Question] = []
+    var searching = false
     
     // MARK: - UI
-    private let questionSearchBar: UISearchBar = {
+    private lazy var questionSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.delegate = self
         searchBar.setImage(AppImage.search_normal.uiImage, for: .search, state: .normal)
         searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
@@ -139,6 +142,9 @@ final class FaqViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if searching {
+            return searchQuestions.count
+        }
         return questions.count
     }
     
@@ -152,7 +158,11 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }
-        cell.faqSection = questions[indexPath.section]
+        if searching {
+            cell.faqSection = searchQuestions[indexPath.section]
+        } else {
+            cell.faqSection = questions[indexPath.section]
+        }
         return cell
     }
     
@@ -165,7 +175,11 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
         }
         view.section = section
         view.delegate = self
-        view.faqSection = questions[section]
+        if searching {
+            view.faqSection = searchQuestions[section]
+        } else {
+            view.faqSection = questions[section]
+        }
         view.backgroundConfiguration?.backgroundColor = .white
         view.setCollapsed(questions[section].collapsed)
         return view
@@ -176,6 +190,22 @@ extension FaqViewController: FaqTableHeaderViewDelegate {
     func toggleSection(_ header: FaqTableHeaderView, section: Int) {
         let collapsed = !questions[section].collapsed
         questions[section].collapsed = collapsed
+        questionsTableView.reloadData()
+    }
+}
+
+extension FaqViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchQuestions = questions.filter({
+            $0.question.lowercased().contains(searchText.lowercased())
+        })
+        searching = true
+        questionsTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        questionSearchBar.text = ""
         questionsTableView.reloadData()
     }
 }
