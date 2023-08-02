@@ -10,6 +10,13 @@ import WebKit
 
 final class NationalBankCourseViewController: UIViewController, WKNavigationDelegate {
     
+    // MARK: - UI
+    private lazy var webView: WKWebView = {
+        let webView = WKWebView()
+        webView.navigationDelegate = self
+        return webView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
