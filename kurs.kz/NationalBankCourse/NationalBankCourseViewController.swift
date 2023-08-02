@@ -20,5 +20,11 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    // MARK: - Setup Views
+    private func setupViews() {
+        self.view.backgroundColor = AppColor.gray10.uiColor
+        view.addSubview(webView)
     }
+    
 }
