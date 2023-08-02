@@ -50,4 +50,10 @@ enum AppImage: String, AppImageProtocol {
     case select_language = "selectlanguage"
     case telegram_icon = "telegram_icon"
     case whatsapp_icon = "whatsapp_icon"
+    case exchange_logo = "exchange_logo"
+    case kzt_flag = "kzt_flag"
+    case down_arrow = "down_arrow"
+    case separator_line = "separator_line"
+    case arrow_left_right = "arrow_left_right"
+    case cross = "cross"
 }
