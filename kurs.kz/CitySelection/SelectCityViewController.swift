@@ -10,16 +10,13 @@ import SnapKit
 import Alamofire
 
 final class SelectCityViewController: UIViewController {
-
     // MARK: - State
+    let userDefaults = UserDefaults.standard
     private var cities: [City] = [] {
       didSet {
           self.tableview.reloadData()
       }
     }
-    
-    let userDefaults = UserDefaults.standard
-    var selectedCity: String?
     // MARK: - Outlets
     private let textField: UITextField = {
         let textField = UITextField()
@@ -41,6 +38,7 @@ final class SelectCityViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 8
         return tableView
@@ -152,15 +150,7 @@ final class SelectCityViewController: UIViewController {
     }
     // MARK: - Action
     @objc private func saveButtonDidPressed() {
-        if let selectedIndexPath = tableview.indexPathForSelectedRow {
-
-            if let data = try? JSONEncoder().encode(selectedCity) {
-                userDefaults.setValue(data, forKey: "selectedCity")
-                    } else {
-                        print("error while encoding")
-                    }
-            self.navigationController?.pushViewController(MainPageViewController(), animated: true)
-        }
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 
 }
@@ -175,19 +165,33 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                          for: indexPath) as? CityTableViewCell
         let city = cities[indexPath.row]
-        cell?.configureCell(name: city.name_rus)
+        print("Asdasdasd")
         if let data = userDefaults.data(forKey: "selectedCity") {
+            print("data2: \(data)")
             do {
-                let data = try JSONDecoder().decode(Currency.self, from: data)
-                cell?.isSelected = (city.name_rus == data.russianName)
+                let fetchedCity = try JSONDecoder().decode(City.self, from: data)
+                print("fetchedCity: \(fetchedCity)")
+                cell?.isSelected = fetchedCity.name_rus == city.name_rus
             } catch {
                 print("error while decoding")
             }
-}
+            
+        }
+        cell?.configureCell(name: city.name_rus)
         return cell ?? UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCity = cities[indexPath.row].name_rus
+        let selectedCity = cities[indexPath.row]
+        print("sadsadads")
+        if let data = try? JSONEncoder().encode(selectedCity) {
+            print(data)
+            userDefaults.setValue(data, forKey: "selectedCity")
+
+        } else {
+            print("error while encoding")
+
+        }
+
     }
 }
