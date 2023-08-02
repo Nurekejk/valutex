@@ -202,8 +202,8 @@ final class SignInViewController: UIViewController {
     @objc private func forgotPasswordButtonDidPressed() {
 
     }
-    @objc private func signInButtonDidPressed() {
 
+    @objc private func signInButtonDidPressed() {
         let phoneNumber = phoneTextField.text
         let password = passwordTextField.text
         guard let phoneNumber = phoneNumber,
@@ -240,10 +240,9 @@ final class SignInViewController: UIViewController {
                 } else {
                     print("error while encoding")
                 }
-                
-                let mainPageVC = CustomTabBarViewController()
-                mainPageVC.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(mainPageVC, animated: true)
+                let tabbarController = CustomTabBarViewController()
+                tabbarController.navigationItem.hidesBackButton = true
+                self.navigationController?.pushViewController(tabbarController, animated: true)
             case .failure:
                 DispatchQueue.main.async {
                     self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
