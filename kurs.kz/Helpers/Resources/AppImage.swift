@@ -70,4 +70,6 @@ enum AppImage: String, AppImageProtocol {
     case new_message = "new-message"
     case avatar = "avatar"
     case search_normal = "search_normal"
+    case arrow_up_collapse = "arrow-up-collapse"
+    case arrow_down_collapse = "arrow-down-collapse"
 }
