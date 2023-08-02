@@ -10,10 +10,11 @@ import SnapKit
 import SkeletonView
 
 final class ExchangeListViewController: UIViewController {
+    // MARK: - State
+    public static let defaultsCurrencyKey = "savedCurrency"
     
     // MARK: - Properties
     private let defaults = UserDefaults.standard
-    private let defaultsCurrencyKey = "savedCurrency"
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
@@ -324,7 +325,7 @@ final class ExchangeListViewController: UIViewController {
         }
     }
     func fetchDefaults() {
-            if let data = defaults.data(forKey: defaultsCurrencyKey) {
+        if let data = defaults.data(forKey: ExchangeListViewController.defaultsCurrencyKey) {
                 do {
                     let fetchedCurrency = try JSONDecoder().decode(Currency.self, from: data)
                     navigationBarView.changeCurrency(newFlagImage: fetchedCurrency.flag,
@@ -399,7 +400,7 @@ extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
         if let data = try? JSONEncoder().encode(currency) {
-            defaults.setValue(data, forKey: defaultsCurrencyKey)
+            defaults.setValue(data, forKey: ExchangeListViewController.defaultsCurrencyKey)
         } else {
             print("error while encoding")
         }
