@@ -20,9 +20,22 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupViews()
         setupConstraints()
     }
+    
+    // MARK: - Setup Navigation Bar
+    private func setupNavigation() {
+        self.title = "Курс Национального Банка"
+        edgesForExtendedLayout = []
+        self.navigationItem.leftBarButtonItem =
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                        style: .plain,
+                        target: self,
+                        action: #selector(backButtonDidPressed))
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         self.view.backgroundColor = AppColor.gray10.uiColor
