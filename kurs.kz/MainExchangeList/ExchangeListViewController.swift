@@ -241,7 +241,7 @@ final class ExchangeListViewController: UIViewController {
     private func setupConstraints() {
         
         let tableWidth = UIScreen.main.bounds.width - 32
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 36)
+        headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
         topView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
@@ -367,18 +367,7 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
-extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
-    
-    var panScrollable: UIScrollView? {
-        return nil
-    }
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(496)
-    }
-    var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(40)
-    }
-    
+extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
