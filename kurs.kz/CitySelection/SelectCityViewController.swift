@@ -12,7 +12,7 @@ import Alamofire
 final class SelectCityViewController: UIViewController {
     // MARK: - State
     let userDefaults = UserDefaults.standard
-    private var selectedIndex = IndexPath(row: 0, section: 0)
+    private var selectedCityID = 0
     private var cities: [City] = [] {
       didSet {
           self.tableView.reloadData()
@@ -70,6 +70,22 @@ final class SelectCityViewController: UIViewController {
         setupConctraints()
 
         fetchCities()
+        getSelectedCity()
+    }
+
+    // MARK: - Load Data
+
+    private func getSelectedCity() {
+        if let data = userDefaults.data(forKey: "selectedCity") {
+            do {
+                let selectedCity = try JSONDecoder().decode(City.self, from: data)
+                selectedCityID = selectedCity.id
+            } catch let error {
+                print("error while decoding \(error)")
+            }
+        }
+
+        tableView.reloadData()
     }
     
     // MARK: - Setup NavigationBar
@@ -151,10 +167,9 @@ final class SelectCityViewController: UIViewController {
     }
     // MARK: - Action
     @objc private func saveButtonDidPressed() {
-        let selectedCity = cities[selectedIndex.row]
+        let selectedCity = cities.first { $0.id == selectedCityID }
         if let data = try? JSONEncoder().encode(selectedCity) {
             userDefaults.setValue(data, forKey: "selectedCity")
-            tableView.reloadData()
         } else {
             print("error while encoding")
         }
@@ -173,23 +188,13 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                          for: indexPath) as? CityTableViewCell
         let city = cities[indexPath.row]
-
-        if let data = userDefaults.data(forKey: "selectedCity") {
-            do {
-                let fetchedCity = try JSONDecoder().decode(City.self, from: data)
-                cell?.configureCell(name: city.name_rus, isSelected: fetchedCity.id == city.id)
-            } catch {
-                print("error while decoding")
-            }
-        } else {
-            cell?.configureCell(name: city.name_rus, isSelected: selectedIndex == indexPath)
-        }
-
+        cell?.configureCell(name: city.name_rus, isSelected: city.id == selectedCityID)
         return cell ?? UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath
-//        tableView.reloadData()
+        let city = cities[indexPath.row]
+        selectedCityID = city.id
+        tableView.reloadData()
     }
 }
