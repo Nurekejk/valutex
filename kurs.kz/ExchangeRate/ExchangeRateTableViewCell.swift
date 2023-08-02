@@ -48,7 +48,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }()
     private lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "trash")
+        let iconImage = AppImage.trash.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(trashButtonDidPressed),
                          for: .touchUpInside)

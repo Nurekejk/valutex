@@ -20,7 +20,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var arrowUpButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "filter_up")
+        let iconImage = AppImage.filter_up.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowUpButtonDidPressed),
                          for: .touchUpInside)
@@ -35,7 +35,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var arrowDownButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "filter_down")
+        let iconImage = AppImage.filter_down.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowDownButtonDidPressed),
                          for: .touchUpInside)

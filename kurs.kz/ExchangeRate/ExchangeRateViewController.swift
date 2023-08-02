@@ -37,7 +37,7 @@ final class ExchangeRateViewController: UIViewController {
         button.setTitle("Cохранить", for: .normal)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
-        button.layer.cornerRadius = 12
+//        button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
@@ -68,6 +68,7 @@ final class ExchangeRateViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
+        safeButton.layer.cornerRadius = 12
     }
         
     // MARK: - Setup Constraints

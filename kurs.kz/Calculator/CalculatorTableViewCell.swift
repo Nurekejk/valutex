@@ -128,8 +128,7 @@ final class CalculatorTableViewCell: UITableViewCell {
         starImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.leading.equalTo(titleLabel.snp.trailing).offset(8)
-            make.width.equalTo(12)
-            make.height.equalTo(12)
+            make.size.equalTo(12)
         }
         rateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(13.5)

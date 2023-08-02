@@ -30,7 +30,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var dropDownButtonLeft: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "down_arrow")
+        let iconImage = AppImage.down_arrow.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
@@ -44,7 +44,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var arrowLeftRightButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "arrow_left_right")
+        let iconImage = AppImage.arrow_left_right.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowLeftRightButtonDidPressed),
                          for: .touchUpInside)
@@ -70,7 +70,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var dropDownButtonRight: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "down_arrow")
+        let iconImage = AppImage.down_arrow.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
@@ -85,7 +85,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var clearButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "cross")
+        let iconImage = AppImage.cross.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(clearButtonDidPressed),
                          for: .touchUpInside)
@@ -120,7 +120,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             containerView.addSubview($0)
         }
         contentView.backgroundColor = AppColor.gray10.uiColor
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.addSubview(containerView)
         containerView.addSubview(borderView)
         borderView.backgroundColor = AppColor.gray10.uiColor
