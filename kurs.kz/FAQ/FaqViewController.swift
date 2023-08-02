@@ -10,10 +10,10 @@ import SnapKit
 import CollapsibleTableSectionViewController
 
 final class FaqViewController: UIViewController {
-
-    var questions = [Question(question: "Question", answer: "Answer"),
-                 Question(question: "Question", answer: "Answer"),
-                 Question(question: "Question", answer: "Answer")]
+    
+    let service: FaqPageService
+    
+    var questions: [Question] = []
     
     // MARK: - UI
     private let questionSearchBar: UISearchBar = {
@@ -44,6 +44,16 @@ final class FaqViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Initializers
+    init(service: FaqPageService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +67,22 @@ final class FaqViewController: UIViewController {
         super.viewDidLayoutSubviews()
         questionsTableView.layer.cornerRadius = 8.0
         questionSearchBar.layer.cornerRadius = 8.0
+    }
+    
+    // MARK: - Callback
+    private func fetchQuestionAnswerPairs() {
+        service.fetchFaq { [weak self] result in
+            switch result {
+            case .success(let data):
+                let faqs = data.faq
+                faqs.forEach { faq in
+                    self?.questions.append(Question(question: faq.question, answer: faq.answer))
+                }
+                self?.questionsTableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Setup Navigation Bar
