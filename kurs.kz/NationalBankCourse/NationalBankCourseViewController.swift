@@ -21,10 +21,19 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupConstraints()
+    }
     // MARK: - Setup Views
     private func setupViews() {
         self.view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(webView)
+    }
+    
+    // MARK: - Setup Constraints
+    private func setupConstraints() {
+        webView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
