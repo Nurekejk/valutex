@@ -54,10 +54,6 @@ final class LanguageAppViewController: UIViewController {
     private func setupNavigationBar() {
         title = "Язык приложения"
     }
-    
-    // 0 0 En
-    // 0 1 RU
-    // 0 2 Kz
 
     private func loadData() {
         let defaults = UserDefaults.standard
