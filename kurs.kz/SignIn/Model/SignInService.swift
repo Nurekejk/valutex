@@ -12,11 +12,7 @@ final class SignInService {
     private let apiUrlUserLogin = "http://77.240.38.143:4443/login"
 
     enum NetworkError: Error {
-        case badURL
-        case jsonSerializationError
         case postRequestError
-        case nilData
-        case decodingError
     }
 
     // MARK: - Network
