@@ -151,10 +151,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch row {
         case 0:
-            navigationController?.pushViewController(EmptyViewController(),
+            navigationController?.pushViewController(MyExchangesViewController(),
                                                      animated: true)
         case 1:
-            navigationController?.pushViewController(EmptyViewController(),
+            navigationController?.pushViewController(ExchangeRateViewController(),
                                                      animated: true)
         case 2:
             navigationController?.pushViewController(EmptyViewController(),
@@ -169,7 +169,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(SelectCityViewController(),
                                                      animated: true)
         case 6:
-            navigationController?.pushViewController(EmptyViewController(),
+            navigationController?.pushViewController(PartnerOfferViewController(),
                                                      animated: true)
         case 7:
             navigationController?.pushViewController(ToSupportViewController(),

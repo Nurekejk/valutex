@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class SelectLanguageViewController: UIViewController {
-    
     // MARK: - UI
 
     private let imageView: UIImageView = {

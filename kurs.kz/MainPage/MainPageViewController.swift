@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class MainPageViewController: UIViewController {
-
+    
     // MARK: - UI
     private let imageView: UIImageView = {
         let imageView = UIImageView()
