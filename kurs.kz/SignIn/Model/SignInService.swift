@@ -11,14 +11,10 @@ import Alamofire
 final class SignInService {
     private let apiUrlUserLogin = "http://77.240.38.143:4443/login"
 
-    enum NetworkError: Error {
-        case postRequestError
-    }
-
     // MARK: - Network
     func signIn(phone: String,
                 password: String,
-                completion: @escaping (Result<SignInResponse, NetworkError>) -> Void) {
+                completion: @escaping (Result<SignInResponse, Error>) -> Void) {
         
         var signIn = URLComponents()
         signIn.scheme = "http"
@@ -50,8 +46,8 @@ final class SignInService {
             switch data.result {
             case .success(let value):
                 completion(.success(value))
-            case .failure:
-                completion(.failure(.postRequestError))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
