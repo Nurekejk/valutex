@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import ProgressHUD
 
 final class NationalBankCourseViewController: UIViewController, WKNavigationDelegate {
     
@@ -39,7 +40,13 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
         setupConstraints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ProgressHUD.dismiss()
+    }
+    
     private func configureWebView() {
+        self.showProgress()
         service.fetchNationalBankUrl { result in
             switch result {
             case .success(let nationalBankUrl):
@@ -81,5 +88,20 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
     // MARK: - Actions
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension NationalBankCourseViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
+    }
+    
+    func showProgress() {
+        ProgressHUD.showProgress("Загружаем...", 1.0)
     }
 }
