@@ -42,14 +42,12 @@ class LanguageTableViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(iconImageView)
     }
     
     // MARK: - Setup Constraits
-    
     func setupConstraits() {
         
         titleLabel.snp.makeConstraints { make in
