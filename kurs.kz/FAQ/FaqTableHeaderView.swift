@@ -14,6 +14,12 @@ final class FaqTableHeaderView: UITableViewHeaderFooterView {
     var delegate: FaqTableHeaderViewDelegate?
     var section: Int = 0
     
+    var faqSection: Question? {
+        didSet {
+            questionTypeLabel.text = faqSection?.question
+        }
+    }
+    
     // MARK: - UI
     private lazy var questionTypeLabel: UILabel = {
         let label = UILabel()
@@ -22,7 +28,24 @@ final class FaqTableHeaderView: UITableViewHeaderFooterView {
         label.font = AppFont.regular.s14()
         label.textAlignment = .left
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = AppImage.arrow_down_collapse.uiImage
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private lazy var questionStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 16.0
+        stack.distribution = .fill
+        return stack
     }()
     
     // MARK: - Initializers
@@ -41,16 +64,21 @@ final class FaqTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [questionTypeLabel].forEach {
-            contentView.addSubview($0)
+        [questionTypeLabel, arrowImageView].forEach {
+            questionStackView.addArrangedSubview($0)
         }
+        contentView.addSubview(questionStackView)
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        questionTypeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(8)
+        questionStackView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(8)
+            make.trailing.bottom.equalToSuperview().offset(-8)
+        }
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.size.equalTo(16)
         }
     }
     
@@ -60,6 +88,14 @@ final class FaqTableHeaderView: UITableViewHeaderFooterView {
             return
         }
         delegate?.toggleSection(self, section: cell.section)
+    }
+    
+    func setCollapsed(_ collapsed: Bool) {
+        if collapsed {
+            arrowImageView.image = AppImage.arrow_down_collapse.uiImage
+        } else {
+            arrowImageView.image = AppImage.arrow_up_collapse.uiImage
+        }
     }
 }
 // swiftlint:disable all
