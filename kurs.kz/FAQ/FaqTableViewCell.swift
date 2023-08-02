@@ -11,6 +11,12 @@ final class FaqTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: FaqTableViewCell.self)
     
+    var faqSection: Question? {
+        didSet {
+            answerLabel.text = faqSection?.answer
+        }
+    }
+    
     // MARK: - UI
     private lazy var answerLabel: UILabel = {
         let label = UILabel()
@@ -19,10 +25,11 @@ final class FaqTableViewCell: UITableViewCell {
                     агрегации курсов валют и предоставлении информационных услуг по
                     валютам.
                     """
-        label.textColor = AppColor.gray80.uiColor
+        label.textColor = AppColor.gray70.uiColor
         label.font = AppFont.regular.s14()
         label.textAlignment = .left
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -39,16 +46,14 @@ final class FaqTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [answerLabel].forEach {
-            contentView.addSubview($0)
-        }
+        contentView.addSubview(answerLabel)
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
         answerLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(8)
+            make.top.leading.equalToSuperview().offset(8)
+            make.trailing.bottom.equalToSuperview().offset(-8)
         }
     }
 }
