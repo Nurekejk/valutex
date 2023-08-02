@@ -12,7 +12,7 @@ struct Question {
   var answer: String
   var collapsed: Bool
     
-  init(question: String, answer: String, collapsed: Bool = false) {
+  init(question: String, answer: String, collapsed: Bool = true) {
     self.question = question
     self.answer = answer
     self.collapsed = collapsed
