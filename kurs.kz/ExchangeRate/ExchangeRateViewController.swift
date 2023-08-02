@@ -37,15 +37,15 @@ final class ExchangeRateViewController: UIViewController {
     private lazy var safeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cохранить", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = AppColor.gray10.uiColor
+        button.tintColor = AppColor.grayWhite.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     private lazy var shadowView: UIView = {
         let shadowView = UIView()
-        shadowView.backgroundColor = AppColor.gray10.uiColor
+        shadowView.backgroundColor = AppColor.grayWhite.uiColor
         return shadowView
     }()
 
