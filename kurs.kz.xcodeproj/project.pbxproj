@@ -29,6 +29,9 @@
 		8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEA62A61B08400637A68 /* ExchangeDollarTableViewCell.swift */; };
 		8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEA82A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift */; };
 		8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */; };
+		8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */; };
+		8F816F0C2A76B59500AF4BA9 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */; };
+		8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
@@ -144,6 +147,9 @@
 		8F06DEA62A61B08400637A68 /* ExchangeDollarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewCell.swift; sourceTree = "<group>"; };
 		8F06DEA82A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewHeaderView.swift; sourceTree = "<group>"; };
 		8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewFooterView.swift; sourceTree = "<group>"; };
+		8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorTableViewHeaderView.swift; path = kurs.kz/Calculator/CalculatorTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
+		8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorTableViewCell.swift; path = kurs.kz/Calculator/CalculatorTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = kurs.kz/Calculator/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -337,6 +343,16 @@
 				8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */,
 			);
 			path = ExchangeDollar;
+			sourceTree = "<group>";
+		};
+		8F816F072A76B55000AF4BA9 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */,
+				8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */,
+				8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		8F8189D72A6066240082F80F /* CartExchangeFeedback */ = {
@@ -566,6 +582,7 @@
 			children = (
 				995E96A72A7A165300E96AEE /* NationalBankCourse */,
 				99499C4F2A7904B100CB9721 /* FAQ */,
+				8F816F072A76B55000AF4BA9 /* Calculator */,
 				8FCA83242A712256003CD865 /* OfferSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRate */,
@@ -947,6 +964,7 @@
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
+				8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */,
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
 				9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
@@ -962,6 +980,7 @@
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				FA57598F2A692B2100DE9A6B /* CurrencyListService.swift in Sources */,
+				8F816F0C2A76B59500AF4BA9 /* CalculatorTableViewCell.swift in Sources */,
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */,
@@ -970,6 +989,7 @@
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
+				8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */,
 				71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */,
 				99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */,
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
