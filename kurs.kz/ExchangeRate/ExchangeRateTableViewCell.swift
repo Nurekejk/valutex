@@ -18,7 +18,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
 
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "USDflag")
+        imageView.image = UIImage(named: "usd_flag")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

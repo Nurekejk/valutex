@@ -54,7 +54,7 @@ final class OfferTableViewCell: UITableViewCell {
     private let starImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "star")
+        image.image = UIImage(named: "star12")
         return image
     }()
 
