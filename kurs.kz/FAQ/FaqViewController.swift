@@ -117,6 +117,7 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }
+        cell.faqSection = questions[indexPath.section]
         return cell
     }
     
@@ -129,14 +130,17 @@ extension FaqViewController: UITableViewDataSource, UITableViewDelegate {
         }
         view.section = section
         view.delegate = self
+        view.faqSection = questions[section]
+        view.backgroundConfiguration?.backgroundColor = .white
+        view.setCollapsed(questions[section].collapsed)
         return view
     }
 }
 
 extension FaqViewController: FaqTableHeaderViewDelegate {
     func toggleSection(_ header: FaqTableHeaderView, section: Int) {
-    let collapsed = !questions[section].collapsed
-    questions[section].collapsed = collapsed
-    questionsTableView.reloadData()
-  }
+        let collapsed = !questions[section].collapsed
+        questions[section].collapsed = collapsed
+        questionsTableView.reloadData()
+    }
 }
