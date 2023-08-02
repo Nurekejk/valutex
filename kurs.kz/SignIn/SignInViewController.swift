@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 import InputMask
 
 final class SignInViewController: UIViewController {
-    // MARK: - Properties
+    // MARK: - State
 
     private let service = SignInService()
     public static let defaultsIsAuthorizedKey = "isAutorized"

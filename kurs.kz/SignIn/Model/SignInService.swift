@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 
 final class SignInService {
-    private let apiUrlUserLogin = "http://77.240.38.143:4443/login"
 
     // MARK: - Network
     func signIn(phone: String,
