@@ -196,11 +196,13 @@ extension FaqViewController: FaqTableHeaderViewDelegate {
 
 extension FaqViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchQuestions = questions.filter({
-            $0.question.lowercased().contains(searchText.lowercased())
-        })
-        searching = true
-        questionsTableView.reloadData()
+        if !searchText.isEmpty {
+            searchQuestions = questions.filter({
+                $0.question.lowercased().contains(searchText.lowercased())
+            })
+            searching = true
+            questionsTableView.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

@@ -147,6 +147,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         
         if indexPath.section == SectionNumber.zero.rawValue {
@@ -191,7 +192,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 service: NationalBankPageService()),
                                                      animated: true)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     // swiftlint:enable cyclomatic_complexity
 }
