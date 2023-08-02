@@ -11,7 +11,6 @@ import SnapKit
 final class SelectLanguageViewController: UIViewController {
     
     // MARK: - UI
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -38,7 +37,9 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = AppColor.grayWhite.cgColor
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.tag = 3
         return button
     }()
 
@@ -51,7 +52,9 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = AppColor.grayWhite.cgColor
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.tag = 2
         return button
     }()
 
@@ -64,7 +67,9 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 1
         button.layer.borderColor = AppColor.grayWhite.cgColor
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.tag = 1
         return button
     }()
 
@@ -130,10 +135,24 @@ final class SelectLanguageViewController: UIViewController {
     }
 
     // MARK: - Actions
-
     @objc private func kazakhButtonDidPress() {
         let controller = MainPageViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc private func buttonTapped(_ sender: UIButton) {
+        print("Button tapped!")
+        let defaults = UserDefaults.standard
+        if sender.tag == 1 {
+            defaults.set("En", forKey: "LanguageApp")
+        } else if sender.tag == 2 {
+            defaults.set("Ru", forKey: "LanguageApp")
+        } else if sender.tag == 3 {
+            defaults.set("Kz", forKey: "LanguageApp")
+        }
+        
+        let savedDataString = defaults.string(forKey: "LanguageApp")
+        print(savedDataString ?? "0")
     }
 }
