@@ -69,8 +69,8 @@ class LanguageTableViewCell: UITableViewCell {
     public func confgireCell(language: String, isSelected: Bool) {
         
         iconImageView.image = isSelected
-        ? AppImage.selected_city.uiImage
-        : AppImage.select_city.uiImage
+            ? AppImage.selected_city.uiImage
+            : AppImage.select_city.uiImage
         
         titleLabel.text = language
     }

@@ -17,7 +17,7 @@ final class LanguageAppViewController: UIViewController {
         }
     }
     
-    private let languages: [String] = ["Русский", "Казакша", "English"]
+    private let languages: [String] = ["English", "Русский", "Казакша"]
     
     // MARK: - UI
     private lazy var tableView: UITableView = {
@@ -34,13 +34,15 @@ final class LanguageAppViewController: UIViewController {
         button.setTitle("Выбрать", for: .normal)
         button.layer.cornerRadius = 12
         button.backgroundColor = AppColor.primaryBase.uiColor
+        button.addTarget(self, action: #selector(selectButtonSaveDidPress), for: .touchUpInside)
         return button
     }()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        loadData()
         setupNavigationBar()
         setupViews()
         setupConstraits()
@@ -49,6 +51,24 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup NavigationBar
     private func setupNavigationBar() {
         title = "Язык приложения"
+    }
+    
+    // 0 0 En
+    // 0 1 RU
+    // 0 2 Kz
+
+    private func loadData() {
+        let defaults = UserDefaults.standard
+        let selectedLanguage = defaults.string(forKey: "LanguageApp")
+        
+        if selectedLanguage == "EN" {
+            selectedIndexPath = IndexPath(row: 0, section: 0)
+        } else if selectedLanguage == "RU" {
+            selectedIndexPath = IndexPath(row: 1, section: 0)
+        } else if selectedLanguage == "KZ" {
+            selectedIndexPath = IndexPath(row: 2, section: 0)
+        }
+        
     }
 
     // MARK: - Setup Views
@@ -76,6 +96,11 @@ final class LanguageAppViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
+    }
+    
+    // MARK: - Actions
+    @objc private func selectButtonSaveDidPress() {
+        
     }
 }
 
