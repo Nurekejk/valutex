@@ -15,6 +15,7 @@
 		223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C642A648DDE008FE874 /* Paddinglabel.swift */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
+		6189CFCA2A78315000175333 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6189CFC92A78315000175333 /* City.swift */; };
 		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
 		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
 		61D25BE42A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */; };
@@ -124,6 +125,7 @@
 		223C9C642A648DDE008FE874 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		6189CFC92A78315000175333 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeExchangeRateViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
 				618978042A549426009DFF0B /* CityTableViewCell.swift */,
+				6189CFC92A78315000175333 /* City.swift */,
 			);
 			path = CitySelection;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
+				6189CFCA2A78315000175333 /* City.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
