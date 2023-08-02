@@ -10,6 +10,8 @@ import WebKit
 
 final class NationalBankCourseViewController: UIViewController, WKNavigationDelegate {
     
+    private let service: NationalBankPageService
+    
     // MARK: - UI
     private lazy var webView: WKWebView = {
         let webView = WKWebView()
@@ -17,9 +19,21 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
         return webView
     }()
     
+    // MARK: - Initializers
+    init(service: NationalBankPageService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureWebView()
         setupNavigation()
         setupViews()
         setupConstraints()
