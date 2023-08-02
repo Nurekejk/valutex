@@ -49,4 +49,8 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
         }
     }
     
+    // MARK: - Actions
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
