@@ -14,7 +14,7 @@ final class CalculatorViewController: UIViewController {
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
         let headerView = CalculatorTableViewHeaderView()
-        headerView.backgroundColor = .systemGray6
+        headerView.backgroundColor = AppColor.gray10.uiColor
         return headerView
     }()
     private lazy var tableView: UITableView = {
@@ -40,7 +40,7 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Setup Views
     
     private func setupViews() {
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
     override func viewDidLayoutSubviews() {
@@ -69,9 +69,9 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
                                                  for: indexPath) as? CalculatorTableViewCell
         switch indexPath.row {
         case 0:
-            let cellData = CellData(migLogoImage: UIImage(named: "migLogo"),
+            let cellData = CellData(migLogoImage: UIImage(named: "exchange_logo"),
                                     titleLabel: "MИГ",
-                                    starImage: UIImage(named: "star"),
+                                    starImage: UIImage(named: "golden_star"),
                                     rateLabel: "4,9 (15)",
                                     addressLabel: "ул. Толе Би, 297 г, уг. ул. Тлендиева",
                                     kmLabel: "1 км",

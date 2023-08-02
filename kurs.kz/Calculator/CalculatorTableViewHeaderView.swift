@@ -16,61 +16,61 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         let view = UIView()
         return view
     }()
-    private lazy var flagImage1: UIImageView = {
+    private lazy var flagImageLeft: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "KZTflag")
+        imageView.image = AppImage.kzt_flag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private lazy var currencyLabel1: UILabel = {
+    private lazy var currencyLabelLeft: UILabel = {
         let label = UILabel()
         label.text = "KZT"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         return label
     }()
-    private lazy var dropDownButton1: UIButton = {
+    private lazy var dropDownButtonLeft: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "drop-down")
+        let iconImage = UIImage(named: "down_arrow")
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
         return button
     }()
-    private lazy var separatorLineImage1: UIImageView = {
+    private lazy var separatorLineImageLeft: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "separator-line")
+        imageView.image = AppImage.separator_line.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var arrowLeftRightButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "arrow-left-right")
+        let iconImage = UIImage(named: "arrow_left_right")
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowLeftRightButtonDidPressed),
                          for: .touchUpInside)
         return button
     }()
-    private lazy var separatorLineImage2: UIImageView = {
+    private lazy var separatorLineImageRight: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "separator-line")
+        imageView.image = AppImage.separator_line.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private lazy var flagImage2: UIImageView = {
+    private lazy var flagImageRight: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "KZTflag")
+        imageView.image = AppImage.kzt_flag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private lazy var currencyLabel2: UILabel = {
+    private lazy var currencyLabelRight: UILabel = {
         let label = UILabel()
         label.text = "KZT"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         return label
     }()
-    private lazy var dropDownButton2: UIButton = {
+    private lazy var dropDownButtonRight: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "drop-down")
+        let iconImage = UIImage(named: "down_arrow")
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
@@ -79,13 +79,13 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     private lazy var currencyTextField: UITextField = {
         let textField = UITextField()
         textField.rightViewMode = .always
-        textField.font = .systemFont(ofSize: 16)
+        textField.font = AppFont.regular.s16()
         textField.text = "500.00"
         return textField
     }()
     private lazy var clearButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "icon-clear")
+        let iconImage = UIImage(named: "cross")
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(clearButtonDidPressed),
                          for: .touchUpInside)
@@ -114,22 +114,16 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
 
     private func setupViews() {
-        [flagImage1, currencyLabel1, dropDownButton1, separatorLineImage1,
-         arrowLeftRightButton, flagImage2, currencyLabel2, dropDownButton2,
-         separatorLineImage2, currencyTextField, clearButton, borderView].forEach {
+        [flagImageLeft, currencyLabelLeft, dropDownButtonLeft, separatorLineImageLeft,
+         arrowLeftRightButton, flagImageRight, currencyLabelRight, dropDownButtonRight,
+         separatorLineImageRight, currencyTextField, clearButton, borderView].forEach {
             containerView.addSubview($0)
         }
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
         containerView.addSubview(borderView)
-        borderView.backgroundColor = backgroundGrayColor
+        borderView.backgroundColor = AppColor.gray10.uiColor
     }
 
     // MARK: - Setup Constraints
@@ -145,38 +139,38 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(45)
             make.leading.equalTo(containerView.snp.leading)
             make.trailing.equalTo(containerView.snp.trailing) }
-        flagImage1.snp.makeConstraints { make in
+        flagImageLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16) }
-        currencyLabel1.snp.makeConstraints { make in
+        currencyLabelLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.leading.equalTo(flagImage1.snp.trailing).offset(16) }
-        dropDownButton1.snp.makeConstraints { make in
+            make.leading.equalTo(flagImageLeft.snp.trailing).offset(16) }
+        dropDownButtonLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(currencyLabel1.snp.trailing).offset(16) }
-        separatorLineImage1.snp.makeConstraints { make in
+            make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16) }
+        separatorLineImageLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(dropDownButton1.snp.trailing).offset(42) }
+            make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42) }
         arrowLeftRightButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(separatorLineImage1.snp.trailing).offset(12) }
-        separatorLineImage2.snp.makeConstraints { make in
+            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12) }
+        separatorLineImageRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12) }
-        dropDownButton2.snp.makeConstraints { make in
+        dropDownButtonRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-18.5) }
-        currencyLabel2.snp.makeConstraints { make in
+        currencyLabelRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.trailing.equalTo(dropDownButton2.snp.leading).offset(-16) }
-        flagImage2.snp.makeConstraints { make in
+            make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16) }
+        flagImageRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.trailing.equalTo(currencyLabel2.snp.leading).offset(-16) }
+            make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16) }
         currencyTextField.snp.makeConstraints { make in
-            make.top.equalTo(flagImage1.snp.bottom).offset(26)
+            make.top.equalTo(flagImageLeft.snp.bottom).offset(26)
             make.leading.equalToSuperview().offset(16) }
         clearButton.snp.makeConstraints { make in
-            make.top.equalTo(flagImage1.snp.bottom).offset(26)
+            make.top.equalTo(flagImageLeft.snp.bottom).offset(26)
             make.trailing.equalToSuperview().offset(-16) }
     }
 
