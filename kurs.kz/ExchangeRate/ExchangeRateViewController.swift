@@ -14,7 +14,7 @@ final class ExchangeRateViewController: UIViewController {
     
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
         let headerView = ExchangeRateTableViewHeaderView()
-        headerView.backgroundColor = .systemGray6
+        headerView.backgroundColor = AppColor.gray10.uiColor
         return headerView
     }()
     
@@ -38,14 +38,14 @@ final class ExchangeRateViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Cохранить", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
+        button.backgroundColor = AppColor.gray10.uiColor
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     private lazy var shadowView: UIView = {
         let shadowView = UIView()
-        shadowView.backgroundColor = .white
+        shadowView.backgroundColor = AppColor.gray10.uiColor
         return shadowView
     }()
 
@@ -60,7 +60,7 @@ final class ExchangeRateViewController: UIViewController {
     // MARK: - Setup Views
     
     private func setupViews() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(headerView)
         view.addSubview(tableView)
         view.addSubview(shadowView)
@@ -109,11 +109,11 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
                                                  for: indexPath) as? ExchangeRateTableViewCell
         switch indexPath.row {
         case 0:
-            cell?.configureCell(flagImage: UIImage(named: "USDflag"),
+            cell?.configureCell(flagImage: UIImage(named: "kzt_flag"),
                                 currencyLabel: "Доллар",
                                 amountOfPurchaseTextField: "500",
                                 amountOfSaleTextField: "500",
-                                trashButton: UIImage(named: "trashButton"))
+                                trashButton: UIImage(named: "trash"))
         default:
             break
         }
