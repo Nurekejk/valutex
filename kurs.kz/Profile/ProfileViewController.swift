@@ -176,7 +176,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(ToSupportViewController(),
                                                          animated: true)
             case 8:
-                navigationController?.pushViewController(AboutCompanyViewController(),
+                navigationController?.pushViewController(AboutCompanyViewController(
+                    service: AboutCompanyPageService()),
                                                          animated: true)
             case 9:
                 navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
