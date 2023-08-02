@@ -12,9 +12,10 @@ import Alamofire
 final class SelectCityViewController: UIViewController {
     // MARK: - State
     let userDefaults = UserDefaults.standard
+    private var selectedIndex = IndexPath(row: 0, section: 0)
     private var cities: [City] = [] {
       didSet {
-          self.tableview.reloadData()
+          self.tableView.reloadData()
       }
     }
     // MARK: - Outlets
@@ -34,7 +35,7 @@ final class SelectCityViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var tableview: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
@@ -80,7 +81,7 @@ final class SelectCityViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
-        view.addSubview(tableview)
+        view.addSubview(tableView)
         view.addSubview(shadowview)
 
         shadowview.addSubview(saveButton)
@@ -102,14 +103,14 @@ final class SelectCityViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
-        tableview.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(1)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-118)
         }
         shadowview.snp.makeConstraints { make in
-            make.top.equalTo(tableview.snp.bottom)
+            make.top.equalTo(tableView.snp.bottom)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -150,6 +151,13 @@ final class SelectCityViewController: UIViewController {
     }
     // MARK: - Action
     @objc private func saveButtonDidPressed() {
+        let selectedCity = cities[selectedIndex.row]
+        if let data = try? JSONEncoder().encode(selectedCity) {
+            userDefaults.setValue(data, forKey: "selectedCity")
+            tableView.reloadData()
+        } else {
+            print("error while encoding")
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -169,28 +177,19 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
         if let data = userDefaults.data(forKey: "selectedCity") {
             do {
                 let fetchedCity = try JSONDecoder().decode(City.self, from: data)
-                cell?.configureCell(name: city.name_rus, isSelected: fetchedCity.name_rus == city.name_rus)
-
+                cell?.configureCell(name: city.name_rus, isSelected: fetchedCity.id == city.id)
             } catch {
                 print("error while decoding")
             }
-            
+        } else {
+            cell?.configureCell(name: city.name_rus, isSelected: selectedIndex == indexPath)
         }
 
         return cell ?? UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCity = cities[indexPath.row]
-
-        if let data = try? JSONEncoder().encode(selectedCity) {
-            print(data)
-            userDefaults.setValue(data, forKey: "selectedCity")
-            tableview.reloadData()
-        } else {
-            print("error while encoding")
-
-        }
-
+        selectedIndex = indexPath
+//        tableView.reloadData()
     }
 }
