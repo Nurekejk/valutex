@@ -56,4 +56,6 @@ enum AppImage: String, AppImageProtocol {
     case separator_line = "separator_line"
     case arrow_left_right = "arrow_left_right"
     case cross = "cross"
+    case filter_down = "filter_down"
+    case filter_up = "filter_up"
 }
