@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import SnapKit
+import Alamofire
 
 final class SelectCityViewController: UIViewController {
-
+    // MARK: - State
+    let userDefaults = UserDefaults.standard
+    private var selectedCityID = 0
+    private var cities: [City] = [] {
+      didSet {
+          self.tableView.reloadData()
+      }
+    }
     // MARK: - Outlets
-
     private let textField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -27,22 +35,24 @@ final class SelectCityViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var tableview: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 8
         return tableView
     }()
 
-    private let button: UIButton = {
+    private lazy var  saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.tintColor = .white
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
+        button.addTarget(self, action: #selector(saveButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -53,22 +63,44 @@ final class SelectCityViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupViews()
         setupConctraints()
+
+        fetchCities()
+        getSelectedCity()
+    }
+
+    // MARK: - Load Data
+
+    private func getSelectedCity() {
+        if let data = userDefaults.data(forKey: "selectedCity") {
+            do {
+                let selectedCity = try JSONDecoder().decode(City.self, from: data)
+                selectedCityID = selectedCity.id
+            } catch let error {
+                print("error while decoding \(error)")
+            }
+        }
+
+        tableView.reloadData()
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Город"
     }
 
     // MARK: - Setup
-
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(textField)
-        view.addSubview(tableview)
+        view.addSubview(tableView)
         view.addSubview(shadowview)
 
-        shadowview.addSubview(button)
+        shadowview.addSubview(saveButton)
         textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
 
@@ -87,40 +119,82 @@ final class SelectCityViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
-        tableview.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(1)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-118)
         }
         shadowview.snp.makeConstraints { make in
-            make.top.equalTo(tableview.snp.bottom)
+            make.top.equalTo(tableView.snp.bottom)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(112)
         }
-        button.snp.makeConstraints { make in
+        saveButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
         }
     }
+
+    // MARK: - Network
+    private func fetchCities() {
+
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "http"
+        urlComponent.host = "77.240.38.143"
+        urlComponent.port = 4443
+        urlComponent.path = "/cities_list"
+
+        guard let url = urlComponent.url else {
+            return
+        }
+
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: [City].self) { data in
+                switch data.result {
+                case .success(let fetchedCities):
+                    self.cities = fetchedCities
+                case .failure(let error):
+                    print(error)
+                }
+            }
+
+    }
+    // MARK: - Action
+    @objc private func saveButtonDidPressed() {
+        let selectedCity = cities.first { $0.id == selectedCityID }
+        if let data = try? JSONEncoder().encode(selectedCity) {
+            userDefaults.setValue(data, forKey: "selectedCity")
+        } else {
+            print("error while encoding")
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate
-
-extension SelectCityViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        15
+        return cities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let selectedView = UIView()
-        selectedView.backgroundColor = UIColor.white
-        cell.selectedBackgroundView = selectedView
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                         for: indexPath) as? CityTableViewCell
+        let city = cities[indexPath.row]
+        cell?.configureCell(name: city.name_rus, isSelected: city.id == selectedCityID)
+        return cell ?? UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = cities[indexPath.row]
+        selectedCityID = city.id
+        tableView.reloadData()
     }
 }

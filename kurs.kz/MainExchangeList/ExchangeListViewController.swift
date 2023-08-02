@@ -108,6 +108,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "calculator_button"), for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
+        button.addTarget(self, action: #selector(calculatorButtonDidPresss), for: .touchUpInside)
         return button
     }()
     
@@ -115,6 +116,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "pin_button"), for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
+        button.addTarget(self, action: #selector(selectCityDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -149,6 +151,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "map_button"), for: .normal)
         button.scalesLargeContentImage = true
+        button.addTarget(self, action: #selector(mapButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -270,6 +273,18 @@ final class ExchangeListViewController: UIViewController {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
+    }
+    
+    @objc private func calculatorButtonDidPresss() {
+        self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
+    }
+    
+    @objc private func selectCityDidPress() {
+        self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
+    }
+    
+    @objc private func mapButtonDidPress() {
+        self.navigationController?.pushViewController(MapViewController(), animated: true)
     }
 }
 

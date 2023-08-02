@@ -15,7 +15,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI
     private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "avatar"))
+        let imageView = UIImageView(image: AppImage.avatar.uiImage)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -23,9 +23,9 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Aidos Tazhigulov"
+        label.font = AppFont.bold.s20()
+        label.textColor = AppColor.gray100.uiColor
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor(named: "fullNameColor")
         return label
     }()
     
@@ -33,8 +33,8 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "+7(707) 303-22-00"
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(named: "phoneNumberColor")
+        label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
@@ -43,7 +43,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
-        stackView.spacing = 0
+        stackView.spacing = 16
         return stackView
     }()
     
@@ -73,8 +73,8 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         userInformationStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(24)
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(94)
-            make.trailing.equalToSuperview().offset(-94)
+            make.leading.equalToSuperview().offset(90)
+            make.trailing.equalToSuperview().offset(-90)
             make.height.equalTo(148)
         }
         
