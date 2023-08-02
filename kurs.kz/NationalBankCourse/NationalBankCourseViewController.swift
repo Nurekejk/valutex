@@ -39,6 +39,21 @@ final class NationalBankCourseViewController: UIViewController, WKNavigationDele
         setupConstraints()
     }
     
+    private func configureWebView() {
+        service.fetchNationalBankUrl { result in
+            switch result {
+            case .success(let nationalBankUrl):
+                guard let url = URL(string: nationalBankUrl.url) else {
+                    fatalError("URL error!")
+                }
+                self.webView.load(URLRequest(url: url))
+                self.webView.allowsBackForwardNavigationGestures = true
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Setup Navigation Bar
     private func setupNavigation() {
         self.title = "Курс Национального Банка"
