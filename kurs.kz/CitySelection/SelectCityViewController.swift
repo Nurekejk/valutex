@@ -13,11 +13,13 @@ final class SelectCityViewController: UIViewController {
 
     // MARK: - State
 
-      private var cities: [City] = [] {
-          didSet {
-              self.tableview.reloadData()
-          }
+    private var cities: [City] = [] {
+      didSet {
+          self.tableview.reloadData()
       }
+    }
+    let userDefaults = UserDefaults.standard
+    var selectedCity: String?
     // MARK: - Outlets
     private let textField: UITextField = {
         let textField = UITextField()
@@ -44,13 +46,14 @@ final class SelectCityViewController: UIViewController {
         return tableView
     }()
 
-    private let button: UIButton = {
+    private lazy var  saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать", for: .normal)
         button.tintColor = .white
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
+        button.addTarget(self, action: #selector(saveButtonDidPressed), for: .touchUpInside)
         return button
     }()
 
@@ -82,7 +85,7 @@ final class SelectCityViewController: UIViewController {
         view.addSubview(tableview)
         view.addSubview(shadowview)
 
-        shadowview.addSubview(button)
+        shadowview.addSubview(saveButton)
         textField.addSubview(imageView)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
 
@@ -114,7 +117,7 @@ final class SelectCityViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.height.equalTo(112)
         }
-        button.snp.makeConstraints { make in
+        saveButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
@@ -148,10 +151,24 @@ final class SelectCityViewController: UIViewController {
             }
 
     }
+    // MARK: - Action
+
+    @objc private func saveButtonDidPressed() {
+        if let selectedIndexPath = tableview.indexPathForSelectedRow {
+
+            if let data = try? JSONEncoder().encode(selectedCity) {
+                userDefaults.setValue(data, forKey: "selectedCity")
+                    } else {
+                        print("error while encoding")
+                    }
+            self.navigationController?.pushViewController(MainPageViewController(), animated: true)
+        }
+    }
+
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate
-extension SelectCityViewController: UITableViewDataSource {
+extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
@@ -160,7 +177,20 @@ extension SelectCityViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                          for: indexPath) as? CityTableViewCell
         let city = cities[indexPath.row]
-        cell?.configreCell(name: city.name_rus)
+        cell?.configureCell(name: city.name_rus)
+        if let data = userDefaults.data(forKey: "selectedCity") {
+            do {
+                let data = try JSONDecoder().decode(Currency.self, from: data)
+                cell?.isSelected = (city.name_rus == data.russianName)
+            } catch {
+                print("error while decoding")
+            }
+}
         return cell ?? UITableViewCell()
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCity = cities[indexPath.row].name_rus
+    }
+
 }

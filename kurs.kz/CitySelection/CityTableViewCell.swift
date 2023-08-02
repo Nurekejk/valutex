@@ -64,7 +64,7 @@ final class CityTableViewCell: UITableViewCell {
 
     // MARK: - Public
 
-     public func configreCell(name: String) {
+     public func configureCell(name: String) {
          self.label.text = name
      }
 }
