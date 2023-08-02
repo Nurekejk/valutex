@@ -167,29 +167,28 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                          for: indexPath) as? CityTableViewCell
         let city = cities[indexPath.row]
-        print("Asdasdasd")
+
         if let data = userDefaults.data(forKey: "selectedCity") {
-            print("data2: \(data)")
             do {
                 let fetchedCity = try JSONDecoder().decode(City.self, from: data)
-                print("fetchedCity: \(fetchedCity)")
-                cell?.isSelected = fetchedCity.name_rus == city.name_rus
+                cell?.configureCell(name: city.name_rus, isSelected: fetchedCity.name_rus == city.name_rus)
+
             } catch {
                 print("error while decoding")
             }
             
         }
-        cell?.configureCell(name: city.name_rus)
+
         return cell ?? UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCity = cities[indexPath.row]
-        print("sadsadads")
+
         if let data = try? JSONEncoder().encode(selectedCity) {
             print(data)
             userDefaults.setValue(data, forKey: "selectedCity")
-
+            tableview.reloadData()
         } else {
             print("error while encoding")
 
