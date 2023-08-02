@@ -124,7 +124,6 @@ final class SelectCityViewController: UIViewController {
     }
 
     // MARK: - Network
-
     private func fetchCities() {
 
         var urlComponent = URLComponents()
@@ -150,14 +149,13 @@ final class SelectCityViewController: UIViewController {
 
     }
     // MARK: - Action
-
     @objc private func saveButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
     }
 
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
@@ -195,5 +193,4 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
     }
-
 }
