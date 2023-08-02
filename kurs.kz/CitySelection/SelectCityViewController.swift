@@ -152,7 +152,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - Action
 
     @objc private func saveButtonDidPressed() {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
