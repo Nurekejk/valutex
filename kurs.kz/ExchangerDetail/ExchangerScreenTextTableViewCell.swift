@@ -11,11 +11,9 @@ import SnapKit
 final class ExchangerScreenTextTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    
-    public static var reuseIdentifier = String(describing: ExchangerScreenTextTableViewCell.self)
+    static var reuseIdentifier = String(describing: ExchangerScreenTextTableViewCell.self)
     
     // MARK: - UI
-    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -50,8 +48,8 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var subTitleLabelTwo: UILabel = {
-        let label = UILabel()
+    private lazy var subTitleLabelTwo: PaddingLabel = {
+        let label = PaddingLabel()
         label.textColor = AppColor.statusSuccess.uiColor
         label.text = "Круглосуточно"
         label.font = AppFont.regular.s12()
@@ -76,8 +74,7 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - Initialization
-    
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -90,28 +87,23 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
     }
     
     // MARK: - Lifecycle
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         containerView.layer.cornerRadius = 8
         subTitleLabelTwo.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
-    
     private func setupViews() {
         [titleLabel, subTitleLabel, subTitleLabelTwo, starImageView, ratingLabel].forEach {
             containerView.addSubview($0)
         }
-        
         contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
     
     // MARK: - Setup Constraints
-    
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -123,13 +115,13 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(300)
         }
-           
+        
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(216)
         }
-           
+        
         subTitleLabelTwo.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
             make.leading.equalTo(titleLabel)
