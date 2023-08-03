@@ -14,25 +14,36 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     var delegate: TableViewHeaderDelegate?
     var section: Int = 0
     
+    var detailSection: Section? {
+        didSet {
+            iconImageView.image = detailSection?.iconImage
+            titleLabel.text = detailSection?.name
+        }
+    }
+    
     // MARK: - UI
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = AppImage.call.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     public lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .black
+        titleLabel.textColor = AppColor.gray100.uiColor
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "Label"
+        titleLabel.font = AppFont.regular.s14()
         return titleLabel
     }()
     
-    public lazy var arrowLabel: UILabel = {
-        let arrowLabel = UILabel()
-        arrowLabel.textColor = .black
-        arrowLabel.translatesAutoresizingMaskIntoConstraints = false
-        return arrowLabel
+    public lazy var arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = AppImage.arrow_down_collapse.uiImage
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     // MARK: - Life Cycle
@@ -54,7 +65,7 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     private func setupViews() {
         contentView.backgroundColor = .white
         
-        [iconImageView, titleLabel, arrowLabel].forEach {
+        [iconImageView, titleLabel, arrowImageView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -63,15 +74,20 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     private func setupConstraints() {
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
-            make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(24)
-            make.width.equalTo(24)
+            make.leading.equalToSuperview().offset(15)
+            make.size.equalTo(24)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
+            make.centerY.equalToSuperview()
             make.leading.equalTo(iconImageView.snp.trailing).offset(16)
             make.height.equalTo(18)
+        }
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-16)
+            make.size.equalTo(16)
         }
     }
     
@@ -80,15 +96,14 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
         guard let cell = gestureRecognizer.view as? DetailTableViewHeader else {
             return
         }
-        
         delegate?.toggleSection(self, section: cell.section)
     }
     
     func setCollapsed(_ collapsed: Bool) {
         if collapsed {
-            iconImageView.image = AppImage.arrow_down_collapse.uiImage
+            arrowImageView.image = AppImage.arrow_down_collapse.uiImage
         } else {
-            iconImageView.image = AppImage.arrow_up_collapse.uiImage
+            arrowImageView.image = AppImage.arrow_up_collapse.uiImage
         }
     }
 }
