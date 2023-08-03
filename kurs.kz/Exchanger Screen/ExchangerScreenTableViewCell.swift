@@ -60,13 +60,8 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         [cellImageView, buttonImageView].forEach {
             containerView.addSubview($0)
         }
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
         
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
@@ -75,7 +70,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 16, bottom: 8, right: 16))
+            make.edges.equalToSuperview()
             make.width.equalTo(343)
             make.height.equalTo(117)
            }
