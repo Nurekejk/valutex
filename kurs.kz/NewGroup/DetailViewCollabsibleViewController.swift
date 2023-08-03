@@ -29,7 +29,15 @@ final class DetailViewCollabsibleViewController: UIViewController {
         return tableView
     }()
     
-    // MARK: - Life Cycle
+    // MARK: - Initializers
+    init(service: DetailPageService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
