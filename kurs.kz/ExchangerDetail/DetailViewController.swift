@@ -84,6 +84,15 @@ final class DetailViewController: UIViewController {
                         style: .plain,
                         target: self,
                         action: #selector(backButtonDidPressed))
+        let callButton = UIBarButtonItem(image: AppImage.call_image.uiImage,
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(callButtonDidPressed))
+        let shareButton = UIBarButtonItem(image: AppImage.share_image.uiImage,
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(shareButtonDidPressed))
+        navigationItem.rightBarButtonItems = [shareButton, callButton]
     }
     
     // MARK: - Setup Views
@@ -103,8 +112,7 @@ final class DetailViewController: UIViewController {
         }
         
         exchangerDetailsTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
-            make.leading.equalToSuperview().offset(16)
+            make.top.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
         }
@@ -205,15 +213,34 @@ final class DetailViewController: UIViewController {
             self.sections.append($0)
         }
     }
-    // swiftlint:enable all
     
-    private func convertDate(dateString: String) -> String {
+    private func getHoursString(dateString: String) -> String {
         let start = dateString.index(dateString.startIndex, offsetBy: 11)
         let end = dateString.index(dateString.endIndex, offsetBy: -3)
         let range = start..<end
-
         let timeString = dateString[range]
         return String(timeString)
+    }
+    
+    // MARK: - Actions
+    @objc private func callButtonDidPressed() {
+        let alert = UIAlertController(title: "Вы нажали на кнопку позвонить.",
+                                      message: "",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func shareButtonDidPressed() {
+        let alert = UIAlertController(title: "Вы нажали на кнопку поделиться.",
+                                      message: "",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
