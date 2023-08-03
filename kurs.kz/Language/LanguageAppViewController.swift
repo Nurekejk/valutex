@@ -35,7 +35,7 @@ final class LanguageAppViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.addTarget(LanguageAppViewController.self,
-                         action: #selector(selectButtonSaveDidPress),
+                         action: #selector(selectButtonDidPress),
                          for: .touchUpInside)
         return button
     }()
@@ -97,14 +97,14 @@ final class LanguageAppViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func selectButtonSaveDidPress() {
+    @objc private func selectButtonDidPress() {
         let defaults = UserDefaults.standard
         if selectedLanguage == Language.kazakh {
-            defaults.set("KZ", forKey: "AppLanguageChanged")
+            defaults.set("KZ", forKey: "LanguageApp")
         } else if selectedLanguage == Language.russian {
-            defaults.set("RU", forKey: "AppLanguageChanged")
+            defaults.set("RU", forKey: "LanguageApp")
         } else if selectedLanguage == Language.english {
-            defaults.set("EN", forKey: "AppLanguageChanged")
+            defaults.set("EN", forKey: "LanguageApp")
         }
     }
 }
