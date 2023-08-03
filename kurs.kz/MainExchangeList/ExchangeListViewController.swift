@@ -106,7 +106,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var calculatorButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "calculator_button"), for: .normal)
+        button.setImage(AppImage.calculator_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         button.addTarget(self, action: #selector(calculatorButtonDidPresss), for: .touchUpInside)
         return button
@@ -114,7 +114,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "pin_button"), for: .normal)
+        button.setImage(AppImage.pin_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         button.addTarget(self, action: #selector(selectCityDidPress), for: .touchUpInside)
         return button
@@ -122,7 +122,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "main_filter"), for: .normal)
+        button.setImage(AppImage.main_filter.uiImage, for: .normal)
         return button
     }()
     
@@ -149,7 +149,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var mapButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "map_button"), for: .normal)
+        button.setImage(AppImage.map_button.uiImage, for: .normal)
         button.scalesLargeContentImage = true
         button.addTarget(self, action: #selector(mapButtonDidPress), for: .touchUpInside)
         return button

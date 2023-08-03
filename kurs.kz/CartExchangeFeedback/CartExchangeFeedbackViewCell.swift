@@ -10,11 +10,14 @@ import SnapKit
 
 final class CartExchangeFeedbackViewCell: UITableViewCell {
     
+    // MARK: - Public
+    public static var reuseID = String(describing: CartExchangeFeedbackViewCell.self)
+    
     // MARK: - UI
     private let iconImageView: UIImageView = {
         let iconImage = UIImageView()
         iconImage.contentMode = .scaleToFill
-        iconImage.image = UIImage(named: "sms")
+        iconImage.image = AppImage.sms.uiImage
         return iconImage
     }()
     
@@ -28,7 +31,7 @@ final class CartExchangeFeedbackViewCell: UITableViewCell {
     private let secondIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "arrowDown")
+        imageView.image = AppImage.arrowDown.uiImage
         return imageView
     }()
     

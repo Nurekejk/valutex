@@ -62,7 +62,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "star12")
+        imageView.image = AppImage.star12.uiImage
         return imageView
     }()
     

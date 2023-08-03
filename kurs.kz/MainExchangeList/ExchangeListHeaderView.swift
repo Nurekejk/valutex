@@ -29,12 +29,12 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
     }()
     private let upDownFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "up_down_filter"), for: .normal)
+        button.setImage(AppImage.up_down_filter.uiImage, for: .normal)
         return button
     }()
     private let downUpFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "down_up_filter"), for: .normal)
+        button.setImage(AppImage.down_up_filter.uiImage, for: .normal)
         return button
     }()
     

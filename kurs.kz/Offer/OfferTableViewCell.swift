@@ -47,42 +47,42 @@ final class OfferTableViewCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Som Exchange"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
         return label
     }()
 
     private let starImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "star12")
+        image.image = AppImage.star12.uiImage
         return image
     }()
 
     private let ratingLabel: UILabel = {
         let label = UILabel()
         label.text = "5 (15)"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.regular.s12()
         return label
     }()
 
     private let locationLabel: UILabel = {
         let label = UILabel()
         label.text = "г.Алматы, ул. Ауэзова 14"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
         return label
     }()
 
     private let distanceLabel: UILabel = {
         let label = UILabel()
         label.text = "(1 км)"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
         return label
     }()
 
     private let exchangeRateLabel: UILabel = {
         let label = UILabel()
         label.text = "505 ₸"
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.font = AppFont.semibold.s14()
         return label
     }()
 
@@ -91,7 +91,7 @@ final class OfferTableViewCell: UITableViewCell {
         button.setTitle("Отклонить", for: .normal)
         button.tintColor = .red
         button.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1.0)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s14()
         return button
     }()
 
@@ -100,7 +100,7 @@ final class OfferTableViewCell: UITableViewCell {
         button.setTitle("Принять", for: .normal)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s14()
         return button
     }()
 

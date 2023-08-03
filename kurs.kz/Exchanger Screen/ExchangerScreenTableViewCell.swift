@@ -11,11 +11,9 @@ import SnapKit
 final class ExchangerScreenTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    
     public static var reuseIdentifier = String(describing: ExchangerScreenTableViewCell.self)
     
     // MARK: - UI
-    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -25,14 +23,13 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "exchanger_screen")
+        imageView.image = AppImage.exchanger_screen.uiImage
         return imageView
     }()
     
     private lazy var buttonImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "")
         return imageView
     }()
     
@@ -55,7 +52,6 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Views
-    
     private func setupViews() {
         [cellImageView, buttonImageView].forEach {
             containerView.addSubview($0)
@@ -72,7 +68,6 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Constraints
-    
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 16, bottom: 8, right: 16))

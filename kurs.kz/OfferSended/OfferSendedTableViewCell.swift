@@ -24,7 +24,7 @@ final class OfferSendedTableViewCell: UITableViewCell {
     private let ministarsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "star12")
+        imageView.image = AppImage.star12.uiImage
         return imageView
     }()
     

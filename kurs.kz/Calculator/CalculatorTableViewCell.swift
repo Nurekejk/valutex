@@ -35,45 +35,45 @@ final class CalculatorTableViewCell: UITableViewCell {
     }()
     private lazy var migLogoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "migLogo")
+        imageView.image = AppImage.migLogo.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "MИГ"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
         return label
     }()
     private lazy var starImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "star")
+        imageView.image = AppImage.star12.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var rateLabel: UILabel = {
         let label = UILabel()
         label.text = "4,9 (15)"
-        label.font = .systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
         label.textColor = UIColor.lightGray
         return label
     }()
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.text = "ул. Толе Би, 297 г, уг. ул. Тлендиева"
-        label.font = .systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
         return label
     }()
     private lazy var kmLabel: UILabel = {
         let label = UILabel()
         label.text = "1 км"
-        label.font = .systemFont(ofSize: 10)
+        label.font =  AppFont.regular.s10()
         return label
     }()
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = "1 октября, 2023 18:00:00"
-        label.font = .systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
         label.textColor = UIColor.lightGray
         label.textAlignment = .left
         return label
@@ -81,7 +81,7 @@ final class CalculatorTableViewCell: UITableViewCell {
     private lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.text = "1000,01"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font =  AppFont.bold.s16()
         return label
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
