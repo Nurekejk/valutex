@@ -16,7 +16,7 @@ class DetailViewCollabsibleViewController: UIViewController {
     
     // MARK: - UI
     private lazy var collabsibleTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TableViewHeader.self,
@@ -60,6 +60,7 @@ class DetailViewCollabsibleViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -113,5 +114,6 @@ extension DetailViewCollabsibleViewController: TableViewHeaderDelegate {
         let collapsed = !sections[section].collapsed
         sections[section].collapsed = collapsed
         header.setCollapsed(collapsed)
+        collabsibleTableView.reloadData()
     }
 }
