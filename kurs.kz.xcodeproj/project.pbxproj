@@ -420,7 +420,7 @@
 			path = OfferSended;
 			sourceTree = "<group>";
 		};
-		8FE341D42A7AD39400A72212 /* NewGroup */ = {
+		8FE341D42A7AD39400A72212 /* ExchangerDetail */ = {
 			isa = PBXGroup;
 			children = (
 				9979C5E82A7BE0650055B2DE /* Model */,
@@ -429,7 +429,7 @@
 				8FE341DD2A7AD69D00A72212 /* DetailTableViewCell.swift */,
 				8FE341DF2A7AD8BB00A72212 /* CollapsibleTableViewHeaderDelegate.swift */,
 			);
-			path = NewGroup;
+			path = ExchangerDetail;
 			sourceTree = "<group>";
 		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
@@ -610,7 +610,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
-				8FE341D42A7AD39400A72212 /* NewGroup */,
+				8FE341D42A7AD39400A72212 /* ExchangerDetail */,
 				8F21A4B52A6BBD32000013FA /* DetailView */,
 				8F816F072A76B55000AF4BA9 /* Calculator */,
 				8FCA83242A712256003CD865 /* OfferSended */,
