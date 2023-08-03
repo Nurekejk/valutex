@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+final class DetailTableViewCell: UITableViewCell {
     
     // MARK: - State
-    static let reuseID = String(describing: TableViewCell.self)
+    static let reuseID = String(describing: DetailTableViewCell.self)
     
     // MARK: - UI
     let nameLabel = UILabel()

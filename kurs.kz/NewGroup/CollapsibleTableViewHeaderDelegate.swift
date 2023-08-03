@@ -9,5 +9,5 @@ import UIKit
 import CollapsibleTableSectionViewController
 
 protocol CollapsibleTableViewHeaderDelegate: AnyObject {
-    func toggleSection(_ header: TableViewHeader, section: Int)
+    func toggleSection(_ header: DetailTableViewHeader, section: Int)
 }

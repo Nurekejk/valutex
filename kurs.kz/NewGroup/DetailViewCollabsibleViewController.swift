@@ -9,18 +9,39 @@ import UIKit
 import SnapKit
 import CollapsibleTableSectionViewController
 
-// MARK: - View Controller
-class DetailViewCollabsibleViewController: UIViewController {
+final class DetailViewCollabsibleViewController: UIViewController {
  
-    var sections = sectionsData
+    public var sectionsData: [Section] = [
+        Section(name: "Телефон", iconImage: UIImage(named: "phone"),
+                items: [
+                    Item(name: "+7-701-476-99-99"),
+                    Item(name: "+7-701-476-99-99 ")
+                ]),
+        Section(name: "Время работы", iconImage: UIImage(named: "clock"),
+                items: [
+                    Item(name: "Пн - 09:00 - 21:00"),
+                    Item(name: "Вт - 09:00 - 21:00"),
+                    Item(name: "Ср - 09:00 - 21:00"),
+                    Item(name: "Чт - 09:00 - 21:00"),
+                    Item(name: "Пт - 09:00 - 21:00"),
+                    Item(name: "Сб -  выходной"),
+                    Item(name: "Вс -  выходной")
+                ]),
+        Section(name: "Email", iconImage: UIImage(named: "whatsapp"),
+                items: [
+                    Item(name: "mail@mail.ru")
+                ])
+    ]
+
+    var sections = [Section]()
     
     // MARK: - UI
-    private lazy var collabsibleTableView: UITableView = {
+    private lazy var exchangerDetailsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TableViewHeader.self,
-                           forHeaderFooterViewReuseIdentifier: TableViewHeader.reuseID)
+        tableView.register(DetailTableViewHeader.self,
+                           forHeaderFooterViewReuseIdentifier: DetailTableViewHeader.reuseID)
         tableView.register(TableViewCell.self,
                            forCellReuseIdentifier: TableViewCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,20 +60,20 @@ class DetailViewCollabsibleViewController: UIViewController {
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
-        self.view.backgroundColor = AppColor.gray10.uiColor
         title = "Apple"
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        [collabsibleTableView].forEach {
+        self.view.backgroundColor = AppColor.gray10.uiColor
+        [exchangerDetailsTableView].forEach {
             view.addSubview($0)
         }
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        collabsibleTableView.snp.makeConstraints { make in
+        exchangerDetailsTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
@@ -87,8 +108,8 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    TableViewHeader.reuseID)
-                as? TableViewHeader
+                                                                    DetailTableViewHeader.reuseID)
+                as? DetailTableViewHeader
         else {
             fatalError("Could not cast to FaqQuestionTableHeaderView")
         }
@@ -109,10 +130,10 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
 }
 
 extension DetailViewCollabsibleViewController: TableViewHeaderDelegate {
-    func toggleSection(_ header: TableViewHeader, section: Int) {
+    func toggleSection(_ header: DetailTableViewHeader, section: Int) {
         let collapsed = !sections[section].collapsed
         sections[section].collapsed = collapsed
         header.setCollapsed(collapsed)
-        collabsibleTableView.reloadData()
+        exchangerDetailsTableView.reloadData()
     }
 }

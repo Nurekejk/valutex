@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TableViewHeader: UITableViewHeaderFooterView {
+final class DetailTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - State
-    static let reuseID = String(describing: TableViewHeader.self)
+    static let reuseID = String(describing: DetailTableViewHeader.self)
     var delegate: TableViewHeaderDelegate?
     var section: Int = 0
     
@@ -43,7 +43,7 @@ class TableViewHeader: UITableViewHeaderFooterView {
         setupConstraints()
         addGestureRecognizer(
             UITapGestureRecognizer(target: self,
-                                   action: #selector(TableViewHeader.tapHeader(_:))))
+                                   action: #selector(DetailTableViewHeader.tapHeader(_:))))
     }
     
     required init?(coder: NSCoder) {
@@ -77,7 +77,7 @@ class TableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Actions
     @objc func tapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
-        guard let cell = gestureRecognizer.view as? TableViewHeader else {
+        guard let cell = gestureRecognizer.view as? DetailTableViewHeader else {
             return
         }
         
@@ -95,6 +95,6 @@ class TableViewHeader: UITableViewHeaderFooterView {
 // swiftlint:disable all
 // MARK: - FaqTableHeaderViewDelegate Protocol
 protocol TableViewHeaderDelegate: DetailViewCollabsibleViewController {
-    func toggleSection(_ header: TableViewHeader, section: Int)
+    func toggleSection(_ header: DetailTableViewHeader, section: Int)
 }
 // swiftlint:enable all
