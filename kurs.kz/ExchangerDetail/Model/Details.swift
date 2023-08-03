@@ -26,7 +26,6 @@ struct Details: Codable {
     }
 }
 
-// MARK: - Schedule
 struct Schedule: Codable {
     let from, to: String
 }
