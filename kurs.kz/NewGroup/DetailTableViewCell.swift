@@ -13,7 +13,12 @@ final class DetailTableViewCell: UITableViewCell {
     static let reuseID = String(describing: DetailTableViewCell.self)
     
     // MARK: - UI
-    let nameLabel = UILabel()
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = AppFont.medium.s14()
+        label.textAlignment = .left
+        return label
+    }()
     
     // MARK: Initalizers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,9 +40,8 @@ final class DetailTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(18)
+            make.top.leading.equalToSuperview().offset(16)
+            make.bottom.trailing.equalToSuperview().offset(-16)
         }
     }
 }
