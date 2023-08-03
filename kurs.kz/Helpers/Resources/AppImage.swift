@@ -69,4 +69,5 @@ enum AppImage: String, AppImageProtocol {
     case arrow_right = "arrow-right"
     case new_message = "new-message"
     case avatar = "avatar"
+    case star12 = "star12"
 }

@@ -28,7 +28,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     private lazy var starImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "star12")
+        imageView.image = AppImage.star12
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
