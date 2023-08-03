@@ -27,9 +27,18 @@ final class DetailViewController: UIViewController {
                            forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
         tableView.register(ExchangerScreenTextTableViewCell.self,
                            forCellReuseIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier)
+        tableView.register(CurrencyInformationTableHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: CurrencyInformationTableHeaderView.reuseID)
+        tableView.register(CurrencyInformationTableViewCell.self,
+                           forCellReuseIdentifier: CurrencyInformationTableViewCell.reuseIdentifier)
+        tableView.register(CurrencyInformationTableFooterView.self,
+                           forHeaderFooterViewReuseIdentifier: CurrencyInformationTableFooterView.reuseID)
+        tableView.register(FeedbackTableViewCell.self,
+                           forCellReuseIdentifier: FeedbackTableViewCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
@@ -189,21 +198,22 @@ final class DetailViewController: UIViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count + 2
+        return sections.count + 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section < SectionNumber.two.rawValue {
+        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
             return 1
+        } else if section == SectionNumber.two.rawValue {
+            return currencies.count
         }
-        return sections[section-2].collapsed ? 0 : sections[section-2].items.count
+        return sections[section - 4].collapsed ? 0 : sections[section - 4].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0:
+        case SectionNumber.zero.rawValue:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ExchangerScreenTableViewCell.reuseIdentifier,
                 for: indexPath) as? ExchangerScreenTableViewCell
@@ -211,12 +221,29 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 fatalError("Could not cast to ExchangerScreenTableViewCell")
             }
             return cell
-        case 1:
+        case SectionNumber.one.rawValue:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier,
                 for: indexPath) as? ExchangerScreenTextTableViewCell
             else {
                 fatalError("Could not cast to ExchangerScreenTextTableViewCell")
+            }
+            return cell
+        case SectionNumber.two.rawValue:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CurrencyInformationTableViewCell.reuseIdentifier,
+                for: indexPath) as? CurrencyInformationTableViewCell
+            else {
+                fatalError("Could not cast to CurrencyInformationTableViewCell")
+            }
+            cell.currency = currencies[indexPath.row]
+            return cell
+        case SectionNumber.three.rawValue:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: FeedbackTableViewCell.reuseID,
+                for: indexPath) as? FeedbackTableViewCell
+            else {
+                fatalError("Could not cast to FeedbackTableViewCell")
             }
             return cell
         default:
@@ -225,53 +252,86 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             else {
                 fatalError("Could not cast to DetailTableViewCell")
             }
-            let item = sections[indexPath.section-2].items[indexPath.row]
+            let item = sections[indexPath.section - 4].items[indexPath.row]
             cell.nameLabel.text = item
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section < SectionNumber.two.rawValue {
+        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
             return UIView()
+        } else if section == SectionNumber.two.rawValue {
+            guard let header = tableView.dequeueReusableHeaderFooterView(
+                withIdentifier: CurrencyInformationTableHeaderView.reuseID)
+                    as? CurrencyInformationTableHeaderView
+            else {
+                fatalError("Could not cast to CurrencyInformationTableHeaderView")
+            }
+            return header
         }
         
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                                                         DetailTableViewHeader.reuseID)
-                as? DetailTableViewHeader
+                                                                        as? DetailTableViewHeader
         else {
-            fatalError("Could not cast to FaqQuestionTableHeaderView")
+            fatalError("Could not cast to DetailTableViewHeader")
         }
-        
-        header.titleLabel.text = sections[section-2].name
-        header.setCollapsed(sections[section-2].collapsed)
-        
+        header.titleLabel.text = sections[section - 4].name
+        header.setCollapsed(sections[section - 4].collapsed)
         header.section = section
-        header.detailSection = sections[section-2]
+        header.detailSection = sections[section - 4]
         header.delegate = self
-        
         return header
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section < SectionNumber.two.rawValue ? 0 : 54
+        if section < SectionNumber.two.rawValue {
+            return 0
+        } else if section == SectionNumber.three.rawValue {
+            return 16
+        } else if section == SectionNumber.two.rawValue {
+            return 36
+        }
+        return 54
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == SectionNumber.two.rawValue {
+            guard let footer = tableView.dequeueReusableHeaderFooterView(
+                withIdentifier: CurrencyInformationTableFooterView.reuseID)
+                    as? CurrencyInformationTableFooterView
+            else {
+                fatalError("Could not cast to CurrencyInformationTableFooterView")
+            }
+            return footer
+        }
         return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section > SectionNumber.one.rawValue ? 0 : 16
+        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
+            return 16
+        } else if section == SectionNumber.two.rawValue {
+            return 34
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == SectionNumber.three.rawValue {
+            self.navigationController?.pushViewController(RateViewController(),
+                                                          animated: true)
+        }
     }
 }
 
 // MARK: - CollapsibleTableViewHeaderDelegate
 extension DetailViewController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: DetailTableViewHeader, section: Int) {
-        let collapsed = !sections[section-2].collapsed
-        sections[section-2].collapsed = collapsed
+        let collapsed = !sections[section - 4].collapsed
+        sections[section - 4].collapsed = collapsed
         header.setCollapsed(collapsed)
         exchangerDetailsTableView.reloadData()
     }
