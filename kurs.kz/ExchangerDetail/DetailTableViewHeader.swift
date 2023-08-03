@@ -14,7 +14,7 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     var delegate: CollapsibleTableViewHeaderDelegate?
     var section: Int = 0
     
-    var detailSection: Section? {
+    var detailSection: DetailSection? {
         didSet {
             iconImageView.image = detailSection?.iconImage
             titleLabel.text = detailSection?.name
@@ -24,7 +24,6 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - UI
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = AppImage.call.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -33,7 +32,6 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
         let titleLabel = UILabel()
         titleLabel.textColor = AppColor.gray100.uiColor
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Label"
         titleLabel.font = AppFont.regular.s14()
         return titleLabel
     }()
@@ -64,7 +62,6 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - Setup Views
     private func setupViews() {
         contentView.backgroundColor = .white
-        
         [iconImageView, titleLabel, arrowImageView].forEach {
             contentView.addSubview($0)
         }
