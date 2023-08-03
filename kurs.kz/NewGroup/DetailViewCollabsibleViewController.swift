@@ -93,6 +93,15 @@ final class DetailViewCollabsibleViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    private func convertDate(dateString: String) -> String {
+        let start = dateString.index(dateString.startIndex, offsetBy: 11)
+        let end = dateString.index(dateString.endIndex, offsetBy: -3)
+        let range = start..<end
+
+        let timeString = dateString[range]
+        return String(timeString)
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
