@@ -11,7 +11,6 @@ class TableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - State
     static let reuseID = String(describing: TableViewHeader.self)
-    
     var delegate: TableViewHeaderDelegate?
     var section: Int = 0
     
@@ -25,12 +24,14 @@ class TableViewHeader: UITableViewHeaderFooterView {
     public lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
     public lazy var arrowLabel: UILabel = {
         let arrowLabel = UILabel()
         arrowLabel.textColor = .black
+        arrowLabel.translatesAutoresizingMaskIntoConstraints = false
         return arrowLabel
     }()
     

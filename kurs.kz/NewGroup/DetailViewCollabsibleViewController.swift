@@ -103,9 +103,12 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
         return header
         
     }
-    
-    func toggleSection(_ header: TableViewHeader, section: Int) {
-        <#code#>
-    }
 }
 
+extension DetailViewCollabsibleViewController: TableViewHeaderDelegate {
+    func toggleSection(_ header: TableViewHeader, section: Int) {
+        let collapsed = !sections[section].collapsed
+        sections[section].collapsed = collapsed
+        header.setCollapsed(collapsed)
+    }
+}
