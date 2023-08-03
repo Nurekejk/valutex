@@ -25,16 +25,24 @@ final class DetailViewCollabsibleViewController: UIViewController {
                            forCellReuseIdentifier: DetailTableViewCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = AppColor.gray10.uiColor
+        tableView.separatorStyle = .none
         return tableView
     }()
     
     // MARK: - Life Cycle
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupViews()
         setupConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        exchangerDetailsTableView.layer.cornerRadius = 8.0
     }
     
     // MARK: - Setup Navigation Bar
