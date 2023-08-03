@@ -71,4 +71,10 @@ enum AppImage: String, AppImageProtocol {
     case avatar = "avatar"
     case arrow_up_collapse = "arrow-up-collapse"
     case arrow_down_collapse = "arrow-down-collapse"
+    case call = "call"
+    case clock = "clock"
+    case link_2 = "link-2"
+    case messenger = "messenger"
+    case sms = "sms"
+    case user_tag = "user-tag"
 }
