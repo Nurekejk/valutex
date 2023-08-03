@@ -93,7 +93,6 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
             fatalError("Could not cast to FaqQuestionTableHeaderView")
         }
         
-        header.iconImageView.image = sections[section].iconImage
         header.titleLabel.text = sections[section].name
         header.setCollapsed(sections[section].collapsed)
         
