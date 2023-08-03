@@ -70,7 +70,7 @@ class TableViewHeader: UITableViewHeaderFooterView {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
-            make.leading.equalTo(iconImageView.snp.bottom).offset(16)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(16)
             make.height.equalTo(18)
         }
         
