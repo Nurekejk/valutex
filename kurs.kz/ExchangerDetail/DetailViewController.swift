@@ -149,13 +149,11 @@ final class DetailViewController: UIViewController {
         }
     }
     
-    // swiftlint:disable all
     private func setSectionsData(details: Details) {
         // Phone Section
-        let phoneSection = Section(name: "Телефоны",
-                                   iconImage: AppImage.call.uiImage,
-                                   items: details.contacts)
-        
+        let phoneSection = DetailSection(name: "Телефоны",
+                                         iconImage: AppImage.call.uiImage,
+                                         items: details.contacts)
         // Working Hours Section
         var workingHours = [String]()
         var dayOfWeek = 0
@@ -179,35 +177,29 @@ final class DetailViewController: UIViewController {
             default:
                 dayString = ""
             }
-            let fullTime = """
-                            \(dayString) - \(self.convertDate(dateString: time.from)) - \(self.convertDate(dateString: time.to))
-                           """
+            // swiftlint:disable all
+            let fullTime = "\(dayString) - \(self.getHoursString(dateString: time.from)) - \(self.getHoursString(dateString: time.to))"
+            // swiftlint:enable all
             dayOfWeek += 1
             workingHours.append(fullTime)
         }
-        let workingHoursSection = Section(name: "Время работы",
-                                          iconImage: AppImage.clock.uiImage,
-                                          items: workingHours)
-        
+        let workingHoursSection = DetailSection(name: "Время работы",
+                                                iconImage: AppImage.clock.uiImage,
+                                                items: workingHours)
         // Emails Section
-        var emails = [String]()
-        emails.append(details.email)
-        let emailSection = Section(name: "Email",
-                                   iconImage: AppImage.sms.uiImage,
-                                   items: emails)
-        
+        var emails = [details.email]
+        let emailSection = DetailSection(name: "Email",
+                                         iconImage: AppImage.sms.uiImage,
+                                         items: emails)
         // Website Section
-        var websites = [String]()
-        websites.append(details.webSite)
-        let websiteSection = Section(name: "Web-site",
-                                     iconImage: AppImage.link_2.uiImage,
-                                     items: websites)
-        
+        var websites = [details.webSite]
+        let websiteSection = DetailSection(name: "Web-site",
+                                           iconImage: AppImage.link_2.uiImage,
+                                           items: websites)
         // WhatsApp Section
-        let whatsAppSection = Section(name: "Whatsapp",
-                                      iconImage: AppImage.messenger.uiImage,
-                                      items: details.whatsapp)
-        
+        let whatsAppSection = DetailSection(name: "Whatsapp",
+                                            iconImage: AppImage.messenger.uiImage,
+                                            items: details.whatsapp)
         [phoneSection, workingHoursSection, emailSection,
          websiteSection, whatsAppSection].forEach {
             self.sections.append($0)
