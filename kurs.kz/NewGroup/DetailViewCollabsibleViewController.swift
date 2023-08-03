@@ -79,6 +79,12 @@ final class DetailViewCollabsibleViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
+    // MARK: - Actions
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
