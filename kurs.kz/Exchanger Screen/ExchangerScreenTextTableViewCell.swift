@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class ExchangerScreenTextCellTableViewCell: UITableViewCell {
+class ExchangerScreenTextTableViewCell: UITableViewCell {
     
     // MARK: - Public
     
-    public static var reuseIdentifier = String(describing: ExchangerScreenTextCellTableViewCell.self)
+    public static var reuseIdentifier = String(describing: ExchangerScreenTextTableViewCell.self)
     
     // MARK: - UI
     
@@ -23,56 +23,56 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some Exchange"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.text = "Som Exchange"
+        label.font = AppFont.semibold.s16()
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         let regularAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 14),
-                .foregroundColor: UIColor.black
+            .font: AppFont.regular.s14(),
+            .foregroundColor: AppColor.gray100.uiColor
         ]
         let boldAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 14),
-            .foregroundColor: UIColor.black
+            .font: AppFont.bold.s14(),
+            .foregroundColor: AppColor.gray100.uiColor
         ]
         let regularText = NSMutableAttributedString(string: "г.Алматы, ул.Ауэзова 14",
                                                     attributes: regularAttributes)
-        let boldText = NSMutableAttributedString(string: "(1км)", attributes: boldAttributes)
+        let boldText = NSMutableAttributedString(string: " (1 км)", attributes: boldAttributes)
         
         regularText.append(boldText)
         label.attributedText = regularText
+        label.numberOfLines = 0
         return label
     }()
     
     private lazy var subTitleLabelTwo: Paddinglabel = {
         let label = Paddinglabel()
-        let softGreen = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
-        let borderColor = UIColor(red: 67/255.0, green: 160.0/255.0, blue: 72.0/255.0, alpha: 0.16)
-        label.layer.borderColor = softGreen.cgColor
-        label.layer.borderWidth = 1.0
-        label.textColor = softGreen
+        label.textColor = AppColor.statusSuccess.uiColor
         label.text = "Круглосуточно"
-        label.font = .systemFont(ofSize: 12)
-        label.backgroundColor = UIColor.green
+        label.font = AppFont.regular.s12()
+        label.backgroundColor = AppColor.statusSuccess.uiColor.withAlphaComponent(0.16)
         label.clipsToBounds = true
-        label.layer.cornerRadius = 8
+        label.numberOfLines = 0
         return label
     }()
     
     private lazy var starImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "star")
+        imageView.image = AppImage.star_bold.uiImage
         return imageView
     }()
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
         label.text = "4.9"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
@@ -95,6 +95,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         containerView.layer.cornerRadius = 8
+        subTitleLabelTwo.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
@@ -104,13 +105,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
             containerView.addSubview($0)
         }
         
-        let backgroundGrayColor = UIColor(
-                red: 246.0 / 255.0,
-                green: 247.0 / 255.0,
-                blue: 249.0 / 255.0,
-                alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
@@ -126,30 +121,30 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.lessThanOrEqualToSuperview().offset(-16)
+            make.width.equalTo(300)
         }
            
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(titleLabel)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(216)
         }
            
         subTitleLabelTwo.snp.makeConstraints { make in
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(4)
-            make.leading.trailing.equalTo(titleLabel)
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
+            make.leading.equalTo(titleLabel)
             make.height.equalTo(24)
-            make.width.lessThanOrEqualTo(subTitleLabel.snp.width).offset(-100)
         }
         
         starImageView.snp.makeConstraints {make in
-            make.top.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-46)
-            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.top.equalToSuperview().offset(19)
+            make.trailing.equalTo(ratingLabel.snp.leading).offset(-8)
+            make.size.equalTo(16)
         }
         
         ratingLabel.snp.makeConstraints {make in
-            make.centerY.equalTo(starImageView)
-            make.leading.equalTo(starImageView.snp.trailing).offset(8)
+            make.top.equalToSuperview().offset(19)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
 }
