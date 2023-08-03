@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import CollapsibleTableSectionViewController
 
-final class DetailViewController: UIViewController, TableViewHeaderDelegate {
+final class DetailViewController: UIViewController {
     
     private let service: DetailPageService
     var sections = [Section]()

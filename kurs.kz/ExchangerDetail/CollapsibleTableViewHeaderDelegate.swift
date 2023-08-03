@@ -8,6 +8,8 @@
 import UIKit
 import CollapsibleTableSectionViewController
 
+// swiftlint:disable all
 protocol CollapsibleTableViewHeaderDelegate: UIViewController {
     func toggleSection(_ header: DetailTableViewHeader, section: Int)
 }
+// swiftlint:enable all
