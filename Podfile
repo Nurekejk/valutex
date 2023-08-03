@@ -14,6 +14,8 @@ target 'kurs.kz' do
   pod 'GoogleMaps', '8.0.0'
   pod 'SnackBar.swift', '0.1.0'
   pod 'ProgressHUD', '13.6.2'
+  pod 'CollapsibleTableSectionViewController', '~> 2.0.1'
+  
   pod 'Wormholy', :configurations => ['Debug']
 
   post_install do |installer|
