@@ -77,4 +77,5 @@ enum AppImage: String, AppImageProtocol {
     case messenger = "messenger"
     case sms = "sms"
     case user_tag = "user-tag"
+    case star_bold = "star-bold"
 }
