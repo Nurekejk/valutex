@@ -8,7 +8,7 @@
 import Foundation
 import CollapsibleTableSectionViewController
 
-public struct Section {
+public struct DetailSection {
     var name: String
     var iconImage: UIImage?
     var items: [String]
