@@ -10,7 +10,7 @@ import SnapKit
 import CollapsibleTableSectionViewController
 
 // MARK: - View Controller
-class DetailViewCollabsibleViewController: UIViewController, TableViewHeaderDelegate {
+class DetailViewCollabsibleViewController: UIViewController {
  
     var sections = sectionsData
     
