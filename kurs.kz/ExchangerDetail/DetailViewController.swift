@@ -8,11 +8,14 @@
 import UIKit
 import SnapKit
 import CollapsibleTableSectionViewController
+import ProgressHUD
 
 final class DetailViewController: UIViewController {
     
+    // MARK: - Properties
     private let service: DetailPageService
-    var sections = [Section]()
+    private var sections = [DetailSection]()
+    private var currencies = [CurrencyElement]()
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -57,9 +60,14 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        
+        ProgressHUD.showProgress(1.0)
+        fetchCurrencyDetails()
+        fetchExchangerDetails()
+        ProgressHUD.dismiss()
+        
         setupViews()
         setupConstraints()
-        fetchExchangerDetails()
     }
     
     override func viewDidLayoutSubviews() {
@@ -115,6 +123,19 @@ final class DetailViewController: UIViewController {
                 self.setSectionsData(details: details)
                 self.exchangerDetailsTableView.reloadData()
             case .failure(let error):
+                ProgressHUD.show(icon: .failed)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func fetchCurrencyDetails() {
+        service.fetchCurrencyInformation(officeID: 1) { result in
+            switch result {
+            case .success(let currencyDetails):
+                self.currencies = currencyDetails
+            case .failure(let error):
+                ProgressHUD.show(icon: .failed)
                 print(error.localizedDescription)
             }
         }
