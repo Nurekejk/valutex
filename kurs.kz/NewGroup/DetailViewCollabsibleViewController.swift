@@ -94,7 +94,6 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
         
         header.iconImageView.image = sections[section].iconImage
         header.titleLabel.text = sections[section].name
-        header.arrowLabel.text = ">"
         header.setCollapsed(sections[section].collapsed)
         
         header.section = section
@@ -102,6 +101,10 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
         
         return header
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 54
     }
 }
 

@@ -73,13 +73,6 @@ class TableViewHeader: UITableViewHeaderFooterView {
             make.leading.equalTo(iconImageView.snp.trailing).offset(16)
             make.height.equalTo(18)
         }
-        
-        arrowLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(19)
-            make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(16)
-            make.width.equalTo(16)
-        }
     }
     
     // MARK: - Actions
