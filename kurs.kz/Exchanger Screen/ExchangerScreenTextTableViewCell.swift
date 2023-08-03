@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ExchangerScreenTextTableViewCell: UITableViewCell {
+final class ExchangerScreenTextTableViewCell: UITableViewCell {
     
     // MARK: - Public
     
@@ -114,7 +114,7 @@ class ExchangerScreenTextTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16))
+            make.edges.equalToSuperview()
             make.height.equalTo(114)
         }
         
