@@ -510,6 +510,10 @@
 			children = (
 				995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */,
 				995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */,
+            );
+            path = Model;
+            sourceTree = "<group>";
+        };
 		9979C5E82A7BE0650055B2DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
