@@ -50,8 +50,8 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var subTitleLabelTwo: Paddinglabel = {
-        let label = Paddinglabel()
+    private lazy var subTitleLabelTwo: UILabel = {
+        let label = UILabel()
         label.textColor = AppColor.statusSuccess.uiColor
         label.text = "Круглосуточно"
         label.font = AppFont.regular.s12()
@@ -134,6 +134,7 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
             make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
             make.leading.equalTo(titleLabel)
             make.height.equalTo(24)
+            make.bottom.equalToSuperview().offset(-16)
         }
         
         starImageView.snp.makeConstraints {make in

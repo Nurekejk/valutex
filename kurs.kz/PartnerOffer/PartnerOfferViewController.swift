@@ -161,7 +161,7 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SectionNumber.zero.rawValue {
-            navigationController?.pushViewController(ExchangerScreenViewController(),
+            navigationController?.pushViewController(EmptyViewController(),
                                                                  animated: true)
         } else if indexPath.section == SectionNumber.one.rawValue {
             navigationController?.pushViewController(OfferSendedViewController(),
