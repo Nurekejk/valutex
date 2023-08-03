@@ -23,6 +23,10 @@ final class DetailViewCollabsibleViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: DetailTableViewHeader.reuseID)
         tableView.register(DetailTableViewCell.self,
                            forCellReuseIdentifier: DetailTableViewCell.reuseID)
+        tableView.register(ExchangerScreenTableViewCell.self,
+                           forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
+        tableView.register(ExchangerScreenTextTableViewCell.self,
+                           forCellReuseIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.separatorStyle = .none
@@ -187,27 +191,51 @@ final class DetailViewCollabsibleViewController: UIViewController {
 extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
+        return sections.count + 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].collapsed ? 0 : sections[section].items.count
+        if section < SectionNumber.two.rawValue {
+            return 1
+        }
+        return sections[section-2].collapsed ? 0 : sections[section-2].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID,
-                                                       for: indexPath) as? DetailTableViewCell
-        else {
-            fatalError("Could not cast to FaqTableViewCell")
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ExchangerScreenTableViewCell.reuseIdentifier,
+                for: indexPath) as? ExchangerScreenTableViewCell
+            else {
+                fatalError("Could not cast to ExchangerScreenTableViewCell")
+            }
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier,
+                for: indexPath) as? ExchangerScreenTextTableViewCell
+            else {
+                fatalError("Could not cast to ExchangerScreenTextTableViewCell")
+            }
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID,
+                                                           for: indexPath) as? DetailTableViewCell
+            else {
+                fatalError("Could not cast to DetailTableViewCell")
+            }
+            let item = sections[indexPath.section-2].items[indexPath.row]
+            cell.nameLabel.text = item
+            return cell
         }
-        let item = sections[indexPath.section].items[indexPath.row]
-        
-        cell.nameLabel.text = item
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section < SectionNumber.two.rawValue {
+            return UIView()
+        }
+        
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                                                         DetailTableViewHeader.reuseID)
                 as? DetailTableViewHeader
@@ -215,11 +243,11 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
             fatalError("Could not cast to FaqQuestionTableHeaderView")
         }
         
-        header.titleLabel.text = sections[section].name
-        header.setCollapsed(sections[section].collapsed)
+        header.titleLabel.text = sections[section-2].name
+        header.setCollapsed(sections[section-2].collapsed)
         
         header.section = section
-        header.detailSection = sections[section]
+        header.detailSection = sections[section-2]
         header.delegate = self
         
         return header
@@ -227,14 +255,22 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 54
+        return section < SectionNumber.two.rawValue ? 0 : 54
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section > SectionNumber.one.rawValue ? 0 : 16
     }
 }
 
 extension DetailViewCollabsibleViewController: TableViewHeaderDelegate {
     func toggleSection(_ header: DetailTableViewHeader, section: Int) {
-        let collapsed = !sections[section].collapsed
-        sections[section].collapsed = collapsed
+        let collapsed = !sections[section-2].collapsed
+        sections[section-2].collapsed = collapsed
         header.setCollapsed(collapsed)
         exchangerDetailsTableView.reloadData()
     }
