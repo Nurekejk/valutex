@@ -8,9 +8,11 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import Pulley
+import SnapKit
 
 final class MapViewController: UIViewController {
-        
+    
     private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
                                                                          longitude: 77.05901863169184))
     private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
@@ -62,6 +64,7 @@ final class MapViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "my-exchanges-navigation"), for: .normal)
         button.addTarget(self, action: #selector(exchangersButtonDidPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -118,13 +121,9 @@ final class MapViewController: UIViewController {
         myLocationButton.layer.rasterizationScale = UIScreen.main.scale
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController?.navigationBar.frame = CGRect(x: 0,
-                                                                y: 0,
-                                                                width: bounds.width,
-                                                                height: bounds.height + 100)
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
     }
     
     // MARK: - Setup Navigation Bar
@@ -181,11 +180,12 @@ final class MapViewController: UIViewController {
         
         exchangersButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-8)
-            make.bottom.equalToSuperview().offset(-120)
+            let distance = (self.pulleyViewController?.drawerDistanceFromBottom.distance ?? 0) * (-1)
+            make.bottom.equalToSuperview().offset(distance - 16)
         }
         
         zoomView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-25)
         }
         
@@ -201,7 +201,8 @@ final class MapViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func exchangersButtonDidPressed() {
-        self.navigationController?.popViewController(animated: true)
+        self.pulleyViewController?.setDrawerPosition(position: .closed, animated: true)
+        add(ExchangeListViewController())
     }
     
     @objc private func zoomInButtonDidPressed() {
@@ -230,7 +231,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard status == .authorizedWhenInUse else { return }
         locationManager.requestLocation()
         googleMapView.isMyLocationEnabled = true
-        googleMapView.settings.myLocationButton = true
+        googleMapView.settings.myLocationButton = false
     }
     
     func locationManager(_ manager: CLLocationManager,
@@ -257,5 +258,35 @@ extension MapViewController: GMSMapViewDelegate {
         let infoWindow = CustomInfoWindow()
         infoWindow.configureView(exchangerName: marker.title ?? "", exchangerSnippet: marker.snippet ?? "")
         return infoWindow
+    }
+}
+
+// MARK: - PulleyPrimaryContentControllerDelegate
+extension MapViewController: PulleyPrimaryContentControllerDelegate {
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
+                                         distance: CGFloat, bottomSafeArea: CGFloat) {
+        exchangersButton.snp.remakeConstraints { make in
+            make.trailing.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().inset(distance + 16)
+        }
+    }
+}
+
+// MARK: - UIViewController Extension
+extension UIViewController {
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        guard parent != nil else {
+            return
+        }
+        
+        willMove(toParent: self.parent)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }

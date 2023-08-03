@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Pulley
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -28,8 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController =
                 UINavigationController(rootViewController: ProfileViewController())
         } else {
-            window?.rootViewController =
-                UINavigationController(rootViewController: SignInViewController())
+            window?.rootViewController = SelectLanguageViewController()
         }
 
         window?.makeKeyAndVisible()

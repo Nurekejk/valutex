@@ -17,6 +17,7 @@ target 'kurs.kz' do
   pod 'CollapsibleTableSectionViewController', '~> 2.0.1'
   
   pod 'Wormholy', :configurations => ['Debug']
+  pod 'Pulley'
 
   post_install do |installer|
       installer.generated_projects.each do |project|
