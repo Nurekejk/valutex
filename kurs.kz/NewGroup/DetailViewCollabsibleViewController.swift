@@ -42,8 +42,8 @@ final class DetailViewCollabsibleViewController: UIViewController {
         tableView.delegate = self
         tableView.register(DetailTableViewHeader.self,
                            forHeaderFooterViewReuseIdentifier: DetailTableViewHeader.reuseID)
-        tableView.register(TableViewCell.self,
-                           forCellReuseIdentifier: TableViewCell.reuseID)
+        tableView.register(DetailTableViewCell.self,
+                           forCellReuseIdentifier: DetailTableViewCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         return tableView
@@ -94,8 +94,8 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID,
-                                                       for: indexPath) as? TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID,
+                                                       for: indexPath) as? DetailTableViewCell
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }
