@@ -64,6 +64,7 @@ final class MapViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "my-exchanges-navigation"), for: .normal)
         button.addTarget(self, action: #selector(exchangersButtonDidPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -264,7 +265,7 @@ extension MapViewController: GMSMapViewDelegate {
 extension MapViewController: PulleyPrimaryContentControllerDelegate {
     func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
                                          distance: CGFloat, bottomSafeArea: CGFloat) {
-        exchangersButton.snp.makeConstraints { make in
+        exchangersButton.snp.remakeConstraints { make in
             make.trailing.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().inset(distance + 16)
         }

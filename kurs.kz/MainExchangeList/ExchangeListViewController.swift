@@ -395,6 +395,6 @@ extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
-        return [.collapsed, .partiallyRevealed, .closed]
+        return [.collapsed, .partiallyRevealed, .closed, .open]
     }
 }
