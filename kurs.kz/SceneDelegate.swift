@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Pulley
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,8 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = UINavigationController(
-            rootViewController: DetailViewController(service: DetailPageService()))
+        
+        var isAutorized = false
+        
+        let defaults = UserDefaults.standard
+        isAutorized = defaults.bool(forKey: SignInViewController.defaultsIsAuthorizedKey)
+
+        if isAutorized {
+            window?.rootViewController =
+                UINavigationController(rootViewController: ProfileViewController())
+        } else {
+            window?.rootViewController = SelectLanguageViewController()
+        }
+
         window?.makeKeyAndVisible()
     }
 }

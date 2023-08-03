@@ -54,10 +54,19 @@
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
+		991065352A7A306900368918 /* AboutCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991065342A7A306900368918 /* AboutCompany.swift */; };
+		991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991065362A7A31CA00368918 /* AboutCompanyPageService.swift */; };
 		99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */; };
+		99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C502A7904C300CB9721 /* FaqViewController.swift */; };
+		99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */; };
 		9952D3562A608080002321E8 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3552A608080002321E8 /* ProfileSection.swift */; };
+		995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A32A7A05D000E96AEE /* FaqPageService.swift */; };
+		995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */; };
+		995E96A92A7A167500E96AEE /* NationalBankCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */; };
+		995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */; };
+		995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */; };
 		9979C5E52A7BDF6C0055B2DE /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9979C5E42A7BDF6C0055B2DE /* Details.swift */; };
 		9979C5E72A7BE02D0055B2DE /* DetailPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9979C5E62A7BE02D0055B2DE /* DetailPageService.swift */; };
 		9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9979C5E92A7C12F00055B2DE /* CurrencyElement.swift */; };
@@ -84,6 +93,8 @@
 		99D974002A680D8E00F7E506 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D973FF2A680D8E00F7E506 /* AppColor.swift */; };
 		99D974022A680FF400F7E506 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974012A680FF400F7E506 /* AppImage.swift */; };
 		99D974082A68611D00F7E506 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974072A68611D00F7E506 /* AppFont.swift */; };
+		99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854222A79632C0075CB78 /* FaqTableViewCell.swift */; };
+		99E854262A7969000075CB78 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854252A7969000075CB78 /* Question.swift */; };
 		99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E941BF2A666B1F00C47BD2 /* AppConstants.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
@@ -183,10 +194,19 @@
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
+		991065342A7A306900368918 /* AboutCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutCompany.swift; path = kurs.kz/NationalBankCourse/Model/AboutCompany.swift; sourceTree = SOURCE_ROOT; };
+		991065362A7A31CA00368918 /* AboutCompanyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutCompanyPageService.swift; path = kurs.kz/NationalBankCourse/Model/AboutCompanyPageService.swift; sourceTree = SOURCE_ROOT; };
 		99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		99499C502A7904C300CB9721 /* FaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqViewController.swift; sourceTree = "<group>"; };
+		99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableHeaderView.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		9952D3552A608080002321E8 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
+		995E96A32A7A05D000E96AEE /* FaqPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqPageService.swift; sourceTree = "<group>"; };
+		995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswer.swift; sourceTree = "<group>"; };
+		995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankCourseViewController.swift; sourceTree = "<group>"; };
+		995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankPageService.swift; sourceTree = "<group>"; };
+		995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankUrl.swift; sourceTree = "<group>"; };
 		9979C5E42A7BDF6C0055B2DE /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		9979C5E62A7BE02D0055B2DE /* DetailPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageService.swift; sourceTree = "<group>"; };
 		9979C5E92A7C12F00055B2DE /* CurrencyElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyElement.swift; sourceTree = "<group>"; };
@@ -212,6 +232,8 @@
 		99D973FF2A680D8E00F7E506 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		99D974012A680FF400F7E506 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		99D974072A68611D00F7E506 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		99E854222A79632C0075CB78 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
+		99E854252A7969000075CB78 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -436,6 +458,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		991065332A7A305600368918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				991065342A7A306900368918 /* AboutCompany.swift */,
+				991065362A7A31CA00368918 /* AboutCompanyPageService.swift */,
+			);
+			name = Model;
+			path = kurs.kz/Rate/AboutCompany/Model;
+			sourceTree = "<group>";
+		};
 		99287B2E2A61CCB300D0CF4B /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +475,17 @@
 				9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		99499C4F2A7904B100CB9721 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				99E854242A7968F50075CB78 /* Model */,
+				99499C502A7904C300CB9721 /* FaqViewController.swift */,
+				99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */,
+				99E854222A79632C0075CB78 /* FaqTableViewCell.swift */,
+			);
+			path = FAQ;
 			sourceTree = "<group>";
 		};
 		9952D3542A608074002321E8 /* Model */ = {
@@ -453,6 +496,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		995E96A72A7A165300E96AEE /* NationalBankCourse */ = {
+			isa = PBXGroup;
+			children = (
+				995E96AC2A7A179200E96AEE /* Model */,
+				995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */,
+			);
+			path = NationalBankCourse;
+			sourceTree = "<group>";
+		};
+		995E96AC2A7A179200E96AEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */,
+				995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */,
 		9979C5E82A7BE0650055B2DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +603,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		99E854242A7968F50075CB78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99E854252A7969000075CB78 /* Question.swift */,
+				995E96A32A7A05D000E96AEE /* FaqPageService.swift */,
+				995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +626,7 @@
 		9F402A4C2A5BDDA600F9126C /* AboutCompany */ = {
 			isa = PBXGroup;
 			children = (
+				991065332A7A305600368918 /* Model */,
 				9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */,
 			);
 			name = AboutCompany;
@@ -598,6 +666,8 @@
 			children = (
 				8FE341D42A7AD39400A72212 /* ExchangerDetail */,
 				8F21A4B52A6BBD32000013FA /* DetailView */,
+				995E96A72A7A165300E96AEE /* NationalBankCourse */,
+				99499C4F2A7904B100CB9721 /* FAQ */,
 				8F816F072A76B55000AF4BA9 /* Calculator */,
 				8FCA83242A712256003CD865 /* OfferSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
@@ -936,6 +1006,7 @@
 				FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
+				995E96A92A7A167500E96AEE /* NationalBankCourseViewController.swift in Sources */,
 				FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */,
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
@@ -948,15 +1019,18 @@
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9979C5E72A7BE02D0055B2DE /* DetailPageService.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
+				99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* CurrencyInformationTableHeaderView.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
+				995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
@@ -987,6 +1061,7 @@
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
 				71564AC82A70B8E300979090 /* Auth.swift in Sources */,
 				9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */,
+				991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
 				8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */,
@@ -996,6 +1071,7 @@
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				6189CFCA2A78315000175333 /* City.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
@@ -1005,6 +1081,7 @@
 				8F816F0C2A76B59500AF4BA9 /* CalculatorTableViewCell.swift in Sources */,
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
+				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
@@ -1015,12 +1092,14 @@
 				9FE945992A738A90009020B7 /* CurrencyListService.swift in Sources */,
 				99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */,
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
+				99E854262A7969000075CB78 /* Question.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* CurrencyInformationTableViewCell.swift in Sources */,
 				8F21A4B72A6BBD51000013FA /* DeatilViewViewController.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
 				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
+				99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
@@ -1034,6 +1113,8 @@
 				8FE341D82A7AD50F00A72212 /* DetailViewController.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
+				995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */,
+				991065352A7A306900368918 /* AboutCompany.swift in Sources */,
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
