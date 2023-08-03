@@ -12,7 +12,7 @@ import InputMask
 import ProgressHUD
 
 final class SignUpViewController: UIViewController {
-    
+
     private let service = OtpRegistrationService()
     
     // MARK: - UI
