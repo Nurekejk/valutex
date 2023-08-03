@@ -292,7 +292,7 @@ final class ExchangeListViewController: UIViewController {
         }
         mapButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-168)
+            make.bottom.equalToSuperview().offset(-188)
             make.size.equalTo(80)
         }
         exchangeListTableView.snp.makeConstraints { make in
