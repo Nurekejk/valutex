@@ -19,8 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         window?.rootViewController = UINavigationController(
-            rootViewController: DetailViewCollabsibleViewController(
-                service: DetailPageService()))
+            rootViewController: DetailViewCollabsibleViewController(service: DetailPageService()))
         window?.makeKeyAndVisible()
     }
 }
