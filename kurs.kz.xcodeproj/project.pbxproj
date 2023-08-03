@@ -34,6 +34,11 @@
 		8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */; };
 		8FCEF8A42A6D8F6A006B3D5D /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */; };
 		8FCEF8A62A6D90DB006B3D5D /* ClockTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */; };
+		8FE341D62A7AD39F00A72212 /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D52A7AD39F00A72212 /* ExampleData.swift */; };
+		8FE341D82A7AD50F00A72212 /* DetailViewCollabsibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D72A7AD50F00A72212 /* DetailViewCollabsibleViewController.swift */; };
+		8FE341DA2A7AD61A00A72212 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D92A7AD61A00A72212 /* TableViewHeader.swift */; };
+		8FE341DE2A7AD69D00A72212 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341DD2A7AD69D00A72212 /* TableViewCell.swift */; };
+		8FE341E02A7AD8BB00A72212 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341DF2A7AD8BB00A72212 /* Delegate.swift */; };
 		990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990100482A50B99B003EE3C4 /* SignUpViewController.swift */; };
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
@@ -133,6 +138,11 @@
 		8FCEF8A12A6D8CDA006B3D5D /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
 		8FCEF8A32A6D8F6A006B3D5D /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
 		8FCEF8A52A6D90DB006B3D5D /* ClockTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeCell.swift; sourceTree = "<group>"; };
+		8FE341D52A7AD39F00A72212 /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
+		8FE341D72A7AD50F00A72212 /* DetailViewCollabsibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCollabsibleViewController.swift; sourceTree = "<group>"; };
+		8FE341D92A7AD61A00A72212 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		8FE341DD2A7AD69D00A72212 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		8FE341DF2A7AD8BB00A72212 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -320,6 +330,18 @@
 			path = CartExchangeFeedback;
 			sourceTree = "<group>";
 		};
+		8FE341D42A7AD39400A72212 /* NewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				8FE341D52A7AD39F00A72212 /* ExampleData.swift */,
+				8FE341D72A7AD50F00A72212 /* DetailViewCollabsibleViewController.swift */,
+				8FE341D92A7AD61A00A72212 /* TableViewHeader.swift */,
+				8FE341DD2A7AD69D00A72212 /* TableViewCell.swift */,
+				8FE341DF2A7AD8BB00A72212 /* Delegate.swift */,
+			);
+			path = NewGroup;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +491,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8FE341D42A7AD39400A72212 /* NewGroup */,
 				8F21A4B52A6BBD32000013FA /* DetailView */,
 				FA57598B2A67CBC800DE9A6B /* OfferSellBuySegmentedControl */,
 				FA57597F2A63D98500DE9A6B /* MainExchangeList */,
@@ -804,6 +827,7 @@
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
+				8FE341E02A7AD8BB00A72212 /* Delegate.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
@@ -820,11 +844,13 @@
 				9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
+				8FE341DA2A7AD61A00A72212 /* TableViewHeader.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				8FCEF8A22A6D8CDA006B3D5D /* PhoneCell.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
+				8FE341D62A7AD39F00A72212 /* ExampleData.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
@@ -847,8 +873,10 @@
 				220C3F432A62822F000002DB /* ExchangerScreenViewController.swift in Sources */,
 				8F21A4B92A6BCE4B000013FA /* HeaderView.swift in Sources */,
 				220C3F452A628310000002DB /* ExchangerScreenTableViewCell.swift in Sources */,
+				8FE341DE2A7AD69D00A72212 /* TableViewCell.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				8F41BD462A7014A000536D13 /* FeedBackCell.swift in Sources */,
+				8FE341D82A7AD50F00A72212 /* DetailViewCollabsibleViewController.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
 				8F06DEA52A61B03300637A68 /* ExchangeDollarViewController.swift in Sources */,

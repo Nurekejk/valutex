@@ -4,7 +4,8 @@ target 'kurs.kz' do
   use_frameworks!
   pod 'SkyFloatingLabelTextField'
   pod 'CHIOTPField'
-
+  pod 'CollapsibleTableSectionViewController', '~> 2.0.1'
+  
   # individual page control
   pod 'CHIOTPField/One'
   pod 'CHIOTPField/Two'
