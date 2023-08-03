@@ -46,6 +46,7 @@ final class DetailViewCollabsibleViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         setupConstraints()
+        fetchExchangerDetails()
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,6 +94,84 @@ final class DetailViewCollabsibleViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Callback
+    private func fetchExchangerDetails() {
+        service.fetchDetails(officeID: 1) { result in
+            switch result {
+            case .success(let details):
+                self.setSectionsData(details: details)
+                self.exchangerDetailsTableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // swiftlint:disable all
+    private func setSectionsData(details: Details) {
+        // Phone Section
+        let phoneSection = Section(name: "Телефоны",
+                                   iconImage: AppImage.call.uiImage,
+                                   items: details.contacts)
+        
+        // Working Hours Section
+        var workingHours = [String]()
+        var dayOfWeek = 0
+        details.schedule.forEach { time in
+            var dayString = ""
+            switch dayOfWeek {
+            case 0:
+                dayString = "Пн"
+            case 1:
+                dayString = "Вт"
+            case 2:
+                dayString = "Ср"
+            case 3:
+                dayString = "Чт"
+            case 4:
+                dayString = "Пт"
+            case 5:
+                dayString = "Сб"
+            case 6:
+                dayString = "Вс"
+            default:
+                dayString = ""
+            }
+            let fullTime = """
+                            \(dayString) - \(self.convertDate(dateString: time.from)) - \(self.convertDate(dateString: time.to))
+                           """
+            dayOfWeek += 1
+            workingHours.append(fullTime)
+        }
+        let workingHoursSection = Section(name: "Время работы",
+                                          iconImage: AppImage.clock.uiImage,
+                                          items: workingHours)
+        
+        // Emails Section
+        var emails = [String]()
+        emails.append(details.email)
+        let emailSection = Section(name: "Email",
+                                   iconImage: AppImage.sms.uiImage,
+                                   items: emails)
+        
+        // Website Section
+        var websites = [String]()
+        websites.append(details.webSite)
+        let websiteSection = Section(name: "Web-site",
+                                     iconImage: AppImage.link_2.uiImage,
+                                     items: websites)
+        
+        // WhatsApp Section
+        let whatsAppSection = Section(name: "Whatsapp",
+                                      iconImage: AppImage.messenger.uiImage,
+                                      items: details.whatsapp)
+        
+        [phoneSection, workingHoursSection, emailSection,
+         websiteSection, whatsAppSection].forEach {
+            self.sections.append($0)
+        }
+    }
+    // swiftlint:enable all
     
     private func convertDate(dateString: String) -> String {
         let start = dateString.index(dateString.startIndex, offsetBy: 11)
