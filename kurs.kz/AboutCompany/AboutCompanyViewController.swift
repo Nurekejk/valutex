@@ -10,51 +10,100 @@ import SnapKit
 
 final class AboutCompanyViewController: UIViewController {
     
+    private let service: AboutCompanyPageService
+    
     // MARK: - UI
-    private let aboutCompanyTextView: UITextView = {
+    private let aboutCompanyHeaderTextView: UITextView = {
         let textView = UITextView()
-        textView.text = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        """
-        textView.font = AppFont.regular.s14()
-        textView.textAlignment = .justified
+        textView.font = AppFont.bold.s14()
+        textView.textAlignment = .center
         textView.isEditable = false
         textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
         textView.textColor = AppColor.gray100.uiColor
-        textView.backgroundColor = AppColor.gray10.uiColor
+        textView.backgroundColor = .clear
         return textView
     }()
+    
+    private let aboutCompanyTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = AppFont.regular.s14()
+        textView.textAlignment = .center
+        textView.isEditable = false
+        textView.textContainerInset = UIEdgeInsets.zero // Set the textContainerInset to zero
+        textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
+        textView.textColor = AppColor.gray100.uiColor
+        textView.backgroundColor = .clear
+        return textView
+    }()
+    
+    // MARK: - Initializers
+    init(service: AboutCompanyPageService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setupView()
+        setupViews()
         setupConstraints()
+        fetchText()
     }
     
-    // MARK: - Setup
+    // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
-        self.view.backgroundColor = AppColor.gray10.uiColor
         self.title = "О компании"
     }
-        
-    private func setupView() {
-        view.addSubview(aboutCompanyTextView)
+    
+    // MARK: - Setup Navigation Bar
+    private func setupViews() {
+        self.view.backgroundColor = AppColor.gray10.uiColor
+        [aboutCompanyHeaderTextView, aboutCompanyTextView].forEach {
+            view.addSubview($0)
+        }
     }
-        
+    
+    // MARK: - Setup Constraints
     private func setupConstraints() {
-        aboutCompanyTextView.snp.makeConstraints { make in
+        aboutCompanyHeaderTextView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(120)
+            make.height.equalTo(16)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+        }
+        
+        aboutCompanyTextView.snp.makeConstraints { make in
+            make.top.equalTo(aboutCompanyHeaderTextView.snp.bottom).offset(12)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+        }
+    }
+    
+    // MARK: - Callback
+    private func fetchText() {
+        service.fetchAboutCompanyText { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.aboutCompanyHeaderTextView.text = data.paragraph0
+                self?.aboutCompanyTextView.text = """
+                                                  \(data.paragraph1)\n\(data.paragraph2)\n
+                                                  \(data.paragraph3)\n\(data.paragraph4)\n
+                                                  \(data.paragraph5)\n\(data.paragraph6)\n
+                                                  \n\(data.contacts.email)\n
+                                                  \(data.contacts.address)\n
+                                                  \(data.contacts.phone)
+                                                  """
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
+}
