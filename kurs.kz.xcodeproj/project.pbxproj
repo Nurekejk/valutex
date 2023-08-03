@@ -383,6 +383,8 @@
 				8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */,
 			);
 			path = Calculator;
+               sourceTree = "<group>";
+        };
 		8F21A4B52A6BBD32000013FA /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +420,8 @@
 				8FE341DF2A7AD8BB00A72212 /* Delegate.swift */,
 			);
 			path = NewGroup;
+               sourceTree = "<group>";
+        };
 		8FCA83242A712256003CD865 /* OfferSended */ = {
 			isa = PBXGroup;
 			children = (
