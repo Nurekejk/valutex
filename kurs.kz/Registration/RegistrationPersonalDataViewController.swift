@@ -8,45 +8,39 @@
 import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
+import ProgressHUD
 
 final class RegistrationPersonalDataViewController: UIViewController {
     
+    private let service: OtpRegistrationService
+    private var phoneNumber: String
+    
     // MARK: - UI
-
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20,
                                                                      leading: 20,
                                                                      bottom: 20,
                                                                      trailing: 20)
-        stackView.backgroundColor = .white
-        stackView.layer.cornerRadius = 8
+        stackView.backgroundColor = AppColor.grayWhite.uiColor
         return stackView
     }()
     
     private let containerView: UIView = {
         let container = UIView()
-        container.backgroundColor = .white
+        container.backgroundColor = AppColor.grayWhite.uiColor
         return container
     }()
 
     private let surnameTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Фамилия"
         textField.titleColor = AppColor.gray50.uiColor
@@ -57,16 +51,8 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let nameTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Имя"
         textField.titleColor = AppColor.gray50.uiColor
@@ -77,19 +63,11 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let patronymicTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Отчество"
-        textField.titleColor = AppColor.gray100.uiColor
+        textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Отчество"
         textField.textColor = AppColor.gray100.uiColor
         return textField
@@ -97,20 +75,13 @@ final class RegistrationPersonalDataViewController: UIViewController {
     
     private let phoneTextField: PaddedTextField = {
         let textField = PaddedTextField()
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
         textField.lineView.isHidden = true
-        textField.titleFormatter = { (text: String) -> String in
-            if #available(iOS 9.0, *) {
-                return text
-            } else {
-                return text
-            }
-        }
+        textField.titleFormatter = { $0 }
         textField.selectedTitleColor = AppColor.gray50.uiColor
         textField.title = "Телефон"
         textField.titleColor = AppColor.gray50.uiColor
         textField.placeholder = "Телефон"
+        textField.isUserInteractionEnabled = false
         textField.textColor = AppColor.gray100.uiColor
         return textField
     }()
@@ -118,12 +89,22 @@ final class RegistrationPersonalDataViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font =  AppFont.bold.s16()
+        button.titleLabel?.font =  AppFont.semibold.s16()
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService) {
+        self.service = service
+        self.phoneNumber = service.getPhoneNumber()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -133,7 +114,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        [surnameTextField, nameTextField,
+         patronymicTextField, phoneTextField].forEach { setupBorders(for: $0) }
+        
+        stackView.layer.cornerRadius = 8
+        continueButton.layer.cornerRadius = 12
+    }
     // MARK: - Setup Navigation Bar
 
     private func setupNavigationBar() {
@@ -160,14 +148,15 @@ final class RegistrationPersonalDataViewController: UIViewController {
         
         view.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
+        phoneTextField.text = "+\(phoneNumber)"
     }
     
-    override func viewDidLayoutSubviews() {
-        surnameTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        nameTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        patronymicTextField.layer.borderColor = AppColor.grayWhite.cgColor
-        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
+    func setupBorders(for textfield: PaddedTextField) {
+        textfield.layer.borderWidth = 1
+        textfield.layer.borderColor = AppColor.gray20.cgColor
+        textfield.layer.cornerRadius = 8
     }
+
     // MARK: - Constraints:
     private func setupConstraints() {
 
@@ -214,6 +203,67 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
 
     @objc private func continueButtonDidPress() {
-        self.navigationController?.pushViewController(RegistrationPasswordViewController(), animated: true)
+        
+        guard let name = nameTextField.text else {
+            self.showFailure()
+            self.showSnackBar(message: "Имя введено неправильно.")
+            return
+        }
+        
+        if name.isEmpty {
+            self.showFailure()
+            self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
+            return
+        }
+        
+        guard let surname = surnameTextField.text else {
+            self.showFailure()
+            self.showSnackBar(message: "Фамилия введена неправильно.")
+            return
+        }
+        
+        if surname.isEmpty {
+            self.showFailure()
+            self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
+            return
+        }
+        
+        let middleName = patronymicTextField.text ?? ""
+        let deviceID = "string"
+        let language = "RU"
+        let currencyCode = "USD"
+        let cityID = 1
+        
+        let user = User(name: name,
+                        surname: surname,
+                        middleName: middleName,
+                        phone: service.getPhoneNumber(),
+                        deviceID: deviceID,
+                        language: language,
+                        currencyCode: currencyCode,
+                        cityID: cityID,
+                        smsCode: service.getSMSCode())
+        
+        self.navigationController?.pushViewController(
+            RegistrationPasswordViewController(
+                service: self.service,
+                user: user),
+                animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension RegistrationPersonalDataViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }

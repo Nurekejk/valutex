@@ -12,31 +12,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
     
-    public func configureCell(withValue currency: String, named iconName: String) {
-        mainTitleLabel.text = currency
-        iconImageView.image = UIImage(named: iconName)
-    }
-    
     // MARK: - Properties
-    
-    private let registrationGrayColor = UIColor(
-        red: 246.0 / 255.0,
-        green: 247.0 / 255.0,
-        blue: 249.0 / 255.0,
-        alpha: 1)
-    
-    private let registrationBlueColor = UIColor(
-        red: 45.0 / 255.0,
-        green: 156.0 / 255.0,
-        blue: 219.0 / 255.0,
-        alpha: 1)
-    
-    private let textGrayColor = UIColor(
-        red: 125.0 / 255.0,
-        green: 132.0 / 255.0,
-        blue: 153.0 / 255.0,
-        alpha: 1)
-    
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
     }
@@ -47,25 +23,23 @@ final class ExchangeListTableViewCell: UITableViewCell {
             iconImageView.image = UIImage(named: exchanger?.iconImageName ??
                                           "blank_icon")
             if let newRating = exchanger?.rating,
-                let newTotalRatings = exchanger?.totalRatings {
+               let newTotalRatings = exchanger?.totalRatings {
                 ratingLabel.text = "\(newRating)" + " (\(newTotalRatings))"
             } else {
                 ratingLabel.text = "?.?"
             }
-            if let newAddress = exchanger?.address,
-                let newDistance = exchanger?.distance {
-                addressLabel.text = newAddress + "" + "(" + newDistance + ")"
-            } else {
-                addressLabel.text = "Ошибка"
-            }
+            setupAddressLabel(with: exchanger?.address ?? "",
+                              and: exchanger?.distance ?? "")
             dateLabel.text = exchanger?.date
-            if let newBuyRate = exchanger?.buyRate {
-                buyRateLabel.text = String(newBuyRate)
+            if let safeBuyRate = exchanger?.buyRate {
+                let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
+                buyRateLabel.text = String(trimmedBuyRate)
             } else {
-                buyRateLabel.text = "ОшибкаОшибка"
+                buyRateLabel.text = "Ошибка"
             }
-            if let newSellRate = exchanger?.sellRate {
-                sellRateLabel.text = String(newSellRate)
+            if let safeSellRate = exchanger?.sellRate {
+                let trimmedSellRate = trimExchangeRate(rate: safeSellRate)
+                sellRateLabel.text = String(trimmedSellRate)
             } else {
                 sellRateLabel.text = "Ошибка"
             }
@@ -81,7 +55,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.font =  AppFont.medium.s14()
+        label.textColor = AppColor.gray100.uiColor
         return label
     }()
     
@@ -93,33 +68,32 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = textGrayColor
+        label.font =  AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = textGrayColor
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
     private let buyRateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
     private let sellRateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
@@ -143,11 +117,41 @@ final class ExchangeListTableViewCell: UITableViewCell {
          buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
     }
     
+    private func setupAddressLabel(with location: String, and distance: String ) {
+        let locationText = location
+        let distanceText = " (\(distance))"
+        
+        let locationTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: AppFont.regular.s12(),
+            .foregroundColor: AppColor.gray100.uiColor
+        ]
+        
+        let distanceTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: AppFont.semibold.s10(),
+            .foregroundColor: AppColor.gray100.uiColor
+        ]
+
+        let attributedText = NSMutableAttributedString(string: locationText,
+                                                       attributes: locationTextAttributes)
+        let attributedDistanceString = NSAttributedString(string: distanceText,
+                                                          attributes: distanceTextAttributes)
+        attributedText.append(attributedDistanceString)
+
+        addressLabel.attributedText = attributedText
+    }
+    private func trimExchangeRate(rate: Float) -> String {
+        var trimmedResult = String(format: "%.3f", rate)
+            .trimmingCharacters(in: ["0"])
+        if trimmedResult.last == "." {
+            trimmedResult.removeLast()
+        }
+        return trimmedResult
+    }
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 8
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
         contentView.frame = contentView.frame.inset(by:

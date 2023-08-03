@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import ProgressHUD
 
 final class RegistrationPasswordViewController: UIViewController {
+    
+    private let service: OtpRegistrationService
+    private var user: User
     
     // MARK: - UI
     private let elementsStackView: UIStackView = {
@@ -22,6 +26,7 @@ final class RegistrationPasswordViewController: UIViewController {
                                                                      leading: 16,
                                                                      bottom: 16,
                                                                      trailing: 16)
+        stackView.backgroundColor = AppColor.grayWhite.uiColor
         return stackView
     }()
     
@@ -37,8 +42,8 @@ final class RegistrationPasswordViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
-        button.titleLabel?.font = AppFont.bold.s16()
-        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
@@ -57,13 +62,13 @@ final class RegistrationPasswordViewController: UIViewController {
         label.numberOfLines = 0
         label.text = "Пароль должен состоять из латинских букв и цифр"
         label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
     private let enterPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.textColor = AppColor.gray100.uiColor
-        textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Пароль"
         return textField
@@ -72,11 +77,21 @@ final class RegistrationPasswordViewController: UIViewController {
     private let repeatPasswordTextField: PasswordTextField = {
         let textField = PasswordTextField()
         textField.textColor = AppColor.gray100.uiColor
-        textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.placeholder = "Повторите пароль"
         return textField
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService, user: User) {
+        self.service = service
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -101,13 +116,21 @@ final class RegistrationPasswordViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      
+
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
+
         enterPasswordButton.layer.cornerRadius = 8
-        enterPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
         repeatPasswordButton.layer.cornerRadius = 8
-        repeatPasswordTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        
+        enterPasswordTextField.layer.borderColor = AppColor.gray20.cgColor
+        enterPasswordTextField.layer.borderWidth = 1
+        enterPasswordTextField.layer.cornerRadius = 8
+        
+        repeatPasswordTextField.layer.borderColor = AppColor.gray20.cgColor
+        repeatPasswordTextField.layer.borderWidth = 1
+        repeatPasswordTextField.layer.cornerRadius = 8
+        
         passwordStackView.layer.cornerRadius = 8
     }
     
@@ -122,12 +145,11 @@ final class RegistrationPasswordViewController: UIViewController {
         repeatPasswordTextField.rightView = repeatPasswordButton
         
         view.backgroundColor = AppColor.gray10.uiColor
-        elementsStackView.backgroundColor = .white
-        passwordStackView.backgroundColor = .white
-        textLabel.textColor = AppColor.gray50.uiColor
-        continueButton.setTitleColor(.white, for: .normal)
+
+        passwordStackView.backgroundColor = AppColor.grayWhite.uiColor
+        continueButton.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = AppColor.grayWhite.uiColor
     }
     
     // MARK: - Constraints:
@@ -158,12 +180,73 @@ final class RegistrationPasswordViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func continueButtonDidPress() {
-        let controller = CustomTabBarViewController()
-        controller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        guard let password = enterPasswordTextField.text else {
+            self.showFailure()
+            self.showSnackBar(message: "Пароль введен неправильно.")
+            return
+        }
+        
+        if password.isEmpty {
+            self.showFailure()
+            self.showSnackBar(message: "Пожалуйста, введите пароль.")
+            return
+        } else if password.count < 6 {
+            self.showFailure()
+            self.showSnackBar(message: "Пароль слишком короткий!")
+            return
+        }
+        
+        guard let passwordRepeated = repeatPasswordTextField.text else {
+            self.showFailure()
+            self.showSnackBar(message: "Повторный пароль введен неправильно.")
+            return
+        }
+        
+        if passwordRepeated.isEmpty {
+            self.showFailure()
+            self.showSnackBar(message: "Пожалуйста, повторите пароль.")
+            return
+        } else if password != passwordRepeated {
+            self.showFailure()
+            self.showSnackBar(message: "Пароли не совпадают.")
+            return
+        }
+        
+        user.setPassword(password: password)
+        
+        service.fetchUser(with: self.user) { result in
+            switch result {
+            case .success:
+                let controller = CustomTabBarViewController()
+                controller.navigationItem.hidesBackButton = true
+                self.showSuccess()
+                self.navigationController?.pushViewController(controller, animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showFailure()
+                    self.showSnackBar(message: "Ошибка! Повторите еще раз.")
+                }
+            }
+        }
     }
 
     @objc private func backButtonDidPress() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension RegistrationPasswordViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }

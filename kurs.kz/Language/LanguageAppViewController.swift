@@ -11,7 +11,6 @@ import SnapKit
 final class LanguageAppViewController: UIViewController {
     
     // MARK: - State
-    
     private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
         didSet {
             tableView.reloadData()
@@ -21,23 +20,12 @@ final class LanguageAppViewController: UIViewController {
     private let languages: [String] = ["Русский", "Казакша", "English"]
     
     // MARK: - UI
-    
-    private var label: UILabel = {
-        let label = UILabel()
-        label.text = "Язык приложения"
-        label.font = AppFont.semibold.s16()
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: LanguageTableViewCell.reuseID)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: "lamguages_cell")
         tableView.rowHeight = 56
-        
         return tableView
     }()
     
@@ -50,43 +38,40 @@ final class LanguageAppViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraits()
     }
     
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Язык приложения"
+    }
+
     // MARK: - Setup Views
-    
-    func setupViews() {
+    private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         tableView.backgroundColor = AppColor.gray10.uiColor
-        view.addSubview(label)
-        view.addSubview(tableView)
-        view.addSubview(selectButton)
+        
+        [tableView, selectButton].forEach {
+            view.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraits
-    
-    func setupConstraits() {
-        
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
-            make.leading.equalToSuperview().offset(115)
-            make.trailing.equalToSuperview().offset(-115)
-        }
-        
+    private func setupConstraits() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(72)
+            make.top.equalToSuperview().offset(120)
             make.bottom.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
         
         selectButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(628)
+            make.bottom.equalToSuperview().offset(-60)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
@@ -95,7 +80,6 @@ final class LanguageAppViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension LanguageAppViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,7 +87,7 @@ extension LanguageAppViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lamguages_cell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.reuseID,
                                                  for: indexPath) as? LanguageTableViewCell
         let language = languages[indexPath.row]
         
@@ -111,6 +95,7 @@ extension LanguageAppViewController: UITableViewDataSource, UITableViewDelegate 
         
         return cell ?? UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         print(indexPath)

@@ -7,8 +7,11 @@
 
 import UIKit
 import CHIOTPField
+import ProgressHUD
 
 final class VerificationPageViewController: UIViewController {
+    
+    private let service: OtpRegistrationService
     
     // MARK: - UI
     private let otpLabel: UILabel = {
@@ -27,6 +30,7 @@ final class VerificationPageViewController: UIViewController {
         codeField.borderColor = .clear
         codeField.cornerRadius = 8
         codeField.activeShadowColor = AppColor.primaryBase.uiColor
+        codeField.textContentType = .oneTimeCode
         return codeField
     }()
     
@@ -59,6 +63,16 @@ final class VerificationPageViewController: UIViewController {
         button.layer.cornerRadius = 12.0
         return button
     }()
+    
+    // MARK: - Initializers
+    init(service: OtpRegistrationService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -124,11 +138,41 @@ final class VerificationPageViewController: UIViewController {
 
     // MARK: - Actions
     @objc private func verifyButtonDidPress() {
-        self.navigationController?.pushViewController(RegistrationPersonalDataViewController(),
-                                                      animated: true)
+        let code = otpCodeField.text ?? ""
+        service.postOTPCode(with: code) { result in
+            switch result {
+            case .success:
+                self.showSuccess()
+                self.navigationController?.pushViewController(
+                    RegistrationPersonalDataViewController(
+                        service: self.service),
+                        animated: true)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.showFailure()
+                    self.showSnackBar(message: "Ошибка! Неверный код.")
+                }
+            }
+        }
     }
     
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - SnackBar
+    private func showSnackBar(message: String) {
+        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    }
+}
+
+// MARK: - ProgressHudProtocol
+extension VerificationPageViewController: ProgressHudProtocol {
+    func showSuccess() {
+        ProgressHUD.show(icon: .succeed)
+    }
+    
+    func showFailure() {
+        ProgressHUD.show(icon: .failed)
     }
 }
