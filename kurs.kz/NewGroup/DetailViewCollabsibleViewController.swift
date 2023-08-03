@@ -200,16 +200,16 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
         else {
             fatalError("Could not cast to FaqTableViewCell")
         }
-        let item: Item = sections[indexPath.section].items[indexPath.row]
+        let item = sections[indexPath.section].items[indexPath.row]
         
-        cell.nameLabel.text = item.name
+        cell.nameLabel.text = item
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    DetailTableViewHeader.reuseID)
+                                                                        DetailTableViewHeader.reuseID)
                 as? DetailTableViewHeader
         else {
             fatalError("Could not cast to FaqQuestionTableHeaderView")
@@ -219,6 +219,7 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
         header.setCollapsed(sections[section].collapsed)
         
         header.section = section
+        header.detailSection = sections[section]
         header.delegate = self
         
         return header
