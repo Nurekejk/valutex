@@ -66,6 +66,12 @@ final class DetailViewCollabsibleViewController: UIViewController {
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
+        exchangerDetailsTableView.estimatedRowHeight = 45
+        exchangerDetailsTableView.rowHeight = UITableView.automaticDimension
+        if #available(iOS 15.0, *) {
+            exchangerDetailsTableView.sectionHeaderTopPadding = 1.0
+        }
+        
         exchangerDetailsTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
