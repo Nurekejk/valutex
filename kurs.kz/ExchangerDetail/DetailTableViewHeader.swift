@@ -11,7 +11,7 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - State
     static let reuseID = String(describing: DetailTableViewHeader.self)
-    var delegate: TableViewHeaderDelegate?
+    var delegate: CollapsibleTableViewHeaderDelegate?
     var section: Int = 0
     
     var detailSection: Section? {
@@ -107,9 +107,3 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
         }
     }
 }
-// swiftlint:disable all
-// MARK: - FaqTableHeaderViewDelegate Protocol
-protocol TableViewHeaderDelegate: DetailViewCollabsibleViewController {
-    func toggleSection(_ header: DetailTableViewHeader, section: Int)
-}
-// swiftlint:enable all

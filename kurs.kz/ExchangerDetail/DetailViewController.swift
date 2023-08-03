@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import CollapsibleTableSectionViewController
 
-final class DetailViewCollabsibleViewController: UIViewController {
+final class DetailViewController: UIViewController, TableViewHeaderDelegate {
     
     private let service: DetailPageService
     var sections = [Section]()
@@ -188,7 +188,7 @@ final class DetailViewCollabsibleViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableViewDelegate {
+extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count + 2
@@ -267,7 +267,8 @@ extension DetailViewCollabsibleViewController: UITableViewDataSource, UITableVie
     }
 }
 
-extension DetailViewCollabsibleViewController: TableViewHeaderDelegate {
+// MARK: - CollapsibleTableViewHeaderDelegate
+extension DetailViewController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: DetailTableViewHeader, section: Int) {
         let collapsed = !sections[section-2].collapsed
         sections[section-2].collapsed = collapsed
