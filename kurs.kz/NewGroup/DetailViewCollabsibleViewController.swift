@@ -39,7 +39,13 @@ final class DetailViewCollabsibleViewController: UIViewController {
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
-        title = "Apple"
+        self.title = "Обменники"
+        edgesForExtendedLayout = []
+        self.navigationItem.leftBarButtonItem =
+        UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                        style: .plain,
+                        target: self,
+                        action: #selector(backButtonDidPressed))
     }
     
     // MARK: - Setup Views
