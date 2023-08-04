@@ -8,14 +8,14 @@
 import Foundation
 
 struct Details: Codable {
-    let name, address: String
-    let latitude, longitude: Double
-    let schedule: [Schedule]
-    let contacts: [String]
-    let whatsapp: [String]
-    let webSite, email: String
-    let score, scoreCount: Int
-    let open: Bool
+    let name, address: String?
+    let latitude, longitude: Double?
+    let schedule: [Schedule]?
+    let contacts: [String?]?
+    let whatsapp: [String?]?
+    let webSite, email: String?
+    let score, scoreCount: Int?
+    let open: Bool?
     
     enum CodingKeys: String, CodingKey {
         case name, address, latitude, longitude, schedule, contacts, whatsapp
@@ -27,5 +27,5 @@ struct Details: Codable {
 }
 
 struct Schedule: Codable {
-    let from, to: String
+    let from, to: String?
 }
