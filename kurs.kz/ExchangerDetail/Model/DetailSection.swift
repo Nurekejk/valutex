@@ -8,13 +8,13 @@
 import Foundation
 import CollapsibleTableSectionViewController
 
-public struct DetailSection {
-    var name: String
+struct DetailSection {
+    var name: String?
     var iconImage: UIImage?
-    var items: [String]
-    var collapsed: Bool
+    var items: [String?]?
+    var collapsed: Bool?
     
-    public init(name: String,iconImage: UIImage?, items: [String], collapsed: Bool = true) {
+    public init(name: String?,iconImage: UIImage?, items: [String?]?, collapsed: Bool = true) {
         self.name = name
         self.iconImage = iconImage
         self.items = items
