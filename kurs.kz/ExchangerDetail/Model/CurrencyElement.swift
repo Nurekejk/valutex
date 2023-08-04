@@ -8,9 +8,9 @@
 import Foundation
 
 struct CurrencyElement: Codable {
-    let currencyCode, currencyFlag: String
-    let buyPrice, sellPrice: Double
-    let createdAt: String
+    let currencyCode, currencyFlag: String?
+    let buyPrice, sellPrice: Double?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case currencyCode = "currency_code"
