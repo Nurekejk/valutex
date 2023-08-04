@@ -42,14 +42,12 @@ class LanguageTableViewCell: UITableViewCell {
     }
     
     // MARK: - Setup Views
-    
     func setupViews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(iconImageView)
     }
     
     // MARK: - Setup Constraits
-    
     func setupConstraits() {
         
         titleLabel.snp.makeConstraints { make in
@@ -69,8 +67,8 @@ class LanguageTableViewCell: UITableViewCell {
     public func confgireCell(language: String, isSelected: Bool) {
         
         iconImageView.image = isSelected
-        ? AppImage.selected_city.uiImage
-        : AppImage.select_city.uiImage
+            ? AppImage.selected_city.uiImage
+            : AppImage.select_city.uiImage
         
         titleLabel.text = language
     }
