@@ -66,8 +66,6 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.width.equalTo(343)
-            make.height.equalTo(117)
         }
         
         cellImageView.snp.makeConstraints {make in
@@ -77,7 +75,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         
         buttonImageView.snp.makeConstraints {make in
             make.bottom.trailing.equalTo(cellImageView).offset(-10)
-            make.size.equalTo(CGSize(width: 30, height: 30))
+            make.size.equalTo(30)
         }
     }
 }

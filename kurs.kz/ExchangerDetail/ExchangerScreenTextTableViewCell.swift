@@ -107,7 +107,6 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(114)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -125,7 +124,6 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
         subTitleLabelTwo.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
             make.leading.equalTo(titleLabel)
-            make.height.equalTo(24)
             make.bottom.equalToSuperview().offset(-16)
         }
         

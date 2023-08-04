@@ -16,6 +16,7 @@ final class DetailViewController: UIViewController {
     private let service: DetailPageService
     private var sections = [DetailSection]()
     private var currencies = [CurrencyElement]()
+    private let topSections = 4
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -38,7 +39,6 @@ final class DetailViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: CurrencyInformationTableFooterView.reuseID)
         tableView.register(FeedbackTableViewCell.self,
                            forCellReuseIdentifier: FeedbackTableViewCell.reuseID)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -60,12 +60,8 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
-        
-        ProgressHUD.showProgress(1.0)
         fetchCurrencyDetails()
         fetchExchangerDetails()
-        ProgressHUD.dismiss()
-        
         setupViews()
         setupConstraints()
     }
@@ -101,12 +97,12 @@ final class DetailViewController: UIViewController {
         [exchangerDetailsTableView].forEach {
             view.addSubview($0)
         }
+        exchangerDetailsTableView.estimatedRowHeight = 45
+        exchangerDetailsTableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        exchangerDetailsTableView.estimatedRowHeight = 45
-        exchangerDetailsTableView.rowHeight = UITableView.automaticDimension
         if #available(iOS 15.0, *) {
             exchangerDetailsTableView.sectionHeaderTopPadding = 1.0
         }
@@ -125,11 +121,11 @@ final class DetailViewController: UIViewController {
     
     // MARK: - Callback
     private func fetchExchangerDetails() {
-        service.fetchDetails(officeID: 1) { result in
+        service.fetchDetails(officeID: 1) { [weak self] result in
             switch result {
             case .success(let details):
-                self.setSectionsData(details: details)
-                self.exchangerDetailsTableView.reloadData()
+                self?.setSectionsData(details: details)
+                self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
                 print(error.localizedDescription)
@@ -138,10 +134,10 @@ final class DetailViewController: UIViewController {
     }
     
     private func fetchCurrencyDetails() {
-        service.fetchCurrencyInformation(officeID: 1) { result in
+        service.fetchCurrencyInformation(officeID: 1) { [weak self] result in
             switch result {
             case .success(let currencyDetails):
-                self.currencies = currencyDetails
+                self?.currencies = currencyDetails
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
                 print(error.localizedDescription)
@@ -157,7 +153,7 @@ final class DetailViewController: UIViewController {
         // Working Hours Section
         var workingHours = [String]()
         var dayOfWeek = 0
-        details.schedule.forEach { time in
+        details.schedule?.forEach { time in
             var dayString = ""
             switch dayOfWeek {
             case 0:
@@ -178,7 +174,7 @@ final class DetailViewController: UIViewController {
                 dayString = ""
             }
             // swiftlint:disable all
-            let fullTime = "\(dayString) - \(self.getHoursString(dateString: time.from)) - \(self.getHoursString(dateString: time.to))"
+            let fullTime = "\(dayString) - \(self.getHoursString(dateString: time.from ?? "")) - \(self.getHoursString(dateString: time.to ?? ""))"
             // swiftlint:enable all
             dayOfWeek += 1
             workingHours.append(fullTime)
@@ -187,12 +183,12 @@ final class DetailViewController: UIViewController {
                                                 iconImage: AppImage.clock.uiImage,
                                                 items: workingHours)
         // Emails Section
-        var emails = [details.email]
+        let emails = [details.email]
         let emailSection = DetailSection(name: "Email",
                                          iconImage: AppImage.sms.uiImage,
                                          items: emails)
         // Website Section
-        var websites = [details.webSite]
+        let websites = [details.webSite]
         let websiteSection = DetailSection(name: "Web-site",
                                            iconImage: AppImage.link_2.uiImage,
                                            items: websites)
@@ -239,7 +235,7 @@ final class DetailViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count + 4
+        return sections.count + topSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -248,7 +244,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         } else if section == SectionNumber.two.rawValue {
             return currencies.count
         }
-        return sections[section - 4].collapsed ? 0 : sections[section - 4].items.count
+        
+        if let collapsed = sections[section - topSections].collapsed {
+            if collapsed {
+                return 0
+            } else {
+                return sections[section - topSections].items?.count ?? 0
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -292,7 +296,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             else {
                 fatalError("Could not cast to DetailTableViewCell")
             }
-            let item = sections[indexPath.section - 4].items[indexPath.row]
+            let item = sections[indexPath.section - topSections].items?[indexPath.row]
             cell.nameLabel.text = item
             return cell
         }
@@ -317,10 +321,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Could not cast to DetailTableViewHeader")
         }
-        header.titleLabel.text = sections[section - 4].name
-        header.setCollapsed(sections[section - 4].collapsed)
+        header.titleLabel.text = sections[section - topSections].name
+        header.setCollapsed(sections[section - topSections].collapsed ?? false)
         header.section = section
-        header.detailSection = sections[section - 4]
+        header.detailSection = sections[section - topSections]
         header.delegate = self
         return header
     }
@@ -370,8 +374,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - CollapsibleTableViewHeaderDelegate
 extension DetailViewController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: DetailTableViewHeader, section: Int) {
-        let collapsed = !sections[section - 4].collapsed
-        sections[section - 4].collapsed = collapsed
+        let collapsed = !(sections[section - topSections].collapsed ?? false)
+        sections[section - topSections].collapsed = collapsed
         header.setCollapsed(collapsed)
         exchangerDetailsTableView.reloadData()
     }
