@@ -96,7 +96,6 @@ final class ProfileViewController: UIViewController {
                                       handler: { _ in
             self.defaults.removeObject(forKey: SignInViewController.defaultsTokensKey)
             self.navigationController?.setViewControllers([SignInViewController()], animated: false)
-            
         }))
         alert.addAction(UIAlertAction(title: "Нет",
                                       style: .cancel,
