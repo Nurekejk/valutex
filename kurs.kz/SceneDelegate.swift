@@ -20,14 +20,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         
-        let defaults = UserDefaults.standard
+
+        let isAuthorized = checkAuth().0
+        let headers = checkAuth().1
         
-        var headers = [String: String]()
+        if isAuthorized {
+            window?.rootViewController =
+                UINavigationController(rootViewController: CustomTabBarViewController())
+        } else {
+            window?.rootViewController = SelectLanguageViewController()
+        }
+        window?.makeKeyAndVisible()
+    }
+    // MARK: - Action
+    private func checkAuth() -> (Bool, [String: String]) {
+        let defaults = UserDefaults.standard
         var isAuthorized = false
+        var headers = [String: String]()
         
         guard let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) else {
             isAuthorized = false
-            return
+            return (isAuthorized, headers)
         }
         
         do {
@@ -43,14 +56,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             isAuthorized = false
             print("error while decoding")
         }
-        
-        if isAuthorized {
-            window?.rootViewController =
-                UINavigationController(rootViewController: CustomTabBarViewController())
-        } else {
-            window?.rootViewController = SelectLanguageViewController()
-        }
-
-        window?.makeKeyAndVisible()
+        return (isAuthorized, headers)
     }
 }
