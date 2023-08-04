@@ -68,7 +68,7 @@ final class ProfileViewController: UIViewController {
             image: AppImage.logout.uiImage,
             style: .plain,
             target: self,
-            action: nil)
+            action: #selector(logOutButtonDidPress))
     }
     
     // MARK: - Setup Views
@@ -83,6 +83,43 @@ final class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    // MARK: - Action
+    @objc private func logOutButtonDidPress() {
+        let alert = UIAlertController(title: "Выход",
+                                      message: "Вы действительно хотите выйти?",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да",
+                                      style: .destructive,
+                                      handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        alert.addAction(UIAlertAction(title: "Нет",
+                                      style: .cancel,
+                                      handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+//        var textField = UITextField()
+//        let alert = UIAlertController(title: "Add a new item", message: "smth", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "add item", style: .default) { alert in
+//            print("here1")
+//            let newCategory = Category(context: self.context)
+//            newCategory.name = textField.text!
+//            self.categories.append(newCategory)
+//            self.saveCategories()
+//            //                self.defaults.set(self.itemsString, forKey: "itemsArray")
+//        }
+//        alert.addTextField { alertTextField in
+//            print("here2")
+//            alertTextField.placeholder = "new item"
+//            textField = alertTextField
+//        }
+//        print("here3")
+//        alert.addAction(action)
+//        print("here4")
+//        present(alert, animated: true)
 }
 
 // MARK: - Enumerator
