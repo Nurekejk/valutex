@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Pulley
 
 final class CustomTabBarViewController: UITabBarController {
     
@@ -16,6 +17,7 @@ final class CustomTabBarViewController: UITabBarController {
 
         self.tabBar.barTintColor = AppColor.grayWhite.uiColor
         self.tabBar.tintColor = AppColor.primaryBase.uiColor
+        self.tabBar.backgroundColor = .white
     }
     
     // MARK: - Setup Views
@@ -23,11 +25,13 @@ final class CustomTabBarViewController: UITabBarController {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: AppImage.home_selected.uiImage!,
                                     image: AppImage.home_gray.uiImage!,
-                                    viewController: OfferSellBuySegmentedController())
+                                    viewController: PulleyViewController(
+                                        contentViewController: MapViewController(),
+                                        drawerViewController: ExchangeListViewController()))
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                      selectedImage: AppImage.money_selected.uiImage!,
                                      image: AppImage.money_gray.uiImage!,
-                                     viewController: OfferViewController())
+                                     viewController: OfferSellBuySegmentedController())
         let other = createNavigation(mainTitle: "", title: "Еще",
                                      selectedImage: AppImage.other_selected.uiImage!,
                                      image: AppImage.other_gray.uiImage!,

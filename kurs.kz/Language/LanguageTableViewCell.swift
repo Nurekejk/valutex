@@ -10,8 +10,10 @@ import SnapKit
 
 class LanguageTableViewCell: UITableViewCell {
     
-    // MARK: - UI
+    // MARK: - Public
+    static let reuseID = String(describing: LanguageTableViewCell.self)
     
+    // MARK: - UI
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "kazakh"
