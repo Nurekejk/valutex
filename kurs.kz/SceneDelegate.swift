@@ -20,12 +20,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         
-        var isAutorized = false
-        
         let defaults = UserDefaults.standard
-        isAutorized = defaults.bool(forKey: SignInViewController.defaultsIsAuthorizedKey)
-
-        if isAutorized {
+        
+        var headers = [String: String]()
+        var isAuthorized = false
+        
+        guard let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) else {
+            isAuthorized = false
+            return
+        }
+        
+        do {
+            let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
+            if let accessToken = tokens.access_token {
+                headers["Authorization"] = "Bearer \(accessToken)"
+                isAuthorized = true
+            } else {
+                isAuthorized = false
+                fatalError("accessToken returned nil")
+            }
+        } catch {
+            isAuthorized = false
+            print("error while decoding")
+        }
+        
+        if isAuthorized {
             window?.rootViewController =
                 UINavigationController(rootViewController: CustomTabBarViewController())
         } else {
