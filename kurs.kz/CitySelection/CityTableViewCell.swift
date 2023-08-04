@@ -22,7 +22,6 @@ final class CityTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.image = AppImage.select_city.uiImage
-        imageView.highlightedImage = AppImage.selected_city.uiImage
         return imageView
     }()
 
@@ -62,6 +61,12 @@ final class CityTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: - Reuse
+    // MARK: - Public
 
+    public func configureCell(name: String, isSelected: Bool) {
+        self.label.text = name
+        self.selectImageView.image = isSelected
+        ? AppImage.selected_city.uiImage
+        : AppImage.select_city.uiImage
+    }
 }
