@@ -66,7 +66,6 @@ final class LanguageAppViewController: UIViewController {
         } else if selectedLanguage == "KZ" {
             selectedIndexPath = IndexPath(row: 2, section: 0)
         }
-        
     }
 
     // MARK: - Setup Views
