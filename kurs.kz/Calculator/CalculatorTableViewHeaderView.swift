@@ -18,19 +18,19 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var flagImage1: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "KZTflag")
+        imageView.image = AppImage.KZTflag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var currencyLabel1: UILabel = {
         let label = UILabel()
         label.text = "KZT"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         return label
     }()
     private lazy var dropDownButton1: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "drop-down")
+        let iconImage = AppImage.drop_down.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
@@ -38,13 +38,13 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var separatorLineImage1: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "separator-line")
+        imageView.image = AppImage.separator_line.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var arrowLeftRightButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "arrow-left-right")
+        let iconImage = AppImage.arrow_left_right.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowLeftRightButtonDidPressed),
                          for: .touchUpInside)
@@ -52,25 +52,25 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var separatorLineImage2: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "separator-line")
+        imageView.image = AppImage.separator_line.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var flagImage2: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "KZTflag")
+        imageView.image = AppImage.KZTflag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var currencyLabel2: UILabel = {
         let label = UILabel()
         label.text = "KZT"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         return label
     }()
     private lazy var dropDownButton2: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "drop-down")
+        let iconImage = AppImage.drop_down.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
@@ -79,13 +79,13 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     private lazy var currencyTextField: UITextField = {
         let textField = UITextField()
         textField.rightViewMode = .always
-        textField.font = .systemFont(ofSize: 16)
+        textField.font = AppFont.regular.s16()
         textField.text = "500.00"
         return textField
     }()
     private lazy var clearButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "icon-clear")
+        let iconImage = AppImage.icon_clear.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(clearButtonDidPressed),
                          for: .touchUpInside)

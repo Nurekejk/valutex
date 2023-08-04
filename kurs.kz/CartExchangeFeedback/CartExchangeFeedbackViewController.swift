@@ -26,7 +26,7 @@ final class CartExchangeFeedbackViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CartExchangeFeedbackViewCell.self, forCellReuseIdentifier: "newCell")
+        tableView.register(CartExchangeFeedbackViewCell.self, forCellReuseIdentifier: CartExchangeFeedbackViewCell.reuseID)
         tableView.rowHeight = 56
         
         return tableView
@@ -66,7 +66,7 @@ extension CartExchangeFeedbackViewController: UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: CartExchangeFeedbackViewCell.reuseID,
                                                     for: indexPath) as? CartExchangeFeedbackViewCell
         let language = languages[indexPath.row]
         let titleOfIcon = titleOfIcons[indexPath.row]

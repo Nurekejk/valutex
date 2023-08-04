@@ -39,7 +39,7 @@ final class ExchangeRateViewController: UIViewController {
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     private lazy var shadowView: UIView = {
@@ -57,15 +57,18 @@ final class ExchangeRateViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        title = "Курс валют"
-        navigationController?.navigationBar.backItem?.title = ""
         
         view.backgroundColor = .systemGray6
-        view.addSubview(headerView)
-        view.addSubview(tableView)
-        view.addSubview(shadowView)
+        [headerView, tableView, shadowView].forEach(view.addSubview($0))
         shadowView.addSubview(safeButton)
     }
+    
+    // MARK: - Navigation Bar
+    private func navigationBar() {
+        title = "Курс валют"
+    }
+    
+    // MARK: - ViewDid LayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
@@ -107,7 +110,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
                                                  for: indexPath) as? ExchangeRateTableViewCell
         switch indexPath.row {
         case 0:
-            cell?.configureCell(flagImage: UIImage(named: "USDflag"),
+            cell?.configureCell(flagImage: AppImage.USDflag.uiImage,
                                 currencyLabel: "Доллар",
                                 amountOfPurchaseTextField: "500",
                                 amountOfSaleTextField: "500",

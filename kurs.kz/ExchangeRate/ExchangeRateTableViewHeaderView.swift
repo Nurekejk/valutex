@@ -15,12 +15,12 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Покупка"
         label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     private lazy var arrowUpButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "arrow-up")
+        let iconImage = AppImage.arrow_up.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowUpButtonDidPressed),
                          for: .touchUpInside)
@@ -30,12 +30,12 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Продажа"
         label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     private lazy var arrowDownButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "arrow-down")
+        let iconImage = AppImage.arrow_down.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowDownButtonDidPressed),
                          for: .touchUpInside)
