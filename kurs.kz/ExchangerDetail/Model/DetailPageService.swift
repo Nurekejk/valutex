@@ -22,7 +22,8 @@ final class DetailPageService {
         urlComponent.query = "office_id=\(officeID)"
         
         guard let url = urlComponent.url else {
-            fatalError()
+            completion(.failure(AFError.invalidURL(url: urlComponent)))
+            return
         }
         
         AF.request(url, method: .post, parameters: [:], encoding: JSONEncoding.default)
@@ -46,7 +47,8 @@ final class DetailPageService {
         urlComponent.query = "office_id=\(officeID)"
         
         guard let url = urlComponent.url else {
-            fatalError()
+            completion(.failure(AFError.invalidURL(url: urlComponent)))
+            return
         }
         
         AF.request(url, method: .post, parameters: [:], encoding: JSONEncoding.default)
