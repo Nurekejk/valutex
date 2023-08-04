@@ -13,6 +13,6 @@ struct SignInRequest: Encodable {
 }
 
 struct SignInResponse: Codable {
-    let access_token: String
-    let refresh_token: String
+    let access_token: String?
+    let refresh_token: String?
 }
