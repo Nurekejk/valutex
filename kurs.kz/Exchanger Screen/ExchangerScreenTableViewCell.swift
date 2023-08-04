@@ -11,7 +11,7 @@ import SnapKit
 final class ExchangerScreenTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    public static var reuseIdentifier = String(describing: ExchangerScreenTableViewCell.self)
+    static var reuseIdentifier = String(describing: ExchangerScreenTableViewCell.self)
     
     // MARK: - UI
     private lazy var containerView: UIView = {

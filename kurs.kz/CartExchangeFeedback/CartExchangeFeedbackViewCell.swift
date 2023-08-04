@@ -11,7 +11,7 @@ import SnapKit
 final class CartExchangeFeedbackViewCell: UITableViewCell {
     
     // MARK: - Public
-    public static var reuseID = String(describing: CartExchangeFeedbackViewCell.self)
+    static var reuseID = String(describing: CartExchangeFeedbackViewCell.self)
     
     // MARK: - UI
     private let iconImageView: UIImageView = {
