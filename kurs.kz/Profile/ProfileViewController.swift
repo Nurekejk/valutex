@@ -33,6 +33,8 @@ final class ProfileViewController: UIViewController {
      ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
                     name: "Курс Нацбанка")]
     
+    private let defaults = UserDefaults.standard
+    
     // MARK: - UI
     private lazy var informationTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -92,34 +94,15 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Да",
                                       style: .destructive,
                                       handler: { _ in
-            NSLog("The \"OK\" alert occured.")
+            self.defaults.removeObject(forKey: SignInViewController.defaultsTokensKey)
+            self.navigationController?.setViewControllers([SignInViewController()], animated: false)
+            
         }))
         alert.addAction(UIAlertAction(title: "Нет",
                                       style: .cancel,
-                                      handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
+                                      handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
     }
-//        var textField = UITextField()
-//        let alert = UIAlertController(title: "Add a new item", message: "smth", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "add item", style: .default) { alert in
-//            print("here1")
-//            let newCategory = Category(context: self.context)
-//            newCategory.name = textField.text!
-//            self.categories.append(newCategory)
-//            self.saveCategories()
-//            //                self.defaults.set(self.itemsString, forKey: "itemsArray")
-//        }
-//        alert.addTextField { alertTextField in
-//            print("here2")
-//            alertTextField.placeholder = "new item"
-//            textField = alertTextField
-//        }
-//        print("here3")
-//        alert.addAction(action)
-//        print("here4")
-//        present(alert, animated: true)
 }
 
 // MARK: - Enumerator
