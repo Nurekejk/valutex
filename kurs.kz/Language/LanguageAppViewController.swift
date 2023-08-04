@@ -17,7 +17,7 @@ final class LanguageAppViewController: UIViewController {
         }
     }
     
-    private let languages: [String] = ["English", "Русский", "Қазакша"]
+    private let languages: [String] = ["English", "Русский", "Қазақша"]
     
     // MARK: - UI
     private lazy var tableView: UITableView = {
