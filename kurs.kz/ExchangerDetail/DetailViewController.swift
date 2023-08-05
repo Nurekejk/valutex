@@ -63,12 +63,7 @@ final class DetailViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        exchangerDetailsTableView.layer.cornerRadius = 8.0
-    }
-    
+  
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         self.title = "Обменники"
