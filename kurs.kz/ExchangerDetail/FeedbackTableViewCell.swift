@@ -13,6 +13,11 @@ final class FeedbackTableViewCell: UITableViewCell {
     static let reuseID = String(describing: FeedbackTableViewCell.self)
     
     // MARK: - UI
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = AppImage.user_tag.uiImage
@@ -49,17 +54,28 @@ final class FeedbackTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.layer.cornerRadius = 8.0
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.backgroundColor = .white
-        
+        contentView.backgroundColor = AppColor.gray10.uiColor
+        containerView.backgroundColor = .white
         [iconImageView, titleLabel, arrowImageView].forEach {
-            contentView.addSubview($0)
+            containerView.addSubview($0)
         }
+        contentView.addSubview(containerView)
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(15)
