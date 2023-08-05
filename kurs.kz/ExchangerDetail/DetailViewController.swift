@@ -16,7 +16,7 @@ final class DetailViewController: UIViewController {
     private let service: DetailPageService
     private var sections = [DetailSection]()
     private var currencies = [CurrencyElement]()
-    private let topSections = 4
+    private let topSections = 3
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -27,8 +27,6 @@ final class DetailViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: DetailTableViewHeader.reuseID)
         tableView.register(DetailTableViewCell.self,
                            forCellReuseIdentifier: DetailTableViewCell.reuseID)
-        tableView.register(ExchangerScreenTableViewCell.self,
-                           forCellReuseIdentifier: ExchangerScreenTableViewCell.reuseIdentifier)
         tableView.register(ExchangerScreenTextTableViewCell.self,
                            forCellReuseIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier)
         tableView.register(CurrencyInformationTableHeaderView.self,
@@ -239,9 +237,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
+        if section < SectionNumber.one.rawValue || section == SectionNumber.two.rawValue {
             return 1
-        } else if section == SectionNumber.two.rawValue {
+        } else if section == SectionNumber.one.rawValue {
             return currencies.count
         }
         
@@ -259,21 +257,13 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case SectionNumber.zero.rawValue:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: ExchangerScreenTableViewCell.reuseIdentifier,
-                for: indexPath) as? ExchangerScreenTableViewCell
-            else {
-                fatalError("Could not cast to ExchangerScreenTableViewCell")
-            }
-            return cell
-        case SectionNumber.one.rawValue:
-            guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ExchangerScreenTextTableViewCell.reuseIdentifier,
                 for: indexPath) as? ExchangerScreenTextTableViewCell
             else {
                 fatalError("Could not cast to ExchangerScreenTextTableViewCell")
             }
             return cell
-        case SectionNumber.two.rawValue:
+        case SectionNumber.one.rawValue:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: CurrencyInformationTableViewCell.reuseIdentifier,
                 for: indexPath) as? CurrencyInformationTableViewCell
@@ -282,7 +272,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             }
             cell.currency = currencies[indexPath.row]
             return cell
-        case SectionNumber.three.rawValue:
+        case SectionNumber.two.rawValue:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: FeedbackTableViewCell.reuseID,
                 for: indexPath) as? FeedbackTableViewCell
@@ -303,9 +293,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
+        if section < SectionNumber.one.rawValue || section == SectionNumber.two.rawValue {
             return UIView()
-        } else if section == SectionNumber.two.rawValue {
+        } else if section == SectionNumber.one.rawValue {
             guard let header = tableView.dequeueReusableHeaderFooterView(
                 withIdentifier: CurrencyInformationTableHeaderView.reuseID)
                     as? CurrencyInformationTableHeaderView
@@ -330,18 +320,18 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section < SectionNumber.two.rawValue {
+        if section < SectionNumber.one.rawValue {
             return 0
-        } else if section == SectionNumber.two.rawValue {
+        } else if section == SectionNumber.one.rawValue {
             return 36
-        } else if section == SectionNumber.three.rawValue {
+        } else if section == SectionNumber.two.rawValue {
             return 16
         }
         return 54
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == SectionNumber.two.rawValue {
+        if section == SectionNumber.one.rawValue {
             guard let footer = tableView.dequeueReusableHeaderFooterView(
                 withIdentifier: CurrencyInformationTableFooterView.reuseID)
                     as? CurrencyInformationTableFooterView
@@ -354,10 +344,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section < SectionNumber.two.rawValue || section ==
-            SectionNumber.two.rawValue {
-            return 34
-        } else if section == SectionNumber.three.rawValue {
+        if section < SectionNumber.one.rawValue || section ==
+        SectionNumber.two.rawValue {
+            return 16
+        } else if section == SectionNumber.one.rawValue {
             return 16
         }
         return 0
@@ -365,7 +355,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == SectionNumber.three.rawValue {
+        if indexPath.section == SectionNumber.two.rawValue {
             self.navigationController?.pushViewController(RateViewController(),
                                                           animated: true)
         }
