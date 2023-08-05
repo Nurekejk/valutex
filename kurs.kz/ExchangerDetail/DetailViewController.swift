@@ -313,6 +313,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         }
         header.titleLabel.text = sections[section - topSections].name
         header.setCollapsed(sections[section - topSections].collapsed ?? false)
+        header.row = section - topSections
         header.section = section
         header.detailSection = sections[section - topSections]
         header.delegate = self
