@@ -11,18 +11,10 @@ import SnapKit
 final class ToSupportViewController: UIViewController {
     
     // MARK: - UI
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Написать в поддержку"
-        label.font = AppFont.bold.s20()
-        label.textAlignment = .center
-        label.textColor = AppColor.gray100.uiColor
-        return label
-    }()
-    
     private let supportTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SupportTableViewCell.self, forCellReuseIdentifier: SupportTableViewCell.identifier)
+        tableView.rowHeight = 54
         return tableView
     }()
     
@@ -35,29 +27,38 @@ final class ToSupportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
         setupConstraints()
         setupTableView()
-        
+        viewLayoutSubViews()
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Написать в поддержку"
+    }
+    
+    // MARK: - ViewLayoutSubViews
+    private func viewLayoutSubViews() {
+        super.viewDidLayoutSubviews()
+        supportTableView.layer.cornerRadius = 8
     }
     
     // MARK: - SetupViews
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
-        view.addSubview(titleLabel)
         view.addSubview(supportTableView)
         supportTableView.backgroundColor = AppColor.gray10.uiColor
     }
     
     // MARK: - SetupConstraints()
     private func setupConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(18)
-            make.leading.trailing.equalToSuperview()
-        }
         supportTableView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(18)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(130)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(108)
         }
     }
     
@@ -70,6 +71,7 @@ final class ToSupportViewController: UIViewController {
 
     // MARK: - UITableViewDataSource, UITableViewDelegate
 extension ToSupportViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return supportOptions.count
     }

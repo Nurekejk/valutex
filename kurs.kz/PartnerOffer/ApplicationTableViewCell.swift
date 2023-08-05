@@ -28,7 +28,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     private lazy var starImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "yellow-star")
+        imageView.image = AppImage.star12.uiImage
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -38,7 +38,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "4 (10)"
         label.textColor = UIColor(named: "partnerOfferGrayTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
@@ -63,7 +63,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Покупает: "
         label.textColor = UIColor(named: "partnerOfferGrayTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
@@ -71,7 +71,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "250 500 ₸  "
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
@@ -79,7 +79,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "по курсу: "
         label.textColor = UIColor(named: "partnerOfferGrayTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
@@ -87,7 +87,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "500$"
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = AppFont.regular.s12()
         return label
     }()
     
@@ -105,7 +105,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.backgroundColor = UIColor(named: "cancelButtonColor")
         button.setTitle("Отклонить", for: .normal)
         button.setTitleColor(UIColor(named: "cancelButtonTitleColor"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        button.titleLabel?.font = AppFont.regular.s14()
         button.addTarget(self, action: #selector(cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -115,7 +115,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.backgroundColor = UIColor(named: "acceptButtonColor")
         button.setTitle("Принять", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        button.titleLabel?.font = AppFont.regular.s14()
         button.addTarget(self, action: #selector(acceptButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -134,7 +134,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         button.backgroundColor = .white
         button.setTitle("Предложить свой курс", for: .normal)
         button.setTitleColor(UIColor(named: "offerCurrencyTextColor"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s12()
         button.addTarget(self, action: #selector(offerYourCurrencyButtonDidPressed), for: .touchUpInside)
         return button
     }()

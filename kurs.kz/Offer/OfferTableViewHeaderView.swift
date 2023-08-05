@@ -26,7 +26,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Заявка"
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.font = AppFont.semibold.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
@@ -35,25 +35,25 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         button.setTitle("Отменить", for: .normal)
         button.tintColor = AppColor.gray80.uiColor
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.titleLabel?.font = AppFont.medium.s14()
         return button
     }()
 
     private let selltextField: SkyFloatingLabelTextField = {
         let textField =  CustomSkyFloatingLabelTextField()
         textField.titleFormatter = {$0}
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.titleLabel.font = AppFont.regular.s12()
         textField.title = "Продать"
         textField.titleColor = AppColor.gray50.uiColor
         textField.selectedTitleColor = AppColor.gray50.uiColor
 
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.placeholderFont = AppFont.regular.s16()
         textField.placeholderColor = AppColor.gray100.uiColor
         textField.placeholder = "500 $"
 
         textField.backgroundColor = AppColor.gray10.uiColor
         textField.lineView.isHidden = true
-        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.font = AppFont.regular.s16()
         textField.layer.borderColor = AppColor.gray20.uiColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
@@ -66,18 +66,18 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     private let buytextField: SkyFloatingLabelTextField = {
         let textField =  CustomSkyFloatingLabelTextField()
         textField.titleFormatter = {$0}
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.titleLabel.font = AppFont.regular.s12()
         textField.title = "Получить"
         textField.titleColor = AppColor.gray50.uiColor
         textField.selectedTitleColor = AppColor.gray50.uiColor
 
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.placeholderFont = AppFont.regular.s16()
         textField.placeholderColor = AppColor.gray100.uiColor
         textField.placeholder = "250 000 т"
 
         textField.backgroundColor = AppColor.gray10.uiColor
         textField.lineView.isHidden = true
-        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.font = AppFont.regular.s16()
         textField.layer.borderColor = AppColor.gray20.uiColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
@@ -90,18 +90,18 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     private let maintextField: SkyFloatingLabelTextField = {
         let textField =  OfferSkyFloatingLabelTextField()
         textField.titleFormatter = {$0}
-        textField.titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textField.titleLabel.font = AppFont.regular.s12()
         textField.title = "По курсу"
         textField.titleColor = AppColor.gray50.uiColor
         textField.selectedTitleColor = AppColor.gray50.uiColor
 
-        textField.placeholderFont = UIFont.systemFont(ofSize: 16.0)
+        textField.placeholderFont = AppFont.regular.s16()
         textField.placeholderColor = AppColor.gray100.uiColor
         textField.placeholder = "500 т"
 
         textField.backgroundColor = AppColor.gray10.uiColor
         textField.lineView.isHidden = true
-        textField.font = UIFont.systemFont(ofSize: 16.0)
+        textField.font = AppFont.regular.s16()
         textField.layer.borderColor = AppColor.gray20.uiColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
@@ -114,7 +114,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         button.setTitle("Изменить", for: .normal)
         button.tintColor = AppColor.primaryBase.uiColor
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.titleLabel?.font = AppFont.medium.s14()
         button.addTarget(self,
                          action: #selector(changeButtonDidPressed),
                          for: .touchUpInside)

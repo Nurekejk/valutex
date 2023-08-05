@@ -11,7 +11,6 @@ import SnapKit
 final class ExchangeRateViewController: UIViewController {
     
     // MARK: - UI
-    
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
         let headerView = ExchangeRateTableViewHeaderView()
         headerView.backgroundColor = .systemGray6
@@ -40,7 +39,7 @@ final class ExchangeRateViewController: UIViewController {
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     private lazy var shadowView: UIView = {
@@ -50,7 +49,6 @@ final class ExchangeRateViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -58,21 +56,25 @@ final class ExchangeRateViewController: UIViewController {
     }
     
     // MARK: - Setup Views
-    
     private func setupViews() {
+        
         view.backgroundColor = .systemGray6
-        view.addSubview(headerView)
-        view.addSubview(tableView)
-        view.addSubview(shadowView)
+        [headerView, tableView, shadowView].forEach(view.addSubview($0))
         shadowView.addSubview(safeButton)
     }
+    
+    // MARK: - Navigation Bar
+    private func navigationBar() {
+        title = "Курс валют"
+    }
+    
+    // MARK: - ViewDid LayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
     }
         
     // MARK: - Setup Constraints
-    
     private func setupConstraints() {
         safeButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -90,7 +92,7 @@ final class ExchangeRateViewController: UIViewController {
         footerView.frame = CGRect(x: 0, y: 0, width: 0, height: 46)
 
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(120)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(260)
@@ -99,7 +101,6 @@ final class ExchangeRateViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -109,7 +110,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
                                                  for: indexPath) as? ExchangeRateTableViewCell
         switch indexPath.row {
         case 0:
-            cell?.configureCell(flagImage: UIImage(named: "USDflag"),
+            cell?.configureCell(flagImage: AppImage.USDflag.uiImage,
                                 currencyLabel: "Доллар",
                                 amountOfPurchaseTextField: "500",
                                 amountOfSaleTextField: "500",
