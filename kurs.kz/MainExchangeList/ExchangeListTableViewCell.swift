@@ -53,6 +53,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
         view.isSkeletonable = true
         return view
     }()
+    
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.skeletonCornerRadius = 10
@@ -62,9 +63,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.medium.s14()
+        label.font = AppFont.medium.s14()
         label.textColor = AppColor.gray100.uiColor
-        label.isSkeletonable = false
         label.skeletonTextLineHeight = .relativeToFont
         return label
     }()
@@ -72,27 +72,24 @@ final class ExchangeListTableViewCell: UITableViewCell {
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "rating_icon")
-        imageView.isSkeletonable = false
         return imageView
     }()
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
-        label.isSkeletonable = false
         return label
     }()
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.isSkeletonable = false
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
         label.linesCornerRadius = 5
         label.isSkeletonable = true

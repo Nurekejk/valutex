@@ -94,10 +94,6 @@ final class CurrencySelectorViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(currenciesTableView)
-        view.addSubview(chooseCurrencyLabel)
-        view.addSubview(exitButton)
-        view.addSubview(selectButton)
         [sliderBorderView,
          currenciesTableView,
          chooseCurrencyLabel,
