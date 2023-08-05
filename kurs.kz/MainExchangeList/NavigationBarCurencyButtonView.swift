@@ -27,7 +27,7 @@ final class NavigationBarCurencyButtonView: UIView {
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(AppImage.main_down_arrow.uiImage, for: .normal)
+        button.setImage(AppImage.down_arrow.uiImage, for: .normal)
         return button
     }()
     
