@@ -38,7 +38,7 @@ struct ExchangerListService {
             guard let data = data else {
                 fatalError("Data not found")
             }
-            if let exchangers = parseJSON(excnhagerData: data) {
+            if let exchangers = parseJSON(exchangerData: data) {
                 DispatchQueue.main.async {
                     completion(exchangers)
                 }
@@ -47,10 +47,10 @@ struct ExchangerListService {
         task.resume()
     }
     
-    func parseJSON(excnhagerData:Data) -> [Exchanger]? {
+    func parseJSON(exchangerData:Data) -> [Exchanger]? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode([Exchanger].self, from: excnhagerData)
+            let decodedData = try decoder.decode([Exchanger].self, from: exchangerData)
             return decodedData
         } catch {
             print("error:\(error)")
