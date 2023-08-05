@@ -59,7 +59,7 @@ final class ExchangeRateViewController: UIViewController {
     private func setupViews() {
         title = "Курс валют"
         navigationController?.navigationBar.backItem?.title = ""
-        
+
         view.backgroundColor = .systemGray6
         view.addSubview(headerView)
         view.addSubview(tableView)

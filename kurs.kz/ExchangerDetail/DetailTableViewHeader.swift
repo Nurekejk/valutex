@@ -50,9 +50,7 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
         
         setupViews()
         setupConstraints()
-        addGestureRecognizer(
-            UITapGestureRecognizer(target: self,
-                                   action: #selector(DetailTableViewHeader.tapHeader(_:))))
+        setupGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -86,6 +84,13 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-16)
             make.size.equalTo(16)
         }
+    }
+    
+    // MARK: - Setup Gesture Recognizer
+    private func setupGestureRecognizer() {
+        addGestureRecognizer(
+            UITapGestureRecognizer(target: self,
+                                   action: #selector(DetailTableViewHeader.tapHeader(_:))))
     }
     
     // MARK: - Actions
