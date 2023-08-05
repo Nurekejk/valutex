@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: CustomTabBarViewController())
+                UINavigationController(rootViewController: DetailViewController(service: DetailPageService()))
         } else {
             window?.rootViewController = SelectLanguageViewController()
         }

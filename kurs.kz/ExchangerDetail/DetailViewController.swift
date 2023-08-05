@@ -332,10 +332,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section < SectionNumber.two.rawValue {
             return 0
-        } else if section == SectionNumber.three.rawValue {
-            return 16
         } else if section == SectionNumber.two.rawValue {
             return 36
+        } else if section == SectionNumber.three.rawValue {
+            return 16
         }
         return 54
     }
@@ -354,10 +354,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section < SectionNumber.two.rawValue || section == SectionNumber.three.rawValue {
-            return 16
-        } else if section == SectionNumber.two.rawValue {
+        if section < SectionNumber.two.rawValue || section ==
+            SectionNumber.two.rawValue {
             return 34
+        } else if section == SectionNumber.three.rawValue {
+            return 16
         }
         return 0
     }
