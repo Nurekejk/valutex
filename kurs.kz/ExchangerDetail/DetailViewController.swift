@@ -63,7 +63,7 @@ final class DetailViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-  
+    
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         self.title = "Обменники"
@@ -90,7 +90,7 @@ final class DetailViewController: UIViewController {
         [exchangerDetailsTableView].forEach {
             view.addSubview($0)
         }
-        exchangerDetailsTableView.estimatedRowHeight = 45
+        exchangerDetailsTableView.estimatedRowHeight = 54
         exchangerDetailsTableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -302,7 +302,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                                                         DetailTableViewHeader.reuseID)
-                                                                        as? DetailTableViewHeader
+                as? DetailTableViewHeader
         else {
             fatalError("Could not cast to DetailTableViewHeader")
         }
@@ -341,10 +341,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section < SectionNumber.one.rawValue || section ==
-        SectionNumber.two.rawValue {
+            SectionNumber.two.rawValue {
             return 16
         } else if section == SectionNumber.one.rawValue {
-            return 16
+            return 34
         }
         return 0
     }
@@ -355,6 +355,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(RateViewController(),
                                                           animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 114
+        } else if indexPath.section == 2 {
+            return 54
+        }
+        return UITableView.automaticDimension
     }
 }
 
