@@ -61,7 +61,7 @@ final class FeedbackTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         iconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(15)
             make.size.equalTo(24)
         }
