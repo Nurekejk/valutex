@@ -143,12 +143,14 @@ final class MapViewController: UIViewController {
         view.backgroundColor = .white
         
         locationManager.delegate = self
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestLocation()
-            self.googleMapView.isMyLocationEnabled = true
-            self.googleMapView.settings.myLocationButton = false
-        } else {
-            self.locationManager.requestWhenInUseAuthorization()
+        DispatchQueue.main.async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.requestLocation()
+                self.googleMapView.isMyLocationEnabled = true
+                self.googleMapView.settings.myLocationButton = false
+            } else {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
         }
         
         [zoomInButton, zoomOutButton].forEach {
