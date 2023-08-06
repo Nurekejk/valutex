@@ -38,14 +38,14 @@ final class MapViewController: UIViewController {
     
     private lazy var zoomInButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "zoom-in"), for: .normal)
+        button.setImage(AppImage.zoom_in.uiImage, for: .normal)
         button.addTarget(self, action: #selector(zoomInButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
     private lazy var zoomOutButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "zoom-out"), for: .normal)
+        button.setImage(AppImage.zoom_out.uiImage, for: .normal)
         button.addTarget(self, action: #selector(zoomOutButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -62,7 +62,7 @@ final class MapViewController: UIViewController {
     
     private lazy var exchangersButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "my-exchanges-navigation"), for: .normal)
+        button.setImage(AppImage.my_exchanges_navigation.uiImage, for: .normal)
         button.addTarget(self, action: #selector(exchangersButtonDidPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -70,7 +70,7 @@ final class MapViewController: UIViewController {
     
     private lazy var myLocationButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "my-location"), for: .normal)
+        button.setImage(AppImage.my_location.uiImage, for: .normal)
         button.addTarget(self, action: #selector(myLocationButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -135,9 +135,9 @@ final class MapViewController: UIViewController {
         edgesForExtendedLayout = []
         let label = UILabel()
         label.text = "Обменники"
-        label.textColor = UIColor(named: "navigation_title_color")
-        label.tintColor = UIColor(named: "navigation_title_color")
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = AppColor.gray100.uiColor
+        label.tintColor = AppColor.gray100.uiColor
+        label.font = AppFont.semibold.s18()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
     
