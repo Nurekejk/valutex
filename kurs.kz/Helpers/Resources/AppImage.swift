@@ -94,7 +94,7 @@ enum AppImage: String, AppImageProtocol {
     case separator_line = "separator-line"
     case arrow_left_right = "arrow-left-right"
     case icon_clear = "icon-clear"
-    case arrow_down_collapse = "arrow_down_collapse"
-    case arrow_up_collapse = "arrow_up_collapse"
+    case arrow_down_collapse = "arrow-down-сollapse"
+    case arrow_up_collapse = "arrow-up-collapse"
     case search_normal = "search_normal"
 }
