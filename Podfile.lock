@@ -14,6 +14,7 @@ PODS:
   - GoogleMaps/Base (8.0.0)
   - GoogleMaps/Maps (8.0.0):
     - GoogleMaps/Base
+  - IQKeyboardManagerSwift (6.5.12)
   - ProgressHUD (13.6.2)
   - Pulley (2.9.1)
   - SkyFloatingLabelTextField (4.0.0)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - CHIOTPField/Two
   - CollapsibleTableSectionViewController (~> 2.0.1)
   - GoogleMaps (= 8.0.0)
+  - IQKeyboardManagerSwift
   - ProgressHUD (= 13.6.2)
   - Pulley
   - SkyFloatingLabelTextField
@@ -43,6 +45,7 @@ SPEC REPOS:
     - CHIOTPField
     - CollapsibleTableSectionViewController
     - GoogleMaps
+    - IQKeyboardManagerSwift
     - ProgressHUD
     - Pulley
     - SkyFloatingLabelTextField
@@ -55,6 +58,7 @@ SPEC CHECKSUMS:
   CHIOTPField: 5df19b433ccfad2a80e944d3abde128a236aaf01
   CollapsibleTableSectionViewController: 40d97d684d870044522a0dc29b128a6acaaa99df
   GoogleMaps: 0dce473ab18742d0f327887853630927cbee9127
+  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   Pulley: a4c28c930958f42978d69631000bc1abb82cb232
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
   Wormholy: 09da0b876f9276031fd47383627cb75e194fc068
 
-PODFILE CHECKSUM: 11c93df321754caafa9b1e63e659f66e82347819
+PODFILE CHECKSUM: 415d32fd2a8abb85596e738f7b1f007ede6cfff0
 
 COCOAPODS: 1.12.1
