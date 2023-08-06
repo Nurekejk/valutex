@@ -12,18 +12,16 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-     [ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
-                    name: "Курс валют"),
-     ProfileSection(image: AppImage.setting_3.uiImage ?? UIImage(),
-                    name: "Настройки аккаунта"),
+     [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
+                    name: "Мои обменники"),
+      ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
+                     name: "Курс валют"),
      ProfileSection(image: AppImage.notification.uiImage ?? UIImage(),
                     name: "Уведомления"),
      ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
                     name: "Язык приложения"),
      ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
                     name: "Город"),
-     ProfileSection(image: AppImage.profile_2user.uiImage ?? UIImage(),
-                    name: "Стать партнером"),
      ProfileSection(image: AppImage.messages.uiImage ?? UIImage(),
                     name: "Написать в поддержку"),
      ProfileSection(image: AppImage.info.uiImage ?? UIImage(),
@@ -100,10 +98,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
         if section == SectionNumber.zero.rawValue {
-            rowCount = 10
-        }
-        if section == SectionNumber.one.rawValue {
-            rowCount = 1
+            rowCount = 8
         }
         return rowCount
     }
@@ -118,10 +113,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
-            cell.profileSection = profileSections[9]
+            cell.profileSection = profileSections[8]
         }
         
-        if cell.profileSection?.name == profileSections[3].name {
+        if cell.profileSection?.name == profileSections[2].name {
             cell.configureCell(isBadgeHidden: false)
         } else {
             cell.configureCell(isBadgeHidden: true)
@@ -143,7 +138,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return section == 0 ? 196 : 0
     }
     
-    // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
@@ -151,7 +145,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                navigationController?.pushViewController(EmptyViewController(),
+                navigationController?.pushViewController(MyExchangesViewController(),
                                                          animated: true)
             case 1:
                 navigationController?.pushViewController(EmptyViewController(),
@@ -166,20 +160,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(SelectCityViewController(),
                                                          animated: true)
             case 5:
-                navigationController?.pushViewController(EmptyViewController(),
-                                                         animated: true)
-            case 6:
                 navigationController?.pushViewController(ToSupportViewController(),
                                                          animated: true)
-            case 7:
+            case 6:
                 navigationController?.pushViewController(AboutCompanyViewController(
                     service: AboutCompanyPageService()),
                                                          animated: true)
-            case 8:
-                navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
-                                                         animated: true)
             default:
-                navigationController?.pushViewController(EmptyViewController(),
+                navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
                                                          animated: true)
             }
         } else {
@@ -188,5 +176,4 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                                                      animated: true)
         }
     }
-    // swiftlint:enable cyclomatic_complexity
 }
