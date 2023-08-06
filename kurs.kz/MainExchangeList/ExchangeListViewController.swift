@@ -8,62 +8,74 @@
 import UIKit
 import PanModal
 import SnapKit
+import Pulley
 
+// swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
     
     // MARK: - Properties
-    
-    private let exchangersArray = [Exchanger(mainTitle: "Som Exchange",
-                                             iconImageName: "som_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "г.Алматы, ул. Ауэзова 14",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448,
-                                             sellRate: 451,
-                                             distance: "1 км"),
-                                   Exchanger(mainTitle: "МИГ",
-                                             iconImageName: "mig_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "ул. Толе би, 297 г, уг. ул. Тлендиева",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.5,
-                                             sellRate: 451,
-                                             distance: "1 км"),
-                                   Exchanger(mainTitle: "Блиц",
-                                             iconImageName: "blank_icon",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "ул. Толе би, 297",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448,
-                                             sellRate: 449.5,
-                                             distance: "5 км"),
-                                   Exchanger(mainTitle: "Limpopo",
-                                             iconImageName: "limpopo_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "534, пр-т. Сейфуллина уг",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.1,
-                                             sellRate: 451,
-                                             distance: "3 км"),
-                                   Exchanger(mainTitle: "МИГ",
-                                             iconImageName: "mig_exchange",
-                                             rating: 4.9,
-                                             totalRatings: 15,
-                                             address: "мкр. Ақбұлақ ул. Хан шатыр, 273",
-                                             date: "1 марта, 2023 18:05:33",
-                                             buyRate: 448.5,
-                                             sellRate: 451,
-                                             distance: "1 км")]
-    
-    private var searchArray = [Exchanger]()
-    private var isSearching = false
+    private var searchBarText = ""
+    private var exchangersArray: [Exchanger] = [] {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
+    private var filteredArray: [Exchanger] = [] {
+        didSet {
+            self.exchangeListTableView.reloadData()
+        }
+    }
+    private var isSearching = false {
+        didSet {
+            filtersDidChange()
+        }
+    }
+    private var nearbySorterIsOn = false {
+        didSet {
+            filtersDidChange()
+            if nearbySorterIsOn {
+                nearbySorterButton.backgroundColor = AppColor.primarySecondary.uiColor
+            } else {
+                nearbySorterButton.backgroundColor = .clear
+            }
+        }
+    }
+    private var openFilterIsOn = false {
+        didSet {
+            filtersDidChange()
+            if openFilterIsOn {
+                openFilterButton.backgroundColor = AppColor.primarySecondary.uiColor
+            } else {
+                openFilterButton.backgroundColor = .clear
+            }
+        }
+    }
+    private var buyRateSorterState: ButtonState = .isOff {
+        didSet {
+            filtersDidChange()
+        }
+    }
+    private var sellRateSorterState: ButtonState = .isOff {
+        didSet {
+            filtersDidChange()
+        }
+    }
     weak var delegate: CurrencySelectorViewControllerDelegate?
     
     // MARK: - UI
+    
+    private let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let gripperView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 60, height: 4)
+        view.backgroundColor = AppColor.gray30.uiColor
+        return view
+    }()
     
     private lazy var navigationBarView: NavigationBarCurencyButtonView = {
         let view = NavigationBarCurencyButtonView()
@@ -89,9 +101,10 @@ final class ExchangeListViewController: UIViewController {
         return label
     }()
     
-    private let currencySearchBar: UISearchBar = {
+    private lazy var currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.setImage(UIImage(named: "search_normal"), for: .search, state: .normal)
+        searchBar.delegate = self
+        searchBar.setImage(AppImage.search_city.uiImage, for: .search, state: .normal)
         searchBar.searchTextField.font = AppFont.regular.s14()
         searchBar.searchTextPositionAdjustment.horizontal = CGFloat(12)
         searchBar.searchTextField.backgroundColor = AppColor.grayWhite.uiColor
@@ -106,7 +119,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var calculatorButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "calculator_button"), for: .normal)
+        button.setImage(AppImage.calculator_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         button.addTarget(self, action: #selector(calculatorButtonDidPresss), for: .touchUpInside)
         return button
@@ -114,7 +127,7 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var pinButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "pin_button"), for: .normal)
+        button.setImage(AppImage.pin_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
         button.addTarget(self, action: #selector(selectCityDidPress), for: .touchUpInside)
         return button
@@ -122,15 +135,16 @@ final class ExchangeListViewController: UIViewController {
     
     private lazy var mainFilterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "main_filter"), for: .normal)
+        button.setImage(AppImage.main_filter.uiImage, for: .normal)
         return button
     }()
     
-    private lazy var nearbyFilterButton: UIButton = {
+    private lazy var nearbySorterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Рядом", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.regular.s14()
+        button.addTarget(self, action: #selector(nearbyButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -139,19 +153,26 @@ final class ExchangeListViewController: UIViewController {
         button.setTitle("Открыто", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.regular.s14()
+        button.addTarget(self, action: #selector(openButtonDidPress), for: .touchUpInside)
         return button
     }()
     
     private lazy var headerView: ExchangeListHeaderView = {
         let headerView = ExchangeListHeaderView()
+        headerView.сompletion = { (buyState: ButtonState, sellState: ButtonState) in
+            self.buyRateSorterState = buyState
+            self.sellRateSorterState = sellState
+        }
         return headerView
     }()
     
     private lazy var mapButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "map_button"), for: .normal)
+        button.setImage(AppImage.map_button.uiImage, for: .normal)
+        button.backgroundColor = AppColor.primarySecondary.uiColor
         button.scalesLargeContentImage = true
-        button.addTarget(self, action: #selector(mapButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(mapButtonDidPressed), for: .touchUpInside)
+        button.clipsToBounds = true
         return button
     }()
     
@@ -173,10 +194,24 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            self.exchangersArray = exchangers
+            self.filteredArray = exchangers
+        }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = false
+        if self.pulleyViewController?.drawerPosition == .closed {
+            self.topView.isHidden = true
+            mapButton.isHidden = false
+            updateConstraints()
+        } else {
+            self.topView.isHidden = false
+            mapButton.isHidden = true
+            setupConstraints()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -191,19 +226,21 @@ final class ExchangeListViewController: UIViewController {
         openFilterButton.layer.borderWidth = 1
         openFilterButton.layer.borderColor = AppColor.gray20.cgColor
         openFilterButton.layer.cornerRadius = 8
-        nearbyFilterButton.layer.borderWidth = 1
-        nearbyFilterButton.layer.borderColor = AppColor.gray20.cgColor
-        nearbyFilterButton.layer.cornerRadius = 8
+        nearbySorterButton.layer.borderWidth = 1
+        nearbySorterButton.layer.borderColor = AppColor.gray20.cgColor
+        nearbySorterButton.layer.cornerRadius = 8
         pinButton.layer.borderWidth = 1
         pinButton.layer.borderColor = view.backgroundColor?.cgColor
+        mapButton.layer.cornerRadius = mapButton.frame.size.width / 2
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView, mainFilterButton,
-         nearbyFilterButton, openFilterButton,
+        [topView, exchangeListTableView, mainFilterButton,
+         nearbySorterButton, openFilterButton,
          currencySearchBar, calculatorButton,
          pinButton, mapButton].forEach {view.addSubview($0)}
+        topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
@@ -212,18 +249,69 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
-}
-    
+    }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
         let tableWidth = UIScreen.main.bounds.width - 32
-        
         headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
+        topView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        gripperView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(157.5)
+            make.height.equalTo(4)
+            make.width.equalTo(60)
+        }
         currencySearchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
             make.leading.equalToSuperview()
+            make.trailing.equalTo(calculatorButton.snp.leading)
+            make.height.equalTo(48)
+        }
+        calculatorButton.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom)
+            make.trailing.equalTo(pinButton.snp.leading)
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        pinButton.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        nearbySorterButton.snp.makeConstraints { make in
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(77)
+            make.height.equalTo(34)
+        }
+        openFilterButton.snp.makeConstraints { make in
+            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
+            make.leading.equalTo(nearbySorterButton.snp.trailing).offset(8)
+            make.width.equalTo(93)
+            make.height.equalTo(34)
+        }
+        mapButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-188)
+            make.size.equalTo(80)
+        }
+        exchangeListTableView.snp.makeConstraints { make in
+            make.top.equalTo(nearbySorterButton.snp.bottom).offset(9)
+            make.width.equalTo(tableWidth)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+        }
+    }
+    
+    private func updateConstraints() {
+        currencySearchBar.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
             make.trailing.equalTo(calculatorButton.snp.leading)
             make.height.equalTo(48)
         }
@@ -234,37 +322,10 @@ final class ExchangeListViewController: UIViewController {
             make.width.equalTo(56)
         }
         pinButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.height.equalTo(48)
             make.width.equalTo(56)
-        }
-        mainFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalToSuperview().offset(16)
-            make.size.equalTo(32)
-        }
-        nearbyFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalTo(mainFilterButton.snp.trailing).offset(8)
-            make.width.equalTo(77)
-            make.height.equalTo(34)
-        }
-        openFilterButton.snp.makeConstraints { make in
-            make.top.equalTo(currencySearchBar.snp.bottom).offset(9)
-            make.leading.equalTo(nearbyFilterButton.snp.trailing).offset(8)
-            make.width.equalTo(93)
-            make.height.equalTo(34)
-        }
-        mapButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-108)
-            make.size.equalTo(48)
-        }
-        exchangeListTableView.snp.makeConstraints { make in
-            make.top.equalTo(mainFilterButton.snp.bottom).offset(9)
-            make.width.equalTo(tableWidth)
-            make.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
         }
     }
     
@@ -278,63 +339,114 @@ final class ExchangeListViewController: UIViewController {
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
-    
     @objc private func selectCityDidPress() {
+
         self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
     }
     
-    @objc private func mapButtonDidPress() {
-        self.navigationController?.pushViewController(MapViewController(), animated: true)
+    @objc private func mapButtonDidPressed() {
+        self.pulleyViewController?.setDrawerPosition(position: .collapsed, animated: true)
+        remove()
+    }
+
+    @objc func nearbyButtonDidPress() {
+        nearbySorterIsOn = !nearbySorterIsOn
+    }
+    @objc func openButtonDidPress() {
+        openFilterIsOn = !openFilterIsOn
+    }
+    func filtersDidChange() {
+        filteredArray = exchangersArray
+        if isSearching {
+            filteredArray = exchangersArray.filter { exchanger in
+                exchanger.mainTitle.localizedCaseInsensitiveContains(searchBarText)
+            }
+        }
+        if openFilterIsOn {
+            filteredArray = filteredArray.filter({ $0.open })
+        }
+        if buyRateSorterState == .ascending {
+            filteredArray = filteredArray.sorted(by: {$0.buyRate > $1.buyRate })
+        }
+        if buyRateSorterState == .descending {
+            filteredArray = filteredArray.sorted(by: {$0.buyRate < $1.buyRate})
+        }
+        if sellRateSorterState == .ascending {
+            filteredArray = filteredArray.sorted(by: {$0.sellRate > $1.sellRate })
+        }
+        if sellRateSorterState == .descending {
+            filteredArray = filteredArray.sorted(by: {$0.sellRate < $1.sellRate})
+        }
+        if nearbySorterIsOn {
+            filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
+        }
     }
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchArray.count : exchangersArray.count
+        filteredArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 91
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                            ExchangeListTableViewCell.identifier,
-                                                        for: indexPath) as? ExchangeListTableViewCell {
-                cell.backgroundColor = view.backgroundColor
-                
-                cell.changeExchanger(with: exchangersArray[indexPath.row])
-                return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangeListTableViewCell.identifier,
+                                                    for: indexPath) as? ExchangeListTableViewCell {
+            cell.backgroundColor = view.backgroundColor
+            if !isSearching {
+                cell.changeExchanger(with: filteredArray[indexPath.row])
             } else {
-                return UITableViewCell()
+                cell.changeExchanger(with: filteredArray[indexPath.row])
             }
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+            searchBar.resignFirstResponder()
+        } else {
+            isSearching = true
+            searchBarText = searchText
+            filtersDidChange()
+        }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.resignFirstResponder()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }
 
-    // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
-extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
-
-    var panScrollable: UIScrollView? {
-        return nil
-    }
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(496)
-    }
-    var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(40)
-    }
-    
+// MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
+extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
     }
+}
 
- }
+// MARK: - PulleyDrawerViewControllerDelegate
+extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
+    func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 154.0 + bottomSafeArea
+    }
+    
+    func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 379.0 + bottomSafeArea
+    }
+    
+    func supportedDrawerPositions() -> [PulleyPosition] {
+        return [.collapsed, .partiallyRevealed, .closed, .open]
+    }
+}
+// swiftlint:enable all

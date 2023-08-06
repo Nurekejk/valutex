@@ -56,15 +56,18 @@ final class ExchangeRateViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        title = "Курс валют"
-        navigationController?.navigationBar.backItem?.title = ""
         
         view.backgroundColor = .systemGray6
-        view.addSubview(headerView)
-        view.addSubview(tableView)
-        view.addSubview(shadowView)
+        [headerView, tableView, shadowView].forEach(view.addSubview($0))
         shadowView.addSubview(safeButton)
     }
+    
+    // MARK: - Navigation Bar
+    private func navigationBar() {
+        title = "Курс валют"
+    }
+    
+    // MARK: - ViewDid LayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8

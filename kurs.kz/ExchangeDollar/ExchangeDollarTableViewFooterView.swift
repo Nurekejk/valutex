@@ -21,7 +21,7 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     private lazy var titleOneLabel: UILabel = {
         let label = UILabel()
         label.text = "Еще"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
         label.textColor = backgroundBlueColor
         return label
     }()

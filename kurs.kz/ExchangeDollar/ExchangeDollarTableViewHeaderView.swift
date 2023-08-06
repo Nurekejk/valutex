@@ -14,21 +14,21 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Валюта"
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     
     private lazy var purchaseLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     
     private lazy var buyLabel: UILabel = {
         let label = UILabel()
         label.text = "Продажа"
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     

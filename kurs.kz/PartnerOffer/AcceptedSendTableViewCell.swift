@@ -16,7 +16,7 @@ final class AcceptedSendTableViewCell: UITableViewCell {
     // MARK: - UI
     private lazy var acceptedSendImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "accepted-image")
+        imageView.image = AppImage.accepted_image.uiImage
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -35,13 +35,13 @@ final class AcceptedSendTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Принятые (2)"
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFont.regular.s16()
         return label
     }()
     
     private lazy var arrowRightImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "arrow-right")
+        imageView.image = AppImage.arrow_right.uiImage
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView

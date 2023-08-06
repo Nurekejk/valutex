@@ -12,9 +12,7 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-    [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
-                    name: "Мои обменники"),
-     ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
+     [ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
                     name: "Курс валют"),
      ProfileSection(image: AppImage.setting_3.uiImage ?? UIImage(),
                     name: "Настройки аккаунта"),
@@ -120,7 +118,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
-            cell.profileSection = profileSections[10]
+            cell.profileSection = profileSections[9]
         }
         
         if cell.profileSection?.name == profileSections[3].name {
@@ -147,44 +145,48 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         
-        switch row {
-        case 0:
-            navigationController?.pushViewController(MyExchangesViewController(),
-                                                     animated: true)
-        case 1:
-            navigationController?.pushViewController(ExchangeRateViewController(),
-                                                     animated: true)
-        case 2:
-            navigationController?.pushViewController(EmptyViewController(),
-                                                     animated: true)
-        case 3:
-            navigationController?.pushViewController(NotificationsViewController(),
-                                                     animated: true)
-        case 4:
-            navigationController?.pushViewController(LanguageAppViewController(),
-                                                     animated: true)
-        case 5:
-            navigationController?.pushViewController(SelectCityViewController(),
-                                                     animated: true)
-        case 6:
-            navigationController?.pushViewController(PartnerOfferViewController(),
-                                                     animated: true)
-        case 7:
-            navigationController?.pushViewController(ToSupportViewController(),
-                                                     animated: true)
-        case 8:
-            navigationController?.pushViewController(AboutCompanyViewController(),
-                                                     animated: true)
-        case 9:
-            navigationController?.pushViewController(EmptyViewController(),
-                                                     animated: true)
-        default:
-            navigationController?.pushViewController(EmptyViewController(),
+        if indexPath.section == SectionNumber.zero.rawValue {
+            switch row {
+            case 0:
+                navigationController?.pushViewController(EmptyViewController(),
+                                                         animated: true)
+            case 1:
+                navigationController?.pushViewController(EmptyViewController(),
+                                                         animated: true)
+            case 2:
+                navigationController?.pushViewController(NotificationsViewController(),
+                                                         animated: true)
+            case 3:
+                navigationController?.pushViewController(LanguageAppViewController(),
+                                                         animated: true)
+            case 4:
+                navigationController?.pushViewController(SelectCityViewController(),
+                                                         animated: true)
+            case 5:
+                navigationController?.pushViewController(EmptyViewController(),
+                                                         animated: true)
+            case 6:
+                navigationController?.pushViewController(ToSupportViewController(),
+                                                         animated: true)
+            case 7:
+                navigationController?.pushViewController(AboutCompanyViewController(
+                    service: AboutCompanyPageService()),
+                                                         animated: true)
+            case 8:
+                navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
+                                                         animated: true)
+            default:
+                navigationController?.pushViewController(EmptyViewController(),
+                                                         animated: true)
+            }
+        } else {
+            navigationController?.pushViewController(NationalBankCourseViewController(
+                service: NationalBankPageService()),
                                                      animated: true)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     // swiftlint:enable cyclomatic_complexity
 }

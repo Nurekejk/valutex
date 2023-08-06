@@ -24,13 +24,13 @@ final class ExchangeListTableViewCell: UITableViewCell {
                                           "blank_icon")
             if let newRating = exchanger?.rating,
                let newTotalRatings = exchanger?.totalRatings {
-                ratingLabel.text = "\(newRating)" + " (\(newTotalRatings))"
+                ratingLabel.text = "\(String(format: "%.2f", newRating))" + " (\(newTotalRatings))"
             } else {
                 ratingLabel.text = "?.?"
             }
             setupAddressLabel(with: exchanger?.address ?? "",
-                              and: exchanger?.distance ?? "")
-            dateLabel.text = exchanger?.date
+                              and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км")
+            dateLabel.text = exchanger?.formattedDate
             if let safeBuyRate = exchanger?.buyRate {
                 let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
                 buyRateLabel.text = String(trimmedBuyRate)
@@ -62,7 +62,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "rating_icon")
+        imageView.image = AppImage.star12.uiImage
         return imageView
     }()
     
@@ -194,13 +194,13 @@ final class ExchangeListTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(12)
             make.height.equalTo(18)
         }
-        sellRateLabel.snp.makeConstraints { make in
+        buyRateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
-            make.trailing.equalTo(buyRateLabel.snp.leading).offset(-12)
+            make.trailing.equalTo(sellRateLabel.snp.leading).offset(-12)
             make.height.equalTo(20)
             make.width.equalTo(64)
         }
-        buyRateLabel.snp.makeConstraints { make in
+        sellRateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(20)

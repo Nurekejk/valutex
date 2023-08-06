@@ -35,7 +35,7 @@ final class CalculatorTableViewCell: UITableViewCell {
     }()
     private lazy var migLogoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = AppImage.exchange_logo.uiImage
+        imageView.image = AppImage.migLogo.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
