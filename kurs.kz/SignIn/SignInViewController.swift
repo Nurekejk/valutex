@@ -240,7 +240,7 @@ final class SignInViewController: UIViewController {
                 } else {
                     print("error while encoding")
                 }
-                let tabbarController = CustomTabBarViewController()
+                let tabbarController = MainTabBarViewController()
                 tabbarController.navigationItem.hidesBackButton = true
                 self.navigationController?.pushViewController(tabbarController, animated: true)
             case .failure:

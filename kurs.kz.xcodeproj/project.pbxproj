@@ -112,7 +112,7 @@
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */; };
-		FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */; };
+		FA357BC22A58B35A005D5271 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */; };
 		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
 		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
 		FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */; };
@@ -235,7 +235,7 @@
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerListService.swift; sourceTree = "<group>"; };
-		FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
 		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
 		FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListViewController.swift; sourceTree = "<group>"; };
@@ -715,7 +715,7 @@
 		FA357BC02A58B2DF005D5271 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				FA357BC12A58B35A005D5271 /* CustomTabBarViewController.swift */,
+				FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */,
 				9FF456FD2A60183D00C2E845 /* EmptyViewController.swift */,
 			);
 			path = TabBar;
@@ -982,7 +982,7 @@
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
 				995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
-				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
+				FA357BC22A58B35A005D5271 /* MainTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
 				8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */,
 				71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */,

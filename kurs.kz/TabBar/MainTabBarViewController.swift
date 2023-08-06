@@ -8,7 +8,7 @@
 import UIKit
 import Pulley
 
-final class CustomTabBarViewController: UITabBarController {
+final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
