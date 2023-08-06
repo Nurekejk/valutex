@@ -27,7 +27,7 @@ final class MainTabBarViewController: UITabBarController {
                                     image: AppImage.home_gray.uiImage!,
                                     viewController: MapExchangersViewController(
                                         contentViewController: MapViewController(
-                                            service: DetailPageService()),
+                                            service: ExchangerListService()),
                                         drawerViewController: ExchangeListViewController()))
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                      selectedImage: AppImage.money_selected.uiImage!,

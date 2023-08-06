@@ -14,14 +14,14 @@ import ProgressHUD
 
 final class MapViewController: UIViewController {
     
-    private let service: DetailPageService
+    private let service: ExchangerListService
     private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
                                                                          longitude: 77.05901863169184))
     private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
                                                                         longitude: 77.05992323741296))
     private let shymbulakMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.113733768676546,
                                                                              longitude: 77.11150263265574))
-    private var marker = GMSMarker()
+    private var markers = [GMSMarker]()
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
     
@@ -79,7 +79,7 @@ final class MapViewController: UIViewController {
     }()
     
     // MARK: - Initializers
-    init(service: DetailPageService) {
+    init(service: ExchangerListService) {
         self.service = service
         super.init(nibName: nil, bundle: nil)
     }
@@ -221,22 +221,15 @@ final class MapViewController: UIViewController {
     
     // MARK: - Callback
     private func fetchLocation() {
-        service.fetchDetails(officeID: 1) { [weak self] result in
-            switch result {
-            case .success(let details):
-                if let latitude = details.latitude {
-                    if let longitude = details.longitude {
-                        let exchangerAddress = CLLocationCoordinate2D(latitude: latitude,
-                                                                       longitude: longitude)
-                        self?.marker = GMSMarker(position: exchangerAddress)
-                        self?.marker.title = details.name
-                        self?.marker.snippet = details.address
-                        self?.marker.map = self?.googleMapView
-                    }
-                }
-            case .failure(let error):
-                ProgressHUD.show(icon: .failed)
-                print(error.localizedDescription)
+        service.fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            exchangers.forEach { [weak self] exchanger in
+                let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(exchanger.latitude),
+                                          longitude: CLLocationDegrees(exchanger.longitude))
+                let marker = GMSMarker(position: position)
+                marker.title = exchanger.mainTitle
+                marker.snippet = exchanger.address
+                marker.map = self?.googleMapView
+                self?.markers.append(marker)
             }
         }
     }

@@ -30,7 +30,7 @@ final class CustomInfoWindow: UIView {
     
     // MARK: - Initializers
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        super.init(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         setupView()
         setupConstraints()
     }
@@ -62,7 +62,7 @@ final class CustomInfoWindow: UIView {
         }
         
         exchangerDetailsLabel.snp.makeConstraints { make in
-            make.top.equalTo(exchangerNameLabel.snp.bottom).offset(10)
+            make.top.equalTo(exchangerNameLabel.snp.bottom).offset(1)
             make.leading.equalToSuperview().offset(16)
             make.trailing.bottom.equalToSuperview().offset(-16)
         }
