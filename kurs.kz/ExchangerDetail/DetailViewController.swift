@@ -309,11 +309,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         header.titleLabel.text = sections[section - topSections].name
         header.setCollapsed(sections[section - topSections].collapsed ?? false)
         header.section = section
-        if (header.section - topSections) == 0 {
-            header.isFirstSection = true
-        } else if (header.section - topSections) == sections.count - 1 {
-            header.isLastSection = true
-        }
         header.detailSection = sections[section - topSections]
         header.delegate = self
         return header
@@ -377,6 +372,8 @@ extension DetailViewController: CollapsibleTableViewHeaderDelegate {
         let collapsed = !(sections[section - topSections].collapsed ?? false)
         sections[section - topSections].collapsed = collapsed
         header.setCollapsed(collapsed)
-        exchangerDetailsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.exchangerDetailsTableView.reloadData()
+        }
     }
 }

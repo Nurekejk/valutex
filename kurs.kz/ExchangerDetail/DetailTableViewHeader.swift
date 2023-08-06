@@ -12,7 +12,7 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - State
     static let reuseID = String(describing: DetailTableViewHeader.self)
     var delegate: CollapsibleTableViewHeaderDelegate?
-    var section: Int = 0
+    var section: Int = -1
     var isFirstSection: Bool = false
     var isLastSection: Bool = false
     
@@ -62,10 +62,12 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
-        if isFirstSection {
+        if section == 3 {
             contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
-        } else if isLastSection {
+        } else if section == 7 {
             contentView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8.0)
+        } else {
+            contentView.roundCorners(corners: [.allCorners], radius: 0.0)
         }
     }
     
