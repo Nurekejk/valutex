@@ -210,4 +210,9 @@ extension FaqViewController: UISearchBarDelegate {
         questionSearchBar.text = ""
         questionsTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        self.questionSearchBar.endEditing(true)
+    }
 }
