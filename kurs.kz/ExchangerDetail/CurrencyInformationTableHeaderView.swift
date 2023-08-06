@@ -8,13 +8,16 @@
 import UIKit
 import SnapKit
 
-final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
+final class CurrencyInformationTableHeaderView: UITableViewHeaderFooterView {
+    
+    static let reuseID = String(describing: CurrencyInformationTableHeaderView.self)
     
     // MARK: - UI
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Валюта"
         label.font = AppFont.regular.s10()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
@@ -22,6 +25,7 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Покупка"
         label.font = AppFont.regular.s10()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
@@ -29,10 +33,11 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Продажа"
         label.font = AppFont.regular.s10()
+        label.textColor = AppColor.gray50.uiColor
         return label
     }()
     
-    // MARK: - Life Cycle
+    // MARK: - Initizalizers
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -44,8 +49,14 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
+    }
+    
     // MARK: - Setup Views
-    func setupViews() {
+    private func setupViews() {
         contentView.backgroundColor = .white
         
         [currencyLabel, purchaseLabel, buyLabel].forEach {
@@ -54,7 +65,7 @@ final class ExchangeDollarTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Setup Constraitns
-    func setupConstraints() {
+    private func setupConstraints() {
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)

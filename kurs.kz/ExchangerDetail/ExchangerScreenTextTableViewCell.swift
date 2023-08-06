@@ -8,10 +8,26 @@
 import UIKit
 import SnapKit
 
-class ExchangerScreenTextCellTableViewCell: UITableViewCell {
+final class ExchangerScreenTextTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    public static var reuseIdentifier = String(describing: ExchangerScreenTextCellTableViewCell.self)
+    static var reuseIdentifier = String(describing: ExchangerScreenTextTableViewCell.self)
+    
+    var name: String? {
+        didSet {
+            titleLabel.text = name
+        }
+    }
+    var address: String? {
+        didSet {
+            subTitleLabel.text = address
+        }
+    }
+    var score: Int? {
+        didSet {
+            ratingLabel.text = "\(score ?? 5)"
+        }
+    }
     
     // MARK: - UI
     private lazy var containerView: UIView = {
@@ -21,8 +37,10 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some Exchange"
-        label.font = AppFont.bold.s16()
+        label.text = "Som Exchange"
+        label.font = AppFont.semibold.s16()
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
     
@@ -30,40 +48,38 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         let label = UILabel()
         let regularAttributes: [NSAttributedString.Key: Any] = [
             .font: AppFont.regular.s14(),
-                .foregroundColor: UIColor.black
+            .foregroundColor: AppColor.gray100.uiColor
         ]
         let boldAttributes: [NSAttributedString.Key: Any] = [
             .font: AppFont.bold.s14(),
-            .foregroundColor: UIColor.black
+            .foregroundColor: AppColor.gray100.uiColor
         ]
         let regularText = NSMutableAttributedString(string: "г.Алматы, ул.Ауэзова 14",
                                                     attributes: regularAttributes)
-        let boldText = NSMutableAttributedString(string: "(1км)", attributes: boldAttributes)
+        let boldText = NSMutableAttributedString(string: " (1 км)", attributes: boldAttributes)
         
         regularText.append(boldText)
         label.attributedText = regularText
+        label.numberOfLines = 0
+        label.font = AppFont.regular.s14()
         return label
     }()
     
-    private lazy var subTitleLabelTwo: Paddinglabel = {
-        let label = Paddinglabel()
-        let softGreen = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
-        let borderColor = UIColor(red: 67/255.0, green: 160.0/255.0, blue: 72.0/255.0, alpha: 0.16)
-        label.layer.borderColor = softGreen.cgColor
-        label.layer.borderWidth = 1.0
-        label.textColor = softGreen
+    private lazy var subTitleLabelTwo: PaddingLabel = {
+        let label = PaddingLabel()
+        label.textColor = AppColor.statusSuccess.uiColor
         label.text = "Круглосуточно"
-        label.font =  AppFont.regular.s12()
-        label.backgroundColor = UIColor.green
+        label.font = AppFont.regular.s12()
+        label.backgroundColor = AppColor.statusSuccess.uiColor.withAlphaComponent(0.16)
         label.clipsToBounds = true
-        label.layer.cornerRadius = 8
+        label.numberOfLines = 0
         return label
     }()
     
     private lazy var starImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = AppImage.star12.uiImage
+        imageView.image = AppImage.star_bold.uiImage
         return imageView
     }()
     
@@ -71,11 +87,11 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "4.9"
         label.font = AppFont.regular.s14()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     
-    // MARK: - Initialization
-    
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -88,66 +104,55 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     }
     
     // MARK: - Lifecycle
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         containerView.layer.cornerRadius = 8
+        subTitleLabelTwo.layer.cornerRadius = 8
     }
     
     // MARK: - Setup Views
-    
     private func setupViews() {
         [titleLabel, subTitleLabel, subTitleLabelTwo, starImageView, ratingLabel].forEach {
             containerView.addSubview($0)
         }
-        
-        let backgroundGrayColor = UIColor(
-                red: 246.0 / 255.0,
-                green: 247.0 / 255.0,
-                blue: 249.0 / 255.0,
-                alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
     
     // MARK: - Setup Constraints
-    
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16))
-            make.height.equalTo(114)
+            make.edges.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.lessThanOrEqualToSuperview().offset(-16)
+            make.width.equalTo(300)
         }
-           
+        
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(titleLabel)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(216)
         }
-           
+        
         subTitleLabelTwo.snp.makeConstraints { make in
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(4)
-            make.leading.trailing.equalTo(titleLabel)
-            make.height.equalTo(24)
-            make.width.lessThanOrEqualTo(subTitleLabel.snp.width).offset(-100)
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(8)
+            make.leading.equalTo(titleLabel)
+            make.bottom.equalToSuperview().offset(-16)
         }
         
         starImageView.snp.makeConstraints {make in
-            make.top.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-46)
-            make.size.equalTo(CGSize(width: 16, height: 16))
+            make.top.equalToSuperview().offset(19)
+            make.trailing.equalTo(ratingLabel.snp.leading).offset(-8)
+            make.size.equalTo(16)
         }
         
         ratingLabel.snp.makeConstraints {make in
-            make.centerY.equalTo(starImageView)
-            make.leading.equalTo(starImageView.snp.trailing).offset(8)
+            make.top.equalToSuperview().offset(19)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
 }

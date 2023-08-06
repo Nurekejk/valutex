@@ -12,7 +12,7 @@ protocol AppImageProtocol {
 }
 
 extension AppImageProtocol {
-
+    
     var uiImage: UIImage? {
         guard let image = UIImage(named: rawValue) else {
             fatalError("Could not find image with name \(rawValue)")
@@ -97,4 +97,12 @@ enum AppImage: String, AppImageProtocol {
     case arrow_down_collapse = "arrow-down-collapse"
     case arrow_up_collapse = "arrow-up-collapse"
     case search_normal = "search_normal"
+    case call = "call"
+    case clock = "clock"
+    case link_2 = "link-2"
+    case messenger = "messenger"
+    case star_bold = "star-bold"
+    case user_tag = "user-tag"
+    case share_image = "share_image"
+    case call_image = "call_image"
 }
