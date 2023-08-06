@@ -124,6 +124,10 @@ final class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
     }
     
     // MARK: - Setup Navigation Bar
@@ -223,6 +227,10 @@ final class MapViewController: UIViewController {
     
     @objc private func myLocationButtonDidPressed() {
         self.locationManager.startUpdatingLocation()
+    }
+    
+    @objc func keyboardWillAppear() {
+        self.pulleyViewController?.setDrawerPosition(position: .open, animated: true)
     }
 }
 
