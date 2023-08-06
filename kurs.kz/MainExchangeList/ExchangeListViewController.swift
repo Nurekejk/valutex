@@ -245,7 +245,7 @@ final class ExchangeListViewController: UIViewController {
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
@@ -298,8 +298,8 @@ final class ExchangeListViewController: UIViewController {
         }
         mapButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-188)
-            make.size.equalTo(80)
+            make.bottom.equalToSuperview().offset(-200)
+            make.size.equalTo(48)
         }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(nearbySorterButton.snp.bottom).offset(9)
@@ -339,8 +339,8 @@ final class ExchangeListViewController: UIViewController {
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
+    
     @objc private func selectCityDidPress() {
-
         self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
     }
     
