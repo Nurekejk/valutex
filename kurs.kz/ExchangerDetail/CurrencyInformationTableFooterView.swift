@@ -21,7 +21,7 @@ final class CurrencyInformationTableFooterView: UITableViewHeaderFooterView {
         return button
     }()
     
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -31,6 +31,12 @@ final class CurrencyInformationTableFooterView: UITableViewHeaderFooterView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8.0)
     }
     
     // MARK: - Setup Views
