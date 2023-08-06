@@ -59,7 +59,8 @@ final class ExchangeRateViewController: UIViewController {
     private func setupViews() {
         
         view.backgroundColor = .systemGray6
-        [headerView, tableView, shadowView].forEach(view.addSubview($0))
+        [headerView, tableView, shadowView].forEach {
+            view.addSubview($0)}
         shadowView.addSubview(safeButton)
     }
     
