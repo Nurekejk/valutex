@@ -34,6 +34,7 @@ final class AboutCompanyViewController: UIViewController {
         textView.textContainer.lineFragmentPadding = 0 // Set lineFragmentPadding to zero
         textView.textColor = AppColor.gray100.uiColor
         textView.backgroundColor = .clear
+        textView.showsVerticalScrollIndicator = false
         return textView
     }()
     
@@ -60,6 +61,10 @@ final class AboutCompanyViewController: UIViewController {
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
         self.title = "О компании"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                        style: .plain,
+                        target: self,
+                        action: #selector(backButtonDidPressed))
     }
     
     // MARK: - Setup Navigation Bar
@@ -81,7 +86,7 @@ final class AboutCompanyViewController: UIViewController {
         
         aboutCompanyTextView.snp.makeConstraints { make in
             make.top.equalTo(aboutCompanyHeaderTextView.snp.bottom).offset(12)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
         }
@@ -105,5 +110,10 @@ final class AboutCompanyViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    // MARK: - Actions
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
