@@ -22,7 +22,7 @@ final class CurrencyInformationTableViewCell: UITableViewCell {
                 buyLabel.text = String(buyPrice)
             }
             if let sellPrice = currency?.sellPrice {
-                buyLabel.text = String(sellPrice)
+                sellLabel.text = String(sellPrice)
             }
         }
     }
@@ -47,7 +47,7 @@ final class CurrencyInformationTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var purchaseLabel: UILabel = {
+    private lazy var sellLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
         label.textColor = AppColor.gray100.uiColor
@@ -78,7 +78,7 @@ final class CurrencyInformationTableViewCell: UITableViewCell {
         contentView.addSubview(currencyImageLabel)
         contentView.addSubview(currencyNameLabel)
         contentView.addSubview(currencySubtitleLabel)
-        contentView.addSubview(purchaseLabel)
+        contentView.addSubview(sellLabel)
         contentView.addSubview(buyLabel)
     }
     
@@ -102,13 +102,13 @@ final class CurrencyInformationTableViewCell: UITableViewCell {
             make.width.equalTo(167)
         }
         
-        purchaseLabel.snp.makeConstraints { make in
+        buyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(17)
             make.leading.equalTo(currencySubtitleLabel.snp.trailing).offset(16)
             make.bottom.equalToSuperview().offset(-17)
         }
         
-        buyLabel.snp.makeConstraints { make in
+        sellLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(17)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-17)
