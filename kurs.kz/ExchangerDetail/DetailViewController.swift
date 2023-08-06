@@ -17,6 +17,9 @@ final class DetailViewController: UIViewController {
     private var sections = [DetailSection]()
     private var currencies = [CurrencyElement]()
     private let topSections = 3
+    private var name: String = ""
+    private var address: String = ""
+    private var score: Int = 0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -118,6 +121,15 @@ final class DetailViewController: UIViewController {
             switch result {
             case .success(let details):
                 self?.setSectionsData(details: details)
+                if let nameString = details.name {
+                    self?.name = nameString
+                }
+                if let addressString = details.address {
+                    self?.address = addressString
+                }
+                if let scoreAmount = details.score {
+                    self?.score = scoreAmount
+                }
                 self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
@@ -131,6 +143,7 @@ final class DetailViewController: UIViewController {
             switch result {
             case .success(let currencyDetails):
                 self?.currencies = currencyDetails
+                self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
                 print(error.localizedDescription)
@@ -257,6 +270,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             else {
                 fatalError("Could not cast to ExchangerScreenTextTableViewCell")
             }
+            cell.name = self.name
+            cell.address = self.address
+            cell.score = self.score
             return cell
         case SectionNumber.one.rawValue:
             guard let cell = tableView.dequeueReusableCell(
