@@ -15,12 +15,6 @@ import ProgressHUD
 final class MapViewController: UIViewController {
     
     private let service: ExchangerListService
-    private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
-                                                                         longitude: 77.05901863169184))
-    private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
-                                                                        longitude: 77.05992323741296))
-    private let shymbulakMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.113733768676546,
-                                                                             longitude: 77.11150263265574))
     private var markers = [GMSMarker]()
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
@@ -166,18 +160,6 @@ final class MapViewController: UIViewController {
         [exchangersButton, zoomView, myLocationButton].forEach {
             googleMapView.addSubview($0)
         }
-        
-        medeuMarker.title = "Medeu"
-        medeuMarker.snippet = "Sports complex"
-        medeuMarker.map = googleMapView
-        
-        shymbulakMarker.title = "Shymbulak"
-        shymbulakMarker.snippet = "Mountain resort"
-        shymbulakMarker.map = googleMapView
-        
-        auylMarker.title = "Auyl"
-        auylMarker.snippet = "Restaurant"
-        auylMarker.map = googleMapView
     }
     
     // MARK: - Setup Constraints
