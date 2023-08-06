@@ -77,30 +77,6 @@ final class ExchangeListViewController: UIViewController {
         return view
     }()
     
-    private lazy var navigationBarView: NavigationBarCurencyButtonView = {
-        let view = NavigationBarCurencyButtonView()
-        return view
-    }()
-    
-    private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
-        let buttonTapGesture = UITapGestureRecognizer(target: self, action: #selector(selectorPressed))
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
-        containerView.isUserInteractionEnabled = true
-        containerView.addGestureRecognizer(buttonTapGesture)
-        containerView.addSubview(navigationBarView)
-        
-        let button = UIBarButtonItem(customView: containerView)
-        return button
-    }()
-    
-    private let navigationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Обменники"
-        label.font = AppFont.medium.s18()
-        return label
-    }()
-    
     private lazy var currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
@@ -193,7 +169,6 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        setupNavigationBar()
         ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
             self.filteredArray = exchangers
@@ -216,9 +191,6 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        navigationCurrencySelectButton.customView?.layer.borderColor = AppColor.gray10.cgColor
-        navigationCurrencySelectButton.customView?.layer.borderWidth = 1
-        navigationCurrencySelectButton.customView?.layer.cornerRadius = 8
         currencySearchBar.layer.borderColor = view.backgroundColor?.cgColor
         currencySearchBar.layer.borderWidth = 1
         calculatorButton.layer.borderWidth = 1
@@ -242,14 +214,8 @@ final class ExchangeListViewController: UIViewController {
          pinButton, mapButton].forEach {view.addSubview($0)}
         topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
-        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
-    private func setupNavigationBar() {
-        self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
-                                                                        navigationTitleLabel)
-    }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
@@ -330,11 +296,6 @@ final class ExchangeListViewController: UIViewController {
     }
     
     // MARK: - Action
-    @objc func selectorPressed() {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        self.presentPanModal(modalScreen)
-    }
     
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
@@ -424,14 +385,6 @@ extension ExchangeListViewController: UITableViewDelegate, UITableViewDataSource
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-}
-
-// MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
-extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
-    func currencyDidSelect(currency: Currency) {
-        navigationBarView.changeCurrency(newFlagImage: currency.flag,
-                                         newCurrencyLabel: currency.code)
     }
 }
 

@@ -39,6 +39,7 @@ final class MapExchangersViewController: PulleyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
     // MARK: - Setup Navigation Bar

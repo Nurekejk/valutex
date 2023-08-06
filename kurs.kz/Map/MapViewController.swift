@@ -92,7 +92,6 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
         setupViews()
         setupConstraints()
         fetchLocation()
@@ -142,17 +141,6 @@ final class MapViewController: UIViewController {
                                                selector: #selector(keyboardWillAppear),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
-    }
-    
-    // MARK: - Setup Navigation Bar
-    private func setupNavigationBar() {
-        edgesForExtendedLayout = []
-        let label = UILabel()
-        label.text = "Обменники"
-        label.textColor = AppColor.gray100.uiColor
-        label.tintColor = AppColor.gray100.uiColor
-        label.font = AppFont.semibold.s18()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
     
     // MARK: - Setup Views
