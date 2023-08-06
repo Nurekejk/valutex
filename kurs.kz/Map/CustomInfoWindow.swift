@@ -15,7 +15,7 @@ final class CustomInfoWindow: UIView {
         label.text = "Almaty"
         label.textColor = .black
         label.font = AppFont.semibold.s16()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
     
@@ -24,13 +24,13 @@ final class CustomInfoWindow: UIView {
         label.text = "Almaty"
         label.textColor = .black
         label.font = AppFont.regular.s16()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
     
     // MARK: - Initializers
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
+        super.init(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         setupView()
         setupConstraints()
     }
@@ -56,13 +56,15 @@ final class CustomInfoWindow: UIView {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         exchangerNameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
+            make.top.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
         
         exchangerDetailsLabel.snp.makeConstraints { make in
             make.top.equalTo(exchangerNameLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.bottom.equalToSuperview().offset(-16)
         }
     }
     
