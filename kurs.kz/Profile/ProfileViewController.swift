@@ -12,9 +12,7 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-    [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
-                    name: "Мои обменники"),
-     ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
+     [ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
                     name: "Курс валют"),
      ProfileSection(image: AppImage.setting_3.uiImage ?? UIImage(),
                     name: "Настройки аккаунта"),
@@ -123,7 +121,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
-            cell.profileSection = profileSections[10]
+            cell.profileSection = profileSections[9]
         }
         
         if cell.profileSection?.name == profileSections[3].name {
@@ -162,28 +160,25 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)
             case 2:
-                navigationController?.pushViewController(EmptyViewController(),
-                                                         animated: true)
-            case 3:
                 navigationController?.pushViewController(NotificationsViewController(),
                                                          animated: true)
-            case 4:
+            case 3:
                 navigationController?.pushViewController(LanguageAppViewController(),
                                                          animated: true)
-            case 5:
+            case 4:
                 navigationController?.pushViewController(SelectCityViewController(),
                                                          animated: true)
-            case 6:
+            case 5:
                 navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)
-            case 7:
+            case 6:
                 navigationController?.pushViewController(ToSupportViewController(),
                                                          animated: true)
-            case 8:
+            case 7:
                 navigationController?.pushViewController(AboutCompanyViewController(
                     service: AboutCompanyPageService()),
                                                          animated: true)
-            case 9:
+            case 8:
                 navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
                                                          animated: true)
             default:

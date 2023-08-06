@@ -13,7 +13,7 @@ final class SectionHeaderView: UIView {
     private lazy var titleLabel: UILabel = {
             let label = UILabel()
             label.text = "Отклики (2)"
-            label.font = .systemFont(ofSize: 16, weight: .semibold)
+            label.font = AppFont.semibold.s16()
             label.textColor = AppColor.gray100.uiColor
             return label
         }()
