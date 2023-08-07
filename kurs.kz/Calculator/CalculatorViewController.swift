@@ -65,22 +65,23 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
         return 7
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as? CalculatorTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.reuseIdentifier, for: indexPath) as? CalculatorTableViewCell else {
+            fatalError("Could not cast to CalculatorTableViewCell")
+        }
         switch indexPath.row {
         case 0:
             let cellData = CellData(migLogoImage: UIImage(named: "exchange_logo"),
                                     titleLabel: "MИГ",
-                                    starImage: UIImage(named: "golden_star"),
+                                    starImage: AppImage.golden_star.uiImage,
                                     rateLabel: "4,9 (15)",
                                     addressLabel: "ул. Толе Би, 297 г, уг. ул. Тлендиева",
                                     kmLabel: "1 км",
                                     dateLabel: "1 октября, 2023 18:00:00",
                                     amountLabel: "1000,01")
-            cell?.configureCell(data: cellData)
+            cell.configureCell(data: cellData)
         default:
             break
         }
-        return cell ?? UITableViewCell()
+        return cell
     }
 }
