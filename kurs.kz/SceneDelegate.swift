@@ -28,9 +28,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if isAutorized {
             window?.rootViewController = MainTabBarViewController()
         } else {
-            window?.rootViewController = SelectLanguageViewController()
+            window?.rootViewController =
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }
