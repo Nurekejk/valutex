@@ -110,8 +110,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
-                                                       for: indexPath)
-                as? ExchangeRateTableViewCell else {
+            for: indexPath) as? ExchangeRateTableViewCell else {
             fatalError("Could not cast to ExchangeRateTableViewCell")
         }
         switch indexPath.row {

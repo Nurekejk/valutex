@@ -67,7 +67,7 @@
 		9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */; };
 		9985BA542A65BF0D00DD871C /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = 9985BA532A65BF0D00DD871C /* InputMask */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
-		998D2ED42A80B4F5004ED81B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D2ED32A80B4F5004ED81B /* City.swift */; };
+		998D2ED62A80B7D8004ED81B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D2ED52A80B7D8004ED81B /* City.swift */; };
 		998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */; };
 		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
@@ -113,7 +113,6 @@
 		9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D562A694A1D00A11284 /* OfferViewController.swift */; };
 		9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */; };
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
-		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
@@ -198,7 +197,7 @@
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
-		998D2ED32A80B4F5004ED81B /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		998D2ED52A80B7D8004ED81B /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewController.swift; sourceTree = "<group>"; };
 		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +243,8 @@
 		9FF55D562A694A1D00A11284 /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
 		9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
+		B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingButtonModel.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -274,8 +275,8 @@
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
-				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
+				59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +295,8 @@
 		46EE99A18985E63B77BA8021 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */,
-				816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */,
+				EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */,
+				B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -303,7 +304,7 @@
 		618977FB2A533D9C009DFF0B /* CitySelection */ = {
 			isa = PBXGroup;
 			children = (
-				998D2ED32A80B4F5004ED81B /* City.swift */,
+				998D2ED52A80B7D8004ED81B /* City.swift */,
 				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
 				618978042A549426009DFF0B /* CityTableViewCell.swift */,
 			);
@@ -321,14 +322,6 @@
 				61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */,
 			);
 			path = Offer;
-			sourceTree = "<group>";
-		};
-		69B63E2E40C15D95ADEE8E58 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		71564ABA2A6A9C4200979090 /* ExchangeRate */ = {
@@ -621,8 +614,8 @@
 				9F899D7F2A4AFB44002D1F74 /* kurs.kz */,
 				9F899D7E2A4AFB44002D1F74 /* Products */,
 				46EE99A18985E63B77BA8021 /* Pods */,
-				69B63E2E40C15D95ADEE8E58 /* Frameworks */,
 				9FF456F42A5FC47500C2E845 /* Recovered References */,
+				28298188083BBB3B2BCA80A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -816,13 +809,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F899D912A4AFB46002D1F74 /* Build configuration list for PBXNativeTarget "kurs.kz" */;
 			buildPhases = (
-				A978145459F756DA82375A9D /* [CP] Check Pods Manifest.lock */,
+				83A03733F5C9EA3BAF3A031B /* [CP] Check Pods Manifest.lock */,
 				9F899D792A4AFB43002D1F74 /* Sources */,
 				9F899D7A2A4AFB43002D1F74 /* Frameworks */,
 				9F899D7B2A4AFB43002D1F74 /* Resources */,
-				8185968B9E490D0F706847D7 /* [CP] Embed Pods Frameworks */,
 				9F599BC12A5565A30073C558 /* ShellScript */,
-				51B2907C0DF6A68C0B1ADA2E /* [CP] Copy Pods Resources */,
+				00A0F802EAFD59D99F94739C /* [CP] Embed Pods Frameworks */,
+				3D502BE7DC07E9E9437D2E1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -895,24 +888,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		51B2907C0DF6A68C0B1ADA2E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8185968B9E490D0F706847D7 /* [CP] Embed Pods Frameworks */ = {
+		00A0F802EAFD59D99F94739C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -929,24 +905,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F599BC12A5565A30073C558 /* ShellScript */ = {
+		3D502BE7DC07E9E9437D2E1E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		A978145459F756DA82375A9D /* [CP] Check Pods Manifest.lock */ = {
+		83A03733F5C9EA3BAF3A031B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -967,6 +943,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9F599BC12A5565A30073C558 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1044,6 +1037,7 @@
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
+				998D2ED62A80B7D8004ED81B /* City.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
@@ -1226,7 +1220,7 @@
 		};
 		9F899D922A4AFB46002D1F74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */;
+			baseConfigurationReference = EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1258,7 +1252,7 @@
 		};
 		9F899D932A4AFB46002D1F74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */;
+			baseConfigurationReference = B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
