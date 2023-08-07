@@ -108,18 +108,19 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as? ExchangeRateTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier, for: indexPath) as? ExchangeRateTableViewCell else {
+            fatalError("Could not cast to ExchangeRateTableViewCell")
+        }
         switch indexPath.row {
         case 0:
-            cell?.configureCell(flagImage: UIImage(named: "kzt_flag"),
+            cell.configureCell(flagImage: AppImage.KZTflag.uiImage,
                                 currencyLabel: "Доллар",
                                 amountOfPurchaseTextField: "500",
                                 amountOfSaleTextField: "500",
-                                trashButton: UIImage(named: "trash"))
+                                trashButton: AppImage.trash.uiImage)
         default:
             break
         }
-        return cell ?? UITableViewCell()
+        return cell
     }
 }
