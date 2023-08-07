@@ -23,14 +23,13 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "exchanger_screen")
+        imageView.image = AppImage.exchanger_screen.uiImage
         return imageView
     }()
     
     private lazy var buttonImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "")
         return imageView
     }()
     

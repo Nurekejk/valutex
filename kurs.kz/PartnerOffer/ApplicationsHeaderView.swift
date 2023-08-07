@@ -18,7 +18,7 @@ final class ApplicationsHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Заявки (2)"
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = AppFont.semibold.s16()
         label.textAlignment = .left
         return label
     }()

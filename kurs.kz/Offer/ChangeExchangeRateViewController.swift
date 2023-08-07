@@ -19,7 +19,7 @@ class ChangeExchangeRateViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Укажите новый курс"
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.font = AppFont.semibold.s18()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
@@ -46,7 +46,7 @@ class ChangeExchangeRateViewController: UIViewController {
         button.setImage(UIImage(named: "minus"), for: .normal)
         button.tintColor = AppColor.gray40.uiColor
         button.backgroundColor = AppColor.gray20.uiColor
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.layer.cornerRadius = 8
         return button
     }()
@@ -55,7 +55,7 @@ class ChangeExchangeRateViewController: UIViewController {
         button.setImage(UIImage(named: "plus"), for: .normal)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.layer.cornerRadius = 8
         return button
     }()
@@ -83,7 +83,7 @@ class ChangeExchangeRateViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = AppColor.gray30.cgColor
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector (cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -92,7 +92,7 @@ class ChangeExchangeRateViewController: UIViewController {
         button.setTitle("изменить", for: .normal)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = AppFont.regular.s16()
         button.layer.cornerRadius = 12
         return button
     }()

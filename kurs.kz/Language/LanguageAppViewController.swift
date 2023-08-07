@@ -17,7 +17,7 @@ final class LanguageAppViewController: UIViewController {
         }
     }
     
-    private let languages: [String] = ["Русский", "Казакша", "English"]
+    private let languages: [String] = ["English", "Русский", "Қазақша"]
     
     // MARK: - UI
     private lazy var tableView: UITableView = {
@@ -34,13 +34,17 @@ final class LanguageAppViewController: UIViewController {
         button.setTitle("Выбрать", for: .normal)
         button.layer.cornerRadius = 12
         button.backgroundColor = AppColor.primaryBase.uiColor
+        button.addTarget(LanguageAppViewController.self,
+                         action: #selector(selectButtonDidPress),
+                         for: .touchUpInside)
         return button
     }()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        loadData()
         setupNavigationBar()
         setupViews()
         setupConstraits()
@@ -49,6 +53,19 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup NavigationBar
     private func setupNavigationBar() {
         title = "Язык приложения"
+    }
+
+    private func loadData() {
+        let defaults = UserDefaults.standard
+        let selectedLanguage = defaults.string(forKey: "LanguageApp")
+        
+        if selectedLanguage == "EN" {
+            selectedIndexPath = IndexPath(row: 0, section: 0)
+        } else if selectedLanguage == "RU" {
+            selectedIndexPath = IndexPath(row: 1, section: 0)
+        } else if selectedLanguage == "KZ" {
+            selectedIndexPath = IndexPath(row: 2, section: 0)
+        }
     }
 
     // MARK: - Setup Views
@@ -75,6 +92,18 @@ final class LanguageAppViewController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)
+        }
+    }
+    
+    // MARK: - Actions
+    @objc private func selectButtonDidPress() {
+        let defaults = UserDefaults.standard
+        if selectedLanguage == Language.kazakh {
+            defaults.set("KZ", forKey: "LanguageApp")
+        } else if selectedLanguage == Language.russian {
+            defaults.set("RU", forKey: "LanguageApp")
+        } else if selectedLanguage == Language.english {
+            defaults.set("EN", forKey: "LanguageApp")
         }
     }
 }

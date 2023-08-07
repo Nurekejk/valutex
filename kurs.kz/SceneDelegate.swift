@@ -29,9 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController =
                 UINavigationController(rootViewController: DetailViewController(service: DetailPageService()))
         } else {
-            window?.rootViewController = SelectLanguageViewController()
+            window?.rootViewController =
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }
