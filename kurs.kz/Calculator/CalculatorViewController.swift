@@ -65,7 +65,9 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
         return 7
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.reuseIdentifier, for: indexPath) as? CalculatorTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CalculatorTableViewCell.reuseIdentifier,
+            for: indexPath) as? CalculatorTableViewCell else {
             fatalError("Could not cast to CalculatorTableViewCell")
         }
         switch indexPath.row {

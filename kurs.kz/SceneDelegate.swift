@@ -27,11 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: CalculatorViewController())
+                UINavigationController(rootViewController: CustomTabBarViewController())
         } else {
-            window?.rootViewController = SelectLanguageViewController()
+            window?.rootViewController =
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }

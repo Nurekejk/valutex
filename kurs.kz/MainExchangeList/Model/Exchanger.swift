@@ -52,7 +52,7 @@ struct Exchanger: Codable {
     
     func getDate(from dateString: String) -> String {
         if let dotIndex = dateString.firstIndex(of: ".") {
-            var trimmedDate = String(dateString[..<dotIndex])
+            let trimmedDate = String(dateString[..<dotIndex])
             let formatter = ISO8601DateFormatter()
             if let date = formatter.date(from: trimmedDate + "Z") {
                 let outputFormatter = DateFormatter()
