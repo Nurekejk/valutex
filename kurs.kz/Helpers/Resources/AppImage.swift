@@ -86,7 +86,6 @@ enum AppImage: String, AppImageProtocol {
     case call = "call"
     case clock = "clock"
     case link_2 = "link-2"
-    case sms = "sms"
     case messenger = "messenger"
     case star_bold = "star-bold"
     case share_image = "share_image"
