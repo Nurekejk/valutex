@@ -20,9 +20,8 @@
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
 		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
-		71564AD92A79F69500979090 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AD62A79F69500979090 /* CalculatorTableViewHeaderView.swift */; };
-		71564ADA2A79F69500979090 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AD72A79F69500979090 /* CalculatorViewController.swift */; };
-		71564ADB2A79F69500979090 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AD82A79F69500979090 /* CalculatorTableViewCell.swift */; };
+		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -68,6 +67,7 @@
 		9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */; };
 		9985BA542A65BF0D00DD871C /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = 9985BA532A65BF0D00DD871C /* InputMask */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
+		998D2ED42A80B4F5004ED81B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D2ED32A80B4F5004ED81B /* City.swift */; };
 		998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */; };
 		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
@@ -143,7 +143,6 @@
 		223C9C622A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTextTableViewCell.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
-		6189CFC92A78315000175333 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeExchangeRateViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
+		998D2ED32A80B4F5004ED81B /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewController.swift; sourceTree = "<group>"; };
 		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,9 +303,9 @@
 		618977FB2A533D9C009DFF0B /* CitySelection */ = {
 			isa = PBXGroup;
 			children = (
+				998D2ED32A80B4F5004ED81B /* City.swift */,
 				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
 				618978042A549426009DFF0B /* CityTableViewCell.swift */,
-				6189CFC92A78315000175333 /* City.swift */,
 			);
 			path = CitySelection;
 			sourceTree = "<group>";
@@ -349,16 +349,6 @@
 				9FE945962A7388B3009020B7 /* SignInService.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		71564AD42A79F64E00979090 /* Calculators */ = {
-			isa = PBXGroup;
-			children = (
-				71564AD82A79F69500979090 /* CalculatorTableViewCell.swift */,
-				71564AD62A79F69500979090 /* CalculatorTableViewHeaderView.swift */,
-				71564AD72A79F69500979090 /* CalculatorViewController.swift */,
-			);
-			path = Calculators;
 			sourceTree = "<group>";
 		};
 		71D01EB12A5D48F200422491 /* Notifications */ = {
@@ -1049,7 +1039,6 @@
 				71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
-				6189CFCA2A78315000175333 /* City.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
 				995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
@@ -1064,10 +1053,11 @@
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
-				71564ADA2A79F69500979090 /* CalculatorViewController.swift in Sources */,
+				71564ADA2A79F69500979090 /* (null) in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
+				998D2ED42A80B4F5004ED81B /* City.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */,
 				9979C5E52A7BDF6C0055B2DE /* Details.swift in Sources */,
@@ -1100,7 +1090,7 @@
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
-				71564ADB2A79F69500979090 /* CalculatorTableViewCell.swift in Sources */,
+				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 			);
