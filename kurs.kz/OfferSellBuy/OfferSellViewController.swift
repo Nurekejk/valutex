@@ -78,6 +78,7 @@ final class OfferSellViewController: UIViewController {
         button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.setTitle("Предложить", for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()
+        button.addTarget(self, action: #selector(nextButtonDidPress), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -232,5 +233,9 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
     func selectorButtonPressed() {
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
+    }
+    
+    @objc private func nextButtonDidPress() {
+        self.navigationController?.pushViewController(ClientOfferDetailsViewController(), animated: true)
     }
 }

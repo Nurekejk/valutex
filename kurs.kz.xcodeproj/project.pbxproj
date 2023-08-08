@@ -13,6 +13,7 @@
 		220C3F452A628310000002DB /* ExchangerScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F442A628310000002DB /* ExchangerScreenTableViewCell.swift */; };
 		223C9C632A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C622A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift */; };
 		223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C642A648DDE008FE874 /* Paddinglabel.swift */; };
+		59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECE063FC904374C5A91655 /* Pods_kurs_kz.framework */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
@@ -22,6 +23,9 @@
 		71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */; };
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
+		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
+		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -29,6 +33,9 @@
 		8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEA62A61B08400637A68 /* ExchangeDollarTableViewCell.swift */; };
 		8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEA82A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift */; };
 		8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */; };
+		8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */; };
+		8F816F0C2A76B59500AF4BA9 /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */; };
+		8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
 		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
@@ -38,14 +45,24 @@
 		9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */; };
 		9909CB142A55AA90000AC039 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB132A55AA90000AC039 /* Detail.swift */; };
 		9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */; };
+		991065352A7A306900368918 /* AboutCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991065342A7A306900368918 /* AboutCompany.swift */; };
+		991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991065362A7A31CA00368918 /* AboutCompanyPageService.swift */; };
 		99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */; };
+		99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C502A7904C300CB9721 /* FaqViewController.swift */; };
+		99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */; };
 		9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */; };
 		9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */; };
 		9952D3562A608080002321E8 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D3552A608080002321E8 /* ProfileSection.swift */; };
+		995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A32A7A05D000E96AEE /* FaqPageService.swift */; };
+		995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */; };
+		995E96A92A7A167500E96AEE /* NationalBankCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */; };
+		995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */; };
+		995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */; };
 		997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */; };
 		9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */; };
 		9985BA542A65BF0D00DD871C /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = 9985BA532A65BF0D00DD871C /* InputMask */; };
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
+		998D2ED62A80B7D8004ED81B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D2ED52A80B7D8004ED81B /* City.swift */; };
 		998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */; };
 		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
@@ -63,6 +80,8 @@
 		99D974002A680D8E00F7E506 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D973FF2A680D8E00F7E506 /* AppColor.swift */; };
 		99D974022A680FF400F7E506 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974012A680FF400F7E506 /* AppImage.swift */; };
 		99D974082A68611D00F7E506 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D974072A68611D00F7E506 /* AppFont.swift */; };
+		99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854222A79632C0075CB78 /* FaqTableViewCell.swift */; };
+		99E854262A7969000075CB78 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E854252A7969000075CB78 /* Question.swift */; };
 		99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E941BF2A666B1F00C47BD2 /* AppConstants.swift */; };
 		9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1094362A5833E100648D14 /* SignInViewController.swift */; };
 		9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F402A482A5BDC7400F9126C /* RateViewController.swift */; };
@@ -76,6 +95,7 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
+		9FE945972A7388B3009020B7 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE945962A7388B3009020B7 /* SignInService.swift */; };
 		9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */; };
 		9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */; };
 		9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8C2A602099005A3723 /* CurrencySelectorTableViewCell.swift */; };
@@ -88,7 +108,6 @@
 		9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D562A694A1D00A11284 /* OfferViewController.swift */; };
 		9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */; };
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
-		ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */; };
 		FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FA1098E32A73AFA000BFB402 /* SkeletonView */; };
@@ -120,6 +139,7 @@
 		220C3F442A628310000002DB /* ExchangerScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTableViewCell.swift; sourceTree = "<group>"; };
 		223C9C622A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTextCellTableViewCell.swift; sourceTree = "<group>"; };
 		223C9C642A648DDE008FE874 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
+		5AECE063FC904374C5A91655 /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
@@ -129,32 +149,43 @@
 		71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewCell.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewFooterView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewFooterView.swift; sourceTree = SOURCE_ROOT; };
 		71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateViewController.swift; path = kurs.kz/ExchangeRate/ExchangeRateViewController.swift; sourceTree = SOURCE_ROOT; };
+		71564AC72A70B8E300979090 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
-		7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		8F06DEA42A61B03300637A68 /* ExchangeDollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarViewController.swift; sourceTree = "<group>"; };
 		8F06DEA62A61B08400637A68 /* ExchangeDollarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewCell.swift; sourceTree = "<group>"; };
 		8F06DEA82A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewHeaderView.swift; sourceTree = "<group>"; };
 		8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDollarTableViewFooterView.swift; sourceTree = "<group>"; };
+		8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorTableViewHeaderView.swift; path = kurs.kz/Calculator/CalculatorTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
+		8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorTableViewCell.swift; path = kurs.kz/Calculator/CalculatorTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = kurs.kz/Calculator/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
 		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		990100482A50B99B003EE3C4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9909CB112A559F8B000AC039 /* OfferDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9909CB132A55AA90000AC039 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		9909CB162A55B06B000AC039 /* OfferDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsHeaderView.swift; sourceTree = "<group>"; };
+		991065342A7A306900368918 /* AboutCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutCompany.swift; path = kurs.kz/NationalBankCourse/Model/AboutCompany.swift; sourceTree = SOURCE_ROOT; };
+		991065362A7A31CA00368918 /* AboutCompanyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutCompanyPageService.swift; path = kurs.kz/NationalBankCourse/Model/AboutCompanyPageService.swift; sourceTree = SOURCE_ROOT; };
 		99287B2F2A61CCCA00D0CF4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		99499C502A7904C300CB9721 /* FaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqViewController.swift; sourceTree = "<group>"; };
+		99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableHeaderView.swift; sourceTree = "<group>"; };
 		9950C0E72A5184080022C2F6 /* VerificationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPageViewController.swift; sourceTree = "<group>"; };
 		9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		9952D3552A608080002321E8 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
+		995E96A32A7A05D000E96AEE /* FaqPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqPageService.swift; sourceTree = "<group>"; };
+		995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswer.swift; sourceTree = "<group>"; };
+		995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankCourseViewController.swift; sourceTree = "<group>"; };
+		995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankPageService.swift; sourceTree = "<group>"; };
+		995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalBankUrl.swift; sourceTree = "<group>"; };
 		997BA5CE2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		9985BA502A65A9D800DD871C /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
+		998D2ED52A80B7D8004ED81B /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewController.swift; sourceTree = "<group>"; };
 		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +203,8 @@
 		99D973FF2A680D8E00F7E506 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		99D974012A680FF400F7E506 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		99D974072A68611D00F7E506 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		99E854222A79632C0075CB78 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
+		99E854252A7969000075CB78 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -185,6 +218,7 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		9FE945962A7388B3009020B7 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewHeader.swift; sourceTree = "<group>"; };
 		9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		9FEDDC8C2A602099005A3723 /* CurrencySelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewCell.swift; sourceTree = "<group>"; };
@@ -197,6 +231,8 @@
 		9FF55D562A694A1D00A11284 /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewHeaderView.swift; sourceTree = "<group>"; };
 		9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
+		B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
+		EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingButtonModel.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -227,9 +263,9 @@
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
-				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
 				FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
+				59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +292,19 @@
 			path = "Exchanger Screen";
 			sourceTree = "<group>";
 		};
+		28298188083BBB3B2BCA80A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AECE063FC904374C5A91655 /* Pods_kurs_kz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		46EE99A18985E63B77BA8021 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */,
-				816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */,
+				EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */,
+				B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -268,6 +312,7 @@
 		618977FB2A533D9C009DFF0B /* CitySelection */ = {
 			isa = PBXGroup;
 			children = (
+				998D2ED52A80B7D8004ED81B /* City.swift */,
 				618978022A541CD5009DFF0B /* SelectCityViewController.swift */,
 				618978042A549426009DFF0B /* CityTableViewCell.swift */,
 			);
@@ -287,14 +332,6 @@
 			path = Offer;
 			sourceTree = "<group>";
 		};
-		69B63E2E40C15D95ADEE8E58 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7ED0A21762FD7FBCA944A33E /* Pods_kurs_kz.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		71564ABA2A6A9C4200979090 /* ExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +341,15 @@
 				71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */,
 			);
 			path = ExchangeRate;
+			sourceTree = "<group>";
+		};
+		71564AC62A70B8C600979090 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71564AC72A70B8E300979090 /* Auth.swift */,
+				9FE945962A7388B3009020B7 /* SignInService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71D01EB12A5D48F200422491 /* Notifications */ = {
@@ -325,6 +371,16 @@
 				8F06DEAA2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift */,
 			);
 			path = ExchangeDollar;
+			sourceTree = "<group>";
+		};
+		8F816F072A76B55000AF4BA9 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				8F816F092A76B59500AF4BA9 /* CalculatorTableViewCell.swift */,
+				8F816F082A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift */,
+				8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		8F8189D72A6066240082F80F /* CartExchangeFeedback */ = {
@@ -366,6 +422,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		991065332A7A305600368918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				991065342A7A306900368918 /* AboutCompany.swift */,
+				991065362A7A31CA00368918 /* AboutCompanyPageService.swift */,
+			);
+			name = Model;
+			path = kurs.kz/Rate/AboutCompany/Model;
+			sourceTree = "<group>";
+		};
 		99287B2E2A61CCB300D0CF4B /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,10 +441,39 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		99499C4F2A7904B100CB9721 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				99E854242A7968F50075CB78 /* Model */,
+				99499C502A7904C300CB9721 /* FaqViewController.swift */,
+				99499C522A790D1900CB9721 /* FaqTableHeaderView.swift */,
+				99E854222A79632C0075CB78 /* FaqTableViewCell.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
 		9952D3542A608074002321E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				9952D3552A608080002321E8 /* ProfileSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		995E96A72A7A165300E96AEE /* NationalBankCourse */ = {
+			isa = PBXGroup;
+			children = (
+				995E96AC2A7A179200E96AEE /* Model */,
+				995E96A82A7A167500E96AEE /* NationalBankCourseViewController.swift */,
+			);
+			path = NationalBankCourse;
+			sourceTree = "<group>";
+		};
+		995E96AC2A7A179200E96AEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				995E96AA2A7A178800E96AEE /* NationalBankPageService.swift */,
+				995E96AD2A7A17E000E96AEE /* NationalBankUrl.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -464,6 +559,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		99E854242A7968F50075CB78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99E854252A7969000075CB78 /* Question.swift */,
+				995E96A32A7A05D000E96AEE /* FaqPageService.swift */,
+				995E96A52A7A0C4600E96AEE /* QuestionAnswer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +582,7 @@
 		9F402A4C2A5BDDA600F9126C /* AboutCompany */ = {
 			isa = PBXGroup;
 			children = (
+				991065332A7A305600368918 /* Model */,
 				9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */,
 			);
 			name = AboutCompany;
@@ -486,6 +592,7 @@
 		9F63DF3F2A50495100EA9060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				71564AC62A70B8C600979090 /* Model */,
 				9F1094362A5833E100648D14 /* SignInViewController.swift */,
 			);
 			path = SignIn;
@@ -497,8 +604,8 @@
 				9F899D7F2A4AFB44002D1F74 /* kurs.kz */,
 				9F899D7E2A4AFB44002D1F74 /* Products */,
 				46EE99A18985E63B77BA8021 /* Pods */,
-				69B63E2E40C15D95ADEE8E58 /* Frameworks */,
 				9FF456F42A5FC47500C2E845 /* Recovered References */,
+				28298188083BBB3B2BCA80A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -513,6 +620,9 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				995E96A72A7A165300E96AEE /* NationalBankCourse */,
+				99499C4F2A7904B100CB9721 /* FAQ */,
+				8F816F072A76B55000AF4BA9 /* Calculator */,
 				8FCA83242A712256003CD865 /* OfferSended */,
 				FAD4D9642A69352B0051D1B4 /* OfferSellBuy */,
 				71564ABA2A6A9C4200979090 /* ExchangeRate */,
@@ -690,13 +800,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F899D912A4AFB46002D1F74 /* Build configuration list for PBXNativeTarget "kurs.kz" */;
 			buildPhases = (
-				A978145459F756DA82375A9D /* [CP] Check Pods Manifest.lock */,
+				83A03733F5C9EA3BAF3A031B /* [CP] Check Pods Manifest.lock */,
 				9F899D792A4AFB43002D1F74 /* Sources */,
 				9F899D7A2A4AFB43002D1F74 /* Frameworks */,
 				9F899D7B2A4AFB43002D1F74 /* Resources */,
-				8185968B9E490D0F706847D7 /* [CP] Embed Pods Frameworks */,
 				9F599BC12A5565A30073C558 /* ShellScript */,
-				51B2907C0DF6A68C0B1ADA2E /* [CP] Copy Pods Resources */,
+				00A0F802EAFD59D99F94739C /* [CP] Embed Pods Frameworks */,
+				3D502BE7DC07E9E9437D2E1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -771,24 +881,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		51B2907C0DF6A68C0B1ADA2E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8185968B9E490D0F706847D7 /* [CP] Embed Pods Frameworks */ = {
+		00A0F802EAFD59D99F94739C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -805,24 +898,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F599BC12A5565A30073C558 /* ShellScript */ = {
+		3D502BE7DC07E9E9437D2E1E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kurs.kz/Pods-kurs.kz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		A978145459F756DA82375A9D /* [CP] Check Pods Manifest.lock */ = {
+		83A03733F5C9EA3BAF3A031B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -844,6 +937,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F599BC12A5565A30073C558 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -856,6 +966,7 @@
 				FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */,
 				9909CB142A55AA90000AC039 /* Detail.swift in Sources */,
 				9F402A4A2A5BDC7400F9126C /* RateViewController.swift in Sources */,
+				995E96A92A7A167500E96AEE /* NationalBankCourseViewController.swift in Sources */,
 				FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */,
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
@@ -866,13 +977,16 @@
 				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* ExchangeDollarTableViewHeaderView.swift in Sources */,
+				99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
+				995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,
 				FA357BC22A58B35A005D5271 /* CustomTabBarViewController.swift in Sources */,
 				FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */,
@@ -890,40 +1004,52 @@
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */,
 				99D974002A680D8E00F7E506 /* AppColor.swift in Sources */,
+				9FE945972A7388B3009020B7 /* SignInService.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
+				8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */,
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
+				71564AC82A70B8E300979090 /* Auth.swift in Sources */,
 				9952D3262A602E47002321E8 /* ProfileTableHeaderView.swift in Sources */,
+				991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
 				71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */,
+				998D2ED62A80B7D8004ED81B /* City.swift in Sources */,
 				9909CB122A559F8B000AC039 /* OfferDetailsTableViewCell.swift in Sources */,
 				998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */,
 				9FF456F82A5FC4EA00C2E845 /* SupportTableViewCell.swift in Sources */,
 				FA57598F2A692B2100DE9A6B /* CurrencySelectorListService.swift in Sources */,
 				FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */,
+				8F816F0C2A76B59500AF4BA9 /* CalculatorTableViewCell.swift in Sources */,
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				223C9C652A648DDE008FE874 /* Paddinglabel.swift in Sources */,
+				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
+				71564ADA2A79F69500979090 /* (null) in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
+				8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */,
 				71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */,
 				99B110CE2A7198EC00A24762 /* ProgressHudProtol.swift in Sources */,
 				9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */,
 				8F06DEA72A61B08400637A68 /* ExchangeDollarTableViewCell.swift in Sources */,
+				99E854262A7969000075CB78 /* Question.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */,
 				9FEDDC8F2A602099005A3723 /* CurrencySelectorTableViewCell.swift in Sources */,
 				9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */,
+				99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
@@ -934,12 +1060,15 @@
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
+				995E96A62A7A0C4600E96AEE /* QuestionAnswer.swift in Sources */,
 				8F06DEA52A61B03300637A68 /* ExchangeDollarViewController.swift in Sources */,
+				991065352A7A306900368918 /* AboutCompany.swift in Sources */,
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
+				71564ADB2A79F69500979090 /* (null) in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextCellTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* ExchangeDollarTableViewFooterView.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
@@ -1077,7 +1206,7 @@
 		};
 		9F899D922A4AFB46002D1F74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93686847FFF700FEE4E2943F /* Pods-kurs.kz.debug.xcconfig */;
+			baseConfigurationReference = EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1109,7 +1238,7 @@
 		};
 		9F899D932A4AFB46002D1F74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 816C2EB4C7D45CD8044A9541 /* Pods-kurs.kz.release.xcconfig */;
+			baseConfigurationReference = B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

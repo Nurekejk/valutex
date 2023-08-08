@@ -35,53 +35,52 @@ final class CalculatorTableViewCell: UITableViewCell {
     }()
     private lazy var migLogoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "migLogo")
+        imageView.image = AppImage.exchange_logo.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "MИГ"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
         return label
     }()
     private lazy var starImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "star")
+        let imageView = UIImageView(image: AppImage.golden_star.uiImage)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var rateLabel: UILabel = {
         let label = UILabel()
         label.text = "4,9 (15)"
-        label.font = .systemFont(ofSize: 12)
-        label.textColor = UIColor.lightGray
+        label.font = AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         return label
     }()
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.text = "ул. Толе Би, 297 г, уг. ул. Тлендиева"
-        label.font = .systemFont(ofSize: 12)
+        label.font = AppFont.regular.s12()
         return label
     }()
     private lazy var kmLabel: UILabel = {
         let label = UILabel()
         label.text = "1 км"
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s10()
         return label
     }()
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = "1 октября, 2023 18:00:00"
-        label.font = .systemFont(ofSize: 12)
-        label.textColor = UIColor.lightGray
+        label.font = AppFont.regular.s12()
+        label.textColor = AppColor.gray60.uiColor
         label.textAlignment = .left
         return label
     }()
     private lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.text = "1000,01"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.medium.s16()
         return label
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -104,14 +103,8 @@ final class CalculatorTableViewCell: UITableViewCell {
          addressLabel, kmLabel, dateLabel,amountLabel].forEach {
             containerView.addSubview($0)
         }
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
-        containerView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.gray10.uiColor
+        containerView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.addSubview(containerView)
     }
     
@@ -135,6 +128,7 @@ final class CalculatorTableViewCell: UITableViewCell {
         starImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.leading.equalTo(titleLabel.snp.trailing).offset(8)
+            make.size.equalTo(12)
         }
         rateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(13.5)

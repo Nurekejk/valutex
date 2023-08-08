@@ -11,11 +11,9 @@ import SnapKit
 class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    
     public static var reuseIdentifier = String(describing: ExchangerScreenTextCellTableViewCell.self)
     
     // MARK: - UI
-    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -24,18 +22,18 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Some Exchange"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         let regularAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 14),
+            .font: AppFont.regular.s14(),
                 .foregroundColor: UIColor.black
         ]
         let boldAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 14),
+            .font: AppFont.bold.s14(),
             .foregroundColor: UIColor.black
         ]
         let regularText = NSMutableAttributedString(string: "г.Алматы, ул.Ауэзова 14",
@@ -55,7 +53,7 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
         label.layer.borderWidth = 1.0
         label.textColor = softGreen
         label.text = "Круглосуточно"
-        label.font = .systemFont(ofSize: 12)
+        label.font =  AppFont.regular.s12()
         label.backgroundColor = UIColor.green
         label.clipsToBounds = true
         label.layer.cornerRadius = 8
@@ -65,14 +63,14 @@ class ExchangerScreenTextCellTableViewCell: UITableViewCell {
     private lazy var starImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "star")
+        imageView.image = AppImage.star12.uiImage
         return imageView
     }()
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
         label.text = "4.9"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
         return label
     }()
     
