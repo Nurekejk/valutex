@@ -16,7 +16,7 @@ struct CurrencySelectorListService {
         
         var currencyListURLComponent = URLComponents()
         currencyListURLComponent.scheme = "http"
-        currencyListURLComponent.host = "77.240.38.143"
+        currencyListURLComponent.host = "134.122.66.97"
         currencyListURLComponent.port = 4443
         currencyListURLComponent.path = "/currencies_list"
         

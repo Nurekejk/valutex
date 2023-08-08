@@ -16,7 +16,7 @@ final class DetailPageService {
                                   completion: @escaping (Result<[CurrencyElement], AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/exchange_offices/info_rates"
         urlComponent.query = "office_id=\(officeID)"
@@ -41,7 +41,7 @@ final class DetailPageService {
     func fetchDetails(officeID: Int, completion: @escaping (Result<Details, AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/exchange_offices/info_main"
         urlComponent.query = "office_id=\(officeID)"

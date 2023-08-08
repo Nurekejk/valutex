@@ -17,7 +17,7 @@ final class OtpRegistrationService {
     func postPhoneNumber(with phone: String, completion: @escaping (Result<String, Error>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/otp/registration"
         
@@ -43,7 +43,7 @@ final class OtpRegistrationService {
     func postOTPCode (with smsCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/otp/verify"
         
@@ -70,7 +70,7 @@ final class OtpRegistrationService {
     func fetchUser (with user: User, completion: @escaping (Result<String, Error>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/signup"
         

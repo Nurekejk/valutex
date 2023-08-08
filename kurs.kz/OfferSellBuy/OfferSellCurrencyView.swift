@@ -41,7 +41,7 @@ final class OfferSellCurrencyView: UIView {
     
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(AppImage.arrow_down.uiImage, for: .normal)
+        button.setImage(AppImage.down_arrow.uiImage, for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()

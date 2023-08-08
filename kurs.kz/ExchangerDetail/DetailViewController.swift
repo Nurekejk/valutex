@@ -11,6 +11,9 @@ import CollapsibleTableSectionViewController
 import ProgressHUD
 
 final class DetailViewController: UIViewController {
+    // MARK: - State
+
+    public var officeId = 0
     
     // MARK: - Properties
     private let service: DetailPageService
@@ -117,7 +120,7 @@ final class DetailViewController: UIViewController {
     
     // MARK: - Callback
     private func fetchExchangerDetails() {
-        service.fetchDetails(officeID: 1) { [weak self] result in
+        service.fetchDetails(officeID: self.officeId) { [weak self] result in
             switch result {
             case .success(let details):
                 self?.setSectionsData(details: details)

@@ -15,7 +15,7 @@ final class NationalBankPageService {
     func fetchNationalBankUrl(completion: @escaping (Result<NationalBankUrl, AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/profile/national_bank_rates"
         

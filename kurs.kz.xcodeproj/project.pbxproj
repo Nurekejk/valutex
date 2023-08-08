@@ -10,6 +10,7 @@
 		220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */; };
 		220C3F3B2A5FEBD3000002DB /* MyExchangesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3F3A2A5FEBD3000002DB /* MyExchangesTableViewCell.swift */; };
 		223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9C622A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift */; };
+		5AD9DFA85C13444221B0B2BD /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86284542120DCA8F12CD8E54 /* Pods_kurs_kz.framework */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
 		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
@@ -114,7 +115,6 @@
 		9FF55D5A2A694A1D00A11284 /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D562A694A1D00A11284 /* OfferViewController.swift */; };
 		9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */; };
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
-		C96964C0F5D9914779A6414A /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0A619FE38FBC210009AE17 /* Pods_kurs_kz.framework */; };
 		FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FA1098E32A73AFA000BFB402 /* SkeletonView */; };
@@ -156,6 +156,7 @@
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionHeaderView.swift; sourceTree = "<group>"; };
+		86284542120DCA8F12CD8E54 /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F06DEA62A61B08400637A68 /* CurrencyInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInformationTableViewCell.swift; sourceTree = "<group>"; };
 		8F06DEA82A61B0C800637A68 /* CurrencyInformationTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInformationTableHeaderView.swift; sourceTree = "<group>"; };
 		8F06DEAA2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInformationTableFooterView.swift; sourceTree = "<group>"; };
@@ -219,7 +220,6 @@
 		99E854222A79632C0075CB78 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
 		99E854252A7969000075CB78 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		9F0A619FE38FBC210009AE17 /* Pods_kurs_kz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kurs_kz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
@@ -279,13 +279,21 @@
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
 				FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
-				59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */,
+				5AD9DFA85C13444221B0B2BD /* Pods_kurs_kz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1784136722C955180340E1E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86284542120DCA8F12CD8E54 /* Pods_kurs_kz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		220C3F372A5FD8B6000002DB /* MyExchanges */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,14 +301,6 @@
 				220C3F382A5FD9F6000002DB /* MyExchangesViewController.swift */,
 			);
 			path = MyExchanges;
-			sourceTree = "<group>";
-		};
-		2A4B4253D45758D9180E0487 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9F0A619FE38FBC210009AE17 /* Pods_kurs_kz.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		46EE99A18985E63B77BA8021 /* Pods */ = {
@@ -627,7 +627,7 @@
 				9F899D7E2A4AFB44002D1F74 /* Products */,
 				46EE99A18985E63B77BA8021 /* Pods */,
 				9FF456F42A5FC47500C2E845 /* Recovered References */,
-				28298188083BBB3B2BCA80A9 /* Frameworks */,
+				1784136722C955180340E1E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -874,7 +874,7 @@
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
-				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -1352,7 +1352,7 @@
 				version = 1.2.6;
 			};
 		};
-		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
@@ -1385,7 +1385,7 @@
 		};
 		FA1098E32A73AFA000BFB402 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */;
 			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */

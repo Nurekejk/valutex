@@ -17,7 +17,7 @@ final class SignInService {
         
         var signIn = URLComponents()
         signIn.scheme = "http"
-        signIn.host = "77.240.38.143"
+        signIn.host = "134.122.66.97"
         signIn.port = 4443
         signIn.path = "/login"
         

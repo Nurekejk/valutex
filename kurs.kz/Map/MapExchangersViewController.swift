@@ -9,6 +9,7 @@ import UIKit
 import Pulley
 
 final class MapExchangersViewController: PulleyViewController {
+    private let defaults = UserDefaults.standard
 
     // MARK: - UI
     private lazy var navigationBarView: NavigationBarCurencyButtonView = {
@@ -55,6 +56,22 @@ final class MapExchangersViewController: PulleyViewController {
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
+
+    // MARK: - Storage
+
+    func fetchDefaults() {
+        if let data = defaults.data(forKey: ExchangeListViewController.defaultsCurrencyKey) {
+            do {
+                let fetchedCurrency = try JSONDecoder().decode(Currency.self, from: data)
+                navigationBarView.changeCurrency(newFlagImage: fetchedCurrency.flag,
+                                                 newCurrencyLabel: fetchedCurrency.code)
+            } catch {
+                print("error while decoding")
+            }
+        } else {
+            return
+        }
+    }
 }
 
 // MARK: - CurrencySelectorViewControllerDelegate
@@ -62,5 +79,10 @@ extension MapExchangersViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
+        if let data = try? JSONEncoder().encode(currency) {
+            defaults.setValue(data, forKey: ExchangeListViewController.defaultsCurrencyKey)
+        } else {
+            print("error while encoding")
+        }
     }
 }
