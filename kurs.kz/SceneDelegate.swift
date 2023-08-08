@@ -27,10 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAutorized {
             window?.rootViewController =
-                UINavigationController(rootViewController: CustomTabBarViewController())
+                UINavigationController(rootViewController: ExchangeListViewController())
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: SelectLanguageViewController())
+            UINavigationController(rootViewController: ExchangeListViewController())
         }
         window?.makeKeyAndVisible()
     }
