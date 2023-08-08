@@ -12,10 +12,13 @@ import Pulley
 
 // swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
+    // MARK: - State
+    public static let defaultsCurrencyKey = "savedCurrency"
     
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private let defaults = UserDefaults.standard
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
@@ -206,8 +209,10 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
-        getExchangers()
+
         showSkeletonAnimation()
+        fetchDefaults()
+        getExchangers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -405,6 +410,19 @@ final class ExchangeListViewController: UIViewController {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
+    func fetchDefaults() {
+        if let data = defaults.data(forKey: ExchangeListViewController.defaultsCurrencyKey) {
+                do {
+                    let fetchedCurrency = try JSONDecoder().decode(Currency.self, from: data)
+                    navigationBarView.changeCurrency(newFlagImage: fetchedCurrency.flag,
+                                                     newCurrencyLabel: fetchedCurrency.code)
+                } catch {
+                    print("error while decoding")
+                }
+            } else {
+                return
+            }
+        }
 }
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
@@ -467,6 +485,7 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
         searchBar.resignFirstResponder()
     }
 }
+
     // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
 extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
 
@@ -483,6 +502,11 @@ extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewC
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
+        if let data = try? JSONEncoder().encode(currency) {
+            defaults.setValue(data, forKey: ExchangeListViewController.defaultsCurrencyKey)
+        } else {
+            print("error while encoding")
+        }
     }
 }
 

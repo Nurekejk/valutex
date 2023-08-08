@@ -263,7 +263,6 @@
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
-				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
 				FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
 				59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */,
