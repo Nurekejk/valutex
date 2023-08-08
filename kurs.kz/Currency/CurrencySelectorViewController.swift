@@ -24,7 +24,7 @@ final class CurrencySelectorViewController: UIViewController {
     private var filteredCurrencies = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
-    var currencyListService = CurrencySelectorListService()
+    private var currencyListService = CurrencySelectorListService()
     
     // MARK: - UI
     private let sliderBorderView: UIView = {
@@ -84,8 +84,7 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        currencyListService.delegate = self
-        currencyListService.fetchCurrencies()
+        setupCurrency()
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,12 +94,13 @@ final class CurrencySelectorViewController: UIViewController {
         sliderBorderView.layer.cornerRadius = 5
     }
     
+    // MARK: - Setup Service
+    private func setupCurrency() {
+        currencyListService.delegate = self
+        currencyListService.fetchCurrencies()
+    }
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(currenciesTableView)
-        view.addSubview(chooseCurrencyLabel)
-        view.addSubview(exitButton)
-        view.addSubview(selectButton)
         [sliderBorderView,
          currenciesTableView,
          chooseCurrencyLabel,

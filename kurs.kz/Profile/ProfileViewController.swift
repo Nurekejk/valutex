@@ -33,6 +33,8 @@ final class ProfileViewController: UIViewController {
      ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
                     name: "Курс Нацбанка")]
     
+    private let defaults = UserDefaults.standard
+    
     // MARK: - UI
     private lazy var informationTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -68,7 +70,7 @@ final class ProfileViewController: UIViewController {
             image: AppImage.logout.uiImage,
             style: .plain,
             target: self,
-            action: nil)
+            action: #selector(logOutButtonDidPress))
     }
     
     // MARK: - Setup Views
@@ -83,12 +85,32 @@ final class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    // MARK: - Action
+    @objc private func logOutButtonDidPress() {
+        let alert = UIAlertController(title: "Выход",
+                                      message: "Вы действительно хотите выйти?",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да",
+                                      style: .destructive,
+                                      handler: { _ in
+            self.defaults.removeObject(forKey: SignInViewController.defaultsTokensKey)
+            self.navigationController?.setViewControllers([SignInViewController()], animated: false)
+        }))
+        alert.addAction(UIAlertAction(title: "Нет",
+                                      style: .cancel,
+                                      handler: { _ in }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Enumerator
 enum SectionNumber: Int {
     case zero = 0
     case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate

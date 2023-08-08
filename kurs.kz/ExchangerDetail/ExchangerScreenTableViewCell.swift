@@ -33,6 +33,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -44,11 +45,10 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         fatalError("init(coder) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         containerView.layer.cornerRadius = 8
-        
     }
     
     // MARK: - Setup Views
@@ -56,13 +56,7 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
         [cellImageView, buttonImageView].forEach {
             containerView.addSubview($0)
         }
-        let backgroundGrayColor = UIColor(
-            red: 246.0 / 255.0,
-            green: 247.0 / 255.0,
-            blue: 249.0 / 255.0,
-            alpha: 1)
-        
-        contentView.backgroundColor = backgroundGrayColor
+        contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = .white
         contentView.addSubview(containerView)
     }
@@ -70,18 +64,17 @@ final class ExchangerScreenTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 16, bottom: 8, right: 16))
-            make.width.equalTo(343)
-            make.height.equalTo(117)
-           }
+            make.edges.equalToSuperview()
+        }
         
         cellImageView.snp.makeConstraints {make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(containerView.snp.height).multipliedBy(1.05)
         }
+        
         buttonImageView.snp.makeConstraints {make in
             make.bottom.trailing.equalTo(cellImageView).offset(-10)
-            make.size.equalTo(CGSize(width: 30, height: 30))
+            make.size.equalTo(30)
         }
     }
 }

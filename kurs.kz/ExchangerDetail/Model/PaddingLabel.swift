@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class Paddinglabel: UILabel {
+final class PaddingLabel: UILabel {
     
     // MARK: - Public
     
