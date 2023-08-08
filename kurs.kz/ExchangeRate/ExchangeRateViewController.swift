@@ -13,7 +13,6 @@ final class ExchangeRateViewController: UIViewController {
     // MARK: - UI
     private lazy var headerView: ExchangeRateTableViewHeaderView = {
         let headerView = ExchangeRateTableViewHeaderView()
-        headerView.backgroundColor = .systemGray6
         return headerView
     }()
     
@@ -36,15 +35,15 @@ final class ExchangeRateViewController: UIViewController {
     private lazy var safeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cохранить", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
-        button.layer.cornerRadius = 12
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.tintColor = AppColor.grayWhite.uiColor
+        button.backgroundColor = AppColor.primaryBase.uiColor
+//        button.layer.cornerRadius = 12
+        button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
     private lazy var shadowView: UIView = {
         let shadowView = UIView()
-        shadowView.backgroundColor = .white
+        shadowView.backgroundColor = AppColor.grayWhite.uiColor
         return shadowView
     }()
 
@@ -57,18 +56,24 @@ final class ExchangeRateViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        title = "Курс валют"
-        navigationController?.navigationBar.backItem?.title = ""
         
         view.backgroundColor = .systemGray6
-        view.addSubview(headerView)
-        view.addSubview(tableView)
-        view.addSubview(shadowView)
+        [headerView, tableView, shadowView].forEach {
+            view.addSubview($0)
+        }
         shadowView.addSubview(safeButton)
     }
+    
+    // MARK: - Navigation Bar
+    private func navigationBar() {
+        title = "Курс валют"
+    }
+    
+    // MARK: - ViewDid LayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
+        safeButton.layer.cornerRadius = 12
     }
         
     // MARK: - Setup Constraints
@@ -103,18 +108,21 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as? ExchangeRateTableViewCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ExchangeRateTableViewCell.reuseIdentifier,
+            for: indexPath) as? ExchangeRateTableViewCell else {
+            fatalError("Could not cast to ExchangeRateTableViewCell")
+        }
         switch indexPath.row {
         case 0:
-            cell?.configureCell(flagImage: UIImage(named: "USDflag"),
+            cell.configureCell(flagImage: AppImage.KZTflag.uiImage,
                                 currencyLabel: "Доллар",
                                 amountOfPurchaseTextField: "500",
                                 amountOfSaleTextField: "500",
-                                trashButton: UIImage(named: "trashButton"))
+                                trashButton: AppImage.trash.uiImage)
         default:
             break
         }
-        return cell ?? UITableViewCell()
+        return cell
     }
 }

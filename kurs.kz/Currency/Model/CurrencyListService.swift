@@ -31,7 +31,20 @@ struct CurrencyListService {
         }
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
-            
+            let defaults = UserDefaults.standard
+
+            if let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) {
+                do {
+                    let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
+                    let refreshToken = tokens.refresh_token
+                    let accessToken = tokens.access_token
+                    print(refreshToken)
+                    print(accessToken)
+                } catch {
+                    print("error while decoding")
+                }
+            }
+
             let task = urlsesion.dataTask(with: urlRequest) { data, _, error in
                 if error != nil {
                     self.delegate?.didFailWithError(error!)
@@ -47,7 +60,7 @@ struct CurrencyListService {
             }
             task.resume()
     }
-    
+
     func parseJSON(currencyData:Data) -> [Currency]? {
         let decoder = JSONDecoder()
         do {

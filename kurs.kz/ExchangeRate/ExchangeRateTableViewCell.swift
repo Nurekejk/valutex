@@ -18,14 +18,14 @@ final class ExchangeRateTableViewCell: UITableViewCell {
 
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "USDflag")
+        imageView.image = AppImage.kzt_flag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "Доллар"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         return label
     }()
     private lazy var amountOfPurchaseTextField: UITextField = {
@@ -33,7 +33,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.textAlignment = .center
-        textField.font = .systemFont(ofSize: 16)
+        textField.font = AppFont.regular.s16()
         textField.text = "500"
         return textField
     }()
@@ -42,13 +42,13 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.textAlignment = .center
-        textField.font = .systemFont(ofSize: 16)
+        textField.font = AppFont.regular.s16()
         textField.text = "500"
         return textField
     }()
     private lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = UIImage(named: "trash")
+        let iconImage = AppImage.trash.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(trashButtonDidPressed),
                          for: .touchUpInside)
@@ -64,18 +64,6 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Layers
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        amountOfPurchaseTextField.layer.cornerRadius = 10
-        amountOfPurchaseTextField.layer.borderWidth = 1
-        amountOfPurchaseTextField.layer.borderColor = UIColor.gray.cgColor
-        amountOfSaleTextField.layer.cornerRadius = 10
-        amountOfSaleTextField.layer.borderWidth = 1
-        amountOfSaleTextField.layer.borderColor = UIColor.gray.cgColor
     }
 
     // MARK: - Setup Views

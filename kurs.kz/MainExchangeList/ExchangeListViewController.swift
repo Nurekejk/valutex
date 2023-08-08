@@ -8,7 +8,9 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import Pulley
 
+// swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
     // MARK: - State
     public static let defaultsCurrencyKey = "savedCurrency"
@@ -73,6 +75,19 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - UI
     
+    private let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let gripperView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 60, height: 4)
+        view.backgroundColor = AppColor.gray30.uiColor
+        return view
+    }()
+    
     private lazy var navigationBarView: NavigationBarCurencyButtonView = {
         let view = NavigationBarCurencyButtonView()
         return view
@@ -117,6 +132,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(AppImage.calculator_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
+        button.addTarget(self, action: #selector(calculatorButtonDidPresss), for: .touchUpInside)
         return button
     }()
     
@@ -124,6 +140,7 @@ final class ExchangeListViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(AppImage.pin_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.grayWhite.uiColor
+        button.addTarget(self, action: #selector(selectCityDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -165,6 +182,7 @@ final class ExchangeListViewController: UIViewController {
         button.setImage(AppImage.map_button.uiImage, for: .normal)
         button.backgroundColor = AppColor.primarySecondary.uiColor
         button.scalesLargeContentImage = true
+        button.addTarget(self, action: #selector(mapButtonDidPressed), for: .touchUpInside)
         button.clipsToBounds = true
         return button
     }()
@@ -194,9 +212,19 @@ final class ExchangeListViewController: UIViewController {
             self.filteredArray = exchangers
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = false
+        if self.pulleyViewController?.drawerPosition == .closed {
+            self.topView.isHidden = true
+            mapButton.isHidden = false
+            updateConstraints()
+        } else {
+            self.topView.isHidden = false
+            mapButton.isHidden = true
+            setupConstraints()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -221,10 +249,11 @@ final class ExchangeListViewController: UIViewController {
     
     // MARK: - Setup Views
     private func setupViews() {
-        [exchangeListTableView, mapButton,
+        [topView, exchangeListTableView, mainFilterButton,
          nearbySorterButton, openFilterButton,
          currencySearchBar, calculatorButton,
-         pinButton].forEach {view.addSubview($0)}
+         pinButton, mapButton].forEach {view.addSubview($0)}
+        topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
         exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
@@ -235,28 +264,37 @@ final class ExchangeListViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
                                                                         navigationTitleLabel)
     }
-    
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
         let tableWidth = UIScreen.main.bounds.width - 32
-        
         headerView.frame = CGRect(x: 0, y: 0, width: tableWidth, height: 36)
         
+        topView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        gripperView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(157.5)
+            make.height.equalTo(4)
+            make.width.equalTo(60)
+        }
         currencySearchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalTo(calculatorButton.snp.leading)
             make.height.equalTo(48)
         }
         calculatorButton.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
             make.trailing.equalTo(pinButton.snp.leading)
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
         pinButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
+            make.trailing.equalToSuperview()
             make.height.equalTo(48)
             make.width.equalTo(56)
         }
@@ -274,8 +312,8 @@ final class ExchangeListViewController: UIViewController {
         }
         mapButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-108)
-            make.size.equalTo(48)
+            make.bottom.equalToSuperview().offset(-188)
+            make.size.equalTo(80)
         }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(nearbySorterButton.snp.bottom).offset(9)
@@ -285,12 +323,46 @@ final class ExchangeListViewController: UIViewController {
         }
     }
     
+    private func updateConstraints() {
+        currencySearchBar.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.trailing.equalTo(calculatorButton.snp.leading)
+            make.height.equalTo(48)
+        }
+        calculatorButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalTo(pinButton.snp.leading)
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+        pinButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(48)
+            make.width.equalTo(56)
+        }
+    }
+    
     // MARK: - Action
     @objc func selectorPressed() {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
+    
+    @objc private func calculatorButtonDidPresss() {
+        self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
+    }
+    @objc private func selectCityDidPress() {
+
+        self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
+    }
+    
+    @objc private func mapButtonDidPressed() {
+        self.pulleyViewController?.setDrawerPosition(position: .collapsed, animated: true)
+        remove()
+    }
+
     @objc func nearbyButtonDidPress() {
         nearbySorterIsOn = !nearbySorterIsOn
     }
@@ -358,19 +430,19 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                            ExchangeListTableViewCell.identifier,
-                                                        for: indexPath) as? ExchangeListTableViewCell {
-                cell.backgroundColor = view.backgroundColor
-                if !isSearching {
-                    cell.changeExchanger(with: filteredArray[indexPath.row])
-                } else {
-                    cell.changeExchanger(with: filteredArray[indexPath.row])
-                }
-                return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangeListTableViewCell.identifier,
+                                                    for: indexPath) as? ExchangeListTableViewCell {
+            cell.backgroundColor = view.backgroundColor
+            if !isSearching {
+                cell.changeExchanger(with: filteredArray[indexPath.row])
             } else {
-                return UITableViewCell()
+                cell.changeExchanger(with: filteredArray[indexPath.row])
             }
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
@@ -394,7 +466,6 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
 }
     // MARK: - CurrencySelectorViewControllerDelegate
 extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
-    
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
@@ -404,5 +475,20 @@ extension ExchangeListViewController: CurrencySelectorViewControllerDelegate {
             print("error while encoding")
         }
     }
+}
 
- }
+// MARK: - PulleyDrawerViewControllerDelegate
+extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
+    func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 154.0 + bottomSafeArea
+    }
+    
+    func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
+        return 379.0 + bottomSafeArea
+    }
+    
+    func supportedDrawerPositions() -> [PulleyPosition] {
+        return [.collapsed, .partiallyRevealed, .closed, .open]
+    }
+}
+// swiftlint:enable all

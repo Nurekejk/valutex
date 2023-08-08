@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Pulley
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,16 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-      
-        let isAutorized = true
+        
+        var isAutorized = false
+        
+        let defaults = UserDefaults.standard
+        isAutorized = defaults.bool(forKey: SignInViewController.defaultsIsAuthorizedKey)
+
         if isAutorized {
             window?.rootViewController =
-            UINavigationController(rootViewController: ExchangeListViewController())
+                UINavigationController(rootViewController: CustomTabBarViewController())
         } else {
             window?.rootViewController =
-                UINavigationController(rootViewController: SelectLanguageViewController())
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
-
         window?.makeKeyAndVisible()
     }
 }
