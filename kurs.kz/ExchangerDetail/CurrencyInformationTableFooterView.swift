@@ -8,31 +8,20 @@
 import UIKit
 import SnapKit
 
-final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
+final class CurrencyInformationTableFooterView: UITableViewHeaderFooterView {
+    
+    static let reuseID = String(describing: CurrencyInformationTableFooterView.self)
     
     // MARK: - UI
-    let backgroundBlueColor = UIColor(
-        red: 45 / 255.0,
-        green: 156 / 255.0,
-        blue: 219 / 255.0,
-        alpha: 1
-    )
-    
-    private lazy var titleOneLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Еще"
-        label.font = AppFont.bold.s14()
-        label.textColor = backgroundBlueColor
-        return label
-    }()
-    
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Еще", for: .normal)
+        button.setTitleColor(AppColor.primaryBase.uiColor, for: .normal)
+        button.titleLabel?.font = AppFont.medium.s14()
         return button
     }()
     
-    // MARK: - Life Cycle
+    // MARK: - Lifecycle
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -45,16 +34,17 @@ final class ExchangeDollarTableViewFooterView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Setup Views
-    func setupViews() {
+    private func setupViews() {
         contentView.backgroundColor = .white
         contentView.addSubview(button)
     }
     
     // MARK: - Setup Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         button.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-8)
         }
     }
 }

@@ -18,13 +18,13 @@ final class ExchangeDollarViewController: UIViewController {
     private let miniTitle: [String] = ["1 доллар",  "1 евро", "1 рубль"]
     
     // MARK: - UI
-    private lazy var headerView: ExchangeDollarTableViewHeaderView = {
-        let headerView = ExchangeDollarTableViewHeaderView()
+    private lazy var headerView: CurrencyInformationTableHeaderView = {
+        let headerView = CurrencyInformationTableHeaderView()
         return headerView
     }()
     
-    private lazy var footerView: ExchangeDollarTableViewFooterView = {
-        let footerView = ExchangeDollarTableViewFooterView()
+    private lazy var footerView: CurrencyInformationTableFooterView = {
+        let footerView = CurrencyInformationTableFooterView()
         return footerView
     }()
     
@@ -32,11 +32,11 @@ final class ExchangeDollarViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ExchangeDollarTableViewCell.self,
-                           forCellReuseIdentifier: ExchangeDollarTableViewCell.reuseIdentifier)
-        tableView.register(ExchangeDollarTableViewHeaderView.self,
+        tableView.register(CurrencyInformationTableViewCell.self,
+                           forCellReuseIdentifier: CurrencyInformationTableViewCell.reuseIdentifier)
+        tableView.register(CurrencyInformationTableHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: "header_id")
-        tableView.register(ExchangeDollarTableViewFooterView.self,
+        tableView.register(CurrencyInformationTableFooterView.self,
                            forHeaderFooterViewReuseIdentifier: "footer_id")
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
@@ -89,8 +89,9 @@ extension ExchangeDollarViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeDollarTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as? ExchangeDollarTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CurrencyInformationTableViewCell.reuseIdentifier,
+            for: indexPath) as? CurrencyInformationTableViewCell
         
         let imageName = nameOfImage[indexPath.row]
         

@@ -20,6 +20,6 @@ final class ShowHideTextButton: UIButton {
     }
     
     func setupButton() {
-        setImage(UIImage(named: "eye-slash"), for: .normal)
+        setImage(AppImage.eye_slash.uiImage, for: .normal)
     }
 }

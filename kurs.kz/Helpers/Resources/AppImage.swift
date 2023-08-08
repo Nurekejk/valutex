@@ -12,7 +12,7 @@ protocol AppImageProtocol {
 }
 
 extension AppImageProtocol {
-
+    
     var uiImage: UIImage? {
         guard let image = UIImage(named: rawValue) else {
             fatalError("Could not find image with name \(rawValue)")
@@ -76,13 +76,20 @@ enum AppImage: String, AppImageProtocol {
     case exchanger_screen = "exchanger_screen"
     case sms = "sms"
     case arrowDown = "arrowDown"
-    case main_down_arrow = "main_down_arrow"
     case calculator_button = "calculator_button"
     case pin_button = "pin_button"
     case main_filter = "main_filter"
     case map_button = "map_button"
     case up_down_filter = "up_down_filter"
     case down_up_filter = "down_up_filter"
+    case call = "call"
+    case clock = "clock"
+    case link_2 = "link-2"
+    case messenger = "messenger"
+    case star_bold = "star-bold"
+    case share_image = "share_image"
+    case user_tag = "user-tag"
+    case call_image = "call_image"
     case usd_flag = "usd_flag"
     case arrow_up = "arrow-up"
     case arrow_down = "arrow-down"
@@ -91,10 +98,15 @@ enum AppImage: String, AppImageProtocol {
     case migLogo = "migLogo"
     case KZTflag = "KZTflag"
     case drop_down = "drop-down"
-    case separator_line = "separator-line"
-    case arrow_left_right = "arrow-left-right"
+    case separator_line = "separator_line"
+    case arrow_left_right = "arrow_left_right"
     case icon_clear = "icon-clear"
-    case arrow_down_collapse = "arrow_down_collapse"
-    case arrow_up_collapse = "arrow_up_collapse"
+    case arrow_down_collapse = "arrow-down-collapse"
+    case arrow_up_collapse = "arrow-up-collapse"
     case search_normal = "search_normal"
+    case exchange_logo = "exchange_logo"
+    case kzt_flag = "kzt_flag"
+    case cross = "cross"
+    case filter_down = "filter_down"
+    case filter_up = "filter_up"
 }

@@ -11,6 +11,7 @@ final class PasswordTextField: UITextField {
     
     let rightViewWidth: CGFloat = 24.0
     let rightViewHeight: CGFloat = 24.0
+    let trimValue: CGFloat = 30
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let padding: CGFloat = 16.0
@@ -22,11 +23,13 @@ final class PasswordTextField: UITextField {
             return rightBounds
     }
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let trimValue: CGFloat = 30
+
         return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
     }
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        let trimValue: CGFloat = 30
         return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
+    }
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: rightViewWidth + trimValue))
     }
 }

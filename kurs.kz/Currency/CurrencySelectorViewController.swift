@@ -21,7 +21,7 @@ final class CurrencySelectorViewController: UIViewController {
     private var filteredCurrencies = [Currency]()
     private var isSearching = false
     weak var delegate: CurrencySelectorViewControllerDelegate?
-    var currencyListService = CurrencySelectorListService()
+    private var currencyListService = CurrencySelectorListService()
     
     // MARK: - UI
     private let sliderBorderView: UIView = {
@@ -39,7 +39,7 @@ final class CurrencySelectorViewController: UIViewController {
     }()
     private lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "cross"), for: .normal)
+        button.setImage(AppImage.cross.uiImage, for: .normal)
         button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
@@ -81,8 +81,7 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        currencyListService.delegate = self
-        currencyListService.fetchCurrencies()
+        setupCurrency()
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,12 +91,13 @@ final class CurrencySelectorViewController: UIViewController {
         sliderBorderView.layer.cornerRadius = 5
     }
     
+    // MARK: - Setup Service
+    private func setupCurrency() {
+        currencyListService.delegate = self
+        currencyListService.fetchCurrencies()
+    }
     // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(currenciesTableView)
-        view.addSubview(chooseCurrencyLabel)
-        view.addSubview(exitButton)
-        view.addSubview(selectButton)
         [sliderBorderView,
          currenciesTableView,
          chooseCurrencyLabel,
@@ -184,9 +184,11 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            isSearching = false
-            currenciesTableView.reloadData()
-            searchBar.resignFirstResponder()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                searchBar.resignFirstResponder()
+                self.isSearching = false
+                self.currenciesTableView.reloadData()
+            }
         } else {
             isSearching = true
             filteredCurrencies = currencies.filter { currency in
@@ -197,14 +199,19 @@ extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSo
             currenciesTableView.reloadData()
         }
     }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        filteredCurrencies.removeAll()
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        panModalSetNeedsLayoutUpdate()
+        panModalTransition(to: .longForm)
+        return true
+    }
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        panModalSetNeedsLayoutUpdate()
+        panModalTransition(to: .shortForm)
+        isSearching = false
+        return true
     }
 }
 // MARK: - PanModalPresentable
@@ -217,7 +224,7 @@ extension CurrencySelectorViewController: PanModalPresentable {
         return .contentHeight(496)
     }
     var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(40)
+        return .maxHeightWithTopInset(35)
     }
 }
 // MARK: - CurrencySelectorManagerDelegate

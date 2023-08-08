@@ -108,6 +108,9 @@ final class ProfileViewController: UIViewController {
 enum SectionNumber: Int {
     case zero = 0
     case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate

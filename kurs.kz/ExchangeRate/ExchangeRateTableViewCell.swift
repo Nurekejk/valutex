@@ -18,7 +18,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
 
     private lazy var flagImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = AppImage.usd_flag.uiImage
+        imageView.image = AppImage.kzt_flag.uiImage
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -64,18 +64,6 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Layers
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        amountOfPurchaseTextField.layer.cornerRadius = 10
-        amountOfPurchaseTextField.layer.borderWidth = 1
-        amountOfPurchaseTextField.layer.borderColor = UIColor.gray.cgColor
-        amountOfSaleTextField.layer.cornerRadius = 10
-        amountOfSaleTextField.layer.borderWidth = 1
-        amountOfSaleTextField.layer.borderColor = UIColor.gray.cgColor
     }
 
     // MARK: - Setup Views
