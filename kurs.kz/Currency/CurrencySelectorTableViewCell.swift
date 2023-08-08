@@ -54,9 +54,8 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(flagLabel)
-        contentView.addSubview(selectionImageView)
-        contentView.addSubview(currencyLabel)
+        
+        [flagLabel, selectionImageView, currencyLabel].forEach { contentView.addSubview($0) }
         contentView.isSkeletonable = true
     }
     
