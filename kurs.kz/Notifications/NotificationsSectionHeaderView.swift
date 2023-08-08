@@ -12,7 +12,7 @@ class NotificationsSectionHeaderView: UIView {
     private lazy var titleLabel: UILabel = {
             let label = UILabel()
             label.text = "Сегодня"
-            label.font = .systemFont(ofSize: 14)
+            label.font = AppFont.regular.s16()
             label.textColor = .lightGray
             return label
         }()

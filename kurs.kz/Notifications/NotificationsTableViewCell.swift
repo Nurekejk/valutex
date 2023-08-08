@@ -9,12 +9,11 @@ import UIKit
 import SnapKit
 
 final class NotificationsTableViewCell: UITableViewCell {
+    
     // MARK: - Public
-
     public static var reuseIdentifier = String(describing: NotificationsTableViewCell.self)
 
     // MARK: - UI
-
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -23,7 +22,7 @@ final class NotificationsTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Тех. поддержка"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
@@ -31,7 +30,7 @@ final class NotificationsTableViewCell: UITableViewCell {
     private lazy var subTitleLabel: UITextField = {
         let label = UITextField()
         label.text = "Добро пожаловать в службу поддержки"
-        label.font = .systemFont(ofSize: 16)
+        label.font = AppFont.regular.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
@@ -39,7 +38,7 @@ final class NotificationsTableViewCell: UITableViewCell {
     private lazy var dateLabel: UITextField = {
         let label = UITextField()
         label.text = "9:05"
-        label.font = .systemFont(ofSize: 14)
+        label.font = AppFont.regular.s14()
         label.textColor = UIColor.lightGray
         label.textAlignment = .right
         return label

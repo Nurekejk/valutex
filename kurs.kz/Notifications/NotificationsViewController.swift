@@ -11,7 +11,6 @@ import SnapKit
 final class NotificationsViewController: UIViewController {
 
     // MARK: - UI
-
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource  = self
@@ -25,23 +24,28 @@ final class NotificationsViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupViews()
         setupConstraints()
     }
-    // MARK: - Setup Views
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Уведомления"
+    }
 
+    // MARK: - Setup Views
     private func setupViews() {
-        view.addSubview(tableView)
         tableView.backgroundColor = AppColor.gray10.uiColor
         view.backgroundColor = AppColor.gray10.uiColor
+        
+        view.addSubview(tableView)
     }
 
     // MARK: - Setup Constraints
-
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -50,7 +54,6 @@ final class NotificationsViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension NotificationsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {

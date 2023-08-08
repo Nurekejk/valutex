@@ -33,7 +33,7 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
     
     func setupViews() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.addSubview(addCurrencyButton)
     }
     

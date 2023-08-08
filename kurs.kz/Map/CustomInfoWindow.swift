@@ -14,7 +14,7 @@ final class CustomInfoWindow: UIView {
         let label = UILabel()
         label.text = "Almaty"
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        label.font = AppFont.semibold.s16()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,7 +23,7 @@ final class CustomInfoWindow: UIView {
         let label = UILabel()
         label.text = "Almaty"
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+        label.font = AppFont.regular.s16()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

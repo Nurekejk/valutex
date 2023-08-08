@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 final class SelectLanguageViewController: UIViewController {
-    
     // MARK: - UI
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -38,7 +36,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = AppColor.grayWhite.cgColor
-        button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.tag = 3
         return button
     }()
 
@@ -51,7 +50,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 0.5
         button.layer.borderColor = AppColor.grayWhite.cgColor
-        button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.tag = 2
         return button
     }()
 
@@ -64,7 +64,8 @@ final class SelectLanguageViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 1
         button.layer.borderColor = AppColor.grayWhite.cgColor
-        button.addTarget(self, action: #selector(kazakhButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.tag = 1
         return button
     }()
 
@@ -130,8 +131,16 @@ final class SelectLanguageViewController: UIViewController {
     }
 
     // MARK: - Actions
-
-    @objc private func kazakhButtonDidPress() {
+    @objc private func buttonTapped(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        if sender.tag == 1 {
+            defaults.set("EN", forKey: "LanguageApp")
+        } else if sender.tag == 2 {
+            defaults.set("RU", forKey: "LanguageApp")
+        } else if sender.tag == 3 {
+            defaults.set("KZ", forKey: "LanguageApp")
+        }
+        
         let controller = MainPageViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)

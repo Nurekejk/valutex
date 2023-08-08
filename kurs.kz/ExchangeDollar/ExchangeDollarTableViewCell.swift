@@ -17,35 +17,35 @@ final class ExchangeDollarTableViewCell: UITableViewCell {
     private let imageNameView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "usa")
+        imageView.image = AppImage.usa.uiImage
         return imageView
     }()
     
     private lazy var nameOfTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Доллар США"
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = AppFont.bold.s14()
         return label
     }()
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "1 доллар"
-        label.font = .systemFont(ofSize: 10)
+        label.font = AppFont.regular.s14()
         return label
     }()
     
     private lazy var purchaseNameLabel: UILabel = {
         let label = UILabel()
         label.text = "448"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     
     private lazy var buyNameLabel: UILabel = {
         let label = UILabel()
         label.text = "451"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = AppFont.bold.s16()
         return label
     }()
     

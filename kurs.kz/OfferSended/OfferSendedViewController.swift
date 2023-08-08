@@ -40,15 +40,17 @@ final class OfferSendedViewController: UIViewController {
     }
     
     // MARK: - Setup Views
-    func setupViews() {
-        title = "Отправленные"
-        navigationController?.navigationBar.backItem?.title = ""
-        
+    private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         
         [tableView].forEach {
             view.addSubview($0)
         }
+    }
+    
+    // MARk: - Navigation Bar
+    private func navigationBar() {
+        title = "Отправленные"
     }
     
     // MARK: - Setup Constraits
