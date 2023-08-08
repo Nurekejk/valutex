@@ -92,8 +92,8 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
             buyRateSorterState = .isOff
         }
         сompletion(buyRateSorterState, sellRateSorterState)
-        
     }
+    
     @objc func sellFilterButtonDidPress(sender: UIButton) {
         buyRateSorterState = ButtonState.isOff
         buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
@@ -107,6 +107,13 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
             sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
             sellRateSorterState = .isOff
         }
+        сompletion(buyRateSorterState, sellRateSorterState)
+    }
+    public func resetSorters() {
+        buyRateSorterState = ButtonState.isOff
+        sellRateSorterState = ButtonState.isOff
+        buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+        sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
         сompletion(buyRateSorterState, sellRateSorterState)
     }
     

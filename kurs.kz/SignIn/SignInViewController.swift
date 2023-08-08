@@ -14,7 +14,6 @@ final class SignInViewController: UIViewController {
     // MARK: - State
 
     private let service = SignInService()
-    public static let defaultsIsAuthorizedKey = "isAutorized"
     public static let defaultsTokensKey = "accessTokens"
 
     // MARK: - UI
@@ -233,7 +232,6 @@ final class SignInViewController: UIViewController {
             case .success(let data):
                 
                 let defaults = UserDefaults.standard
-                defaults.set(true, forKey: SignInViewController.defaultsIsAuthorizedKey)
 
                 if let data = try? JSONEncoder().encode(data) {
                     defaults.setValue(data, forKey: SignInViewController.defaultsTokensKey)
