@@ -26,8 +26,9 @@ final class CartExchangeFeedbackViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CartExchangeFeedbackViewCell.self,
-                           forCellReuseIdentifier: CartExchangeFeedbackViewCell.reuseID)
+        tableView.register(
+            CartExchangeFeedbackViewCell.self,
+            forCellReuseIdentifier: CartExchangeFeedbackViewCell.reuseID)
         tableView.rowHeight = 56
         
         return tableView
