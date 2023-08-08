@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PanModal
 import SnapKit
 import SkeletonView
 import Pulley
@@ -39,6 +38,7 @@ final class ExchangeListViewController: UIViewController {
         didSet {
             filtersDidChange()
             if nearbySorterIsOn {
+                headerView.resetSorters()
                 nearbySorterButton.backgroundColor = AppColor.primarySecondary.uiColor
             } else {
                 nearbySorterButton.backgroundColor = .clear
@@ -57,12 +57,18 @@ final class ExchangeListViewController: UIViewController {
     }
     private var buyRateSorterState: ButtonState = .isOff {
         didSet {
-            filtersDidChange()
+            if buyRateSorterState != .isOff {
+                nearbySorterIsOn = false
+                filtersDidChange()
+            }
         }
     }
     private var sellRateSorterState: ButtonState = .isOff {
         didSet {
-            filtersDidChange()
+            if sellRateSorterState != .isOff {
+                nearbySorterIsOn = false
+                filtersDidChange()
+            }
         }
     }
     weak var delegate: CurrencySelectorViewControllerDelegate?
@@ -246,6 +252,7 @@ final class ExchangeListViewController: UIViewController {
          pinButton, mapButton].forEach {view.addSubview($0)}
         topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
+        exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
@@ -408,12 +415,12 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     ) -> Int {
         return 6
     }
-    
+
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
        return ExchangeListTableViewCell.identifier
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredArray.count
     }
@@ -440,8 +447,10 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            isSearching = false
-            searchBar.resignFirstResponder()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                searchBar.resignFirstResponder()
+                self.isSearching = false
+            }
         } else {
             isSearching = true
             searchBarText = searchText

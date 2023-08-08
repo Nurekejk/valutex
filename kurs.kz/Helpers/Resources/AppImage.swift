@@ -76,7 +76,6 @@ enum AppImage: String, AppImageProtocol {
     case exchanger_screen = "exchanger_screen"
     case sms = "sms"
     case arrowDown = "arrowDown"
-    case main_down_arrow = "main_down_arrow"
     case calculator_button = "calculator_button"
     case pin_button = "pin_button"
     case main_filter = "main_filter"

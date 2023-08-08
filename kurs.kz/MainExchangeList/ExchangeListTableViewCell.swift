@@ -71,7 +71,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = AppImage.star12.uiImage
+        imageView.image = AppImage.golden_star.uiImage
+        imageView.isSkeletonable = false
         return imageView
     }()
     
@@ -79,11 +80,13 @@ final class ExchangeListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
+        label.isSkeletonable = false
         return label
     }()
     
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
+        label.isSkeletonable = false
         return label
     }()
     

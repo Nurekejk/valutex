@@ -109,6 +109,13 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         }
         сompletion(buyRateSorterState, sellRateSorterState)
     }
+    public func resetSorters() {
+        buyRateSorterState = ButtonState.isOff
+        sellRateSorterState = ButtonState.isOff
+        buyRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+        sellRateFilterButton.setImage(AppImage.arrow_back.uiImage, for: .normal)
+        сompletion(buyRateSorterState, sellRateSorterState)
+    }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
