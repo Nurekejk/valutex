@@ -36,7 +36,8 @@ struct ExchangerListService {
         
         let task = urlSession.dataTask(with: urlRequest) { data, _, _ in
             guard let data = data else {
-                fatalError("Data not found")
+                print("Data not found")
+                return
             }
             if let exchangers = parseJSON(exchangerData: data) {
                 DispatchQueue.main.async {

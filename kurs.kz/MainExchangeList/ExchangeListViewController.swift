@@ -12,6 +12,8 @@ import SkeletonView
 
 final class ExchangeListViewController: UIViewController {
     
+    // MARK: Dependencies
+    private let service = ExchangerListService()
     // MARK: - Properties
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
@@ -180,10 +182,8 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
-        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
-            self.exchangersArray = exchangers
-            self.filteredArray = exchangers
-        }
+        getExchangers()
+        showSkeletonAnimation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -217,7 +217,6 @@ final class ExchangeListViewController: UIViewController {
          currencySearchBar, calculatorButton,
          pinButton].forEach {view.addSubview($0)}
         view.backgroundColor = AppColor.gray10.uiColor
-        exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
@@ -277,18 +276,32 @@ final class ExchangeListViewController: UIViewController {
     }
     
     // MARK: - Action
+    private func showSkeletonAnimation() {
+        exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
+    }
+    
+    private func getExchangers() {
+        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            self.exchangersArray = exchangers
+            self.filteredArray = exchangers
+        }
+    }
+    
     @objc func selectorPressed() {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
+    
     @objc func nearbyButtonDidPress() {
         nearbySorterIsOn = !nearbySorterIsOn
     }
+    
     @objc func openButtonDidPress() {
         openFilterIsOn = !openFilterIsOn
     }
-    func filtersDidChange() {
+    
+    private func filtersDidChange() {
         filteredArray = exchangersArray
         if isSearching {
             filteredArray = exchangersArray.filter { exchanger in
@@ -324,32 +337,36 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     ) -> Int {
         return 6
     }
+    
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
        return ExchangeListTableViewCell.identifier
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredArray.count
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 91
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                            ExchangeListTableViewCell.identifier,
-                                                        for: indexPath) as? ExchangeListTableViewCell {
-                cell.backgroundColor = view.backgroundColor
-                if !isSearching {
-                    cell.changeExchanger(with: filteredArray[indexPath.row])
-                } else {
-                    cell.changeExchanger(with: filteredArray[indexPath.row])
-                }
-                return cell
-            } else {
-                return UITableViewCell()
-            }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        ExchangeListTableViewCell.identifier,
+                                                       for: indexPath) as? ExchangeListTableViewCell else {
+            fatalError("Cound not dequeue reusable cell")
+        }
+        cell.backgroundColor = view.backgroundColor
+        if !isSearching {
+            cell.changeExchanger(with: filteredArray[indexPath.row])
+        } else {
+            cell.changeExchanger(with: filteredArray[indexPath.row])
+        }
+        return cell
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             isSearching = false
@@ -360,10 +377,12 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
             filtersDidChange()
         }
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.resignFirstResponder()
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
