@@ -20,12 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         
-        var isAutorized = false
-        
-        let defaults = UserDefaults.standard
-        isAutorized = defaults.bool(forKey: SignInViewController.defaultsIsAuthorizedKey)
 
-        if isAutorized {
+        let isAuthorized = checkAuth().0
+        let headers = checkAuth().1
+        
+        if isAuthorized {
             window?.rootViewController =
                 UINavigationController(rootViewController: DetailViewController(service: DetailPageService()))
         } else {
@@ -33,5 +32,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: SelectLanguageViewController())
         }
         window?.makeKeyAndVisible()
+    }
+    // MARK: - Action
+    private func checkAuth() -> (Bool, [String: String]) {
+        let defaults = UserDefaults.standard
+        var isAuthorized = false
+        var headers = [String: String]()
+        
+        guard let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) else {
+            isAuthorized = false
+            return (isAuthorized, headers)
+        }
+        
+        do {
+            let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
+            if let accessToken = tokens.access_token {
+                headers["Authorization"] = "Bearer \(accessToken)"
+                isAuthorized = true
+            } else {
+                isAuthorized = false
+                fatalError("accessToken returned nil")
+            }
+        } catch {
+            isAuthorized = false
+            print("error while decoding")
+        }
+        return (isAuthorized, headers)
     }
 }
