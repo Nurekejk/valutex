@@ -1,5 +1,5 @@
 //
-//  CurrencyListService.swift
+//  ExchangerListService.swift
 //  kurs.kz
 //
 //  Created by MacBook on 23.07.2023.
@@ -36,9 +36,10 @@ struct ExchangerListService {
         
         let task = urlSession.dataTask(with: urlRequest) { data, _, _ in
             guard let data = data else {
-                fatalError("Data not found")
+                print("Data not found")
+                return
             }
-            if let exchangers = parseJSON(excnhagerData: data) {
+            if let exchangers = parseJSON(exchangerData: data) {
                 DispatchQueue.main.async {
                     completion(exchangers)
                 }
@@ -47,10 +48,10 @@ struct ExchangerListService {
         task.resume()
     }
     
-    func parseJSON(excnhagerData:Data) -> [Exchanger]? {
+    func parseJSON(exchangerData:Data) -> [Exchanger]? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode([Exchanger].self, from: excnhagerData)
+            let decodedData = try decoder.decode([Exchanger].self, from: exchangerData)
             return decodedData
         } catch {
             print("error:\(error)")

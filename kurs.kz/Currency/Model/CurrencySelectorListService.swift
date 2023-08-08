@@ -42,7 +42,7 @@ struct CurrencySelectorListService {
             task.resume()
     }
     
-    func parseJSON(currencyData:Data) -> [Currency]? {
+    private func parseJSON(currencyData:Data) -> [Currency]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([Currency].self, from: currencyData)

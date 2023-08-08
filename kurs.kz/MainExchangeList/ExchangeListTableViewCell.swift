@@ -16,7 +16,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
     }
-
+    
     private var exchanger: Exchanger? {
         didSet {
             mainTitleLabel.text = exchanger?.mainTitle
@@ -47,16 +47,25 @@ final class ExchangeListTableViewCell: UITableViewCell {
     }
     
     // MARK: - UI
+    private let placeholderSkeletonView:UIView = {
+        let view = UIView()
+        view.skeletonCornerRadius = 10
+        view.isSkeletonable = true
+        return view
+    }()
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.skeletonCornerRadius = 10
+        imageView.isSkeletonable = true
         return imageView
     }()
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.medium.s14()
+        label.font = AppFont.medium.s14()
         label.textColor = AppColor.gray100.uiColor
+        label.skeletonTextLineHeight = .relativeToFont
         return label
     }()
     
@@ -68,7 +77,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
         return label
     }()
@@ -80,29 +89,35 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
+        label.linesCornerRadius = 5
+        label.isSkeletonable = true
         return label
     }()
     
     private let buyRateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
+        label.isSkeletonable = true
+        label.linesCornerRadius = 5
         return label
     }()
     
     private let sellRateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
+        label.isSkeletonable = true
+        label.linesCornerRadius = 5
         return label
     }()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        isSkeletonable = true
         setupViews()
         setupConstraints()
-
     }
     
     required init?(coder: NSCoder) {
@@ -114,7 +129,9 @@ final class ExchangeListTableViewCell: UITableViewCell {
         [iconImageView, mainTitleLabel,
          ratingImageView, ratingLabel,
          addressLabel, dateLabel,
-         buyRateLabel, sellRateLabel].forEach {contentView.addSubview($0)}
+         buyRateLabel, sellRateLabel,
+         placeholderSkeletonView].forEach {contentView.addSubview($0)}
+        contentView.isSkeletonable = true
     }
     
     private func setupAddressLabel(with location: String, and distance: String ) {
@@ -168,6 +185,12 @@ final class ExchangeListTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(12)
             make.size.equalTo(24)
         }
+        placeholderSkeletonView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.height.equalTo(35)
+            make.width.equalTo(279)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(16)
+        }
         mainTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.height.equalTo(18)
@@ -192,6 +215,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-14.5)
             make.leading.equalToSuperview().offset(12)
+            make.trailing.equalTo(buyRateLabel.snp.leading)
             make.height.equalTo(18)
         }
         buyRateLabel.snp.makeConstraints { make in

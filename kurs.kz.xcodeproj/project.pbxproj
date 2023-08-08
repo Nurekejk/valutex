@@ -110,6 +110,7 @@
 		9FF55D5D2A694A1D00A11284 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */; };
 		FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
+		FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FA1098E32A73AFA000BFB402 /* SkeletonView */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
@@ -262,6 +263,8 @@
 				9F63DF442A504C3200EA9060 /* SnapKit in Frameworks */,
 				9F63DF472A50540F00EA9060 /* Alamofire in Frameworks */,
 				9985BA542A65BF0D00DD871C /* InputMask in Frameworks */,
+				ED4CBDD11BE87149A8B0125E /* Pods_kurs_kz.framework in Frameworks */,
+				FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */,
 				FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */,
 				59E9A4A4C719E7BC5E842807 /* Pods_kurs_kz.framework in Frameworks */,
 			);
@@ -816,6 +819,7 @@
 				9F63DF462A50540F00EA9060 /* Alamofire */,
 				9985BA532A65BF0D00DD871C /* InputMask */,
 				FA0E72912A6095C900EEAD48 /* PanModal */,
+				FA1098E32A73AFA000BFB402 /* SkeletonView */,
 			);
 			productName = kurs.kz;
 			productReference = 9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */;
@@ -850,6 +854,7 @@
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
+				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -1320,6 +1325,14 @@
 				version = 1.2.6;
 			};
 		};
+		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1342,6 +1355,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
+		};
+		FA1098E32A73AFA000BFB402 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
