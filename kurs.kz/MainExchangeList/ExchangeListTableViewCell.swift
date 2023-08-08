@@ -53,6 +53,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
         view.isSkeletonable = true
         return view
     }()
+    
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.skeletonCornerRadius = 10

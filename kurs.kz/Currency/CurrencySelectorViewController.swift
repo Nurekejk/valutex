@@ -81,7 +81,7 @@ final class CurrencySelectorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        setUpCurrency()
+        setupCurrency()
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,7 +92,7 @@ final class CurrencySelectorViewController: UIViewController {
     }
     
     // MARK: - Setup Service
-    private func setUpCurrency() {
+    private func setupCurrency() {
         currencyListService.delegate = self
         currencyListService.fetchCurrencies()
     }
