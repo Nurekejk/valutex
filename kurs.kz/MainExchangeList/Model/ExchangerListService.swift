@@ -14,7 +14,7 @@ struct ExchangerListService {
         
         var exchangeListURLComponent = URLComponents()
         exchangeListURLComponent.scheme = "http"
-        exchangeListURLComponent.host = "77.240.38.143"
+        exchangeListURLComponent.host = "134.122.66.97"
         exchangeListURLComponent.port = 4443
         exchangeListURLComponent.path = "/actual_currency_rates"
         

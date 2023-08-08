@@ -20,16 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
         
-
         let isAuthorized = checkAuth().0
-        let headers = checkAuth().1
         
         if isAuthorized {
-            window?.rootViewController =
-                UINavigationController(rootViewController: CustomTabBarViewController())
+            window?.rootViewController = MainTabBarViewController()
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: SelectLanguageViewController())
+                UINavigationController(rootViewController: SelectLanguageViewController())
         }
         window?.makeKeyAndVisible()
     }

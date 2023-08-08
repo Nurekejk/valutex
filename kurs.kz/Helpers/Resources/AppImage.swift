@@ -92,7 +92,6 @@ enum AppImage: String, AppImageProtocol {
     case call_image = "call_image"
     case usd_flag = "usd_flag"
     case arrow_up = "arrow-up"
-    case arrow_down = "arrow-down"
     case USDflag = "USDflag"
     case migLogo = "migLogo"
     case KZTflag = "KZTflag"
@@ -108,4 +107,5 @@ enum AppImage: String, AppImageProtocol {
     case cross = "cross"
     case filter_down = "filter_down"
     case filter_up = "filter_up"
+    case down_arrow = "down_arrow"
 }

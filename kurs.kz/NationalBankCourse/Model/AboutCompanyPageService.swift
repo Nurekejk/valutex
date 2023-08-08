@@ -14,7 +14,7 @@ final class AboutCompanyPageService {
     func fetchAboutCompanyText(completion: @escaping (Result<AboutCompany, AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
-        urlComponent.host = "77.240.38.143"
+        urlComponent.host = "134.122.66.97"
         urlComponent.port = 4443
         urlComponent.path = "/profile/about_the_company"
         

@@ -186,7 +186,6 @@ final class ExchangeListViewController: UIViewController {
         setupConstraints()
 
         showSkeletonAnimation()
-        fetchDefaults()
         getExchangers()
     }
     
@@ -323,12 +322,6 @@ final class ExchangeListViewController: UIViewController {
         }
     }
     
-    @objc func selectorPressed() {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        self.presentPanModal(modalScreen)
-    }
-    
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
@@ -376,22 +369,9 @@ final class ExchangeListViewController: UIViewController {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
-    func fetchDefaults() {
-        if let data = defaults.data(forKey: ExchangeListViewController.defaultsCurrencyKey) {
-                do {
-                    let fetchedCurrency = try JSONDecoder().decode(Currency.self, from: data)
-                    navigationBarView.changeCurrency(newFlagImage: fetchedCurrency.flag,
-                                                     newCurrencyLabel: fetchedCurrency.code)
-                } catch {
-                    print("error while decoding")
-                }
-            } else {
-                return
-            }
-        }
 }
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewDataSource, UISearchBarDelegate {
     func collectionSkeletonView(
         _ skeletonView: UITableView,
@@ -402,7 +382,7 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
 
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       return ExchangeListTableViewCell.identifier
+        return ExchangeListTableViewCell.identifier
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -441,6 +421,15 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
             filtersDidChange()
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let exhange = filteredArray[indexPath.row]
+        let controller = DetailViewController(service: DetailPageService())
+        controller.officeId = exhange.id
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
@@ -449,30 +438,6 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-}
-
-    // MARK: - PanModalPresentable,CurrencySelectorViewControllerDelegate
-extension ExchangeListViewController: PanModalPresentable, CurrencySelectorViewControllerDelegate {
-
-    var panScrollable: UIScrollView? {
-        return nil
-    }
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(496)
-    }
-    var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(40)
-    }
-    
-    func currencyDidSelect(currency: Currency) {
-        navigationBarView.changeCurrency(newFlagImage: currency.flag,
-                                         newCurrencyLabel: currency.code)
-        if let data = try? JSONEncoder().encode(currency) {
-            defaults.setValue(data, forKey: ExchangeListViewController.defaultsCurrencyKey)
-        } else {
-            print("error while encoding")
-        }
     }
 }
 
