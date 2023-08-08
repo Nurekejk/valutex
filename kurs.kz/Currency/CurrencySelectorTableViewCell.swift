@@ -21,12 +21,14 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     // MARK: - UI
     private let flagLabel: UILabel = {
         let label = UILabel()
+        label.isSkeletonable = true
         return label
     }()
     
     private let currencyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
     
@@ -34,12 +36,14 @@ class CurrencySelectorTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "currency_unselected")
         imageView.highlightedImage = UIImage(named: "currency_selected")
+        imageView.isSkeletonable = true
         return imageView
     }()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        isSkeletonable = true
         setupViews()
         setupConstraints()
     }
@@ -50,9 +54,9 @@ class CurrencySelectorTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(flagLabel)
-        contentView.addSubview(selectionImageView)
-        contentView.addSubview(currencyLabel)
+        
+        [flagLabel, selectionImageView, currencyLabel].forEach { contentView.addSubview($0) }
+        contentView.isSkeletonable = true
     }
     
     // MARK: - Setup Constraints
@@ -67,6 +71,7 @@ class CurrencySelectorTableViewCell: UITableViewCell {
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalTo(flagLabel.snp.trailing).offset(16)
+            make.width.equalTo(225)
             make.bottom.equalToSuperview().offset(-18)
         }
         selectionImageView.snp.makeConstraints { make in

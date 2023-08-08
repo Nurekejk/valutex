@@ -72,7 +72,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     private let ratingImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = AppImage.golden_star.uiImage
-        imageView.isSkeletonable = false
         return imageView
     }()
     
