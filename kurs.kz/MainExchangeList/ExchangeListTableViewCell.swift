@@ -63,9 +63,8 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.medium.s14()
+        label.font = AppFont.medium.s14()
         label.textColor = AppColor.gray100.uiColor
-        label.isSkeletonable = false
         label.skeletonTextLineHeight = .relativeToFont
         return label
     }()
@@ -79,7 +78,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
         label.isSkeletonable = false
         return label
@@ -93,7 +92,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font =  AppFont.regular.s12()
+        label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray60.uiColor
         label.linesCornerRadius = 5
         label.isSkeletonable = true
