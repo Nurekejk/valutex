@@ -126,7 +126,7 @@ final class MainPageViewController: UIViewController {
     }
 
     @objc private func skipButtonDidPress() {
-        let controller = CustomTabBarViewController()
+        let controller = MainTabBarViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

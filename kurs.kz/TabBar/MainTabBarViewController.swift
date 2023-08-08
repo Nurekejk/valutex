@@ -8,7 +8,7 @@
 import UIKit
 import Pulley
 
-final class CustomTabBarViewController: UITabBarController {
+final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -25,8 +25,9 @@ final class CustomTabBarViewController: UITabBarController {
         let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                     selectedImage: AppImage.home_selected.uiImage!,
                                     image: AppImage.home_gray.uiImage!,
-                                    viewController: PulleyViewController(
-                                        contentViewController: MapViewController(),
+                                    viewController: MapExchangersViewController(
+                                        contentViewController: MapViewController(
+                                            service: ExchangerListService()),
                                         drawerViewController: ExchangeListViewController()))
         let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                      selectedImage: AppImage.money_selected.uiImage!,
@@ -44,14 +45,14 @@ final class CustomTabBarViewController: UITabBarController {
                           selectedImage: UIImage,
                           image: UIImage,
                           viewController: UIViewController) -> UIViewController {
-        let viewController = viewController
+        let navViewController = UINavigationController(rootViewController: viewController)
         
-        viewController.tabBarItem.title = title
-        viewController.tabBarItem.image = image
-        viewController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
+        navViewController.tabBarItem.title = title
+        navViewController.tabBarItem.image = image
+        navViewController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
         
-        viewController.navigationItem.title = mainTitle
+        navViewController.navigationItem.title = mainTitle
         
-        return viewController
+        return navViewController
     }
 }

@@ -16,7 +16,7 @@ target 'kurs.kz' do
   pod 'SnackBar.swift', '0.1.0'
   pod 'ProgressHUD', '13.6.2'
   pod 'CollapsibleTableSectionViewController', '~> 2.0.1'
-  
+  pod 'IQKeyboardManagerSwift'
   pod 'Wormholy', :configurations => ['Debug']
   pod 'Pulley'
 

@@ -201,13 +201,20 @@ extension FaqViewController: UISearchBarDelegate {
                 $0.question.lowercased().contains(searchText.lowercased())
             })
             searching = true
-            questionsTableView.reloadData()
+        } else {
+            searching = false
+            questionsTableView.resignFirstResponder()
         }
+        questionsTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
-        questionSearchBar.text = ""
-        questionsTableView.reloadData()
+        questionSearchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        self.questionSearchBar.endEditing(true)
     }
 }

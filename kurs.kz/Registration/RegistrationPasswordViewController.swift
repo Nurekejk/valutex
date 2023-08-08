@@ -217,7 +217,7 @@ final class RegistrationPasswordViewController: UIViewController {
         service.fetchUser(with: self.user) { result in
             switch result {
             case .success:
-                let controller = CustomTabBarViewController()
+                let controller = MainTabBarViewController()
                 controller.navigationItem.hidesBackButton = true
                 self.showSuccess()
                 self.navigationController?.pushViewController(controller, animated: true)

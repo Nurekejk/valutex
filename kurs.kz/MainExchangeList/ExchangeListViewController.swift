@@ -91,30 +91,6 @@ final class ExchangeListViewController: UIViewController {
         return view
     }()
     
-    private lazy var navigationBarView: NavigationBarCurencyButtonView = {
-        let view = NavigationBarCurencyButtonView()
-        return view
-    }()
-    
-    private lazy var navigationCurrencySelectButton: UIBarButtonItem = {
-        let buttonTapGesture = UITapGestureRecognizer(target: self, action: #selector(selectorPressed))
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 77, height: 24))
-        containerView.isUserInteractionEnabled = true
-        containerView.addGestureRecognizer(buttonTapGesture)
-        containerView.addSubview(navigationBarView)
-        
-        let button = UIBarButtonItem(customView: containerView)
-        return button
-    }()
-    
-    private let navigationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Обменники"
-        label.font = AppFont.medium.s18()
-        return label
-    }()
-    
     private lazy var currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
@@ -208,7 +184,6 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        setupNavigationBar()
 
         showSkeletonAnimation()
         fetchDefaults()
@@ -231,9 +206,6 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        navigationCurrencySelectButton.customView?.layer.borderColor = AppColor.gray10.cgColor
-        navigationCurrencySelectButton.customView?.layer.borderWidth = 1
-        navigationCurrencySelectButton.customView?.layer.cornerRadius = 8
         currencySearchBar.layer.borderColor = view.backgroundColor?.cgColor
         currencySearchBar.layer.borderWidth = 1
         calculatorButton.layer.borderWidth = 1
@@ -258,14 +230,8 @@ final class ExchangeListViewController: UIViewController {
         topView.addSubview(gripperView)
         view.backgroundColor = AppColor.gray10.uiColor
         exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
-        navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
-    func setupNavigationBar() {
-        self.navigationItem.rightBarButtonItem = navigationCurrencySelectButton
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView:
-                                                                        navigationTitleLabel)
-    }
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         
@@ -314,8 +280,8 @@ final class ExchangeListViewController: UIViewController {
         }
         mapButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-188)
-            make.size.equalTo(80)
+            make.bottom.equalToSuperview().offset(-200)
+            make.size.equalTo(48)
         }
         exchangeListTableView.snp.makeConstraints { make in
             make.top.equalTo(nearbySorterButton.snp.bottom).offset(9)
@@ -366,8 +332,8 @@ final class ExchangeListViewController: UIViewController {
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
+    
     @objc private func selectCityDidPress() {
-
         self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
     }
     

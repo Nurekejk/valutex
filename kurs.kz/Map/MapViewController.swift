@@ -10,15 +10,12 @@ import CoreLocation
 import GoogleMaps
 import Pulley
 import SnapKit
+import ProgressHUD
 
 final class MapViewController: UIViewController {
     
-    private let medeuMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.157713441585436,
-                                                                         longitude: 77.05901863169184))
-    private let auylMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.162750364364236,
-                                                                        longitude: 77.05992323741296))
-    private let shymbulakMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: 43.113733768676546,
-                                                                             longitude: 77.11150263265574))
+    private let service: ExchangerListService
+    private var markers = [GMSMarker]()
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
     
@@ -38,14 +35,14 @@ final class MapViewController: UIViewController {
     
     private lazy var zoomInButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "zoom-in"), for: .normal)
+        button.setImage(AppImage.zoom_in.uiImage, for: .normal)
         button.addTarget(self, action: #selector(zoomInButtonDidPressed), for: .touchUpInside)
         return button
     }()
     
     private lazy var zoomOutButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "zoom-out"), for: .normal)
+        button.setImage(AppImage.zoom_out.uiImage, for: .normal)
         button.addTarget(self, action: #selector(zoomOutButtonDidPressed), for: .touchUpInside)
         return button
     }()
@@ -62,7 +59,7 @@ final class MapViewController: UIViewController {
     
     private lazy var exchangersButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "my-exchanges-navigation"), for: .normal)
+        button.setImage(AppImage.my_exchanges_navigation.uiImage, for: .normal)
         button.addTarget(self, action: #selector(exchangersButtonDidPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -70,18 +67,28 @@ final class MapViewController: UIViewController {
     
     private lazy var myLocationButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "my-location"), for: .normal)
+        button.setImage(AppImage.my_location.uiImage, for: .normal)
         button.addTarget(self, action: #selector(myLocationButtonDidPressed), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Initializers
+    init(service: ExchangerListService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
         setupViews()
         setupConstraints()
+        fetchLocation()
     }
     
     override func viewDidLayoutSubviews() {
@@ -124,17 +131,10 @@ final class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
-    }
-    
-    // MARK: - Setup Navigation Bar
-    private func setupNavigationBar() {
-        edgesForExtendedLayout = []
-        let label = UILabel()
-        label.text = "Обменники"
-        label.textColor = UIColor(named: "navigation_title_color")
-        label.tintColor = UIColor(named: "navigation_title_color")
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
     }
     
     // MARK: - Setup Views
@@ -143,12 +143,14 @@ final class MapViewController: UIViewController {
         view.backgroundColor = .white
         
         locationManager.delegate = self
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestLocation()
-            self.googleMapView.isMyLocationEnabled = true
-            self.googleMapView.settings.myLocationButton = false
-        } else {
-            self.locationManager.requestWhenInUseAuthorization()
+        DispatchQueue.main.async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.requestLocation()
+                self.googleMapView.isMyLocationEnabled = true
+                self.googleMapView.settings.myLocationButton = false
+            } else {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
         }
         
         [zoomInButton, zoomOutButton].forEach {
@@ -158,18 +160,6 @@ final class MapViewController: UIViewController {
         [exchangersButton, zoomView, myLocationButton].forEach {
             googleMapView.addSubview($0)
         }
-        
-        medeuMarker.title = "Medeu"
-        medeuMarker.snippet = "Sports complex"
-        medeuMarker.map = googleMapView
-        
-        shymbulakMarker.title = "Shymbulak"
-        shymbulakMarker.snippet = "Mountain resort"
-        shymbulakMarker.map = googleMapView
-        
-        auylMarker.title = "Auyl"
-        auylMarker.snippet = "Restaurant"
-        auylMarker.map = googleMapView
     }
     
     // MARK: - Setup Constraints
@@ -199,6 +189,21 @@ final class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Callback
+    private func fetchLocation() {
+        service.fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+            exchangers.forEach { [weak self] exchanger in
+                let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(exchanger.latitude),
+                                          longitude: CLLocationDegrees(exchanger.longitude))
+                let marker = GMSMarker(position: position)
+                marker.title = exchanger.mainTitle
+                marker.snippet = exchanger.address
+                marker.map = self?.googleMapView
+                self?.markers.append(marker)
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc private func exchangersButtonDidPressed() {
         self.pulleyViewController?.setDrawerPosition(position: .closed, animated: true)
@@ -221,6 +226,10 @@ final class MapViewController: UIViewController {
     
     @objc private func myLocationButtonDidPressed() {
         self.locationManager.startUpdatingLocation()
+    }
+    
+    @objc func keyboardWillAppear() {
+        self.pulleyViewController?.setDrawerPosition(position: .open, animated: true)
     }
 }
 
