@@ -12,7 +12,9 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - State
     static let reuseID = String(describing: DetailTableViewHeader.self)
     var delegate: CollapsibleTableViewHeaderDelegate?
-    var section: Int = 0
+    var section: Int = -1
+    var isFirstSection: Bool = false
+    var isLastSection: Bool = false
     
     var detailSection: DetailSection? {
         didSet {
@@ -55,6 +57,18 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if section == 3 {
+            contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
+        } else if section == 7 {
+            contentView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8.0)
+        } else {
+            contentView.roundCorners(corners: [.allCorners], radius: 0.0)
+        }
     }
     
     // MARK: - Setup Views
@@ -107,5 +121,17 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
         } else {
             arrowImageView.image = AppImage.arrow_up_collapse.uiImage
         }
+    }
+}
+
+// MARK: - UIView Extension
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
     }
 }

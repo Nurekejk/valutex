@@ -13,6 +13,22 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
     // MARK: - Public
     static var reuseIdentifier = String(describing: ExchangerScreenTextTableViewCell.self)
     
+    var name: String? {
+        didSet {
+            titleLabel.text = name
+        }
+    }
+    var address: String? {
+        didSet {
+            subTitleLabel.text = address
+        }
+    }
+    var score: Int? {
+        didSet {
+            ratingLabel.text = "\(score ?? 5)"
+        }
+    }
+    
     // MARK: - UI
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -45,6 +61,7 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
         regularText.append(boldText)
         label.attributedText = regularText
         label.numberOfLines = 0
+        label.font = AppFont.regular.s14()
         return label
     }()
     
