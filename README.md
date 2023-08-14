@@ -1,2 +1,2 @@
-# kurs.kz
+# valutext
 
