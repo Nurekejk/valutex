@@ -21,8 +21,8 @@
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
 		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
-		71564ADA2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		71564ADB2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -34,6 +34,8 @@
 		8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
+		8FC95F602A8B390400CE8A3A /* FeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */; };
+		8FC95F622A8B3A7400CE8A3A /* FeebBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */; };
 		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
 		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
 		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
@@ -165,6 +167,8 @@
 		8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = kurs.kz/Calculator/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
+		8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBack.swift; sourceTree = "<group>"; };
+		8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeebBackViewController.swift; sourceTree = "<group>"; };
 		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -382,6 +386,15 @@
 				8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */,
 			);
 			path = CartExchangeFeedback;
+			sourceTree = "<group>";
+		};
+		8FC95F5E2A8B38E800CE8A3A /* FeedBackMessage */ = {
+			isa = PBXGroup;
+			children = (
+				8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */,
+				8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */,
+			);
+			path = FeedBackMessage;
 			sourceTree = "<group>";
 		};
 		8FCA83242A712256003CD865 /* OfferSended */ = {
@@ -642,6 +655,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				8FC95F5E2A8B38E800CE8A3A /* FeedBackMessage */,
 				8FE341D42A7AD39400A72212 /* ExchangerDetail */,
 				995E96A72A7A165300E96AEE /* NationalBankCourse */,
 				99499C4F2A7904B100CB9721 /* FAQ */,
@@ -874,7 +888,7 @@
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
-				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */,
+				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -1007,6 +1021,7 @@
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
 				9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */,
+				8FC95F622A8B3A7400CE8A3A /* FeebBackViewController.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
@@ -1036,6 +1051,7 @@
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
+				8FC95F602A8B390400CE8A3A /* FeedBack.swift in Sources */,
 				8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */,
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
 				71564AC82A70B8E300979090 /* Auth.swift in Sources */,
@@ -1062,7 +1078,7 @@
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
-				71564ADA2A79F69500979090 /* BuildFile in Sources */,
+				71564ADA2A79F69500979090 /* (null) in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
@@ -1098,7 +1114,7 @@
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
-				71564ADB2A79F69500979090 /* BuildFile in Sources */,
+				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 			);
@@ -1352,7 +1368,7 @@
 				version = 1.2.6;
 			};
 		};
-		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */ = {
+		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
@@ -1385,7 +1401,7 @@
 		};
 		FA1098E32A73AFA000BFB402 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */;
+			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
