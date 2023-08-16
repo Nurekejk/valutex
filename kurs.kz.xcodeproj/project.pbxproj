@@ -38,6 +38,9 @@
 		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
 		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
 		8FE048E12A8C91200016B6CC /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE048E02A8C91200016B6CC /* Rate.swift */; };
+		8FE049052A8D33840016B6CC /* RateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049042A8D33840016B6CC /* RateTableView.swift */; };
+		8FE049072A8D33A70016B6CC /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049062A8D33A70016B6CC /* RateCell.swift */; };
+		8FE049092A8D34690016B6CC /* RateTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */; };
 		8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D52A7AD39F00A72212 /* DetailSection.swift */; };
 		8FE341D82A7AD50F00A72212 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D72A7AD50F00A72212 /* DetailViewController.swift */; };
 		8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */; };
@@ -171,6 +174,9 @@
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		8FE048E02A8C91200016B6CC /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		8FE049042A8D33840016B6CC /* RateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableView.swift; sourceTree = "<group>"; };
+		8FE049062A8D33A70016B6CC /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
+		8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewHeader.swift; sourceTree = "<group>"; };
 		8FE341D52A7AD39F00A72212 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		8FE341D72A7AD50F00A72212 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewHeader.swift; sourceTree = "<group>"; };
@@ -602,6 +608,9 @@
 				9F402A492A5BDC7400F9126C /* StarButton.swift */,
 				8FE048E02A8C91200016B6CC /* Rate.swift */,
 				9FD6C1722A8CE60C00147645 /* RateService.swift */,
+				8FE049042A8D33840016B6CC /* RateTableView.swift */,
+				8FE049062A8D33A70016B6CC /* RateCell.swift */,
+				8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1032,6 +1041,7 @@
 				9979C5EE2A7C25030055B2DE /* PaddingLabel.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
+				8FE049092A8D34690016B6CC /* RateTableViewHeader.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				99D974022A680FF400F7E506 /* AppImage.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
@@ -1039,6 +1049,7 @@
 				99D974002A680D8E00F7E506 /* AppColor.swift in Sources */,
 				9FE945972A7388B3009020B7 /* SignInService.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
+				8FE049052A8D33840016B6CC /* RateTableView.swift in Sources */,
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
@@ -1049,6 +1060,7 @@
 				991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
+				8FE049072A8D33A70016B6CC /* RateCell.swift in Sources */,
 				8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */,
 				71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,

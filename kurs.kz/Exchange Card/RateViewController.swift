@@ -11,11 +11,9 @@ import Alamofire
 final class RateViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Public
-
     public var officeId: Int = 0
 
     // MARK: - State
-
     private let rateService = RateService()
 
     // MARK: - UI
@@ -91,8 +89,10 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         setupViews()
         setupConstraints()
         fetchRates()
+        setupNavigationBar()
     }
     
+    // MARK: - ViewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         reviewTextView.layer.cornerRadius = 8
@@ -100,6 +100,11 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         reviewTextView.layer.borderColor = AppColor.grayWhite.cgColor
         continueButton.layer.cornerRadius = 12
         entireStackView.layer.cornerRadius = 8
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Оценить"
     }
     
     // MARK: - Setup Views
