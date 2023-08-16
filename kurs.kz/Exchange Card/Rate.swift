@@ -7,6 +7,16 @@
 
 import Foundation
 
-struct Rate: Codable {
-     let office_id: Int
- }
+// MARK: - RateElement
+struct RateElement: Codable {
+    var fullName: String
+    var score: Int
+    var comment: String
+
+    enum CodingKeys: String, CodingKey {
+        case fullName = "full_name"
+        case score, comment
+    }
+}
+
+typealias Rate = [RateElement]

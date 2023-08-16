@@ -10,9 +10,6 @@ import Alamofire
 
 final class RateViewController: UIViewController, UITextViewDelegate {
     
-    // MARK: Dependencies
-    private let service = RateService()
-    
     // MARK: - UI
     private var starButtons = [StarButton]()
     
@@ -142,14 +139,28 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
         }
     }
+    // swiftlint:disable all
+    
     // MARK: - Action
     private func getRate() {
-        let service = RateService()
-        service.fetchFeedback(with: 1) { result in
-            print(result)
-        }
+        
+        guard let url = URL(string: "http://134.122.66.97:4443/exchange_offices/info_feedback?office_id=1") else { return }
+        let parametrs = ["office_id": "1"]
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data, let rate = try? JSONDecoder().decode(Rate.self, from: data) {
+                print(rate)
+            }
+        }.resume()
     }
-     
+    // swiftlint:enable all
+    
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
