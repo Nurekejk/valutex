@@ -103,6 +103,7 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
+		9FD6C1732A8CE60C00147645 /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD6C1722A8CE60C00147645 /* RateService.swift */; };
 		9FE945972A7388B3009020B7 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE945962A7388B3009020B7 /* SignInService.swift */; };
 		9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */; };
 		9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */; };
@@ -234,6 +235,7 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		9FD6C1722A8CE60C00147645 /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
 		9FE945962A7388B3009020B7 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewHeader.swift; sourceTree = "<group>"; };
 		9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
 				9F402A492A5BDC7400F9126C /* StarButton.swift */,
 				8FE048E02A8C91200016B6CC /* Rate.swift */,
+				9FD6C1722A8CE60C00147645 /* RateService.swift */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1098,6 +1101,7 @@
 				220C3F392A5FD9F6000002DB /* MyExchangesViewController.swift in Sources */,
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */,
+				9FD6C1732A8CE60C00147645 /* RateService.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
@@ -1246,7 +1250,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1278,7 +1282,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

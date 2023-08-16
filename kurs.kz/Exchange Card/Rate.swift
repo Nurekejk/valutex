@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - RateElement
-struct RateElement: Codable {
+struct Rate: Codable {
     var fullName: String
     var score: Int
     var comment: String
@@ -18,5 +18,3 @@ struct RateElement: Codable {
         case score, comment
     }
 }
-
-typealias Rate = [RateElement]
