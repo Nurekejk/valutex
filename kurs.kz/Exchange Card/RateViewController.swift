@@ -82,6 +82,20 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    private lazy var header: RateTableViewHeader = {
+        let header = RateTableViewHeader()
+        return header
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(RateCell.self, forCellReuseIdentifier: RateCell.reuseID)
+        tableView.tableHeaderView = header
+        tableView.dataSource = self
+        tableView.rowHeight = 102
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +128,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         [starStackView, reviewLabel, borderView,
          reviewTextView, continueButton].forEach { entireStackView.addArrangedSubview($0) }
         
+        view.addSubview(tableView)
         addButtonsToStarStackView()
         
         view.backgroundColor = AppColor.gray10.uiColor
@@ -127,29 +142,43 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Setup Constraints:
     private func setupConstraints() {
+        
         entireStackView.snp.makeConstraints { make in
             make.height.equalTo(318)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(116)
         }
+        
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
             make.leading.equalTo(entireStackView.snp.leading)
             make.trailing.equalTo(entireStackView.snp.trailing)
         }
+        
         reviewLabel.snp.makeConstraints { make in
             make.height.equalTo(18)
         }
+        
         reviewTextView.snp.makeConstraints { make in
             make.height.equalTo(120)
             make.leading.equalTo(entireStackView.snp.leading).offset(16)
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
         }
+        
         continueButton.snp.makeConstraints { make in
             make.height.equalTo(52)
             make.leading.equalTo(entireStackView.snp.leading).offset(16)
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
+        }
+        
+        header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 53)
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(entireStackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(92)
         }
     }
     // swiftlint:disable all
@@ -180,7 +209,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 }
 
 // MARK: - UITextViewDelegate
-extension RateViewController {
+extension RateViewController: UITableViewDataSource {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == AppColor.gray50.uiColor {
@@ -204,5 +233,16 @@ extension RateViewController {
             return true
         }
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: RateCell.reuseID,
+            for: indexPath) as? RateCell
+        
+        return cell ?? UITableViewCell()
     }
 }
