@@ -34,11 +34,12 @@
 		8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */; };
 		8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */; };
 		8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */; };
-		8FC95F602A8B390400CE8A3A /* FeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */; };
 		8FC95F622A8B3A7400CE8A3A /* FeebBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */; };
 		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
 		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
 		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
+		8FE048DF2A8BEF550016B6CC /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE048DE2A8BEF550016B6CC /* RateService.swift */; };
+		8FE048E12A8C91200016B6CC /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE048E02A8C91200016B6CC /* Rate.swift */; };
 		8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D52A7AD39F00A72212 /* DetailSection.swift */; };
 		8FE341D82A7AD50F00A72212 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D72A7AD50F00A72212 /* DetailViewController.swift */; };
 		8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */; };
@@ -167,11 +168,12 @@
 		8F816F0A2A76B59500AF4BA9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = kurs.kz/Calculator/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		8F8189D82A6066780082F80F /* CartExchangeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewController.swift; sourceTree = "<group>"; };
 		8F8189DA2A6066840082F80F /* CartExchangeFeedbackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartExchangeFeedbackViewCell.swift; sourceTree = "<group>"; };
-		8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBack.swift; sourceTree = "<group>"; };
 		8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeebBackViewController.swift; sourceTree = "<group>"; };
 		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8FE048DE2A8BEF550016B6CC /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
+		8FE048E02A8C91200016B6CC /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		8FE341D52A7AD39F00A72212 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		8FE341D72A7AD50F00A72212 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewHeader.swift; sourceTree = "<group>"; };
@@ -391,7 +393,6 @@
 		8FC95F5E2A8B38E800CE8A3A /* FeedBackMessage */ = {
 			isa = PBXGroup;
 			children = (
-				8FC95F5F2A8B390300CE8A3A /* FeedBack.swift */,
 				8FC95F612A8B3A7400CE8A3A /* FeebBackViewController.swift */,
 			);
 			path = FeedBackMessage;
@@ -608,7 +609,9 @@
 			isa = PBXGroup;
 			children = (
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
+				8FE048DE2A8BEF550016B6CC /* RateService.swift */,
 				9F402A492A5BDC7400F9126C /* StarButton.swift */,
+				8FE048E02A8C91200016B6CC /* Rate.swift */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1015,6 +1018,7 @@
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* CurrencyInformationTableHeaderView.swift in Sources */,
+				8FE048DF2A8BEF550016B6CC /* RateService.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
@@ -1051,7 +1055,6 @@
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
-				8FC95F602A8B390400CE8A3A /* FeedBack.swift in Sources */,
 				8F816F0B2A76B59500AF4BA9 /* CalculatorTableViewHeaderView.swift in Sources */,
 				998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */,
 				71564AC82A70B8E300979090 /* Auth.swift in Sources */,
@@ -1097,6 +1100,7 @@
 				99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */,
+				8FE048E12A8C91200016B6CC /* Rate.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				8FE341DE2A7AD69D00A72212 /* DetailTableViewCell.swift in Sources */,

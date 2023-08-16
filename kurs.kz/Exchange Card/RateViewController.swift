@@ -10,6 +10,9 @@ import Alamofire
 
 final class RateViewController: UIViewController, UITextViewDelegate {
     
+    // MARK: Dependencies
+    private let service = RateService()
+    
     // MARK: - UI
     private var starButtons = [StarButton]()
     
@@ -75,14 +78,14 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             starStackView.addArrangedSubview(starButton)
         }
     }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setupConstraints()
-        fetchFeedback()
-        getFeedBack()
+        getRate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -140,6 +143,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         }
     }
     // MARK: - Action
+    private func getRate() {
+        let service = RateService()
+        service.fetchFeedback(with: 1) { result in
+            print(result)
+        }
+    }
+     
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
@@ -148,25 +158,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                 break
             }
         }
-    }
-    
-    private func fetchFeedback() {
-        
-        var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
-        urlComponent.path = "/actual_currency_rates"
-        
-        guard let url = urlComponent.url else {
-            return
-        }
-        
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: [FeedBack].self) { data in
-                print(data.result)
-            }
     }
 }
 
