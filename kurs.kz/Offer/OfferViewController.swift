@@ -9,6 +9,7 @@ import UIKit
 
 final class OfferViewController: UIViewController {
 
+    private let offer: Offer
     // MARK: - UI
     private lazy var headerView: OfferTableViewHeaderView = {
         let headerView = OfferTableViewHeaderView()
@@ -44,7 +45,14 @@ final class OfferViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-    
+    init(offer: Offer) {
+            self.offer = offer
+            super.init(nibName: nil, bundle: nil)
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     // MARK: - Setup Views
 
     private func setupViews() {
@@ -82,5 +90,4 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         return view
     }
-
 }
