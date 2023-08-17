@@ -12,6 +12,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Public
     public var officeId: Int = 0
+    
     // MARK: - State
     private let rateService = RateService()
     private var rates: [Rate] = []
@@ -182,7 +183,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.bottom.equalToSuperview().offset(92)
         }
     }
-    // swiftlint:disable all
     
     // MARK: - Network
     private func fetchRates() {
@@ -196,7 +196,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-    // swiftlint:enable all
     
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
@@ -209,7 +208,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-                    
 }
 
 // MARK: - UITextViewDelegate

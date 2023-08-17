@@ -23,6 +23,13 @@ final class RateCell: UITableViewCell {
         return label
     }()
     
+    private lazy var starsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "count stars"
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
+    }()
+    
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Все отлично!"
@@ -53,9 +60,9 @@ final class RateCell: UITableViewCell {
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(subTitleLabel)
-        contentView.addSubview(dateLabel)
+        [nameLabel, subTitleLabel, dateLabel, starsLabel].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     // MARK: - Setup Constraints
@@ -66,6 +73,12 @@ final class RateCell: UITableViewCell {
             make.leading.equalToSuperview().offset(32)
             make.height.equalTo(18)
             make.width.equalTo(215)
+        }
+        
+        starsLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(16)
         }
         
         subTitleLabel.snp.makeConstraints { make in
@@ -85,5 +98,6 @@ final class RateCell: UITableViewCell {
     func setup(rate: Rate) {
         nameLabel.text = rate.fullName
         subTitleLabel.text = rate.comment
+        starsLabel.text = String(rate.score)
     }
 }
