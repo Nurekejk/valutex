@@ -12,10 +12,10 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Public
     public var officeId: Int = 0
-    
     // MARK: - State
     private let rateService = RateService()
     private var rates: [Rate] = []
+    private var starNumbers = 0
 
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -195,7 +195,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                 print(error)
             }
         }
-
     }
     // swiftlint:enable all
     
@@ -204,10 +203,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         for (index, element) in starButtons.enumerated() {
             starButtons[index].isSelected = true
             if element == sender {
+                starNumbers = index + 1
+                print(starNumbers)
                 break
             }
         }
     }
+                    
 }
 
 // MARK: - UITextViewDelegate
@@ -240,12 +242,16 @@ extension RateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         rates.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: RateCell.reuseID,
-            for: indexPath) as? RateCell
+            for: indexPath) as? RateCell else {
+            fatalError("Couldn not cast to RateCell")
+        }
         
-        cell?.setup(rate: rates[indexPath.row])
-        return cell ?? UITableViewCell()
+        cell.setup(rate: rates[indexPath.row])
+        
+        return cell
     }
 }
