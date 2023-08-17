@@ -74,7 +74,6 @@ final class SelectCityViewController: UIViewController {
     }
 
     // MARK: - Load Data
-
     private func getSelectedCity() {
         if let data = userDefaults.data(forKey: "selectedCity") {
             do {

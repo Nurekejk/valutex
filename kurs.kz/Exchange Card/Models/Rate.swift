@@ -17,4 +17,10 @@ struct Rate: Codable {
         case fullName = "full_name"
         case score, comment
     }
+    
+    init(fullName: String, score: Int, comment: String) {
+        self.fullName = fullName
+        self.score = score
+        self.comment = comment
+    }
 }
