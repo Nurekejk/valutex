@@ -15,6 +15,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - State
     private let rateService = RateService()
+    private var rates: [Rate] = []
+    private var starNumbers = 0
 
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -102,8 +104,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         setupViews()
         setupConstraints()
-        fetchRates()
         setupNavigationBar()
+        fetchRates()
     }
     
     // MARK: - ViewDidLayoutSubviews
@@ -185,15 +187,15 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Network
     private func fetchRates() {
-        rateService.fetchRates(officeID: officeId) { result in
+        rateService.fetchRates(officeID: officeId) { [weak self] result in
             switch result {
             case .success(let rates):
-                print(rates)
+                self?.rates = rates
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
-
     }
     // swiftlint:enable all
     
@@ -202,10 +204,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         for (index, element) in starButtons.enumerated() {
             starButtons[index].isSelected = true
             if element == sender {
+                starNumbers = index + 1
+                print(starNumbers)
                 break
             }
         }
     }
+                    
 }
 
 // MARK: - UITextViewDelegate
@@ -236,13 +241,18 @@ extension RateViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        rates.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: RateCell.reuseID,
-            for: indexPath) as? RateCell
+            for: indexPath) as? RateCell else {
+            fatalError("Couldn not cast to RateCell")
+        }
         
-        return cell ?? UITableViewCell()
+        cell.setup(rate: rates[indexPath.row])
+        
+        return cell
     }
 }

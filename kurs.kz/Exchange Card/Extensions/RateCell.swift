@@ -81,4 +81,9 @@ final class RateCell: UITableViewCell {
             make.height.equalTo(18)
         }
     }
+    
+    func setup(rate: Rate) {
+        nameLabel.text = rate.fullName
+        subTitleLabel.text = rate.comment
+    }
 }
