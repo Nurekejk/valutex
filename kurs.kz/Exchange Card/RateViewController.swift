@@ -12,9 +12,10 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Public
     public var officeId: Int = 0
-
+    
     // MARK: - State
     private let rateService = RateService()
+    private var rates: [Rate] = []
 
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -102,8 +103,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         
         setupViews()
         setupConstraints()
-        fetchRates()
         setupNavigationBar()
+        fetchRates()
     }
     
     // MARK: - ViewDidLayoutSubviews
@@ -185,10 +186,11 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Network
     private func fetchRates() {
-        rateService.fetchRates(officeID: officeId) { result in
+        rateService.fetchRates(officeID: officeId) { [weak self] result in
             switch result {
             case .success(let rates):
-                print(rates)
+                self?.rates = rates
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -236,13 +238,14 @@ extension RateViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        rates.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: RateCell.reuseID,
             for: indexPath) as? RateCell
         
+        cell?.setup(rate: rates[indexPath.row])
         return cell ?? UITableViewCell()
     }
 }
