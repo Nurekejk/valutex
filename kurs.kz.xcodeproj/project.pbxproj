@@ -13,7 +13,9 @@
 		5AD9DFA85C13444221B0B2BD /* Pods_kurs_kz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86284542120DCA8F12CD8E54 /* Pods_kurs_kz.framework */; };
 		618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978022A541CD5009DFF0B /* SelectCityViewController.swift */; };
 		618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618978042A549426009DFF0B /* CityTableViewCell.swift */; };
-		61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */; };
+		619B94272A8E1B590032F321 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B94262A8E1B590032F321 /* Offer.swift */; };
+		619B94292A8E1B810032F321 /* CreateOfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B94282A8E1B810032F321 /* CreateOfferService.swift */; };
+		619B942C2A8E1C380032F321 /* OfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B942B2A8E1C380032F321 /* OfferService.swift */; };
 		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
 		61D25BE42A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */; };
 		71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */; };
@@ -21,8 +23,8 @@
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
 		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
-		71564ADA2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		71564ADB2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -145,7 +147,9 @@
 		223C9C622A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerScreenTextTableViewCell.swift; sourceTree = "<group>"; };
 		618978022A541CD5009DFF0B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		618978042A549426009DFF0B /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
-		61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		619B94262A8E1B590032F321 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		619B94282A8E1B810032F321 /* CreateOfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOfferService.swift; sourceTree = "<group>"; };
+		619B942B2A8E1C380032F321 /* OfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferService.swift; sourceTree = "<group>"; };
 		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeExchangeRateViewController.swift; sourceTree = "<group>"; };
 		71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewHeaderView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
@@ -325,14 +329,31 @@
 		618978062A5AC824009DFF0B /* Offer */ = {
 			isa = PBXGroup;
 			children = (
+				619B942A2A8E1C010032F321 /* Model */,
 				9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */,
 				9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */,
 				9FF55D562A694A1D00A11284 /* OfferViewController.swift */,
-				61D25BDB2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift */,
 				61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */,
 				61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */,
 			);
 			path = Offer;
+			sourceTree = "<group>";
+		};
+		619B94252A8E1B460032F321 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				619B94262A8E1B590032F321 /* Offer.swift */,
+				619B94282A8E1B810032F321 /* CreateOfferService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		619B942A2A8E1C010032F321 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				619B942B2A8E1C380032F321 /* OfferService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71564ABA2A6A9C4200979090 /* ExchangeRate */ = {
@@ -798,6 +819,7 @@
 		FAD4D9642A69352B0051D1B4 /* OfferSellBuy */ = {
 			isa = PBXGroup;
 			children = (
+				619B94252A8E1B460032F321 /* Model */,
 				FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */,
 				FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */,
 			);
@@ -874,7 +896,7 @@
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
-				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */,
+				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -992,6 +1014,7 @@
 				9985BA512A65A9D800DD871C /* CustomInfoWindow.swift in Sources */,
 				99C158482A5EBC42001091F7 /* ProfileTableViewCell.swift in Sources */,
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
+				619B942C2A8E1C380032F321 /* OfferService.swift in Sources */,
 				9979C5F02A7C2A4F0055B2DE /* FeedbackTableViewCell.swift in Sources */,
 				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
@@ -1005,7 +1028,9 @@
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
+				619B94292A8E1B810032F321 /* CreateOfferService.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
+				619B94272A8E1B590032F321 /* Offer.swift in Sources */,
 				9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
@@ -1062,10 +1087,9 @@
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
-				71564ADA2A79F69500979090 /* BuildFile in Sources */,
+				71564ADA2A79F69500979090 /* (null) in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
-				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
 				FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */,
 				8F816F0D2A76B59500AF4BA9 /* CalculatorViewController.swift in Sources */,
 				9979C5E52A7BDF6C0055B2DE /* Details.swift in Sources */,
@@ -1098,7 +1122,7 @@
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
-				71564ADB2A79F69500979090 /* BuildFile in Sources */,
+				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 			);
@@ -1352,7 +1376,7 @@
 				version = 1.2.6;
 			};
 		};
-		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */ = {
+		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
@@ -1385,7 +1409,7 @@
 		};
 		FA1098E32A73AFA000BFB402 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */;
+			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -9,16 +9,22 @@ import UIKit
 
 final class OfferSellViewController: UIViewController {
     // MARK: - Properties
-    
+
     private var upperTextFieldNumber = "0"
     private var lowerTextFieldNumber = "0"
     private var buttonIsEnabled = false
-    
+    private let service = CreateOfferService()
+
+    private let type: String
+    private var exchangeCurrency = "USD"
+    private var exchangeAmount = 0.0
+    private var exchangeRate = 0.0
+
     enum ControllerMode {
         case buy
         case sell
     }
-    
+
     var mode: ControllerMode
 
     // MARK: - UI
@@ -35,7 +41,7 @@ final class OfferSellViewController: UIViewController {
         label.font = AppFont.regular.s14()
         return label
     }()
-    
+
     private let exchangeRateLabel: UILabel = {
         let label = UILabel()
         label.text = "По курсу"
@@ -43,7 +49,7 @@ final class OfferSellViewController: UIViewController {
         label.font = AppFont.regular.s14()
         return label
     }()
-    
+
     private let sellCurrencyView: OfferSellCurrencyView = {
         let currencyView = OfferSellCurrencyView(hasButton: true, tag: 1)
         return currencyView
@@ -52,7 +58,7 @@ final class OfferSellViewController: UIViewController {
         let currencyView = OfferSellCurrencyView(hasButton: false, tag: 2)
         return currencyView
     }()
-    
+
     private let lowerBorderView: UIView = {
         let view = UIView()
         return view
@@ -86,7 +92,7 @@ final class OfferSellViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        
+
         sellCurrencyView.changeCurrency(newFlagImage: "🇺🇸",
                                         newCurrencyLabel: "USD",
                                         newCurrencySignLabel: "$")
@@ -94,41 +100,42 @@ final class OfferSellViewController: UIViewController {
                                                 newCurrencyLabel: "KZT",
                                                 newCurrencySignLabel: "₸" )
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         containerView.layer.cornerRadius = 8
- 
+
         sellCurrencyView.layer.borderWidth = 1
         sellCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         sellCurrencyView.layer.cornerRadius = 8
-        
+
         exchangeRateCurrencyView.layer.borderWidth = 1
         exchangeRateCurrencyView.layer.borderColor = AppColor.gray20.cgColor
         exchangeRateCurrencyView.layer.cornerRadius = 8
-        
+
         getTotalLabel.layer.cornerRadius = 8
         getTotalLabel.layer.borderWidth = 1
         getTotalLabel.layer.borderColor = AppColor.gray20.cgColor
-        
+
         offerButton.layer.cornerRadius = 12
     }
     // MARK: - Initializer
 
     init(mode: ControllerMode) {
         self.mode = mode
+        self.type = mode == .buy ? "BUY" : "SELL"
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
-        
+
         view.addSubview(containerView)
         [sellCurrencyView,
          exchangeRateCurrencyView,
@@ -197,11 +204,13 @@ final class OfferSellViewController: UIViewController {
 }
 // MARK: - CurrencySelectorViewControllerDelegate
 extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
-    
+
     func currencyDidSelect(currency: Currency) {
         sellCurrencyView.changeCurrency(newFlagImage: currency.flag,
-                                        newCurrencyLabel: currency.code,
+                                        newCurrencyLabel: getCurrencyName(currency,
+                                                                          language: selectedLanguage),
                                         newCurrencySignLabel: currency.symbol)
+        exchangeCurrency = currency.code
     }
 
     func calculateOffer(sender: UITextField) {
@@ -212,6 +221,8 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         }
         let firstNumber = Double(upperTextFieldNumber) ?? 0.0
         let secondNumber = Double(lowerTextFieldNumber) ?? 0.0
+        exchangeAmount = firstNumber
+        exchangeRate = secondNumber
         let sum = String(format: "%.3f", firstNumber * secondNumber)
             .trimmingCharacters(in: ["0", "."])
         if sum != "" {
@@ -234,8 +245,21 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
         modalScreen.delegate = self
         self.presentPanModal(modalScreen)
     }
-    
+
     @objc private func nextButtonDidPress() {
-        self.navigationController?.pushViewController(ClientOfferDetailsViewController(), animated: true)
+        let offer = Offer(type: type,
+                          exchangeСurrency: exchangeCurrency,
+                          exchangeAmount: exchangeAmount,
+                          exchangeRate: exchangeRate)
+        service.createOffer(offer: offer) { result in
+            switch result {
+            case .success((let data)):
+                print("SUCCESS", data)
+                self.navigationController?.pushViewController(
+                    OfferViewController(offer: offer), animated: true)
+            case .failure((let error)):
+                print("ERROR", error)
+            }
+        }
     }
 }
