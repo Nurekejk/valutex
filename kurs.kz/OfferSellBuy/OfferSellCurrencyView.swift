@@ -16,42 +16,42 @@ final class OfferSellCurrencyView: UIView {
         currencyLabel.text = newCurrencyLabel
         currencySignLabel.text = newCurrencySignLabel
     }
-    
+
     // MARK: - Properties
     private let hasButton: Bool
     weak var delegate: OfferSellCurrencyViewDelegate?
-    
+
     // MARK: - UI
     private let containerView: UIView = {
         let view = UIView()
         return view
     }()
-    
+
     private let flagIconLabel: UILabel = {
         let imageView = UILabel()
         return imageView
     }()
-    
+
     private let currencyLabel: UILabel = {
         let label = UILabel()
         label.textColor = AppColor.gray100.uiColor
         label.font = AppFont.regular.s16()
         return label
     }()
-    
+
     private lazy var selectCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(AppImage.down_arrow.uiImage, for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
-    
+
     private let borderView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColor.gray10.uiColor
         return view
     }()
-    
+
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = AppColor.primaryBase.uiColor
@@ -61,14 +61,14 @@ final class OfferSellCurrencyView: UIView {
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
-    
+
     private let currencySignLabel: UILabel = {
         let label = UILabel()
         label.textColor = AppColor.primaryBase.uiColor
         label.font = AppFont.semibold.s16()
         return label
     }()
-    
+
     // MARK: - Initializers
     init(hasButton: Bool, tag: Int) {
         self.hasButton = hasButton
@@ -76,13 +76,13 @@ final class OfferSellCurrencyView: UIView {
         amountTextField.tag = tag
         setupViews()
         setupConstraints()
-        
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Setup Views
     private func setupViews() {
         self.addSubview(containerView)
@@ -91,7 +91,7 @@ final class OfferSellCurrencyView: UIView {
          amountTextField, currencySignLabel].forEach {containerView.addSubview($0) }
         selectCurrencyButton.isHidden = !hasButton
     }
-    
+
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
