@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = MainTabBarViewController()
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: RateViewController())
+            UINavigationController(rootViewController: MainTabBarViewController())
         }
         window?.makeKeyAndVisible()
     }

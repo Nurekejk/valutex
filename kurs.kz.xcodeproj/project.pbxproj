@@ -38,7 +38,6 @@
 		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
 		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
 		8FE048E12A8C91200016B6CC /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE048E02A8C91200016B6CC /* Rate.swift */; };
-		8FE049052A8D33840016B6CC /* RateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049042A8D33840016B6CC /* RateTableView.swift */; };
 		8FE049072A8D33A70016B6CC /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049062A8D33A70016B6CC /* RateCell.swift */; };
 		8FE049092A8D34690016B6CC /* RateTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */; };
 		8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D52A7AD39F00A72212 /* DetailSection.swift */; };
@@ -174,7 +173,6 @@
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		8FE048E02A8C91200016B6CC /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
-		8FE049042A8D33840016B6CC /* RateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableView.swift; sourceTree = "<group>"; };
 		8FE049062A8D33A70016B6CC /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
 		8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewHeader.swift; sourceTree = "<group>"; };
 		8FE341D52A7AD39F00A72212 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
@@ -231,7 +229,7 @@
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
-		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
+		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/Extensions/StarButton.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutCompanyViewController.swift; path = kurs.kz/AboutCompany/AboutCompanyViewController.swift; sourceTree = SOURCE_ROOT; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F899D802A4AFB44002D1F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -421,6 +419,32 @@
 			path = ExchangerDetail;
 			sourceTree = "<group>";
 		};
+		8FEB640A2A8DE36400675536 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9FD6C1722A8CE60C00147645 /* RateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8FEB640B2A8DE37100675536 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8FE048E02A8C91200016B6CC /* Rate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8FEB640C2A8DE38400675536 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */,
+				8FE049062A8D33A70016B6CC /* RateCell.swift */,
+				9F402A492A5BDC7400F9126C /* StarButton.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,12 +629,9 @@
 			isa = PBXGroup;
 			children = (
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
-				9F402A492A5BDC7400F9126C /* StarButton.swift */,
-				8FE048E02A8C91200016B6CC /* Rate.swift */,
-				9FD6C1722A8CE60C00147645 /* RateService.swift */,
-				8FE049042A8D33840016B6CC /* RateTableView.swift */,
-				8FE049062A8D33A70016B6CC /* RateCell.swift */,
-				8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */,
+				8FEB640A2A8DE36400675536 /* Services */,
+				8FEB640C2A8DE38400675536 /* Extensions */,
+				8FEB640B2A8DE37100675536 /* Models */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1049,7 +1070,6 @@
 				99D974002A680D8E00F7E506 /* AppColor.swift in Sources */,
 				9FE945972A7388B3009020B7 /* SignInService.swift in Sources */,
 				9FF456F32A5FC2D700C2E845 /* LanguageTableViewCell.swift in Sources */,
-				8FE049052A8D33840016B6CC /* RateTableView.swift in Sources */,
 				99C19F552A6B099300D10021 /* User.swift in Sources */,
 				99E941C02A666B1F00C47BD2 /* AppConstants.swift in Sources */,
 				9F402A4E2A5BDDB500F9126C /* AboutCompanyViewController.swift in Sources */,
