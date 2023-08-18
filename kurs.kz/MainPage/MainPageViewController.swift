@@ -127,7 +127,7 @@ final class MainPageViewController: UIViewController {
 
     @objc private func skipButtonDidPress() {
         let controller = MainTabBarViewController()
-        controller.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        controller.modalPresentationStyle = .overFullScreen
+        present(controller, animated: true)
     }
 }

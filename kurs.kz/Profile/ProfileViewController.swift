@@ -12,13 +12,7 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-     [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
-                    name: "Мои обменники"),
-      ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
-                     name: "Курс валют"),
-     ProfileSection(image: AppImage.notification.uiImage ?? UIImage(),
-                    name: "Уведомления"),
-     ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
+    [ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
                     name: "Язык приложения"),
      ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
                     name: "Город"),
@@ -69,6 +63,7 @@ final class ProfileViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(logOutButtonDidPress))
+        navigationItem.title = "Профиль"
     }
     
     // MARK: - Setup Views
@@ -120,7 +115,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
         if section == SectionNumber.zero.rawValue {
-            rowCount = 8
+            rowCount = 5
         }
         return rowCount
     }
@@ -135,14 +130,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
-            cell.profileSection = profileSections[8]
+            cell.profileSection = profileSections[5]
         }
-        
-        if cell.profileSection?.name == profileSections[2].name {
-            cell.configureCell(isBadgeHidden: false)
-        } else {
-            cell.configureCell(isBadgeHidden: true)
-        }
+
+        cell.configureCell(isBadgeHidden: true)
         return cell
     }
     
@@ -167,29 +158,27 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                navigationController?.pushViewController(MyExchangesViewController(),
-                                                         animated: true)
-            case 1:
-                navigationController?.pushViewController(EmptyViewController(),
-                                                         animated: true)
-            case 2:
-                navigationController?.pushViewController(NotificationsViewController(),
-                                                         animated: true)
-            case 3:
                 navigationController?.pushViewController(LanguageAppViewController(),
                                                          animated: true)
-            case 4:
-                navigationController?.pushViewController(SelectCityViewController(),
+            case 1:
+                let controller = SelectCityViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
-            case 5:
+            case 2:
                 navigationController?.pushViewController(ToSupportViewController(),
                                                          animated: true)
-            case 6:
+            case 3:
                 navigationController?.pushViewController(AboutCompanyViewController(
                     service: AboutCompanyPageService()),
                                                          animated: true)
+            case 4:
+                navigationController?.pushViewController(
+                    AboutCompanyViewController(service: AboutCompanyPageService()),
+                    animated: true)
+
             default:
-                navigationController?.pushViewController(FaqViewController(service: FaqPageService()),
+                navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)
             }
         } else {

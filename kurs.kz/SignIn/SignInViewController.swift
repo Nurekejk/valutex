@@ -85,6 +85,7 @@ final class SignInViewController: UIViewController {
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.regular.s16()
         button.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
 
@@ -230,21 +231,18 @@ final class SignInViewController: UIViewController {
         service.signIn(phone: formatedPhoneNumber, password: password) { result in
             switch result {
             case .success(let data):
-                
                 let defaults = UserDefaults.standard
-
                 if let data = try? JSONEncoder().encode(data) {
                     defaults.setValue(data, forKey: SignInViewController.defaultsTokensKey)
+                    let tabbarController = MainTabBarViewController()
+                    tabbarController.navigationItem.hidesBackButton = true
+                    tabbarController.modalPresentationStyle = .overFullScreen
+                    self.present(tabbarController, animated: true)
                 } else {
-                    print("error while encoding")
-                }
-                let tabbarController = MainTabBarViewController()
-                tabbarController.navigationItem.hidesBackButton = true
-                self.navigationController?.pushViewController(tabbarController, animated: true)
-            case .failure:
-                DispatchQueue.main.async {
                     self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
                 }
+            case .failure:
+                self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
             }
         }
     }

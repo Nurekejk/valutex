@@ -217,10 +217,11 @@ final class RegistrationPasswordViewController: UIViewController {
         service.fetchUser(with: self.user) { result in
             switch result {
             case .success:
-                let controller = MainTabBarViewController()
-                controller.navigationItem.hidesBackButton = true
                 self.showSuccess()
-                self.navigationController?.pushViewController(controller, animated: true)
+                let tabbarController = MainTabBarViewController()
+                tabbarController.navigationItem.hidesBackButton = true
+                tabbarController.modalPresentationStyle = .overFullScreen
+                self.present(tabbarController, animated: true)
             case .failure:
                 DispatchQueue.main.async {
                     self.showFailure()
