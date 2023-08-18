@@ -12,10 +12,10 @@ final class OfferViewController: UIViewController {
     // MARK: - UI
     private lazy var headerView: OfferTableViewHeaderView = {
         let headerView = OfferTableViewHeaderView()
-        headerView.changeButtonAction = { [unowned self] in
+        headerView.changeButtonAction = { [weak self] in
             let vc = ChangeExchangeRateViewController()
             vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true)
+            self?.present(vc, animated: true)
         }
         return headerView
     }()

@@ -13,7 +13,7 @@ final class SignInService {
     // MARK: - Network
     func signIn(phone: String,
                 password: String,
-                completion: @escaping (Result<SignInResponse, Error>) -> Void) {
+                completion: @escaping (Result<SignInResponse, AFError>) -> Void) {
         
         var signIn = URLComponents()
         signIn.scheme = "http"
@@ -41,13 +41,9 @@ final class SignInService {
         
         AF.request(url, method: .post,
                    parameters: parameters, headers: headers)
-        .responseDecodable(of: SignInResponse.self) { data in
-            switch data.result {
-            case .success(let value):
-                completion(.success(value))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        .validate()
+        .responseDecodable(of: SignInResponse.self) { response in
+            completion(response.result)
         }
     }
 }
