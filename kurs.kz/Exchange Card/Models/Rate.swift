@@ -24,3 +24,6 @@ struct Rate: Codable {
         self.comment = comment
     }
 }
+struct RateResponse: Codable {
+    let Message: String
+}
