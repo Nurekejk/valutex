@@ -32,6 +32,7 @@ final class RateService {
                 completion(response.result)
             }
     }
+    
     func fetchWrite(officeID: Int,
                     score: Int,
                     comment: String,

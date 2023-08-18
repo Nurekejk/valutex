@@ -17,6 +17,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     private let rateService = RateService()
     private var rates: [Rate] = []
     private var starNumbers = 0
+    private var comments = ""
 
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -150,7 +151,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.height.equalTo(318)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
         }
         
         borderView.snp.makeConstraints { make in
@@ -200,7 +201,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     @objc func fetchWrite() {
         rateService.fetchWrite(officeID: officeId,
                                score: starNumbers,
-                               comment: "We did it") { result in
+                               comment: comments) { [weak self] result in
             switch result {
             case .success((let data)):
                 print("SUCCESS", data)
