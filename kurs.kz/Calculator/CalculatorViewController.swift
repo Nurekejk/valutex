@@ -9,7 +9,14 @@ import UIKit
 import SnapKit
 
 final class CalculatorViewController: UIViewController {
-    
+
+    // MARK: - State
+    public static let defaultsCurrencyKey = "savedCurrency"
+
+    // MARK: Dependencies
+    private let service = CalculatorService()
+    // MARK: - Properties
+    private let defaults = UserDefaults.standard
     // MARK: - UI
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
