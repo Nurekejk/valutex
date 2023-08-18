@@ -21,8 +21,8 @@
 		71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */; };
 		71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */; };
 		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
-		71564ADA2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		71564ADB2A79F69500979090 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
 		71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB82A5E746C00422491 /* NotificationsSectionHeaderView.swift */; };
@@ -874,7 +874,7 @@
 				9F63DF452A50540F00EA9060 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9985BA522A65BF0D00DD871C /* XCRemoteSwiftPackageReference "input-mask-ios" */,
 				FA0E72902A6095C900EEAD48 /* XCRemoteSwiftPackageReference "PanModal" */,
-				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */,
+				FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 9F899D7E2A4AFB44002D1F74 /* Products */;
 			projectDirPath = "";
@@ -1062,7 +1062,7 @@
 				FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */,
 				8F8189DB2A6066840082F80F /* CartExchangeFeedbackViewCell.swift in Sources */,
 				995E96AE2A7A17E000E96AEE /* NationalBankUrl.swift in Sources */,
-				71564ADA2A79F69500979090 /* BuildFile in Sources */,
+				71564ADA2A79F69500979090 /* (null) in Sources */,
 				9FF456E92A5E716F00C2E845 /* MainPageViewController.swift in Sources */,
 				9FF55D5B2A694A1D00A11284 /* OfferTableViewHeaderView.swift in Sources */,
 				61D25BDC2A69B02200BC9DB7 /* OfferSkyFloatingLabelTextField.swift in Sources */,
@@ -1098,7 +1098,7 @@
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
-				71564ADB2A79F69500979090 /* BuildFile in Sources */,
+				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 			);
@@ -1242,7 +1242,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1274,7 +1274,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1352,7 +1352,7 @@
 				version = 1.2.6;
 			};
 		};
-		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */ = {
+		FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
@@ -1385,7 +1385,7 @@
 		};
 		FA1098E32A73AFA000BFB402 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView.git" */;
+			package = FA1098E22A73AFA000BFB402 /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
