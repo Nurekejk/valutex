@@ -54,11 +54,12 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    private let continueButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить отзыв", for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()
         button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
+        button.addTarget(self, action: #selector( fetchWrite), for: .touchUpInside)
         return button
     }()
     
@@ -196,7 +197,19 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-    
+    @objc func fetchWrite() {
+        rateService.fetchWrite(officeID: officeId,
+                               score: starNumbers,
+                               comment: "We did it") { result in
+            switch result {
+            case .success((let data)):
+                print("SUCCESS", data)
+            case .failure((let error)):
+                print("ERROR", error)
+            }
+        }
+    }
+
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
