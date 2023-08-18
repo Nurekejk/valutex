@@ -10,8 +10,7 @@ import Alamofire
 
 final class RateService {
 
-    // MARK: - Network
-
+    // MARK: - Network FetchRates
     func fetchRates(officeID: Int, completion: @escaping (Result<[Rate], AFError>) -> Void) {
         let officeIdQuery = URLQueryItem(name: "office_id", value: "\(officeID)")
 
@@ -26,10 +25,6 @@ final class RateService {
             completion(.failure(AFError.invalidURL(url: urlComponent)))
             return
         }
-
-//        let parameters: Parameters = [
-//            "office_id": officeID
-//        ]
 
         AF.request(url, method: .post, encoding: JSONEncoding.default)
             .validate()
