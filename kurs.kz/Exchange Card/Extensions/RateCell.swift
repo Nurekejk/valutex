@@ -13,9 +13,6 @@ final class RateCell: UITableViewCell {
     // MARK: - Public
     static let reuseID = String(describing: RateCell.self)
     
-    // MARK: - State
-    private let rateService = RateService()
-    
     // MARK: - UI
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
