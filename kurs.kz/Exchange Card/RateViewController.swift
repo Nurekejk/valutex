@@ -16,12 +16,11 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - State
     private let rateService = RateService()
     private var rates: [Rate] = []
+    private var starButtons = [StarButton]()
     private var starNumbers = 0
     private var comments = ""
 
     // MARK: - UI
-    private var starButtons = [StarButton]()
-    
     private let starStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -198,10 +197,11 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+    
     @objc func fetchWrite() {
         rateService.fetchWrite(officeID: officeId,
                                score: starNumbers,
-                               comment: comments) { [weak self] result in
+                               comment: comments) { result in
             switch result {
             case .success((let data)):
                 print("SUCCESS", data)
