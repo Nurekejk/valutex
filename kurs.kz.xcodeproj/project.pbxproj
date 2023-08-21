@@ -1282,7 +1282,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1314,7 +1314,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = kurs.kz;
+				INFOPLIST_KEY_CFBundleDisplayName = valutex;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используя ваше местоположение, это приложение может помочь вам найти обменники.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
