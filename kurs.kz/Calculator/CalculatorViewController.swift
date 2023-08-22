@@ -10,13 +10,22 @@ import SnapKit
 
 final class CalculatorViewController: UIViewController {
 
+    var isSearching = false
+    var exchangers: [Exchanger] = []
+    var filteredArray: [Exchanger] = []
+
     // MARK: - State
+
     public static let defaultsCurrencyKey = "savedCurrency"
 
     // MARK: Dependencies
+
     private let service = CalculatorService()
+
     // MARK: - Properties
+
     private let defaults = UserDefaults.standard
+    
     // MARK: - UI
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
@@ -69,27 +78,20 @@ final class CalculatorViewController: UIViewController {
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        filteredArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: CalculatorTableViewCell.reuseIdentifier,
-            for: indexPath) as? CalculatorTableViewCell else {
-            fatalError("Could not cast to CalculatorTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.identifier,
+                                                       for: indexPath) as? CalculatorTableViewCell
+        else {
+            fatalError("Could not dequeue reusable cell")
         }
-        switch indexPath.row {
-        case 0:
-            let cellData = CellData(migLogoImage: UIImage(named: "exchange_logo"),
-                                    titleLabel: "MИГ",
-                                    starImage: AppImage.golden_star.uiImage,
-                                    rateLabel: "4,9 (15)",
-                                    addressLabel: "ул. Толе Би, 297 г, уг. ул. Тлендиева",
-                                    kmLabel: "1 км",
-                                    dateLabel: "1 октября, 2023 18:00:00",
-                                    amountLabel: "1000,01")
-            cell.configureCell(data: cellData)
-        default:
-            break
+        cell.backgroundColor = view.backgroundColor
+
+        if !isSearching {
+            cell.changeExchanger(with: exchangers[indexPath.row])
+        } else {
+            cell.changeExchanger(with: filteredArray[indexPath.row])
         }
         return cell
     }
