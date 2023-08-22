@@ -38,14 +38,15 @@ final class OfferSellBuySegmentedController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        navigationBar()
         setupViews()
         setupConstraints()
         displayViewController(buyViewController)
     }
     // MARK: - Navigation Bar
     private func navigationBar() {
-        title = "Оффер"
+        navigationItem.title = "Оффер"
     }
     
     // MARK: - Setup Views

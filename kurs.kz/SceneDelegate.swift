@@ -19,41 +19,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        
-        let isAuthorized = checkAuth().0
-        
-        if isAuthorized {
+
+        if isAuthorized() {
             window?.rootViewController = MainTabBarViewController()
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: MainTabBarViewController())
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
         window?.makeKeyAndVisible()
     }
     // MARK: - Action
-    private func checkAuth() -> (Bool, [String: String]) {
+
+    private func isAuthorized() -> Bool {
         let defaults = UserDefaults.standard
         var isAuthorized = false
-        var headers = [String: String]()
-        
+
         guard let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) else {
             isAuthorized = false
-            return (isAuthorized, headers)
+            return isAuthorized
         }
-        
+
         do {
             let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
-            if let accessToken = tokens.access_token {
-                headers["Authorization"] = "Bearer \(accessToken)"
+            if let accessToken = tokens.access_token,
+               let refreshToken = tokens.refresh_token {
+                print(accessToken, refreshToken)
                 isAuthorized = true
             } else {
                 isAuthorized = false
-                fatalError("accessToken returned nil")
+                print("one of the tokens returned nil")
             }
         } catch {
             isAuthorized = false
             print("error while decoding")
         }
-        return (isAuthorized, headers)
+        return isAuthorized
     }
 }
