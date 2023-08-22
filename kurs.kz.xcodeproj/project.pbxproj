@@ -25,7 +25,6 @@
 		71564AC82A70B8E300979090 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564AC72A70B8E300979090 /* Auth.swift */; };
 		71564ADA2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		71564ADB2A79F69500979090 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		71B5E4D12A8F2F1300321699 /* Exchangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5E4D02A8F2F1300321699 /* Exchangers.swift */; };
 		71B5E4D32A8F302300321699 /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5E4D22A8F302300321699 /* CalculatorService.swift */; };
 		71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB22A5D493200422491 /* NotificationsViewController.swift */; };
 		71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */; };
@@ -159,7 +158,6 @@
 		71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewFooterView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewFooterView.swift; sourceTree = SOURCE_ROOT; };
 		71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateViewController.swift; path = kurs.kz/ExchangeRate/ExchangeRateViewController.swift; sourceTree = SOURCE_ROOT; };
 		71564AC72A70B8E300979090 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		71B5E4D02A8F2F1300321699 /* Exchangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchangers.swift; sourceTree = "<group>"; };
 		71B5E4D22A8F302300321699 /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
 		71D01EB22A5D493200422491 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		71D01EB42A5D525000422491 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 		71B5E4CF2A8F2EAE00321699 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				71B5E4D02A8F2F1300321699 /* Exchangers.swift */,
 				71B5E4D22A8F302300321699 /* CalculatorService.swift */,
 			);
 			path = Model;
@@ -1068,7 +1065,6 @@
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				99D974022A680FF400F7E506 /* AppImage.swift in Sources */,
-				71B5E4D12A8F2F1300321699 /* Exchangers.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
 				990100492A50B99B003EE3C4 /* SignUpViewController.swift in Sources */,
 				99D974002A680D8E00F7E506 /* AppColor.swift in Sources */,
