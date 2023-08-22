@@ -100,6 +100,10 @@ final class CalculatorViewController: UIViewController {
 }
 
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
+    func textfieldDidChange() {
+        tableView.reloadData()
+    }
+    
     func dropDownButtonDidPressed(position: ButtonPosition) {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self

@@ -11,6 +11,7 @@ import PanModal
 
 protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
     func dropDownButtonDidPressed(position: ButtonPosition)
+    func textfieldDidChange()
 }
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
@@ -87,6 +88,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         textField.rightViewMode = .always
         textField.font = AppFont.regular.s16()
         textField.text = "500.00"
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     private lazy var clearButton: UIButton = {
@@ -195,6 +197,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     @objc private func dropDownButtonDidPressed(_ sender: UIButton) {
         delegate?.dropDownButtonDidPressed(position: ButtonPosition(rawValue: sender.tag) ?? .LEFT)
+    }
+    @objc private func textFieldDidChange() {
+        delegate?.textfieldDidChange()
     }
     @objc private func arrowLeftRightButtonDidPressed() {
 
