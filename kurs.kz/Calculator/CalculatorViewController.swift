@@ -17,6 +17,8 @@ final class CalculatorViewController: UIViewController {
     }
     var filteredArray: [Exchanger] = []
 
+    private var isBuying: Bool = true
+
     // MARK: - State
 
     public static let defaultsCurrencyKey = "savedCurrency"
@@ -28,15 +30,7 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Properties
 
     private let defaults = UserDefaults.standard
-    private let isSelling = true
-    private var enteredValue = 0 {
-        didSet {
-            if enteredValue > 0 {
-                
-            }
-        }
-    }
-    
+
     // MARK: - UI
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
@@ -95,20 +89,21 @@ final class CalculatorViewController: UIViewController {
 }
 
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
-    func dropDownButtonDidPressed(postion: Int) {
-            let modalScreen = CurrencySelectorViewController()
-            modalScreen.delegate = self
-            modalScreen.position = postion
-            self.presentPanModal(modalScreen)
-        }
+    func dropDownButtonDidPressed(state: CurrencyState) {
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        modalScreen.currencyState = state
+        self.presentPanModal(modalScreen)
+    }
 }
 extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         
     }
 
-    func currencyDidSelectInCalculator(currency: Currency, postion: Int) {
-        headerView.updateCurrency(currency: currency, postion: postion)
+    func currencyDidSelectInCalculator(currency: Currency, currencyState: CurrencyState) {
+        self.isBuying = currencyState == .BUY
+        headerView.updateCurrency(currency: currency, state: currencyState)
     }
 }
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -127,8 +122,8 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Could not dequeue reusable cell")
         }
         cell.backgroundColor = view.backgroundColor
-        cell.changeExchanger(with: exchangers[indexPath.row])
-        cell.calculateValue(value: enteredValue, isSelling: isSelling)
+        cell.update(with: exchangers[indexPath.row],
+                    value: Float(headerView.currencyTextField.text ?? "0") ?? 1.0, isBuying: isBuying)
         return cell
     }
 }

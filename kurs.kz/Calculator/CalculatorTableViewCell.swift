@@ -14,8 +14,14 @@ final class CalculatorTableViewCell: UITableViewCell {
     
     public static var reuseIdentifier = String(describing: CalculatorTableViewCell.self)
     // MARK: - Properties
-    public func changeExchanger(with newExchanger: Exchanger) {
-        exchanger = newExchanger
+    public func update(with exchanger: Exchanger, value: Float, isBuying: Bool) {
+        self.exchanger = exchanger
+
+        if isBuying {
+            rateLabel.text = "\(value / exchanger.sellRate)"
+        } else {
+            rateLabel.text = "\(value * exchanger.buyRate)"
+        }
     }
 
     private var exchanger: Exchanger? {
@@ -32,18 +38,6 @@ final class CalculatorTableViewCell: UITableViewCell {
             setupAddressLabel(with: exchanger?.address ?? "",
                               and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км")
             dateLabel.text = exchanger?.formattedDate
-            if let safeBuyRate = exchanger?.buyRate {
-                let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
-                buyRateLabel.text = String(trimmedBuyRate)
-            } else {
-                buyRateLabel.text = "Ошибка"
-            }
-            if let safeSellRate = exchanger?.sellRate {
-                let trimmedSellRate = trimExchangeRate(rate: safeSellRate)
-                sellRateLabel.text = String(trimmedSellRate)
-            } else {
-                sellRateLabel.text = "Ошибка"
-            }
         }
     }
 
@@ -99,15 +93,7 @@ final class CalculatorTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let buyRateLabel: UILabel = {
-        let label = UILabel()
-        label.font = AppFont.bold.s16()
-        label.isSkeletonable = true
-        label.linesCornerRadius = 5
-        return label
-    }()
-
-    private let sellRateLabel: UILabel = {
+    private let rateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.bold.s16()
         label.isSkeletonable = true
@@ -132,7 +118,7 @@ final class CalculatorTableViewCell: UITableViewCell {
         [iconImageView, mainTitleLabel,
          ratingImageView, ratingLabel,
          addressLabel, dateLabel,
-         buyRateLabel, sellRateLabel,
+         rateLabel,
          placeholderSkeletonView].forEach {contentView.addSubview($0)}
         contentView.isSkeletonable = true
     }
@@ -167,13 +153,11 @@ final class CalculatorTableViewCell: UITableViewCell {
         }
         return trimmedResult
     }
-    public func calculateValue(value: Int, isSelling: Bool) {
-        if isSelling {
-            
-        } else {
-            
-        }
+
+    public func calculateValue(value: Int) {
+
     }
+    
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -220,16 +204,10 @@ final class CalculatorTableViewCell: UITableViewCell {
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-14.5)
             make.leading.equalToSuperview().offset(12)
-            make.trailing.equalTo(buyRateLabel.snp.leading)
+            make.trailing.equalTo(rateLabel.snp.leading)
             make.height.equalTo(18)
         }
-        buyRateLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-12)
-            make.trailing.equalTo(sellRateLabel.snp.leading).offset(-12)
-            make.height.equalTo(20)
-            make.width.equalTo(64)
-        }
-        sellRateLabel.snp.makeConstraints { make in
+        rateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(20)

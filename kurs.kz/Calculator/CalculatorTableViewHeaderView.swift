@@ -10,7 +10,7 @@ import SnapKit
 import PanModal
 
 protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
-    func dropDownButtonDidPressed(postion: Int)
+    func dropDownButtonDidPressed(state: CurrencyState)
 }
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
@@ -23,6 +23,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private let currencyImageLabelLeft: UILabel = {
         let label = UILabel()
+        label.text = "🇰🇿"
         return label
     }()
     private lazy var currencyLabelLeft: UILabel = {
@@ -62,11 +63,12 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     private lazy var currencyImageLabelRight: UILabel = {
         let label = UILabel()
+        label.text = "🇱🇷"
         return label
     }()
     private lazy var currencyLabelRight: UILabel = {
         let label = UILabel()
-        label.text = "KZT"
+        label.text = "USD"
         label.font = AppFont.regular.s16()
         return label
     }()
@@ -79,7 +81,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
                          for: .touchUpInside)
         return button
     }()
-    private lazy var currencyTextField: UITextField = {
+
+    public lazy var currencyTextField: UITextField = {
         let textField = UITextField()
         textField.rightViewMode = .always
         textField.font = AppFont.regular.s16()
@@ -180,7 +183,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Actions
 
     @objc private func dropDownButtonDidPressed(_ sender: UIButton) {
-        delegate?.dropDownButtonDidPressed(postion: sender.tag)
+        delegate?.dropDownButtonDidPressed(state: CurrencyState(rawValue: sender.tag) ?? .BUY)
     }
     @objc private func arrowLeftRightButtonDidPressed() {
 
@@ -236,8 +239,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - Public
 
-    public func updateCurrency(currency: Currency, postion: Int) {
-        if postion == 1 {
+    public func updateCurrency(currency: Currency, state: CurrencyState) {
+        if state == .BUY {
             currencyLabelLeft.text = currency.code
             currencyImageLabelLeft.text = currency.flag
         } else {
