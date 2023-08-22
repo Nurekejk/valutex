@@ -24,7 +24,7 @@ struct CalculatorService {
 
         let requestData: [String: Any] = ["currency_code": currencyCode, "city_id": cityId]
 
-        AF.request(exchangeListURLComponent,
+        AF.request(url,
                    method: .post,
                    parameters: requestData,
                    encoding: JSONEncoding.default,
@@ -33,8 +33,8 @@ struct CalculatorService {
         .validate()
         .responseDecodable(of: [Exchanger].self) { response in
             switch response.result {
-            case .success(let exchangers):
-                completion(exchangers)
+            case .success(let exchanger):
+                completion(exchanger)
             case .failure(let error):
                 print("Error fetching data: \(error)")
                 completion([])
