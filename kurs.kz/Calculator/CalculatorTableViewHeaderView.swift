@@ -21,11 +21,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         let view = UIView()
         return view
     }()
-    private lazy var flagImageLeft: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = AppImage.kzt_flag.uiImage
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private let currencyImageLabelLeft: UILabel = {
+        let label = UILabel()
+        return label
     }()
     private lazy var currencyLabelLeft: UILabel = {
         let label = UILabel()
@@ -62,11 +60,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private lazy var flagImageRight: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = AppImage.kzt_flag.uiImage
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private lazy var currencyImageLabelRight: UILabel = {
+        let label = UILabel()
+        return label
     }()
     private lazy var currencyLabelRight: UILabel = {
         let label = UILabel()
@@ -121,8 +117,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
 
     private func setupViews() {
-        [flagImageLeft, currencyLabelLeft, dropDownButtonLeft, separatorLineImageLeft,
-         arrowLeftRightButton, flagImageRight, currencyLabelRight, dropDownButtonRight,
+        [currencyImageLabelLeft, currencyLabelLeft, dropDownButtonLeft, separatorLineImageLeft,
+         arrowLeftRightButton, currencyImageLabelRight, currencyLabelRight, dropDownButtonRight,
          separatorLineImageRight, currencyTextField, clearButton, borderView].forEach {
             containerView.addSubview($0)
         }
@@ -146,12 +142,12 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(45)
             make.leading.equalTo(containerView.snp.leading)
             make.trailing.equalTo(containerView.snp.trailing) }
-        flagImageLeft.snp.makeConstraints { make in
+        currencyImageLabelLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16) }
         currencyLabelLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.leading.equalTo(flagImageLeft.snp.trailing).offset(16) }
+            make.leading.equalTo(currencyImageLabelLeft.snp.trailing).offset(16) }
         dropDownButtonLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16) }
@@ -170,14 +166,14 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         currencyLabelRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
             make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16) }
-        flagImageRight.snp.makeConstraints { make in
+        currencyImageLabelRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16) }
         currencyTextField.snp.makeConstraints { make in
-            make.top.equalTo(flagImageLeft.snp.bottom).offset(26)
+            make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
             make.leading.equalToSuperview().offset(16) }
         clearButton.snp.makeConstraints { make in
-            make.top.equalTo(flagImageLeft.snp.bottom).offset(26)
+            make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
             make.trailing.equalToSuperview().offset(-16) }
     }
 
@@ -187,9 +183,55 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         delegate?.dropDownButtonDidPressed(postion: sender.tag)
     }
     @objc private func arrowLeftRightButtonDidPressed() {
-    }
-    @objc private func clearButtonDidPressed() {
 
+        currencyImageLabelLeft.snp.removeConstraints()
+        currencyLabelLeft.snp.removeConstraints()
+        currencyImageLabelRight.snp.removeConstraints()
+        currencyLabelRight.snp.removeConstraints()
+        dropDownButtonLeft.snp.removeConstraints()
+        dropDownButtonRight.snp.removeConstraints()
+
+        currencyImageLabelRight.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+        }
+        currencyLabelRight.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(14)
+            make.leading.equalTo(currencyImageLabelRight.snp.trailing).offset(16)
+        }
+        dropDownButtonRight.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(currencyLabelRight.snp.trailing).offset(16)
+        }
+        dropDownButtonLeft.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-18.5)
+        }
+        currencyLabelLeft.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(14)
+            make.trailing.equalTo(dropDownButtonLeft.snp.leading).offset(-16)
+        }
+        currencyImageLabelLeft.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.trailing.equalTo(currencyLabelLeft.snp.leading).offset(-16)
+        }
+        separatorLineImageLeft.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(167.5)
+        }
+        arrowLeftRightButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
+        }
+        separatorLineImageRight.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
+        }
+        containerView.layoutIfNeeded()
+    }
+
+    @objc private func clearButtonDidPressed() {
+        currencyTextField.text = ""
     }
 
     // MARK: - Public
@@ -197,8 +239,10 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     public func updateCurrency(currency: Currency, postion: Int) {
         if postion == 1 {
             currencyLabelLeft.text = currency.code
+            currencyImageLabelLeft.text = currency.flag
         } else {
             currencyLabelRight.text = currency.code
+            currencyImageLabelRight.text = currency.flag
         }
     }
 }
