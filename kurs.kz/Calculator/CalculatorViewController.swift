@@ -10,8 +10,11 @@ import SnapKit
 
 final class CalculatorViewController: UIViewController {
 
-    var isSearching = false
-    var exchangers: [Exchanger] = []
+    var exchangers: [Exchanger] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     var filteredArray: [Exchanger] = []
 
     // MARK: - State
@@ -25,6 +28,14 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Properties
 
     private let defaults = UserDefaults.standard
+    private let isSelling = true
+    private var enteredValue = 0 {
+        didSet {
+            if enteredValue > 0 {
+                
+            }
+        }
+    }
     
     // MARK: - UI
     
@@ -51,6 +62,7 @@ final class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getExchangers()
     }
 
     // MARK: - Setup Views
@@ -62,6 +74,13 @@ final class CalculatorViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layer.cornerRadius = 8
+    }
+    
+    private func getExchangers() {
+        CalculatorService().fetchExchangers(currencyCode: "USD", cityId: 1) { fetchedExchangers in
+            self.exchangers = fetchedExchangers
+            print(self.exchangers)
+        }
     }
     
     // MARK: - Setup Constraints
@@ -78,21 +97,20 @@ final class CalculatorViewController: UIViewController {
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filteredArray.count
+        return exchangers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalculatorTableViewCell.identifier,
-                                                       for: indexPath) as? CalculatorTableViewCell
+        print("stuff")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        CalculatorTableViewCell.reuseIdentifier,
+                                                       for:
+                                                        indexPath) as? CalculatorTableViewCell
         else {
             fatalError("Could not dequeue reusable cell")
         }
         cell.backgroundColor = view.backgroundColor
-
-        if !isSearching {
-            cell.changeExchanger(with: exchangers[indexPath.row])
-        } else {
-            cell.changeExchanger(with: filteredArray[indexPath.row])
-        }
+        cell.changeExchanger(with: exchangers[indexPath.row])
+        cell.calculateValue(value: enteredValue, isSelling: isSelling)
         return cell
     }
 }

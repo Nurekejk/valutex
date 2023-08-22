@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import PanModal
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
@@ -177,7 +178,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Actions
 
     @objc private func dropDownButtonDidPressed() {
-
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        self.presentPanModal(modalScreen)
     }
     @objc private func arrowLeftRightButtonDidPressed() {
 

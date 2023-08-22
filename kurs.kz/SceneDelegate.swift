@@ -21,10 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         if isAuthorized() {
-            window?.rootViewController = MainTabBarViewController()
+            window?.rootViewController = CalculatorViewController()
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: SelectLanguageViewController())
+            UINavigationController(rootViewController: CalculatorViewController())
         }
         window?.makeKeyAndVisible()
     }

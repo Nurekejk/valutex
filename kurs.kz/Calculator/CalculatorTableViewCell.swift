@@ -13,7 +13,6 @@ final class CalculatorTableViewCell: UITableViewCell {
     // MARK: - Public
     
     public static var reuseIdentifier = String(describing: CalculatorTableViewCell.self)
-    static let identifier = "CalculatorTableViewCellIdentifier"
     // MARK: - Properties
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
@@ -167,6 +166,13 @@ final class CalculatorTableViewCell: UITableViewCell {
             trimmedResult.removeLast()
         }
         return trimmedResult
+    }
+    public func calculateValue(value: Int, isSelling: Bool) {
+        if isSelling {
+            
+        } else {
+            
+        }
     }
     // MARK: - Lifecycle
     override func layoutSubviews() {
