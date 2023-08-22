@@ -102,11 +102,15 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reviewTextView.delegate = self
         setupViews()
         setupConstraints()
         setupNavigationBar()
         fetchRates()
+    }
+    
+    internal func textViewDidChange(_ textView: UITextView) {
+        comments = reviewTextView.text
     }
     
     // MARK: - ViewDidLayoutSubviews
@@ -138,9 +142,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         borderView.backgroundColor = AppColor.gray10.uiColor
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
         entireStackView.backgroundColor = AppColor.grayWhite.uiColor
-        
-        reviewTextView.delegate = self
-
     }
     
     // MARK: - Setup Constraints:
