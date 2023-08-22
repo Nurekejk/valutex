@@ -10,7 +10,7 @@ import SnapKit
 import PanModal
 
 protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
-    func dropDownButtonDidPressed(state: CurrencyState)
+    func dropDownButtonDidPressed(position: ButtonPosition)
 }
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
@@ -131,6 +131,17 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         containerView.addSubview(borderView)
         borderView.backgroundColor = AppColor.gray10.uiColor
     }
+    
+    // MARK: - Public
+    public func makeLeftTenge() {
+        currencyLabelLeft.text = "KZT"
+        currencyImageLabelLeft.text = "🇰🇿"
+    }
+    
+    public func makeRightTenge() {
+        currencyLabelRight.text = "KZT"
+        currencyImageLabelRight.text = "🇰🇿"
+    }
 
     // MARK: - Setup Constraints
     
@@ -183,7 +194,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Actions
 
     @objc private func dropDownButtonDidPressed(_ sender: UIButton) {
-        delegate?.dropDownButtonDidPressed(state: CurrencyState(rawValue: sender.tag) ?? .BUY)
+        delegate?.dropDownButtonDidPressed(position: ButtonPosition(rawValue: sender.tag) ?? .LEFT)
     }
     @objc private func arrowLeftRightButtonDidPressed() {
 
@@ -239,8 +250,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - Public
 
-    public func updateCurrency(currency: Currency, state: CurrencyState) {
-        if state == .BUY {
+    public func updateCurrency(currency: Currency, position: ButtonPosition) {
+        if position == .LEFT {
             currencyLabelLeft.text = currency.code
             currencyImageLabelLeft.text = currency.flag
         } else {

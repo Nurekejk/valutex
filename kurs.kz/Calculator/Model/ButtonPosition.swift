@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CurrencyState: Int {
+enum ButtonPosition: Int {
     case LEFT = 1
     case RIGHT
 }

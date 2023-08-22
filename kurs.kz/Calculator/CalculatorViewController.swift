@@ -17,7 +17,16 @@ final class CalculatorViewController: UIViewController {
     }
     var filteredArray: [Exchanger] = []
 
-    private var isBuying: Bool = true
+    private var isBuying: Bool = true {
+        didSet {
+            if isBuying {
+                headerView.makeRightTenge()
+            } else {
+                headerView.makeLeftTenge()
+            }
+//            tableView.reloadData()
+        }
+    }
 
     // MARK: - State
 
@@ -57,7 +66,7 @@ final class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        getExchangers()
+        getExchangers(currencyCode: "USD", cityId: 1)
     }
 
     // MARK: - Setup Views
@@ -71,10 +80,12 @@ final class CalculatorViewController: UIViewController {
         tableView.layer.cornerRadius = 8
     }
     
-    private func getExchangers() {
-        CalculatorService().fetchExchangers(currencyCode: "USD", cityId: 1) { fetchedExchangers in
+    private func getExchangers(currencyCode: String, cityId: Int) {
+        CalculatorService().fetchExchangers(currencyCode: currencyCode,
+                                            cityId: cityId) { fetchedExchangers in
             self.exchangers = fetchedExchangers
-            print(self.exchangers)
+        
+            print("the exchangers are \(self.exchangers)")
         }
     }
     
@@ -89,10 +100,10 @@ final class CalculatorViewController: UIViewController {
 }
 
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
-    func dropDownButtonDidPressed(state: CurrencyState) {
+    func dropDownButtonDidPressed(position: ButtonPosition) {
         let modalScreen = CurrencySelectorViewController()
         modalScreen.delegate = self
-        modalScreen.currencyState = state
+        modalScreen.position = position
         self.presentPanModal(modalScreen)
     }
 }
@@ -101,9 +112,11 @@ extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
         
     }
 
-    func currencyDidSelectInCalculator(currency: Currency, currencyState: CurrencyState) {
-        self.isBuying = currencyState == .BUY
-        headerView.updateCurrency(currency: currency, state: currencyState)
+    func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition) {
+        self.isBuying = position == .LEFT
+        headerView.updateCurrency(currency: currency, position: position)
+        // city id is being hardcoded
+        getExchangers(currencyCode: currency.code, cityId: 1)
     }
 }
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -113,7 +126,6 @@ extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
         return exchangers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("stuff")
         guard let cell = tableView.dequeueReusableCell(withIdentifier:
                                                         CalculatorTableViewCell.reuseIdentifier,
                                                        for:

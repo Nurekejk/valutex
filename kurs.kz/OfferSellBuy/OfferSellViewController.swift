@@ -204,7 +204,7 @@ final class OfferSellViewController: UIViewController {
 }
 // MARK: - CurrencySelectorViewControllerDelegate
 extension OfferSellViewController: CurrencySelectorViewControllerDelegate, OfferSellCurrencyViewDelegate {
-    func currencyDidSelectInCalculator(currency: Currency, currencyState: CurrencyState) {
+    func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition) {
     }
 
     func currencyDidSelect(currency: Currency) {

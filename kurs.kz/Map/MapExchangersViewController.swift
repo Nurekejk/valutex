@@ -76,8 +76,6 @@ final class MapExchangersViewController: PulleyViewController {
 
 // MARK: - CurrencySelectorViewControllerDelegate
 extension MapExchangersViewController: CurrencySelectorViewControllerDelegate {
-    func currencyDidSelectInCalculator(currency: Currency, currencyState: CurrencyState) {
-    }
 
     func currencyDidSelect(currency: Currency) {
         navigationBarView.changeCurrency(newFlagImage: currency.flag,

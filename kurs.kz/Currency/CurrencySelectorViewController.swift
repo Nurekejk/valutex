@@ -14,7 +14,7 @@ final class CurrencySelectorViewController: UIViewController {
 
     // MARK: - State
 
-    public var currencyState: CurrencyState?
+    public var position: ButtonPosition?
     // MARK: - Properties
     private var currencies: [Currency] = [] {
         didSet {
@@ -160,9 +160,9 @@ final class CurrencySelectorViewController: UIViewController {
             filteredCurrencies[selectedIndexPath.row] : currencies[selectedIndexPath.row]
 
             delegate?.currencyDidSelect(currency: selectedCurrency)
-            if let currencyState = currencyState {
+            if let currencyState = position {
                 delegate?.currencyDidSelectInCalculator(currency: selectedCurrency,
-                                                        currencyState: currencyState)
+                                                        position: currencyState)
             }
 
             dismiss(animated: true, completion: nil)
@@ -261,5 +261,10 @@ extension CurrencySelectorViewController: CurrencySelectorListServiceDelegate {
 // MARK: - Protocol
 protocol CurrencySelectorViewControllerDelegate: AnyObject {
     func currencyDidSelect(currency: Currency)
-    func currencyDidSelectInCalculator(currency: Currency, currencyState: CurrencyState)
+    func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition)
+}
+extension CurrencySelectorViewControllerDelegate {
+    func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition) {
+        return
+    }
 }
