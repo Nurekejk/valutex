@@ -41,6 +41,7 @@ final class CalculatorViewController: UIViewController {
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
         let headerView = CalculatorTableViewHeaderView()
+        headerView.delegate = self
         headerView.backgroundColor = AppColor.gray10.uiColor
         return headerView
     }()
@@ -92,7 +93,13 @@ final class CalculatorViewController: UIViewController {
         }
     }
 }
-
+extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
+    func dropDownButtonDidPressed() {
+            let modalScreen = CurrencySelectorViewController()
+            modalScreen.delegate = self
+            self.presentPanModal(modalScreen)
+        }
+}
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {

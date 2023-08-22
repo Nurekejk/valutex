@@ -9,8 +9,12 @@ import UIKit
 import SnapKit
 import PanModal
 
-final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
+protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
+    func dropDownButtonDidPressed()
+}
 
+final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
+    weak var delegate: CalculatorTableViewHeaderViewDelegate?
     // MARK: - UI
 
     private lazy var containerView: UIView = {
@@ -178,9 +182,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Actions
 
     @objc private func dropDownButtonDidPressed() {
-        let modalScreen = CurrencySelectorViewController()
-        modalScreen.delegate = self
-        self.presentPanModal(modalScreen)
+        delegate?.dropDownButtonDidPressed()
     }
     @objc private func arrowLeftRightButtonDidPressed() {
 
