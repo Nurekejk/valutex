@@ -11,7 +11,10 @@ import SnapKit
 import SkeletonView
 
 final class CurrencySelectorViewController: UIViewController {
-    
+
+    // MARK: - State
+
+    public var position: Int = 0
     // MARK: - Properties
     private var currencies: [Currency] = [] {
         didSet {
@@ -152,12 +155,13 @@ final class CurrencySelectorViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @objc func currencySelected() {
-        if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow,
-        let senderViewController = delegate {
+        if let selectedIndexPath = currenciesTableView.indexPathForSelectedRow {
             let selectedCurrency = isSearching ?
             filteredCurrencies[selectedIndexPath.row] : currencies[selectedIndexPath.row]
 
-            senderViewController.currencyDidSelect(currency: selectedCurrency)
+            delegate?.currencyDidSelect(currency: selectedCurrency)
+            delegate?.currencyDidSelectInCalculator(currency: selectedCurrency, postion: position)
+
             dismiss(animated: true, completion: nil)
         }
     }
@@ -254,4 +258,6 @@ extension CurrencySelectorViewController: CurrencySelectorListServiceDelegate {
 // MARK: - Protocol
 protocol CurrencySelectorViewControllerDelegate: AnyObject {
     func currencyDidSelect(currency: Currency)
+    func currencyDidSelectInCalculator(currency: Currency, postion: Int)
+
 }

@@ -10,7 +10,7 @@ import SnapKit
 import PanModal
 
 protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
-    func dropDownButtonDidPressed()
+    func dropDownButtonDidPressed(postion: Int)
 }
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
@@ -39,6 +39,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
+        button.tag = 1
         return button
     }()
     private lazy var separatorLineImageLeft: UIImageView = {
@@ -77,6 +78,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         let iconImage = AppImage.down_arrow.uiImage
         button.setImage(iconImage, for: .normal)
+        button.tag = 2
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
         return button
@@ -181,13 +183,22 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - Actions
 
-    @objc private func dropDownButtonDidPressed() {
-        delegate?.dropDownButtonDidPressed()
+    @objc private func dropDownButtonDidPressed(_ sender: UIButton) {
+        delegate?.dropDownButtonDidPressed(postion: sender.tag)
     }
     @objc private func arrowLeftRightButtonDidPressed() {
-
     }
     @objc private func clearButtonDidPressed() {
 
+    }
+
+    // MARK: - Public
+
+    public func updateCurrency(currency: Currency, postion: Int) {
+        if postion == 1 {
+            currencyLabelLeft.text = currency.code
+        } else {
+            currencyLabelRight.text = currency.code
+        }
     }
 }

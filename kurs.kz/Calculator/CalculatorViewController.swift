@@ -93,12 +93,23 @@ final class CalculatorViewController: UIViewController {
         }
     }
 }
+
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
-    func dropDownButtonDidPressed() {
+    func dropDownButtonDidPressed(postion: Int) {
             let modalScreen = CurrencySelectorViewController()
             modalScreen.delegate = self
+            modalScreen.position = postion
             self.presentPanModal(modalScreen)
         }
+}
+extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
+    func currencyDidSelect(currency: Currency) {
+        
+    }
+
+    func currencyDidSelectInCalculator(currency: Currency, postion: Int) {
+        headerView.updateCurrency(currency: currency, postion: postion)
+    }
 }
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
