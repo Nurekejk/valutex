@@ -277,7 +277,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             }
             currencyLabelRight.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(14)
-                make.leading.equalToSuperview().offset(64)
+                make.leading.equalToSuperview().offset(56)
             }
             dropDownButtonRight.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(16)
