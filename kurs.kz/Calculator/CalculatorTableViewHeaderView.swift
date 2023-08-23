@@ -145,7 +145,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         currencyLabelRight.text = "KZT"
         currencyImageLabelRight.text = "🇰🇿"
     }
-
+    // swiftlint:disable all
     // MARK: - Setup Constraints
     
     func setupConstraints() {
@@ -153,45 +153,58 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(4)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-4) }
+            make.bottom.equalToSuperview().offset(-4)
+        }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
             make.top.equalToSuperview().offset(45)
             make.leading.equalTo(containerView.snp.leading)
-            make.trailing.equalTo(containerView.snp.trailing) }
+            make.trailing.equalTo(containerView.snp.trailing)
+        }
         currencyImageLabelLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16) }
+            make.leading.equalToSuperview().offset(16)
+        }
         currencyLabelLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.leading.equalTo(currencyImageLabelLeft.snp.trailing).offset(16) }
+            make.leading.equalTo(currencyImageLabelLeft.snp.trailing).offset(16)
+        }
         dropDownButtonLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16) }
+            make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16)
+        }
         separatorLineImageLeft.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42) }
+            make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42)
+        }
         arrowLeftRightButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12) }
+            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
+        }
         separatorLineImageRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12) }
+            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
+        }
         dropDownButtonRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-18.5) }
+            make.trailing.equalToSuperview().offset(-18.5)
+        }
         currencyLabelRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
-            make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16) }
+            make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16)
+        }
         currencyImageLabelRight.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16) }
+            make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16)
+        }
         currencyTextField.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
-            make.leading.equalToSuperview().offset(16) }
+            make.leading.equalToSuperview().offset(16)
+        }
         clearButton.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
-            make.trailing.equalToSuperview().offset(-16) }
+            make.trailing.equalToSuperview().offset(-16)
+        }
     }
 
     // MARK: - Actions
@@ -203,7 +216,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         delegate?.textfieldDidChange()
     }
     var currencySwapped = false
-    // swiftlint:disable all
+
     @objc private func arrowLeftRightButtonDidPressed() {
         if currencySwapped {
             currencySwapped = false
@@ -284,7 +297,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             }
             separatorLineImageLeft.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(8)
-                make.leading.equalToSuperview().offset(167.5)
+                make.leading.equalToSuperview().offset(153.5)
             }
             arrowLeftRightButton.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(16)
