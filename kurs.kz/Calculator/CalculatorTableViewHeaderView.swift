@@ -89,6 +89,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         textField.font = AppFont.regular.s16()
         textField.text = "500.00"
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        textField.keyboardType = .phonePad
         return textField
     }()
     private lazy var clearButton: UIButton = {
@@ -201,50 +202,98 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     @objc private func textFieldDidChange() {
         delegate?.textfieldDidChange()
     }
+    var currencySwapped = false
+    // swiftlint:disable all
     @objc private func arrowLeftRightButtonDidPressed() {
+        if currencySwapped {
+            currencySwapped = false
+            currencyImageLabelLeft.snp.removeConstraints()
+            currencyLabelLeft.snp.removeConstraints()
+            currencyImageLabelRight.snp.removeConstraints()
+            currencyLabelRight.snp.removeConstraints()
+            dropDownButtonLeft.snp.removeConstraints()
+            dropDownButtonRight.snp.removeConstraints()
 
-        currencyImageLabelLeft.snp.removeConstraints()
-        currencyLabelLeft.snp.removeConstraints()
-        currencyImageLabelRight.snp.removeConstraints()
-        currencyLabelRight.snp.removeConstraints()
-        dropDownButtonLeft.snp.removeConstraints()
-        dropDownButtonRight.snp.removeConstraints()
-
-        currencyImageLabelRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-        }
-        currencyLabelRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
-            make.leading.equalTo(currencyImageLabelRight.snp.trailing).offset(16)
-        }
-        dropDownButtonRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(currencyLabelRight.snp.trailing).offset(16)
-        }
-        dropDownButtonLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-18.5)
-        }
-        currencyLabelLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
-            make.trailing.equalTo(dropDownButtonLeft.snp.leading).offset(-16)
-        }
-        currencyImageLabelLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.trailing.equalTo(currencyLabelLeft.snp.leading).offset(-16)
-        }
-        separatorLineImageLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(167.5)
-        }
-        arrowLeftRightButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
-        }
-        separatorLineImageRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
+            currencyImageLabelLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalToSuperview().offset(16)
+            }
+            currencyLabelLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(14)
+                make.leading.equalTo(currencyImageLabelLeft.snp.trailing).offset(16)
+            }
+            dropDownButtonLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16)
+            }
+            separatorLineImageLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(8)
+                make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42)
+            }
+            arrowLeftRightButton.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
+            }
+            separatorLineImageRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(8)
+                make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
+            }
+            dropDownButtonRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-18.5)
+            }
+            currencyLabelRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(14)
+                make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16)
+            }
+            currencyImageLabelRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16)
+            }
+        } else {
+            currencySwapped = true
+            currencyImageLabelLeft.snp.removeConstraints()
+            currencyLabelLeft.snp.removeConstraints()
+            currencyImageLabelRight.snp.removeConstraints()
+            currencyLabelRight.snp.removeConstraints()
+            dropDownButtonLeft.snp.removeConstraints()
+            dropDownButtonRight.snp.removeConstraints()
+            currencyImageLabelRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalToSuperview().offset(16)
+            }
+            currencyLabelRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(14)
+                make.leading.equalToSuperview().offset(64)
+            }
+            dropDownButtonRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalTo(currencyLabelRight.snp.trailing).offset(16)
+            }
+            dropDownButtonLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-18.5)
+            }
+            currencyLabelLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(14)
+                make.trailing.equalTo(dropDownButtonLeft.snp.leading).offset(-16)
+            }
+            currencyImageLabelLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.trailing.equalTo(currencyLabelLeft.snp.leading).offset(-16)
+            }
+            separatorLineImageLeft.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(8)
+                make.leading.equalToSuperview().offset(167.5)
+            }
+            arrowLeftRightButton.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
+            }
+            separatorLineImageRight.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(8)
+                make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
+            }
         }
         containerView.layoutIfNeeded()
     }
@@ -254,7 +303,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     // MARK: - Public
-
+    // swiftlint:enable all
     public func updateCurrency(currency: Currency, position: ButtonPosition) {
         if position == .LEFT {
             currencyLabelLeft.text = currency.code
