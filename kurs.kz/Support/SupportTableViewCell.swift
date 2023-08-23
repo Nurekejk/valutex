@@ -29,21 +29,21 @@ final class SupportTableViewCell: UITableViewCell {
     // MARK: - lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-            
+
         setupViews()
         setupConstraints()
     }
-        
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
-    // MARK: - Public 
+
+    // MARK: - Public
     public func configure(with model: (image: UIImage?, title: String)) {
         supportImageView.image = model.image
         supportLabel.text = model.title
     }
-        
+
     // MARK: - SetupViews
     private func setupViews() {
         contentView.addSubview(supportImageView)
@@ -58,7 +58,7 @@ final class SupportTableViewCell: UITableViewCell {
             make.height.equalTo(19)
             make.width.equalTo(19)
         }
-            
+        
         supportLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalTo(supportImageView.snp.trailing).offset(19)
