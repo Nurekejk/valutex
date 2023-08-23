@@ -206,6 +206,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             switch result {
             case .success((let data)):
                 print("SUCCESS", data)
+                self.fetchRates()
             case .failure((let error)):
                 print("ERROR", error)
             }
@@ -218,7 +219,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             starButtons[index].isSelected = true
             if element == sender {
                 starNumbers = index + 1
-                print(starNumbers)
                 break
             }
         }

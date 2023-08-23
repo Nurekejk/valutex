@@ -96,5 +96,6 @@ final class RateCell: UITableViewCell {
         nameLabel.text = rate.fullName
         subTitleLabel.text = rate.comment
         starsLabel.text = String(rate.score)
+        dateLabel.text = rate.createdAt
     }
 }

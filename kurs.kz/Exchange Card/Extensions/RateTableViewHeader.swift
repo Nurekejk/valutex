@@ -10,6 +10,7 @@ import SnapKit
 
 final class RateTableViewHeader: UITableViewHeaderFooterView {
     
+    private var feedbackCount = 0
     // MARK: - UI
     private let starImageView: UIImageView = {
         let imageView = UIImageView()
@@ -28,7 +29,7 @@ final class RateTableViewHeader: UITableViewHeaderFooterView {
     
     private lazy var feedBackLabel: UILabel = {
         let label = UILabel()
-        label.text = "2 отзыва"
+        label.text = String(feedbackCount)
         label.font = AppFont.regular.s14()
         label.textColor = AppColor.gray50.uiColor
         return label
@@ -75,5 +76,9 @@ final class RateTableViewHeader: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-32)
             make.height.equalTo(18)
         }
+    }
+    
+    func setupHeader(rate: Rate) {
+        feedbackCount = rate.createdAt.count
     }
 }

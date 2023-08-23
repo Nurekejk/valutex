@@ -51,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } catch {
             isAuthorized = false
-            print("error while decoding")
+            fatalError("error while decoding")
         }
         return isAuthorized
     }

@@ -11,19 +11,21 @@ import Foundation
 struct Rate: Codable {
     var fullName: String
     var score: Int
-    var comment: String
+    var comment, createdAt: String
 
     enum CodingKeys: String, CodingKey {
         case fullName = "full_name"
         case score, comment
+        case createdAt = "created_at"
     }
-    
-    init(fullName: String, score: Int, comment: String) {
+    init(fullName: String, score: Int, comment: String, createdAt: String) {
         self.fullName = fullName
         self.score = score
         self.comment = comment
+        self.createdAt = createdAt
     }
 }
+
 struct RateResponse: Codable {
     let Message: String
 }
