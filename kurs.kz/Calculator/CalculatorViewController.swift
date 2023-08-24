@@ -9,11 +9,42 @@ import UIKit
 import SnapKit
 
 final class CalculatorViewController: UIViewController {
-    
+
+    var exchangers: [Exchanger] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var filteredArray: [Exchanger] = []
+
+    private var isBuying: Bool = true {
+        didSet {
+            if isBuying {
+                headerView.makeRightTenge()
+            } else {
+                headerView.makeLeftTenge()
+            }
+//            tableView.reloadData()
+        }
+    }
+
+    // MARK: - State
+
+    public static let defaultsCurrencyKey = "savedCurrency"
+
+    // MARK: Dependencies
+
+    private let service = CalculatorService()
+
+    // MARK: - Properties
+
+    private let defaults = UserDefaults.standard
+
     // MARK: - UI
     
     private lazy var headerView: CalculatorTableViewHeaderView = {
         let headerView = CalculatorTableViewHeaderView()
+        headerView.delegate = self
         headerView.backgroundColor = AppColor.gray10.uiColor
         return headerView
     }()
@@ -35,6 +66,7 @@ final class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getExchangers(currencyCode: "USD", cityId: 1)
     }
 
     // MARK: - Setup Views
@@ -48,6 +80,15 @@ final class CalculatorViewController: UIViewController {
         tableView.layer.cornerRadius = 8
     }
     
+    private func getExchangers(currencyCode: String, cityId: Int) {
+        CalculatorService().fetchExchangers(currencyCode: currencyCode,
+                                            cityId: cityId) { fetchedExchangers in
+            self.exchangers = fetchedExchangers
+        
+            print("the exchangers are \(self.exchangers)")
+        }
+    }
+    
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
@@ -58,32 +99,47 @@ final class CalculatorViewController: UIViewController {
     }
 }
 
+extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
+    func textfieldDidChange() {
+        tableView.reloadData()
+    }
+    
+    func dropDownButtonDidPressed(position: ButtonPosition) {
+        let modalScreen = CurrencySelectorViewController()
+        modalScreen.delegate = self
+        modalScreen.position = position
+        self.presentPanModal(modalScreen)
+    }
+}
+extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
+    func currencyDidSelect(currency: Currency) {
+        
+    }
+
+    func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition) {
+        self.isBuying = position == .LEFT
+        headerView.updateCurrency(currency: currency, position: position)
+        // city id is being hardcoded
+        getExchangers(currencyCode: currency.code, cityId: 1)
+    }
+}
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return exchangers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: CalculatorTableViewCell.reuseIdentifier,
-            for: indexPath) as? CalculatorTableViewCell else {
-            fatalError("Could not cast to CalculatorTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                                                        CalculatorTableViewCell.reuseIdentifier,
+                                                       for:
+                                                        indexPath) as? CalculatorTableViewCell
+        else {
+            fatalError("Could not dequeue reusable cell")
         }
-        switch indexPath.row {
-        case 0:
-            let cellData = CellData(migLogoImage: UIImage(named: "exchange_logo"),
-                                    titleLabel: "MИГ",
-                                    starImage: AppImage.golden_star.uiImage,
-                                    rateLabel: "4,9 (15)",
-                                    addressLabel: "ул. Толе Би, 297 г, уг. ул. Тлендиева",
-                                    kmLabel: "1 км",
-                                    dateLabel: "1 октября, 2023 18:00:00",
-                                    amountLabel: "1000,01")
-            cell.configureCell(data: cellData)
-        default:
-            break
-        }
+        cell.backgroundColor = view.backgroundColor
+        cell.update(with: exchangers[indexPath.row],
+                    value: Float(headerView.currencyTextField.text ?? "0") ?? 1.0, isBuying: isBuying)
         return cell
     }
 }
