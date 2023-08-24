@@ -151,8 +151,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-4)
         }
         borderView.snp.makeConstraints { make in

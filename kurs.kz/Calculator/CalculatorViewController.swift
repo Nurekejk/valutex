@@ -24,7 +24,7 @@ final class CalculatorViewController: UIViewController {
             } else {
                 headerView.makeLeftTenge()
             }
-//            tableView.reloadData()
+            //            tableView.reloadData()
         }
     }
 
@@ -64,27 +64,37 @@ final class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNavigation()
         setupViews()
         setupConstraints()
         getExchangers(currencyCode: "USD", cityId: 1)
     }
 
+    // MARK: - Setup Navigation Bar
+
+    private func setupNavigation() {
+        self.navigationItem.title = "Калькулятор"
+        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: AppImage.arrow_back.uiImage,
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(backButtonDidPressed))
+
+    }
+
     // MARK: - Setup Views
     
     private func setupViews() {
+        view.backgroundColor = AppColor.gray10.uiColor
         tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.layer.cornerRadius = 8
-    }
-    
+
     private func getExchangers(currencyCode: String, cityId: Int) {
         CalculatorService().fetchExchangers(currencyCode: currencyCode,
                                             cityId: cityId) { fetchedExchangers in
             self.exchangers = fetchedExchangers
-        
+
             print("the exchangers are \(self.exchangers)")
         }
     }
@@ -94,8 +104,16 @@ final class CalculatorViewController: UIViewController {
     private func setupConstraints() {
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 96)
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func backButtonDidPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

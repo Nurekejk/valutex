@@ -158,7 +158,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                navigationController?.pushViewController(LanguageAppViewController(),
+                let controller = LanguageAppViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 1:
                 let controller = SelectCityViewController()
@@ -166,24 +168,28 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(controller,
                                                          animated: true)
             case 2:
-                navigationController?.pushViewController(ToSupportViewController(),
+                let controller = ToSupportViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 3:
-                navigationController?.pushViewController(AboutCompanyViewController(
-                    service: AboutCompanyPageService()),
+                let controller = AboutCompanyViewController(service: AboutCompanyPageService())
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 4:
-                navigationController?.pushViewController(
-                    AboutCompanyViewController(service: AboutCompanyPageService()),
-                    animated: true)
+                let controller = FaqViewController(service: FaqPageService())
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller, animated: true)
 
             default:
                 navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)
             }
         } else {
-            navigationController?.pushViewController(NationalBankCourseViewController(
-                service: NationalBankPageService()),
+            let controller = NationalBankCourseViewController(service: NationalBankPageService())
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller,
                                                      animated: true)
         }
     }

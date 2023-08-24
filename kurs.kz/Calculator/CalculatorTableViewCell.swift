@@ -207,11 +207,10 @@ final class CalculatorTableViewCell: UITableViewCell {
             make.trailing.equalTo(rateLabel.snp.leading)
             make.height.equalTo(18)
         }
+
         rateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-12)
             make.trailing.equalToSuperview().offset(-12)
-            make.height.equalTo(20)
-            make.width.equalTo(64)
         }
     }
 }
