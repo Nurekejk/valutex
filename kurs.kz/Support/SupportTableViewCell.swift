@@ -58,7 +58,6 @@ final class SupportTableViewCell: UITableViewCell {
             make.height.equalTo(19)
             make.width.equalTo(19)
         }
-        
         supportLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalTo(supportImageView.snp.trailing).offset(19)

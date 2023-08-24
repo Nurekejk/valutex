@@ -17,7 +17,6 @@ final class ToSupportViewController: UIViewController {
         tableView.rowHeight = 54
         return tableView
     }()
-    
     private let supportOptions: [(image: UIImage?, title: String)] = [
         (AppImage.telegram_icon.uiImage, "Telegram"),
         (AppImage.whatsapp_icon.uiImage, "WhatsApp")
@@ -26,7 +25,6 @@ final class ToSupportViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigationBar()
         setupViews()
         setupConstraints()
@@ -75,7 +73,6 @@ extension ToSupportViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return supportOptions.count
     }
-    
     func tableView( _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SupportTableViewCell.identifier,
                                                        for: indexPath) as? SupportTableViewCell else {
@@ -87,35 +84,29 @@ extension ToSupportViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
-
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
-
             case 0:
                 openTelegram()
-
             case 1:
                 openWhatsApp()
-
             default:
                 break
             }
         }
     }
-
+    // swiftlint: disable all
     private func openTelegram() {
-        let telegramURL = URL(string: "https://t.me/+77052511606")
-        if UIApplication.shared.canOpenURL(telegramURL!) {
-            UIApplication.shared.open(telegramURL!, options: [:], completionHandler: nil)
+        if let telegramURL = URL(string: "https://t.me/+77052511606"), UIApplication.shared.canOpenURL(telegramURL) {
+            UIApplication.shared.open(telegramURL, options: [:], completionHandler: nil)
         } else {
-            let appStoreURL = URL(string: "https://apps.apple.com/app/telegram-messenger/id686449807")!
-            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+            if let appStoreURL = URL(string: "https://apps.apple.com/app/telegram-messenger/id686449807") {
+                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+            }
         }
     }
-    // swiftlint: disable all
     private func openWhatsApp() {
         let urlString = "https://api.whatsapp.com/send/?phone=77052511606&text=%D0%B4%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C,%20%D0%BC%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%B0%20%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0,%20%D0%B2%20%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20..."
-
         if let whatsappURL = URL(string: urlString) {
             if UIApplication.shared.canOpenURL(whatsappURL) {
                 UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
