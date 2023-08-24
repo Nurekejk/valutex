@@ -18,6 +18,7 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    
     private let defaults = UserDefaults.standard
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {

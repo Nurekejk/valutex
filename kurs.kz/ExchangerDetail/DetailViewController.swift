@@ -22,7 +22,7 @@ final class DetailViewController: UIViewController {
     private let topSections = 3
     private var name: String = ""
     private var address: String = ""
-    private var score: Int = 0
+    private var score: Float = 0.0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -189,7 +189,7 @@ final class DetailViewController: UIViewController {
             workingHours.append(fullTime)
         }
         let workingHoursSection = DetailSection(name: "Время работы",
-                                                iconImage: AppImage.clock.uiImage,
+                                                iconImage: AppImage.sms.uiImage,
                                                 items: workingHours)
         // Emails Section
         let emails = [details.email]

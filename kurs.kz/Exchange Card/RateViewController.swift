@@ -182,7 +182,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.top.equalTo(entireStackView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(92)
+            make.bottom.equalToSuperview()
         }
     }
     
