@@ -81,7 +81,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
                    let phoneNumber = response.user?.phone {
                     fullNameLabel.text = name + "" + surname
                     
-                    phoneNumberLabel.text = phoneNumber
+                    phoneNumberLabel.text = format(with: "+X (XXX) XXX-XX-XX", phone: phoneNumber)
                     
                 }
             } catch {
@@ -90,7 +90,26 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         } else {
             return
         }
-        
+    }
+    
+    // MARK: - Action
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
     }
     
     // MARK: - Setup Constraints
