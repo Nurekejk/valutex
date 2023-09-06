@@ -44,16 +44,19 @@ final class CalculatorViewController: UIViewController {
     private lazy var headerView: CalculatorTableViewHeaderView = {
         let headerView = CalculatorTableViewHeaderView()
         headerView.delegate = self
-        headerView.backgroundColor = AppColor.gray10.uiColor
         return headerView
     }()
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         tableView.dataSource  = self
         tableView.delegate = self
         tableView.register(CalculatorTableViewCell.self,
                            forCellReuseIdentifier: CalculatorTableViewCell.reuseIdentifier)
-        tableView.tableHeaderView = headerView
+        tableView.register(CalculatorTableViewHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: CalculatorTableViewHeaderView.identifier)
         tableView.rowHeight = 87
         tableView.separatorStyle = .none
         return tableView
@@ -71,6 +74,7 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Setup Views
     
     private func setupViews() {
+        view.backgroundColor = AppColor.gray10.uiColor
         tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
@@ -87,18 +91,25 @@ final class CalculatorViewController: UIViewController {
             print("the exchangers are \(self.exchangers)")
         }
     }
-    
     // MARK: - Setup Constraints
     
     private func setupConstraints() {
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 96)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 96)
+        let tableWidth = UIScreen.main.bounds.width - 32
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(16)
+            make.width.equalTo(tableWidth)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
         }
     }
 }
 
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
+    func swapButtonDidPress() {
+        isBuying = !isBuying
+    }
+    
     func textfieldDidChange() {
         tableView.reloadData()
     }
@@ -125,8 +136,15 @@ extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension CalculatorViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        96
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exchangers.count
+//        return exchangers.count
+        0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:
