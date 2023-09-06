@@ -126,6 +126,7 @@
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */; };
+		FA254B392AA8A85300831444 /* DPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA254B382AA8A85300831444 /* DPImageView.swift */; };
 		FA357BC22A58B35A005D5271 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */; };
 		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
 		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
@@ -260,6 +261,7 @@
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerListService.swift; sourceTree = "<group>"; };
+		FA254B382AA8A85300831444 /* DPImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPImageView.swift; sourceTree = "<group>"; };
 		FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
 		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				99C1583F2A5EA1FE001091F7 /* ProfileViewController.swift */,
 				99C158472A5EBC42001091F7 /* ProfileTableViewCell.swift */,
 				9952D3252A602E47002321E8 /* ProfileTableHeaderView.swift */,
+				FA254B382AA8A85300831444 /* DPImageView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */,
 				8F06DEA92A61B0C800637A68 /* CurrencyInformationTableHeaderView.swift in Sources */,
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
+				FA254B392AA8A85300831444 /* DPImageView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
 				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
