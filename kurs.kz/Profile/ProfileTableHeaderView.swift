@@ -79,10 +79,13 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
                 if let name = response.user?.name,
                    let surname = response.user?.surname,
                    let phoneNumber = response.user?.phone {
-                    fullNameLabel.text = name + "" + surname
-                    
+                    let fullName = name + " " + surname
+                    fullNameLabel.text = fullName
                     phoneNumberLabel.text = format(with: "+X (XXX) XXX-XX-XX", phone: phoneNumber)
-                    
+                    avatarImageView.setImage(string: fullName,
+                                             color: AppColor.primarySecondary.uiColor,
+                                             circular: true,
+                                             stroke: false)
                 }
             } catch {
                 print("error while decoding")
@@ -91,7 +94,6 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
             return
         }
     }
-    
     // MARK: - Action
     private func format(with mask: String, phone: String) -> String {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
