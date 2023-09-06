@@ -205,6 +205,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         clearButton.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            make.size.equalTo(16)
         }
         gapView.snp.makeConstraints { make in
             make.top.equalTo(containerView)
