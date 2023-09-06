@@ -13,6 +13,16 @@ struct SignInRequest: Encodable {
 }
 
 struct SignInResponse: Codable {
-    let access_token: String?
-    let refresh_token: String?
+    let accessToken: String?
+    let refreshToken: String?
+    let user: UserInfo?
+}
+
+struct UserInfo: Codable {
+    let id: Int?
+    let name: String?
+    let surname: String?
+    let phone: String?
+    let status: String?
+    let role: String?
 }
