@@ -10,6 +10,9 @@ import SnapKit
 import PanModal
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
+    // MARK: - Static
+    static let identifier = String(describing: CalculatorTableViewHeaderView.self)
+    
     weak var delegate: CalculatorTableViewHeaderViewDelegate?
     // MARK: - UI
 
@@ -126,7 +129,6 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.addSubview(containerView)
-        containerView.addSubview(borderView)
         borderView.backgroundColor = AppColor.gray10.uiColor
     }
     
@@ -145,60 +147,57 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-4)
+            make.edges.equalToSuperview()
         }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
-            make.top.equalToSuperview().offset(45)
+            make.top.equalTo(containerView.snp.top).offset(45)
             make.leading.equalTo(containerView.snp.leading)
             make.trailing.equalTo(containerView.snp.trailing)
         }
         currencyImageLabelLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.top.equalTo(containerView.snp.top).offset(16)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
         }
         currencyLabelLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
+            make.top.equalTo(containerView.snp.top).offset(14)
             make.leading.equalTo(currencyImageLabelLeft.snp.trailing).offset(16)
         }
         dropDownButtonLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalTo(containerView.snp.top).offset(16)
             make.leading.equalTo(currencyLabelLeft.snp.trailing).offset(16)
         }
         separatorLineImageLeft.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalTo(containerView.snp.top).offset(8)
             make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42)
         }
         arrowLeftRightButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalTo(containerView.snp.top).offset(16)
             make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
         }
         separatorLineImageRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalTo(containerView.snp.top).offset(8)
             make.leading.equalTo(arrowLeftRightButton.snp.trailing).offset(12)
         }
         dropDownButtonRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-18.5)
+            make.top.equalTo(containerView.snp.top).offset(16)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-18.5)
         }
         currencyLabelRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
+            make.top.equalTo(containerView.snp.top).offset(14)
             make.trailing.equalTo(dropDownButtonRight.snp.leading).offset(-16)
         }
         currencyImageLabelRight.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalTo(containerView.snp.top).offset(16)
             make.trailing.equalTo(currencyLabelRight.snp.leading).offset(-16)
         }
         currencyTextField.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalTo(containerView.snp.leading).offset(16)
         }
         clearButton.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-16)
         }
     }
 
@@ -210,7 +209,6 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     @objc private func textFieldDidChange() {
         delegate?.textfieldDidChange()
     }
-    var currencySwapped = false
 
     @objc func arrowLeftRightButtonDidPressed() {
         delegate?.swapButtonDidPress()
