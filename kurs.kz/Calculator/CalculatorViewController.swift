@@ -24,7 +24,6 @@ final class CalculatorViewController: UIViewController {
             } else {
                 headerView.makeLeftTenge()
             }
-//            tableView.reloadData()
         }
     }
 
