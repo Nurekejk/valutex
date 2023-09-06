@@ -70,14 +70,12 @@ final class CurrencySelectorViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.separatorStyle = .none
         tableView.register(CurrencySelectorTableViewHeader.self,
                            forHeaderFooterViewReuseIdentifier: CurrencySelectorTableViewHeader.identifier)
         tableView.register(CurrencySelectorTableViewCell.self,
                            forCellReuseIdentifier: CurrencySelectorTableViewCell.identifier)
         tableView.rowHeight = 56
-        tableView.tableHeaderView = headerView
         tableView.isSkeletonable = true
         return tableView
     }()
@@ -172,6 +170,12 @@ final class CurrencySelectorViewController: UIViewController {
 
     // MARK: - UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        52
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         isSearching ? filteredCurrencies.count : currencies.count
     }
