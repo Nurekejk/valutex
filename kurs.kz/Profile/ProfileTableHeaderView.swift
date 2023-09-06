@@ -12,6 +12,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - State
     static let reuseID = String(describing: ProfileTableHeaderView.self)
+    private let defaults = UserDefaults.standard
     
     // MARK: - UI
     private lazy var avatarImageView: UIImageView = {
@@ -22,7 +23,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Aidos Tazhigulov"
+        label.text = ""
         label.font = AppFont.bold.s20()
         label.textColor = AppColor.gray100.uiColor
         label.numberOfLines = 0
@@ -31,7 +32,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "+7(707) 303-22-00"
+        label.text = ""
         label.numberOfLines = 0
         label.font = AppFont.regular.s14()
         label.textColor = AppColor.gray50.uiColor
@@ -53,6 +54,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         
         setupViews()
         setupConstraints()
+        getUserData()
     }
     
     required init?(coder: NSCoder) {
@@ -66,6 +68,29 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         userInformationStackView.addArrangedSubview(phoneNumberLabel)
         
         contentView.addSubview(userInformationStackView)
+    }
+    
+    // MARK: - Defaults
+    private func getUserData() {
+        if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
+            do {
+                let response = try JSONDecoder().decode(SignInResponse.self, from: data)
+                print("userInfo is \(response)")
+                if let name = response.user?.name,
+                   let surname = response.user?.surname,
+                   let phoneNumber = response.user?.phone {
+                    fullNameLabel.text = name + "" + surname
+                    
+                    phoneNumberLabel.text = phoneNumber
+                    
+                }
+            } catch {
+                print("error while decoding")
+            }
+        } else {
+            return
+        }
+        
     }
     
     // MARK: - Setup Constraints
