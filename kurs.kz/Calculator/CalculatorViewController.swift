@@ -68,7 +68,13 @@ final class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupNavigationBar()
         getExchangers(currencyCode: "USD", cityId: 1)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.layer.cornerRadius = 8
     }
 
     // MARK: - Setup Views
@@ -78,9 +84,10 @@ final class CalculatorViewController: UIViewController {
         tableView.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.layer.cornerRadius = 8
+    // MARK: - Setup Navigation
+    
+    private func setupNavigationBar() {
+        self.title = "Калькулятор"
     }
     
     private func getExchangers(currencyCode: String, cityId: Int) {
