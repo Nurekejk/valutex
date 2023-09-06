@@ -87,7 +87,7 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Да",
                                       style: .destructive,
                                       handler: { _ in
-            self.defaults.removeObject(forKey: SignInViewController.defaultsTokensKey)
+            self.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
             self.navigationController?.setViewControllers([SignInViewController()], animated: false)
         }))
         alert.addAction(UIAlertAction(title: "Нет",

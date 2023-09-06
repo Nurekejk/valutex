@@ -14,7 +14,7 @@ final class SignInViewController: UIViewController {
     // MARK: - State
 
     private let service = SignInService()
-    public static let defaultsTokensKey = "accessTokens"
+    public static let defaultsUserAndTokensKey = "accessTokens"
 
     // MARK: - UI
 
@@ -231,9 +231,10 @@ final class SignInViewController: UIViewController {
         service.signIn(phone: formatedPhoneNumber, password: password) { result in
             switch result {
             case .success(let data):
+                print("data is \(data)")
                 let defaults = UserDefaults.standard
                 if let data = try? JSONEncoder().encode(data) {
-                    defaults.setValue(data, forKey: SignInViewController.defaultsTokensKey)
+                    defaults.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
                     let tabbarController = MainTabBarViewController()
                     tabbarController.navigationItem.hidesBackButton = true
                     tabbarController.modalPresentationStyle = .overFullScreen

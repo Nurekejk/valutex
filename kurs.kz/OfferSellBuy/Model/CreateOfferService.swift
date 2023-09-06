@@ -32,7 +32,7 @@ final class CreateOfferService {
             "Content-Type": "application/json",
         ]
         let defaults = UserDefaults.standard
-        if let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) {
+        if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             do {
                 let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
                 if let accessToken = tokens.access_token {
