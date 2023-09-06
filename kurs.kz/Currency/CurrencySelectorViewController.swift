@@ -70,6 +70,9 @@ final class CurrencySelectorViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         tableView.separatorStyle = .none
         tableView.register(CurrencySelectorTableViewHeader.self,
                            forHeaderFooterViewReuseIdentifier: CurrencySelectorTableViewHeader.identifier)
