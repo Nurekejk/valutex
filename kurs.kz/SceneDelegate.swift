@@ -21,10 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         if isAuthorized() {
-            window?.rootViewController = CalculatorViewController()
+            window?.rootViewController =
+            UINavigationController(rootViewController: MainPageViewController())
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: CalculatorViewController())
+            UINavigationController(rootViewController: MainPageViewController())
         }
         window?.makeKeyAndVisible()
     }
