@@ -100,6 +100,10 @@ final class CalculatorViewController: UIViewController {
 }
 
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
+    func swapButtonDidPress() {
+        
+    }
+    
     func textfieldDidChange() {
         tableView.reloadData()
     }
