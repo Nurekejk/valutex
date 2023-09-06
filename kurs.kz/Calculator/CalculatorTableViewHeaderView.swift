@@ -15,7 +15,12 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     
     weak var delegate: CalculatorTableViewHeaderViewDelegate?
     // MARK: - UI
-
+    
+    private lazy var gapView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -128,6 +133,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         }
         contentView.backgroundColor = AppColor.gray10.uiColor
         containerView.backgroundColor = AppColor.grayWhite.uiColor
+        contentView.addSubview(gapView)
         contentView.addSubview(containerView)
         borderView.backgroundColor = AppColor.gray10.uiColor
     }
@@ -147,7 +153,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.top.trailing.equalToSuperview()
+            make.height.equalTo(96)
         }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
@@ -198,6 +205,11 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         clearButton.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
             make.trailing.equalTo(containerView.snp.trailing).offset(-16)
+        }
+        gapView.snp.makeConstraints { make in
+            make.top.equalTo(containerView)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(24)
         }
     }
 
