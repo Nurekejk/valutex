@@ -11,7 +11,21 @@ import PanModal
 
 final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Static
+    
     static let identifier = String(describing: CalculatorTableViewHeaderView.self)
+    
+    // MARK: - Properties
+    private var leftCurrency: Currency? {
+        didSet {
+
+        }
+    }
+    
+    private var rightCurrency: Currency? {
+        didSet {
+
+        }
+    }
     
     weak var delegate: CalculatorTableViewHeaderViewDelegate?
     // MARK: - UI
