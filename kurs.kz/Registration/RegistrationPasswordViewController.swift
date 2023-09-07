@@ -53,13 +53,17 @@ final class RegistrationPasswordViewController: UIViewController {
         return container
     }()
     
-    private let enterPasswordButton: UIButton = {
+    private lazy var enterPasswordButton: UIButton = {
         let button = ShowHideTextButton()
         button.addTarget(self, action:  #selector(enterPasswordButtonDidPress), for: .touchUpInside)
         return button
     }()
     
-    private let repeatPasswordButton = ShowHideTextButton()
+    private lazy var repeatPasswordButton: UIButton = {
+        let button = ShowHideTextButton()
+        button.addTarget(self, action:  #selector(repeatPasswordButtonDidPress), for: .touchUpInside)
+        return button
+    }()
     
     private let textLabel: UILabel = {
         let label = UILabel()
@@ -242,7 +246,9 @@ final class RegistrationPasswordViewController: UIViewController {
     @objc private func enterPasswordButtonDidPress() {
         enterPasswordTextField.isSecureTextEntry = true
     }
-    
+    @objc private func repeatPasswordButtonDidPress() {
+        
+    }
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
         SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
