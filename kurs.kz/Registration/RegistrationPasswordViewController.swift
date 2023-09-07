@@ -53,7 +53,11 @@ final class RegistrationPasswordViewController: UIViewController {
         return container
     }()
     
-    private let enterPasswordButton = ShowHideTextButton()
+    private let enterPasswordButton: UIButton = {
+        let button = ShowHideTextButton()
+        button.addTarget(self, action:  #selector(enterPasswordButtonDidPress), for: .touchUpInside)
+        return button
+    }()
     
     private let repeatPasswordButton = ShowHideTextButton()
     
@@ -152,7 +156,7 @@ final class RegistrationPasswordViewController: UIViewController {
         containerView.backgroundColor = AppColor.grayWhite.uiColor
     }
     
-    // MARK: - Constraints:
+    // MARK: - Setup Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -233,6 +237,10 @@ final class RegistrationPasswordViewController: UIViewController {
 
     @objc private func backButtonDidPress() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func enterPasswordButtonDidPress() {
+        enterPasswordTextField.isSecureTextEntry = true
     }
     
     // MARK: - SnackBar
