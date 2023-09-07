@@ -15,17 +15,30 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     static let identifier = String(describing: CalculatorTableViewHeaderView.self)
     
     // MARK: - Properties
-    private var leftCurrency: Currency? {
+    private var leftCurrency = Currency(flag: "🇰🇿",
+                                        russianName: "тенге",
+                                        symbol: "₸",
+                                        code: "KZT",
+                                        kazakhName: "теңге",
+                                        englishName: "tenge") {
         didSet {
-
+            currencyLabelLeft.text = leftCurrency.code
+            currencyImageLabelLeft.text = leftCurrency.flag
         }
     }
     
-    private var rightCurrency: Currency? {
-        didSet {
-
-        }
-    }
+    private var rightCurrency = Currency(flag: "🇺🇸",
+                                         russianName: "доллар",
+                                         symbol: "$",
+                                         code: "USD",
+                                         kazakhName: "доллар",
+                                         englishName: "Dollar") {
+         
+         didSet {
+             currencyLabelRight.text = rightCurrency.code
+             currencyImageLabelRight.text = rightCurrency.flag
+         }
+     }
     
     weak var delegate: CalculatorTableViewHeaderViewDelegate?
     // MARK: - UI
@@ -215,6 +228,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         currencyTextField.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
             make.leading.equalTo(containerView.snp.leading).offset(16)
+            make.width.equalTo(283)
+            make.height.equalTo(22)
         }
         clearButton.snp.makeConstraints { make in
             make.top.equalTo(currencyImageLabelLeft.snp.bottom).offset(26)
@@ -238,7 +253,11 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     @objc func arrowLeftRightButtonDidPressed() {
-        delegate?.swapButtonDidPress()
+        if currencyLabelLeft.text == "KZT" {
+            delegate?.swapButtonDidPress(currencySwapped: rightCurrency, at: .RIGHT)
+        } else {
+            delegate?.swapButtonDidPress(currencySwapped: leftCurrency, at: .LEFT)
+        }
     }
 
     @objc private func clearButtonDidPressed() {
@@ -249,11 +268,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // swiftlint:enable all
     public func updateCurrency(currency: Currency, position: ButtonPosition) {
         if position == .LEFT {
-            currencyLabelLeft.text = currency.code
-            currencyImageLabelLeft.text = currency.flag
+            leftCurrency = currency
         } else {
-            currencyLabelRight.text = currency.code
-            currencyImageLabelRight.text = currency.flag
+            rightCurrency = currency
         }
     }
 }
@@ -261,5 +278,5 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
 protocol CalculatorTableViewHeaderViewDelegate: AnyObject {
     func dropDownButtonDidPressed(position: ButtonPosition)
     func textfieldDidChange()
-    func swapButtonDidPress()
+    func swapButtonDidPress(currencySwapped: Currency, at position: ButtonPosition)
 }

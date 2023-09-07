@@ -20,9 +20,9 @@ final class CalculatorViewController: UIViewController {
     private var isBuying: Bool = true {
         didSet {
             if isBuying {
-                headerView.makeRightTenge()
-            } else {
                 headerView.makeLeftTenge()
+            } else {
+                headerView.makeRightTenge()
             }
         }
     }
@@ -89,13 +89,12 @@ final class CalculatorViewController: UIViewController {
     private func setupNavigationBar() {
         self.title = "Калькулятор"
     }
+    // MARK: - Action
     
     private func getExchangers(currencyCode: String, cityId: Int) {
         CalculatorService().fetchExchangers(currencyCode: currencyCode,
                                             cityId: cityId) { fetchedExchangers in
             self.exchangers = fetchedExchangers
-        
-            print("the exchangers are \(self.exchangers)")
         }
     }
     // MARK: - Setup Constraints
@@ -112,9 +111,25 @@ final class CalculatorViewController: UIViewController {
     }
 }
 
+// MARK: - Extension
+
 extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
-    func swapButtonDidPress() {
-        isBuying = !isBuying
+    func swapButtonDidPress(currencySwapped: Currency, at position: ButtonPosition) {
+        let newPosition: ButtonPosition
+        if position == .RIGHT {
+            isBuying = false
+            newPosition = .LEFT
+            headerView.makeRightTenge()
+        } else {
+            isBuying = true
+            newPosition = .RIGHT
+            headerView.makeLeftTenge()
+        }
+        headerView.updateCurrency(currency: currencySwapped, position: newPosition)
+        
+        // city id is being hardcoded
+        getExchangers(currencyCode: currencySwapped.code, cityId: 1)
+        tableView.reloadData()
     }
     
     func textfieldDidChange() {
@@ -134,7 +149,7 @@ extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
     }
 
     func currencyDidSelectInCalculator(currency: Currency, position: ButtonPosition) {
-        self.isBuying = position == .LEFT
+        self.isBuying = position == .RIGHT
         headerView.updateCurrency(currency: currency, position: position)
         // city id is being hardcoded
         getExchangers(currencyCode: currency.code, cityId: 1)
