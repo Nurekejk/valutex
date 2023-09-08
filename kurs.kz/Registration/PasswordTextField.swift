@@ -6,12 +6,31 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
-final class PasswordTextField: UITextField {
+final class PasswordTextField: SkyFloatingLabelTextField {
     
     let rightViewWidth: CGFloat = 24.0
     let rightViewHeight: CGFloat = 24.0
     let trimValue: CGFloat = 30
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        
+        let customRightView = ShowHideTextButton()
+        
+        self.rightView = customRightView
+        self.rightViewMode = .always 
+    }
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let padding: CGFloat = 16.0
