@@ -21,5 +21,6 @@ final class ShowHideTextButton: UIButton {
     
     func setupButton() {
         setImage(AppImage.eye_slash.uiImage, for: .normal)
+        setImage(AppImage.eye.uiImage?.withTintColor(AppColor.gray50.uiColor), for: .selected)
     }
 }

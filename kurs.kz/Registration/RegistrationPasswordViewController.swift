@@ -53,10 +53,6 @@ final class RegistrationPasswordViewController: UIViewController {
         return container
     }()
     
-    private let enterPasswordButton = ShowHideTextButton()
-    
-    private let repeatPasswordButton = ShowHideTextButton()
-    
     private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -66,19 +62,15 @@ final class RegistrationPasswordViewController: UIViewController {
         return label
     }()
     
-    private let enterPasswordTextField: PasswordTextField = {
-        let textField = PasswordTextField()
-        textField.textColor = AppColor.gray100.uiColor
-        textField.rightViewMode = .always
-        textField.placeholder = "Пароль"
+    private lazy var enterPasswordTextField: PasswordTextField = {
+        let textField = PasswordTextField(isRepeatPassword: false)
+        textField.button.addTarget(self, action: #selector(enterPasswordButtonDidPress), for: .touchUpInside)
         return textField
     }()
     
-    private let repeatPasswordTextField: PasswordTextField = {
-        let textField = PasswordTextField()
-        textField.textColor = AppColor.gray100.uiColor
-        textField.rightViewMode = .always
-        textField.placeholder = "Повторите пароль"
+    private lazy var repeatPasswordTextField: PasswordTextField = {
+        let textField = PasswordTextField(isRepeatPassword: true)
+        textField.button.addTarget(self, action: #selector(repeatPasswordButtonDidPress), for: .touchUpInside)
         return textField
     }()
     
@@ -119,9 +111,6 @@ final class RegistrationPasswordViewController: UIViewController {
 
         continueButton.layer.cornerRadius = 12
         elementsStackView.layer.cornerRadius = 8
-
-        enterPasswordButton.layer.cornerRadius = 8
-        repeatPasswordButton.layer.cornerRadius = 8
         
         enterPasswordTextField.layer.borderColor = AppColor.gray20.cgColor
         enterPasswordTextField.layer.borderWidth = 1
@@ -141,9 +130,6 @@ final class RegistrationPasswordViewController: UIViewController {
         [enterPasswordTextField, repeatPasswordTextField].forEach { passwordStackView.addArrangedSubview($0) }
         containerView.addSubview(continueButton)
         
-        enterPasswordTextField.rightView = enterPasswordButton
-        repeatPasswordTextField.rightView = repeatPasswordButton
-        
         view.backgroundColor = AppColor.gray10.uiColor
 
         passwordStackView.backgroundColor = AppColor.grayWhite.uiColor
@@ -152,7 +138,7 @@ final class RegistrationPasswordViewController: UIViewController {
         containerView.backgroundColor = AppColor.grayWhite.uiColor
     }
     
-    // MARK: - Constraints:
+    // MARK: - Setup Constraints:
     private func setupConstraints() {
         elementsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -235,6 +221,14 @@ final class RegistrationPasswordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc private func enterPasswordButtonDidPress() {
+        enterPasswordTextField.buttonIsSelected = !enterPasswordTextField.buttonIsSelected
+        enterPasswordTextField.isSecureTextEntry = !enterPasswordTextField.buttonIsSelected
+    }
+    @objc private func repeatPasswordButtonDidPress() {
+        repeatPasswordTextField.buttonIsSelected = !repeatPasswordTextField.buttonIsSelected
+        repeatPasswordTextField.isSecureTextEntry = !repeatPasswordTextField.buttonIsSelected
+    }
     // MARK: - SnackBar
     private func showSnackBar(message: String) {
         SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)

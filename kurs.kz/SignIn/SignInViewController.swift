@@ -60,21 +60,10 @@ final class SignInViewController: UIViewController {
 
     }()
 
-    private lazy var passwordTextField: CustomSkyFloatingLabelTextField = {
-        let textField = CustomSkyFloatingLabelTextField()
-
-        textField.placeholder = "Пароль"
-        textField.placeholderColor = AppColor.gray50.uiColor
-        textField.placeholderFont = AppFont.regular.s16()
-
-        textField.title = "Пароль"
-        textField.titleColor = UIColor.lightGray
-        textField.titleLabel.font = AppFont.regular.s12()
-        textField.selectedTitleColor = AppColor.gray50.uiColor
-        textField.textColor = AppColor.gray100.uiColor
-        textField.isSecureTextEntry = true
-        textField.keyboardType = .default
-        textField.lineView.isHidden = true
+    private lazy var passwordTextField: PasswordTextField = {
+        let textField = PasswordTextField(isRepeatPassword: false)
+        
+        textField.button.addTarget(self, action: #selector(showHideButtonPressed), for: .touchUpInside)
         return textField
 
     }()
@@ -134,10 +123,10 @@ final class SignInViewController: UIViewController {
 
         phoneTextField.layer.cornerRadius = 8
         phoneTextField.layer.borderWidth = 1
-        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        phoneTextField.layer.borderColor = AppColor.gray20.cgColor
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        passwordTextField.layer.borderColor = AppColor.gray20.cgColor
         signInButton.layer.cornerRadius = 12
 
     }
@@ -201,6 +190,10 @@ final class SignInViewController: UIViewController {
 
     @objc private func forgotPasswordButtonDidPressed() {
 
+    }
+    @objc private func showHideButtonPressed() {
+        passwordTextField.buttonIsSelected = !passwordTextField.buttonIsSelected
+        passwordTextField.isSecureTextEntry = !passwordTextField.buttonIsSelected
     }
 
     @objc private func signInButtonDidPressed() {
