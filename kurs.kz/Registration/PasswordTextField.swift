@@ -14,6 +14,13 @@ final class PasswordTextField: SkyFloatingLabelTextField {
     let rightViewHeight: CGFloat = 24.0
     let trimValue: CGFloat = 30
     
+    let button = ShowHideTextButton()
+    
+    var buttonIsSelected = false {
+        didSet {
+            button.isSelected = buttonIsSelected
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -25,11 +32,8 @@ final class PasswordTextField: SkyFloatingLabelTextField {
     }
     
     private func commonInit() {
-        
-        let customRightView = ShowHideTextButton()
-        
-        self.rightView = customRightView
-        self.rightViewMode = .always 
+        self.rightView = button
+        self.rightViewMode = .always
     }
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
