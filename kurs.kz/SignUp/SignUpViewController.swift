@@ -56,7 +56,7 @@ final class SignUpViewController: UIViewController {
         textField.keyboardType = .phonePad
         textField.setTitleVisible(true)
         
-        textField.titleFormatter = { $0 } // autocapitalizes the title
+        textField.titleFormatter = { $0 } 
         textField.selectedTitle = "Телефон"
         textField.lineView.isHidden = true
         
