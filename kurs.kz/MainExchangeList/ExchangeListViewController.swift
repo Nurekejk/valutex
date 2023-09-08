@@ -43,9 +43,11 @@ final class ExchangeListViewController: UIViewController {
             filtersDidChange()
             if nearbySorterIsOn {
                 headerView.resetSorters()
-                nearbySorterButton.backgroundColor = AppColor.primarySecondary.uiColor
+                nearbySorterButton.backgroundColor = AppColor.primaryBase.uiColor
+                nearbySorterButton.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
             } else {
                 nearbySorterButton.backgroundColor = .clear
+                nearbySorterButton.setTitleColor(AppColor.gray50.uiColor, for: .normal)
             }
         }
     }
@@ -53,9 +55,11 @@ final class ExchangeListViewController: UIViewController {
         didSet {
             filtersDidChange()
             if openFilterIsOn {
-                openFilterButton.backgroundColor = AppColor.primarySecondary.uiColor
+                openFilterButton.backgroundColor = AppColor.primaryBase.uiColor
+                openFilterButton.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
             } else {
                 openFilterButton.backgroundColor = .clear
+                openFilterButton.setTitleColor(AppColor.gray50.uiColor, for: .normal)
             }
         }
     }
