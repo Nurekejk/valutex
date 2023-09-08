@@ -108,4 +108,5 @@ enum AppImage: String, AppImageProtocol {
     case filter_down = "filter_down"
     case filter_up = "filter_up"
     case down_arrow = "down_arrow"
+    case eye = "eye"
 }
