@@ -8,11 +8,13 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-final class PasswordTextField: SkyFloatingLabelTextField {
+final class PasswordTextField: PaddedTextField {
     
     let rightViewWidth: CGFloat = 24.0
     let rightViewHeight: CGFloat = 24.0
     let trimValue: CGFloat = 30
+    
+    var isRepeatPassword = false
     
     let button = ShowHideTextButton()
     
@@ -31,9 +33,33 @@ final class PasswordTextField: SkyFloatingLabelTextField {
         commonInit()
     }
     
+    convenience init(isRepeatPassword: Bool) {
+        self.init(frame: .zero)
+        self.isRepeatPassword = isRepeatPassword
+        commonInit()
+    }
+    
     private func commonInit() {
         self.rightView = button
         self.rightViewMode = .always
+        self.isSecureTextEntry = true
+        if isRepeatPassword {
+            self.placeholder = "Повторите пароль"
+            self.title = "Повторите пароль"
+        } else {
+            self.placeholder = "Пароль"
+            self.title = "Пароль"
+        }
+        self.placeholderColor = AppColor.gray50.uiColor
+        self.placeholderFont = AppFont.regular.s16()
+
+        self.titleColor = UIColor.lightGray
+        self.titleLabel.font = AppFont.regular.s12()
+        self.selectedTitleColor = AppColor.gray50.uiColor
+        self.textColor = AppColor.gray100.uiColor
+        self.titleFormatter = { $0 }
+        self.keyboardType = .default
+        self.lineView.isHidden = true
     }
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
