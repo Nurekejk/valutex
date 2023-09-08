@@ -67,7 +67,7 @@ final class OtpRegistrationService {
             }
     }
     
-    func fetchUser (with user: User, completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchUser (with user: User, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "http"
         urlComponent.host = "134.122.66.97"
@@ -91,7 +91,7 @@ final class OtpRegistrationService {
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
-            .responseDecodable(of: String.self) { response in
+            .responseDecodable(of: SignInResponse.self) { response in
                 switch response.result {
                 case .success(let message):
                     completion(.success(message))
