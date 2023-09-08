@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let defaults = UserDefaults.standard
         var isAuthorized = false
 
-        guard let data = defaults.data(forKey: SignInViewController.defaultsTokensKey) else {
+        guard let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) else {
             isAuthorized = false
             return isAuthorized
         }
