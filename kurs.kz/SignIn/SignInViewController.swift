@@ -134,10 +134,10 @@ final class SignInViewController: UIViewController {
 
         phoneTextField.layer.cornerRadius = 8
         phoneTextField.layer.borderWidth = 1
-        phoneTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        phoneTextField.layer.borderColor = AppColor.gray20.cgColor
         passwordTextField.layer.cornerRadius = 8
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = AppColor.grayWhite.cgColor
+        passwordTextField.layer.borderColor = AppColor.gray20.cgColor
         signInButton.layer.cornerRadius = 12
 
     }
