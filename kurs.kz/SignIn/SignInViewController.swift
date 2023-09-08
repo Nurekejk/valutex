@@ -60,8 +60,8 @@ final class SignInViewController: UIViewController {
 
     }()
 
-    private lazy var passwordTextField: CustomSkyFloatingLabelTextField = {
-        let textField = CustomSkyFloatingLabelTextField()
+    private lazy var passwordTextField: PasswordTextField = {
+        let textField = PasswordTextField()
 
         textField.placeholder = "Пароль"
         textField.placeholderColor = AppColor.gray50.uiColor
@@ -75,6 +75,8 @@ final class SignInViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.keyboardType = .default
         textField.lineView.isHidden = true
+        
+        textField.button.addTarget(self, action: #selector(showHideButtonPressed), for: .touchUpInside)
         return textField
 
     }()
@@ -201,6 +203,10 @@ final class SignInViewController: UIViewController {
 
     @objc private func forgotPasswordButtonDidPressed() {
 
+    }
+    @objc private func showHideButtonPressed() {
+        passwordTextField.buttonIsSelected = !passwordTextField.buttonIsSelected
+        passwordTextField.isSecureTextEntry = !passwordTextField.buttonIsSelected
     }
 
     @objc private func signInButtonDidPressed() {
