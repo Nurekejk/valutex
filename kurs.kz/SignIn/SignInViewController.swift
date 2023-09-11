@@ -229,7 +229,7 @@ final class SignInViewController: UIViewController {
                     defaults.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
                     let tabbarController = MainTabBarViewController()
                     tabbarController.navigationItem.hidesBackButton = true
-                    tabbarController.modalPresentationStyle = .overFullScreen
+                    tabbarController.modalPresentationStyle = .fullScreen
                     self.present(tabbarController, animated: true)
                 } else {
                     self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")

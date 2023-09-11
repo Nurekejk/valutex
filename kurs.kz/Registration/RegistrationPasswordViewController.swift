@@ -214,7 +214,7 @@ final class RegistrationPasswordViewController: UIViewController {
                 self.showSuccess()
                 let tabbarController = MainTabBarViewController()
                 tabbarController.navigationItem.hidesBackButton = true
-                tabbarController.modalPresentationStyle = .overFullScreen
+                tabbarController.modalPresentationStyle = .fullScreen
                 self.present(tabbarController, animated: true)
             case .failure:
                 DispatchQueue.main.async {
