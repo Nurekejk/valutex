@@ -202,8 +202,15 @@ final class RegistrationPasswordViewController: UIViewController {
         user.setPassword(password: password)
         
         service.fetchUser(with: self.user) { result in
+
             switch result {
-            case .success:
+            case .success(let data):
+                let defaults = UserDefaults.standard
+                if let data = try? JSONEncoder().encode(data) {
+                    defaults.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
+                } else {
+                    print("something went wrong while writing")
+                }
                 self.showSuccess()
                 let tabbarController = MainTabBarViewController()
                 tabbarController.navigationItem.hidesBackButton = true
