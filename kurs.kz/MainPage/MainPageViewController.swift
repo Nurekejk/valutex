@@ -133,7 +133,7 @@ final class MainPageViewController: UIViewController {
 
     @objc private func skipButtonDidPress() {
         let controller = MainTabBarViewController()
-        controller.modalPresentationStyle = .overFullScreen
+        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
 }

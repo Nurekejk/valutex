@@ -88,7 +88,8 @@ final class ProfileViewController: UIViewController {
                                       style: .destructive,
                                       handler: { _ in
             self.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
-            self.navigationController?.setViewControllers([SignInViewController()], animated: false)
+            self.navigationController?.tabBarController?.tabBar.removeFromSuperview()
+            self.navigationController?.setViewControllers([MainPageViewController()], animated: false)
         }))
         alert.addAction(UIAlertAction(title: "Нет",
                                       style: .cancel,
