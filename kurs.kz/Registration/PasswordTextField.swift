@@ -8,7 +8,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-final class PasswordTextField: PaddedTextField {
+public final class PasswordTextField: PaddedTextField {
     
     let rightViewWidth: CGFloat = 24.0
     let rightViewHeight: CGFloat = 24.0
@@ -50,19 +50,9 @@ final class PasswordTextField: PaddedTextField {
             self.placeholder = "Пароль"
             self.title = "Пароль"
         }
-        self.placeholderColor = AppColor.gray50.uiColor
-        self.placeholderFont = AppFont.regular.s16()
-
-        self.titleColor = UIColor.lightGray
-        self.titleLabel.font = AppFont.regular.s12()
-        self.selectedTitleColor = AppColor.gray50.uiColor
-        self.textColor = AppColor.gray100.uiColor
-        self.titleFormatter = { $0 }
-        self.keyboardType = .default
-        self.lineView.isHidden = true
     }
     
-    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+    public override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         let padding: CGFloat = 16.0
         let middlePointAdjuster = (bounds.height - rightViewHeight) / 2.0
         let rightBounds = CGRect(x: bounds.width - rightViewWidth - padding,
@@ -71,14 +61,14 @@ final class PasswordTextField: PaddedTextField {
                                  height: rightViewHeight)
             return rightBounds
     }
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+    public override func editingRect(forBounds bounds: CGRect) -> CGRect {
 
         return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
     }
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 10, y: 0, width: bounds.width - rightViewWidth - trimValue, height: bounds.height)
     }
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
+    public override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: rightViewWidth + trimValue))
     }
 }
