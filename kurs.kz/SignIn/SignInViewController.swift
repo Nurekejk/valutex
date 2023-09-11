@@ -12,7 +12,7 @@ import InputMask
 
 final class SignInViewController: UIViewController {
     // MARK: - State
-
+    private let textfieldFactory = SkyFloatingLabelTextfieldFactory()
     private let service = SignInService()
     public static let defaultsUserAndTokensKey = "accessTokens"
 
@@ -61,8 +61,7 @@ final class SignInViewController: UIViewController {
     }()
 
     private lazy var passwordTextField: PasswordTextField = {
-        let textField = PasswordTextField(isRepeatPassword: false)
-        
+        let textField = textfieldFactory.getPasswordTextfield()
         textField.button.addTarget(self, action: #selector(showHideButtonPressed), for: .touchUpInside)
         return textField
 
