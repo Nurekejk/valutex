@@ -13,6 +13,7 @@ final class RegistrationPasswordViewController: UIViewController {
     
     private let service: OtpRegistrationService
     private var user: User
+    private let textfieldFactory = SkyFloatingLabelTextfieldFactory()
     
     // MARK: - UI
     private let elementsStackView: UIStackView = {
@@ -63,13 +64,13 @@ final class RegistrationPasswordViewController: UIViewController {
     }()
     
     private lazy var enterPasswordTextField: PasswordTextField = {
-        let textField = PasswordTextField(isRepeatPassword: false)
+        let textField = textfieldFactory.getPasswordTextfield()
         textField.button.addTarget(self, action: #selector(enterPasswordButtonDidPress), for: .touchUpInside)
         return textField
     }()
     
     private lazy var repeatPasswordTextField: PasswordTextField = {
-        let textField = PasswordTextField(isRepeatPassword: true)
+        let textField = textfieldFactory.getRepeatPasswordTextfield()
         textField.button.addTarget(self, action: #selector(repeatPasswordButtonDidPress), for: .touchUpInside)
         return textField
     }()
