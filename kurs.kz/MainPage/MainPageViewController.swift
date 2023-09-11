@@ -54,12 +54,19 @@ final class MainPageViewController: UIViewController {
 
     private lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Пропустить", for: .normal)
-        button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
+        let title = "Пропустить"
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: AppColor.gray50.uiColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(skipButtonDidPress), for: .touchUpInside)
         return button
     }()
-
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +94,6 @@ final class MainPageViewController: UIViewController {
         }
 
         titleLabel.snp.makeConstraints { make in
-//            make.top.equalTo(imageView.snp.bottom).offset(64)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.centerX.equalToSuperview()
@@ -109,7 +115,6 @@ final class MainPageViewController: UIViewController {
         }
 
         skipButton.snp.makeConstraints { make in
-//            make.top.equalTo(signUpButton.snp.bottom).offset(90)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
