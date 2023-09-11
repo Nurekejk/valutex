@@ -54,7 +54,6 @@ final class MainPageViewController: UIViewController {
 
     private lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.cornerRadius = 10
         button.setTitle("Пропустить", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.addTarget(self, action: #selector(skipButtonDidPress), for: .touchUpInside)
@@ -81,35 +80,37 @@ final class MainPageViewController: UIViewController {
     // MARK: - Setup Constraints"
     private func setupConstriants() {
         imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(124)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(24)
             make.leading.equalToSuperview().offset(45)
             make.trailing.equalToSuperview().offset(-45)
             make.height.equalTo(244)
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(64)
+//            make.top.equalTo(imageView.snp.bottom).offset(64)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.centerX.equalToSuperview()
+            make.bottom.equalTo(signInButton.snp.top).offset(-32)
         }
 
         signInButton.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(32)
+            make.bottom.equalTo(signUpButton.snp.top).offset(-12)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
 
         signUpButton.snp.makeConstraints { make in
-            make.top.equalTo(signInButton.snp.bottom).offset(12)
+            make.bottom.equalTo(skipButton.snp.top).offset(-24)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(52)
         }
 
         skipButton.snp.makeConstraints { make in
-            make.top.equalTo(signUpButton.snp.bottom).offset(90)
+//            make.top.equalTo(signUpButton.snp.bottom).offset(90)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.height.equalTo(20)
