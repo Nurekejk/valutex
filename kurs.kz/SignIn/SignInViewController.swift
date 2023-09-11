@@ -146,7 +146,7 @@ final class SignInViewController: UIViewController {
     private func setupConstriants() {
 
         enterLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(16)
             make.centerX.equalToSuperview()
         }
 
@@ -176,11 +176,11 @@ final class SignInViewController: UIViewController {
             make.height.equalTo(52)
         }
         signUpAskLabel.snp.makeConstraints { make in
-            make.top.equalTo(signInButton.snp.bottom).offset(310)
+            make.bottom.equalTo(signUpButton.snp.top).offset(-8)
             make.centerX.equalToSuperview()
         }
         signUpButton.snp.makeConstraints { make in
-            make.top.equalTo(signUpAskLabel.snp.bottom).offset(8)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-26)
             make.centerX.equalToSuperview()
         }
     }
