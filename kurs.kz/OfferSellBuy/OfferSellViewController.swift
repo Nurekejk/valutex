@@ -152,7 +152,7 @@ final class OfferSellViewController: UIViewController {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(430)
-            make.leading.equalToSuperview().offset(16)
+            make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(116)
             make.width.equalTo(343)
         }
