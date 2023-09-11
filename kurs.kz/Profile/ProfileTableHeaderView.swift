@@ -91,6 +91,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
                 print("error while decoding")
             }
         } else {
+            avatarImageView.image = UIImage()
             return
         }
     }
