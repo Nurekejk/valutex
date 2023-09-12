@@ -12,7 +12,9 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - States
     private let profileSections: [ProfileSection] =
-    [ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
+    [ProfileSection(image: AppImage.accountSettings.uiImage ?? UIImage(),
+                    name: "Настройки аккаунта"),
+     ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
                     name: "Язык приложения"),
      ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
                     name: "Город"),
@@ -116,7 +118,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
         if section == SectionNumber.zero.rawValue {
-            rowCount = 5
+            rowCount = profileSections.count
         }
         return rowCount
     }
