@@ -50,6 +50,8 @@ final class AccountSettingsViewController: UIViewController {
         return textfield
     }()
     
+    private let changePasswordView = ProfileTableViewCell()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +63,10 @@ final class AccountSettingsViewController: UIViewController {
         setupTextfields()
         view.backgroundColor = AppColor.gray10.uiColor
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
-        [profileView, stackView].forEach({view.addSubview($0)})
+        [profileView, stackView, changePasswordView].forEach({view.addSubview($0)})
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
+        changePasswordView.profileSection = ProfileSection(image: <#T##UIImage#>, name: "Смена пароля")
     }
     // MARK: - Defaults
     private func setupTextfields() {
@@ -106,5 +109,9 @@ final class AccountSettingsViewController: UIViewController {
             make.leading.equalTo(stackView.snp.leading).offset(16)
             make.trailing.equalTo(stackView.snp.trailing).offset(-16)
         }})
+        
+        changePasswordView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(16)
+        }
     }
 }
