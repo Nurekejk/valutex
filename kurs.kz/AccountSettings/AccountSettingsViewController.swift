@@ -46,7 +46,7 @@ final class AccountSettingsViewController: UIViewController {
     }()
     
     private lazy var patronymicTextField: SkyFloatingLabelTextField = {
-        let textfield = factory.getTextfield(with: "Имя")
+        let textfield = factory.getTextfield(with: "Отчество")
         return textfield
     }()
     
@@ -57,15 +57,37 @@ final class AccountSettingsViewController: UIViewController {
         setupConstraints()
     }
     // MARK: - Setup Views
-    func setupViews() {
+    private func setupViews() {
+        setupTextfields()
         view.backgroundColor = AppColor.gray10.uiColor
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
         [profileView, stackView].forEach({view.addSubview($0)})
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
     }
+    // MARK: - Defaults
+    private func setupTextfields() {
+        if let data = UserDefaults.standard.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
+            do {
+                let response = try JSONDecoder().decode(SignInResponse.self, from: data)
+                print("userInfo is \(response)")
+                if let name = response.user?.name,
+                   let surname = response.user?.surname {
+                    nameTextfield.text = name
+                    surnameTextfield.text = surname
+                    patronymicTextField.text = "Отчество"
+                   
+                }
+            } catch {
+                print("error while decoding")
+            }
+        } else {
+            return
+        }
+    }
+    
     // MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         
         profileView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
@@ -85,12 +107,4 @@ final class AccountSettingsViewController: UIViewController {
             make.trailing.equalTo(stackView.snp.trailing).offset(-16)
         }})
     }
-    
-//    init(profileImage: UIImageView, phoneNumber: String) {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
 }
