@@ -56,7 +56,7 @@ enum AppImage: String, AppImageProtocol {
     case my_location = "my-location"
     case bitcoin_exchange = "bitcoinExchange"
     case moneys = "moneys"
-    case setting_3 = "setting-3"
+    case accountSettings = "setting-3"
     case notification = "notification"
     case language_circle = "language-circle"
     case global = "global"
