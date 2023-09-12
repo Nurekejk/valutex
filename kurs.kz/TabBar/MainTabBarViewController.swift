@@ -10,6 +10,10 @@ import Pulley
 
 final class MainTabBarViewController: UITabBarController {
     
+    // MARK: - Properties
+    
+    private let defaults = UserDefaults.standard
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +26,41 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Setup Views
     func setupTabs() {
-        let home = createNavigation(mainTitle: "Обменники", title: "Главная",
-                                    selectedImage: AppImage.home_selected.uiImage!,
-                                    image: AppImage.home_gray.uiImage!,
-                                    viewController: MapExchangersViewController(
-                                        contentViewController: MapViewController(
-                                            service: ExchangerListService()),
-                                        drawerViewController: ExchangeListViewController()))
-        let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
-                                     selectedImage: AppImage.money_selected.uiImage!,
-                                     image: AppImage.money_gray.uiImage!,
-                                     viewController: OfferSellBuySegmentedController())
-        let other = createNavigation(mainTitle: "", title: "Еще",
-                                     selectedImage: AppImage.other_selected.uiImage!,
-                                     image: AppImage.other_gray.uiImage!,
-                                     viewController: ProfileViewController())
-        self.setViewControllers([home,money,other], animated: true)
+        if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
+            let home = createNavigation(mainTitle: "Обменники", title: "Главная",
+                                        selectedImage: AppImage.home_selected.uiImage!,
+                                        image: AppImage.home_gray.uiImage!,
+                                        viewController: MapExchangersViewController(
+                                            contentViewController: MapViewController(
+                                                service: ExchangerListService()),
+                                            drawerViewController: ExchangeListViewController()))
+            let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
+                                         selectedImage: AppImage.money_selected.uiImage!,
+                                         image: AppImage.money_gray.uiImage!,
+                                         viewController: OfferSellBuySegmentedController())
+            let other = createNavigation(mainTitle: "", title: "Еще",
+                                         selectedImage: AppImage.other_selected.uiImage!,
+                                         image: AppImage.other_gray.uiImage!,
+                                         viewController: ProfileViewController())
+            self.setViewControllers([home,money,other], animated: true)
+        } else {
+            let home = createNavigation(mainTitle: "Обменники", title: "Главная",
+                                        selectedImage: AppImage.home_selected.uiImage!,
+                                        image: AppImage.home_gray.uiImage!,
+                                        viewController: MapExchangersViewController(
+                                            contentViewController: MapViewController(
+                                                service: ExchangerListService()),
+                                            drawerViewController: ExchangeListViewController()))
+            let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
+                                         selectedImage: AppImage.money_selected.uiImage!,
+                                         image: AppImage.money_gray.uiImage!,
+                                         viewController: SignInViewController())
+            let other = createNavigation(mainTitle: "", title: "Еще",
+                                         selectedImage: AppImage.other_selected.uiImage!,
+                                         image: AppImage.other_gray.uiImage!,
+                                         viewController: SignInViewController())
+            self.setViewControllers([home,money,other], animated: true)
+        }
     }
     
     func createNavigation(mainTitle: String,
