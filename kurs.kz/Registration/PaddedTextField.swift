@@ -30,6 +30,9 @@ public class PaddedTextField: SkyFloatingLabelTextField {
         self.titleFormatter = { $0 }
         self.keyboardType = .default
         self.lineView.isHidden = true
+        self.layer.cornerRadius = 8
+        self.layer.borderWidth = 1
+        self.layer.borderColor = AppColor.gray20.cgColor
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
