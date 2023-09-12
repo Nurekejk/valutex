@@ -22,10 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isAuthorized() {
             window?.rootViewController =
-            UINavigationController(rootViewController: MainPageViewController())
+            UINavigationController(rootViewController: AccountSettingsViewController())
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: MainPageViewController())
+            UINavigationController(rootViewController: AccountSettingsViewController())
         }
         window?.makeKeyAndVisible()
     }
