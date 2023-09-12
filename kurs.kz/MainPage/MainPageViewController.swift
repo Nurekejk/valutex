@@ -132,6 +132,8 @@ final class MainPageViewController: UIViewController {
     }
 
     @objc private func skipButtonDidPress() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
         let controller = MainTabBarViewController()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
