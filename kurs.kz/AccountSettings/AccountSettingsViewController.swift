@@ -20,13 +20,18 @@ final class AccountSettingsViewController: UIViewController {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
-        stackView.tintColor = .cyan
+        stackView.distribution = .fillEqually
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16,
+                                                                     leading: 0,
+                                                                     bottom: 16,
+                                                                     trailing: 0)
+        stackView.spacing = 16
         return stackView
     }()
     
     private let containerView: UIView = {
         let container = UIView()
-        container.backgroundColor = AppColor.grayWhite.uiColor
         return container
     }()
     
@@ -40,6 +45,11 @@ final class AccountSettingsViewController: UIViewController {
         return textfield
     }()
     
+    private lazy var patronymicTextField: SkyFloatingLabelTextField = {
+        let textfield = factory.getTextfield(with: "Имя")
+        return textfield
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,22 +59,31 @@ final class AccountSettingsViewController: UIViewController {
     // MARK: - Setup Views
     func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
-        [surnameTextfield, nameTextfield].forEach({stackView.addSubview($0)})
+        [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
         [profileView, stackView].forEach({view.addSubview($0)})
+        stackView.backgroundColor = .white
+        stackView.layer.cornerRadius = 8
     }
     // MARK: - Constraints
     func setupConstraints() {
         
         profileView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
-            make.leading.equalToSuperview().offset(94)
+            make.top.equalToSuperview().offset(100)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(148)
+            make.width.equalToSuperview()
         }
         stackView.snp.makeConstraints { make in
-//            make.top.equalTo(profileView.snp.bottom).offset(24)
-            make.top.equalToSuperview().offset(24)
-
+            make.top.equalTo(profileView.snp.bottom).offset(48)
+            make.height.equalTo(232)
             make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
+        
+        [surnameTextfield, nameTextfield, patronymicTextField].forEach({$0.snp.makeConstraints { make in
+            make.leading.equalTo(stackView.snp.leading).offset(16)
+            make.trailing.equalTo(stackView.snp.trailing).offset(-16)
+        }})
     }
     
 //    init(profileImage: UIImageView, phoneNumber: String) {
