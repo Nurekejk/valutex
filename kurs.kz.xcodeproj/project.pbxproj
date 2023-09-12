@@ -138,6 +138,7 @@
 		FA5759912A692B4700DE9A6B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759902A692B4700DE9A6B /* Currency.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */; };
+		FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
 		FACEE05E2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05D2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift */; };
 		FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */; };
@@ -274,6 +275,7 @@
 		FA5759902A692B4700DE9A6B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextfieldFactory.swift; sourceTree = "<group>"; };
+		FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
 		FACEE05D2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorListServiceDelegate.swift; sourceTree = "<group>"; };
 		FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLanguage.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 		9F899D7F2A4AFB44002D1F74 /* kurs.kz */ = {
 			isa = PBXGroup;
 			children = (
+				FAA817552AB098D000DCE6F2 /* AccountSettings */,
 				8FE341D42A7AD39400A72212 /* ExchangerDetail */,
 				995E96A72A7A165300E96AEE /* NationalBankCourse */,
 				99499C4F2A7904B100CB9721 /* FAQ */,
@@ -834,6 +837,14 @@
 				FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		FAA817552AB098D000DCE6F2 /* AccountSettings */ = {
+			isa = PBXGroup;
+			children = (
+				FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */,
+			);
+			path = AccountSettings;
 			sourceTree = "<group>";
 		};
 		FAD47F902A50A24C0055EDEA /* Registration */ = {
@@ -1079,6 +1090,7 @@
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
 				8FE341E02A7AD8BB00A72212 /* CollapsibleTableViewHeaderDelegate.swift in Sources */,
 				9979C5EE2A7C25030055B2DE /* PaddingLabel.swift in Sources */,
+				FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
