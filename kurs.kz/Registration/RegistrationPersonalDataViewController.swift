@@ -90,7 +90,7 @@ final class RegistrationPersonalDataViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Продолжить", for: .normal)
         button.titleLabel?.font =  AppFont.semibold.s16()
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
         return button
     }()
