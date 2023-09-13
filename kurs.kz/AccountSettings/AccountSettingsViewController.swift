@@ -30,11 +30,6 @@ final class AccountSettingsViewController: UIViewController {
         return stackView
     }()
     
-    private let containerView: UIView = {
-        let container = UIView()
-        return container
-    }()
-    
     private lazy var surnameTextfield: SkyFloatingLabelTextField = {
         let textfield = factory.getTextfield(with: "Фамилия")
         return textfield
@@ -54,6 +49,24 @@ final class AccountSettingsViewController: UIViewController {
         let view = ProfileTableViewCell()
         return view
     }()
+    
+    private let continueButtonContainerView: UIView = {
+        let container = UIView()
+        container.backgroundColor = AppColor.grayWhite.uiColor
+        return container
+    }()
+    
+    private lazy var continueButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Сохранить", for: .normal)
+        button.titleLabel?.font = AppFont.semibold.s16()
+        button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
+        button.backgroundColor = AppColor.primaryBase.uiColor
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var changePasswordContainerView: UIView = {
         let view = UIView()
         let gesture = UITapGestureRecognizer(target: self,
@@ -75,9 +88,16 @@ final class AccountSettingsViewController: UIViewController {
     private func setupViews() {
         setupTextfields()
         view.backgroundColor = AppColor.gray10.uiColor
+        
         changePasswordContainerView.addSubview(changePasswordView)
+        continueButtonContainerView.addSubview(continueButton)
+        
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
-        [profileView, stackView, changePasswordContainerView].forEach({view.addSubview($0)})
+        [profileView,
+         stackView,
+         changePasswordContainerView,
+         continueButtonContainerView].forEach({view.addSubview($0)})
+        
         view.sendSubviewToBack(changePasswordContainerView)
 
         stackView.backgroundColor = .white
@@ -111,6 +131,9 @@ final class AccountSettingsViewController: UIViewController {
     @objc func changePasswordDidPress(_ sender: UITapGestureRecognizer) {
         print("something")
     }
+    @objc func continueButtonDidPress() {
+        print("smth")
+    }
     // MARK: - Constraints
     private func setupConstraints() {
         
@@ -143,6 +166,19 @@ final class AccountSettingsViewController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(54)
+        }
+        continueButtonContainerView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(118)
+        }
+
+        continueButton.snp.makeConstraints { make in
+            make.top.equalTo(continueButtonContainerView.snp.top).offset(16)
+            make.leading.equalTo(continueButtonContainerView.snp.leading).offset(16)
+            make.trailing.equalTo(continueButtonContainerView.snp.trailing).offset(-16)
+            make.height.equalTo(52)
         }
     }
 }
