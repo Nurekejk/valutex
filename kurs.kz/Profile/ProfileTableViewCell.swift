@@ -111,16 +111,4 @@ final class ProfileTableViewCell: UITableViewCell {
     public func configureCell(isBadgeHidden: Bool) {
         self.notificationImageView.isHidden = isBadgeHidden
     }
-    public func setupForAccount() {
-        informationCellStack.backgroundColor = AppColor.grayWhite.uiColor
-        informationCellStack.isLayoutMarginsRelativeArrangement = true
-        informationCellStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16,
-                                                                     leading: 16,
-                                                                     bottom: 16,
-                                                                     trailing: 16)
-        informationCellStack.layer.cornerRadius = 8
-    }
-    public func getStack() -> UIStackView {
-        return informationCellStack
-    }
 }

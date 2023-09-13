@@ -54,13 +54,14 @@ final class AccountSettingsViewController: UIViewController {
         let view = ProfileTableViewCell()
         return view
     }()
-    private lazy var overlayView: UIView = {
+    private lazy var changePasswordContainerView: UIView = {
         let view = UIView()
         let gesture = UITapGestureRecognizer(target: self,
                                              action: #selector(changePasswordDidPress(_:)))
         gesture.numberOfTapsRequired = 1
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(gesture)
+        view.backgroundColor = AppColor.grayWhite.uiColor
         return view
     }()
     
@@ -74,16 +75,17 @@ final class AccountSettingsViewController: UIViewController {
     private func setupViews() {
         setupTextfields()
         view.backgroundColor = AppColor.gray10.uiColor
+        changePasswordContainerView.addSubview(changePasswordView)
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
-        [profileView, stackView, changePasswordView, overlayView].forEach({view.addSubview($0)})
-        view.bringSubviewToFront(overlayView)
+        [profileView, stackView, changePasswordContainerView].forEach({view.addSubview($0)})
+        view.sendSubviewToBack(changePasswordContainerView)
 
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
+        changePasswordContainerView.layer.cornerRadius = 8
         changePasswordView.profileSection = ProfileSection(image: AppImage.lockIcon.uiImage ?? UIImage(),
                                                            name: "Смена пароля")
         changePasswordView.configureCell(isBadgeHidden: true)
-        changePasswordView.setupForAccount()
     }
     // MARK: - Defaults
     private func setupTextfields() {
@@ -96,7 +98,6 @@ final class AccountSettingsViewController: UIViewController {
                     nameTextfield.text = name
                     surnameTextfield.text = surname
                     patronymicTextField.text = "Отчество"
-                   
                 }
             } catch {
                 print("error while decoding")
@@ -132,14 +133,13 @@ final class AccountSettingsViewController: UIViewController {
         }})
         
         changePasswordView.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(16)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(54)
+            make.top.equalTo(changePasswordContainerView.snp.top)
+            make.leading.equalTo(changePasswordContainerView)
+            make.trailing.equalTo(changePasswordContainerView)
+            make.bottom.equalTo(changePasswordContainerView.snp.bottom)
         }
-        // barely managed to figure this out. will leave it like this for now
-        overlayView.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(33)
+        changePasswordContainerView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(54)
