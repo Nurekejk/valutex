@@ -50,7 +50,19 @@ final class AccountSettingsViewController: UIViewController {
         return textfield
     }()
     
-    private let changePasswordView = ProfileTableViewCell()
+    private lazy var changePasswordView: ProfileTableViewCell = {
+        let view = ProfileTableViewCell()
+        return view
+    }()
+    private lazy var overlayView: UIView = {
+        let view = UIView()
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(changePasswordDidPress(_:)))
+        gesture.numberOfTapsRequired = 1
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(gesture)
+        return view
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,10 +75,15 @@ final class AccountSettingsViewController: UIViewController {
         setupTextfields()
         view.backgroundColor = AppColor.gray10.uiColor
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
-        [profileView, stackView, changePasswordView].forEach({view.addSubview($0)})
+        [profileView, stackView, changePasswordView, overlayView].forEach({view.addSubview($0)})
+        view.bringSubviewToFront(overlayView)
+
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 8
-        changePasswordView.profileSection = ProfileSection(image: <#T##UIImage#>, name: "Смена пароля")
+        changePasswordView.profileSection = ProfileSection(image: AppImage.lockIcon.uiImage ?? UIImage(),
+                                                           name: "Смена пароля")
+        changePasswordView.configureCell(isBadgeHidden: true)
+        changePasswordView.setupForAccount()
     }
     // MARK: - Defaults
     private func setupTextfields() {
@@ -89,6 +106,10 @@ final class AccountSettingsViewController: UIViewController {
         }
     }
     
+    // MARK: - Action
+    @objc func changePasswordDidPress(_ sender: UITapGestureRecognizer) {
+        print("something")
+    }
     // MARK: - Constraints
     private func setupConstraints() {
         
@@ -112,6 +133,16 @@ final class AccountSettingsViewController: UIViewController {
         
         changePasswordView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(54)
+        }
+        // barely managed to figure this out. will leave it like this for now
+        overlayView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(33)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(54)
         }
     }
 }
