@@ -206,8 +206,8 @@ final class MapViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func exchangersButtonDidPressed() {
-        self.pulleyViewController?.setDrawerPosition(position: .closed, animated: true)
-        add(ExchangeListViewController())
+        self.pulleyViewController?.setDrawerPosition(position: .open, animated: true)
+//        add(ExchangeListViewController())
     }
     
     @objc private func zoomInButtonDidPressed() {
