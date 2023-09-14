@@ -118,7 +118,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
         if section == SectionNumber.zero.rawValue {
-            rowCount = profileSections.count
+            rowCount = profileSections.count - 1
         }
         return rowCount
     }
@@ -133,7 +133,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
         } else {
-            cell.profileSection = profileSections[5]
+            cell.profileSection = profileSections.last
         }
 
         cell.configureCell(isBadgeHidden: true)
@@ -161,21 +161,28 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                navigationController?.pushViewController(LanguageAppViewController(),
+                let controller = AccountSettingsViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 1:
-                let controller = SelectCityViewController()
+                let controller = LanguageAppViewController()
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
             case 2:
-                navigationController?.pushViewController(ToSupportViewController(),
+                let controller = SelectCityViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 3:
+                navigationController?.pushViewController(ToSupportViewController(),
+                                                         animated: true)
+            case 4:
                 navigationController?.pushViewController(AboutCompanyViewController(
                     service: AboutCompanyPageService()),
                                                          animated: true)
-            case 4:
+            case 5:
                 navigationController?.pushViewController(
                     AboutCompanyViewController(service: AboutCompanyPageService()),
                     animated: true)
