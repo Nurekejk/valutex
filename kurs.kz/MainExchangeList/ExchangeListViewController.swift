@@ -199,11 +199,9 @@ final class ExchangeListViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         if self.pulleyViewController?.drawerPosition == .closed {
             self.topView.isHidden = true
-            mapButton.isHidden = false
             updateConstraints()
         } else {
             self.topView.isHidden = false
-            mapButton.isHidden = true
             setupConstraints()
         }
     }
