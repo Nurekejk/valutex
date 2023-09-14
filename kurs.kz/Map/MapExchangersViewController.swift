@@ -40,6 +40,11 @@ final class MapExchangersViewController: PulleyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        self.drawerTopInset = 0
+        self.drawerCornerRadius = 0
+        self.allowsUserDrawerPositionChange = false
+        
+        print("self.drawerPanGestureRecognizer: \(self.drawerPanGestureRecognizer)")
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
