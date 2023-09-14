@@ -40,6 +40,9 @@
 		8FCA83282A71227C003CD865 /* OfferSendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */; };
 		8FCA83292A71227C003CD865 /* OfferSendedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */; };
 		8FCA832A2A71227C003CD865 /* OfferSendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */; };
+		8FE048E12A8C91200016B6CC /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE048E02A8C91200016B6CC /* Rate.swift */; };
+		8FE049072A8D33A70016B6CC /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049062A8D33A70016B6CC /* RateCell.swift */; };
+		8FE049092A8D34690016B6CC /* RateTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */; };
 		8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D52A7AD39F00A72212 /* DetailSection.swift */; };
 		8FE341D82A7AD50F00A72212 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D72A7AD50F00A72212 /* DetailViewController.swift */; };
 		8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */; };
@@ -106,6 +109,7 @@
 		9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D892A4AFB46002D1F74 /* Assets.xcassets */; };
 		9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F899D8B2A4AFB46002D1F74 /* LaunchScreen.storyboard */; };
 		9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */; };
+		9FD6C1732A8CE60C00147645 /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD6C1722A8CE60C00147645 /* RateService.swift */; };
 		9FE945972A7388B3009020B7 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE945962A7388B3009020B7 /* SignInService.swift */; };
 		9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */; };
 		9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */; };
@@ -175,6 +179,9 @@
 		8FCA83252A71227C003CD865 /* OfferSendedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedViewController.swift; path = kurs.kz/OfferSended/OfferSendedViewController.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83262A71227C003CD865 /* OfferSendedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedHeader.swift; path = kurs.kz/OfferSended/OfferSendedHeader.swift; sourceTree = SOURCE_ROOT; };
 		8FCA83272A71227C003CD865 /* OfferSendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfferSendedTableViewCell.swift; path = kurs.kz/OfferSended/OfferSendedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8FE048E02A8C91200016B6CC /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		8FE049062A8D33A70016B6CC /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
+		8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewHeader.swift; sourceTree = "<group>"; };
 		8FE341D52A7AD39F00A72212 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		8FE341D72A7AD50F00A72212 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8FE341D92A7AD61A00A72212 /* DetailTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewHeader.swift; sourceTree = "<group>"; };
@@ -229,7 +236,7 @@
 		99E941BF2A666B1F00C47BD2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F1094362A5833E100648D14 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F402A482A5BDC7400F9126C /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateViewController.swift; path = "kurs.kz/Exchange Card/RateViewController.swift"; sourceTree = SOURCE_ROOT; };
-		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/StarButton.swift"; sourceTree = SOURCE_ROOT; };
+		9F402A492A5BDC7400F9126C /* StarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarButton.swift; path = "kurs.kz/Exchange Card/Extensions/StarButton.swift"; sourceTree = SOURCE_ROOT; };
 		9F402A4D2A5BDDB500F9126C /* AboutCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutCompanyViewController.swift; path = kurs.kz/AboutCompany/AboutCompanyViewController.swift; sourceTree = SOURCE_ROOT; };
 		9F464BC12A94D12100A2F77B /* ButtonPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPosition.swift; sourceTree = "<group>"; };
 		9F899D7D2A4AFB43002D1F74 /* kurs.kz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kurs.kz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +247,7 @@
 		9F899D8C2A4AFB46002D1F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F899D8E2A4AFB46002D1F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD284A92A552EC000D9EB32 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		9FD6C1722A8CE60C00147645 /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
 		9FE945962A7388B3009020B7 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		9FEDDC8A2A602099005A3723 /* CurrencySelectorTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewHeader.swift; sourceTree = "<group>"; };
 		9FEDDC8B2A602099005A3723 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +454,32 @@
 			path = ExchangerDetail;
 			sourceTree = "<group>";
 		};
+		8FEB640A2A8DE36400675536 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9FD6C1722A8CE60C00147645 /* RateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8FEB640B2A8DE37100675536 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8FE048E02A8C91200016B6CC /* Rate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8FEB640C2A8DE38400675536 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8FE049082A8D34690016B6CC /* RateTableViewHeader.swift */,
+				8FE049062A8D33A70016B6CC /* RateCell.swift */,
+				9F402A492A5BDC7400F9126C /* StarButton.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		990100472A50B987003EE3C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,7 +664,9 @@
 			isa = PBXGroup;
 			children = (
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
-				9F402A492A5BDC7400F9126C /* StarButton.swift */,
+				8FEB640A2A8DE36400675536 /* Services */,
+				8FEB640C2A8DE38400675536 /* Extensions */,
+				8FEB640B2A8DE37100675536 /* Models */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1066,6 +1102,7 @@
 				9979C5EE2A7C25030055B2DE /* PaddingLabel.swift in Sources */,
 				9FF456FB2A5FC54100C2E845 /* ToSupportViewController.swift in Sources */,
 				FA5759882A66653C00DE9A6B /* ExchangeListHeaderView.swift in Sources */,
+				8FE049092A8D34690016B6CC /* RateTableViewHeader.swift in Sources */,
 				9F899D812A4AFB44002D1F74 /* AppDelegate.swift in Sources */,
 				99D974022A680FF400F7E506 /* AppImage.swift in Sources */,
 				9FF456FE2A60183D00C2E845 /* EmptyViewController.swift in Sources */,
@@ -1083,6 +1120,7 @@
 				991065372A7A31CA00368918 /* AboutCompanyPageService.swift in Sources */,
 				9FEDDC8E2A602099005A3723 /* CurrencySelectorViewController.swift in Sources */,
 				9FEDDC8D2A602099005A3723 /* CurrencySelectorTableViewHeader.swift in Sources */,
+				8FE049072A8D33A70016B6CC /* RateCell.swift in Sources */,
 				8FE341DA2A7AD61A00A72212 /* DetailTableViewHeader.swift in Sources */,
 				71564AC32A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift in Sources */,
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
@@ -1120,6 +1158,7 @@
 				99E854232A79632D0075CB78 /* FaqTableViewCell.swift in Sources */,
 				9FF456F22A5FC2D700C2E845 /* LanguageAppViewController.swift in Sources */,
 				71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */,
+				8FE048E12A8C91200016B6CC /* Rate.swift in Sources */,
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				8FE341DE2A7AD69D00A72212 /* DetailTableViewCell.swift in Sources */,
@@ -1134,6 +1173,7 @@
 				9952D3562A608080002321E8 /* ProfileSection.swift in Sources */,
 				FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */,
 				9F464BC22A94D12100A2F77B /* ButtonPosition.swift in Sources */,
+				9FD6C1732A8CE60C00147645 /* RateService.swift in Sources */,
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,

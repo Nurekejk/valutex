@@ -21,10 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         if isAuthorized() {
-            window?.rootViewController = CalculatorViewController()
+            window?.rootViewController = MainTabBarViewController()
         } else {
             window?.rootViewController =
-            UINavigationController(rootViewController: CalculatorViewController())
+            UINavigationController(rootViewController: SelectLanguageViewController())
         }
         window?.makeKeyAndVisible()
     }
@@ -51,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } catch {
             isAuthorized = false
-            print("error while decoding")
+            fatalError("error while decoding")
         }
         return isAuthorized
     }

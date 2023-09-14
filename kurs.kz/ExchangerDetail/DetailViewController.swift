@@ -22,7 +22,7 @@ final class DetailViewController: UIViewController {
     private let topSections = 3
     private var name: String = ""
     private var address: String = ""
-    private var score: Int = 0
+    private var score: Float = 0.0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -189,7 +189,7 @@ final class DetailViewController: UIViewController {
             workingHours.append(fullTime)
         }
         let workingHoursSection = DetailSection(name: "Время работы",
-                                                iconImage: AppImage.clock.uiImage,
+                                                iconImage: AppImage.sms.uiImage,
                                                 items: workingHours)
         // Emails Section
         let emails = [details.email]
@@ -369,8 +369,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
         if indexPath.section == SectionNumber.two.rawValue {
-            self.navigationController?.pushViewController(RateViewController(),
+            let controller = RateViewController()
+            controller.officeId = officeId
+            self.navigationController?.pushViewController(controller,
                                                           animated: true)
         }
     }
