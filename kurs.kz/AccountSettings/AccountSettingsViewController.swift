@@ -82,6 +82,7 @@ final class AccountSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupNavigationBar()
         setupConstraints()
     }
     // MARK: - Setup Views
@@ -106,6 +107,11 @@ final class AccountSettingsViewController: UIViewController {
         changePasswordView.profileSection = ProfileSection(image: AppImage.lockIcon.uiImage ?? UIImage(),
                                                            name: "Смена пароля")
         changePasswordView.configureCell(isBadgeHidden: true)
+    }
+    
+    // MARK: - Setup NavigationBar
+    private func setupNavigationBar() {
+        title = "Настройки аккаунта"
     }
     // MARK: - Defaults
     private func setupTextfields() {
