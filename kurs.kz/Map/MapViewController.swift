@@ -207,7 +207,6 @@ final class MapViewController: UIViewController {
     // MARK: - Actions
     @objc private func exchangersButtonDidPressed() {
         self.pulleyViewController?.setDrawerPosition(position: .open, animated: true)
-//        add(ExchangeListViewController())
     }
     
     @objc private func zoomInButtonDidPressed() {
@@ -278,24 +277,5 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
             make.trailing.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().inset(distance + 16)
         }
-    }
-}
-
-// MARK: - UIViewController Extension
-extension UIViewController {
-    func add(_ child: UIViewController) {
-        addChild(child)
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-    }
-    
-    func remove() {
-        guard parent != nil else {
-            return
-        }
-        
-        willMove(toParent: self.parent)
-        view.removeFromSuperview()
-        removeFromParent()
     }
 }

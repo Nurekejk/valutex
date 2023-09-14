@@ -89,10 +89,11 @@ final class ExchangeListViewController: UIViewController {
         return view
     }()
     
-    private let gripperView: UIView = {
+    private lazy var gripperView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 60, height: 4)
         view.backgroundColor = AppColor.gray30.uiColor
+
         return view
     }()
     
@@ -175,6 +176,13 @@ final class ExchangeListViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
+        let refreshControl: UIRefreshControl = UIRefreshControl.init()
+        refreshControl.addTarget(self, action: #selector(tableViewDidReload), for: .valueChanged)
+        if #available (iOS 10.0, *) {
+        tableView.refreshControl = refreshControl
+        } else {
+        tableView.addSubview(refreshControl)
+        }
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.isSkeletonable = true
@@ -189,9 +197,9 @@ final class ExchangeListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-
         showSkeletonAnimation()
         getExchangers()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -324,7 +332,9 @@ final class ExchangeListViewController: UIViewController {
             self.filteredArray = exchangers
         }
     }
-    
+    @objc private func tableViewDidReload() {
+        
+    }
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
@@ -335,7 +345,8 @@ final class ExchangeListViewController: UIViewController {
     
     @objc private func mapButtonDidPressed() {
         self.pulleyViewController?.setDrawerPosition(position: .collapsed, animated: true)
-        remove()
+        pulleyViewController?.allowsUserDrawerPositionChange = true
+        gripperView.isHidden = false
     }
 
     @objc func nearbyButtonDidPress() {
@@ -453,9 +464,20 @@ extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         return 379.0 + bottomSafeArea
     }
-    
+
     func supportedDrawerPositions() -> [PulleyPosition] {
         return [.collapsed, .partiallyRevealed, .closed, .open]
     }
+    
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController,
+                                         distance: CGFloat, bottomSafeArea: CGFloat) {
+        let screenRect = UIScreen.main.bounds
+        let screenHeight = screenRect.size.height
+        if distance >= (screenHeight - bottomSafeArea - 15) {
+            pulleyViewController?.allowsUserDrawerPositionChange = false
+            gripperView.isHidden = true
+        }
+    }
+
 }
 // swiftlint:enable all
