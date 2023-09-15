@@ -18,10 +18,6 @@ struct ExchangerListService {
         exchangeListURLComponent.port = 4443
         exchangeListURLComponent.path = "/actual_currency_rates"
         
-        guard let url = exchangeListURLComponent.url else {
-            return
-        }
-        
         let requestData: [String: Any] = ["currency_code": currencyCode, "city_id": cityId]
         
         AF.request(exchangeListURLComponent,
