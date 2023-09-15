@@ -11,7 +11,11 @@ import SkyFloatingLabelTextField
 
 final class AccountSettingsViewController: UIViewController {
     
+    // MARK: - Factory
     private let factory = SkyFloatingLabelTextfieldFactory()
+    
+    // MARK: - Properties
+    private var userAndKeys: SignInResponse?
     
     // MARK: - UI
     private let profileView = ProfileTableHeaderView()
@@ -56,14 +60,14 @@ final class AccountSettingsViewController: UIViewController {
         return container
     }()
     
-    private lazy var continueButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Сохранить", for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()
         button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(continueButtonDidPress), for: .touchUpInside)
+        button.addTarget(self, action: #selector(saveButtonDidPress), for: .touchUpInside)
         return button
     }()
     
@@ -91,7 +95,7 @@ final class AccountSettingsViewController: UIViewController {
         view.backgroundColor = AppColor.gray10.uiColor
         
         changePasswordContainerView.addSubview(changePasswordView)
-        continueButtonContainerView.addSubview(continueButton)
+        continueButtonContainerView.addSubview(saveButton)
         
         [surnameTextfield, nameTextfield, patronymicTextField].forEach({stackView.addArrangedSubview($0)})
         [profileView,
@@ -119,11 +123,13 @@ final class AccountSettingsViewController: UIViewController {
             do {
                 let response = try JSONDecoder().decode(SignInResponse.self, from: data)
                 print("userInfo is \(response)")
+                userAndKeys = response
                 if let name = response.user?.name,
-                   let surname = response.user?.surname {
+                   let surname = response.user?.surname,
+                   let patronymicName = response.user?.middleName {
                     nameTextfield.text = name
                     surnameTextfield.text = surname
-                    patronymicTextField.text = "Отчество"
+                    patronymicTextField.text = patronymicName
                 }
             } catch {
                 print("error while decoding")
@@ -137,8 +143,19 @@ final class AccountSettingsViewController: UIViewController {
     @objc func changePasswordDidPress(_ sender: UITapGestureRecognizer) {
         print("something")
     }
-    @objc func continueButtonDidPress() {
-        print("smth")
+    @objc func saveButtonDidPress() {
+        if var userAndKeys = userAndKeys {
+            userAndKeys.user?.middleName = patronymicTextField.text
+            userAndKeys.user?.name = nameTextfield.text
+            userAndKeys.user?.surname = surnameTextfield.text
+            
+            if let data = try? JSONEncoder().encode(userAndKeys) {
+                print("userAndKeys is \(userAndKeys)")
+                UserDefaults.standard.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
+            } else {
+                print("error while encoding")
+            }
+        }
     }
     // MARK: - Constraints
     private func setupConstraints() {
@@ -180,7 +197,7 @@ final class AccountSettingsViewController: UIViewController {
             make.height.equalTo(118)
         }
 
-        continueButton.snp.makeConstraints { make in
+        saveButton.snp.makeConstraints { make in
             make.top.equalTo(continueButtonContainerView.snp.top).offset(16)
             make.leading.equalTo(continueButtonContainerView.snp.leading).offset(16)
             make.trailing.equalTo(continueButtonContainerView.snp.trailing).offset(-16)
