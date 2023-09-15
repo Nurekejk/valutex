@@ -60,7 +60,6 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let header = informationTableView.headerView(forSection: 0) as? ProfileTableHeaderView
         header?.getUserData()
-        print("will appear")
     }
     
     // MARK: - Setup Navigation Bar
