@@ -18,7 +18,7 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
-    
+    private var isRequestInProgress = false
     private let defaults = UserDefaults.standard
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
@@ -199,7 +199,9 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         showSkeletonAnimation()
-        getExchangers()
+        getExchangers {
+            print("finished")
+        }
         
     }
     
@@ -327,16 +329,26 @@ final class ExchangeListViewController: UIViewController {
         exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
     }
     
-    private func getExchangers() {
-        ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+    private func getExchangers(completion: @escaping () -> Void) {
+        service.fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
+            
+            completion()
         }
     }
     @objc private func tableViewDidReload() {
+        if isRequestInProgress {
+            return
+        }
+        
+        isRequestInProgress = true
         filteredArray = []
-        getExchangers()
-        DispatchQueue.main.async {
-            self.exchangeListTableView.refreshControl?.endRefreshing()
+        
+        getExchangers { [weak self] in
+            DispatchQueue.main.async {
+                self?.isRequestInProgress = false
+                self?.exchangeListTableView.refreshControl?.endRefreshing()
+            }
         }
     }
     @objc private func calculatorButtonDidPresss() {
