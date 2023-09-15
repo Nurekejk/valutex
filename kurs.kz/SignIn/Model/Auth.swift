@@ -15,7 +15,7 @@ struct SignInRequest: Encodable {
 struct SignInResponse: Codable {
     let access_token: String?
     let refresh_token: String?
-    let user: UserInfo?
+    var user: UserInfo?
 }
 
 struct UserInfo: Codable {
