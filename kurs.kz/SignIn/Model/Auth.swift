@@ -20,9 +20,9 @@ struct SignInResponse: Codable {
 
 struct UserInfo: Codable {
     let id: Int?
-    let name: String?
-    let surname: String?
-    let middleName: String?
+    var name: String?
+    var surname: String?
+    var middleName: String?
     let phone: String?
     let status: String?
     let role: String?
