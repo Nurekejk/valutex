@@ -22,7 +22,18 @@ struct UserInfo: Codable {
     let id: Int?
     let name: String?
     let surname: String?
+    let middleName: String?
     let phone: String?
     let status: String?
     let role: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case surname
+        case middleName = "middle_name"
+        case phone
+        case status
+        case role
+        }
 }
