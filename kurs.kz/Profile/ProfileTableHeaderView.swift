@@ -71,7 +71,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Defaults
-    private func getUserData() {
+    public func getUserData() {
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             do {
                 let response = try JSONDecoder().decode(SignInResponse.self, from: data)
