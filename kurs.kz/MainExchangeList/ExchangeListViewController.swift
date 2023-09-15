@@ -23,6 +23,7 @@ final class ExchangeListViewController: UIViewController {
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
+            filtersDidChange()
             exchangeListTableView.stopSkeletonAnimation()
             exchangeListTableView.hideSkeleton(transition: .crossDissolve(0.25))
             self.exchangeListTableView.reloadData()
@@ -329,11 +330,14 @@ final class ExchangeListViewController: UIViewController {
     private func getExchangers() {
         ExchangerListService().fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
-            self.filteredArray = exchangers
         }
     }
     @objc private func tableViewDidReload() {
-        
+        filteredArray = []
+        getExchangers()
+        DispatchQueue.main.async {
+            self.exchangeListTableView.refreshControl?.endRefreshing()
+        }
     }
     @objc private func calculatorButtonDidPresss() {
         self.navigationController?.pushViewController(CalculatorViewController(), animated: true)
