@@ -18,7 +18,7 @@ final class AccountSettingsViewController: UIViewController {
     private var userAndKeys: SignInResponse?
     
     // MARK: - UI
-    private let profileView = ProfileTableHeaderView()
+    private var profileView = ProfileTableHeaderView()
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -152,6 +152,7 @@ final class AccountSettingsViewController: UIViewController {
             if let data = try? JSONEncoder().encode(userAndKeys) {
                 print("userAndKeys is \(userAndKeys)")
                 UserDefaults.standard.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
+                profileView.getUserData()
             } else {
                 print("error while encoding")
             }
