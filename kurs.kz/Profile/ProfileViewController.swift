@@ -57,6 +57,11 @@ final class ProfileViewController: UIViewController {
         informationTableView.layer.cornerRadius = 8
         informationTableView.layer.masksToBounds = true
     }
+    override func viewWillAppear(_ animated: Bool) {
+        let header = informationTableView.headerView(forSection: 0) as? ProfileTableHeaderView
+        header?.getUserData()
+        print("will appear")
+    }
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
