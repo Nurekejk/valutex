@@ -12,17 +12,21 @@ import Pulley
 
 // swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
+    
     // MARK: - State
     public static let defaultsCurrencyKey = "savedCurrency"
     
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private var selectedCity = 1 {
+        didSet {
+            getExchangers {}
+        }
+    }
     private var currency: Currency? {
         didSet {
-            getExchangers {
-                print("currency chosen")
-            }
+            getExchangers {}
         }
     }
     private var isRequestInProgress = false
@@ -209,7 +213,7 @@ final class ExchangeListViewController: UIViewController {
         getExchangers {
             print("finished")
         }
-        
+        getDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -329,6 +333,16 @@ final class ExchangeListViewController: UIViewController {
             make.width.equalTo(56)
         }
     }
+    private func getDefaults() {
+        if let data = UserDefaults.standard.data(forKey: "selectedCity") {
+            do {
+                let city = try JSONDecoder().decode(City.self, from: data)
+                self.selectedCity = city.id
+            } catch let error {
+                print("error while decoding \(error)")
+            }
+        }
+    }
     
     // MARK: - Action
     private func showSkeletonAnimation() {
@@ -336,7 +350,7 @@ final class ExchangeListViewController: UIViewController {
     }
     
     private func getExchangers(completion: @escaping () -> Void) {
-        service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: 1) { exchangers in
+        service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: selectedCity) { exchangers in
             self.exchangersArray = exchangers
             
             completion()
@@ -363,6 +377,7 @@ final class ExchangeListViewController: UIViewController {
     
     @objc private func selectCityDidPress() {
         let cityController = SelectCityViewController()
+        cityController.delegate = self
         cityController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(cityController, animated: true)
     }
@@ -482,7 +497,7 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     }
 }
 
-// MARK: - PulleyDrawerViewControllerDelegate
+    // MARK: - PulleyDrawerViewControllerDelegate
 extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
     func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         return 154.0 + bottomSafeArea
@@ -506,5 +521,12 @@ extension ExchangeListViewController: PulleyDrawerViewControllerDelegate {
         }
     }
 
+}
+    // MARK: - PulleyDrawerViewControllerDelegate
+
+extension ExchangeListViewController: SelectCityViewControllerDelegate {
+    func cityDidSelect(cityId: Int) {
+        selectedCity = cityId
+    }
 }
 // swiftlint:enable all
