@@ -14,7 +14,8 @@ struct Details: Codable {
     let contacts: [String?]?
     let whatsapp: [String?]?
     let webSite, email: String?
-    let score, scoreCount: Int?
+    let score: Double?
+    let scoreCount: Int?
     let open: Bool?
     
     enum CodingKeys: String, CodingKey {

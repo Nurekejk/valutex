@@ -23,7 +23,7 @@ final class ExchangerScreenTextTableViewCell: UITableViewCell {
             subTitleLabel.text = address
         }
     }
-    var score: Int? {
+    var score: Double? {
         didSet {
             ratingLabel.text = "\(score ?? 5)"
         }

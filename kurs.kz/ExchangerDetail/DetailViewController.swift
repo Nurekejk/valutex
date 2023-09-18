@@ -22,7 +22,7 @@ final class DetailViewController: UIViewController {
     private let topSections = 3
     private var name: String = ""
     private var address: String = ""
-    private var score: Int = 0
+    private var score: Double = 0.0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -120,7 +120,9 @@ final class DetailViewController: UIViewController {
     
     // MARK: - Callback
     private func fetchExchangerDetails() {
+        print(officeId)
         service.fetchDetails(officeID: self.officeId) { [weak self] result in
+            print(result)
             switch result {
             case .success(let details):
                 self?.setSectionsData(details: details)
