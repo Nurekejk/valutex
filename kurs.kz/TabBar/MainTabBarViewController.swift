@@ -66,7 +66,8 @@ final class MainTabBarViewController: UITabBarController {
                           image: UIImage,
                           viewController: UIViewController) -> UIViewController {
         let navViewController = UINavigationController(rootViewController: viewController)
-        
+        navViewController.navigationBar.isTranslucent = false
+
         navViewController.tabBarItem.title = title
         navViewController.tabBarItem.image = image
         navViewController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
