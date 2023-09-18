@@ -53,7 +53,7 @@ final class ToSupportViewController: UIViewController {
     // MARK: - SetupConstraints()
     private func setupConstraints() {
         supportTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(130)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(108)

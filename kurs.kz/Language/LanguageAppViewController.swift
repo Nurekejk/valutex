@@ -81,7 +81,7 @@ final class LanguageAppViewController: UIViewController {
     // MARK: - Setup Constraits
     private func setupConstraits() {
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120)
+            make.top.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)

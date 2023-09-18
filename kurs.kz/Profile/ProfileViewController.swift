@@ -183,14 +183,15 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(ToSupportViewController(),
                                                          animated: true)
             case 4:
-                navigationController?.pushViewController(AboutCompanyViewController(
-                    service: AboutCompanyPageService()),
+                let controller = AboutCompanyViewController(service: AboutCompanyPageService())
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 5:
-                navigationController?.pushViewController(
-                    AboutCompanyViewController(service: AboutCompanyPageService()),
-                    animated: true)
-
+                let controller = AboutCompanyViewController(service: AboutCompanyPageService())
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
+                                                         animated: true)
             default:
                 navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)

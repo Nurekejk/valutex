@@ -78,7 +78,7 @@ final class AboutCompanyViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         aboutCompanyHeaderTextView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120)
+            make.top.equalToSuperview().offset(16)
             make.height.equalTo(16)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)

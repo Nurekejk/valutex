@@ -162,7 +162,7 @@ final class AccountSettingsViewController: UIViewController {
     private func setupConstraints() {
         
         profileView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.height.equalTo(148)
             make.width.equalToSuperview()

@@ -114,7 +114,7 @@ final class SelectCityViewController: UIViewController {
 
     private func setupConctraints() {
         textField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(52)

@@ -58,7 +58,7 @@ final class OfferSellBuySegmentedController: UIViewController {
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132)
+            make.top.equalToSuperview().offset(32)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
             make.width.equalTo(311)
