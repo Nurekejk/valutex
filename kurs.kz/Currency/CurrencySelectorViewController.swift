@@ -145,7 +145,7 @@ final class CurrencySelectorViewController: UIViewController {
         }
         selectButton.snp.makeConstraints { make in
             make.top.equalTo(currenciesTableView.snp.bottom).offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.centerX.equalToSuperview()
             make.width.equalTo(343)
             make.height.equalTo(52)
         }
