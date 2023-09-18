@@ -13,6 +13,7 @@ final class SelectCityViewController: UIViewController {
     // MARK: - State
     let userDefaults = UserDefaults.standard
     private var selectedCityID = 0
+    weak var delegate: SelectCityViewControllerDelegate?
     private var cities: [City] = [] {
       didSet {
           self.tableView.reloadData()
@@ -178,7 +179,7 @@ final class SelectCityViewController: UIViewController {
 
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+    // MARK: - UITableViewDataSource, UITableViewDelegate
 extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
@@ -195,6 +196,11 @@ extension SelectCityViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let city = cities[indexPath.row]
         selectedCityID = city.id
+        delegate?.cityDidSelect(cityId: selectedCityID)
         tableView.reloadData()
     }
+}
+// MARK: - Protocol
+protocol SelectCityViewControllerDelegate: AnyObject {
+    func cityDidSelect(cityId: Int)
 }
