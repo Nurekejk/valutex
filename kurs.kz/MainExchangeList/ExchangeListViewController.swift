@@ -18,6 +18,13 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private var currency: Currency? {
+        didSet {
+            getExchangers {
+                print("currency chosen")
+            }
+        }
+    }
     private var isRequestInProgress = false
     private let defaults = UserDefaults.standard
     private var searchBarText = ""
@@ -330,7 +337,7 @@ final class ExchangeListViewController: UIViewController {
     }
     
     private func getExchangers(completion: @escaping () -> Void) {
-        service.fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
+        service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: 1) { exchangers in
             self.exchangersArray = exchangers
             
             completion()
@@ -398,6 +405,9 @@ final class ExchangeListViewController: UIViewController {
         if nearbySorterIsOn {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
+    }
+    public func updateCurrency(newCurrency: Currency?) {
+        self.currency = newCurrency
     }
 }
 
