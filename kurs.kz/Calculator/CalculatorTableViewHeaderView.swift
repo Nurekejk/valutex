@@ -86,6 +86,15 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
                          for: .touchUpInside)
         return button
     }()
+    private lazy var arrowLeftRightContainerView: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = true
+        let gesture:UITapGestureRecognizer =
+        UITapGestureRecognizer(target: self, action: #selector(arrowLeftRightButtonDidPressed))
+        gesture.numberOfTapsRequired = 1
+        view.addGestureRecognizer(gesture)
+        return view
+    }()
     private lazy var separatorLineImageRight: UIImageView = {
         let imageView = UIImageView()
         imageView.image = AppImage.separator_line.uiImage
@@ -153,8 +162,9 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
 
     private func setupViews() {
+        arrowLeftRightContainerView.addSubview(arrowLeftRightButton)
         [currencyImageLabelLeft, currencyLabelLeft, dropDownButtonLeft, separatorLineImageLeft,
-         arrowLeftRightButton, currencyImageLabelRight, currencyLabelRight, dropDownButtonRight,
+         arrowLeftRightContainerView, currencyImageLabelRight, currencyLabelRight, dropDownButtonRight,
          separatorLineImageRight, currencyTextField, clearButton, borderView].forEach {
             containerView.addSubview($0)
         }
@@ -205,8 +215,14 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalTo(containerView.snp.top).offset(8)
             make.trailing.equalTo(arrowLeftRightButton.snp.leading).offset(-12)
         }
+        arrowLeftRightContainerView.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.top)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(45)
+            make.width.equalTo(40)
+        }
         arrowLeftRightButton.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top).offset(16)
+            make.top.equalTo(arrowLeftRightContainerView.snp.top).offset(16)
             make.centerX.equalToSuperview()
         }
         separatorLineImageRight.snp.makeConstraints { make in
