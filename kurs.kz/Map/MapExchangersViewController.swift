@@ -10,6 +10,14 @@ import Pulley
 
 final class MapExchangersViewController: PulleyViewController {
     private let defaults = UserDefaults.standard
+    
+    // MARK: - Public
+    private let exchangeListController = ExchangeListViewController()
+    private var currency: Currency? {
+        didSet {
+            exchangeListController.updateCurrency(newCurrency: currency)
+        }
+    }
 
     // MARK: - UI
     private lazy var navigationBarView: NavigationBarCurencyButtonView = {
@@ -35,6 +43,16 @@ final class MapExchangersViewController: PulleyViewController {
         label.font = AppFont.medium.s18()
         return label
     }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    required init(contentViewController: UIViewController = MapViewController(
+        service: ExchangerListService()),
+                  drawerViewController: UIViewController = ExchangeListViewController()) {
+        super.init(contentViewController: contentViewController, drawerViewController: exchangeListController)
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -80,6 +98,7 @@ final class MapExchangersViewController: PulleyViewController {
 extension MapExchangersViewController: CurrencySelectorViewControllerDelegate {
 
     func currencyDidSelect(currency: Currency) {
+        self.currency = currency
         navigationBarView.changeCurrency(newFlagImage: currency.flag,
                                          newCurrencyLabel: currency.code)
         if let data = try? JSONEncoder().encode(currency) {
