@@ -129,7 +129,6 @@ final class MapViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillAppear),

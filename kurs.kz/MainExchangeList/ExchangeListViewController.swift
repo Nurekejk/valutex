@@ -214,7 +214,6 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isTranslucent = false
         if self.pulleyViewController?.drawerPosition == .closed {
             self.topView.isHidden = true
             updateConstraints()
@@ -363,7 +362,9 @@ final class ExchangeListViewController: UIViewController {
     }
     
     @objc private func selectCityDidPress() {
-        self.navigationController?.pushViewController(SelectCityViewController(), animated: true)
+        let cityController = SelectCityViewController()
+        cityController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(cityController, animated: true)
     }
     
     @objc private func mapButtonDidPressed() {
