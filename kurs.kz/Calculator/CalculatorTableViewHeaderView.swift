@@ -203,11 +203,11 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         }
         separatorLineImageLeft.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top).offset(8)
-            make.leading.equalTo(dropDownButtonLeft.snp.trailing).offset(42)
+            make.trailing.equalTo(arrowLeftRightButton.snp.leading).offset(-12)
         }
         arrowLeftRightButton.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top).offset(16)
-            make.leading.equalTo(separatorLineImageLeft.snp.trailing).offset(12)
+            make.centerX.equalToSuperview()
         }
         separatorLineImageRight.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top).offset(8)
