@@ -18,9 +18,9 @@ final class CalculatorTableViewCell: UITableViewCell {
         self.exchanger = exchanger
 
         if isBuying {
-            rateLabel.text = "\(value / exchanger.sellRate)"
+            updateRateLabel(value: value, rate: exchanger.sellRate, isBuying: isBuying)
         } else {
-            rateLabel.text = "\(value * exchanger.buyRate)"
+            updateRateLabel(value: value, rate: exchanger.buyRate, isBuying: isBuying)
         }
     }
 
@@ -145,17 +145,15 @@ final class CalculatorTableViewCell: UITableViewCell {
 
         addressLabel.attributedText = attributedText
     }
-    private func trimExchangeRate(rate: Float) -> String {
-        var trimmedResult = String(format: "%.3f", rate)
-            .trimmingCharacters(in: ["0"])
-        if trimmedResult.last == "." {
-            trimmedResult.removeLast()
+
+    private func updateRateLabel(value: Float, rate: Float, isBuying: Bool) {
+        var result = "0"
+        if isBuying {
+            result = (value / rate).avoidNotation
+        } else {
+            result = (value * rate).avoidNotation
         }
-        return trimmedResult
-    }
-
-    public func calculateValue(value: Int) {
-
+        rateLabel.text = result
     }
     
     // MARK: - Lifecycle
@@ -211,7 +209,22 @@ final class CalculatorTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-12)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(20)
-            make.width.equalTo(64)
         }
+    }
+}
+    // MARK: - Formatting Extensions
+extension Formatter {
+    static let avoidNotation: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 8
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 2
+        return numberFormatter
+    }()
+}
+
+extension FloatingPoint {
+    var avoidNotation: String {
+        return Formatter.avoidNotation.string(for: self) ?? ""
     }
 }
