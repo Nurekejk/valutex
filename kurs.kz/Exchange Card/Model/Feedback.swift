@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Feedback: Encodable {
+    let officeId: Int
+    let score: Int
+    let comment: String
+}
