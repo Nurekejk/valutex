@@ -92,14 +92,20 @@ final class ProfileViewController: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да",
                                       style: .destructive,
-                                      handler: { _ in
-            self.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
-            self.navigationController?.tabBarController?.tabBar.removeFromSuperview()
-            self.navigationController?.setViewControllers([MainPageViewController()], animated: false)
+                                      handler: { [weak self] _ in
+            self?.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
+            
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                let rootViewController = MainPageViewController()
+                let navController = UINavigationController(rootViewController: rootViewController)
+                sceneDelegate.window?.rootViewController = navController
+            }
         }))
+        
         alert.addAction(UIAlertAction(title: "Нет",
                                       style: .cancel,
                                       handler: { _ in }))
+        
         self.present(alert, animated: true, completion: nil)
     }
 }
