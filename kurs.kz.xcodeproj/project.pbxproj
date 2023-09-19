@@ -136,6 +136,8 @@
 		FA57598D2A67CC1600DE9A6B /* OfferSellBuySegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57598C2A67CC1500DE9A6B /* OfferSellBuySegmentedController.swift */; };
 		FA57598F2A692B2100DE9A6B /* CurrencySelectorListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57598E2A692B2100DE9A6B /* CurrencySelectorListService.swift */; };
 		FA5759912A692B4700DE9A6B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759902A692B4700DE9A6B /* Currency.swift */; };
+		FA58704C2AB979450092BE7B /* RateViewControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58704B2AB979450092BE7B /* RateViewControllerService.swift */; };
+		FA58704E2AB97AC40092BE7B /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58704D2AB97AC40092BE7B /* Feedback.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */; };
 		FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */; };
@@ -273,6 +275,8 @@
 		FA57598C2A67CC1500DE9A6B /* OfferSellBuySegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellBuySegmentedController.swift; sourceTree = "<group>"; };
 		FA57598E2A692B2100DE9A6B /* CurrencySelectorListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorListService.swift; sourceTree = "<group>"; };
 		FA5759902A692B4700DE9A6B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		FA58704B2AB979450092BE7B /* RateViewControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewControllerService.swift; sourceTree = "<group>"; };
+		FA58704D2AB97AC40092BE7B /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextfieldFactory.swift; sourceTree = "<group>"; };
 		FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 		9F402A472A5BDC5A00F9126C /* Rate */ = {
 			isa = PBXGroup;
 			children = (
+				FA58704A2AB979320092BE7B /* Model */,
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
 				9F402A492A5BDC7400F9126C /* StarButton.swift */,
 			);
@@ -818,6 +823,15 @@
 				FA57598C2A67CC1500DE9A6B /* OfferSellBuySegmentedController.swift */,
 			);
 			path = OfferSellBuySegmentedControl;
+			sourceTree = "<group>";
+		};
+		FA58704A2AB979320092BE7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA58704B2AB979450092BE7B /* RateViewControllerService.swift */,
+				FA58704D2AB97AC40092BE7B /* Feedback.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FA74EA7B2A52C8A500578C21 /* Registration */ = {
@@ -1153,6 +1167,7 @@
 				998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */,
 				FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */,
 				9F899D832A4AFB44002D1F74 /* SceneDelegate.swift in Sources */,
+				FA58704E2AB97AC40092BE7B /* Feedback.swift in Sources */,
 				8FE341D82A7AD50F00A72212 /* DetailViewController.swift in Sources */,
 				FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */,
 				71D01EB52A5D525000422491 /* NotificationsTableViewCell.swift in Sources */,
@@ -1169,6 +1184,7 @@
 				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
+				FA58704C2AB979450092BE7B /* RateViewControllerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
