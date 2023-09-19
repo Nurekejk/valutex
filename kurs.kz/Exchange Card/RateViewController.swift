@@ -1,6 +1,11 @@
 import UIKit
+import SnackBar_swift
 
 final class RateViewController: UIViewController, UITextViewDelegate {
+    // MARK: - Properties
+    private let officeId: Int
+    private let service: RateViewControllerService
+    private var rating = 0
     
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -38,9 +43,10 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    private let continueButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить отзыв", for: .normal)
+        button.addTarget(self, action: #selector(sendReview), for: .touchUpInside)
         button.titleLabel?.font = AppFont.semibold.s16()
         button.setTitleColor(AppColor.grayWhite.uiColor, for: .normal)
         return button
@@ -67,6 +73,17 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             starStackView.addArrangedSubview(starButton)
         }
     }
+    // MARK: - Initializers
+    init(service: RateViewControllerService, officeId: Int) {
+        self.service = service
+        self.officeId = officeId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +118,40 @@ final class RateViewController: UIViewController, UITextViewDelegate {
 
     }
     
+    // MARK: - Action
+    @objc func changeStars(sender: UIButton!) {
+        starButtons.forEach { $0.isSelected = false }
+        for (index, element) in starButtons.enumerated() {
+            starButtons[index].isSelected = true
+            if element == sender {
+                rating = index + 1
+                break
+            }
+        }
+    }
+    
+    @objc private func sendReview() {
+        if rating == 0 || reviewTextView.text.isEmpty {
+            print("cant ")
+        } else {
+            let comment = reviewTextView.text!
+            let review = Feedback(officeId: officeId, score: rating, comment: comment)
+            service.postReview(review: review) { result in
+                switch result {
+                case .success:
+                    self.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    if error.responseCode == 404 {
+                        
+                        SnackBarController.showSnackBar(in: self.view,
+                                                        message: "          Вы уже оставили отзыв",
+                                                        duration: .lengthShort)
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Setup Constraints:
     private func setupConstraints() {
         entireStackView.snp.makeConstraints { make in
@@ -126,16 +177,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.height.equalTo(52)
             make.leading.equalTo(entireStackView.snp.leading).offset(16)
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
-        }
-    }
-    // MARK: - Action
-    @objc func changeStars(sender: UIButton!) {
-        starButtons.forEach { $0.isSelected = false }
-        for (index, element) in starButtons.enumerated() {
-            starButtons[index].isSelected = true
-            if element == sender {
-                break
-            }
         }
     }
 }
