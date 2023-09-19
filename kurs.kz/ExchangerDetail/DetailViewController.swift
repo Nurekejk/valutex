@@ -370,7 +370,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == SectionNumber.two.rawValue {
-            self.navigationController?.pushViewController(RateViewController(),
+            self.navigationController?.pushViewController(RateViewController(service:
+                                                                                RateViewControllerService(),
+                                                                             officeId: officeId),
                                                           animated: true)
         }
     }
