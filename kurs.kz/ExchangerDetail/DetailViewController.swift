@@ -120,9 +120,7 @@ final class DetailViewController: UIViewController {
     
     // MARK: - Callback
     private func fetchExchangerDetails() {
-        print(officeId)
         service.fetchDetails(officeID: self.officeId) { [weak self] result in
-            print(result)
             switch result {
             case .success(let details):
                 self?.setSectionsData(details: details)

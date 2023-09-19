@@ -210,9 +210,6 @@ final class ExchangeListViewController: UIViewController {
         setupViews()
         setupConstraints()
         showSkeletonAnimation()
-        getExchangers {
-            print("finished")
-        }
         getDefaults()
     }
     
@@ -338,10 +335,14 @@ final class ExchangeListViewController: UIViewController {
             do {
                 let city = try JSONDecoder().decode(City.self, from: data)
                 self.selectedCity = city.id
+                getExchangers {}
             } catch let error {
                 print("error while decoding \(error)")
             }
+        } else {
+            getExchangers {}
         }
+        
     }
     
     // MARK: - Action
@@ -351,7 +352,9 @@ final class ExchangeListViewController: UIViewController {
     
     private func getExchangers(completion: @escaping () -> Void) {
         service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: selectedCity) { exchangers in
+            print(exchangers)
             self.exchangersArray = exchangers
+            print(self.exchangersArray)
             
             completion()
         }
