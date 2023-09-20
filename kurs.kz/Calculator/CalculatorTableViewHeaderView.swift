@@ -69,6 +69,7 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(dropDownButtonDidPressed),
                          for: .touchUpInside)
+        button.isHidden = true
         button.tag = 1
         return button
     }()
@@ -78,23 +79,15 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private lazy var arrowLeftRightButton: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var arrowLeftRightButton: ButtonWithBiggerArea = {
+        let button = ButtonWithBiggerArea(type: .system)
         let iconImage = AppImage.arrow_left_right.uiImage
         button.setImage(iconImage, for: .normal)
         button.addTarget(self, action: #selector(arrowLeftRightButtonDidPressed),
                          for: .touchUpInside)
         return button
     }()
-    private lazy var arrowLeftRightContainerView: UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = true
-        let gesture:UITapGestureRecognizer =
-        UITapGestureRecognizer(target: self, action: #selector(arrowLeftRightButtonDidPressed))
-        gesture.numberOfTapsRequired = 1
-        view.addGestureRecognizer(gesture)
-        return view
-    }()
+    
     private lazy var separatorLineImageRight: UIImageView = {
         let imageView = UIImageView()
         imageView.image = AppImage.separator_line.uiImage
@@ -112,8 +105,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = AppFont.regular.s16()
         return label
     }()
-    private lazy var dropDownButtonRight: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var dropDownButtonRight: ButtonWithBiggerArea = {
+        let button = ButtonWithBiggerArea(type: .system)
         let iconImage = AppImage.down_arrow.uiImage
         button.setImage(iconImage, for: .normal)
         button.tag = 2
@@ -162,9 +155,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup Views
 
     private func setupViews() {
-        arrowLeftRightContainerView.addSubview(arrowLeftRightButton)
         [currencyImageLabelLeft, currencyLabelLeft, dropDownButtonLeft, separatorLineImageLeft,
-         arrowLeftRightContainerView, currencyImageLabelRight, currencyLabelRight, dropDownButtonRight,
+         arrowLeftRightButton, currencyImageLabelRight, currencyLabelRight, dropDownButtonRight,
          separatorLineImageRight, currencyTextField, clearButton, borderView].forEach {
             containerView.addSubview($0)
         }
@@ -215,14 +207,8 @@ final class CalculatorTableViewHeaderView: UITableViewHeaderFooterView {
             make.top.equalTo(containerView.snp.top).offset(8)
             make.trailing.equalTo(arrowLeftRightButton.snp.leading).offset(-12)
         }
-        arrowLeftRightContainerView.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(45)
-            make.width.equalTo(40)
-        }
         arrowLeftRightButton.snp.makeConstraints { make in
-            make.top.equalTo(arrowLeftRightContainerView.snp.top).offset(16)
+            make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
         }
         separatorLineImageRight.snp.makeConstraints { make in

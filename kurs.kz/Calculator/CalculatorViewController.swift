@@ -15,7 +15,6 @@ final class CalculatorViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    var filteredArray: [Exchanger] = []
 
     private var isBuying: Bool = true {
         didSet {
@@ -143,6 +142,7 @@ extension CalculatorViewController: CalculatorTableViewHeaderViewDelegate {
         self.presentPanModal(modalScreen)
     }
 }
+
 extension CalculatorViewController: CurrencySelectorViewControllerDelegate {
     func currencyDidSelect(currency: Currency) {
         
