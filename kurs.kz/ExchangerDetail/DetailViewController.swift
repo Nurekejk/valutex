@@ -131,7 +131,7 @@ final class DetailViewController: UIViewController {
                     self?.address = addressString
                 }
                 if let scoreAmount = details.score {
-                    self?.score = scoreAmount
+                    self?.score = round(scoreAmount * 100)/100
                 }
                 self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
