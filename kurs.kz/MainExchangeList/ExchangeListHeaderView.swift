@@ -33,14 +33,14 @@ final class ExchangeListHeaderView: UITableViewHeaderFooterView {
         label.font = AppFont.regular.s10()
         return label
     }()
-    private lazy var buyRateFilterButton: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var buyRateFilterButton: ButtonWithBiggerArea = {
+        let button = ButtonWithBiggerArea(type: .system)
         button.setImage(AppImage.arrow_back.uiImage, for: .normal)
         button.addTarget(self, action: #selector(buyFilterButtonDidPress(sender:)), for: .touchUpInside)
         return button
     }()
-    private lazy var sellRateFilterButton: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var sellRateFilterButton: ButtonWithBiggerArea = {
+        let button = ButtonWithBiggerArea(type: .system)
         button.setImage(AppImage.arrow_back.uiImage, for: .normal)
         button.addTarget(self, action: #selector(sellFilterButtonDidPress(sender:)), for: .touchUpInside)
         return button
