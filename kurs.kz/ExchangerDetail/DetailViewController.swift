@@ -142,7 +142,7 @@ final class DetailViewController: UIViewController {
     }
     
     private func fetchCurrencyDetails() {
-        service.fetchCurrencyInformation(officeID: 1) { [weak self] result in
+        service.fetchCurrencyInformation(officeID: officeId) { [weak self] result in
             switch result {
             case .success(let currencyDetails):
                 self?.currencies = currencyDetails
