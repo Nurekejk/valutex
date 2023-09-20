@@ -127,6 +127,7 @@
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
 		FA1C82192A6C75DB0064BB72 /* ExchangerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */; };
 		FA254B392AA8A85300831444 /* DPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA254B382AA8A85300831444 /* DPImageView.swift */; };
+		FA2C05832ABAD8FA00058567 /* ButtonWithBiggerArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C05822ABAD8FA00058567 /* ButtonWithBiggerArea.swift */; };
 		FA357BC22A58B35A005D5271 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */; };
 		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
 		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
@@ -266,6 +267,7 @@
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
 		FA1C82182A6C75DB0064BB72 /* ExchangerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangerListService.swift; sourceTree = "<group>"; };
 		FA254B382AA8A85300831444 /* DPImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPImageView.swift; sourceTree = "<group>"; };
+		FA2C05822ABAD8FA00058567 /* ButtonWithBiggerArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithBiggerArea.swift; sourceTree = "<group>"; };
 		FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
 		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 		99D973FD2A680D6A00F7E506 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA2C05812ABAD8C600058567 /* CustomElements */,
 				FAA817522AAF0BDF00DCE6F2 /* Factories */,
 				998D7B442A6D1C3F002F6695 /* UI */,
 				99D973FE2A680D7E00F7E506 /* Resources */,
@@ -784,6 +787,14 @@
 				9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		FA2C05812ABAD8C600058567 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				FA2C05822ABAD8FA00058567 /* ButtonWithBiggerArea.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		FA357BC02A58B2DF005D5271 /* TabBar */ = {
@@ -1185,6 +1196,7 @@
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 				FA58704C2AB979450092BE7B /* RateViewControllerService.swift in Sources */,
+				FA2C05832ABAD8FA00058567 /* ButtonWithBiggerArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
