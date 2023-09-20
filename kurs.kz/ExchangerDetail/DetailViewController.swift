@@ -258,7 +258,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             if collapsed {
                 return 0
             } else {
-                return sections[section - topSections].items?.count ?? 0
+                if let unwrappedItems = sections[section - topSections].items {
+                    if unwrappedItems == [nil] {
+                        return 0
+                    }
+                    return unwrappedItems.count
+                } else {
+                    return 0
+                }
+                
             }
         }
         return 0
@@ -329,6 +337,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         header.setCollapsed(sections[section - topSections].collapsed ?? false)
         header.section = section
         header.detailSection = sections[section - topSections]
+        header.checkIfEmpty()
         header.delegate = self
         return header
     }
@@ -393,8 +402,7 @@ extension DetailViewController: CollapsibleTableViewHeaderDelegate {
         let collapsed = !(sections[section - topSections].collapsed ?? false)
         sections[section - topSections].collapsed = collapsed
         header.setCollapsed(collapsed)
-        DispatchQueue.main.async {
-            self.exchangerDetailsTableView.reloadData()
-        }
+        self.exchangerDetailsTableView.reloadData()
+
     }
 }
