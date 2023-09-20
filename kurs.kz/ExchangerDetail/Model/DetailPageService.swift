@@ -15,9 +15,8 @@ final class DetailPageService {
     func fetchCurrencyInformation(officeID: Int,
                                   completion: @escaping (Result<[CurrencyElement], AFError>) -> Void) {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/exchange_offices/info_rates"
         urlComponent.query = "office_id=\(officeID)"
         
@@ -40,9 +39,8 @@ final class DetailPageService {
     
     func fetchDetails(officeID: Int, completion: @escaping (Result<Details, AFError>) -> Void) {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/exchange_offices/info_main"
         urlComponent.query = "office_id=\(officeID)"
         
@@ -50,7 +48,7 @@ final class DetailPageService {
             completion(.failure(AFError.invalidURL(url: urlComponent)))
             return
         }
-        
+
         AF.request(url, method: .post, parameters: [:], encoding: JSONEncoding.default)
             .validate()
             .responseDecodable(of: Details.self) { response in
