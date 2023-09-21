@@ -16,6 +16,7 @@ final class DetailViewController: UIViewController {
     public var officeId = 0
     
     // MARK: - Properties
+    private var phoneNumbers = [String]()
     private let service: DetailPageService
     private var sections = [DetailSection]()
     private var currencies = [CurrencyElement]()
@@ -123,7 +124,13 @@ final class DetailViewController: UIViewController {
         service.fetchDetails(officeID: self.officeId) { [weak self] result in
             switch result {
             case .success(let details):
-                self?.setSectionsData(details: details)
+                if let contacts = details.contacts {
+                    let unwrappedStrings = contacts.compactMap { $0 }
+                    for number in unwrappedStrings {
+                        let formattedNumber = self?.format(with: "+X (XXX) XXX-XX-XX", phone: number)
+                        self?.phoneNumbers.append(formattedNumber ?? "")
+                    }
+                }
                 if let nameString = details.name {
                     self?.name = nameString
                 }
@@ -133,6 +140,7 @@ final class DetailViewController: UIViewController {
                 if let scoreAmount = details.score {
                     self?.score = round(scoreAmount * 100)/100
                 }
+                self?.setSectionsData(details: details)
                 self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
@@ -158,7 +166,7 @@ final class DetailViewController: UIViewController {
         // Phone Section
         let phoneSection = DetailSection(name: "Телефоны",
                                          iconImage: AppImage.call.uiImage,
-                                         items: details.contacts)
+                                         items: phoneNumbers)
         // Working Hours Section
         var workingHours = [String]()
         var dayOfWeek = 0
@@ -219,6 +227,25 @@ final class DetailViewController: UIViewController {
         return String(timeString)
     }
     
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
+    }
+    
     // MARK: - Actions
     @objc private func callButtonDidPressed() {
         let alert = UIAlertController(title: "Вы нажали на кнопку позвонить.",
@@ -229,15 +256,25 @@ final class DetailViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    @objc private func shareButtonDidPressed() {
-        let alert = UIAlertController(title: "Вы нажали на кнопку поделиться.",
-                                      message: "",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
+    @objc private func shareButtonDidPressed(_ sender: UIBarButtonItem) {
+        let phones = phoneNumbers.joined(separator: "\n")
         
-        self.present(alert, animated: true, completion: nil)
+        let text = """
+                \(name)
+                \(address)
+                \(phones)
+                """
+              let textToShare = [ text ]
+              let activityViewController = UIActivityViewController(activityItems: textToShare,
+                                                                    applicationActivities: nil)
+        
+              activityViewController.popoverPresentationController?.sourceView = self.view
+              
+              activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop,
+                                                               UIActivity.ActivityType.postToFacebook ]
+              
+              self.present(activityViewController, animated: true, completion: nil)
+
     }
 }
 
