@@ -117,19 +117,19 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
                 switch section {
                 case 3:
                     arrowImageView.isHidden = true
-                    titleLabel.text = "Телефоны не указаны"
+                    titleLabel.text = "Телефоны - не указаны"
                 case 4:
                     arrowImageView.isHidden = true
-                    titleLabel.text = "Время работы не указано"
+                    titleLabel.text = "Время работы - не указано"
                 case 5:
                     arrowImageView.isHidden = true
-                    titleLabel.text = "Email не указан"
+                    titleLabel.text = "Email - не указан"
                 case 6:
                     arrowImageView.isHidden = true
-                    titleLabel.text = "Web-site не указан"
+                    titleLabel.text = "Web-site - не указан"
                 case 7:
                     arrowImageView.isHidden = true
-                    titleLabel.text = "Whatsapp не указан"
+                    titleLabel.text = "Whatsapp - не указан"
                 default:
                     print("something went wrong")
                 }
