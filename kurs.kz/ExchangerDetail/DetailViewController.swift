@@ -16,6 +16,7 @@ final class DetailViewController: UIViewController {
     public var officeId = 0
     
     // MARK: - Properties
+    private var formattedPhoneNumbers = [String]()
     private var phoneNumbers = [String]()
     private let service: DetailPageService
     private var sections = [DetailSection]()
@@ -128,7 +129,8 @@ final class DetailViewController: UIViewController {
                     let unwrappedStrings = contacts.compactMap { $0 }
                     for number in unwrappedStrings {
                         let formattedNumber = self?.format(with: "+X (XXX) XXX-XX-XX", phone: number)
-                        self?.phoneNumbers.append(formattedNumber ?? "")
+                        self?.formattedPhoneNumbers.append(formattedNumber ?? "")
+                        self?.phoneNumbers.append(number)
                     }
                 }
                 if let nameString = details.name {
@@ -166,7 +168,7 @@ final class DetailViewController: UIViewController {
         // Phone Section
         let phoneSection = DetailSection(name: "Телефоны",
                                          iconImage: AppImage.call.uiImage,
-                                         items: phoneNumbers)
+                                         items: formattedPhoneNumbers)
         // Working Hours Section
         var workingHours = [String]()
         var dayOfWeek = 0
@@ -248,16 +250,17 @@ final class DetailViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func callButtonDidPressed() {
-        let alert = UIAlertController(title: "Вы нажали на кнопку позвонить.",
-                                      message: "",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        if let primaryPhoneNumber = phoneNumbers.first {
+            if let url = URL(string: "tel://\(primaryPhoneNumber)"),
+               UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            
+        }
     }
     @objc private func shareButtonDidPressed(_ sender: UIBarButtonItem) {
-        let phones = phoneNumbers.joined(separator: "\n")
+        let phones = formattedPhoneNumbers.joined(separator: "\n")
         
         let text = """
                 \(name)
