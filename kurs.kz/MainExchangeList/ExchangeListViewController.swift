@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 import Pulley
+import GoogleMaps
 
 // swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
@@ -19,6 +20,8 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private var userLocation: CLLocation?
+    
     private var selectedCity = 1 {
         didSet {
             getExchangers {}
@@ -425,8 +428,27 @@ final class ExchangeListViewController: UIViewController {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
+    //        {
+    //           let exchangerLocation = CLLocation(latitude: CLLocationDegrees(latitude),
+    //                                              longitude: CLLocationDegrees(longitude))
+    //
+    //           return myLocation.distance(from: exchangerLocation)/1000.0
+    //       }
+    private func calculateDistance(latitude: Float, longitude: Float ) -> CLLocationDistance? {
+        if let unwrappedUserlocation = userLocation {
+            return unwrappedUserlocation.distance(from: CLLocation(latitude:
+                                                                    CLLocationDegrees(latitude),
+                                                                   longitude:
+                                                                    CLLocationDegrees(longitude)))
+        } else {
+            return nil
+        }
+    }
     public func updateCurrency(newCurrency: Currency?) {
         self.currency = newCurrency
+    }
+    public func updateLocation(newLocation: CLLocation) {
+        self.userLocation = newLocation
     }
 }
 
@@ -460,11 +482,11 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
             fatalError("Cound not dequeue reusable cell")
         }
         cell.backgroundColor = view.backgroundColor
-        if !isSearching {
-            cell.changeExchanger(with: filteredArray[indexPath.row])
-        } else {
-            cell.changeExchanger(with: filteredArray[indexPath.row])
-        }
+        var currentExchanger = filteredArray[indexPath.row]
+        
+        currentExchanger.distance = calculateDistance(latitude: currentExchanger.latitude, longitude: currentExchanger.longitude)
+
+        cell.changeExchanger(with: filteredArray[indexPath.row])
         return cell
     }
     

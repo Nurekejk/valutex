@@ -13,12 +13,11 @@ import SnapKit
 import ProgressHUD
 
 final class MapViewController: UIViewController {
-    
     private let service: ExchangerListService
     private var markers = [GMSMarker]()
     private let locationManager = CLLocationManager()
     private var currentZoom : Float = 15.0
-    
+    weak var delegate: MapViewControllerDelegate?
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         let map =  GMSMapView(frame: view.bounds,
@@ -243,7 +242,9 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
+        guard let location = locations.last else { return }
+        print("location is \(location)")
+        delegate?.didUpdateLocation(location: location)
         googleMapView.camera = GMSCameraPosition(
             target: location.coordinate,
             zoom: currentZoom,
@@ -277,4 +278,7 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
             make.bottom.equalToSuperview().inset(distance + 16)
         }
     }
+}
+protocol MapViewControllerDelegate:AnyObject {
+    func didUpdateLocation(location: CLLocation)
 }

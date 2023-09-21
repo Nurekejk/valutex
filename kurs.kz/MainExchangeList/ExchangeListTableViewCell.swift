@@ -7,11 +7,12 @@
 
 import UIKit
 import SnapKit
+import GoogleMaps
 
 final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
-    
+
     // MARK: - Properties
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
@@ -28,8 +29,14 @@ final class ExchangeListTableViewCell: UITableViewCell {
             } else {
                 ratingLabel.text = "?.?"
             }
-            setupAddressLabel(with: exchanger?.address ?? "",
-                              and: String(format: "%.3f", exchanger?.distance ?? 1.0) + " км")
+            if let unwrappedDistance = exchanger?.distance {
+                setupAddressLabel(with: exchanger?.address ?? "",
+                                  and: String(format: "%.3f", unwrappedDistance) + " км")
+            } else {
+                setupAddressLabel(with: exchanger?.address ?? "",
+                                  and: "Ошибка")
+            }
+
             dateLabel.text = exchanger?.formattedDate
             if let safeBuyRate = exchanger?.buyRate {
                 let trimmedBuyRate = trimExchangeRate(rate: safeBuyRate)
