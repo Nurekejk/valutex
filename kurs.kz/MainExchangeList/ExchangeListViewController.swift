@@ -20,7 +20,13 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
-    private var userLocation: CLLocation?
+    private var userLocation: CLLocation? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateVisibleCells()
+            }
+        }
+    }
     
     private var selectedCity = 1 {
         didSet {
@@ -353,6 +359,17 @@ final class ExchangeListViewController: UIViewController {
         exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
     }
     
+    private func updateVisibleCells() {
+        for indexPath in self.exchangeListTableView.indexPathsForVisibleRows ?? [] {
+            if let cell = self.exchangeListTableView.cellForRow(at: indexPath)
+                as? ExchangeListTableViewCell {
+                cell.updateAdressLabel(adress: filteredArray[indexPath.row].address,
+                                       distance: (calculateDistance(latitude:
+                                                                        filteredArray[indexPath.row].latitude,
+                                                                    longitude: filteredArray[indexPath.row].longitude) ?? 0) / 1000)
+            }
+        }
+    }
     private func getExchangers(completion: @escaping () -> Void) {
         service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: selectedCity) { exchangers in
             print(exchangers)
@@ -435,12 +452,15 @@ final class ExchangeListViewController: UIViewController {
     //           return myLocation.distance(from: exchangerLocation)/1000.0
     //       }
     private func calculateDistance(latitude: Float, longitude: Float ) -> CLLocationDistance? {
+        print(userLocation)
         if let unwrappedUserlocation = userLocation {
+            print(unwrappedUserlocation)
             return unwrappedUserlocation.distance(from: CLLocation(latitude:
                                                                     CLLocationDegrees(latitude),
                                                                    longitude:
                                                                     CLLocationDegrees(longitude)))
         } else {
+            print("OHHHHH NOOO")
             return nil
         }
     }
@@ -485,7 +505,8 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
         var currentExchanger = filteredArray[indexPath.row]
         
         currentExchanger.distance = calculateDistance(latitude: currentExchanger.latitude, longitude: currentExchanger.longitude)
-
+        print("filtered array \(filteredArray[indexPath.row].distance)")
+        print("exchangerssss \(currentExchanger.distance)")
         cell.changeExchanger(with: filteredArray[indexPath.row])
         return cell
     }

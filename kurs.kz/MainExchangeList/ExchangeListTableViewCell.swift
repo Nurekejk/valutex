@@ -13,11 +13,18 @@ final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - State
     static let identifier = "ExchangeListTableCell"
 
-    // MARK: - Properties
+    // MARK: - Public
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
+        print("hereeeeee2323")
     }
     
+    public func updateAdressLabel(adress: String, distance: CLLocationDistance) {
+            setupAddressLabel(with: exchanger?.address ?? "",
+                              and: " (\(String(format: "%.2f", distance) + " км"))")
+    }
+    
+    // MARK: - Properties
     private var exchanger: Exchanger? {
         didSet {
             mainTitleLabel.text = exchanger?.mainTitle
@@ -31,10 +38,10 @@ final class ExchangeListTableViewCell: UITableViewCell {
             }
             if let unwrappedDistance = exchanger?.distance {
                 setupAddressLabel(with: exchanger?.address ?? "",
-                                  and: String(format: "%.3f", unwrappedDistance) + " км")
+                                  and: " (\(String(format: "%.2f", unwrappedDistance) + " км"))")
             } else {
                 setupAddressLabel(with: exchanger?.address ?? "",
-                                  and: "Ошибка")
+                                  and: "")
             }
 
             dateLabel.text = exchanger?.formattedDate
@@ -145,7 +152,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
     
     private func setupAddressLabel(with location: String, and distance: String ) {
         let locationText = location
-        let distanceText = " (\(distance))"
+        let distanceText = distance
         
         let locationTextAttributes: [NSAttributedString.Key: Any] = [
             .font: AppFont.regular.s12(),
