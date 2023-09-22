@@ -145,9 +145,8 @@ final class SelectCityViewController: UIViewController {
     private func fetchCities() {
 
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/cities_list"
 
         guard let url = urlComponent.url else {

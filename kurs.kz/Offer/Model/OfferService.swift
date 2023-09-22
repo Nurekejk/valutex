@@ -15,7 +15,13 @@ final class OfferService {
     }
 
     func deleteOffer() {
-        let url = "http://134.122.66.97:4443/delete_offer"
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/delete_offer"
+        guard let url = urlComponent.url else {
+            return
+        }
         var headers: HTTPHeaders = [
             "accept": "application/json"
         ]

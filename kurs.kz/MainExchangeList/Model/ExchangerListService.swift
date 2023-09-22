@@ -13,9 +13,8 @@ struct ExchangerListService {
     func fetchExchangers(currencyCode: String, cityId: Int, completion: @escaping ([Exchanger]) -> Void) {
         
         var exchangeListURLComponent = URLComponents()
-        exchangeListURLComponent.scheme = "http"
-        exchangeListURLComponent.host = "134.122.66.97"
-        exchangeListURLComponent.port = 4443
+        exchangeListURLComponent.scheme = "https"
+        exchangeListURLComponent.host = "api.valutex.kz"
         exchangeListURLComponent.path = "/actual_currency_rates"
         
         let requestData: [String: Any] = ["currency_code": currencyCode, "city_id": cityId]

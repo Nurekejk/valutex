@@ -16,9 +16,8 @@ final class SignInService {
                 completion: @escaping (Result<SignInResponse, AFError>) -> Void) {
         
         var signIn = URLComponents()
-        signIn.scheme = "http"
-        signIn.host = "134.122.66.97"
-        signIn.port = 4443
+        signIn.scheme = "https"
+        signIn.host = "api.valutex.kz"
         signIn.path = "/login"
         
         guard let url = signIn.url else {
