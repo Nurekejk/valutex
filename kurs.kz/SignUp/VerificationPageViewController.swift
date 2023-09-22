@@ -151,7 +151,7 @@ final class VerificationPageViewController: UIViewController {
             case .failure:
                 DispatchQueue.main.async {
                     self.showFailure()
-                    self.showSnackBar(message: "Ошибка! Неверный код.")
+                    self.showAlert(message: "Ошибка! Неверный код.")
                 }
             }
         }
@@ -162,8 +162,14 @@ final class VerificationPageViewController: UIViewController {
     }
     
     // MARK: - SnackBar
-    private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {_ in }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
