@@ -180,19 +180,19 @@ final class SignUpViewController: UIViewController {
         let phoneNumber = phoneTextField.text
         guard let phoneNumber = phoneNumber else {
             self.showFailure()
-            showSnackBar(message: "Номер телефона введен неправильно.")
+            showAlert(message: "Номер телефона введен неправильно.")
             return
         }
         
         if phoneNumber.isEmpty {
             self.showFailure()
-            showSnackBar(message: "Пожалуйства, введите свой номер.")
+            showAlert(message: "Пожалуйства, введите свой номер.")
             return
         }
         
         if phoneNumber.count != 18 {
             self.showFailure()
-            showSnackBar(message: "Номер телефона введен неправильно.")
+            showAlert(message: "Номер телефона введен неправильно.")
             return
         }
         
@@ -212,7 +212,7 @@ final class SignUpViewController: UIViewController {
             case .failure:
                 DispatchQueue.main.async {
                     self.showFailure()
-                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                    self.showAlert(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
                 }
             }
         }
@@ -227,8 +227,14 @@ final class SignUpViewController: UIViewController {
     }
     
     // MARK: - SnackBar
-    private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {_ in }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
