@@ -20,6 +20,7 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private var exchangersDidLoad = false
     private var userLocation: CLLocation? {
         didSet {
             DispatchQueue.main.async {
@@ -51,6 +52,11 @@ final class ExchangeListViewController: UIViewController {
     }
     private var filteredArray: [Exchanger] = [] {
         didSet {
+            if !filteredArray.isEmpty {
+                exchangersDidLoad = true
+            } else {
+                exchangersDidLoad = false
+            }
             self.exchangeListTableView.reloadData()
         }
     }
@@ -360,13 +366,15 @@ final class ExchangeListViewController: UIViewController {
     }
     
     private func updateVisibleCells() {
-        for indexPath in self.exchangeListTableView.indexPathsForVisibleRows ?? [] {
-            if let cell = self.exchangeListTableView.cellForRow(at: indexPath)
-                as? ExchangeListTableViewCell {
-                cell.updateAdressLabel(adress: filteredArray[indexPath.row].address,
-                                       distance: (calculateDistance(latitude:
-                                                                        filteredArray[indexPath.row].latitude,
-                                                                    longitude: filteredArray[indexPath.row].longitude) ?? 0) / 1000)
+        if exchangersDidLoad {
+            for indexPath in self.exchangeListTableView.indexPathsForVisibleRows ?? [] {
+                if let cell = self.exchangeListTableView.cellForRow(at: indexPath)
+                    as? ExchangeListTableViewCell {
+                    cell.updateAdressLabel(adress: filteredArray[indexPath.row].address,
+                                           distance: (calculateDistance(latitude:
+                                                                            filteredArray[indexPath.row].latitude,
+                                                                        longitude: filteredArray[indexPath.row].longitude) ?? 0) / 1000)
+                }
             }
         }
     }
