@@ -200,17 +200,17 @@ final class SignInViewController: UIViewController {
         let password = passwordTextField.text
         guard let phoneNumber = phoneNumber,
               let password = password else {
-            showSnackBar(message: "Номер телефона или пароль введены неправильно.")
+            showAlert(message: "Номер телефона или пароль введены неправильно.")
             return
         }
 
         if phoneNumber.isEmpty {
-            showSnackBar(message: "Пожалуйства, введите свой номер.")
+            showAlert(message: "Пожалуйства, введите свой номер.")
             return
         }
 
         if phoneNumber.count != 18 {
-            showSnackBar(message: "Номер телефона введен неправильно.")
+            showAlert(message: "Номер телефона введен неправильно.")
             return
         }
 
@@ -232,21 +232,25 @@ final class SignInViewController: UIViewController {
                     tabbarController.modalPresentationStyle = .fullScreen
                     self.present(tabbarController, animated: true)
                 } else {
-                    self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                    self.showAlert(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
                 }
             case .failure:
-                self.showSnackBar(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
+                self.showAlert(message: "Ошибка! Убедитесь, что вы ввели правильный номер.")
             }
         }
     }
     @objc private func backButtonDidPressed() {
         self.navigationController?.popViewController(animated: true)
     }
-
-    // MARK: - SnackBar
-
-    private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthLong)
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {_ in }))
+        self.present(alert, animated: true, completion: nil)
     }
     @objc private func signUpButtonDidPressed() {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
