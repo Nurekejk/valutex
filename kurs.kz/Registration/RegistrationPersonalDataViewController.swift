@@ -206,25 +206,25 @@ final class RegistrationPersonalDataViewController: UIViewController {
         
         guard let name = nameTextField.text else {
             self.showFailure()
-            self.showSnackBar(message: "Имя введено неправильно.")
+            self.showAlert(message: "Имя введено неправильно.")
             return
         }
         
         if name.isEmpty {
             self.showFailure()
-            self.showSnackBar(message: "Пожалуйста, введите ваше имя.")
+            self.showAlert(message: "Пожалуйста, введите ваше имя.")
             return
         }
         
         guard let surname = surnameTextField.text else {
             self.showFailure()
-            self.showSnackBar(message: "Фамилия введена неправильно.")
+            self.showAlert(message: "Фамилия введена неправильно.")
             return
         }
         
         if surname.isEmpty {
             self.showFailure()
-            self.showSnackBar(message: "Пожалуйста, введите вашу фамилию.")
+            self.showAlert(message: "Пожалуйста, введите вашу фамилию.")
             return
         }
         
@@ -252,8 +252,14 @@ final class RegistrationPersonalDataViewController: UIViewController {
     }
     
     // MARK: - SnackBar
-    private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {_ in }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
