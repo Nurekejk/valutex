@@ -5,7 +5,49 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Properties
     private let officeId: Int
     private let service: RateViewControllerService
-    private var rating = 0
+    private var rating = 0 {
+        didSet {
+            
+            isRatingDifferent = rating != oldRating
+        }
+    }
+    private var oldRating: Int?
+
+    private var isRatingDifferent = false {
+        didSet {
+            if isRatingDifferent || isTextDifferent {
+                continueButton.backgroundColor = isTextDifferent || isRatingDifferent ?
+                    AppColor.primaryBase.uiColor : AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                
+                continueButton.isEnabled = isTextDifferent || isRatingDifferent
+            }
+        }
+    }
+    
+    private var isTextDifferent = false {
+        didSet {
+            if isRatingDifferent || isTextDifferent {
+                continueButton.backgroundColor = isTextDifferent || isRatingDifferent ?
+                    AppColor.primaryBase.uiColor : AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                
+                continueButton.isEnabled = isTextDifferent || isRatingDifferent
+            }
+        }
+    }
+    private var hasGivenFeedbackBefore = false {
+        didSet {
+            if oldReview != nil {
+                continueButton.setTitle("Изменить отзыв", for: .normal)
+                reviewTextView.textColor = AppColor.gray100.uiColor
+
+            } else {
+                continueButton.setTitle("Отправить отзыв", for: .normal)
+                reviewTextView.textColor = AppColor.gray50.uiColor
+
+            }
+        }
+    }
+    private var oldReview: String?
     
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -89,6 +131,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getFeedback()
     }
     
     override func viewDidLayoutSubviews() {
@@ -119,6 +162,35 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Action
+    
+    private func getFeedback() {
+        service.getReview(officeId: officeId) { [weak self] result in
+            switch result {
+            case .success(let review):
+                print("review is \(review)")
+                self?.setupFeedback(with: review)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    private func setupFeedback(with review: FeedbackResponse) {
+        if review.status ?? false {
+            oldReview = review.feedback?.comment
+            hasGivenFeedbackBefore = review.status ?? false
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+            oldRating = review.feedback?.score ?? 0
+            var index = 0
+            while index != oldRating {
+                print("here")
+                starButtons[index].isSelected = true
+                index += 1
+            }
+            reviewTextView.text = review.feedback?.comment
+        }
+    }
+
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
@@ -131,21 +203,33 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func sendReview() {
-        if rating == 0 || reviewTextView.text.isEmpty {
-            print("cant ")
+        if !hasGivenFeedbackBefore {
+            if rating == 0 || reviewTextView.text.isEmpty {
+                print("cant ")
+            } else {
+                let comment = reviewTextView.text!
+                let review = Feedback(officeId: officeId, score: rating, comment: comment)
+                service.postReview(review: review) { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("error while posting review")
+                    }
+                }
+            }
         } else {
-            let comment = reviewTextView.text!
-            let review = Feedback(officeId: officeId, score: rating, comment: comment)
-            service.postReview(review: review) { result in
-                switch result {
-                case .success:
-                    self.navigationController?.popViewController(animated: true)
-                case .failure(let error):
-                    if error.responseCode == 404 {
-                        
-                        SnackBarController.showSnackBar(in: self.view,
-                                                        message: "          Вы уже оставили отзыв",
-                                                        duration: .lengthShort)
+            if rating == 0 || reviewTextView.text.isEmpty {
+                print("cant ")
+            } else {
+                let comment = reviewTextView.text!
+                let review = Feedback(officeId: officeId, score: rating, comment: comment)
+                service.updateFeedback(review: review) { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("error while posting review")
                     }
                 }
             }
@@ -158,7 +242,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.height.equalTo(318)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
         }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
@@ -189,6 +273,10 @@ extension RateViewController {
             textView.text = nil
             textView.textColor = AppColor.gray100.uiColor
         }
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        guard hasGivenFeedbackBefore else { return }
+        isTextDifferent = textView.text != oldReview
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
