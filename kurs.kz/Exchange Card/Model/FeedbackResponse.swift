@@ -6,17 +6,24 @@
 //
 
 import Foundation
-struct CompletedFeedback: Decodable  {
+
+struct FeedbackResponse: Decodable {
+    
     let status: Bool?
-    let feedback: Feedback? 
+    let feedback: CompletedFeedback? 
 }
 
-
-struct Feedback: Codable {
-    let officeId: Int
-    let score: Int
-    let comment: String
+struct CompletedFeedback: Decodable {
     
+    let officeId: Int?
+    let score: Int?
+    let editedFlag: Bool?
+    let createdAt: String?
+    let id: Int?
+    let userId: Int?
+    let comment: String?
+    let updatedAt: String?
+
     enum CodingKeys: String, CodingKey {
         case officeId = "office_id"
         case score
@@ -26,9 +33,5 @@ struct Feedback: Codable {
         case userId = "user_id"
         case comment
         case updatedAt = "updated_at"
-        case webSite = "web_site"
-        case email
-        case scoreCount = "score_count"
-        case open = "open"
     }
 }
