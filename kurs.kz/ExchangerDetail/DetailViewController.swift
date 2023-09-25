@@ -424,6 +424,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                                                                              officeId: officeId),
                                                           animated: true)
         }
+        if indexPath.section == (sections.count + topSections) - 1 {
+            let cell = tableView.cellForRow(at: indexPath) as? DetailTableViewCell
+            guard let link = cell?.nameLabel.text else { return }
+            guard let appURL = URL(string: link) else { return }
+            print(appURL)
+            if UIApplication.shared.canOpenURL(appURL) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(appURL)
+                }
+            }
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
