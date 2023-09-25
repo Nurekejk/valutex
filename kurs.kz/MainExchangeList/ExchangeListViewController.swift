@@ -460,7 +460,6 @@ final class ExchangeListViewController: UIViewController {
     //           return myLocation.distance(from: exchangerLocation)/1000.0
     //       }
     private func calculateDistance(latitude: Float, longitude: Float ) -> CLLocationDistance? {
-        print(userLocation)
         if let unwrappedUserlocation = userLocation {
             print(unwrappedUserlocation)
             return unwrappedUserlocation.distance(from: CLLocation(latitude:
@@ -468,7 +467,6 @@ final class ExchangeListViewController: UIViewController {
                                                                    longitude:
                                                                     CLLocationDegrees(longitude)))
         } else {
-            print("OHHHHH NOOO")
             return nil
         }
     }
@@ -513,8 +511,6 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
         var currentExchanger = filteredArray[indexPath.row]
         
         currentExchanger.distance = calculateDistance(latitude: currentExchanger.latitude, longitude: currentExchanger.longitude)
-        print("filtered array \(filteredArray[indexPath.row].distance)")
-        print("exchangerssss \(currentExchanger.distance)")
         cell.changeExchanger(with: filteredArray[indexPath.row])
         return cell
     }
