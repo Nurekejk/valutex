@@ -5,7 +5,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Properties
     private let officeId: Int
     private let service: RateViewControllerService
-    private var rating = 0 {
+    private lazy var rating = oldRating ?? 0 {
         didSet {
             
             isRatingDifferent = rating != oldRating
@@ -48,6 +48,11 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         }
     }
     private var oldReview: String?
+    private var userReviews = [ReviewForTableView]() {
+        didSet {
+            self.reviewsTableView.reloadData()
+        }
+    }
     
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -70,8 +75,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         return label
     }()
     
-    private let reviewTextView: UITextView = {
+    private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
+        textView.delegate = self
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
         textView.textColor = AppColor.gray50.uiColor
@@ -105,6 +111,14 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                                                                      bottom: 16, trailing: 0)
         return stackView
     }()
+    private lazy var reviewsTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(ReviewTableViewCell.self,
+                           forCellReuseIdentifier: ReviewTableViewCell.reuseID)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
     
     private func addButtonsToStarStackView() {
         let numberOfButtons = 5
@@ -132,6 +146,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         setupViews()
         setupConstraints()
         getFeedback()
+        fetchReviews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -146,6 +161,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(entireStackView)
+        view.addSubview(reviewsTableView)
         
         [starStackView, reviewLabel, borderView,
          reviewTextView, continueButton].forEach { entireStackView.addArrangedSubview($0) }
@@ -157,8 +173,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
         entireStackView.backgroundColor = AppColor.grayWhite.uiColor
         
-        reviewTextView.delegate = self
-
     }
     
     // MARK: - Action
@@ -188,6 +202,17 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                 index += 1
             }
             reviewTextView.text = review.feedback?.comment
+        }
+    }
+    private func fetchReviews() {
+        service.fetchUserReviews(officeId: officeId) { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.userReviews = result
+                print("self?.userReviews : \(self?.userReviews)")
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 
@@ -262,6 +287,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.leading.equalTo(entireStackView.snp.leading).offset(16)
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
         }
+        reviewsTableView.snp.makeConstraints { make in
+            make.top.equalTo(entireStackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview()
+            
+        }
     }
 }
 
@@ -294,5 +326,25 @@ extension RateViewController {
             return true
         }
         return true
+    }
+}
+    // MARK: - Extension TableViewDelegate, UITableViewDataSource
+extension RateViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        102
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userReviews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("hereeee")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.reuseID,
+                                                       for: indexPath) as? ReviewTableViewCell
+        else { print("OH NOOOOOOOOOOOOOO")
+            return UITableViewCell() }
+        print("YEEE")
+        cell.setupCell(with: userReviews[indexPath.row])
+        return cell
     }
 }
