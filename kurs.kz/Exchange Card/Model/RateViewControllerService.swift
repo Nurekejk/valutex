@@ -122,4 +122,35 @@ struct RateViewControllerService {
             }
         }
     }
+    func fetchUserReviews(officeId: Int,  
+                          completion: @escaping (Result<[ReviewForTableView], AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/exchange_offices/info_feedback"
+        urlComponent.query = "office_id=\(officeId)"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+        
+        AF.request(url, method: .post,
+                   parameters: [:], encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [ReviewForTableView].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
