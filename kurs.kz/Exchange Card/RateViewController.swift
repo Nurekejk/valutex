@@ -181,7 +181,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         service.getReview(officeId: officeId) { [weak self] result in
             switch result {
             case .success(let review):
-                print("review is \(review)")
                 self?.setupFeedback(with: review)
             case .failure(let error):
                 print(error)
@@ -197,7 +196,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             oldRating = review.feedback?.score ?? 0
             var index = 0
             while index != oldRating {
-                print("here")
                 starButtons[index].isSelected = true
                 index += 1
             }
@@ -209,7 +207,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             switch result {
             case .success(let result):
                 self?.userReviews = result
-                print("self?.userReviews : \(self?.userReviews)")
             case .failure(let error):
                 print(error)
             }
@@ -230,7 +227,6 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     @objc private func sendReview() {
         if !hasGivenFeedbackBefore {
             if rating == 0 || reviewTextView.text.isEmpty {
-                print("cant ")
             } else {
                 let comment = reviewTextView.text!
                 let review = Feedback(officeId: officeId, score: rating, comment: comment)
@@ -338,12 +334,9 @@ extension RateViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("hereeee")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.reuseID,
                                                        for: indexPath) as? ReviewTableViewCell
-        else { print("OH NOOOOOOOOOOOOOO")
-            return UITableViewCell() }
-        print("YEEE")
+        else { return UITableViewCell() }
         cell.setupCell(with: userReviews[indexPath.row])
         return cell
     }
