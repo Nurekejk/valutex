@@ -143,6 +143,7 @@
 		FA7D107E2AC1601300FD4393 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D107D2AC1601300FD4393 /* FeedbackResponse.swift */; };
 		FA7D10802AC2B95500FD4393 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */; };
 		FA7D10822AC2D03100FD4393 /* ReviewForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D10812AC2D03100FD4393 /* ReviewForTableView.swift */; };
+		FA7D10842AC3EECE00FD4393 /* ReviewTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D10832AC3EECE00FD4393 /* ReviewTableViewHeader.swift */; };
 		FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */; };
 		FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
@@ -286,6 +287,7 @@
 		FA7D107D2AC1601300FD4393 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
 		FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		FA7D10812AC2D03100FD4393 /* ReviewForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewForTableView.swift; sourceTree = "<group>"; };
+		FA7D10832AC3EECE00FD4393 /* ReviewTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewHeader.swift; sourceTree = "<group>"; };
 		FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextfieldFactory.swift; sourceTree = "<group>"; };
 		FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				9F402A482A5BDC7400F9126C /* RateViewController.swift */,
 				9F402A492A5BDC7400F9126C /* StarButton.swift */,
 				FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */,
+				FA7D10832AC3EECE00FD4393 /* ReviewTableViewHeader.swift */,
 			);
 			name = Rate;
 			path = "Exchange Card";
@@ -1105,6 +1108,7 @@
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
 				619B94292A8E1B810032F321 /* CreateOfferService.swift in Sources */,
 				8F8189D92A6066780082F80F /* CartExchangeFeedbackViewController.swift in Sources */,
+				FA7D10842AC3EECE00FD4393 /* ReviewTableViewHeader.swift in Sources */,
 				619B94272A8E1B590032F321 /* Offer.swift in Sources */,
 				9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
