@@ -115,7 +115,10 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(ReviewTableViewCell.self,
                            forCellReuseIdentifier: ReviewTableViewCell.reuseID)
+        tableView.register(ReviewTableViewHeader.self,
+                           forHeaderFooterViewReuseIdentifier: ReviewTableViewHeader.reuseID)
         tableView.delegate = self
+        tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.dataSource = self
         return tableView
     }()
@@ -334,6 +337,17 @@ extension RateViewController {
 }
     // MARK: - Extension TableViewDelegate, UITableViewDataSource
 extension RateViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                ReviewTableViewHeader.reuseID)
+        as? ReviewTableViewHeader
+        let score = calculateAverageScore()
+        header?.setupHeader(score: score, numberOfReviews: userReviews.count)
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         102
     }
