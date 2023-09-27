@@ -16,12 +16,6 @@ final class ExchangeListTableViewCell: UITableViewCell {
     // MARK: - Public
     public func changeExchanger(with newExchanger: Exchanger) {
         exchanger = newExchanger
-        print("hereeeeee2323")
-    }
-    
-    public func updateAdressLabel(adress: String, distance: CLLocationDistance) {
-            setupAddressLabel(with: exchanger?.address ?? "",
-                              and: " (\(String(format: "%.2f", distance) + " км"))")
     }
     
     // MARK: - Properties
@@ -38,7 +32,7 @@ final class ExchangeListTableViewCell: UITableViewCell {
             }
             if let unwrappedDistance = exchanger?.distance {
                 setupAddressLabel(with: exchanger?.address ?? "",
-                                  and: " (\(String(format: "%.2f", unwrappedDistance) + " км"))")
+                                  and: " (\(String(format: "%.2f", unwrappedDistance / 1000) + " км"))")
             } else {
                 setupAddressLabel(with: exchanger?.address ?? "",
                                   and: "")
