@@ -55,7 +55,7 @@ final class ReviewTableViewHeader: UITableViewHeaderFooterView {
     }
     // MARK: - Action
     public func setupHeader(score: Double?, numberOfReviews: Int?) {
-        scoreLabel.text = score != nil ? "\(Double(round(10 * score!) / 10))" : ""
+        scoreLabel.text = score != nil ? "\(Double(round(100 * score!) / 100))" : ""
         numberOfReviewsLabel.text = numberOfReviews != nil ? "\(numberOfReviews!)" : ""
         contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
     }
