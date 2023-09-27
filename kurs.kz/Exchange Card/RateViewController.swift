@@ -176,6 +176,14 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Action
+    private func calculateAverageScore() -> Double? {
+        var scoresTotal = 0
+        for userReview in userReviews {
+            guard let score = userReview.score else {return nil}
+            scoresTotal += score
+        }
+        return Double(scoresTotal) / Double(userReviews.count)
+    }
     
     private func getFeedback() {
         service.getReview(officeId: officeId) { [weak self] result in
