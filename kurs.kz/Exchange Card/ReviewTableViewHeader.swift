@@ -68,7 +68,6 @@ final class ReviewTableViewHeader: UITableViewHeaderFooterView {
                 let labelText = String(localized: "\(unwrappedReviews) отзыва",
                                        comment: "The label which describes the reviews count")
                 numberOfReviewsLabel.text = labelText
-                print("whyyyyasjdjahs \(unwrappedReviews)")
             }
         } else {
             numberOfReviewsLabel.text = numberOfReviews != nil ? "Отзывы (\(numberOfReviews!))" : ""

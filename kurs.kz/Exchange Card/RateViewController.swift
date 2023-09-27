@@ -179,6 +179,15 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Action
+    private func sortByDate(reviews: [ReviewForTableView]?) -> [ReviewForTableView]? {
+        let sortedReviews = reviews?.sorted { (review1, review2) -> Bool in
+            if let date1 = review1.createdAt, let date2 = review2.createdAt {
+                return date1 > date2
+            }
+            return false
+        }
+        return sortedReviews
+    }
     private func calculateAverageScore() -> Double? {
         var scoresTotal = 0
         for userReview in userReviews {
@@ -217,7 +226,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         service.fetchUserReviews(officeId: officeId) { [weak self] result in
             switch result {
             case .success(let result):
-                self?.userReviews = result
+                let orderedReviews = self?.sortByDate(reviews: result)
+                self?.userReviews = orderedReviews ?? []
             case .failure(let error):
                 print(error)
             }
@@ -244,7 +254,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                 service.postReview(review: review) { [weak self] result in
                     switch result {
                     case .success:
-                        self?.navigationController?.popViewController(animated: true)
+                        self?.continueButton.isEnabled = false
+                        self?.continueButton.backgroundColor =
+                        AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
                     case .failure(let error):
                         print("error while posting review")
                     }
@@ -259,8 +271,12 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                 service.updateFeedback(review: review) { [weak self] result in
                     switch result {
                     case .success:
-                        self?.navigationController?.popViewController(animated: true)
+                        self?.continueButton.isEnabled = false
+                        print("here")
+                        self?.continueButton.backgroundColor =
+                        AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
                     case .failure(let error):
+                        print("here")
                         print("error while posting review")
                     }
                 }
