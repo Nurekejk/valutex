@@ -45,6 +45,12 @@ final class ReviewTableViewHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         contentView.backgroundColor = .white
@@ -55,9 +61,19 @@ final class ReviewTableViewHeader: UITableViewHeaderFooterView {
     }
     // MARK: - Action
     public func setupHeader(score: Double?, numberOfReviews: Int?) {
+        
         scoreLabel.text = score != nil ? "\(Double(round(100 * score!) / 100))" : ""
-        numberOfReviewsLabel.text = numberOfReviews != nil ? "\(numberOfReviews!)" : ""
-        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
+        if #available(iOS 15, *) {
+            if let unwrappedReviews = numberOfReviews {
+                let labelText = String(localized: "\(unwrappedReviews) отзыва",
+                                       comment: "The label which describes the reviews count")
+                numberOfReviewsLabel.text = labelText
+                print("whyyyyasjdjahs \(unwrappedReviews)")
+            }
+        } else {
+            numberOfReviewsLabel.text = numberOfReviews != nil ? "Отзывы (\(numberOfReviews!))" : ""
+        }
+       
     }
     
     // MARK: - Setup Constraitns

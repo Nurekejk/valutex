@@ -150,6 +150,7 @@
 		FACEE05E2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05D2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift */; };
 		FACEE0602A69B183000D5CD6 /* SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */; };
 		FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */; };
+		FADF28872AC4441300AEA26C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FADF28862AC4441300AEA26C /* Localizable.xcstrings */; };
 		FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */; };
 /* End PBXBuildFile section */
 
@@ -294,6 +295,7 @@
 		FACEE05D2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorListServiceDelegate.swift; sourceTree = "<group>"; };
 		FACEE05F2A69B183000D5CD6 /* SelectedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLanguage.swift; sourceTree = "<group>"; };
 		FAD47F912A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalDataViewController.swift; sourceTree = "<group>"; };
+		FADF28862AC4441300AEA26C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		FAEEE7542A5D55E8007FB7A6 /* OfferSellCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellCurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -624,6 +626,7 @@
 				FAA817522AAF0BDF00DCE6F2 /* Factories */,
 				998D7B442A6D1C3F002F6695 /* UI */,
 				99D973FE2A680D7E00F7E506 /* Resources */,
+				FADF28862AC4441300AEA26C /* Localizable.xcstrings */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 9F899D742A4AFB43002D1F74;
 			packageReferences = (
@@ -993,6 +997,7 @@
 				99A8FB672A696C1A00894C28 /* Inter-Regular.ttf in Resources */,
 				99A8FB632A696C0E00894C28 /* Inter-Bold.ttf in Resources */,
 				9F899D8D2A4AFB46002D1F74 /* LaunchScreen.storyboard in Resources */,
+				FADF28872AC4441300AEA26C /* Localizable.xcstrings in Resources */,
 				9F899D8A2A4AFB46002D1F74 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
