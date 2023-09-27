@@ -1,5 +1,5 @@
 {
-  "sourceLanguage" : "en",
+  "sourceLanguage" : "ru",
   "strings" : {
     "%lld отзыва" : {
       "comment" : "The label which describes the reviews count",

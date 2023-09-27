@@ -963,7 +963,7 @@
 			};
 			buildConfigurationList = 9F899D782A4AFB43002D1F74 /* Build configuration list for PBXProject "kurs.kz" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
