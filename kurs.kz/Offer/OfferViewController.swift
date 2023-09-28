@@ -62,7 +62,7 @@ final class OfferViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.leading.trailing.bottom.equalToSuperview()
         }
         let width = UIScreen.main.bounds.width
