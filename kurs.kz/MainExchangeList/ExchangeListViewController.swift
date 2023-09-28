@@ -232,6 +232,7 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getExchangers {}
         if self.pulleyViewController?.drawerPosition == .closed {
             self.topView.isHidden = true
             updateConstraints()
@@ -510,8 +511,9 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let exchanger = filteredArray[indexPath.row]
-        let controller = DetailViewController(service: DetailPageService())
-        controller.officeId = exchanger.id
+        let controller = DetailViewController(service: DetailPageService(),
+                                              reviewCount: exchanger.totalRatings,
+                                              officeId: exchanger.id)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
