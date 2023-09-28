@@ -152,6 +152,17 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Action
+    public func setupHeader(with offer: Offer, symbol: String) {
+        amountOfThirdLabel.text = "\(offer.exchangeRate)"
+        amountOfFirstLabel.text = "\(offer.exchangeAmount)"
+        symbolOfFirstLabel.text = symbol
+        firstLabel.text = offer.type == "SELL" ? "Продать" : "Купить"
+        secondLabel.text = offer.type == "SELL" ? "Получить" : "Заплатить"
+        let multiplicationResult = String(format: "%.3f", offer.exchangeRate * offer.exchangeAmount)
+        amountOfSecondLabel.text = multiplicationResult
+    }
 
     // MARK: - Setup Views
     private func setupViews() {

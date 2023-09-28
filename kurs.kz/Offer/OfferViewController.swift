@@ -10,16 +10,9 @@ import UIKit
 final class OfferViewController: UIViewController {
 
     private let offer: Offer
+    private var currencySymbol: String?
+    
     // MARK: - UI
-    private lazy var headerView: OfferTableViewHeaderView = {
-        let headerView = OfferTableViewHeaderView()
-        headerView.changeButtonAction = { [weak self] in
-            let vc = ChangeExchangeRateViewController()
-            vc.modalPresentationStyle = .overCurrentContext
-            self?.present(vc, animated: true)
-        }
-        return headerView
-    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -27,7 +20,6 @@ final class OfferViewController: UIViewController {
                             OfferTableViewCell.reuseIdentifier)
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier:
                             OfferTableViewHeaderView.reuseIdentifier)
-        tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -35,7 +27,6 @@ final class OfferViewController: UIViewController {
         tableView.isScrollEnabled = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.rowHeight = 141
-        tableView.sectionHeaderHeight = 20
         return tableView
     }()
 
@@ -45,14 +36,16 @@ final class OfferViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
-    init(offer: Offer) {
-            self.offer = offer
-            super.init(nibName: nil, bundle: nil)
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+    init(offer: Offer, symbol: String?) {
+        self.offer = offer
+        print("symbol is \(symbol)")
+        self.currencySymbol = symbol
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Setup Views
 
     private func setupViews() {
@@ -65,8 +58,6 @@ final class OfferViewController: UIViewController {
             make.top.equalToSuperview().offset(16)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        let width = UIScreen.main.bounds.width
-        headerView.frame = CGRect(x: 0, y: 0, width: width, height: 224)
     }
 }
 
@@ -86,8 +77,19 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let width = UIScreen.main.bounds.width
-        let view = SectionHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
-        return view
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                OfferTableViewHeaderView.reuseIdentifier)
+        as? OfferTableViewHeaderView
+        print(currencySymbol)
+        header?.setupHeader(with: offer, symbol: currencySymbol ?? "?")
+        header?.changeButtonAction = { [weak self] in
+            let vc = ChangeExchangeRateViewController()
+            vc.modalPresentationStyle = .overCurrentContext
+            self?.present(vc, animated: true)
+        }
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        224
     }
 }
