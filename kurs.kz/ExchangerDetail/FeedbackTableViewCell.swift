@@ -29,7 +29,7 @@ final class FeedbackTableViewCell: UITableViewCell {
         let titleLabel = UILabel()
         titleLabel.textColor = AppColor.gray100.uiColor
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Отзывы (2)"
+        titleLabel.text = "Отзывы"
         titleLabel.font = AppFont.regular.s14()
         return titleLabel
     }()
@@ -52,6 +52,22 @@ final class FeedbackTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Action
+    public func setupReviewNumber(with number: Int) {
+        let mediumAttribute = [
+            NSAttributedString.Key.font: AppFont.medium.s14()
+        ]
+        let regularAttribute = [
+            NSAttributedString.Key.font: AppFont.regular.s14()
+        ]
+        let numberText = NSAttributedString(string: " (\(number))", attributes: mediumAttribute)
+        let reviewText = NSAttributedString(string: "Отзывы", attributes: regularAttribute)
+        let finalText = NSMutableAttributedString()
+        finalText.append(reviewText)
+        finalText.append(numberText)
+        titleLabel.attributedText = finalText
     }
     
     // MARK: - Lifecycle

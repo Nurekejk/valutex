@@ -11,9 +11,6 @@ import CollapsibleTableSectionViewController
 import ProgressHUD
 
 final class DetailViewController: UIViewController {
-    // MARK: - State
-
-    public var officeId = 0
     
     // MARK: - Properties
     private var formattedPhoneNumbers = [String]()
@@ -25,6 +22,8 @@ final class DetailViewController: UIViewController {
     private var name: String = ""
     private var address: String = ""
     private var score: Double = 0.0
+    private var reviewCount = 0
+    private var officeId = 0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -52,8 +51,10 @@ final class DetailViewController: UIViewController {
     }()
     
     // MARK: - Initializers
-    init(service: DetailPageService) {
+    init(service: DetailPageService, reviewCount: Int, officeId: Int) {
         self.service = service
+        self.reviewCount = reviewCount
+        self.officeId = officeId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -341,6 +342,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             else {
                 fatalError("Could not cast to FeedbackTableViewCell")
             }
+            cell.setupReviewNumber(with: reviewCount)
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID,
