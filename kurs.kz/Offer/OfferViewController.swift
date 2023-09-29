@@ -13,7 +13,22 @@ final class OfferViewController: UIViewController {
     private var currencySymbol: String?
     
     // MARK: - UI
-
+    private lazy var modalScreen: ChangeExchangeRateViewController = {
+        let controller = ChangeExchangeRateViewController()
+        controller.setExchangeRate(rate: offer.exchangeRate)
+        controller.delegate = self
+        return controller
+    }()
+    
+    private lazy var header: OfferTableViewHeaderView = {
+        let header = OfferTableViewHeaderView()
+        header.changeButtonAction = { [weak self] in
+            self?.showController()
+        }
+        header.setupHeader(with: offer, symbol: currencySymbol ?? "?")
+        return header
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier:
@@ -36,6 +51,8 @@ final class OfferViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
+    
+    // MARK: - Initializers
     init(offer: Offer, symbol: String?) {
         self.offer = offer
         print("symbol is \(symbol)")
@@ -46,8 +63,14 @@ final class OfferViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Action
+    private func showController() {
+//        self.present(modalScreen, animated: true)
+        self.presentPanModal(modalScreen)
+    }
+    
     // MARK: - Setup Views
-
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
@@ -77,19 +100,17 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                OfferTableViewHeaderView.reuseIdentifier)
-        as? OfferTableViewHeaderView
-        print(currencySymbol)
-        header?.setupHeader(with: offer, symbol: currencySymbol ?? "?")
-        header?.changeButtonAction = { [weak self] in
-            let vc = ChangeExchangeRateViewController()
-            vc.modalPresentationStyle = .overCurrentContext
-            self?.present(vc, animated: true)
-        }
-        return header
+        let tableHeader = header
+        return tableHeader
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         224
+    }
+}
+
+extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
+    
+    func saveChanges() {
+        header.setExchangeRate(rate: modalScreen.getExchangeRate())
     }
 }

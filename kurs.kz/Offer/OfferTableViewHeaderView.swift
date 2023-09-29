@@ -12,6 +12,13 @@ import SnapKit
 final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Public
     public static var reuseIdentifier = String(describing: OfferTableViewHeaderView.self)
+
+    // MARK: - Properties
+    private var currentExchangeRate = 0.0 {
+        didSet {
+            exchangeRateAmountLabel.text = String(currentExchangeRate)
+        }
+    }
     private let service = OfferService()
 
     var changeButtonAction : ( ( ) -> Void)?
@@ -41,7 +48,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return button
     }()
 
-    private let firstContainerView: UIView = {
+    private let sellBuycontainerView: UIView = {
         let containerView = UIView()
         containerView.layer.cornerRadius = 8
         containerView.backgroundColor = AppColor.gray10.uiColor
@@ -49,7 +56,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         containerView.layer.borderWidth = 1
         return containerView
     }()
-    private let secondContainerView: UIView = {
+    private let recievePayContainerView: UIView = {
         let containerView = UIView()
         containerView.layer.cornerRadius = 8
         containerView.backgroundColor = AppColor.gray10.uiColor
@@ -58,21 +65,21 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return containerView
     }()
 
-    private let firstLabel: UILabel = {
+    private let sellBuyTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Продать"
         label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray50.uiColor
         return label
     }()
-    private let amountOfFirstLabel: UILabel = {
+    private let sellBuyAmountLabel: UILabel = {
         let label = UILabel()
-        label.text = "5 000"
+        label.text = ""
         label.font = AppFont.regular.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
-    private let symbolOfFirstLabel: UILabel = {
+    private let sellBuyCurrencySymbol: UILabel = {
         let label = UILabel()
         label.text = "$"
         label.font = AppFont.regular.s16()
@@ -80,7 +87,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return label
     }()
 
-    private let secondLabel: UILabel = {
+    private let recievePayTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Получить"
         label.font = AppFont.regular.s12()
@@ -88,21 +95,21 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         return label
     }()
 
-    private let amountOfSecondLabel: UILabel = {
+    private let recievePayAmountLabel: UILabel = {
         let label = UILabel()
         label.text = "250 000"
         label.font = AppFont.regular.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
-    private let symbolOfSecondLabel: UILabel = {
+    private let recievePayCurrencySymbolLabel: UILabel = {
         let label = UILabel()
         label.text = "₸"
         label.font = AppFont.regular.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
-    private let thirdContainerView: UIView = {
+    private let exchangeRateContainerView: UIView = {
         let containerView = UIView()
         containerView.layer.cornerRadius = 8
         containerView.backgroundColor = AppColor.gray10.uiColor
@@ -110,21 +117,21 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         containerView.layer.borderWidth = 1
         return containerView
     }()
-    private let thirdLabel: UILabel = {
+    private let exchangeRateTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "По курсу"
         label.font = AppFont.regular.s12()
         label.textColor = AppColor.gray50.uiColor
         return label
     }()
-    private let amountOfThirdLabel: UILabel = {
+    private let exchangeRateAmountLabel: UILabel = {
         let label = UILabel()
         label.text = "500"
         label.font = AppFont.regular.s16()
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
-    private let symbolOfThirdLabel: UILabel = {
+    private let exchangeRateCurrencySymbolLabel: UILabel = {
         let label = UILabel()
         label.text = "₸"
         label.font = AppFont.regular.s16()
@@ -155,27 +162,34 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Action
     public func setupHeader(with offer: Offer, symbol: String) {
-        amountOfThirdLabel.text = "\(offer.exchangeRate)"
-        amountOfFirstLabel.text = "\(offer.exchangeAmount)"
-        symbolOfFirstLabel.text = symbol
-        firstLabel.text = offer.type == "SELL" ? "Продать" : "Купить"
-        secondLabel.text = offer.type == "SELL" ? "Получить" : "Заплатить"
+        sellBuyCurrencySymbol.text = symbol
+        sellBuyTitleLabel.text = offer.type == "SELL" ? "Продать" : "Купить"
+        recievePayTitleLabel.text = offer.type == "SELL" ? "Получить" : "Заплатить"
+        
+        currentExchangeRate = offer.exchangeRate
+        
+        sellBuyAmountLabel.text = "\(offer.exchangeAmount)"
         let multiplicationResult = String(format: "%.3f", offer.exchangeRate * offer.exchangeAmount)
-        amountOfSecondLabel.text = multiplicationResult
+        recievePayAmountLabel.text = multiplicationResult
     }
-
+    public func setExchangeRate(rate: Double) {
+        currentExchangeRate = rate
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
-        [firstLabel, amountOfFirstLabel, symbolOfFirstLabel].forEach {
-            firstContainerView.addSubview($0)
+        [sellBuyTitleLabel, sellBuyAmountLabel, sellBuyCurrencySymbol].forEach {
+            sellBuycontainerView.addSubview($0)
         }
-        [secondLabel, amountOfSecondLabel, symbolOfSecondLabel].forEach {
-            secondContainerView.addSubview($0)
+        [recievePayTitleLabel, recievePayAmountLabel, recievePayCurrencySymbolLabel].forEach {
+            recievePayContainerView.addSubview($0)
         }
-        [thirdLabel, amountOfThirdLabel, symbolOfThirdLabel, changeButton].forEach {
-            thirdContainerView.addSubview($0)
+        [exchangeRateTitleLabel, exchangeRateAmountLabel,
+         exchangeRateCurrencySymbolLabel, changeButton].forEach {
+            exchangeRateContainerView.addSubview($0)
         }
-        [titleLabel, cancelButton, firstContainerView, secondContainerView, thirdContainerView].forEach {
+        [titleLabel, cancelButton,
+         sellBuycontainerView, recievePayContainerView, exchangeRateContainerView].forEach {
             containerView.addSubview($0)
         }
         contentView.addSubview(containerView)
@@ -196,27 +210,27 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(18)
         }
-        firstContainerView.snp.makeConstraints { make in
+        sellBuycontainerView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo((UIScreen.main.bounds.width - 80)/2)
             make.height.equalTo(56)
         }
-        secondContainerView.snp.makeConstraints { make in
+        recievePayContainerView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.leading.equalTo(firstContainerView.snp.trailing).offset(16)
+            make.leading.equalTo(sellBuycontainerView.snp.trailing).offset(16)
             make.width.equalTo((UIScreen.main.bounds.width - 80)/2)
             make.height.equalTo(56)
         }
-        [firstContainerView, secondContainerView].forEach {
+        [sellBuycontainerView, recievePayContainerView].forEach {
             $0.snp.makeConstraints { make in
                 make.top.equalTo(titleLabel.snp.bottom).offset(16)
-                make.leading.equalTo(firstContainerView.snp.trailing).offset(16)
+                make.leading.equalTo(sellBuycontainerView.snp.trailing).offset(16)
                 make.width.equalTo((UIScreen.main.bounds.width - 80)/2)
                 make.height.equalTo(56)
             }
         }
-        [firstLabel, secondLabel, thirdLabel].forEach {
+        [sellBuyTitleLabel, recievePayTitleLabel, exchangeRateTitleLabel].forEach {
             $0.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(9.5)
                 make.leading.equalToSuperview().offset(16)
@@ -224,30 +238,30 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
                 make.width.equalTo(70)
             }
         }
-        [amountOfFirstLabel, amountOfSecondLabel, amountOfThirdLabel].forEach {
+        [sellBuyAmountLabel, recievePayAmountLabel, exchangeRateAmountLabel].forEach {
             $0.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(25.5)
                 make.leading.equalToSuperview().offset(16)
                 make.height.equalTo(20)
             }
         }
-        symbolOfFirstLabel.snp.makeConstraints { make in
-            make.top.equalTo(firstLabel.snp.bottom)
-            make.leading.equalTo(amountOfFirstLabel.snp.trailing).offset(5)
+        sellBuyCurrencySymbol.snp.makeConstraints { make in
+            make.top.equalTo(sellBuyTitleLabel.snp.bottom)
+            make.leading.equalTo(sellBuyAmountLabel.snp.trailing).offset(5)
             make.height.equalTo(20)
         }
-        symbolOfSecondLabel.snp.makeConstraints { make in
-            make.top.equalTo(secondLabel.snp.bottom)
-            make.leading.equalTo(amountOfSecondLabel.snp.trailing).offset(5)
+        recievePayCurrencySymbolLabel.snp.makeConstraints { make in
+            make.top.equalTo(recievePayTitleLabel.snp.bottom)
+            make.leading.equalTo(recievePayAmountLabel.snp.trailing).offset(5)
             make.height.equalTo(20)
         }
-        symbolOfThirdLabel.snp.makeConstraints { make in
-            make.top.equalTo(thirdLabel.snp.bottom)
-            make.leading.equalTo(amountOfThirdLabel.snp.trailing).offset(5)
+        exchangeRateCurrencySymbolLabel.snp.makeConstraints { make in
+            make.top.equalTo(exchangeRateTitleLabel.snp.bottom)
+            make.leading.equalTo(exchangeRateAmountLabel.snp.trailing).offset(5)
             make.height.equalTo(20)
         }
-        thirdContainerView.snp.makeConstraints { make in
-            make.top.equalTo(firstContainerView.snp.bottom).offset(16)
+        exchangeRateContainerView.snp.makeConstraints { make in
+            make.top.equalTo(sellBuycontainerView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.bottom.equalToSuperview().offset(-16)
         }

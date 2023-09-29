@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import PanModal
 
 class ChangeExchangeRateViewController: UIViewController {
+    
+    // MARK: - Properties
+    weak var delegate: ChangeExchangeRateViewControllerDelegate?
+    private var exchangeRate = 0.0 {
+        didSet {
+            exchangeRateTextField.text = String(exchangeRate)
+        }
+    }
+    
     // MARK: - UI
     private let modalview: UIView = {
         let modalview = UIView()
@@ -23,12 +33,14 @@ class ChangeExchangeRateViewController: UIViewController {
         label.textColor = AppColor.gray100.uiColor
         return label
     }()
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "cross"), for: .normal)
         button.addTarget(self, action: #selector (cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
+    
     private let headerStack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .center
@@ -36,29 +48,35 @@ class ChangeExchangeRateViewController: UIViewController {
         stack.distribution = .equalSpacing
         return stack
     }()
-    private let textField: UITextField = {
+    
+    private let exchangeRateTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "500"
+        textField.placeholder = ""
         return textField
     }()
-    private let minusButton: UIButton = {
+    
+    private lazy var minusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "minus"), for: .normal)
+        button.addTarget(self, action: #selector(minusButtonDidPress), for: .touchUpInside)
         button.tintColor = AppColor.gray40.uiColor
         button.backgroundColor = AppColor.gray20.uiColor
         button.titleLabel?.font = AppFont.regular.s16()
         button.layer.cornerRadius = 8
         return button
     }()
-    private let plusButton: UIButton = {
+    
+    private lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus"), for: .normal)
+        button.addTarget(self, action: #selector(plusButtonDidPress), for: .touchUpInside)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.titleLabel?.font = AppFont.regular.s16()
         button.layer.cornerRadius = 8
         return button
     }()
+    
     private let changeView: UIView = {
         let modalview = UIView()
         modalview.layer.borderWidth = 1
@@ -66,6 +84,7 @@ class ChangeExchangeRateViewController: UIViewController {
         modalview.layer.cornerRadius = 8
         return modalview
     }()
+    
     private let changeStack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .center
@@ -87,9 +106,11 @@ class ChangeExchangeRateViewController: UIViewController {
         button.addTarget(self, action: #selector (cancelButtonDidPressed), for: .touchUpInside)
         return button
     }()
-    private let confirmChangeButton: UIButton = {
+    
+    private lazy var confirmChangeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("изменить", for: .normal)
+        button.addTarget(self, action: #selector (confirmButtonDidPress), for: .touchUpInside)
+        button.setTitle("Изменить", for: .normal)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.titleLabel?.font = AppFont.regular.s16()
@@ -118,7 +139,7 @@ class ChangeExchangeRateViewController: UIViewController {
         headerStack.addArrangedSubview(closeButton)
 
         changeStack.addArrangedSubview(minusButton)
-        changeStack.addArrangedSubview(textField)
+        changeStack.addArrangedSubview(exchangeRateTextField)
         changeStack.addArrangedSubview(plusButton)
 
         changeView.addSubview(changeStack)
@@ -162,7 +183,7 @@ class ChangeExchangeRateViewController: UIViewController {
             make.top.equalToSuperview().offset(8)
             make.width.height.equalTo(40)
         }
-        textField.snp.makeConstraints { make in
+        exchangeRateTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.height.equalTo(40)
         }
@@ -185,5 +206,44 @@ class ChangeExchangeRateViewController: UIViewController {
     @objc func cancelButtonDidPressed() {
         self.dismiss(animated: true)
     }
+    @objc func confirmButtonDidPress() {
+        self.dismiss(animated: true)
+        delegate?.saveChanges()
+    }
+    
+    @objc func plusButtonDidPress() {
+        exchangeRate += 10
+    }
+    
+    @objc func minusButtonDidPress() {
+        exchangeRate -= 10
+        if exchangeRate < 0 {
+            exchangeRate = 0
+        }
+    }
+    
+    public func setExchangeRate(rate: Double) {
+        exchangeRate = rate
+    }
+    
+    public func getExchangeRate() -> Double {
+        exchangeRate
+    }
 
+}
+
+    // MARK: - Protocol
+protocol ChangeExchangeRateViewControllerDelegate: AnyObject {
+    func saveChanges()
+}
+    
+    // MARK: - Panmodal
+extension ChangeExchangeRateViewController: PanModalPresentable {
+    
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    var dragIndicatorBackgroundColor: UIColor {
+        .clear
+    }
 }
