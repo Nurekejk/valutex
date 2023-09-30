@@ -190,10 +190,6 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         currentExchangeRate = rate
     }
     
-    public func getExchangeRateAndExchangeAmount() -> (exchangeRate: Double, exchangeAmount: Double) {
-        (currentExchangeRate, exchangeAmount)
-    }
-    
     // MARK: - Setup Views
     private func setupViews() {
         [sellBuyTitleLabel, sellBuyAmountLabel, sellBuyCurrencySymbol].forEach {

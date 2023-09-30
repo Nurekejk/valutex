@@ -114,12 +114,12 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
 extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
     
     func saveChanges() {
-        header.setExchangeRate(rate: modalScreen.getExchangeRate())
-        let updatedExchangeValues = header.getExchangeRateAndExchangeAmount()
-        service.updateOffer(exchangeAmount: updatedExchangeValues.exchangeAmount,
-                            exchangeRate: updatedExchangeValues.exchangeRate) { [weak self] result in
+        let updatedExchangeRate = modalScreen.getExchangeRate()
+        service.updateOffer(exchangeAmount: offer.exchangeAmount,
+                            exchangeRate: modalScreen.getExchangeRate()) { [weak self] result in
             switch result {
             case .success:
+                self?.header.setExchangeRate(rate: updatedExchangeRate)
                 print("success")
             case .failure(let error):
                 print("error while posting review")
