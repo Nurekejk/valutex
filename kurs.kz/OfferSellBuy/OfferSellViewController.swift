@@ -261,7 +261,10 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
             case .success((let data)):
                 print("SUCCESS", data)
                 self.navigationController?.pushViewController(
-                    OfferViewController(offer: offer, symbol: self.exchangeCurrencySymbol), animated: true)
+                    OfferViewController(offer: offer,
+                                        symbol: self.exchangeCurrencySymbol,
+                                        service: OfferService()),
+                    animated: true)
             case .failure((let error)):
                 print("ERROR", error)
             }

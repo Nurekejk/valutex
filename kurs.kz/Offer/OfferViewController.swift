@@ -8,9 +8,11 @@
 import UIKit
 
 final class OfferViewController: UIViewController {
-
+    // MARK: - Properties
+    
     private let offer: Offer
     private var currencySymbol: String?
+    private let service: OfferService
     
     // MARK: - UI
     private lazy var modalScreen: ChangeExchangeRateViewController = {
@@ -53,10 +55,11 @@ final class OfferViewController: UIViewController {
     }
     
     // MARK: - Initializers
-    init(offer: Offer, symbol: String?) {
+    init(offer: Offer, symbol: String?, service: OfferService) {
         self.offer = offer
         print("symbol is \(symbol)")
         self.currencySymbol = symbol
+        self.service = service
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -112,5 +115,16 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
     
     func saveChanges() {
         header.setExchangeRate(rate: modalScreen.getExchangeRate())
+        let updatedExchangeValues = header.getExchangeRateAndExchangeAmount()
+        service.updateOffer(exchangeAmount: updatedExchangeValues.exchangeAmount,
+                            exchangeRate: updatedExchangeValues.exchangeRate) { [weak self] result in
+            switch result {
+            case .success:
+                print("success")
+            case .failure(let error):
+                print("error while posting review")
+            }
+        }
+        
     }
 }

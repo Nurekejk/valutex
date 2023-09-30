@@ -14,12 +14,18 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     public static var reuseIdentifier = String(describing: OfferTableViewHeaderView.self)
 
     // MARK: - Properties
+    private var exchangeAmount = 0.0 {
+        didSet {
+            sellBuyAmountLabel.text = String(exchangeAmount)
+        }
+    }
     private var currentExchangeRate = 0.0 {
         didSet {
             exchangeRateAmountLabel.text = String(currentExchangeRate)
+            let multiplicationResult = String(format: "%.2f", currentExchangeRate * exchangeAmount)
+            recievePayAmountLabel.text = multiplicationResult
         }
     }
-    private let service = OfferService()
 
     var changeButtonAction : ( ( ) -> Void)?
 
@@ -161,19 +167,31 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Action
+    @objc func changeButtonDidPressed() {
+        changeButtonAction?()
+    }
+    
+    @objc func cancelButtonDidPressed() {
+        
+    }
+    
     public func setupHeader(with offer: Offer, symbol: String) {
         sellBuyCurrencySymbol.text = symbol
         sellBuyTitleLabel.text = offer.type == "SELL" ? "Продать" : "Купить"
         recievePayTitleLabel.text = offer.type == "SELL" ? "Получить" : "Заплатить"
         
         currentExchangeRate = offer.exchangeRate
+        exchangeAmount = (offer.exchangeAmount)
         
-        sellBuyAmountLabel.text = "\(offer.exchangeAmount)"
         let multiplicationResult = String(format: "%.3f", offer.exchangeRate * offer.exchangeAmount)
         recievePayAmountLabel.text = multiplicationResult
     }
     public func setExchangeRate(rate: Double) {
         currentExchangeRate = rate
+    }
+    
+    public func getExchangeRateAndExchangeAmount() -> (exchangeRate: Double, exchangeAmount: Double) {
+        (currentExchangeRate, exchangeAmount)
     }
     
     // MARK: - Setup Views
@@ -273,11 +291,4 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
 
     }
     // swiftlint:enable all
-    @objc func changeButtonDidPressed() {
-        changeButtonAction?()
-    }
-    @objc func cancelButtonDidPressed() {
-        service.deleteOffer()
-
-    }
 }
