@@ -28,6 +28,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     var changeButtonAction : ( ( ) -> Void)?
+    var cancelButtonAction : ( ( ) -> Void)?
 
     // MARK: - UI
     private let containerView: UIView = {
@@ -172,7 +173,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc func cancelButtonDidPressed() {
-        
+        cancelButtonAction?()
     }
     
     public func setupHeader(with offer: Offer, symbol: String) {

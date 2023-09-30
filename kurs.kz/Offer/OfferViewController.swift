@@ -27,6 +27,17 @@ final class OfferViewController: UIViewController {
         header.changeButtonAction = { [weak self] in
             self?.showController()
         }
+        header.cancelButtonAction = { [weak self] in
+            self?.service.deleteOffer(completion: { [weak self] result in
+                switch result {
+                case .success:
+                    print("success")
+                    self?.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print("error while posting review")
+                }
+            })
+        }
         header.setupHeader(with: offer, symbol: currencySymbol ?? "?")
         return header
     }()

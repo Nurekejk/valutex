@@ -11,11 +11,12 @@ import Alamofire
 struct OfferService {
     // MARK: - Network
 
-    func deleteOffer() {
+    func deleteOffer(completion: @escaping (Result<[String : String], AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"
         urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/delete_offer"
+        
         guard let url = urlComponent.url else {
             return
         }
@@ -26,15 +27,17 @@ struct OfferService {
         ]
         
         getAuth(&headers)
-        
-        AF.request(url,
-                   method: .delete,
-                   headers: headers).responseDecodable(of: String.self) { response in
+
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [String : String].self) { response in
             switch response.result {
-            case .success(let deleteResponse):
-                print("Успешный запрос: \(deleteResponse)")
+            case .success(let message):
+                completion(.success(message))
+                print("message issss \(message)")
             case .failure(let error):
-                print("Ошибка запроса: \(error)")
+                completion(.failure(error))
+                print("error issss \(error)")
             }
         }
     }
