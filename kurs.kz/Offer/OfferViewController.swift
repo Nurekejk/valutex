@@ -48,6 +48,8 @@ final class OfferViewController: UIViewController {
                             OfferTableViewCell.reuseIdentifier)
         tableView.register(OfferTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier:
                             OfferTableViewHeaderView.reuseIdentifier)
+        tableView.register(OfferListHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: OfferListHeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -100,25 +102,60 @@ final class OfferViewController: UIViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 1
+        default:
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: OfferTableViewCell.reuseIdentifier,
-            for: indexPath) as?
-                OfferTableViewCell else {fatalError("message")
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OfferTableViewCell.reuseIdentifier,
+                for: indexPath) as?
+                    OfferTableViewCell else {fatalError("message")
+            }
+            return cell
+        } else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = .red
+            return cell
         }
-        return cell
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let tableHeader = header
-        return tableHeader
+        switch section {
+        case 0:
+            let tableHeader = header
+            return tableHeader
+        case 1:
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                    OfferListHeaderView.reuseIdentifier)
+            return header
+        default:
+            return UITableViewHeaderFooterView()
+        }
+
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        224
+        if section == 0 {
+            return 224
+        } else if section == 1 {
+            return 20
+        } else {
+            return 0
+        }
     }
 }
 

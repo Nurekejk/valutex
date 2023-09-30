@@ -16,7 +16,7 @@
 		619B94272A8E1B590032F321 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B94262A8E1B590032F321 /* Offer.swift */; };
 		619B94292A8E1B810032F321 /* CreateOfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B94282A8E1B810032F321 /* CreateOfferService.swift */; };
 		619B942C2A8E1C380032F321 /* OfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619B942B2A8E1C380032F321 /* OfferService.swift */; };
-		61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */; };
+		61D25BE02A6D7B6900BC9DB7 /* OfferListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BDF2A6D7B6900BC9DB7 /* OfferListHeaderView.swift */; };
 		61D25BE42A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */; };
 		71564AC12A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */; };
 		71564AC22A6A9CEE00979090 /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */; };
@@ -163,7 +163,7 @@
 		619B94262A8E1B590032F321 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		619B94282A8E1B810032F321 /* CreateOfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOfferService.swift; sourceTree = "<group>"; };
 		619B942B2A8E1C380032F321 /* OfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferService.swift; sourceTree = "<group>"; };
-		61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		61D25BDF2A6D7B6900BC9DB7 /* OfferListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferListHeaderView.swift; sourceTree = "<group>"; };
 		61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeExchangeRateViewController.swift; sourceTree = "<group>"; };
 		71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewHeaderView.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeRateTableViewCell.swift; path = kurs.kz/ExchangeRate/ExchangeRateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -359,7 +359,7 @@
 				9FF55D592A694A1D00A11284 /* OfferTableViewCell.swift */,
 				9FF55D572A694A1D00A11284 /* OfferTableViewHeaderView.swift */,
 				9FF55D562A694A1D00A11284 /* OfferViewController.swift */,
-				61D25BDF2A6D7B6900BC9DB7 /* SectionHeaderView.swift */,
+				61D25BDF2A6D7B6900BC9DB7 /* OfferListHeaderView.swift */,
 				61D25BE32A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift */,
 			);
 			path = Offer;
@@ -1128,7 +1128,7 @@
 				71564AC42A6A9CEE00979090 /* ExchangeRateViewController.swift in Sources */,
 				61D25BE42A6EEE0800BC9DB7 /* ChangeExchangeRateViewController.swift in Sources */,
 				997BA5CF2A541F1B00267E0E /* CustomSkyFloatingLabelTextField.swift in Sources */,
-				61D25BE02A6D7B6900BC9DB7 /* SectionHeaderView.swift in Sources */,
+				61D25BE02A6D7B6900BC9DB7 /* OfferListHeaderView.swift in Sources */,
 				FA7D10822AC2D03100FD4393 /* ReviewForTableView.swift in Sources */,
 				FA5759912A692B4700DE9A6B /* Currency.swift in Sources */,
 				618978052A549426009DFF0B /* CityTableViewCell.swift in Sources */,
