@@ -12,11 +12,6 @@ class ChangeExchangeRateViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: ChangeExchangeRateViewControllerDelegate?
-    private var exchangeRate = 0.0 {
-        didSet {
-            exchangeRateTextField.text = String(exchangeRate)
-        }
-    }
     
     // MARK: - UI
     private let modalview: UIView = {
@@ -49,8 +44,10 @@ class ChangeExchangeRateViewController: UIViewController {
         return stack
     }()
     
-    private let exchangeRateTextField: UITextField = {
+    private lazy var exchangeRateTextField: UITextField = {
         let textField = UITextField()
+        textField.keyboardType = .decimalPad
+        textField.delegate = self
         textField.placeholder = ""
         return textField
     }()
@@ -212,26 +209,39 @@ class ChangeExchangeRateViewController: UIViewController {
     }
     
     @objc func plusButtonDidPress() {
-        exchangeRate += 10
+        guard var exchangeRate = Double(exchangeRateTextField.text ?? "0.0") else {return}
+        exchangeRate += 1.0
+        exchangeRateTextField.text = String(exchangeRate)
     }
     
     @objc func minusButtonDidPress() {
-        exchangeRate -= 10
+        guard var exchangeRate = Double(exchangeRateTextField.text ?? "0.0") else {return}
+        exchangeRate -= 1.0
         if exchangeRate < 0 {
             exchangeRate = 0
         }
+        exchangeRateTextField.text = String(exchangeRate)
     }
     
     public func setExchangeRate(rate: Double) {
-        exchangeRate = rate
+        exchangeRateTextField.text = String(rate)
     }
     
     public func getExchangeRate() -> Double {
-        exchangeRate
+        Double(exchangeRateTextField.text ?? "0.0") ?? 0.0
     }
-
 }
 
+    // MARK: - TextFieldDelegate
+extension ChangeExchangeRateViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+}
     // MARK: - Protocol
 protocol ChangeExchangeRateViewControllerDelegate: AnyObject {
     func saveChanges()
