@@ -8,9 +8,12 @@
 import UIKit
 
 final class OfferTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    weak var delegate: OfferTableViewCellDelegate?
+    private var offerResponseId: Int?
 
     // MARK: - Public
-
     public static var reuseIdentifier = String(describing: OfferTableViewCell.self)
 
     // MARK: - UI
@@ -86,8 +89,9 @@ final class OfferTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let rejectButton: UIButton = {
+    private lazy var rejectButton: UIButton = {
         let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(rejectButtonPressed), for: .touchUpInside)
         button.setTitle("Отклонить", for: .normal)
         button.tintColor = .red
         button.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1.0)
@@ -95,8 +99,9 @@ final class OfferTableViewCell: UITableViewCell {
         return button
     }()
 
-    private let acceptButton: UIButton = {
+    private lazy var acceptButton: UIButton = {
         let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
         button.setTitle("Принять", for: .normal)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 45/255, green: 156/255, blue: 219/255, alpha: 1)
@@ -114,11 +119,38 @@ final class OfferTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // MARK: - Lifecycle
     override func layoutSubviews() {
         cellView.layer.cornerRadius = 8
         rejectButton.layer.cornerRadius = 8
         acceptButton.layer.cornerRadius = 8
+    }
+    
+    // MARK: - Action
+    public func setupCell(with offer: OfferResponseForTableView, tag: Int) {
+        self.tag = tag
+        self.offerResponseId = offer.offerResponseId
+        
+        nameLabel.text = offer.officeName
+        if let score = offer.score, let scoreCount = offer.scoreCount {
+            ratingLabel.text = "\(score) (\(scoreCount))"
+        }
+        locationLabel.text = offer.officeAddress
+        if let exchangeRate = offer.exchangeRate {
+            exchangeRateLabel.text = String(exchangeRate)
+        }
+    }
+    @objc func rejectButtonPressed() {
+        if let id = offerResponseId {
+            print("herererere")
+            delegate?.rejectDidPress(offerResponseId: id)
+        }
+    }
+    @objc func acceptButtonPressed() {
+        if let id = offerResponseId {
+            delegate?.acceptDidPress(offerResponseId: id)
+        }
     }
 
     // MARK: - Setup Views
@@ -179,4 +211,9 @@ final class OfferTableViewCell: UITableViewCell {
             make.width.equalTo(151.1)
         }
     }
+}
+
+protocol OfferTableViewCellDelegate: AnyObject {
+    func acceptDidPress(offerResponseId: Int)
+    func rejectDidPress(offerResponseId: Int)
 }
