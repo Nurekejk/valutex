@@ -11,7 +11,7 @@ struct UserStatus: Decodable {
     let status: Status?
     let data : [OfferData]?
     
-    enum Status: String, Decodable  {
+    enum Status: String, Decodable {
         case create = "create"
         case offerCreated = "offer_created"
         case offerAccepted = "offer_accepted"

@@ -34,7 +34,7 @@ final class MainTabBarViewController: UITabBarController {
                                             contentViewController: MapViewController(
                                                 service: ExchangerListService()),
                                             drawerViewController: ExchangeListViewController()))
-            let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
+            let offer = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                          selectedImage: AppImage.money_selected.uiImage!,
                                          image: AppImage.money_gray.uiImage!,
                                          viewController: OfferSellBuySegmentedController())
@@ -42,13 +42,13 @@ final class MainTabBarViewController: UITabBarController {
                                          selectedImage: AppImage.other_selected.uiImage!,
                                          image: AppImage.other_gray.uiImage!,
                                          viewController: ProfileViewController())
-            self.setViewControllers([home,money,other], animated: true)
+            self.setViewControllers([home,offer,other], animated: true)
         } else {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                         selectedImage: AppImage.home_selected.uiImage!,
                                         image: AppImage.home_gray.uiImage!,
                                         viewController: MapExchangersViewController())
-            let money = createNavigation(mainTitle: "Оффер", title: "Оффер",
+            let offer = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                          selectedImage: AppImage.money_selected.uiImage!,
                                          image: AppImage.money_gray.uiImage!,
                                          viewController: SignInViewController())
@@ -56,7 +56,7 @@ final class MainTabBarViewController: UITabBarController {
                                          selectedImage: AppImage.other_selected.uiImage!,
                                          image: AppImage.other_gray.uiImage!,
                                          viewController: SignInViewController())
-            self.setViewControllers([home,money,other], animated: true)
+            self.setViewControllers([home,offer,other], animated: true)
         }
     }
     
