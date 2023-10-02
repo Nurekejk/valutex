@@ -144,6 +144,7 @@
 		FA7D10802AC2B95500FD4393 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */; };
 		FA7D10822AC2D03100FD4393 /* ReviewForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D10812AC2D03100FD4393 /* ReviewForTableView.swift */; };
 		FA7D10842AC3EECE00FD4393 /* ReviewTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D10832AC3EECE00FD4393 /* ReviewTableViewHeader.swift */; };
+		FA81DCA02ACAA3A7000D9540 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81DC9F2ACAA3A7000D9540 /* UserStatus.swift */; };
 		FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */; };
 		FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
@@ -289,6 +290,7 @@
 		FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		FA7D10812AC2D03100FD4393 /* ReviewForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewForTableView.swift; sourceTree = "<group>"; };
 		FA7D10832AC3EECE00FD4393 /* ReviewTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewHeader.swift; sourceTree = "<group>"; };
+		FA81DC9F2ACAA3A7000D9540 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextfieldFactory.swift; sourceTree = "<group>"; };
 		FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				619B942B2A8E1C380032F321 /* OfferService.swift */,
+				FA81DC9F2ACAA3A7000D9540 /* UserStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1159,6 +1162,7 @@
 				9909CB172A55B06B000AC039 /* OfferDetailsHeaderView.swift in Sources */,
 				99D974082A68611D00F7E506 /* AppFont.swift in Sources */,
 				71D01EB32A5D493200422491 /* NotificationsViewController.swift in Sources */,
+				FA81DCA02ACAA3A7000D9540 /* UserStatus.swift in Sources */,
 				995E96A42A7A05D000E96AEE /* FaqPageService.swift in Sources */,
 				FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */,
 				8FE341D62A7AD39F00A72212 /* DetailSection.swift in Sources */,

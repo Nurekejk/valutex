@@ -12,6 +12,7 @@ struct ReviewForTableView: Decodable {
     let score: Int?
     let comment: String?
     let createdAt: String?
+    
     enum CodingKeys: String, CodingKey {
         case fullName = "full_name"
         case score, comment
