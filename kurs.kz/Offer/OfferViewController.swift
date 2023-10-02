@@ -9,7 +9,15 @@ import UIKit
 
 final class OfferViewController: UIViewController {
     // MARK: - Properties
-    
+    private var isRequestInProgress = false
+    private var offerResponses: [OfferResponseForTableView] = [] {
+        didSet {
+            if !offerResponses.isEmpty {
+                isRequestInProgress = false
+                tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
     private let offer: Offer
     private var currencySymbol: String?
     private let service: OfferService
@@ -52,9 +60,17 @@ final class OfferViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: OfferListHeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let refreshControl: UIRefreshControl = UIRefreshControl.init()
+        refreshControl.addTarget(self, action: #selector(tableViewDidReload), for: .valueChanged)
+        
+        if #available (iOS 10.0, *) {
+        tableView.refreshControl = refreshControl
+        } else {
+        tableView.addSubview(refreshControl)
+        }
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
-        tableView.isScrollEnabled = false
         tableView.backgroundColor = AppColor.gray10.uiColor
         tableView.rowHeight = 141
         return tableView
@@ -65,6 +81,7 @@ final class OfferViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getOfferResponseList()
     }
     
     // MARK: - Initializers
@@ -80,16 +97,38 @@ final class OfferViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Network
+    private func getOfferResponseList() {
+        service.fetchOfferResponses(completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                print("success")
+                print("theerere \(result)")
+                self?.offerResponses = result
+            case .failure(let error):
+                print("error while posting review")
+            }
+        })
+    }
     // MARK: - Action
     private func showController() {
-//        self.present(modalScreen, animated: true)
         self.presentPanModal(modalScreen)
+    }
+    
+    @objc private func tableViewDidReload() {
+        if isRequestInProgress {
+            return
+        }
+        
+        isRequestInProgress = true
+        getOfferResponseList()
     }
     
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
+        
     }
     // MARK: - Setup Constraints
     private func setupConstraints() {
@@ -112,7 +151,7 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 0
         case 1:
-            return 1
+            return offerResponses.count
         default:
             return 0
         }
