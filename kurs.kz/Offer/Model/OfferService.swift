@@ -78,6 +78,38 @@ struct OfferService {
         }
     }
     
+    func fetchOfferResponses(completion: @escaping (Result<[OfferResponseForTableView],
+                                                    AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/offers_response_list"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [OfferResponseForTableView].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+                print("message issss \(message)")
+            case .failure(let error):
+                completion(.failure(error))
+                print("error issss \(error)")
+            }
+        }
+    }
+    
     func getAuth(_ headers: inout HTTPHeaders) {
         let defaults = UserDefaults.standard
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
