@@ -15,6 +15,7 @@ final class OfferViewController: UIViewController {
             if !offerResponses.isEmpty {
                 isRequestInProgress = false
                 tableView.refreshControl?.endRefreshing()
+                tableView.reloadData()
             }
         }
     }
@@ -164,6 +165,10 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath) as?
                     OfferTableViewCell else {fatalError("message")
             }
+            
+            cell.delegate = self
+            cell.setupCell(with: offerResponses[indexPath.row], tag: indexPath.row)
+        
             return cell
         } else {
             let cell = UITableViewCell()
@@ -197,7 +202,7 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
+    // MARK: - ChangeExchangeRateViewControllerDelegate
 extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
     
     func saveChanges() {
@@ -213,5 +218,16 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
             }
         }
         
+    }
+}
+// MARK: - OfferTableViewCellDelegate
+
+extension OfferViewController: OfferTableViewCellDelegate {
+    func acceptDidPress(offerResponseId: Int) {
+        print("yay \(offerResponseId)")
+    }
+    
+    func rejectDidPress(offerResponseId: Int) {
+        print("nay \(offerResponseId)")
     }
 }
