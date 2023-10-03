@@ -13,19 +13,25 @@ final class MainTabBarViewController: UITabBarController {
     // MARK: - Properties
     private let service: TabBarService
     private let defaults = UserDefaults.standard
+    private var offerController: UIViewController?
+    private var userStatus: UserStatus? {
+        didSet {
+            offerController = getController(with: userStatus)
+            setupTabs()
+        }
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTabs()
-        
+        checkStatus()
         self.tabBar.barTintColor = AppColor.grayWhite.uiColor
         self.tabBar.tintColor = AppColor.primaryBase.uiColor
         self.tabBar.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupTabs()
+        checkStatus()
     }
     // MARK: - Initializers
     init(service: TabBarService) {
@@ -39,14 +45,9 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Setup Views
     private func setupTabs() {
-        let offerController: UIViewController
-        
-        if let checkedController = checkStatus() {
-            offerController = checkedController
-        } else {
+        if offerController == nil {
             offerController = OfferSellBuySegmentedController()
         }
-
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                         selectedImage: AppImage.home_selected.uiImage!,
@@ -58,7 +59,7 @@ final class MainTabBarViewController: UITabBarController {
             let offer = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                          selectedImage: AppImage.money_selected.uiImage!,
                                          image: AppImage.money_gray.uiImage!,
-                                         viewController: offerController)
+                                         viewController: offerController!)
             let other = createNavigation(mainTitle: "", title: "Еще",
                                          selectedImage: AppImage.other_selected.uiImage!,
                                          image: AppImage.other_gray.uiImage!,
@@ -97,26 +98,31 @@ final class MainTabBarViewController: UITabBarController {
         
         return navViewController
     }
-    private func checkStatus() -> UIViewController? {
-        var status: UserStatus?
+    
+    private func checkStatus() {
         service.getUserStatus(completion: { [weak self] result in
             switch result {
             case .success(let result):
-                print(result)
-                status = result
+                self?.userStatus = result
+                print("status isss")
             case .failure(let error):
-                print("error 333 posting review")
+                self?.userStatus = nil
+                print("error getting status")
             }
         })
-        
-        guard let offerStatus = status?.status else { return nil }
+    }
+    
+    private func getController(with userStatus: UserStatus?) -> UIViewController? {
+        guard let offerStatus = userStatus?.status else {
+            print("smth went really wrong")
+            return nil }
         switch offerStatus {
         case .create:
             print("create")
             return OfferSellBuySegmentedController()
         case .offerCreated:
             print("created")
-            guard let offerСreatedData = status?.offerСreatedData?.first else { return nil }
+            guard let offerСreatedData = userStatus?.data?.first else { return nil }
             
             var offer: Offer?
             
@@ -141,4 +147,3 @@ final class MainTabBarViewController: UITabBarController {
         }
     }
 }
-
