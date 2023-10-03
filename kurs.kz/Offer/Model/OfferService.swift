@@ -34,10 +34,8 @@ struct OfferService {
             switch response.result {
             case .success(let message):
                 completion(.success(message))
-                print("message issss \(message)")
             case .failure(let error):
                 completion(.failure(error))
-                print("error issss \(error)")
             }
         }
     }
@@ -70,10 +68,8 @@ struct OfferService {
             switch response.result {
             case .success(let message):
                 completion(.success(message))
-                print("message issss \(message)")
             case .failure(let error):
                 completion(.failure(error))
-                print("error issss \(error)")
             }
         }
     }
@@ -102,10 +98,8 @@ struct OfferService {
             switch response.result {
             case .success(let message):
                 completion(.success(message))
-                print("message issss \(message)")
             case .failure(let error):
                 completion(.failure(error))
-                print("error issss \(error)")
             }
         }
     }
@@ -123,4 +117,40 @@ struct OfferService {
             }
         }
     }
+    
+    func sendResponse(hasAccepted: Bool, offerResponseId: Int,
+                      completion: @escaping (Result<[String : String], AFError>) -> Void) {
+         var urlComponent = URLComponents()
+         urlComponent.scheme = "https"
+         urlComponent.host = "api.valutex.kz"
+         urlComponent.path = "/offers_response_reply"
+         
+         guard let url = urlComponent.url else {
+             return
+         }
+         
+         var headers: HTTPHeaders = [
+             "accept": "application/json",
+             "Content-Type": "application/json"
+         ]
+         
+         getAuth(&headers)
+         
+         let parameters: [String: Any] = [ "offer_response_id": offerResponseId,
+                                           "is_declined": !hasAccepted,
+                                           "is_accepted": hasAccepted]
+        
+         AF.request(url, method: .post,
+                    parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+         .validate()
+         .responseDecodable(of: [String : String].self) { response in
+             switch response.result {
+             case .success(let message):
+                 completion(.success(message))
+             case .failure(let error):
+                 completion(.failure(error))
+                 print("error while replying to offer \(error)")
+             }
+         }
+     }
 }
