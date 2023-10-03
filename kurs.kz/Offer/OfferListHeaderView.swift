@@ -14,7 +14,7 @@ final class OfferListHeaderView: UITableViewHeaderFooterView {
     // MARK: - UI
     private lazy var titleLabel: UILabel = {
             let label = UILabel()
-            label.text = "Отклики (0)"
+            label.text = "Отклики"
             label.font = AppFont.semibold.s16()
             label.textColor = AppColor.gray100.uiColor
             return label
@@ -32,8 +32,8 @@ final class OfferListHeaderView: UITableViewHeaderFooterView {
     } 
     
     // MARK: - Action
-    public func updateLabel(with reviewCount: Int) {
-        titleLabel.text = "Отклики (\(reviewCount))"
+    public func updateLabel(with responseCount: Int) {
+        titleLabel.text = "Отклики (\(responseCount))"
     }
 
     // MARK: - Setup Views
