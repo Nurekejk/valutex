@@ -54,15 +54,3 @@ struct OfferСreatedData: Decodable {
         case createdAt = "created_at"
     }
 }
-
-//"data": {
-//  "replied_at": "2023-10-03T09:25:48.664566",
-//  "status_type": "SELL",
-//  "exchange_currency": "USD",
-//  "exchange_amount": 1134,
-//  "exchange_rate": 543,
-//  "exchange_sum": 615762,
-//  "exchange_id": 7,
-//  "exchange_office": "Axe Exchange",
-//  "exchange_office_address": "Луганского улица, 19"
-//}
