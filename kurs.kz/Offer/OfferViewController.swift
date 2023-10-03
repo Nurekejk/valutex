@@ -43,7 +43,7 @@ final class OfferViewController: UIViewController {
                     print("success")
                     self?.navigationController?.popViewController(animated: true)
                 case .failure(let error):
-                    print("error while posting review")
+                    print("error 2222 posting review")
                 }
             })
         }
@@ -82,7 +82,6 @@ final class OfferViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        getOfferResponseList()
     }
     
     // MARK: - Initializers
@@ -107,7 +106,7 @@ final class OfferViewController: UIViewController {
                 print("theerere \(result)")
                 self?.offerResponses = result
             case .failure(let error):
-                print("error while posting review")
+                print("error 333 posting review")
             }
         })
     }
@@ -167,7 +166,7 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.delegate = self
-            cell.setupCell(with: offerResponses[indexPath.row], tag: indexPath.row)
+            cell.setupCell(with: offerResponses[indexPath.row])
         
             return cell
         } else {
@@ -185,6 +184,8 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                                                     OfferListHeaderView.reuseIdentifier)
+            as? OfferListHeaderView
+            header?.updateLabel(with: offerResponses.count)
             return header
         default:
             return UITableViewHeaderFooterView()
@@ -214,7 +215,7 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
                 self?.header.setExchangeRate(rate: updatedExchangeRate)
                 print("success")
             case .failure(let error):
-                print("error while posting review")
+                print("error 444 posting review")
             }
         }
         
@@ -224,10 +225,30 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
 
 extension OfferViewController: OfferTableViewCellDelegate {
     func acceptDidPress(offerResponseId: Int) {
-        print("yay \(offerResponseId)")
+        service.sendResponse(hasAccepted: true,
+                             offerResponseId: offerResponseId,
+                             completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                print("success")
+                self?.navigationController?.pushViewController(ClientOfferDetailsViewController, animated: true)
+            case .failure(let error):
+                print("error 5555 posting review")
+            }
+        })
     }
     
     func rejectDidPress(offerResponseId: Int) {
-        print("nay \(offerResponseId)")
+        service.sendResponse(hasAccepted: false,
+                             offerResponseId: offerResponseId,
+                             completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                print("success")
+                print("theerere \(result)")
+            case .failure(let error):
+                print("error 666 posting review")
+            }
+        })
     }
 }
