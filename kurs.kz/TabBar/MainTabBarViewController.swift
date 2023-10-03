@@ -25,6 +25,7 @@ final class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkStatus()
+        setupTabs()
         self.tabBar.barTintColor = AppColor.grayWhite.uiColor
         self.tabBar.tintColor = AppColor.primaryBase.uiColor
         self.tabBar.backgroundColor = .white
