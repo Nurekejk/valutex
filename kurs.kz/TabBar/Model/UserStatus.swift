@@ -18,7 +18,6 @@ struct UserStatus: Decodable {
         case offerCreated = "offer_created"
         case offerAccepted = "offer_accepted"
     }
-
 }
 
 struct OfferAcceptedData: Decodable {
