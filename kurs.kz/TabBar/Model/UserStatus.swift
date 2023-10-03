@@ -9,7 +9,7 @@ import Foundation
 
 struct UserStatus: Decodable {
     let status: Status?
-    let offerСreatedData: [OfferСreatedData]?
+    let data: [OfferAcceptedData]?
     let role: String?
     let offerAcceptedData: OfferAcceptedData?
     
@@ -21,11 +21,14 @@ struct UserStatus: Decodable {
 }
 
 struct OfferAcceptedData: Decodable {
-    let repliedAt, statusType, exchangeCurrency, exchangeOffice, exchangeOfficeAddress: String?
+    let repliedAt, statusType,
+        exchangeCurrency, exchangeOffice,
+        createdAt, exchangeOfficeAddress, type: String?
     let exchangeAmount, exchangeRate, exchangeSum: Double?
-    let exchangeId: Int
+    let exchangeId, userId, id: Int?
     
     enum CodingKeys: String, CodingKey {
+        case type, id
         case repliedAt = "replied_at"
         case statusType = "status_type"
         case exchangeCurrency = "exchange_currency"
@@ -35,21 +38,7 @@ struct OfferAcceptedData: Decodable {
         case exchangeId = "exchange_id"
         case exchangeOffice = "exchange_office"
         case exchangeOfficeAddress = "exchange_office_address"
-    }
-}
-
-struct OfferСreatedData: Decodable {
-    let type, exchangeCurrency, createdAt: String?
-    let exchangeRate, exchangeAmount, exchangeSum: Double?
-    let userId, id: Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case type, id
-        case exchangeCurrency = "exchange_currency"
-        case exchangeRate = "exchange_rate"
         case userId = "user_id"
-        case exchangeAmount = "exchange_amount"
-        case exchangeSum = "exchange_sum"
         case createdAt = "created_at"
     }
 }
