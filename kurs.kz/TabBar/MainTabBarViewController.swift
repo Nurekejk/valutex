@@ -11,21 +11,35 @@ import Pulley
 final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Properties
-    
+    private let service: TabBarService
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
-
+        
         self.tabBar.barTintColor = AppColor.grayWhite.uiColor
         self.tabBar.tintColor = AppColor.primaryBase.uiColor
         self.tabBar.backgroundColor = .white
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupTabs()
+    }
+    // MARK: - Initializers
+    init(service: TabBarService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Setup Views
-    func setupTabs() {
+    private func setupTabs() {
+        checkStatus()
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                         selectedImage: AppImage.home_selected.uiImage!,
@@ -67,7 +81,7 @@ final class MainTabBarViewController: UITabBarController {
                           viewController: UIViewController) -> UIViewController {
         let navViewController = UINavigationController(rootViewController: viewController)
         navViewController.navigationBar.isTranslucent = false
-
+        
         navViewController.tabBarItem.title = title
         navViewController.tabBarItem.image = image
         navViewController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
@@ -75,5 +89,33 @@ final class MainTabBarViewController: UITabBarController {
         navViewController.navigationItem.title = mainTitle
         
         return navViewController
+    }
+    private func checkStatus() {
+        var status: UserStatus?
+        service.getUserStatus(completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                print(result)
+                status = result
+            case .failure(let error):
+                print("error 333 posting review")
+            }
+        })
+        
+        if let status = status?.status {
+            switch status {
+            case .create:
+                print("create")
+                //            return OfferSellBuySegmentedController()
+            case .offerAccepted:
+                print("accepted")
+                //            return OfferViewController(offer: <#T##Offer#>,
+                //        symbol: <#T##String?#>, service: OfferService()))
+            case .offerCreated:
+                print("created")
+                //            return ClientOfferDetailsViewController()
+                
+            }
+        }
     }
 }

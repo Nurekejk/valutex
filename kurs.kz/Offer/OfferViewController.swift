@@ -231,7 +231,8 @@ extension OfferViewController: OfferTableViewCellDelegate {
             switch result {
             case .success(let result):
                 print("success")
-                self?.navigationController?.pushViewController(ClientOfferDetailsViewController, animated: true)
+                self?.navigationController?.pushViewController(ClientOfferDetailsViewController(),
+                                                               animated: true)
             case .failure(let error):
                 print("error 5555 posting review")
             }

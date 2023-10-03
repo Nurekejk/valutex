@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         if isAuthorized() {
-            window?.rootViewController = MainTabBarViewController()
+            window?.rootViewController = MainTabBarViewController(service: TabBarService())
         } else {
             let navViewController = UINavigationController(rootViewController: SelectLanguageViewController())
             navViewController.navigationBar.isTranslucent = false

@@ -227,7 +227,7 @@ final class SignInViewController: UIViewController {
                 let defaults = UserDefaults.standard
                 if let data = try? JSONEncoder().encode(data) {
                     defaults.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
-                    let tabbarController = MainTabBarViewController()
+                    let tabbarController = MainTabBarViewController(service: TabBarService())
                     tabbarController.navigationItem.hidesBackButton = true
                     tabbarController.modalPresentationStyle = .fullScreen
                     self.present(tabbarController, animated: true)

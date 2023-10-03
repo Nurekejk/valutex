@@ -212,7 +212,7 @@ final class RegistrationPasswordViewController: UIViewController {
                     print("something went wrong while writing")
                 }
                 self.showSuccess()
-                let tabbarController = MainTabBarViewController()
+                let tabbarController = MainTabBarViewController(service: TabBarService())
                 tabbarController.navigationItem.hidesBackButton = true
                 tabbarController.modalPresentationStyle = .fullScreen
                 self.present(tabbarController, animated: true)
