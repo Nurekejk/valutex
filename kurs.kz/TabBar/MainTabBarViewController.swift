@@ -39,7 +39,14 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Setup Views
     private func setupTabs() {
-        checkStatus()
+        let offerController: UIViewController
+        
+        if let checkedController = checkStatus() {
+            offerController = checkedController
+        } else {
+            offerController = OfferSellBuySegmentedController()
+        }
+
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
                                         selectedImage: AppImage.home_selected.uiImage!,
@@ -51,7 +58,7 @@ final class MainTabBarViewController: UITabBarController {
             let offer = createNavigation(mainTitle: "Оффер", title: "Оффер",
                                          selectedImage: AppImage.money_selected.uiImage!,
                                          image: AppImage.money_gray.uiImage!,
-                                         viewController: OfferSellBuySegmentedController())
+                                         viewController: offerController)
             let other = createNavigation(mainTitle: "", title: "Еще",
                                          selectedImage: AppImage.other_selected.uiImage!,
                                          image: AppImage.other_gray.uiImage!,
@@ -90,7 +97,7 @@ final class MainTabBarViewController: UITabBarController {
         
         return navViewController
     }
-    private func checkStatus() {
+    private func checkStatus() -> UIViewController? {
         var status: UserStatus?
         service.getUserStatus(completion: { [weak self] result in
             switch result {
@@ -102,20 +109,36 @@ final class MainTabBarViewController: UITabBarController {
             }
         })
         
-        if let status = status?.status {
-            switch status {
-            case .create:
-                print("create")
-                //            return OfferSellBuySegmentedController()
-            case .offerAccepted:
-                print("accepted")
-                //            return OfferViewController(offer: <#T##Offer#>,
-                //        symbol: <#T##String?#>, service: OfferService()))
-            case .offerCreated:
-                print("created")
-                //            return ClientOfferDetailsViewController()
-                
+        guard let offerStatus = status?.status else { return nil }
+        switch offerStatus {
+        case .create:
+            print("create")
+            return OfferSellBuySegmentedController()
+        case .offerCreated:
+            print("created")
+            guard let offerСreatedData = status?.offerСreatedData?.first else { return nil }
+            
+            var offer: Offer?
+            
+            if let type = offerСreatedData.type,
+               let exchangeCurrency = offerСreatedData.exchangeCurrency,
+               let exchangeAmount = offerСreatedData.exchangeAmount,
+               let exchangeRate = offerСreatedData.exchangeRate {
+                offer = Offer(type: type,
+                              exchangeСurrency: exchangeCurrency,
+                              exchangeAmount: exchangeAmount,
+                              exchangeRate: exchangeRate)
             }
+            
+            guard let unwrappedOffer = offer else { return nil }
+            
+            return OfferViewController(offer: unwrappedOffer,
+                                       symbol: "$",
+                                       service: OfferService())
+        case .offerAccepted:
+            print("accepted")
+            return ClientOfferDetailsViewController()
         }
     }
 }
+
