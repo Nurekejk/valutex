@@ -10,8 +10,8 @@ import Foundation
 struct Offer: Encodable {
     let type: String
     let exchangeСurrency: String
-    let exchangeAmount: Double
-    let exchangeRate: Double
+    var exchangeAmount: Double
+    var exchangeRate: Double
     
     init(type: String,
          exchangeСurrency: String,
