@@ -105,7 +105,7 @@ final class MainTabBarViewController: UITabBarController {
             switch result {
             case .success(let result):
                 self?.userStatus = result
-                print("status isss")
+                print("status isss \(result)")
             case .failure(let error):
                 self?.userStatus = nil
                 print("error getting status")
@@ -123,14 +123,13 @@ final class MainTabBarViewController: UITabBarController {
             return OfferSellBuySegmentedController()
         case .offerCreated:
             print("created")
-            guard let offerСreatedData = userStatus?.data?.first else { return nil }
-            
+            guard let offerСreatedData = userStatus?.data as? [OfferCreatedData] else { return nil }
             var offer: Offer?
             
-            if let type = offerСreatedData.type,
-               let exchangeCurrency = offerСreatedData.exchangeCurrency,
-               let exchangeAmount = offerСreatedData.exchangeAmount,
-               let exchangeRate = offerСreatedData.exchangeRate {
+            if let type = offerСreatedData.first?.type,
+               let exchangeCurrency = offerСreatedData.first?.exchangeCurrency,
+               let exchangeAmount = offerСreatedData.first?.exchangeAmount,
+               let exchangeRate = offerСreatedData.first?.exchangeRate {
                 offer = Offer(type: type,
                               exchangeСurrency: exchangeCurrency,
                               exchangeAmount: exchangeAmount,
