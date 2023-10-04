@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 import Pulley
+import GoogleMaps
 
 // swiftlint:disable all
 final class ExchangeListViewController: UIViewController {
@@ -19,6 +20,17 @@ final class ExchangeListViewController: UIViewController {
     // MARK: Dependencies
     private let service = ExchangerListService()
     // MARK: - Properties
+    private var exchangersDidLoad = false
+    private var userLocation: CLLocation? {
+        didSet {
+            if !exchangersArray.isEmpty {
+                for index in 0...exchangersArray.count - 1 {
+                    exchangersArray[index].distance = calculateDistance(latitude: exchangersArray[index].latitude, longitude: exchangersArray[index].longitude)
+                }
+            }
+        }
+    }
+    
     private var selectedCity = 1 {
         didSet {
             getExchangers {}
@@ -34,6 +46,11 @@ final class ExchangeListViewController: UIViewController {
     private var searchBarText = ""
     private var exchangersArray: [Exchanger] = [] {
         didSet {
+            if !exchangersArray.isEmpty {
+                exchangersDidLoad = true
+            } else {
+                exchangersDidLoad = false
+            }
             filtersDidChange()
             exchangeListTableView.stopSkeletonAnimation()
             exchangeListTableView.hideSkeleton(transition: .crossDissolve(0.25))
@@ -215,6 +232,7 @@ final class ExchangeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getExchangers {}
         if self.pulleyViewController?.drawerPosition == .closed {
             self.topView.isHidden = true
             updateConstraints()
@@ -349,12 +367,10 @@ final class ExchangeListViewController: UIViewController {
     private func showSkeletonAnimation() {
         exchangeListTableView.showAnimatedSkeleton(transition: .crossDissolve(0.25))
     }
-    
+
     private func getExchangers(completion: @escaping () -> Void) {
         service.fetchExchangers(currencyCode: currency?.code ?? "USD", cityId: selectedCity) { exchangers in
-            print(exchangers)
             self.exchangersArray = exchangers
-            print(self.exchangersArray)
             
             completion()
         }
@@ -425,8 +441,23 @@ final class ExchangeListViewController: UIViewController {
             filteredArray = filteredArray.sorted(by: {$0.distance ?? 0 < $1.distance ?? 0})
         }
     }
+
+    private func calculateDistance(latitude: Float, longitude: Float ) -> CLLocationDistance? {
+        
+        if let unwrappedUserlocation = userLocation {
+            return unwrappedUserlocation.distance(from: CLLocation(latitude:
+                                                                    CLLocationDegrees(latitude),
+                                                                   longitude:
+                                                                    CLLocationDegrees(longitude)))
+        } else {
+            return nil
+        }
+    }
     public func updateCurrency(newCurrency: Currency?) {
         self.currency = newCurrency
+    }
+    public func updateLocation(newLocation: CLLocation) {
+        self.userLocation = newLocation
     }
 }
 
@@ -460,11 +491,7 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
             fatalError("Cound not dequeue reusable cell")
         }
         cell.backgroundColor = view.backgroundColor
-        if !isSearching {
-            cell.changeExchanger(with: filteredArray[indexPath.row])
-        } else {
-            cell.changeExchanger(with: filteredArray[indexPath.row])
-        }
+        cell.changeExchanger(with: filteredArray[indexPath.row])
         return cell
     }
     
@@ -483,9 +510,10 @@ extension ExchangeListViewController: UITableViewDelegate, SkeletonTableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let exhange = filteredArray[indexPath.row]
-        let controller = DetailViewController(service: DetailPageService())
-        controller.officeId = exhange.id
+        let exchanger = filteredArray[indexPath.row]
+        let controller = DetailViewController(service: DetailPageService(),
+                                              reviewCount: exchanger.totalRatings,
+                                              officeId: exchanger.id)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

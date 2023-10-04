@@ -108,6 +108,37 @@ final class DetailTableViewHeader: UITableViewHeaderFooterView {
     }
     
     // MARK: - Actions
+    func checkIfEmpty() {
+        if let unwrappedItems = detailSection?.items {
+        print(section)
+        print("items are: \(unwrappedItems)")
+            if unwrappedItems.isEmpty || unwrappedItems == [nil] {
+                
+                switch section {
+                case 3:
+                    arrowImageView.isHidden = true
+                    titleLabel.text = "Телефоны - не указаны"
+                case 4:
+                    arrowImageView.isHidden = true
+                    titleLabel.text = "Время работы - не указано"
+                case 5:
+                    arrowImageView.isHidden = true
+                    titleLabel.text = "Email - не указан"
+                case 6:
+                    arrowImageView.isHidden = true
+                    titleLabel.text = "Web-site - не указан"
+                case 7:
+                    arrowImageView.isHidden = true
+                    titleLabel.text = "Whatsapp - не указан"
+                default:
+                    print("something went wrong")
+                }
+            } else {
+                arrowImageView.isHidden = false
+            }
+        }
+    }
+    
     @objc func tapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
         guard let cell = gestureRecognizer.view as? DetailTableViewHeader else {
             return

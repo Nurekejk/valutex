@@ -169,33 +169,33 @@ final class RegistrationPasswordViewController: UIViewController {
     @objc private func continueButtonDidPress() {
         guard let password = enterPasswordTextField.text else {
             self.showFailure()
-            self.showSnackBar(message: "Пароль введен неправильно.")
+            self.showAlert(message: "Пароль введен неправильно.")
             return
         }
         
         if password.isEmpty {
             self.showFailure()
-            self.showSnackBar(message: "Пожалуйста, введите пароль.")
+            self.showAlert(message: "Пожалуйста, введите пароль.")
             return
         } else if password.count < 6 {
             self.showFailure()
-            self.showSnackBar(message: "Пароль слишком короткий!")
+            self.showAlert(message: "Пароль слишком короткий!")
             return
         }
         
         guard let passwordRepeated = repeatPasswordTextField.text else {
             self.showFailure()
-            self.showSnackBar(message: "Повторный пароль введен неправильно.")
+            self.showAlert(message: "Повторный пароль введен неправильно.")
             return
         }
         
         if passwordRepeated.isEmpty {
             self.showFailure()
-            self.showSnackBar(message: "Пожалуйста, повторите пароль.")
+            self.showAlert(message: "Пожалуйста, повторите пароль.")
             return
         } else if password != passwordRepeated {
             self.showFailure()
-            self.showSnackBar(message: "Пароли не совпадают.")
+            self.showAlert(message: "Пароли не совпадают.")
             return
         }
         
@@ -212,14 +212,14 @@ final class RegistrationPasswordViewController: UIViewController {
                     print("something went wrong while writing")
                 }
                 self.showSuccess()
-                let tabbarController = MainTabBarViewController()
+                let tabbarController = MainTabBarViewController(service: TabBarService())
                 tabbarController.navigationItem.hidesBackButton = true
                 tabbarController.modalPresentationStyle = .fullScreen
                 self.present(tabbarController, animated: true)
             case .failure:
                 DispatchQueue.main.async {
                     self.showFailure()
-                    self.showSnackBar(message: "Ошибка! Повторите еще раз.")
+                    self.showAlert(message: "Ошибка! Повторите еще раз.")
                 }
             }
         }
@@ -238,8 +238,14 @@ final class RegistrationPasswordViewController: UIViewController {
         repeatPasswordTextField.isSecureTextEntry = !repeatPasswordTextField.buttonIsSelected
     }
     // MARK: - SnackBar
-    private func showSnackBar(message: String) {
-        SnackBarController.showSnackBar(in: view, message: message, duration: .lengthShort)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {_ in }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

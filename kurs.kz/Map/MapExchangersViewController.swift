@@ -7,12 +7,15 @@
 
 import UIKit
 import Pulley
+import GoogleMaps
 
 final class MapExchangersViewController: PulleyViewController {
     private let defaults = UserDefaults.standard
     
     // MARK: - Public
     private let exchangeListController = ExchangeListViewController()
+    private let mapViewController = MapViewController(service: ExchangerListService())
+    
     private var currency: Currency? {
         didSet {
             exchangeListController.updateCurrency(newCurrency: currency)
@@ -51,7 +54,7 @@ final class MapExchangersViewController: PulleyViewController {
     required init(contentViewController: UIViewController = MapViewController(
         service: ExchangerListService()),
                   drawerViewController: UIViewController = ExchangeListViewController()) {
-        super.init(contentViewController: contentViewController, drawerViewController: exchangeListController)
+        super.init(contentViewController: mapViewController, drawerViewController: exchangeListController)
     }
     
     // MARK: - Lifecycle
@@ -61,6 +64,7 @@ final class MapExchangersViewController: PulleyViewController {
         self.drawerTopInset = 0
         self.drawerCornerRadius = 0
         self.allowsUserDrawerPositionChange = true
+        mapViewController.delegate = self
         navigationBarView.changeCurrency(newFlagImage: "🇺🇸", newCurrencyLabel: "USD")
     }
     
@@ -106,5 +110,14 @@ extension MapExchangersViewController: CurrencySelectorViewControllerDelegate {
         } else {
             print("error while encoding")
         }
+    }
+}
+// MARK: - MapViewControllerDelegate
+
+extension MapExchangersViewController: MapViewControllerDelegate {
+    func didUpdateLocation(location: CLLocation) {
+        print("please work \(location)")
+        exchangeListController.updateLocation(newLocation: location)
+        print(location)
     }
 }

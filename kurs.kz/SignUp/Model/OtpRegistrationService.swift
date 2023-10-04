@@ -16,9 +16,8 @@ final class OtpRegistrationService {
     // MARK: - Network
     func postPhoneNumber(with phone: String, completion: @escaping (Result<String, Error>) -> Void) {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/otp/registration"
         
         guard let url = urlComponent.url else {
@@ -42,9 +41,8 @@ final class OtpRegistrationService {
     
     func postOTPCode (with smsCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/otp/verify"
         
         guard let url = urlComponent.url else {
@@ -69,9 +67,8 @@ final class OtpRegistrationService {
     
     func fetchUser (with user: User, completion: @escaping (Result<SignInResponse, Error>) -> Void) {
         var urlComponent = URLComponents()
-        urlComponent.scheme = "http"
-        urlComponent.host = "134.122.66.97"
-        urlComponent.port = 4443
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
         urlComponent.path = "/signup"
         
         guard let url = urlComponent.url else {

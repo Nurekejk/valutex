@@ -13,12 +13,16 @@ import SnapKit
 import ProgressHUD
 
 final class MapViewController: UIViewController {
-    
     private let service: ExchangerListService
     private var markers = [GMSMarker]()
     private let locationManager = CLLocationManager()
+    private var currentLocation: CLLocation? {
+        didSet {
+            updateCameraView()
+        }
+    }
     private var currentZoom : Float = 15.0
-    
+    weak var delegate: MapViewControllerDelegate?
     // MARK: - UI
     private lazy var googleMapView: GMSMapView = {
         let map =  GMSMapView(frame: view.bounds,
@@ -128,7 +132,15 @@ final class MapViewController: UIViewController {
         myLocationButton.layer.rasterizationScale = UIScreen.main.scale
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print("viewdisapeared")
+        super.viewWillDisappear(animated)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.locationManager.startUpdatingLocation()
+        print("viewappeared")
         self.navigationController?.navigationBar.backgroundColor = .white
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillAppear),
@@ -193,7 +205,7 @@ final class MapViewController: UIViewController {
         service.fetchExchangers(currencyCode: "USD", cityId: 1) { exchangers in
             exchangers.forEach { [weak self] exchanger in
                 let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(exchanger.latitude),
-                                          longitude: CLLocationDegrees(exchanger.longitude))
+                                                      longitude: CLLocationDegrees(exchanger.longitude))
                 let marker = GMSMarker(position: position)
                 marker.title = exchanger.mainTitle
                 marker.snippet = exchanger.address
@@ -223,11 +235,21 @@ final class MapViewController: UIViewController {
     }
     
     @objc private func myLocationButtonDidPressed() {
-        self.locationManager.startUpdatingLocation()
+        updateCameraView()
     }
     
     @objc func keyboardWillAppear() {
         self.pulleyViewController?.setDrawerPosition(position: .open, animated: true)
+    }
+    private func updateCameraView() {
+        if let location = currentLocation {
+            googleMapView.camera = GMSCameraPosition(
+                target: location.coordinate,
+                zoom: currentZoom,
+                bearing: 0,
+                viewingAngle: 0)
+            self.googleMapView.animate(to: googleMapView.camera)
+        }
     }
 }
 
@@ -243,14 +265,10 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        googleMapView.camera = GMSCameraPosition(
-            target: location.coordinate,
-            zoom: currentZoom,
-            bearing: 0,
-            viewingAngle: 0)
-        self.googleMapView.animate(to: camera)
-        self.locationManager.stopUpdatingLocation()
+        guard let location = locations.last else { return }
+        print("location is \(location)")
+        delegate?.didUpdateLocation(location: location)
+        self.currentLocation = location
     }
     
     func locationManager(_ manager: CLLocationManager,
@@ -277,4 +295,7 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
             make.bottom.equalToSuperview().inset(distance + 16)
         }
     }
+}
+protocol MapViewControllerDelegate:AnyObject {
+    func didUpdateLocation(location: CLLocation)
 }

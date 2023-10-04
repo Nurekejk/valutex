@@ -5,7 +5,54 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Properties
     private let officeId: Int
     private let service: RateViewControllerService
-    private var rating = 0
+    private lazy var rating = oldRating ?? 0 {
+        didSet {
+            
+            isRatingDifferent = rating != oldRating
+        }
+    }
+    private var oldRating: Int?
+
+    private var isRatingDifferent = false {
+        didSet {
+            if isRatingDifferent || isTextDifferent {
+                continueButton.backgroundColor = isTextDifferent || isRatingDifferent ?
+                    AppColor.primaryBase.uiColor : AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                
+                continueButton.isEnabled = isTextDifferent || isRatingDifferent
+            }
+        }
+    }
+    
+    private var isTextDifferent = false {
+        didSet {
+            if isRatingDifferent || isTextDifferent {
+                continueButton.backgroundColor = isTextDifferent || isRatingDifferent ?
+                    AppColor.primaryBase.uiColor : AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                
+                continueButton.isEnabled = isTextDifferent || isRatingDifferent
+            }
+        }
+    }
+    private var hasGivenFeedbackBefore = false {
+        didSet {
+            if oldReview != nil {
+                continueButton.setTitle("Изменить отзыв", for: .normal)
+                reviewTextView.textColor = AppColor.gray100.uiColor
+
+            } else {
+                continueButton.setTitle("Отправить отзыв", for: .normal)
+                reviewTextView.textColor = AppColor.gray50.uiColor
+
+            }
+        }
+    }
+    private var oldReview: String?
+    private var userReviews = [ReviewForTableView]() {
+        didSet {
+            self.reviewsTableView.reloadData()
+        }
+    }
     
     // MARK: - UI
     private var starButtons = [StarButton]()
@@ -28,8 +75,9 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         return label
     }()
     
-    private let reviewTextView: UITextView = {
+    private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
+        textView.delegate = self
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0)
         textView.text = "Поделитесь мнением об обменнике?"
         textView.textColor = AppColor.gray50.uiColor
@@ -63,6 +111,17 @@ final class RateViewController: UIViewController, UITextViewDelegate {
                                                                      bottom: 16, trailing: 0)
         return stackView
     }()
+    private lazy var reviewsTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(ReviewTableViewCell.self,
+                           forCellReuseIdentifier: ReviewTableViewCell.reuseID)
+        tableView.register(ReviewTableViewHeader.self,
+                           forHeaderFooterViewReuseIdentifier: ReviewTableViewHeader.reuseID)
+        tableView.delegate = self
+        tableView.backgroundColor = AppColor.gray10.uiColor
+        tableView.dataSource = self
+        return tableView
+    }()
     
     private func addButtonsToStarStackView() {
         let numberOfButtons = 5
@@ -89,6 +148,8 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getFeedback()
+        fetchReviews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,6 +164,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Setup Views
     private func setupViews() {
         view.addSubview(entireStackView)
+        view.addSubview(reviewsTableView)
         
         [starStackView, reviewLabel, borderView,
          reviewTextView, continueButton].forEach { entireStackView.addArrangedSubview($0) }
@@ -114,11 +176,64 @@ final class RateViewController: UIViewController, UITextViewDelegate {
         continueButton.backgroundColor = AppColor.primaryBase.uiColor
         entireStackView.backgroundColor = AppColor.grayWhite.uiColor
         
-        reviewTextView.delegate = self
-
     }
     
     // MARK: - Action
+    private func sortByDate(reviews: [ReviewForTableView]?) -> [ReviewForTableView]? {
+        let sortedReviews = reviews?.sorted { (review1, review2) -> Bool in
+            if let date1 = review1.createdAt, let date2 = review2.createdAt {
+                return date1 > date2
+            }
+            return false
+        }
+        return sortedReviews
+    }
+    private func calculateAverageScore() -> Double? {
+        var scoresTotal = 0
+        for userReview in userReviews {
+            guard let score = userReview.score else {return nil}
+            scoresTotal += score
+        }
+        return Double(scoresTotal) / Double(userReviews.count)
+    }
+    
+    private func getFeedback() {
+        service.getReview(officeId: officeId) { [weak self] result in
+            switch result {
+            case .success(let review):
+                self?.setupFeedback(with: review)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    private func setupFeedback(with review: FeedbackResponse) {
+        if review.status ?? false {
+            oldReview = review.feedback?.comment
+            hasGivenFeedbackBefore = review.status ?? false
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+            oldRating = review.feedback?.score ?? 0
+            var index = 0
+            while index != oldRating {
+                starButtons[index].isSelected = true
+                index += 1
+            }
+            reviewTextView.text = review.feedback?.comment
+        }
+    }
+    private func fetchReviews() {
+        service.fetchUserReviews(officeId: officeId) { [weak self] result in
+            switch result {
+            case .success(let result):
+                let orderedReviews = self?.sortByDate(reviews: result)
+                self?.userReviews = orderedReviews ?? []
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
     @objc func changeStars(sender: UIButton!) {
         starButtons.forEach { $0.isSelected = false }
         for (index, element) in starButtons.enumerated() {
@@ -131,21 +246,38 @@ final class RateViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func sendReview() {
-        if rating == 0 || reviewTextView.text.isEmpty {
-            print("cant ")
+        if !hasGivenFeedbackBefore {
+            if rating == 0 || reviewTextView.text.isEmpty {
+            } else {
+                let comment = reviewTextView.text!
+                let review = Feedback(officeId: officeId, score: rating, comment: comment)
+                service.postReview(review: review) { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.continueButton.isEnabled = false
+                        self?.continueButton.backgroundColor =
+                        AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                    case .failure(let error):
+                        print("error while posting review")
+                    }
+                }
+            }
         } else {
-            let comment = reviewTextView.text!
-            let review = Feedback(officeId: officeId, score: rating, comment: comment)
-            service.postReview(review: review) { result in
-                switch result {
-                case .success:
-                    self.navigationController?.popViewController(animated: true)
-                case .failure(let error):
-                    if error.responseCode == 404 {
-                        
-                        SnackBarController.showSnackBar(in: self.view,
-                                                        message: "          Вы уже оставили отзыв",
-                                                        duration: .lengthShort)
+            if rating == 0 || reviewTextView.text.isEmpty {
+                print("cant ")
+            } else {
+                let comment = reviewTextView.text!
+                let review = Feedback(officeId: officeId, score: rating, comment: comment)
+                service.updateFeedback(review: review) { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.continueButton.isEnabled = false
+                        print("here")
+                        self?.continueButton.backgroundColor =
+                        AppColor.primaryBase.uiColor.withAlphaComponent(0.64)
+                    case .failure(let error):
+                        print("here")
+                        print("error while posting review")
                     }
                 }
             }
@@ -158,7 +290,7 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.height.equalTo(318)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
         }
         borderView.snp.makeConstraints { make in
             make.height.equalTo(1)
@@ -178,6 +310,13 @@ final class RateViewController: UIViewController, UITextViewDelegate {
             make.leading.equalTo(entireStackView.snp.leading).offset(16)
             make.trailing.equalTo(entireStackView.snp.trailing).offset(-16)
         }
+        reviewsTableView.snp.makeConstraints { make in
+            make.top.equalTo(entireStackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview()
+            
+        }
     }
 }
 
@@ -189,6 +328,10 @@ extension RateViewController {
             textView.text = nil
             textView.textColor = AppColor.gray100.uiColor
         }
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        guard hasGivenFeedbackBefore else { return }
+        isTextDifferent = textView.text != oldReview
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -206,5 +349,33 @@ extension RateViewController {
             return true
         }
         return true
+    }
+}
+    // MARK: - Extension TableViewDelegate, UITableViewDataSource
+extension RateViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                ReviewTableViewHeader.reuseID)
+        as? ReviewTableViewHeader
+        let score = calculateAverageScore()
+        header?.setupHeader(score: score, numberOfReviews: userReviews.count)
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        102
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userReviews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.reuseID,
+                                                       for: indexPath) as? ReviewTableViewCell
+        else { return UITableViewCell() }
+        cell.setupCell(with: userReviews[indexPath.row])
+        return cell
     }
 }

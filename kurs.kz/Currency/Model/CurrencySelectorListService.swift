@@ -15,9 +15,8 @@ struct CurrencySelectorListService {
     func fetchCurrencies() {
         
         var currencyListURLComponent = URLComponents()
-        currencyListURLComponent.scheme = "http"
-        currencyListURLComponent.host = "134.122.66.97"
-        currencyListURLComponent.port = 4443
+        currencyListURLComponent.scheme = "https"
+        currencyListURLComponent.host = "api.valutex.kz"
         currencyListURLComponent.path = "/currencies_list"
         
         guard let url = currencyListURLComponent.url else {

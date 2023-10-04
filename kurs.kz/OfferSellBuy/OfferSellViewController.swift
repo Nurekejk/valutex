@@ -19,6 +19,7 @@ final class OfferSellViewController: UIViewController {
     private var exchangeCurrency = "USD"
     private var exchangeAmount = 0.0
     private var exchangeRate = 0.0
+    private var exchangeCurrencySymbol = "$"
 
     enum ControllerMode {
         case buy
@@ -213,6 +214,8 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
                                                                           language: selectedLanguage),
                                         newCurrencySignLabel: currency.symbol)
         exchangeCurrency = currency.code
+        print("currency.symbol is \(currency.symbol)")
+        exchangeCurrencySymbol = currency.symbol
     }
 
     func calculateOffer(sender: UITextField) {
@@ -258,7 +261,10 @@ extension OfferSellViewController: CurrencySelectorViewControllerDelegate, Offer
             case .success((let data)):
                 print("SUCCESS", data)
                 self.navigationController?.pushViewController(
-                    OfferViewController(offer: offer), animated: true)
+                    OfferViewController(offer: offer,
+                                        symbol: self.exchangeCurrencySymbol,
+                                        service: OfferService()),
+                    animated: true)
             case .failure((let error)):
                 print("ERROR", error)
             }

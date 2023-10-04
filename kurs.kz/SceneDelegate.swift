@@ -21,10 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         if isAuthorized() {
-            window?.rootViewController = MainTabBarViewController()
+            window?.rootViewController = MainTabBarViewController(service: TabBarService())
         } else {
-            window?.rootViewController =
-            UINavigationController(rootViewController: SelectLanguageViewController())
+            let navViewController = UINavigationController(rootViewController: SelectLanguageViewController())
+            navViewController.navigationBar.isTranslucent = false
+            window?.rootViewController = navViewController
         }
         window?.makeKeyAndVisible()
     }

@@ -101,13 +101,13 @@ final class SelectLanguageViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupContraints() {
         imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(124)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(300)
         }
         
         label.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(50)
+            make.top.equalTo(imageView.snp.bottom).offset(32)
             make.centerX.equalToSuperview()
         }
         
@@ -115,18 +115,6 @@ final class SelectLanguageViewController: UIViewController {
             make.top.equalTo(label.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-        }
-        
-        kazakhButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
-        
-        russianButton.snp.makeConstraints { make in
-            make.height.equalTo(kazakhButton)
-        }
-        
-        englishButton.snp.makeConstraints { make in
-            make.height.equalTo(kazakhButton)
         }
     }
 

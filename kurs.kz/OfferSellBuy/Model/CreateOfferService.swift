@@ -15,9 +15,8 @@ final class CreateOfferService {
                      completion: @escaping (Result<CreateOfferResponse, AFError>) -> Void) {
 
         var createOffer = URLComponents()
-        createOffer.scheme = "http"
-        createOffer.host = "134.122.66.97"
-        createOffer.port = 4443
+        createOffer.scheme = "https"
+        createOffer.host = "api.valutex.kz"
         createOffer.path = "/create_offer"
 
         guard let url = createOffer.url else {

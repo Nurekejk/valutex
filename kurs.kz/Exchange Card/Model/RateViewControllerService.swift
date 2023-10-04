@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-final class RateViewControllerService {
+struct RateViewControllerService {
     // MARK: - Network
     
     func postReview(review: Feedback, completion: @escaping (Result<String, AFError>) -> Void) {
@@ -55,6 +55,101 @@ final class RateViewControllerService {
                 }
             } catch {
                 print("error while decoding")
+            }
+        }
+    }
+    
+    func getReview(officeId: Int,  completion: @escaping (Result<FeedbackResponse, AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/exchange_offices/check_feedback"
+        urlComponent.query = "office_id=\(officeId)"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        print(url)
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+        
+        AF.request(url, method: .post,
+                   parameters: [:], encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: FeedbackResponse.self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    func updateFeedback(review: Feedback, completion: @escaping (Result<String, AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/exchange_offices/update_feedback"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+        let parameters: [String: Any] = [ "office_id": review.officeId,
+                                          "score": review.score,
+                                          "comment": review.comment]
+        
+        AF.request(url, method: .put,
+                   parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: String.self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    func fetchUserReviews(officeId: Int,  
+                          completion: @escaping (Result<[ReviewForTableView], AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/exchange_offices/info_feedback"
+        urlComponent.query = "office_id=\(officeId)"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+        
+        AF.request(url, method: .post,
+                   parameters: [:], encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [ReviewForTableView].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

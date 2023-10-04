@@ -11,11 +11,10 @@ import CollapsibleTableSectionViewController
 import ProgressHUD
 
 final class DetailViewController: UIViewController {
-    // MARK: - State
-
-    public var officeId = 0
     
     // MARK: - Properties
+    private var formattedPhoneNumbers = [String]()
+    private var phoneNumbers = [String]()
     private let service: DetailPageService
     private var sections = [DetailSection]()
     private var currencies = [CurrencyElement]()
@@ -23,6 +22,8 @@ final class DetailViewController: UIViewController {
     private var name: String = ""
     private var address: String = ""
     private var score: Double = 0.0
+    private var reviewCount = 0
+    private var officeId = 0
     
     // MARK: - UI
     private lazy var exchangerDetailsTableView: UITableView = {
@@ -50,8 +51,10 @@ final class DetailViewController: UIViewController {
     }()
     
     // MARK: - Initializers
-    init(service: DetailPageService) {
+    init(service: DetailPageService, reviewCount: Int, officeId: Int) {
         self.service = service
+        self.reviewCount = reviewCount
+        self.officeId = officeId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -123,7 +126,14 @@ final class DetailViewController: UIViewController {
         service.fetchDetails(officeID: self.officeId) { [weak self] result in
             switch result {
             case .success(let details):
-                self?.setSectionsData(details: details)
+                if let contacts = details.contacts {
+                    let unwrappedStrings = contacts.compactMap { $0 }
+                    for number in unwrappedStrings {
+                        let formattedNumber = self?.format(with: "+X (XXX) XXX-XX-XX", phone: number)
+                        self?.formattedPhoneNumbers.append(formattedNumber ?? "")
+                        self?.phoneNumbers.append(number)
+                    }
+                }
                 if let nameString = details.name {
                     self?.name = nameString
                 }
@@ -133,6 +143,7 @@ final class DetailViewController: UIViewController {
                 if let scoreAmount = details.score {
                     self?.score = round(scoreAmount * 100)/100
                 }
+                self?.setSectionsData(details: details)
                 self?.exchangerDetailsTableView.reloadData()
             case .failure(let error):
                 ProgressHUD.show(icon: .failed)
@@ -158,7 +169,7 @@ final class DetailViewController: UIViewController {
         // Phone Section
         let phoneSection = DetailSection(name: "Телефоны",
                                          iconImage: AppImage.call.uiImage,
-                                         items: details.contacts)
+                                         items: formattedPhoneNumbers)
         // Working Hours Section
         var workingHours = [String]()
         var dayOfWeek = 0
@@ -219,25 +230,55 @@ final class DetailViewController: UIViewController {
         return String(timeString)
     }
     
-    // MARK: - Actions
-    @objc private func callButtonDidPressed() {
-        let alert = UIAlertController(title: "Вы нажали на кнопку позвонить.",
-                                      message: "",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
     }
     
-    @objc private func shareButtonDidPressed() {
-        let alert = UIAlertController(title: "Вы нажали на кнопку поделиться.",
-                                      message: "",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
+    // MARK: - Actions
+    @objc private func callButtonDidPressed() {
+        if let primaryPhoneNumber = phoneNumbers.first {
+            if let url = URL(string: "tel://\(primaryPhoneNumber)"),
+               UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            
+        }
+    }
+    @objc private func shareButtonDidPressed(_ sender: UIBarButtonItem) {
+        let phones = formattedPhoneNumbers.joined(separator: "\n")
         
-        self.present(alert, animated: true, completion: nil)
+        let text = """
+                \(name)
+                \(address)
+                \(phones)
+                """
+              let textToShare = [ text ]
+              let activityViewController = UIActivityViewController(activityItems: textToShare,
+                                                                    applicationActivities: nil)
+        
+              activityViewController.popoverPresentationController?.sourceView = self.view
+              
+              activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop,
+                                                               UIActivity.ActivityType.postToFacebook ]
+              
+              self.present(activityViewController, animated: true, completion: nil)
+
     }
 }
 
@@ -258,7 +299,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             if collapsed {
                 return 0
             } else {
-                return sections[section - topSections].items?.count ?? 0
+                if let unwrappedItems = sections[section - topSections].items {
+                    if unwrappedItems == [nil] {
+                        return 0
+                    }
+                    return unwrappedItems.count
+                } else {
+                    return 0
+                }
+                
             }
         }
         return 0
@@ -293,6 +342,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             else {
                 fatalError("Could not cast to FeedbackTableViewCell")
             }
+            cell.setupReviewNumber(with: reviewCount)
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID,
@@ -329,6 +379,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         header.setCollapsed(sections[section - topSections].collapsed ?? false)
         header.section = section
         header.detailSection = sections[section - topSections]
+        header.checkIfEmpty()
         header.delegate = self
         return header
     }
@@ -375,6 +426,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                                                                              officeId: officeId),
                                                           animated: true)
         }
+        if indexPath.section == (sections.count + topSections) - 1 {
+            let cell = tableView.cellForRow(at: indexPath) as? DetailTableViewCell
+            guard let link = cell?.nameLabel.text else { return }
+            guard let appURL = URL(string: link) else { return }
+            print(appURL)
+            if UIApplication.shared.canOpenURL(appURL) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(appURL)
+                }
+            }
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -393,8 +458,7 @@ extension DetailViewController: CollapsibleTableViewHeaderDelegate {
         let collapsed = !(sections[section - topSections].collapsed ?? false)
         sections[section - topSections].collapsed = collapsed
         header.setCollapsed(collapsed)
-        DispatchQueue.main.async {
-            self.exchangerDetailsTableView.reloadData()
-        }
+        self.exchangerDetailsTableView.reloadData()
+
     }
 }
