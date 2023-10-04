@@ -10,7 +10,7 @@ import Foundation
 struct UserStatus: Decodable {
     let status: Status
     let role: String?
-    let data: Any // Use the most general type
+    let data: Any
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

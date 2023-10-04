@@ -155,7 +155,8 @@ final class MainTabBarViewController: UITabBarController {
                                    String(exchangeSum),
                                    exchangerTitle,
                                    exchangeOfficeAddress]
-                return ClientOfferDetailsViewController(detailsData: detailsData, service: ClientOfferDetailsService())
+                return ClientOfferDetailsViewController(detailsData: detailsData,
+                                                        service: ClientOfferDetailsService())
             } else {
                 return nil
             }

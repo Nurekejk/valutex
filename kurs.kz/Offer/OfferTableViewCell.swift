@@ -140,12 +140,14 @@ final class OfferTableViewCell: UITableViewCell {
             exchangeRateLabel.text = String(exchangeRate)
         }
     }
+    
     @objc func rejectButtonPressed() {
         if let id = offerResponse?.offerResponseId {
             print("herererere")
             delegate?.rejectDidPress(offerResponseId: id)
         }
     }
+    
     @objc func acceptButtonPressed() {
         if let id = offerResponse?.offerResponseId {
             delegate?.acceptDidPress(offerResponseId: id)
