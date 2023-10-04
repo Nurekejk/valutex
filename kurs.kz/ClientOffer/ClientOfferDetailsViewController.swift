@@ -12,7 +12,7 @@ final class ClientOfferDetailsViewController: UIViewController {
 
     // MARK: - State
     
-    private let details : [Detail] = [Detail(type: "Статус", option: "Продажа"),
+    private var details : [Detail] = [Detail(type: "Статус", option: "Продажа"),
                                       Detail(type: "Валюта", option: "USD"),
                                       Detail(type: "Курс", option: "500 ₸"),
                                       Detail(type: "Сумма получения", option: "495 $"),
@@ -22,6 +22,7 @@ final class ClientOfferDetailsViewController: UIViewController {
     private var timeRemaining: Int = 1800
     private var timer: Timer?
     
+    private let service: ClientOfferDetailsService?
     // MARK: - UI
     private lazy var timerTextLabel: UILabel = {
         let label = UILabel()
@@ -70,6 +71,7 @@ final class ClientOfferDetailsViewController: UIViewController {
     private lazy var resetButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
+        button.addTarget(self, action: #selector(cancelButtonDidPress), for: .touchUpInside)
         button.setTitle("Отменить", for: .normal)
         button.setTitleColor(AppColor.gray50.uiColor, for: .normal)
         button.titleLabel?.font = AppFont.semibold.s16()
@@ -110,8 +112,21 @@ final class ClientOfferDetailsViewController: UIViewController {
         detailsStackView.layer.cornerRadius = 8.0
     }
     
+    // MARK: - Initializers
+    init(detailsData: [String], service: ClientOfferDetailsService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+        setupDetails(with: detailsData)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     // MARK: - Setup Views
     private func setupViews() {
+        self.navigationItem.hidesBackButton = true
         view.backgroundColor = AppColor.gray10.uiColor
         
         timerStackView.addArrangedSubview(self.timerTextLabel)
@@ -153,6 +168,23 @@ final class ClientOfferDetailsViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @objc func cancelButtonDidPress() {
+        service?.deleteOffer(completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                print("success: \(result)")
+            case .failure(let error):
+                print("error deleting offer: \(error)")
+            }
+        })
+    }
+    private func setupDetails(with detailsData:[String]) {
+        var index = 0
+        for detail in detailsData {
+            details[index].option = detail
+        }
+        detailsTableView.reloadData()
+    }
     private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
