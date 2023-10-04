@@ -142,8 +142,23 @@ final class MainTabBarViewController: UITabBarController {
                                        symbol: "$",
                                        service: OfferService())
         case .offerAccepted:
+            guard let offerСreatedData = userStatus?.data as? OfferAcceptedData else { return nil }
             print("accepted")
-            return ClientOfferDetailsViewController()
+            if let status = offerСreatedData.statusType,
+               let currency = offerСreatedData.exchangeCurrency,
+               let exchangeRate = offerСreatedData.exchangeRate,
+               let exchangeSum = offerСreatedData.exchangeSum,
+               let exchangerTitle = offerСreatedData.exchangeOffice,
+               let exchangeOfficeAddress = offerСreatedData.exchangeOfficeAddress {
+                let detailsData = [status, String(currency),
+                                   String(exchangeRate),
+                                   String(exchangeSum),
+                                   exchangerTitle,
+                                   exchangeOfficeAddress]
+                return ClientOfferDetailsViewController(detailsData: detailsData, service: ClientOfferDetailsService())
+            } else {
+                return nil
+            }
         }
     }
 }
