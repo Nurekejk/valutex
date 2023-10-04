@@ -141,7 +141,7 @@ final class ClientOfferDetailsViewController: UIViewController {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         timerStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
@@ -172,15 +172,51 @@ final class ClientOfferDetailsViewController: UIViewController {
             switch result {
             case .success(let result):
                 print("success: \(result)")
+            
+                guard var viewControllers = self?.navigationController?.viewControllers else { return }
+                
+                if viewControllers.contains(where: {
+                    return $0 is OfferSellBuySegmentedController
+                }) {
+                    for viewController in viewControllers
+                    where viewController is OfferSellBuySegmentedController {
+                        // Found the OfferSellBuySegmentedController in the stack
+                        self?.navigationController?
+                            .popToViewController(viewController, animated: true)
+                        break // You can break out of the loop once you find it
+                        
+                    }
+                    self?.navigationController?
+                        .popToViewController(OfferSellBuySegmentedController(), animated: true)
+                } else {
+                    
+                    _ = viewControllers.popLast()
+                    
+                    viewControllers.append(OfferSellBuySegmentedController())
+                    
+                    self?.navigationController?.setViewControllers(viewControllers, animated: true)
+                }
+                
             case .failure(let error):
                 print("error deleting offer: \(error)")
             }
         })
     }
     private func setupDetails(with detailsData:[String]) {
+        var newDetails = detailsData
         var index = 0
-        for detail in detailsData {
+        
+        if newDetails[0] == "SELL" {
+            newDetails[0] = "Продажа"
+        } else if newDetails[0] == "BUY" {
+            newDetails[0] = "Покупка"
+        } else {
+            newDetails[0] = "ERROR"
+        }
+        
+        for detail in newDetails {
             details[index].option = detail
+            index += 1
         }
         detailsTableView.reloadData()
     }

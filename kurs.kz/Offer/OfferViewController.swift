@@ -14,12 +14,11 @@ final class OfferViewController: UIViewController {
         didSet {
             if !offerResponses.isEmpty {
                 isRequestInProgress = false
-                tableView.refreshControl?.endRefreshing()
                 tableView.reloadData()
             }
         }
     }
-    private let offer: Offer
+    private var offer: Offer
     private var currencySymbol: String?
     private let service: OfferService
     
@@ -41,7 +40,30 @@ final class OfferViewController: UIViewController {
                 switch result {
                 case .success:
                     print("success")
-                    self?.navigationController?.popViewController(animated: true)
+
+                    guard var viewControllers = self?.navigationController?.viewControllers else { return }
+                    
+                    if viewControllers.contains(where: {
+                        return $0 is OfferSellBuySegmentedController
+                    }) {
+                        for viewController in viewControllers
+                        where viewController is OfferSellBuySegmentedController {
+                            // Found the OfferSellBuySegmentedController in the stack
+                            self?.navigationController?
+                                .popToViewController(viewController, animated: true)
+                            break // You can break out of the loop once you find it
+                            
+                        }
+                        self?.navigationController?
+                            .popToViewController(OfferSellBuySegmentedController(), animated: true)
+                    } else {
+                        
+                        _ = viewControllers.popLast()
+                        
+                        viewControllers.append(OfferSellBuySegmentedController())
+                        
+                        self?.navigationController?.setViewControllers(viewControllers, animated: true)
+                    }
                 case .failure(let error):
                     print("error 2222 posting review")
                 }
@@ -105,8 +127,12 @@ final class OfferViewController: UIViewController {
                 print("success")
                 print("theerere \(result)")
                 self?.offerResponses = result
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.isRequestInProgress = false
             case .failure(let error):
                 print("error 333 posting review")
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.isRequestInProgress = false
             }
         })
     }
@@ -128,7 +154,7 @@ final class OfferViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         view.addSubview(tableView)
-        
+        self.navigationItem.hidesBackButton = true
     }
     // MARK: - Setup Constraints
     private func setupConstraints() {
@@ -166,7 +192,7 @@ extension OfferViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.delegate = self
-            cell.setupCell(with: offerResponses[indexPath.row])
+            cell.setupCell(with: offerResponses[indexPath.row], index: indexPath.row)
         
             return cell
         } else {
@@ -208,14 +234,15 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
     
     func saveChanges() {
         let updatedExchangeRate = modalScreen.getExchangeRate()
+        self.offer.exchangeRate = updatedExchangeRate
         service.updateOffer(exchangeAmount: offer.exchangeAmount,
-                            exchangeRate: modalScreen.getExchangeRate()) { [weak self] result in
+                            exchangeRate: updatedExchangeRate) { [weak self] result in
             switch result {
             case .success:
                 self?.header.setExchangeRate(rate: updatedExchangeRate)
                 print("success")
             case .failure(let error):
-                print("error 444 posting review")
+                print("error updating offer\(error)")
             }
         }
         
@@ -224,17 +251,31 @@ extension OfferViewController: ChangeExchangeRateViewControllerDelegate {
 // MARK: - OfferTableViewCellDelegate
 
 extension OfferViewController: OfferTableViewCellDelegate {
-    func acceptDidPress(offerResponseId: Int) {
+    func acceptDidPress(offerResponseId: Int, index: Int) {
         service.sendResponse(hasAccepted: true,
                              offerResponseId: offerResponseId,
                              completion: { [weak self] result in
             switch result {
             case .success(let result):
                 print("success")
-                self?.navigationController?.pushViewController(ClientOfferDetailsViewController(),
-                                                               animated: true)
+                if let weakOffer = self?.offer,
+                   let weakResponse = self?.offerResponses[index] {
+                    print("offer is \(weakOffer) and \(weakResponse)")
+                    let detailsData = [weakOffer.type, String(weakOffer.exchangeСurrency),
+                                       String(weakOffer.exchangeRate),
+                                       String(weakOffer.exchangeRate * weakOffer.exchangeAmount),
+                                       weakResponse.officeName,
+                                       weakResponse.officeAddress] as? [String]
+                    if let unwrappedDetailsData = detailsData {
+                        self?.navigationController?.pushViewController(
+                            ClientOfferDetailsViewController(
+                                detailsData: unwrappedDetailsData,
+                                service: ClientOfferDetailsService()),
+                            animated: true)
+                    }
+                }
             case .failure(let error):
-                print("error 5555 posting review")
+                print("error accepting offer")
             }
         })
     }
@@ -248,7 +289,7 @@ extension OfferViewController: OfferTableViewCellDelegate {
                 print("success")
                 print("theerere \(result)")
             case .failure(let error):
-                print("error 666 posting review")
+                print("error declining offer")
             }
         })
     }

@@ -12,6 +12,7 @@ final class OfferTableViewCell: UITableViewCell {
     // MARK: - Properties
     weak var delegate: OfferTableViewCellDelegate?
     private var offerResponse: OfferResponseForTableView?
+    private var index = 0
 
     // MARK: - Public
     public static var reuseIdentifier = String(describing: OfferTableViewCell.self)
@@ -128,8 +129,9 @@ final class OfferTableViewCell: UITableViewCell {
     }
     
     // MARK: - Action
-    public func setupCell(with offer: OfferResponseForTableView) {
+    public func setupCell(with offer: OfferResponseForTableView, index: Int) {
         offerResponse = offer
+        self.index = index
         
         nameLabel.text = offer.officeName
         if let score = offer.score, let scoreCount = offer.scoreCount {
@@ -150,7 +152,7 @@ final class OfferTableViewCell: UITableViewCell {
     
     @objc func acceptButtonPressed() {
         if let id = offerResponse?.offerResponseId {
-            delegate?.acceptDidPress(offerResponseId: id)
+            delegate?.acceptDidPress(offerResponseId: id, index: index)
         }
     }
 
@@ -215,6 +217,6 @@ final class OfferTableViewCell: UITableViewCell {
 }
 
 protocol OfferTableViewCellDelegate: AnyObject {
-    func acceptDidPress(offerResponseId: Int)
+    func acceptDidPress(offerResponseId: Int, index: Int)
     func rejectDidPress(offerResponseId: Int)
 }
