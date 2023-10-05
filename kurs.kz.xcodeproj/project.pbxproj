@@ -139,6 +139,7 @@
 		FA5759912A692B4700DE9A6B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759902A692B4700DE9A6B /* Currency.swift */; };
 		FA58704C2AB979450092BE7B /* RateViewControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58704B2AB979450092BE7B /* RateViewControllerService.swift */; };
 		FA58704E2AB97AC40092BE7B /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58704D2AB97AC40092BE7B /* Feedback.swift */; };
+		FA64ED972ACE94AE0078E44C /* UserLocationSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64ED962ACE94AE0078E44C /* UserLocationSingleton.swift */; };
 		FA74EA7D2A52C8D900578C21 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */; };
 		FA7D107E2AC1601300FD4393 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D107D2AC1601300FD4393 /* FeedbackResponse.swift */; };
 		FA7D10802AC2B95500FD4393 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */; };
@@ -288,6 +289,7 @@
 		FA5759902A692B4700DE9A6B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		FA58704B2AB979450092BE7B /* RateViewControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewControllerService.swift; sourceTree = "<group>"; };
 		FA58704D2AB97AC40092BE7B /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		FA64ED962ACE94AE0078E44C /* UserLocationSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationSingleton.swift; sourceTree = "<group>"; };
 		FA74EA7C2A52C8D900578C21 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
 		FA7D107D2AC1601300FD4393 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
 		FA7D107F2AC2B95500FD4393 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 		99D973FD2A680D6A00F7E506 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA64ED952ACE948B0078E44C /* Singletons */,
 				FA2C05812ABAD8C600058567 /* CustomElements */,
 				FAA817522AAF0BDF00DCE6F2 /* Factories */,
 				998D7B442A6D1C3F002F6695 /* UI */,
@@ -869,6 +872,14 @@
 				FA7D10812AC2D03100FD4393 /* ReviewForTableView.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA64ED952ACE948B0078E44C /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				FA64ED962ACE94AE0078E44C /* UserLocationSingleton.swift */,
+			);
+			path = Singletons;
 			sourceTree = "<group>";
 		};
 		FA74EA7B2A52C8A500578C21 /* Registration */ = {
@@ -1236,6 +1247,7 @@
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
 				71564ADB2A79F69500979090 /* (null) in Sources */,
+				FA64ED972ACE94AE0078E44C /* UserLocationSingleton.swift in Sources */,
 				FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */,
 				99287B302A61CCCA00D0CF4B /* MapViewController.swift in Sources */,
 				FA81DCA72ACD3DE0000D9540 /* ClientOfferDetailsService.swift in Sources */,
@@ -1381,7 +1393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L32S293JKJ;
+				DEVELOPMENT_TEAM = 334Z9939AT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = valutex;
@@ -1399,7 +1411,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kz.valutex;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.valutex123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1415,7 +1427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L32S293JKJ;
+				DEVELOPMENT_TEAM = 334Z9939AT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = valutex;
@@ -1433,7 +1445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kz.valutex;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.valutex123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
