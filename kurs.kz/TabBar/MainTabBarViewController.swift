@@ -151,8 +151,8 @@ final class MainTabBarViewController: UITabBarController {
                let exchangerTitle = offerСreatedData.exchangeOffice,
                let exchangeOfficeAddress = offerСreatedData.exchangeOfficeAddress {
                 let detailsData = [status, String(currency),
-                                   String(exchangeRate),
-                                   String(exchangeSum),
+                                   exchangeRate.avoidNotation + " ₸",
+                                   exchangeSum.avoidNotation,
                                    exchangerTitle,
                                    exchangeOfficeAddress]
                 return ClientOfferDetailsViewController(detailsData: detailsData,

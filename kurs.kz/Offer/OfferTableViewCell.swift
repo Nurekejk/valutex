@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class OfferTableViewCell: UITableViewCell {
     
@@ -78,7 +79,7 @@ final class OfferTableViewCell: UITableViewCell {
 
     private let distanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "(1 км)"
+        label.text = ""
         label.font = AppFont.regular.s14()
         return label
     }()
@@ -137,9 +138,28 @@ final class OfferTableViewCell: UITableViewCell {
         if let score = offer.score, let scoreCount = offer.scoreCount {
             ratingLabel.text = "\(score) (\(scoreCount))"
         }
+        if let latitude = offer.officeLatitude, let longitude = offer.officeLongitude {
+            if let calculatedDistance = calculateDistance(latitude: latitude, longitude: longitude) {
+                distanceLabel.text = "(\(calculatedDistance.avoidNotation) км)"
+            }
+        }
+
         locationLabel.text = offer.officeAddress
         if let exchangeRate = offer.exchangeRate {
-            exchangeRateLabel.text = String(exchangeRate)
+            exchangeRateLabel.text = exchangeRate.avoidNotation
+        }
+    }
+    
+    private func calculateDistance(latitude: Double, longitude: Double ) -> CLLocationDistance? {
+        
+        if let unwrappedUserlocation = UserLocationSingleton.shared.fetchUserLocation() {
+            let distance = unwrappedUserlocation.distance(from: CLLocation(latitude:
+                                                                    CLLocationDegrees(latitude),
+                                                                   longitude:
+                                                                    CLLocationDegrees(longitude)))
+            return distance/1000
+        } else {
+            return nil
         }
     }
     

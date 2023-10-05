@@ -203,18 +203,18 @@ final class ClientOfferDetailsViewController: UIViewController {
         })
     }
     private func setupDetails(with detailsData:[String]) {
-        var newDetails = detailsData
+        var varDetails = detailsData
         var index = 0
-        
-        if newDetails[0] == "SELL" {
-            newDetails[0] = "Продажа"
-        } else if newDetails[0] == "BUY" {
-            newDetails[0] = "Покупка"
+                
+        if varDetails[0] == "SELL" {
+            varDetails[0] = "Продажа"
+        } else if varDetails[0] == "BUY" {
+            varDetails[0] = "Покупка"
         } else {
-            newDetails[0] = "ERROR"
+            varDetails[0] = "ERROR"
         }
         
-        for detail in newDetails {
+        for detail in varDetails {
             details[index].option = detail
             index += 1
         }

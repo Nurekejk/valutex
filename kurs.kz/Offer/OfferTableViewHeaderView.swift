@@ -16,13 +16,13 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Properties
     private var exchangeAmount = 0.0 {
         didSet {
-            sellBuyAmountLabel.text = String(exchangeAmount)
+            sellBuyAmountLabel.text = exchangeAmount.avoidNotation
         }
     }
     private var currentExchangeRate = 0.0 {
         didSet {
-            exchangeRateAmountLabel.text = String(currentExchangeRate)
-            let multiplicationResult = String(format: "%.2f", currentExchangeRate * exchangeAmount)
+            exchangeRateAmountLabel.text = currentExchangeRate.avoidNotation
+            let multiplicationResult = (currentExchangeRate * exchangeAmount).avoidNotation
             recievePayAmountLabel.text = multiplicationResult
         }
     }
@@ -184,7 +184,7 @@ final class OfferTableViewHeaderView: UITableViewHeaderFooterView {
         currentExchangeRate = offer.exchangeRate
         exchangeAmount = (offer.exchangeAmount)
         
-        let multiplicationResult = String(format: "%.3f", offer.exchangeRate * offer.exchangeAmount)
+        let multiplicationResult = (offer.exchangeRate * offer.exchangeAmount).avoidNotation
         recievePayAmountLabel.text = multiplicationResult
     }
     public func setExchangeRate(rate: Double) {
