@@ -116,7 +116,7 @@ extension MapExchangersViewController: CurrencySelectorViewControllerDelegate {
 
 extension MapExchangersViewController: MapViewControllerDelegate {
     func didUpdateLocation(location: CLLocation) {
-        print("please work \(location)")
+        UserLocationSingleton.shared.updateUserLocation(location)
         exchangeListController.updateLocation(newLocation: location)
         print(location)
     }
