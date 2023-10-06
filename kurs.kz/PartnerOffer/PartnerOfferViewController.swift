@@ -10,6 +10,9 @@ import SnapKit
 
 final class PartnerOfferViewController: UIViewController {
     
+    // MARK: - Properties
+    private let viewModel: PartnerOfferViewModel?
+    
     // MARK: - UI
     private lazy var acceptedSendTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -22,6 +25,16 @@ final class PartnerOfferViewController: UIViewController {
         tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    // MARK: - Initializers
+    init(viewModel: PartnerOfferViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
