@@ -13,9 +13,22 @@ final class MainTabBarViewController: UITabBarController {
     // MARK: - Properties
     private let service: TabBarService
     private let defaults = UserDefaults.standard
+    private var userRole: String? {
+        didSet {
+            if userRole == "user" {
+                checkStatus()
+            } else if userRole == "owner" || userRole == "manager" {
+                offerController = setupOwnerController()
+                setupTabs()
+            } else {
+                print("smth went terribly wrong")
+            }
+        }
+    }
     private var offerController: UIViewController?
     private var userStatus: UserStatus? {
         didSet {
+            guard let unwrappedUserRole = userRole else { return }
             offerController = getController(with: userStatus)
             setupTabs()
         }
@@ -24,16 +37,14 @@ final class MainTabBarViewController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkStatus()
+        retrieveUserRole()
+        
         setupTabs()
         self.tabBar.barTintColor = AppColor.grayWhite.uiColor
         self.tabBar.tintColor = AppColor.primaryBase.uiColor
         self.tabBar.backgroundColor = .white
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        checkStatus()
-    }
     // MARK: - Initializers
     init(service: TabBarService) {
         self.service = service
@@ -100,6 +111,20 @@ final class MainTabBarViewController: UITabBarController {
         return navViewController
     }
     
+    private func retrieveUserRole() {
+        if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
+            do {
+                let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
+                if let role = tokens.user?.role {
+                    userRole = role
+                    print(userRole)
+                }
+            } catch {
+                print("error while decoding")
+            }
+        }
+    }
+    
     private func checkStatus() {
         service.getUserStatus(completion: { [weak self] result in
             switch result {
@@ -111,6 +136,11 @@ final class MainTabBarViewController: UITabBarController {
                 print("error getting status")
             }
         })
+    }
+    
+    private func setupOwnerController() -> UIViewController {
+        let controller = PartnerOfferViewController(viewModel: PartnerOfferViewModel(view: <#PartnerOfferView#>, service: <#PartnerOfferService#>))
+        return controller
     }
     
     private func getController(with userStatus: UserStatus?) -> UIViewController? {
