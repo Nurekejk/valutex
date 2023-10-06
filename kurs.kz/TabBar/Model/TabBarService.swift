@@ -40,12 +40,13 @@ struct TabBarService {
         }
     }
     
-    func getAuth(_ headers: inout HTTPHeaders) {
+    private func getAuth(_ headers: inout HTTPHeaders) {
         let defaults = UserDefaults.standard
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             do {
                 let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
                 if let accessToken = tokens.access_token {
+                    
                     headers["Authorization"] = "Bearer \(accessToken)"
                 }
             } catch {
