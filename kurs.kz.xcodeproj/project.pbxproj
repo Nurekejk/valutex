@@ -122,6 +122,9 @@
 		FA095B602A71B98E006BE687 /* SortingButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */; };
 		FA0E72922A6095C900EEAD48 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E72912A6095C900EEAD48 /* PanModal */; };
 		FA1098E42A73AFA000BFB402 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FA1098E32A73AFA000BFB402 /* SkeletonView */; };
+		FA117B042AD006F600E9D4FA /* PartnerOfferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117B032AD006F600E9D4FA /* PartnerOfferViewModel.swift */; };
+		FA117B062AD00BE400E9D4FA /* AcceptedSentOfferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117B052AD00BE400E9D4FA /* AcceptedSentOfferResponse.swift */; };
+		FA117B082AD011BC00E9D4FA /* PartnerOfferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117B072AD011BC00E9D4FA /* PartnerOfferService.swift */; };
 		FA1475252A5416C80085AF1E /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475242A5416C80085AF1E /* PaddedTextField.swift */; };
 		FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475262A5431C60085AF1E /* PasswordTextField.swift */; };
 		FA1475292A5431F80085AF1E /* ShowHideTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */; };
@@ -272,6 +275,9 @@
 		B81E94A00A5B4AD81A95D9A4 /* Pods-kurs.kz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.release.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.release.xcconfig"; sourceTree = "<group>"; };
 		EA1F9A9AC53BB6CE937AAA41 /* Pods-kurs.kz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kurs.kz.debug.xcconfig"; path = "Target Support Files/Pods-kurs.kz/Pods-kurs.kz.debug.xcconfig"; sourceTree = "<group>"; };
 		FA095B5F2A71B98E006BE687 /* SortingButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingButtonModel.swift; sourceTree = "<group>"; };
+		FA117B032AD006F600E9D4FA /* PartnerOfferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewModel.swift; sourceTree = "<group>"; };
+		FA117B052AD00BE400E9D4FA /* AcceptedSentOfferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSentOfferResponse.swift; sourceTree = "<group>"; };
+		FA117B072AD011BC00E9D4FA /* PartnerOfferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferService.swift; sourceTree = "<group>"; };
 		FA1475242A5416C80085AF1E /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		FA1475262A5431C60085AF1E /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		FA1475282A5431F80085AF1E /* ShowHideTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideTextButton.swift; sourceTree = "<group>"; };
@@ -583,6 +589,8 @@
 		998D66CE2A64209300287FD4 /* PartnerOffer */ = {
 			isa = PBXGroup;
 			children = (
+				FA117B022AD006DD00E9D4FA /* ViewModel */,
+				FA117B012AD006AE00E9D4FA /* Model */,
 				998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */,
 				998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */,
 				998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */,
@@ -813,6 +821,23 @@
 				9FF456F62A5FC4EA00C2E845 /* SupportTableViewCell.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		FA117B012AD006AE00E9D4FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA117B052AD00BE400E9D4FA /* AcceptedSentOfferResponse.swift */,
+				FA117B072AD011BC00E9D4FA /* PartnerOfferService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA117B022AD006DD00E9D4FA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA117B032AD006F600E9D4FA /* PartnerOfferViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FA2C05812ABAD8C600058567 /* CustomElements */ = {
@@ -1129,6 +1154,7 @@
 				9FD284AA2A552EC000D9EB32 /* SelectLanguageViewController.swift in Sources */,
 				619B942C2A8E1C380032F321 /* OfferService.swift in Sources */,
 				9979C5F02A7C2A4F0055B2DE /* FeedbackTableViewCell.swift in Sources */,
+				FA117B062AD00BE400E9D4FA /* AcceptedSentOfferResponse.swift in Sources */,
 				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				FACEE05E2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift in Sources */,
@@ -1245,6 +1271,8 @@
 				99C158402A5EA1FE001091F7 /* ProfileViewController.swift in Sources */,
 				618978032A541CD5009DFF0B /* SelectCityViewController.swift in Sources */,
 				223C9C632A640AB8008FE874 /* ExchangerScreenTextTableViewCell.swift in Sources */,
+				FA117B042AD006F600E9D4FA /* PartnerOfferViewModel.swift in Sources */,
+				FA117B082AD011BC00E9D4FA /* PartnerOfferService.swift in Sources */,
 				8F06DEAB2A61B0F800637A68 /* CurrencyInformationTableFooterView.swift in Sources */,
 				71564ADB2A79F69500979090 /* (null) in Sources */,
 				FA64ED972ACE94AE0078E44C /* UserLocationSingleton.swift in Sources */,
@@ -1393,7 +1421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-                DEVELOPMENT_TEAM = L32S293JKJ;
+				DEVELOPMENT_TEAM = L32S293JKJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = valutex;
@@ -1427,7 +1455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-                DEVELOPMENT_TEAM = L32S293JKJ;
+				DEVELOPMENT_TEAM = L32S293JKJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kurs.kz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = valutex;
