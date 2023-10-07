@@ -14,9 +14,9 @@ final class ApplicationsHeaderView: UITableViewHeaderFooterView {
     static let reuseID = String(describing: ApplicationsHeaderView.self)
     
     // MARK: - UI
-    let applicationsLabel: UILabel = {
+    private let applicationsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Заявки (2)"
+        label.text = "Заявки"
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
         label.font = AppFont.semibold.s16()
         label.textAlignment = .left
@@ -45,5 +45,10 @@ final class ApplicationsHeaderView: UITableViewHeaderFooterView {
             make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
         }
+    }
+    
+    // MARK: - Action
+    public func setupHeaderCounter(with count: Int) {
+        applicationsLabel.text = "Заявки + \(count)"
     }
 }
