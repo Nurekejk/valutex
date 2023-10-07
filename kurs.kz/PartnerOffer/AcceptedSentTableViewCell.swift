@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-final class AcceptedSendTableViewCell: UITableViewCell {
+final class AcceptedSentTableViewCell: UITableViewCell {
     
     // MARK: - State
-    static let reuseID = String(describing: AcceptedSendTableViewCell.self)
+    var type: PartnerOfferCellType = .accepted
+    static let reuseID = String(describing: AcceptedSentTableViewCell.self)
     
     // MARK: - UI
     private lazy var acceptedSendImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = AppImage.accepted_image.uiImage
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -33,7 +33,7 @@ final class AcceptedSendTableViewCell: UITableViewCell {
     
     private lazy var acceptedSendLabel: UILabel = {
         let label = UILabel()
-        label.text = "Принятые (2)"
+        label.text = "Принятые"
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
         label.font = AppFont.regular.s16()
         return label
@@ -96,5 +96,18 @@ final class AcceptedSendTableViewCell: UITableViewCell {
     public func configureCell(acceptedSendImage: String, acceptedSendText: String) {
         acceptedSendImageView.image = UIImage(named: acceptedSendImage)
         acceptedSendLabel.text = acceptedSendText
+    }
+}
+    // MARK: - Extension: AcceptedSentTableCellProtocol
+extension AcceptedSentTableViewCell: AcceptedSentTableCellProtocol {
+    func setupCell(with count: Int, type: PartnerOfferCellType) {
+        
+        if type == .accepted {
+            acceptedSendImageView.image = AppImage.acceptedImage.uiImage
+            acceptedSendLabel.text = "Принятые (\(count))"
+        } else {
+            acceptedSendImageView.image = AppImage.sentImage.uiImage
+            acceptedSendLabel.text = "Отправленные (\(count))"
+        }
     }
 }
