@@ -73,7 +73,7 @@
 		9987B0FD2A553B96005BB185 /* ClientOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */; };
 		998D2ED62A80B7D8004ED81B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D2ED52A80B7D8004ED81B /* City.swift */; };
 		998D66D02A6420BE00287FD4 /* PartnerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */; };
-		998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */; };
+		998D66D42A64276400287FD4 /* AcceptedSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D32A64276400287FD4 /* AcceptedSentTableViewCell.swift */; };
 		998D66D62A6447C500287FD4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */; };
 		998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */; };
 		998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */; };
@@ -226,7 +226,7 @@
 		9987B0FC2A553B96005BB185 /* ClientOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		998D2ED52A80B7D8004ED81B /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferViewController.swift; sourceTree = "<group>"; };
-		998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSendTableViewCell.swift; sourceTree = "<group>"; };
+		998D66D32A64276400287FD4 /* AcceptedSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedSentTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
 		998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsHeaderView.swift; sourceTree = "<group>"; };
 		998D7B422A6D18A8002F6695 /* OtpRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpRegistrationService.swift; sourceTree = "<group>"; };
@@ -592,7 +592,7 @@
 				FA117B022AD006DD00E9D4FA /* ViewModel */,
 				FA117B012AD006AE00E9D4FA /* Model */,
 				998D66CF2A6420BE00287FD4 /* PartnerOfferViewController.swift */,
-				998D66D32A64276400287FD4 /* AcceptedSendTableViewCell.swift */,
+				998D66D32A64276400287FD4 /* AcceptedSentTableViewCell.swift */,
 				998D66D52A6447C500287FD4 /* ApplicationTableViewCell.swift */,
 				998D66D72A64595000287FD4 /* ApplicationsHeaderView.swift */,
 			);
@@ -1158,7 +1158,7 @@
 				FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */,
 				9F402A4B2A5BDC7400F9126C /* StarButton.swift in Sources */,
 				FACEE05E2A69A595000D5CD6 /* CurrencySelectorListServiceDelegate.swift in Sources */,
-				998D66D42A64276400287FD4 /* AcceptedSendTableViewCell.swift in Sources */,
+				998D66D42A64276400287FD4 /* AcceptedSentTableViewCell.swift in Sources */,
 				9979C5E72A7BE02D0055B2DE /* DetailPageService.swift in Sources */,
 				9950C0E82A5184080022C2F6 /* VerificationPageViewController.swift in Sources */,
 				99499C532A790D1900CB9721 /* FaqTableHeaderView.swift in Sources */,
