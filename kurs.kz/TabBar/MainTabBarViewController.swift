@@ -139,7 +139,7 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     private func setupOwnerController() -> UIViewController {
-        let controller = PartnerOfferViewController(viewModel: PartnerOfferViewModel(view: <#PartnerOfferView#>, service: <#PartnerOfferService#>))
+        let controller = PartnerOfferViewController()
         return controller
     }
     
