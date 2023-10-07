@@ -8,9 +8,11 @@
 import Foundation
 
 struct AcceptedSentOfferResponse: Decodable {
-    let userId, scoreCount, offerId: Int
-    let userName, userSurname, userPhone, offerType, exchangeCurrency, exchangeCurrencySymbol, createdAt: String
-    let score, exchangeAmount, exchangeRate, exchangeSum: Double
+    let userId, scoreCount, offerId: Int?
+    let userName, userSurname,
+        userPhone, offerType,
+        exchangeCurrency, exchangeCurrencySymbol, createdAt: String?
+    let score, exchangeAmount, exchangeRate, exchangeSum: Double?
     
     enum CodingKeys: String, CodingKey {
         case score

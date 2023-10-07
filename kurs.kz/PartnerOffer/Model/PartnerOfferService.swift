@@ -35,6 +35,7 @@ struct PartnerOfferService {
             case .success(let message):
                 completion(.success(message))
             case .failure(let error):
+                print(error)
                 completion(.failure(error))
             }
         }
@@ -64,6 +65,7 @@ struct PartnerOfferService {
             case .success(let message):
                 completion(.success(message))
             case .failure(let error):
+                print(error)
                 completion(.failure(error))
             }
         }
@@ -93,6 +95,8 @@ struct PartnerOfferService {
             case .success(let message):
                 completion(.success(message))
             case .failure(let error):
+                print(error)
+
                 completion(.failure(error))
             }
         }
