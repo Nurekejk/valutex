@@ -11,13 +11,13 @@ import SnapKit
 final class PartnerOfferViewController: UIViewController {
     
     // MARK: - Properties
-    private let viewModel: PartnerOfferViewModel?
+    private lazy var viewModel = PartnerOfferViewModel(view: self, service: PartnerOfferService())
     
     // MARK: - UI
     private lazy var acceptedSendTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.register(AcceptedSendTableViewCell.self,
-                           forCellReuseIdentifier: AcceptedSendTableViewCell.reuseID)
+        tableView.register(AcceptedSentTableViewCell.self,
+                           forCellReuseIdentifier: AcceptedSentTableViewCell.reuseID)
         tableView.register(ApplicationTableViewCell.self,
                            forCellReuseIdentifier: ApplicationTableViewCell.reuseID)
         tableView.dataSource = self
@@ -26,20 +26,21 @@ final class PartnerOfferViewController: UIViewController {
         return tableView
     }()
     
-    // MARK: - Initializers
-    init(viewModel: PartnerOfferViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    // MARK: - Initializers
+//    init(viewModel: PartnerOfferViewModel) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.updateOffers()
         setupViews()
         setupConstraints()
         setupNavigationBar()
@@ -86,60 +87,26 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
         if section == SectionNumber.zero.rawValue || section == SectionNumber.one.rawValue {
             return 1
         }
-        return 2
+        return viewModel.getNumberOfRequests()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0 || indexPath.section == 1) {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptedSendTableViewCell.reuseID,
-                                                           for: indexPath) as? AcceptedSendTableViewCell
+            guard let cell =
+                    tableView.dequeueReusableCell(withIdentifier: AcceptedSentTableViewCell.reuseID,
+                                                  for: indexPath) as? AcceptedSentTableViewCell
             else {
                 fatalError("Could not cast to AcceptedSendTableViewCell")
             }
-            cell.selectionStyle = .none
-            
-            if indexPath.section == 0 {
-                cell.configureCell(acceptedSendImage: "accepted-image", acceptedSendText: "Принятые (2)")
-            } else if indexPath.section == 1 {
-                cell.configureCell(acceptedSendImage: "sent-image", acceptedSendText: "Отправленные (1)")
-            }
+            viewModel.configureAcceptedSentCell(with: cell, indexPath: indexPath)
+
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ApplicationTableViewCell.reuseID,
                                                            for: indexPath) as? ApplicationTableViewCell else {
                 fatalError("Could not cast to ApplicationTableViewCell")
             }
-            cell.selectionStyle = .none
-            cell.acceptButtonAction = { [unowned self] in
-                  let alert = UIAlertController(title: "Принято!",
-                                                message: "Вы успешно приняли запрос.",
-                                                preferredStyle: .alert)
-                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                  alert.addAction(okAction)
-                        
-                  self.present(alert, animated: true, completion: nil)
-            }
-            
-            cell.cancelButtonAction = { [unowned self] in
-                  let alert = UIAlertController(title: "Отменено!",
-                                                message: "Вы отменили запрос.",
-                                                preferredStyle: .alert)
-                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                  alert.addAction(okAction)
-                        
-                  self.present(alert, animated: true, completion: nil)
-            }
-            
-            cell.offerYourCurrencyButtonAction = { [unowned self] in
-                  let alert = UIAlertController(title: "Вы предложили свой курс!",
-                                                message: "",
-                                                preferredStyle: .alert)
-                  let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                  alert.addAction(okAction)
-                        
-                  self.present(alert, animated: true, completion: nil)
-            }
-            
+            viewModel.configureCell(with: cell, at: indexPath.row)
             return cell
         }
     }
@@ -181,4 +148,23 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
                                                                  animated: true)
         }
     }
+}
+    // MARK: - Extension
+extension PartnerOfferViewController: PartnerOfferView {
+    func reloadTable() {
+        acceptedSendTableView.reloadData()
+    }
+    
+    func updateAcceptedCount(acceptedCount: Int) {
+        
+    }
+    
+    func updateSentCount(sentCount: Int) {
+        
+    }
+    
+    func updateRequestsCount(requestsCount: Int) {
+        
+    }
+
 }
