@@ -102,6 +102,42 @@ struct PartnerOfferService {
         }
     }
     
+    func replyToOffer(exchangeRate: Double, hasAccepted: Bool, offerId: Int,
+                      completion: @escaping (Result<[String : String], AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/offers_response"
+        
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+        let parameters: [String: Any] = [ "offer_id": offerId,
+                                          "exchange_rate": exchangeRate,
+                                          "is_declined": !hasAccepted,
+                                          "is_accepted": hasAccepted]
+        
+        AF.request(url, method: .post,
+                   parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [String : String].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                completion(.failure(error))
+                print("the error in replying is \(error)")
+            }
+        }
+    }
+    
     private func getAuth(_ headers: inout HTTPHeaders) {
         let defaults = UserDefaults.standard
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
