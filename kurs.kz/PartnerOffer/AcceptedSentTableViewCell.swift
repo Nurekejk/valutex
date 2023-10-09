@@ -58,6 +58,15 @@ final class AcceptedSentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layer.cornerRadius = 8
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
+        contentView.layer.masksToBounds = true
+        contentView.clipsToBounds = true
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         contentView.addSubview(acceptedSendCellStackView)
