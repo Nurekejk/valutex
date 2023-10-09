@@ -12,6 +12,38 @@ final class ApplicationTableViewCell: UITableViewCell {
     // MARK: - State
     static let reuseID = String(describing: ApplicationTableViewCell.self)
     
+    // MARK: - Properties
+        private var offerRequest: AcceptedSentOfferResponse? {
+        didSet {
+            print("here in setupcell")
+            guard let nonNilOffer = offerRequest else {
+                print("offer request set to nil")
+                return
+            }
+            
+            if let score = nonNilOffer.score, let scoreCount = nonNilOffer.scoreCount {
+                ratingLabel.text = "\(score) (\(scoreCount))"
+                print("scorecout is \(scoreCount)")
+            } else {
+                ratingLabel.text = "no scores"
+            }
+            if let name = nonNilOffer.userName, let surname = nonNilOffer.userSurname {
+                partnerNameLabel.text = name + " " + surname
+            }
+            if let userPhone = nonNilOffer.userPhone {
+                phoneNumberLabel.text = format(with: "+X (XXX) XXX-XX-XX", phone: userPhone)
+            }
+            buyingLabel.text = nonNilOffer.offerType == "BUY" ? "Покупает:" : "Продает:"
+            if let exchangeAmount = nonNilOffer.exchangeAmount {
+                buyingSumLabel.text = String(exchangeAmount) + " ₸"
+            }
+            if let exchangeRate = nonNilOffer.exchangeRate,
+               let currencySymbol = nonNilOffer.exchangeCurrencySymbol {
+                currencySumLabel.text = String(exchangeRate) + " " + String(currencySymbol)
+            }
+            print("nonNilOffer.exchangeCurrency \(nonNilOffer.exchangeCurrency)")
+        }
+    }
     var acceptButtonAction : (() -> Void)?
     var cancelButtonAction : (() -> Void)?
     var offerYourCurrencyButtonAction : (() -> Void)?
@@ -19,7 +51,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     // MARK: - UI
     private lazy var partnerNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Aidos Tazhigulov"
+        label.text = " "
         label.textColor = UIColor(named: "partnerOfferBasicTextColor")
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 0
@@ -36,7 +68,7 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.text = "4 (10)"
+        label.text = ""
         label.textColor = UIColor(named: "partnerOfferGrayTextColor")
         label.font = AppFont.regular.s12()
         return label
@@ -53,15 +85,15 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "+7(707) 303-22-00"
-        label.textColor = UIColor(named: "partnerOfferBasicTextColor")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.text = ""
+        label.textColor = AppColor.gray100.uiColor
+        label.font = AppFont.regular.s12()
         return label
     }()
     
     private lazy var buyingLabel: UILabel = {
         let label = UILabel()
-        label.text = "Покупает: "
+        label.text = " "
         label.textColor = UIColor(named: "partnerOfferGrayTextColor")
         label.font = AppFont.regular.s12()
         return label
@@ -152,24 +184,19 @@ final class ApplicationTableViewCell: UITableViewCell {
     
     // MARK: - Lifecycle
     override func layoutSubviews() {
+        super.layoutSubviews()
         cancelButton.layer.cornerRadius = 8.0
         acceptButton.layer.cornerRadius = 8.0
         offerYourCurrencyButton.layer.borderColor = UIColor(named: "offerCurrencyBorderColor")?.cgColor
         offerYourCurrencyButton.layer.borderWidth = 1.0
         offerYourCurrencyButton.layer.cornerRadius = 8.0
+        contentView.layer.cornerRadius = 8
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
     
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.backgroundColor = .white
-        [partnerNameStackView,
-         phoneNumberLabel,
-         currencyInformationStackView,
-         buttonsStackView,
-         offerYourCurrencyButton].forEach {
-            contentView.addSubview($0)
-        }
-        
         [buyingLabel, buyingSumLabel, currencyLabel, currencySumLabel].forEach {
             currencyInformationStackView.addArrangedSubview($0)
         }
@@ -180,6 +207,15 @@ final class ApplicationTableViewCell: UITableViewCell {
         
         [cancelButton, acceptButton].forEach {
             buttonsStackView.addArrangedSubview($0)
+        }
+        
+        contentView.backgroundColor = AppColor.grayWhite.uiColor
+        [partnerNameStackView,
+         phoneNumberLabel,
+         currencyInformationStackView,
+         buttonsStackView,
+         offerYourCurrencyButton].forEach {
+            contentView.addSubview($0)
         }
     }
     
@@ -192,7 +228,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         }
         
         phoneNumberLabel.snp.makeConstraints { make in
-            make.top.equalTo(partnerNameLabel.snp.bottom).offset(2)
+            make.top.equalTo(partnerNameLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().offset(16)
         }
         
@@ -217,14 +253,37 @@ final class ApplicationTableViewCell: UITableViewCell {
         }
         
         offerYourCurrencyButton.snp.makeConstraints { make in
-            make.top.equalTo(buttonsStackView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(319)
             make.height.equalTo(42)
+            make.bottom.equalToSuperview().offset(-16)
         }
     }
     
     // MARK: - Actions
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
+    }
+    
+    public func configureCell(with offer: AcceptedSentOfferResponse) {
+        offerRequest = offer
+    }
+    
     @objc private func acceptButtonDidPressed() {
         acceptButtonAction?()
     }
