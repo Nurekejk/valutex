@@ -180,10 +180,9 @@ final class ClientOfferDetailsViewController: UIViewController {
                 }) {
                     for viewController in viewControllers
                     where viewController is OfferSellBuySegmentedController {
-                        // Found the OfferSellBuySegmentedController in the stack
                         self?.navigationController?
                             .popToViewController(viewController, animated: true)
-                        break // You can break out of the loop once you find it
+                        break
                         
                     }
                     self?.navigationController?
