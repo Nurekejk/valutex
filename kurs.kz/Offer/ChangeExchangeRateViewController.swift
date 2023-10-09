@@ -12,6 +12,7 @@ class ChangeExchangeRateViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: ChangeExchangeRateViewControllerDelegate?
+    private var offerId: Int?
     
     // MARK: - UI
     private let modalview: UIView = {
@@ -229,6 +230,14 @@ class ChangeExchangeRateViewController: UIViewController {
     
     public func getExchangeRate() -> Double {
         Double(exchangeRateTextField.text ?? "0.0") ?? 0.0
+    }
+    
+    public func setOfferId(id: Int) {
+        offerId = id
+    }
+    
+    public func getOfferId() -> Int? {
+        offerId
     }
 }
 
