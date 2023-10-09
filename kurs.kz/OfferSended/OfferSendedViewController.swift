@@ -58,7 +58,7 @@ final class OfferSendedViewController: UIViewController {
         header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 53)
         
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(108)
+            make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(365)
