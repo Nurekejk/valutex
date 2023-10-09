@@ -17,24 +17,30 @@ final class PartnerOfferViewModel {
     private var acceptedOffers: [AcceptedSentOfferResponse] = [] {
         didSet {
             print("hereeeeeeess \(acceptedOffers.count)")
-                view?.reloadTable()
+            view?.reloadTable()
         }
     }
     
     private var sentOffers: [AcceptedSentOfferResponse] = [] {
         didSet {
             print("hereeeeeeess2 \(sentOffers.count)")
-                view?.reloadTable()
+            view?.reloadTable()
         }
     }
     private var offerRequests: [AcceptedSentOfferResponse] = [] {
         didSet {
-            if oldValue.count != offerRequests.count {
-                view?.updateRequestsCount(requestsCount: offerRequests.count)
-            }
+            view?.reloadTable()
         }
     }
-
+    
+    // MARK: - Modal Screen
+    
+    private lazy var modalScreen: ChangeExchangeRateViewController = {
+        let controller = ChangeExchangeRateViewController()
+        controller.delegate = self
+        return controller
+    }()
+    
     // MARK: - Initializer
     init(view: PartnerOfferView, service: PartnerOfferService) {
         self.view = view
@@ -77,7 +83,16 @@ final class PartnerOfferViewModel {
             }
         })
     }
-    
+
+    private func showAlert() {
+        let alert = UIAlertController(title: "Ошибка!",
+                                      message: "Попробуйте позднее",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        let vc = view as? PartnerOfferViewController
+        vc?.present(alert, animated: true, completion: nil)
+    }
     public func updateOffers() {
         getAcceptedOffers()
         getSentOffers()
@@ -86,40 +101,59 @@ final class PartnerOfferViewModel {
     
     public func configureCell(with cell: ApplicationTableViewCell, at index: Int) {
         let item = offerRequests[index]
+        cell.configureCell(with: item)
         cell.selectionStyle = .none
-        let vc = view as? PartnerOfferViewController
         cell.acceptButtonAction = { [weak self] in
-              let alert = UIAlertController(title: "Принято!",
-                                            message: "Вы успешно приняли запрос.",
-                                            preferredStyle: .alert)
-              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-              alert.addAction(okAction)
-                
-            vc?.present(alert, animated: true, completion: nil)
+            if let exchangeRate = item.exchangeRate, let offerId = item.offerId {
+                self?.service.replyToOffer(exchangeRate: exchangeRate,
+                                           hasAccepted: true,
+                                           offerId: offerId,
+                                           completion: { [weak self] result in
+                    switch result {
+                    case .success(let result):
+                        print("has accepted: \(result)")
+                        self?.updateOffers()
+                    case .failure:
+                        self?.showAlert()
+                    }
+                })
+            } else { self?.showAlert() }
         }
         
         cell.cancelButtonAction = { [weak self] in
-              let alert = UIAlertController(title: "Отменено!",
-                                            message: "Вы отменили запрос.",
-                                            preferredStyle: .alert)
-              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-              alert.addAction(okAction)
-                    
-            vc?.present(alert, animated: true, completion: nil)
+            if let exchangeRate = item.exchangeRate, let offerId = item.offerId {
+                self?.service.replyToOffer(exchangeRate: exchangeRate,
+                                           hasAccepted: false,
+                                           offerId: offerId,
+                                           completion: { [weak self] result in
+                    switch result {
+                    case .success(let result):
+                        print("has declined: \(result)")
+                        self?.updateOffers()
+                    case .failure:
+                        self?.showAlert()
+                        print("error declining the offer")
+                    }
+                })
+            } else {
+                self?.showAlert()
+            }
         }
         
         cell.offerYourCurrencyButtonAction = { [weak self] in
-              let alert = UIAlertController(title: "Вы предложили свой курс!",
-                                            message: "",
-                                            preferredStyle: .alert)
-              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-              alert.addAction(okAction)
-                    
-            vc?.present(alert, animated: true, completion: nil)
+            if let exchangeRate = item.exchangeRate,
+               let unwrappedScreen = self?.modalScreen,
+               let offerId = item.offerId {
+                unwrappedScreen.setExchangeRate(rate: exchangeRate)
+                unwrappedScreen.setOfferId(id: offerId)
+                let vc = self?.view as? PartnerOfferViewController
+                vc?.presentPanModal(unwrappedScreen)
+            } else {
+                self?.showAlert()
+            }
         }
-//        cell.textLabel?.text = item.title
-//        cell.detailTextLabel?.text = item.description
     }
+    
     public func configureRequestsHeader(with header: ApplicationsHeaderView) {
         header.setupHeaderCounter(with: offerRequests.count)
     }
@@ -141,9 +175,6 @@ final class PartnerOfferViewModel {
 
     // MARK: - Protocol
 protocol PartnerOfferView: AnyObject {
-    func updateAcceptedCount(acceptedCount: Int)
-    func updateSentCount(sentCount: Int)
-    func updateRequestsCount(requestsCount: Int)
     func reloadTable()
 }
 
@@ -154,4 +185,26 @@ protocol AcceptedSentTableCellProtocol: UITableViewCell {
 enum PartnerOfferCellType {
     case accepted
     case sent
+}
+    // MARK: - Extension: ChangeExchangeRateViewControllerDelegate
+extension PartnerOfferViewModel: ChangeExchangeRateViewControllerDelegate {
+    func saveChanges() {
+          if let offerId = modalScreen.getOfferId() {
+            service.replyToOffer(exchangeRate: modalScreen.getExchangeRate(),
+                                 hasAccepted: true,
+                                 offerId: offerId,
+                                 completion: { [weak self] result in
+                switch result {
+                case .success(let result):
+                    print("has accepted: \(result)")
+                    self?.updateOffers()
+                case .failure:
+                    self?.showAlert()
+                    print("error accepting the offer")
+                }
+            })
+          } else {
+              self.showAlert()
+          }
+    }
 }
