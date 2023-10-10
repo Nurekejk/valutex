@@ -55,7 +55,11 @@ final class ApplicationsHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Action
-    public func setupHeaderCounter(with count: Int) {
+    public func setupRequestsHeaderCounter(with count: Int) {
         applicationsLabel.text = "Заявки  (\(count))"
+    }
+    
+    public func setupSentHeaderCounter(with count: Int) {
+        applicationsLabel.text = "Отправленные  (\(count))"
     }
 }
