@@ -47,11 +47,11 @@ final class PartnerOfferViewController: UIViewController {
         setupNavigationBar()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        acceptedSendTableView.layer.cornerRadius = 8
-//        acceptedSendTableView.layer.masksToBounds = true
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.updateOffers()
+        acceptedSendTableView.reloadData()
+    }
     
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
@@ -134,18 +134,22 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
             return UIView()
         } else {
             let headerView = ApplicationsHeaderView()
-            headerView.setupHeaderCounter(with: viewModel.getNumberOfRequests())
+            headerView.setupRequestsHeaderCounter(with: viewModel.getNumberOfRequests())
             return headerView
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SectionNumber.zero.rawValue {
-            navigationController?.pushViewController(EmptyViewController(),
-                                                                 animated: true)
+            navigationController?.pushViewController(PartnerOfferAcceptedSentViewController(
+                offers: viewModel.retrieveAcceptedOffers(),
+                type: .accepted,
+                service: PartnerOfferAcceptedSentService()), animated: true)
         } else if indexPath.section == SectionNumber.one.rawValue {
-            navigationController?.pushViewController(OfferSendedViewController(),
-                                                                 animated: true)
+            navigationController?.pushViewController(PartnerOfferAcceptedSentViewController(
+                offers: viewModel.retrieveSentOffers(),
+                type: .sent,
+                service: PartnerOfferAcceptedSentService()), animated: true)
         }
     }
 }
