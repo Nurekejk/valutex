@@ -11,11 +11,14 @@ import SnapKit
 final class PartnerOfferAcceptedSentViewController: UIViewController {
     
     // MARK: - Properties
-    private var acceptedOffers: [AcceptedSentOfferResponse] = []
+    private var offers: [AcceptedSentOfferResponse] = []
     
-    private var type: PartnerOfferCellType
+    private var type: PartnerOfferType
+    
+    private var service: PartnerOfferAcceptedSentService
+    
     // MARK: - UI
-    private lazy var acceptedOffersTableView: UITableView = {
+    private lazy var offersTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(ApplicationsHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: ApplicationsHeaderView.reuseID)
@@ -29,9 +32,12 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
     }()
     
     // MARK: - Initializers
-    init(acceptedOffers: [AcceptedSentOfferResponse], type: PartnerOfferCellType) {
+    init(offers: [AcceptedSentOfferResponse],
+         type: PartnerOfferType,
+         service: PartnerOfferAcceptedSentService) {
         self.type = type
-        self.acceptedOffers = acceptedOffers
+        self.offers = offers
+        self.service = service
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,29 +54,23 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
         setupNavigationBar()
     }
     
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //        acceptedSendTableView.layer.cornerRadius = 8
-    //        acceptedSendTableView.layer.masksToBounds = true
-    //    }
-    
     // MARK: - Setup Navigation Bar
     private func setupNavigationBar() {
-        self.navigationItem.title = "Принятые"
+        self.navigationItem.title = type == .accepted ? "Принятые" : "Отправленные"
     }
     
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
         
-        [acceptedOffersTableView].forEach {
+        [offersTableView].forEach {
             view.addSubview($0)
         }
     }
     
     // MARK: - Setup Constraints
     private func setupConstraints() {
-        acceptedOffersTableView.snp.makeConstraints { make in
+        offersTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(0)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
@@ -82,7 +82,7 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PartnerOfferAcceptedSentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        acceptedOffers.count
+        offers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,15 +90,48 @@ extension PartnerOfferAcceptedSentViewController: UITableViewDelegate, UITableVi
             withIdentifier: PartnerOfferAcceptedTableViewCell.reuseID,
             for: indexPath) as?
                 PartnerOfferAcceptedTableViewCell else { fatalError("could not downcast") }
-        cell.configureCell(with: acceptedOffers[indexPath.row])
+        cell.backgroundColor = view.backgroundColor
+        cell.configureCell(with: offers[indexPath.row], type: type)
+        
+        if type == .sent {
+            let item = offers[indexPath.row]
+            cell.cancelButtonAction = { [weak self] in
+                if let offerId = item.offerId {
+                    self?.service.deleteOfferResponse(offerId: offerId,
+                                                      completion: { [weak self] result in
+                        switch result {
+                        case .success(let result):
+                            print("offer deleted successfully: \(result)")
+                            self?.offers.remove(at: indexPath.row)
+                            self?.offersTableView.reloadData()
+                        case .failure:
+                            print("error deleting the offer")
+                        }
+                    })
+                }
+            }
+        }
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch type {
+        case .accepted:
+            return 101
+        case .sent:
+            return 159
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: ApplicationsHeaderView.reuseID) as?
                 ApplicationsHeaderView else { fatalError("could not downcast") }
-        header.setupHeaderCounter(with: acceptedOffers.count)
+        switch type {
+        case .accepted:
+            header.setupRequestsHeaderCounter(with: offers.count)
+        case .sent:
+            header.setupSentHeaderCounter(with: offers.count)
+
+        }
         return header
     }
 }
