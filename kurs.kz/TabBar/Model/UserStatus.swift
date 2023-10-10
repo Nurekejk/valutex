@@ -57,7 +57,7 @@ struct OfferAcceptedData: Decodable {
 }
 
 struct OfferCreatedData: Decodable {
-    let type, exchangeCurrency, createdAt: String?
+    let type, exchangeCurrency, createdAt, currencyFlag, currencySymbol: String?
     let exchangeRate, exchangeAmount, exchangeSum: Double?
     let userId, id: Int?
     
@@ -69,5 +69,7 @@ struct OfferCreatedData: Decodable {
         case exchangeAmount = "exchange_amount"
         case exchangeSum = "exchange_sum"
         case createdAt = "created_at"
+        case currencyFlag = "currency_flag"
+        case currencySymbol = "currency_symbol"
     }
 }

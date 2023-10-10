@@ -169,7 +169,7 @@ final class MainTabBarViewController: UITabBarController {
             guard let unwrappedOffer = offer else { return nil }
             
             return OfferViewController(offer: unwrappedOffer,
-                                       symbol: "$",
+                                       symbol: offerСreatedData.first?.currencySymbol,
                                        service: OfferService())
         case .offerAccepted:
             guard let offerСreatedData = userStatus?.data as? OfferAcceptedData else { return nil }
