@@ -48,6 +48,12 @@ final class PartnerOfferViewModel {
     }
     
     // MARK: - Action
+    public func retrieveAcceptedOffers() -> [AcceptedSentOfferResponse] {
+        acceptedOffers
+    }
+    public func retrieveSentOffers() -> [AcceptedSentOfferResponse] {
+        sentOffers
+    }
     private func getAcceptedOffers() {
         service.fetchAcceptedOffers(completion: { [weak self] result in
             switch result {
@@ -155,7 +161,7 @@ final class PartnerOfferViewModel {
     }
     
     public func configureRequestsHeader(with header: ApplicationsHeaderView) {
-        header.setupHeaderCounter(with: offerRequests.count)
+        header.setupRequestsHeaderCounter(with: offerRequests.count)
     }
     
     public func getNumberOfRequests() -> Int {
@@ -179,10 +185,10 @@ protocol PartnerOfferView: AnyObject {
 }
 
 protocol AcceptedSentTableCellProtocol: UITableViewCell {
-    func setupCell(with count: Int, type: PartnerOfferCellType )
+    func setupCell(with count: Int, type: PartnerOfferType )
 }
 
-enum PartnerOfferCellType {
+enum PartnerOfferType {
     case accepted
     case sent
 }
