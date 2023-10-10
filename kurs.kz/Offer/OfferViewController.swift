@@ -130,7 +130,7 @@ final class OfferViewController: UIViewController {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.isRequestInProgress = false
             case .failure(let error):
-                print("error 333 posting review")
+                print("error 333 posting review \(error)")
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.isRequestInProgress = false
             }
