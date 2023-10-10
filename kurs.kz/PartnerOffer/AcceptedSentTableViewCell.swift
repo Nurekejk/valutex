@@ -11,7 +11,7 @@ import SnapKit
 final class AcceptedSentTableViewCell: UITableViewCell {
     
     // MARK: - State
-    var type: PartnerOfferCellType = .accepted
+    var type: PartnerOfferType = .accepted
     static let reuseID = String(describing: AcceptedSentTableViewCell.self)
     
     // MARK: - UI
@@ -109,7 +109,7 @@ final class AcceptedSentTableViewCell: UITableViewCell {
 }
     // MARK: - Extension: AcceptedSentTableCellProtocol
 extension AcceptedSentTableViewCell: AcceptedSentTableCellProtocol {
-    func setupCell(with count: Int, type: PartnerOfferCellType) {
+    func setupCell(with count: Int, type: PartnerOfferType) {
         
         if type == .accepted {
             acceptedSendImageView.image = AppImage.acceptedImage.uiImage
