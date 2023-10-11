@@ -154,7 +154,7 @@ class ChangeExchangeRateViewController: UIViewController {
     private func setupConstraints() {
         let buttonWidth = (UIScreen.main.bounds.width - 44)/2
         modalview.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(522)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(250)
         }
@@ -265,4 +265,11 @@ extension ChangeExchangeRateViewController: PanModalPresentable {
     var dragIndicatorBackgroundColor: UIColor {
         .clear
     }
+    
+    var shortFormHeight: PanModalHeight {
+        return .contentHeightIgnoringSafeArea(250)
+    }
+//    var longFormHeight: PanModalHeight {
+//        return .maxHeight
+//    }
 }
