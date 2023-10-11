@@ -13,6 +13,7 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
     // MARK: - Properties
     private var offers: [AcceptedSentOfferResponse] = [] {
         didSet {
+            offersTableView.reloadData()
             offersTableView.refreshControl?.endRefreshing()
         }
     }
