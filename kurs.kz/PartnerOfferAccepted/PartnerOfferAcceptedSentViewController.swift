@@ -1,5 +1,5 @@
 //
-//  PartnerOfferAcceptedViewController.swift
+//  PartnerOfferAcceptedSentViewController.swift
 //  kurs.kz
 //
 //  Created by MacBook on 10.10.2023.
@@ -11,7 +11,11 @@ import SnapKit
 final class PartnerOfferAcceptedSentViewController: UIViewController {
     
     // MARK: - Properties
-    private var offers: [AcceptedSentOfferResponse] = []
+    private var offers: [AcceptedSentOfferResponse] = [] {
+        didSet {
+            offersTableView.refreshControl?.endRefreshing()
+        }
+    }
     private var type: PartnerOfferType
     
     private var service: PartnerOfferAcceptedSentService
@@ -25,6 +29,13 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
                            forCellReuseIdentifier: PartnerOfferAcceptedTableViewCell.reuseID)
         tableView.dataSource = self
         tableView.delegate = self
+        let refreshControl: UIRefreshControl = UIRefreshControl.init()
+        refreshControl.addTarget(self, action: #selector(tableViewDidDrag), for: .valueChanged)
+        if #available (iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         return tableView
@@ -74,6 +85,19 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    // MARK: - Action
+    @objc private func tableViewDidDrag() {
+        service.fetchOffers(controllerType: type) { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.offers = result
+                print("accepted is \(result)")
+            case .failure:
+                print("error getting accepted offers")
+            }
         }
     }
 }
