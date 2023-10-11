@@ -22,26 +22,32 @@ final class PartnerOfferViewController: UIViewController {
                            forCellReuseIdentifier: ApplicationTableViewCell.reuseID)
         tableView.dataSource = self
         tableView.delegate = self
+        let refreshControl: UIRefreshControl = UIRefreshControl.init()
+        refreshControl.addTarget(self, action: #selector(tableViewDidDrag), for: .valueChanged)
+        if #available (iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         return tableView
     }()
     
-//    // MARK: - Initializers
-//    init(viewModel: PartnerOfferViewModel) {
-//        self.viewModel = viewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    //    // MARK: - Initializers
+    //    init(viewModel: PartnerOfferViewModel) {
+    //        self.viewModel = viewModel
+    //        super.init(nibName: nil, bundle: nil)
+    //    }
+    //
+    //    required init?(coder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.updateOffers()
         setupViews()
         setupConstraints()
         setupNavigationBar()
@@ -76,8 +82,12 @@ final class PartnerOfferViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
+    // MARK: - Action
+    @objc private func tableViewDidDrag() {
+        viewModel.updateOffers()
+    }
 }
-
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -153,9 +163,10 @@ extension PartnerOfferViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
 }
-    // MARK: - Extension
+    // MARK: - Extension PartnerOfferView
 extension PartnerOfferViewController: PartnerOfferView {
     func reloadTable() {
+        acceptedSendTableView.refreshControl?.endRefreshing()
         acceptedSendTableView.reloadData()
     }
 }

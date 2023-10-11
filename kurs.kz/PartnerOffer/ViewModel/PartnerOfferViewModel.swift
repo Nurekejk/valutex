@@ -17,19 +17,17 @@ final class PartnerOfferViewModel {
     private var acceptedOffers: [AcceptedSentOfferResponse] = [] {
         didSet {
             print("hereeeeeeess \(acceptedOffers.count)")
-            view?.reloadTable()
+            
         }
     }
     
     private var sentOffers: [AcceptedSentOfferResponse] = [] {
         didSet {
             print("hereeeeeeess2 \(sentOffers.count)")
-            view?.reloadTable()
         }
     }
     private var offerRequests: [AcceptedSentOfferResponse] = [] {
         didSet {
-            view?.reloadTable()
         }
     }
     
@@ -48,48 +46,6 @@ final class PartnerOfferViewModel {
     }
     
     // MARK: - Action
-    public func retrieveAcceptedOffers() -> [AcceptedSentOfferResponse] {
-        acceptedOffers
-    }
-    public func retrieveSentOffers() -> [AcceptedSentOfferResponse] {
-        sentOffers
-    }
-    private func getAcceptedOffers() {
-        service.fetchAcceptedOffers(completion: { [weak self] result in
-            switch result {
-            case .success(let result):
-                self?.acceptedOffers = result
-                print("accepted isss \(result)")
-            case .failure:
-                print("error getting accepted offers")
-            }
-        })
-    }
-    
-    private func getSentOffers() {
-        service.fetchSentOffers(completion: { [weak self] result in
-            switch result {
-            case .success(let result):
-                self?.sentOffers = result
-                print("sent isss \(result)")
-            case .failure:
-                print("error getting sent offers")
-            }
-        })
-    }
-    
-    private func getOfferRequests() {
-        service.fetchOfferRequests(completion: { [weak self] result in
-            switch result {
-            case .success(let result):
-                self?.offerRequests = result
-                print("requests are \(result)")
-            case .failure:
-                print("error getting requests")
-            }
-        })
-    }
-
     private func showAlert() {
         let alert = UIAlertController(title: "Ошибка!",
                                       message: "Попробуйте позднее",
@@ -99,12 +55,77 @@ final class PartnerOfferViewModel {
         let vc = view as? PartnerOfferViewController
         vc?.present(alert, animated: true, completion: nil)
     }
-    public func updateOffers() {
-        getAcceptedOffers()
-        getSentOffers()
-        getOfferRequests()
-    }
     
+    private func getAcceptedOffers(completion: @escaping () -> Void) {
+        service.fetchAcceptedOffers { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.acceptedOffers = result
+                print("accepted is \(result)")
+                completion()
+            case .failure:
+                print("error getting accepted offers")
+            }
+        }
+    }
+
+    private func getSentOffers(completion: @escaping () -> Void) {
+        service.fetchSentOffers { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.sentOffers = result
+                print("sent is \(result)")
+                completion()
+            case .failure:
+                print("error getting sent offers")
+            }
+        }
+    }
+
+    private func getOfferRequests(completion: @escaping () -> Void) {
+        service.fetchOfferRequests { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.offerRequests = result
+                print("requests are \(result)")
+                completion()
+            case .failure:
+                print("error getting requests")
+            }
+        }
+    }
+
+    public func updateOffers() {
+        print("here2323223")
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        
+        getAcceptedOffers {
+            print("leaving 1")
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        getSentOffers {
+            print("leaving 2")
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        getOfferRequests {
+            print("leaving 3")
+
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            // All tasks have finished
+            print("finished!!!")
+            self.view?.reloadTable()
+        }
+    }
+
     public func configureCell(with cell: ApplicationTableViewCell, at index: Int) {
         let item = offerRequests[index]
         cell.configureCell(with: item)
@@ -176,6 +197,12 @@ final class PartnerOfferViewModel {
         } else if indexPath.section == 1 {
             cell.setupCell(with: sentOffers.count, type: .sent)
         }
+    }
+    public func retrieveAcceptedOffers() -> [AcceptedSentOfferResponse] {
+        acceptedOffers
+    }
+    public func retrieveSentOffers() -> [AcceptedSentOfferResponse] {
+        sentOffers
     }
 }
 

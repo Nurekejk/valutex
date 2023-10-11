@@ -12,7 +12,6 @@ final class PartnerOfferAcceptedSentViewController: UIViewController {
     
     // MARK: - Properties
     private var offers: [AcceptedSentOfferResponse] = []
-    
     private var type: PartnerOfferType
     
     private var service: PartnerOfferAcceptedSentService
