@@ -156,7 +156,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.spacing = 8
         return stackView
     }()
@@ -240,6 +240,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         buttonsStackView.snp.makeConstraints { make in
             make.top.equalTo(currencyInformationStackView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
         
         cancelButton.snp.makeConstraints { make in
@@ -254,7 +255,7 @@ final class ApplicationTableViewCell: UITableViewCell {
         
         offerYourCurrencyButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.width.equalTo(319)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(42)
             make.bottom.equalToSuperview().offset(-16)
         }
