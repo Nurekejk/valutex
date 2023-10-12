@@ -141,7 +141,8 @@ final class AccountSettingsViewController: UIViewController {
     
     // MARK: - Action
     @objc func changePasswordDidPress(_ sender: UITapGestureRecognizer) {
-        print("something")
+        self.navigationController?.pushViewController(ChangePasswordViewController(),
+                                                      animated: true)
     }
     @objc func saveButtonDidPress() {
         if var userAndKeys = userAndKeys {
