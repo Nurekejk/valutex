@@ -16,11 +16,11 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     // MARK: - UI
 
-    private lazy var flagImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = AppImage.kzt_flag.uiImage
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private lazy var flagImageLabel: UILabel = {
+        let imageLabel = UILabel()
+        imageLabel.text = ""
+        imageLabel.font = AppFont.regular.s16()
+        return imageLabel
     }()
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
@@ -48,8 +48,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }()
     private lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
-        let iconImage = AppImage.trash.uiImage
-        button.setImage(iconImage, for: .normal)
+        button.setImage(AppImage.trash.uiImage, for: .normal)
         button.addTarget(self, action: #selector(trashButtonDidPressed),
                          for: .touchUpInside)
         return button
@@ -69,7 +68,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     // MARK: - Setup Views
     
     private func setupViews() {
-        [currencyLabel, flagImage, amountOfPurchaseTextField, amountOfSaleTextField,
+        [currencyLabel, flagImageLabel, amountOfPurchaseTextField, amountOfSaleTextField,
          trashButton].forEach {
             contentView.addSubview($0)
         }
@@ -78,13 +77,13 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     // MARK: - Setup Constraints
 
     private func setupConstraints() {
-        flagImage.snp.makeConstraints { make in
+        flagImageLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
-            make.leading.equalTo(flagImage.snp.trailing).offset(16)
+            make.leading.equalTo(flagImageLabel.snp.trailing).offset(16)
             
         }
         amountOfPurchaseTextField.snp.makeConstraints { make in
@@ -112,19 +111,21 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     
     // MARK: - Public
     
-    public func configureCell(flagImage: UIImage?,
+    public func configureCell(flagImage: String,
                               currencyLabel: String,
-                              amountOfPurchaseTextField: String,
-                              amountOfSaleTextField: String,
-                              trashButton: UIImage?) {
-        if let flagImage = flagImage {
-            self.flagImage.image = flagImage
-        }
+                              buyRate: Double?,
+                              sellRate: Double?) {
+        self.flagImageLabel.text = flagImage
         self.currencyLabel.text = currencyLabel
-        self.amountOfPurchaseTextField.placeholder = amountOfPurchaseTextField
-        self.amountOfSaleTextField.placeholder = amountOfSaleTextField
-        if let trashButton = trashButton {
-            self.trashButton.setImage(trashButton, for: .normal)
+        if let unwrappedBuyRate = buyRate {
+            self.amountOfPurchaseTextField.placeholder = unwrappedBuyRate.avoidNotation
+        } else {
+            self.amountOfPurchaseTextField.placeholder = "?"
+        }
+        if let unwrappedSellRate = sellRate {
+            self.amountOfPurchaseTextField.placeholder = unwrappedSellRate.avoidNotation
+        } else {
+            self.amountOfPurchaseTextField.placeholder = "?"
         }
     }
 }
