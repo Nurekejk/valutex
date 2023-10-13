@@ -31,8 +31,8 @@ final class ProfileViewController: UIViewController {
                     ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
                                    name: "Курс Нацбанка")]
         case .managerOrOwner:
-            return [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
-                                   name: "Мои обменники"),
+            return [ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
+                                   name: "Курс валют"),
                     ProfileSection(image: AppImage.accountSettings.uiImage ?? UIImage(),
                                    name: "Настройки аккаунта"),
                     ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
@@ -195,7 +195,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                let controller = MyExchangesViewController()
+                let controller = ExchangeRateViewController(service: ExchangeRateService())
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
