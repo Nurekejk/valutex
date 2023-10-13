@@ -10,22 +10,45 @@ import SnapKit
 
 final class ProfileViewController: UIViewController {
     
-    // MARK: - States
-    private let profileSections: [ProfileSection] =
-    [ProfileSection(image: AppImage.accountSettings.uiImage ?? UIImage(),
-                    name: "Настройки аккаунта"),
-     ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
-                    name: "Язык приложения"),
-     ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
-                    name: "Город"),
-     ProfileSection(image: AppImage.messages.uiImage ?? UIImage(),
-                    name: "Написать в поддержку"),
-     ProfileSection(image: AppImage.info.uiImage ?? UIImage(),
-                    name: "О компании"),
-     ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
-                    name: "FAQ"),
-     ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
-                    name: "Курс Нацбанка")]
+    // MARK: - Properties
+    private let type: UserType
+    
+    private var profileSections: [ProfileSection] {
+        switch type {
+        case .customer:
+            return [ProfileSection(image: AppImage.accountSettings.uiImage ?? UIImage(),
+                                   name: "Настройки аккаунта"),
+                    ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
+                                   name: "Язык приложения"),
+                    ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
+                                   name: "Город"),
+                    ProfileSection(image: AppImage.messages.uiImage ?? UIImage(),
+                                   name: "Написать в поддержку"),
+                    ProfileSection(image: AppImage.info.uiImage ?? UIImage(),
+                                   name: "О компании"),
+                    ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
+                                   name: "FAQ"),
+                    ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
+                                   name: "Курс Нацбанка")]
+        case .managerOrOwner:
+            return [ProfileSection(image: AppImage.bitcoin_exchange.uiImage ?? UIImage(),
+                                   name: "Мои обменники"),
+                    ProfileSection(image: AppImage.accountSettings.uiImage ?? UIImage(),
+                                   name: "Настройки аккаунта"),
+                    ProfileSection(image: AppImage.language_circle.uiImage ?? UIImage(),
+                                   name: "Язык приложения"),
+                    ProfileSection(image: AppImage.global.uiImage ?? UIImage(),
+                                   name: "Город"),
+                    ProfileSection(image: AppImage.messages.uiImage ?? UIImage(),
+                                   name: "Написать в поддержку"),
+                    ProfileSection(image: AppImage.info.uiImage ?? UIImage(),
+                                   name: "О компании"),
+                    ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
+                                   name: "FAQ"),
+                    ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
+                                   name: "Курс Нацбанка")]
+        }
+    }
     
     private let defaults = UserDefaults.standard
     
@@ -57,9 +80,19 @@ final class ProfileViewController: UIViewController {
         informationTableView.layer.cornerRadius = 8
         informationTableView.layer.masksToBounds = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         let header = informationTableView.headerView(forSection: 0) as? ProfileTableHeaderView
         header?.getUserData()
+    }
+    
+    init(typeOfUser: UserType) {
+        self.type = typeOfUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup Navigation Bar
@@ -108,15 +141,6 @@ final class ProfileViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-}
-
-// MARK: - Enumerator
-enum SectionNumber: Int {
-    case zero = 0
-    case one = 1
-    case two = 2
-    case three = 3
-    case four = 4
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -171,29 +195,34 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == SectionNumber.zero.rawValue {
             switch row {
             case 0:
-                let controller = AccountSettingsViewController()
+                let controller = MyExchangesViewController()
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
             case 1:
-                let controller = LanguageAppViewController()
+                let controller = AccountSettingsViewController()
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
             case 2:
-                let controller = SelectCityViewController()
+                let controller = LanguageAppViewController()
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
             case 3:
-                navigationController?.pushViewController(ToSupportViewController(),
+                let controller = SelectCityViewController()
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller,
                                                          animated: true)
             case 4:
+                navigationController?.pushViewController(ToSupportViewController(),
+                                                         animated: true)
+            case 5:
                 let controller = AboutCompanyViewController(service: AboutCompanyPageService())
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
                                                          animated: true)
-            case 5:
+            case 6:
                 let controller = AboutCompanyViewController(service: AboutCompanyPageService())
                 controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller,
@@ -208,4 +237,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                                                      animated: true)
         }
     }
+}
+
+    // MARK: - Enumerator
+enum UserType {
+    case managerOrOwner
+    case customer
+}
+
+enum SectionNumber: Int {
+    case zero = 0
+    case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
 }
