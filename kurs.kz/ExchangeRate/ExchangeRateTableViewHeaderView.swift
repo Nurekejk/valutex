@@ -9,8 +9,10 @@ import UIKit
 
 final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
     
-    // MARK: - UI
+    // MARK: - State
+    static let reuseID = String(describing: ExchangeRateTableViewHeaderView.self)
     
+    // MARK: - UI
     private lazy var purchaseLabel: UILabel = {
         let label = UILabel()
         label.text = "Покупка"
@@ -67,18 +69,24 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
         arrowDownButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.trailing.equalToSuperview().offset(-5)
+            make.bottom.equalToSuperview().offset(-12)
         }
         sellLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.trailing.equalTo(arrowDownButton.snp.leading).offset(-4)
+            make.bottom.equalToSuperview().offset(-12)
+
         }
         arrowUpButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.trailing.equalTo(sellLabel.snp.leading).offset(-17.5)
+            make.bottom.equalToSuperview().offset(-12)
+
         }
         purchaseLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.trailing.equalTo(arrowUpButton.snp.leading).offset(-4)
+            make.bottom.equalToSuperview().offset(-12)
         }
     }
     
