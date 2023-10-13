@@ -13,12 +13,14 @@ final class MainTabBarViewController: UITabBarController {
     // MARK: - Properties
     private let service: TabBarService
     private let defaults = UserDefaults.standard
-    private var userRole: String? {
+    private var userRole: UserType? {
         didSet {
-            if userRole == "user" {
+            if userRole == .customer {
                 checkStatus()
-            } else if userRole == "owner" || userRole == "manager" {
+                profileController = ProfileViewController(typeOfUser: .customer)
+            } else if userRole == .managerOrOwner {
                 offerController = setupOwnerController()
+                profileController = ProfileViewController(typeOfUser: .managerOrOwner)
                 setupTabs()
             } else {
                 print("smth went terribly wrong")
@@ -26,9 +28,9 @@ final class MainTabBarViewController: UITabBarController {
         }
     }
     private var offerController: UIViewController?
+    private var profileController: UIViewController?
     private var userStatus: UserStatus? {
         didSet {
-            guard let unwrappedUserRole = userRole else { return }
             offerController = getController(with: userStatus)
             setupTabs()
         }
@@ -57,8 +59,10 @@ final class MainTabBarViewController: UITabBarController {
     
     // MARK: - Setup Views
     private func setupTabs() {
-        if offerController == nil {
+        if offerController == nil || profileController == nil {
             offerController = OfferSellBuySegmentedController()
+            print("whattheheck")
+            profileController = ProfileViewController(typeOfUser: .customer)
         }
         if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
@@ -75,7 +79,7 @@ final class MainTabBarViewController: UITabBarController {
             let other = createNavigation(mainTitle: "", title: "Еще",
                                          selectedImage: AppImage.other_selected.uiImage!,
                                          image: AppImage.other_gray.uiImage!,
-                                         viewController: ProfileViewController())
+                                         viewController: profileController!)
             self.setViewControllers([home,offer,other], animated: true)
         } else {
             let home = createNavigation(mainTitle: "Обменники", title: "Главная",
@@ -116,8 +120,17 @@ final class MainTabBarViewController: UITabBarController {
             do {
                 let tokens = try JSONDecoder().decode(SignInResponse.self, from: data)
                 if let role = tokens.user?.role {
-                    userRole = role
-                    print(userRole)
+                    switch role {
+                    case "manager":
+                        userRole = .managerOrOwner
+                    case "owner":
+                        userRole = .managerOrOwner
+                    case "user":
+                        userRole = .customer
+                    default:
+                        userRole = .customer
+
+                    }
                 }
             } catch {
                 print("error while decoding")
