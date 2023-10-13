@@ -153,6 +153,8 @@
 		FA81DCA52ACC04B3000D9540 /* TabBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81DCA42ACC04B3000D9540 /* TabBarService.swift */; };
 		FA81DCA72ACD3DE0000D9540 /* ClientOfferDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81DCA62ACD3DE0000D9540 /* ClientOfferDetailsService.swift */; };
 		FAA2EB482AD8128B009ADD25 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EB472AD8128B009ADD25 /* ChangePasswordViewController.swift */; };
+		FAA2EB4B2AD9570D009ADD25 /* ExchangeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EB4A2AD9570D009ADD25 /* ExchangeRateService.swift */; };
+		FAA2EB4D2AD957E4009ADD25 /* CurrencyElementForExchangeRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EB4C2AD957E4009ADD25 /* CurrencyElementForExchangeRateVC.swift */; };
 		FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */; };
 		FAA817572AB098ED00DCE6F2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */; };
 		FACE0B002A5D2E880032FA65 /* OfferSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */; };
@@ -310,6 +312,8 @@
 		FA81DCA42ACC04B3000D9540 /* TabBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarService.swift; sourceTree = "<group>"; };
 		FA81DCA62ACD3DE0000D9540 /* ClientOfferDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOfferDetailsService.swift; sourceTree = "<group>"; };
 		FAA2EB472AD8128B009ADD25 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		FAA2EB4A2AD9570D009ADD25 /* ExchangeRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateService.swift; sourceTree = "<group>"; };
+		FAA2EB4C2AD957E4009ADD25 /* CurrencyElementForExchangeRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyElementForExchangeRateVC.swift; sourceTree = "<group>"; };
 		FAA817532AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextfieldFactory.swift; sourceTree = "<group>"; };
 		FAA817562AB098EC00DCE6F2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		FACE0AFF2A5D2E880032FA65 /* OfferSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSellViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 		71564ABA2A6A9C4200979090 /* ExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
+				FAA2EB492AD956F3009ADD25 /* Model */,
 				71564ABE2A6A9CEE00979090 /* ExchangeRateTableViewCell.swift */,
 				71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */,
 				71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */,
@@ -945,6 +950,15 @@
 			path = ChangePassword;
 			sourceTree = "<group>";
 		};
+		FAA2EB492AD956F3009ADD25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAA2EB4A2AD9570D009ADD25 /* ExchangeRateService.swift */,
+				FAA2EB4C2AD957E4009ADD25 /* CurrencyElementForExchangeRateVC.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FAA817522AAF0BDF00DCE6F2 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1203,6 +1217,7 @@
 				71D01EB92A5E746C00422491 /* NotificationsSectionHeaderView.swift in Sources */,
 				FA254B392AA8A85300831444 /* DPImageView.swift in Sources */,
 				9F899D852A4AFB44002D1F74 /* ViewController.swift in Sources */,
+				FAA2EB4B2AD9570D009ADD25 /* ExchangeRateService.swift in Sources */,
 				99499C512A7904C300CB9721 /* FaqViewController.swift in Sources */,
 				998D7B462A6D1C4E002F6695 /* SnackBarController.swift in Sources */,
 				619B94292A8E1B810032F321 /* CreateOfferService.swift in Sources */,
@@ -1291,6 +1306,7 @@
 				FAD47F922A50A2A60055EDEA /* RegistrationPersonalDataViewController.swift in Sources */,
 				9F1094372A5833E100648D14 /* SignInViewController.swift in Sources */,
 				8FE341DE2A7AD69D00A72212 /* DetailTableViewCell.swift in Sources */,
+				FAA2EB4D2AD957E4009ADD25 /* CurrencyElementForExchangeRateVC.swift in Sources */,
 				FAED669A2AD56F3900A2D91C /* PartnerOfferAcceptedSentService.swift in Sources */,
 				998D7B432A6D18A8002F6695 /* OtpRegistrationService.swift in Sources */,
 				FAA817542AAF0BFE00DCE6F2 /* SkyFloatingLabelTextfieldFactory.swift in Sources */,
