@@ -9,6 +9,9 @@ import UIKit
 
 final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
 
+    // MARK: - State
+    static let reuseID = String(describing: ExchangeRateTableViewFooterView.self)
+    
     // MARK: - UI
     
     private lazy var addCurrencyButton: UIButton = {
@@ -43,6 +46,7 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
         addCurrencyButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(12)
+            make.bottom.equalToSuperview().offset(-12)
         }
     }
     
