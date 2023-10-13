@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyExchangesViewController: UIViewController {
+final class MyExchangesViewController: UIViewController {
     
     // MARK: - UI
     private lazy var tableView: UITableView = {
@@ -59,8 +59,10 @@ extension MyExchangesViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:MyExchangesTableViewCell.reuseIdentifier,
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: MyExchangesTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? MyExchangesTableViewCell
-        return cell ?? UITableViewCell()
+        else { return UITableViewCell() }
+        return cell
     }
 }
