@@ -29,9 +29,7 @@ final class ProfileViewController: UIViewController {
                     ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
                                    name: "FAQ"),
                     ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
-                                   name: "Курс Нацбанка"),
-                    ProfileSection(image: UIImage(),
-                                   name: "Удалить аккаунт")]
+                                   name: "Курс Нацбанка")]
         case .managerOrOwner:
             return [ProfileSection(image: AppImage.moneys.uiImage ?? UIImage(),
                                    name: "Курс валют"),
@@ -48,9 +46,7 @@ final class ProfileViewController: UIViewController {
                     ProfileSection(image: AppImage.message_question.uiImage ?? UIImage(),
                                    name: "FAQ"),
                     ProfileSection(image: AppImage.bank.uiImage ?? UIImage(),
-                                   name: "Курс Нацбанка"),
-                    ProfileSection(image: UIImage(),
-                                   name: "Удалить аккаунт")]
+                                   name: "Курс Нацбанка")]
         }
     }
     
@@ -123,16 +119,6 @@ final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Action
-    private func logOut() {
-        self.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
-        
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            let rootViewController = MainPageViewController()
-            let navController = UINavigationController(rootViewController: rootViewController)
-            sceneDelegate.window?.rootViewController = navController
-        }
-    }
-    
     @objc private func logOutButtonDidPress() {
         let alert = UIAlertController(title: "Выход",
                                       message: "Вы действительно хотите выйти?",
@@ -140,7 +126,13 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Да",
                                       style: .destructive,
                                       handler: { [weak self] _ in
-            self?.logOut()
+            self?.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
+            
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                let rootViewController = MainPageViewController()
+                let navController = UINavigationController(rootViewController: rootViewController)
+                sceneDelegate.window?.rootViewController = navController
+            }
         }))
         
         alert.addAction(UIAlertAction(title: "Нет",
@@ -154,13 +146,13 @@ final class ProfileViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 1
         if section == SectionNumber.zero.rawValue {
-            rowCount = profileSections.count - 2
+            rowCount = profileSections.count - 1
         }
         return rowCount
     }
@@ -174,11 +166,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             cell.profileSection = profileSections[indexPath.row]
-        } else if indexPath.section == 1 {
-            cell.profileSection = profileSections[profileSections.count - 2]
         } else {
             cell.profileSection = profileSections.last
         }
+
         cell.configureCell(isBadgeHidden: true)
         return cell
     }
@@ -240,12 +231,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(EmptyViewController(),
                                                          animated: true)
             }
-        } else if indexPath.section == SectionNumber.one.rawValue {
+        } else {
             navigationController?.pushViewController(NationalBankCourseViewController(
                 service: NationalBankPageService()),
                                                      animated: true)
-        } else {
-            logOut()
         }
     }
 }
