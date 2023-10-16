@@ -16,6 +16,7 @@ final class AccountSettingsViewController: UIViewController {
     
     // MARK: - Properties
     private var userAndKeys: SignInResponse?
+    private let defaults = UserDefaults.standard
     
     // MARK: - UI
     private var profileView = ProfileTableHeaderView()
@@ -52,6 +53,17 @@ final class AccountSettingsViewController: UIViewController {
     private lazy var changePasswordView: ProfileTableViewCell = {
         let view = ProfileTableViewCell()
         return view
+    }()
+    
+    private lazy var deleteAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Удалить аккаунт", for: .normal)
+        button.titleLabel?.font = AppFont.regular.s16()
+        button.setTitleColor(AppColor.gray100.uiColor, for: .normal)
+        button.backgroundColor = AppColor.grayWhite.uiColor
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(deleteAccountButtonDidPress), for: .touchUpInside)
+        return button
     }()
     
     private let continueButtonContainerView: UIView = {
@@ -101,6 +113,7 @@ final class AccountSettingsViewController: UIViewController {
         [profileView,
          stackView,
          changePasswordContainerView,
+         deleteAccountButton,
          continueButtonContainerView].forEach({view.addSubview($0)})
         
         view.sendSubviewToBack(changePasswordContainerView)
@@ -119,16 +132,19 @@ final class AccountSettingsViewController: UIViewController {
     }
     // MARK: - Defaults
     private func setupTextfields() {
-        if let data = UserDefaults.standard.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
+        if let data = defaults.data(forKey: SignInViewController.defaultsUserAndTokensKey) {
             do {
                 let response = try JSONDecoder().decode(SignInResponse.self, from: data)
                 print("userInfo is \(response)")
                 userAndKeys = response
-                if let name = response.user?.name,
-                   let surname = response.user?.surname,
-                   let patronymicName = response.user?.middleName {
+                if let name = response.user?.name {
                     nameTextfield.text = name
+                }
+                if let surname = response.user?.surname {
                     surnameTextfield.text = surname
+                    
+                }
+                if let patronymicName = response.user?.middleName {
                     patronymicTextField.text = patronymicName
                 }
             } catch {
@@ -159,6 +175,31 @@ final class AccountSettingsViewController: UIViewController {
             }
         }
     }
+    
+    @objc func deleteAccountButtonDidPress() {
+        let message = "Продолжая, вы удаляете все личные данные из приложения \n Продолжить?"
+        let alert = UIAlertController(title: "Удаление аккаунта",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да",
+                                      style: .destructive,
+                                      handler: { [weak self] _ in
+            self?.defaults.removeObject(forKey: SignInViewController.defaultsUserAndTokensKey)
+            
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                let rootViewController = MainPageViewController()
+                let navController = UINavigationController(rootViewController: rootViewController)
+                sceneDelegate.window?.rootViewController = navController
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Нет",
+                                      style: .cancel,
+                                      handler: { _ in }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Constraints
     private func setupConstraints() {
         
@@ -188,6 +229,12 @@ final class AccountSettingsViewController: UIViewController {
         }
         changePasswordContainerView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(54)
+        }
+        deleteAccountButton.snp.makeConstraints { make in
+            make.top.equalTo(changePasswordContainerView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(54)
