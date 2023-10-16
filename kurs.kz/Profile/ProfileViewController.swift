@@ -188,55 +188,53 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return section == 0 ? 196 : 0
     }
     
+    // swiftlint:disable all
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let row = indexPath.row
         
-        if indexPath.section == SectionNumber.zero.rawValue {
-            switch row {
-            case 0:
-                let controller = ExchangeRateViewController(service: ExchangeRateService())
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            case 1:
-                let controller = AccountSettingsViewController()
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            case 2:
-                let controller = LanguageAppViewController()
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            case 3:
-                let controller = SelectCityViewController()
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            case 4:
-                navigationController?.pushViewController(ToSupportViewController(),
-                                                         animated: true)
-            case 5:
-                let controller = AboutCompanyViewController(service: AboutCompanyPageService())
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            case 6:
-                let controller = AboutCompanyViewController(service: AboutCompanyPageService())
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller,
-                                                         animated: true)
-            default:
-                navigationController?.pushViewController(EmptyViewController(),
-                                                         animated: true)
-            }
-        } else {
-            navigationController?.pushViewController(NationalBankCourseViewController(
-                service: NationalBankPageService()),
-                                                     animated: true)
+        guard let section = SectionNumber(rawValue: indexPath.section) else {
+            return
         }
+        
+        let controller: UIViewController
+        switch (section, type, row) {
+        case (.zero, .customer, 0):
+            controller = AccountSettingsViewController()
+        case (.zero, .customer, 1):
+            controller = LanguageAppViewController()
+        case (.zero, .customer, 2):
+            controller = SelectCityViewController()
+        case (.zero, .customer, 3):
+            controller = ToSupportViewController()
+        case (.zero, .customer, 4), (.zero, .customer, 5):
+            controller = AboutCompanyViewController(service: AboutCompanyPageService())
+        case (.zero, .customer, _):
+            controller = EmptyViewController()
+        case (.zero, .managerOrOwner, 0):
+            controller = ExchangeRateViewController(service: ExchangeRateService())
+        case (.zero, .managerOrOwner, 1):
+            controller = AccountSettingsViewController()
+        case (.zero, .managerOrOwner, 2):
+            controller = LanguageAppViewController()
+        case (.zero, .managerOrOwner, 3):
+            controller = SelectCityViewController()
+        case (.zero, .managerOrOwner, 4):
+            controller = ToSupportViewController()
+        case (.zero, .managerOrOwner, 5), (.zero, .managerOrOwner, 6):
+            controller = AboutCompanyViewController(service: AboutCompanyPageService())
+        case (.zero, .managerOrOwner, _):
+            controller = EmptyViewController()
+        case (_, _, _):
+            controller = NationalBankCourseViewController(service: NationalBankPageService())
+        }
+        
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
     }
+    // swiftlint:enable all
+
 }
 
     // MARK: - Enumerator
