@@ -10,7 +10,7 @@ import Foundation
 struct CurrencyElementForExchangeRateVC: Decodable {
     let currencyRateId: Int?
     let currencyCode, currencyFlag, currencyKzName, currencyRuName, currencyEngName: String?
-    let buyPrice, sellPrice: Double?
+    var buyPrice, sellPrice: Double?
     
     enum CodingKeys: String, CodingKey {
         case currencyRateId = "currency_rate_id"

@@ -42,17 +42,13 @@ struct ExchangeRateService {
         }
     }
     
-    public func fetchOffers(controllerType: PartnerOfferType,
-                            completion: @escaping (Result<[AcceptedSentOfferResponse], AFError>) -> Void) {
+    func createCurrencyRate(
+        newCurrencyRate: CurrencyElementForExchangeRateVC,
+        completion: @escaping (Result<[String : String], AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"
         urlComponent.host = "api.valutex.kz"
-        switch controllerType {
-        case .accepted:
-            urlComponent.path = "/accepted_offers_response_list"
-        case .sent:
-            urlComponent.path = "/sent_offers_response_list"
-        }
+        urlComponent.path = "/profile/create_currency_rate"
 
         guard let url = urlComponent.url else {
             return
@@ -65,9 +61,91 @@ struct ExchangeRateService {
         
         getAuth(&headers)
 
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        let parameters: Parameters = [
+            "currency_code": newCurrencyRate.currencyCode ?? "",
+            "buy_price": newCurrencyRate.buyPrice ?? 0.0,
+            "sell_price": newCurrencyRate.sellPrice ?? 0.0
+        ]
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
         .validate()
-        .responseDecodable(of: [AcceptedSentOfferResponse].self) { response in
+        .responseDecodable(of: [String : String].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                print(error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func updateCurrencies(currencyId: Int,
+                                 buyPrice: Double,
+                                 sellPrice: Double,
+                                 completion: @escaping (Result<[String : String], AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/profile/update_currency_rate"
+
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: Parameters = [
+            "currency_id": currencyId,
+            "buy_price": buyPrice,
+            "sell_price": sellPrice
+        ]
+        
+        getAuth(&headers)
+
+        AF.request(
+            url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [String : String].self) { response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+            case .failure(let error):
+                print(error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func deleteCurrencies(currencyId: Int,
+                                 completion: @escaping (Result<[String : String], AFError>) -> Void) {
+        var urlComponent = URLComponents()
+        urlComponent.scheme = "https"
+        urlComponent.host = "api.valutex.kz"
+        urlComponent.path = "/profile/delete_currency_rate"
+        urlComponent.query = "currency_id=\(currencyId)"
+
+        guard let url = urlComponent.url else {
+            return
+        }
+        
+        var headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        getAuth(&headers)
+
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: [String : String].self) { response in
             switch response.result {
             case .success(let message):
                 completion(.success(message))

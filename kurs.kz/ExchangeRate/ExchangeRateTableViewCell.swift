@@ -11,11 +11,27 @@ import SnapKit
 final class ExchangeRateTableViewCell: UITableViewCell {
     
     // MARK: - Public
-    
     public static var reuseIdentifier = String(describing: ExchangeRateTableViewCell.self)
     
-    // MARK: - UI
+    // MARK: - Properties
+    var deleteAction: (() -> Void)?
+    var updateAction: ((CurrencyElementForExchangeRateVC) -> Void)?
+    private var index: Int?
+    private var currency: CurrencyElementForExchangeRateVC? {
+        didSet {
+            self.flagImageLabel.text = currency?.currencyFlag
+            self.currencyLabel.text = currency?.currencyRuName
+            if let unwrappedBuyRate = currency?.buyPrice {
+                self.amountOfPurchaseTextField.text = unwrappedBuyRate.avoidNotation
+            }
+            if let unwrappedSellRate = currency?.sellPrice {
+                self.amountOfSaleTextField.text = unwrappedSellRate.avoidNotation
 
+            }
+        }
+    }
+    
+    // MARK: - UI
     private lazy var flagImageLabel: UILabel = {
         let imageLabel = UILabel()
         imageLabel.text = ""
@@ -24,26 +40,32 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }()
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Доллар"
+        label.text = ""
         label.font = AppFont.regular.s16()
         return label
     }()
     private lazy var amountOfPurchaseTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
+        textField.tag = 0
         textField.rightViewMode = .always
         textField.textAlignment = .center
+        textField.delegate = self
         textField.font = AppFont.regular.s16()
-        textField.text = "500"
+        textField.textColor = AppColor.gray100.uiColor
+        textField.text = ""
         return textField
     }()
     private lazy var amountOfSaleTextField: UITextField = {
         let textField = UITextField()
+        textField.tag = 1
         textField.borderStyle = .roundedRect
         textField.rightViewMode = .always
         textField.textAlignment = .center
+        textField.delegate = self
+        textField.textColor = AppColor.gray100.uiColor
         textField.font = AppFont.regular.s16()
-        textField.text = "500"
+        textField.text = ""
         return textField
     }()
     private lazy var trashButton: UIButton = {
@@ -104,28 +126,30 @@ final class ExchangeRateTableViewCell: UITableViewCell {
     }
     
     // MARK: - Actions
-    
     @objc private func trashButtonDidPressed() {
-        
+        deleteAction?()
     }
     
-    // MARK: - Public
+    public func getIndex() -> Int? {
+        index
+    }
     
-    public func configureCell(flagImage: String,
-                              currencyLabel: String,
-                              buyRate: Double?,
-                              sellRate: Double?) {
-        self.flagImageLabel.text = flagImage
-        self.currencyLabel.text = currencyLabel
-        if let unwrappedBuyRate = buyRate {
-            self.amountOfPurchaseTextField.placeholder = unwrappedBuyRate.avoidNotation
+    public func configureCell(currency: CurrencyElementForExchangeRateVC,
+                              index: Int) {
+        self.currency = currency
+    }
+}
+
+extension ExchangeRateTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let unwrappedValue = textField.text else { return }
+        if textField.tag == 0 {
+            currency?.buyPrice = Double(unwrappedValue)
         } else {
-            self.amountOfPurchaseTextField.placeholder = "?"
+            currency?.sellPrice =  Double(unwrappedValue)
         }
-        if let unwrappedSellRate = sellRate {
-            self.amountOfPurchaseTextField.placeholder = unwrappedSellRate.avoidNotation
-        } else {
-            self.amountOfPurchaseTextField.placeholder = "?"
+        if let unwrappedCurrency = currency {
+            updateAction?(unwrappedCurrency)
         }
     }
 }

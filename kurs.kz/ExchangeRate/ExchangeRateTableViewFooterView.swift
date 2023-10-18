@@ -12,8 +12,9 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     // MARK: - State
     static let reuseID = String(describing: ExchangeRateTableViewFooterView.self)
     
+    // MARK: - Properties
+    var addCurrencyButtonAction: (() -> Void)?
     // MARK: - UI
-    
     private lazy var addCurrencyButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Добавить валюту", for: .normal)
@@ -23,7 +24,6 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     }()
     
     // MARK: - LifeCycle
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -34,14 +34,12 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     }
 
     // MARK: - Setup Views
-    
     func setupViews() {
         contentView.backgroundColor = AppColor.grayWhite.uiColor
         contentView.addSubview(addCurrencyButton)
     }
     
     // MARK: - Setup Constraits
-    
     func setupConstriats() {
         addCurrencyButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -51,8 +49,7 @@ final class ExchangeRateTableViewFooterView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Actions
-
     @objc private func addCurrencyButtonDidPressed() {
-
+        addCurrencyButtonAction?()
     }
 }

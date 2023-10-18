@@ -62,6 +62,7 @@ final class ExchangeRateTableViewHeaderView: UITableViewHeaderFooterView {
             contentView.addSubview($0)
         }
         contentView.backgroundColor = AppColor.grayWhite.uiColor
+
     }
     // MARK: - Setup Constraints
     

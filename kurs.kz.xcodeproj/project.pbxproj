@@ -132,6 +132,7 @@
 		FA254B392AA8A85300831444 /* DPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA254B382AA8A85300831444 /* DPImageView.swift */; };
 		FA2C05832ABAD8FA00058567 /* ButtonWithBiggerArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C05822ABAD8FA00058567 /* ButtonWithBiggerArea.swift */; };
 		FA357BC22A58B35A005D5271 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */; };
+		FA4A441F2ADD679F00E5AA1F /* AddCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A441E2ADD679E00E5AA1F /* AddCurrencyViewController.swift */; };
 		FA5759812A63D9F100DE9A6B /* ExchangeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */; };
 		FA5759832A63E8F500DE9A6B /* Exchanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759822A63E8F500DE9A6B /* Exchanger.swift */; };
 		FA5759862A64273200DE9A6B /* ExchangeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */; };
@@ -291,6 +292,7 @@
 		FA254B382AA8A85300831444 /* DPImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPImageView.swift; sourceTree = "<group>"; };
 		FA2C05822ABAD8FA00058567 /* ButtonWithBiggerArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithBiggerArea.swift; sourceTree = "<group>"; };
 		FA357BC12A58B35A005D5271 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		FA4A441E2ADD679E00E5AA1F /* AddCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyViewController.swift; sourceTree = "<group>"; };
 		FA5759802A63D9F100DE9A6B /* ExchangeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListTableViewCell.swift; sourceTree = "<group>"; };
 		FA5759822A63E8F500DE9A6B /* Exchanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanger.swift; sourceTree = "<group>"; };
 		FA5759852A64273200DE9A6B /* ExchangeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListViewController.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				71564ABF2A6A9CEE00979090 /* ExchangeRateTableViewFooterView.swift */,
 				71564ABD2A6A9CEE00979090 /* ExchangeRateTableViewHeaderView.swift */,
 				71564AC02A6A9CEE00979090 /* ExchangeRateViewController.swift */,
+				FA4A441E2ADD679E00E5AA1F /* AddCurrencyViewController.swift */,
 			);
 			path = ExchangeRate;
 			sourceTree = "<group>";
@@ -1227,6 +1230,7 @@
 				9979C5EA2A7C12F00055B2DE /* CurrencyElement.swift in Sources */,
 				998D66D82A64595000287FD4 /* ApplicationsHeaderView.swift in Sources */,
 				FA1475272A5431C60085AF1E /* PasswordTextField.swift in Sources */,
+				FA4A441F2ADD679F00E5AA1F /* AddCurrencyViewController.swift in Sources */,
 				FA57598A2A669B8C00DE9A6B /* NavigationBarCurencyButtonView.swift in Sources */,
 				995E96AB2A7A178800E96AEE /* NationalBankPageService.swift in Sources */,
 				FAEEE7552A5D55E8007FB7A6 /* OfferSellCurrencyView.swift in Sources */,

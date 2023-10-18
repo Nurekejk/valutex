@@ -160,6 +160,7 @@ final class AccountSettingsViewController: UIViewController {
         self.navigationController?.pushViewController(ChangePasswordViewController(),
                                                       animated: true)
     }
+    
     @objc func saveButtonDidPress() {
         if var userAndKeys = userAndKeys {
             userAndKeys.user?.middleName = patronymicTextField.text

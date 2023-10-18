@@ -1,5 +1,5 @@
 //
-//  CurrencySelectorViewController.swift
+//  ExchangeListViewController.swift
 //  kurs.kz
 //
 //  Created by Adil on 11.07.2023.

@@ -13,11 +13,18 @@ final class ExchangeRateViewController: UIViewController {
     // MARK: - Properties
     private let service: ExchangeRateService
     
+    private var addedCurrencies: [CurrencyElementForExchangeRateVC] = []
+    
     private var currencyList: [CurrencyElementForExchangeRateVC] = [] {
         didSet {
-            tableHeight = currencyList.count * 70 + 68
+            tableHeight = currencyList.count * 56 + 110
+            tableView.reloadData()
         }
     }
+    
+    private var changedCurrencies: [CurrencyElementForExchangeRateVC] = []
+    
+    private var deletedCurrencies: [CurrencyElementForExchangeRateVC] = []
     
     private var tableHeight = 0 {
         didSet {
@@ -40,13 +47,12 @@ final class ExchangeRateViewController: UIViewController {
         tableView.register(ExchangeRateTableViewCell.self,
                            forCellReuseIdentifier: ExchangeRateTableViewCell.reuseIdentifier)
         tableView.rowHeight = 56
+        tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         return tableView
-    }()
-    
-    private lazy var footerView: ExchangeRateTableViewFooterView = {
-        let footerView = ExchangeRateTableViewFooterView()
-        return footerView
     }()
     
     private lazy var saveButton: UIButton = {
@@ -54,6 +60,7 @@ final class ExchangeRateViewController: UIViewController {
         button.setTitle("Cохранить", for: .normal)
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
+        button.addTarget(self, action: #selector(saveButtonDidPress), for: .touchUpInside)
 //        button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
@@ -107,6 +114,38 @@ final class ExchangeRateViewController: UIViewController {
     }
     
     // MARK: - Action
+    private func deleteCurrencies() {
+        for currency in deletedCurrencies {
+            guard let id = currency.currencyRateId else { return }
+            service.deleteCurrencies(currencyId: id) { [weak self] result in
+                switch result {
+                case .success(let result):
+                    print("deletion message: \(result)")
+                case .failure:
+                    print("error deliting currencies")
+                }
+            }
+        }
+    }
+    
+    private func updateCurrencies() {
+        for currency in changedCurrencies {
+            guard let id = currency.currencyRateId else { return }
+            guard let sellPrice = currency.sellPrice else { return }
+            guard let buyPrice = currency.buyPrice else { return }
+            service.updateCurrencies(currencyId: id,
+                                     buyPrice: buyPrice,
+                                     sellPrice: sellPrice) { [weak self] result in
+                switch result {
+                case .success(let result):
+                    print("update message: \(result)")
+                case .failure:
+                    print("error updating currencies")
+                }
+            }
+        }
+    }
+    
     private func getCurrencies() {
         service.fetchCurrencyRates { [weak self] result in
             switch result {
@@ -117,6 +156,28 @@ final class ExchangeRateViewController: UIViewController {
                 print("error fetching currencies")
             }
         }
+    }
+    
+    private func addCurrencies() {
+        for currency in addedCurrencies {
+            service.createCurrencyRate(newCurrencyRate: currency) { [weak self] result in
+                switch result {
+                case .success(let result):
+                    print("create message: \(result)")
+                case .failure:
+                    print("error creating currency")
+                }
+            }
+        }
+    }
+    
+    @objc private func saveButtonDidPress() {
+        deleteCurrencies()
+        updateCurrencies()
+        addCurrencies()
+        print("the size is \(tableView.visibleCells)")
+        print("the size is \(tableView.visibleCells.first?.bounds.height)")
+
     }
     
     // MARK: - Setup Constraints
@@ -158,6 +219,12 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         guard let footer = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: ExchangeRateTableViewFooterView.reuseID) as? ExchangeRateTableViewFooterView
         else { return UITableViewHeaderFooterView() }
+        footer.addCurrencyButtonAction = {
+            let addCurrencyController = AddCurrencyViewController(existingCurrencies: self.currencyList)
+            addCurrencyController.delegate = self
+            self.navigationController?
+                .pushViewController(addCurrencyController, animated: true)
+        }
         return footer
     }
     
@@ -172,10 +239,35 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
             fatalError("Could not cast to ExchangeRateTableViewCell")
         }
         let currency = currencyList[indexPath.row]
-        cell.configureCell(flagImage: currency.currencyFlag ?? "",
-                           currencyLabel: currency.currencyRuName ?? "",
-                           buyRate: currency.buyPrice,
-                           sellRate: currency.sellPrice)
+        cell.configureCell(currency: currency, index: indexPath.row)
+        cell.deleteAction = { [weak self] in
+            guard let self = self else { return }
+            let deletedCurrency = currencyList.remove(at: indexPath.row)
+            addedCurrencies.removeAll { currency in
+                return currency.currencyCode == deletedCurrency.currencyCode
+            }
+            deletedCurrencies.append(deletedCurrency)
+        }
+        cell.updateAction = { [weak self] updatedCurrency in
+            guard let self = self else { return }
+            if let index = addedCurrencies.firstIndex(
+                where: { $0.currencyCode == updatedCurrency.currencyCode }) {
+                addedCurrencies[index] = updatedCurrency
+            } else {
+                changedCurrencies.removeAll { currency in
+                    return currency.currencyCode == updatedCurrency.currencyCode
+                }
+                changedCurrencies.append(updatedCurrency)
+                print(changedCurrencies)
+            }
+        }
         return cell
+    }
+}
+    // MARK: - AddCurrencyViewControllerDelegate
+extension ExchangeRateViewController: AddCurrencyViewControllerDelegate {
+    func currencyDidAdd(currency: CurrencyElementForExchangeRateVC) {
+        addedCurrencies.append(currency)
+        currencyList.append(currency)
     }
 }
