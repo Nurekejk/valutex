@@ -42,6 +42,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = ""
         label.font = AppFont.regular.s16()
+        label.textAlignment = .left
         return label
     }()
     private lazy var amountOfPurchaseTextField: UITextField = {
@@ -106,22 +107,24 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalTo(flagImageLabel.snp.trailing).offset(16)
-            
+            make.trailing.lessThanOrEqualTo(amountOfPurchaseTextField.snp.leading)
         }
         amountOfPurchaseTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
+            make.width.equalTo(64)
             make.trailing.equalTo(amountOfSaleTextField.snp.leading).offset(-8)
             make.height.equalTo(32)
         }
         amountOfSaleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
+            make.width.equalTo(64)
             make.trailing.equalTo(trashButton.snp.leading).offset(-16)
             make.height.equalTo(32)
         }
         trashButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-12)
-            make.height.equalTo(16)
+            make.size.equalTo(16)
         }
     }
     

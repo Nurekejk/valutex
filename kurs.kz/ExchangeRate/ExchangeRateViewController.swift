@@ -11,13 +11,23 @@ import SnapKit
 final class ExchangeRateViewController: UIViewController {
     
     // MARK: - Properties
+    private let screenHeight = Int(UIScreen.main.bounds.size.height)
+
     private let service: ExchangeRateService
     
     private var addedCurrencies: [CurrencyElementForExchangeRateVC] = []
     
     private var currencyList: [CurrencyElementForExchangeRateVC] = [] {
         didSet {
-            tableHeight = currencyList.count * 56 + 110
+            let newTableHeight = currencyList.count * 56 + 110
+            if newTableHeight > screenHeight - 125 {
+                tableView.isScrollEnabled = true
+                tableView.snp.updateConstraints { make in
+                    make.bottom.equalTo(saveButtonContainerView.snp.top)
+                }
+            } else {
+                tableHeight = newTableHeight
+            }
             tableView.reloadData()
         }
     }
@@ -30,6 +40,34 @@ final class ExchangeRateViewController: UIViewController {
         didSet {
             tableView.snp.updateConstraints { make in
                 make.height.equalTo(tableHeight)
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    private var buyRateSorterState: ButtonState = .isOff {
+        didSet {
+            if buyRateSorterState != .isOff {
+                if buyRateSorterState == .ascending {
+                    currencyList.sort(by: {$0.buyPrice ?? 0.0 > $1.buyPrice ?? 0.0 })
+                }
+                if buyRateSorterState == .descending {
+                    currencyList.sort(by: {$0.buyPrice ?? 0.0 < $1.buyPrice ?? 0.0 })
+                }
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    private var sellRateSorterState: ButtonState = .isOff {
+        didSet {
+            if sellRateSorterState != .isOff {
+                if sellRateSorterState == .ascending {
+                    currencyList.sort(by: {$0.sellPrice ?? 0.0 > $1.sellPrice ?? 0.0 })
+                }
+                if sellRateSorterState == .descending {
+                    currencyList.sort(by: {$0.sellPrice ?? 0.0 < $1.sellPrice ?? 0.0 })
+                }
             }
             tableView.reloadData()
         }
@@ -49,6 +87,7 @@ final class ExchangeRateViewController: UIViewController {
         tableView.rowHeight = 56
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -61,7 +100,6 @@ final class ExchangeRateViewController: UIViewController {
         button.tintColor = AppColor.grayWhite.uiColor
         button.backgroundColor = AppColor.primaryBase.uiColor
         button.addTarget(self, action: #selector(saveButtonDidPress), for: .touchUpInside)
-//        button.layer.cornerRadius = 12
         button.titleLabel?.font = AppFont.semibold.s16()
         return button
     }()
@@ -72,7 +110,7 @@ final class ExchangeRateViewController: UIViewController {
         return shadowView
     }()
 
-    // MARK: - Lifecycle
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,11 +138,12 @@ final class ExchangeRateViewController: UIViewController {
     // MARK: - Setup Views
     private func setupViews() {
         
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = AppColor.gray10.uiColor
 
         [tableView, saveButtonContainerView].forEach {
             view.addSubview($0)
         }
+//        tableView.backgroundColor = .clear
         saveButtonContainerView.addSubview(saveButton)
     }
     
@@ -175,9 +214,6 @@ final class ExchangeRateViewController: UIViewController {
         deleteCurrencies()
         updateCurrencies()
         addCurrencies()
-        print("the size is \(tableView.visibleCells)")
-        print("the size is \(tableView.visibleCells.first?.bounds.height)")
-
     }
     
     // MARK: - Setup Constraints
@@ -212,6 +248,11 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: ExchangeRateTableViewHeaderView.reuseID) as? ExchangeRateTableViewHeaderView
         else { return UITableViewHeaderFooterView() }
+        header.buttonAction = { (buyState: ButtonState, sellState: ButtonState) in
+            self.buyRateSorterState = buyState
+            self.sellRateSorterState = sellState
+        }
+        header.layer.backgroundColor = AppColor.gray10.cgColor
         return header
     }
     
