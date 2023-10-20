@@ -103,6 +103,7 @@ final class ExchangeRateTableViewCell: UITableViewCell {
         flagImageLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(12)
+            make.width.equalTo(30)
         }
         currencyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)

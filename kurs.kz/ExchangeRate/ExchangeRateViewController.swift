@@ -21,9 +21,13 @@ final class ExchangeRateViewController: UIViewController {
         didSet {
             let newTableHeight = currencyList.count * 56 + 110
             if newTableHeight > screenHeight - 125 {
+                print("tableview is getting big")
                 tableView.isScrollEnabled = true
-                tableView.snp.updateConstraints { make in
-                    make.bottom.equalTo(saveButtonContainerView.snp.top)
+                tableView.snp.remakeConstraints { make in
+                    make.top.equalToSuperview().offset(13)
+                    make.leading.equalToSuperview().offset(16)
+                    make.trailing.equalToSuperview().offset(-16)
+                    make.bottom.equalTo(saveButtonContainerView.snp.top).offset(-10)
                 }
             } else {
                 tableHeight = newTableHeight
@@ -38,7 +42,10 @@ final class ExchangeRateViewController: UIViewController {
     
     private var tableHeight = 0 {
         didSet {
-            tableView.snp.updateConstraints { make in
+            tableView.snp.remakeConstraints { make in
+                make.top.equalToSuperview().offset(13)
+                make.leading.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-16)
                 make.height.equalTo(tableHeight)
             }
             tableView.reloadData()
@@ -210,10 +217,17 @@ final class ExchangeRateViewController: UIViewController {
         }
     }
     
+    private func resetPendingArrays() {
+        addedCurrencies.removeAll()
+        changedCurrencies.removeAll()
+        deletedCurrencies.removeAll()
+    }
+    
     @objc private func saveButtonDidPress() {
         deleteCurrencies()
         updateCurrencies()
         addCurrencies()
+        resetPendingArrays()
     }
     
     // MARK: - Setup Constraints
