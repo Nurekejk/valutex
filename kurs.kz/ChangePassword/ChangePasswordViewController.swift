@@ -15,9 +15,9 @@ final class ChangePasswordViewController: UIViewController {
     private let factory = SkyFloatingLabelTextfieldFactory()
     
     // MARK: - Properties
-    
+    private let service: AccountSettingsService
+
     // MARK: - UI
-    
     private let passwordContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColor.grayWhite.uiColor
@@ -33,13 +33,15 @@ final class ChangePasswordViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var newPasswordTextfield: SkyFloatingLabelTextField = {
+    private lazy var newPasswordTextfield: PasswordTextField = {
         let textfield = factory.getPasswordTextfield(with: "Новый пароль")
+        textfield.button.addTarget(self, action: #selector(newPasswordButtonDidPress), for: .touchUpInside)
         return textfield
     }()
     
-    private lazy var repeatPasswordTextfield: SkyFloatingLabelTextField = {
+    private lazy var repeatPasswordTextfield: PasswordTextField = {
         let textfield = factory.getRepeatPasswordTextfield()
+        textfield.button.addTarget(self, action: #selector(repeatPasswordButtonDidPress), for: .touchUpInside)
         return textfield
     }()
     
@@ -75,6 +77,17 @@ final class ChangePasswordViewController: UIViewController {
         setupNavigationBar()
         setupConstraints()
     }
+    
+    // MARK: - Initializers
+    init(service: AccountSettingsService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = AppColor.gray10.uiColor
@@ -98,9 +111,63 @@ final class ChangePasswordViewController: UIViewController {
     }
 
     // MARK: - Action
-    @objc func saveButtonDidPress() {
-
+    @objc private func saveButtonDidPress() {
+        guard let password = newPasswordTextfield.text else {
+            self.showAlert(message: "Пароль введен неправильно.")
+            return
+        }
+        
+        if password.isEmpty {
+            self.showAlert(message: "Пожалуйста, введите пароль.")
+            return
+        } else if password.count < 6 {
+            self.showAlert(message: "Пароль слишком короткий!")
+            return
+        }
+        
+        guard let passwordRepeated = repeatPasswordTextfield.text else {
+            self.showAlert(message: "Повторный пароль введен неправильно.")
+            return
+        }
+        
+        if passwordRepeated.isEmpty {
+            self.showAlert(message: "Пожалуйста, повторите пароль.")
+            return
+        } else if password != passwordRepeated {
+            self.showAlert(message: "Пароли не совпадают.")
+            return
+        }
+        service.updatePassword(
+            newPassword: newPasswordTextfield.text!) { [weak self] result in
+                switch result {
+                case .success(let message):
+                    print(message)
+                    self?.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка!",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func newPasswordButtonDidPress() {
+        newPasswordTextfield.buttonIsSelected = !newPasswordTextfield.buttonIsSelected
+        newPasswordTextfield.isSecureTextEntry = !newPasswordTextfield.buttonIsSelected
+    }
+    
+    @objc private func repeatPasswordButtonDidPress() {
+        repeatPasswordTextfield.buttonIsSelected = !repeatPasswordTextfield.buttonIsSelected
+        repeatPasswordTextfield.isSecureTextEntry = !repeatPasswordTextfield.buttonIsSelected
+    }
+
     // MARK: - Constraints
     private func setupConstraints() {
         

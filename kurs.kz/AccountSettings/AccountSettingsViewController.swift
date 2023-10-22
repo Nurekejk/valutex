@@ -17,6 +17,7 @@ final class AccountSettingsViewController: UIViewController {
     // MARK: - Properties
     private var userAndKeys: SignInResponse?
     private let defaults = UserDefaults.standard
+    private let service: AccountSettingsService
     
     // MARK: - UI
     private var profileView = ProfileTableHeaderView()
@@ -101,6 +102,17 @@ final class AccountSettingsViewController: UIViewController {
         setupNavigationBar()
         setupConstraints()
     }
+    
+    // MARK: - Initializers
+    init(service: AccountSettingsService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Setup Views
     private func setupViews() {
         setupTextfields()
@@ -157,22 +169,38 @@ final class AccountSettingsViewController: UIViewController {
     
     // MARK: - Action
     @objc func changePasswordDidPress(_ sender: UITapGestureRecognizer) {
-        self.navigationController?.pushViewController(ChangePasswordViewController(),
+        self.navigationController?.pushViewController(ChangePasswordViewController(service: service),
                                                       animated: true)
     }
     
     @objc func saveButtonDidPress() {
+
         if var userAndKeys = userAndKeys {
             userAndKeys.user?.middleName = patronymicTextField.text
             userAndKeys.user?.name = nameTextfield.text
             userAndKeys.user?.surname = surnameTextfield.text
-            
+            saveNewUserData(newName: nameTextfield.text ?? "",
+                            newMiddleName: patronymicTextField.text ?? "",
+                            newSurname: surnameTextfield.text ?? "")
             if let data = try? JSONEncoder().encode(userAndKeys) {
                 print("userAndKeys is \(userAndKeys)")
                 UserDefaults.standard.setValue(data, forKey: SignInViewController.defaultsUserAndTokensKey)
                 profileView.getUserData()
             } else {
                 print("error while encoding")
+            }
+        }
+    }
+    
+    private func saveNewUserData(newName: String, newMiddleName: String, newSurname: String) {
+        service.updateUserInfo(newName: newName,
+                               newMiddleName: newMiddleName,
+                               newSurname: newSurname) { [weak self] result in
+            switch result {
+            case .success(let message):
+                print(message)
+            case .failure(let error):
+                print(error)
             }
         }
     }

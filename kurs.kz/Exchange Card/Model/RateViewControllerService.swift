@@ -20,7 +20,6 @@ struct RateViewControllerService {
         guard let url = urlComponent.url else {
             return
         }
-        print(url)
         
         var headers: HTTPHeaders = [
             "accept": "application/json",
@@ -90,6 +89,7 @@ struct RateViewControllerService {
             }
         }
     }
+    
     func updateFeedback(review: Feedback, completion: @escaping (Result<String, AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"
@@ -122,7 +122,8 @@ struct RateViewControllerService {
             }
         }
     }
-    func fetchUserReviews(officeId: Int,  
+    
+    func fetchUserReviews(officeId: Int,
                           completion: @escaping (Result<[ReviewForTableView], AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"

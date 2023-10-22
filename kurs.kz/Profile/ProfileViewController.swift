@@ -201,7 +201,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let controller: UIViewController
         switch (section, type, row) {
         case (.zero, .customer, 0):
-            controller = AccountSettingsViewController()
+            controller = AccountSettingsViewController(service: AccountSettingsService())
         case (.zero, .customer, 1):
             controller = LanguageAppViewController()
         case (.zero, .customer, 2):
@@ -215,7 +215,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case (.zero, .managerOrOwner, 0):
             controller = ExchangeRateViewController(service: ExchangeRateService())
         case (.zero, .managerOrOwner, 1):
-            controller = AccountSettingsViewController()
+            controller = AccountSettingsViewController(service: AccountSettingsService())
         case (.zero, .managerOrOwner, 2):
             controller = LanguageAppViewController()
         case (.zero, .managerOrOwner, 3):
